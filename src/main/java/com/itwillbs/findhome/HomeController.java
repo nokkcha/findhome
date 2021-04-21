@@ -35,5 +35,20 @@ public class HomeController {
 		
 		return "index";
 	}
+		
+	@RequestMapping(value = "/join",method = RequestMethod.GET )
+	public String join() {
+		return "join";
+	}
+	
+	@RequestMapping(value = "/detailView",method = RequestMethod.GET )
+	public String detailView() {
+		return "detailView";
+	}
+	
+	@RequestMapping(value = "/findRooms",method = RequestMethod.GET )
+	public String findRooms() {
+		return "findRooms";
+	}
 	
 }
