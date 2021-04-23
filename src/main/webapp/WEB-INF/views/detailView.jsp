@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<<<<<<< HEAD
 
+=======
+>>>>>>> branch 'master' of https://github.com/imrutel/findhome.git
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -40,6 +43,7 @@
 </head>
   <body>
     
+<<<<<<< HEAD
   <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
     <div class="container">
       <a class="navbar-brand" href="index.html">FindHome</a>
@@ -67,6 +71,10 @@
     </div>
   </nav>
     <!-- END nav -->
+=======
+  <%@ include file="../views/top.jsp" %>
+    
+>>>>>>> branch 'master' of https://github.com/imrutel/findhome.git
     
     <div class="hero-wrap js-fullheight" style="background-image: url('${pageContext.request.contextPath}/resources/images/bg_5.jpg');">
       <div class="overlay"></div>
