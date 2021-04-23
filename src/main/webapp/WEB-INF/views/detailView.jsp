@@ -35,6 +35,7 @@
  }
  
  </style>
+     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 
 </head>
   <body>
@@ -180,6 +181,7 @@
           		<div class="col-md-12 hotel-single mt-4 mb-5 ftco-animate">
           			<span>원룸/월세</span>
           			<h2>역세권 위치 좋은 원룸</h2>
+          			<span><i class="fas fa-user"></i><h5>서면 공인중개사무소</h5></span>
           			<p class="rate mb-5">
           				<span class="loc"><a href="#"><i class="icon-map"></i> 서울특별시 영등포구 여의동로 330 한강사업본부 여의도안내센터</a></span>
           				<span class="star">
