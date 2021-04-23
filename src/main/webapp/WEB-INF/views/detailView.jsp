@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -28,11 +29,18 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/flaticon.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/icomoon.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
-  </head>
+ <style type="text/css">
+ #table{
+ table-layout: fixed;
+ }
+ 
+ </style>
+     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+
+</head>
   <body>
-    
+
   <%@ include file="../views/top.jsp" %>
-    
     
     <div class="hero-wrap js-fullheight" style="background-image: url('${pageContext.request.contextPath}/resources/images/bg_5.jpg');">
       <div class="overlay"></div>
@@ -40,7 +48,7 @@
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
           <div class="col-md-9 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
             <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="index.html">Home</a></span> <span class="mr-2"><a href="hotel.html">Hotel</a></span> <span>Hotel Single</span></p>
-            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Hotels Details</h1>
+            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">매물 상세</h1>
           </div>
         </div>
       </div>
@@ -52,11 +60,11 @@
         <div class="row">
         	<div class="col-lg-3 sidebar">
         		<div class="sidebar-wrap bg-light ftco-animate">
-        			<h3 class="heading mb-4">Find City</h3>
+        			<h3 class="heading mb-4">원하는 위치를 검색하세요</h3>
         			<form action="#">
         				<div class="fields">
 		              <div class="form-group">
-		                <input type="text" class="form-control" placeholder="Destination, City">
+		                <input type="text" class="form-control" placeholder="시,군,구">
 		              </div>
 		              <div class="form-group">
 		                <div class="select-wrap one-third">
@@ -134,10 +142,10 @@
           		<div class="col-md-12 ftco-animate">
           			<div class="single-slider owl-carousel">
           				<div class="item">
-          					<div class="hotel-img" style="background-image: url(images/hotel-2.jpg);"></div>
+          					<div class="hotel-img" style="background-image: url(images/room-2.jpg);"></div>
           				</div>
           				<div class="item">
-          					<div class="hotel-img" style="background-image: url(images/hotel-3.jpg);"></div>
+          					<div class="hotel-img" style="background-image: url(images/room-1.jpg);"></div>
           				</div>
           				<div class="item">
           					<div class="hotel-img" style="background-image: url(images/hotel-4.jpg);"></div>
@@ -145,37 +153,52 @@
           			</div>
           		</div>
           		<div class="col-md-12 hotel-single mt-4 mb-5 ftco-animate">
-          			<span>Our Best hotels &amp; Rooms</span>
-          			<h2>Luxury Hotel in Paris</h2>
+          			<span>원룸/월세</span>
+          			<h2>역세권 위치 좋은 원룸</h2>
+          			<span><i class="fas fa-user" style="width: 30;height: 30"></i><h5>서면 공인중개사무소</h5></span>
           			<p class="rate mb-5">
-          				<span class="loc"><a href="#"><i class="icon-map"></i> 291 South 21th Street, Suite 721 New York NY 10016</a></span>
-          				<span class="star">
-    							<i class="icon-star"></i>
-    							<i class="icon-star"></i>
-    							<i class="icon-star"></i>
-    							<i class="icon-star"></i>
-    							<i class="icon-star-o"></i>
-    							8 Rating</span>
+          				<span class="loc"><a href="#"><i class="icon-map"></i> 서울특별시 영등포구 여의동로 330 한강사업본부 여의도안내센터</a></span>
+          				<span class="heart"> 마음에 들어요
+    							<i class="far fa-heart"></i>
+							
+							
+							<div>
+								<a href="tel:02-1234-1234"><input type="image" src="${pageContext.request.contextPath}/resources/images/callButton.png" width="100";height="100" ></a>
+								<input type="image" src="${pageContext.request.contextPath}/resources/images/chatButton.png" width="100";height="100" >
+							</div>
+							
     						</p>
-    						<p>When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane. Pityful a rethoric question ran over her cheek, then she continued her way.</p>
+    						<p>서면역 8번출구에서 도보로 4분거리인 신축 원룸 건물이 새로 나왔습니다. 간단한 상세정보를 입력하세요. 간단한 상세정보를 입력하세요..</p>
     						<div class="d-md-flex mt-5 mb-5">
-    							<ul>
-	    							<li>The Big Oxmox advised her not to do so</li>
-	    							<li>When she reached the first hills of the Italic Mountains</li>
-	    							<li>She had a last view back on the skyline of her hometown </li>
-	    							<li>Bookmarksgrove, the headline of Alphabet </li>
-	    						</ul>
-	    						<ul class="ml-md-5">
-	    							<li>Question ran over her cheek, then she continued</li>
-	    							<li>Pityful a rethoric question ran</li>
-	    							<li>Mountains, she had a last view back on the skyline</li>
-	    							<li>Headline of Alphabet Village and the subline</li>
-	    						</ul>
+    							<table id="table" border="1" style="width: 1000">
+    								<tr>
+    									<th>방 형태</th>
+    									<td>분리형 원룸(욕실 1개)</td>
+    									<th>옵션</th>
+    									<td>풀옵션</td>
+    								</tr>
+    								
+    								<tr>
+    									<th>건물 크기</th>
+    									<td>24m<sup>2</sup></td>
+    									<th>건물 종류</th>
+    									<td>제2종근린생활시설</td>
+    								</tr>
+    								
+    								<tr>
+    									<th>건물 층수</th>
+    									<td>3</td>
+    									<th>입주 가능일</th>
+    									<td>즉시 가능</td>
+    								</tr>
+    							
+    							</table>
     						</div>
-    						<p>When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane. Pityful a rethoric question ran over her cheek, then she continued her way.</p>
-          		</div>
+							<p>● 보증금 100~300까지 조정가능 ● 위치 : 신림역 도보 2분 이내 ● 신림 초역세권의 깔끔한
+								빌트인원룸입니다. ✔ 직접 촬영한 100% 실매물입니다. ✔ 큰 길가, 건물 내/외부 CCTV 설치되어 안전해요</p>
+						</div>
           		<div class="col-md-12 hotel-single ftco-animate mb-5 mt-4">
-          			<h4 class="mb-4">Take A Tour</h4>
+          			<h4 class="mb-4">옵션 정보</h4>
           			<div class="block-16">
 		              <figure>
 		                <img src="${pageContext.request.contextPath}/resources/images/hotel-6.jpg" alt="Image placeholder" class="img-fluid">

@@ -10,41 +10,30 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Alex+Brush" rel="stylesheet">
 
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/open-iconic-bootstrap.min.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/animate.css">
+    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="css/animate.css">
     
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/magnific-popup.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
 
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/aos.css">
+    <link rel="stylesheet" href="css/aos.css">
 
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/ionicons.min.css">
+    <link rel="stylesheet" href="css/ionicons.min.css">
 
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/jquery.timepicker.css">
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="css/jquery.timepicker.css">
 
     
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/flaticon.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/icomoon.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/icomoon.css">
+    <link rel="stylesheet" href="css/style.css">
+
   </head>
   <body>
     
-  <%@ include file="../views/top.jsp" %>
-    
-    
-    <div class="hero-wrap js-fullheight" style="background-image: url('${pageContext.request.contextPath}/resources/images/bg_5.jpg');">
-      <div class="overlay"></div>
-      <div class="container">
-        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
-          <div class="col-md-9 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
-            <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="index.html">Home</a></span> <span>Hotel</span></p>
-            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Hotels</h1>
-          </div>
-        </div>
-      </div>
-    </div>
+ 
+	<%@ include file="../views/top.jsp" %>
 
 
     <section class="ftco-section ftco-degree-bg">
@@ -52,82 +41,111 @@
         <div class="row">
         	<div class="col-lg-3 sidebar">
         		<div class="sidebar-wrap bg-light ftco-animate">
-        			<h3 class="heading mb-4">Find City</h3>
+        			<h3 class="heading mb-4">검색 조건을 설정해주세요</h3>
         			<form action="#">
         				<div class="fields">
 		              <div class="form-group">
-		                <input type="text" class="form-control" placeholder="Destination, City">
+		                <input type="text" class="form-control" placeholder="지역, 지하철역 검색">
 		              </div>
 		              <div class="form-group">
 		                <div class="select-wrap one-third">
-	                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-	                    <select name="" id="" class="form-control" placeholder="Keyword search">
-	                      <option value="">Select Location</option>
-	                      <option value="">San Francisco USA</option>
-	                      <option value="">Berlin Germany</option>
-	                      <option value="">Lodon United Kingdom</option>
-	                      <option value="">Paris Italy</option>
-	                    </select>
+
+	                      구조
+	                 <div class="form-group">
+		                <input type="button" class="btn te btn-primary button-class1"  value="전체">
+		                <input type="button" class="btn te btn-default button-class2"  value="오픈형">
+		                <input type="button" class="btn te btn-default button-class3"  value="분리형">
+		                <input type="button" class="btn te btn-default button-class4"  value="복층형">
+		              </div>
+		              
+	                      층 수 옵션
+	                      <div class="form-group">
+	                       <input type="button" class="btn te btn-primary button-class11"  value="전체">
+		                	<input type="button" class="btn te btn-default button-class12"  value="지상층">
+		             		<input type="button" class="btn te btn-default button-class13"  value="반지하,옥탑">
+		              </div>
+
+
 	                  </div>
 		              </div>
+
 		              <div class="form-group">
-		                <input type="text" id="checkin_date" class="form-control" placeholder="Date from">
-		              </div>
-		              <div class="form-group">
-		                <input type="text" id="checkin_date" class="form-control" placeholder="Date to">
-		              </div>
-		              <div class="form-group">
+		              보증금
 		              	<div class="range-slider">
-		              		<span>
+		              		<span>  <!-- 보증금 -->
+<!-- 								  <input type="number" value="0" min="0" max="120000" id = "slider_value_view"/>	- -->
+<!-- 								 <input type="number" value="50000" min="0" max="120000"/> -->
+<!-- 										  </span> -->
+										  
+										  
+<div class="Container" >
+  <font size = 2 >0</font>						  
+  <input oninput = 'ShowSliderValue(this.value)' style = "width:80%;" class="slider_range" type="range" value="0" min="0" max="1000"></input>
+   <font size = 2 id = "slider_value_view2">0</font>							  
+<input oninput = 'ShowSliderValue(this.value)'  type = "range" min='0' max='1000' value='100'>
+</div>
+
+
+
+
+										  
+<!-- 										  <input value="1000" id="value1" min="0" max="120000" step="500" type="range"/> -->
+<!-- 										  <input value="50000" min="0" max="120000" step="500" type="range"/> -->
+										  
+										  </svg>
+										</div>
+										<script language = "javascript">
+
+function ShowSliderValue(sVal) {
+	var obValueView = document.getElementById("slider_value_view");
+	obValueView.innerHTML = sVal
+}
+
+function ShowSliderValue(sVal) {
+	var obValueView = document.getElementById("slider_value_view2");
+	obValueView.innerHTML = sVal
+}
+
+var RangeSlider = function(){
+	var range = $('.slider_range');
+    
+	range.on('input', function(){		
+		ShowSliderValue(this.value);
+	});
+};
+
+RangeSlider();
+
+
+</script>
+
+
+
+						월세
+		              	<div class="range-slider">
+		              		<span>  <!-- 월세 -->
 										    <input type="number" value="25000" min="0" max="120000"/>	-
 										    <input type="number" value="50000" min="0" max="120000"/>
 										  </span>
 										  <input value="1000" min="0" max="120000" step="500" type="range"/>
 										  <input value="50000" min="0" max="120000" step="500" type="range"/>
+										  
 										  </svg>
 										</div>
+	
 		              </div>
+
 		              <div class="form-group">
 		                <input type="submit" value="Search" class="btn btn-primary py-3 px-5">
 		              </div>
 		            </div>
 	            </form>
         		</div>
-        		<div class="sidebar-wrap bg-light ftco-animate">
-        			<h3 class="heading mb-4">Star Rating</h3>
-        			<form method="post" class="star-rating">
-							  <div class="form-check">
-									<input type="checkbox" class="form-check-input" id="exampleCheck1">
-									<label class="form-check-label" for="exampleCheck1">
-										<p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i></span></p>
-									</label>
-							  </div>
-							  <div class="form-check">
-						      <input type="checkbox" class="form-check-input" id="exampleCheck1">
-						      <label class="form-check-label" for="exampleCheck1">
-						    	   <p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star-o"></i></span></p>
-						      </label>
-							  </div>
-							  <div class="form-check">
-						      <input type="checkbox" class="form-check-input" id="exampleCheck1">
-						      <label class="form-check-label" for="exampleCheck1">
-						      	<p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star-o"></i><i class="icon-star-o"></i></span></p>
-						     </label>
-							  </div>
-							  <div class="form-check">
-							    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-						      <label class="form-check-label" for="exampleCheck1">
-						      	<p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star-o"></i><i class="icon-star-o"></i><i class="icon-star-o"></i></span></p>
-						      </label>
-							  </div>
-							  <div class="form-check">
-						      <input type="checkbox" class="form-check-input" id="exampleCheck1">
-						      <label class="form-check-label" for="exampleCheck1">
-						      	<p class="rate"><span><i class="icon-star"></i><i class="icon-star-o"></i><i class="icon-star-o"></i><i class="icon-star-o"></i><i class="icon-star-o"></i></span></p>
-							    </label>
-							  </div>
-							</form>
-        		</div>
+        		
+        	
+        		
+        		
+        		
           </div>
           <div class="col-lg-9">
           	<div class="row">
@@ -141,25 +159,19 @@
 		    					<div class="text p-3">
 		    						<div class="d-flex">
 		    							<div class="one">
-				    						<h3><a href="hotel-single.html">Hotel, Italy</a></h3>
-				    						<p class="rate">
-				    							<i class="icon-star"></i>
-				    							<i class="icon-star"></i>
-				    							<i class="icon-star"></i>
-				    							<i class="icon-star"></i>
-				    							<i class="icon-star-o"></i>
-				    							<span>8 Rating</span>
-				    						</p>
+				    						<h3><a href="hotel-single.html">전포동, 부산진구</a></h3>
+
 			    						</div>
 			    						<div class="two">
-			    							<span class="price per-price">$40<br><small>/night</small></span>
+			    							<span class="price per-price"><small>1000/50</small></span>
 		    							</div>
 		    						</div>
-		    						<p>Far far away, behind the word mountains, far from the countries</p>
+		    						<p>한줄 방소개</p>
 		    						<hr>
 		    						<p class="bottom-area d-flex">
-		    							<span><i class="icon-map-o"></i> Miami, Fl</span> 
-		    							<span class="ml-auto"><a href="#">Book Now</a></span>
+		    							<span><i class="icon-map-o"></i> 찜하기</span> 
+		    							<span class="ml-auto"><a href="javascript:void(0);">call</a></span>
+		    							
 		    						</p>
 		    					</div>
 		    				</div>
@@ -174,25 +186,18 @@
 		    					<div class="text p-3">
 		    						<div class="d-flex">
 		    							<div class="one">
-				    						<h3><a href="hotel-single.html">Hotel, Italy</a></h3>
-				    						<p class="rate">
-				    							<i class="icon-star"></i>
-				    							<i class="icon-star"></i>
-				    							<i class="icon-star"></i>
-				    							<i class="icon-star"></i>
-				    							<i class="icon-star-o"></i>
-				    							<span>8 Rating</span>
-				    						</p>
+				    						<h3><a href="hotel-single.html">전포동, 부산진구</a></h3>
+
 			    						</div>
 			    						<div class="two">
-			    							<span class="price per-price">$40<br><small>/night</small></span>
+			    							<span class="price per-price"><small>1000/50</small></span>
 		    							</div>
 		    						</div>
-		    						<p>Far far away, behind the word mountains, far from the countries</p>
+		    						<p>한줄 방소개</p>
 		    						<hr>
 		    						<p class="bottom-area d-flex">
-		    							<span><i class="icon-map-o"></i> Miami, Fl</span> 
-		    							<span class="ml-auto"><a href="#">Book Now</a></span>
+		    							<span><i class="icon-map-o"></i> 찜하기</span> 
+		    							<span class="ml-auto"><a href="javascript:void(0);">call</a></span>
 		    						</p>
 		    					</div>
 		    				</div>
@@ -207,25 +212,18 @@
 		    					<div class="text p-3">
 		    						<div class="d-flex">
 		    							<div class="one">
-				    						<h3><a href="hotel-single.html">Hotel, Italy</a></h3>
-				    						<p class="rate">
-				    							<i class="icon-star"></i>
-				    							<i class="icon-star"></i>
-				    							<i class="icon-star"></i>
-				    							<i class="icon-star"></i>
-				    							<i class="icon-star-o"></i>
-				    							<span>8 Rating</span>
-				    						</p>
+				    						<h3><a href="hotel-single.html">전포동, 부산진구</a></h3>
+
 			    						</div>
 			    						<div class="two">
-			    							<span class="price per-price">$40<br><small>/night</small></span>
+			    							<span class="price per-price"><small>1000/50</small></span>
 		    							</div>
 		    						</div>
-		    						<p>Far far away, behind the word mountains, far from the countries</p>
+		    						<p>한줄 방소개</p>
 		    						<hr>
 		    						<p class="bottom-area d-flex">
-		    							<span><i class="icon-map-o"></i> Miami, Fl</span> 
-		    							<span class="ml-auto"><a href="#">Book Now</a></span>
+		    							<span><i class="icon-map-o"></i> 찜하기</span> 
+		    							<span class="ml-auto"><a href="javascript:void(0);">call</a></span>
 		    						</p>
 		    					</div>
 		    				</div>
@@ -240,25 +238,18 @@
 		    					<div class="text p-3">
 		    						<div class="d-flex">
 		    							<div class="one">
-				    						<h3><a href="hotel-single.html">Hotel, Italy</a></h3>
-				    						<p class="rate">
-				    							<i class="icon-star"></i>
-				    							<i class="icon-star"></i>
-				    							<i class="icon-star"></i>
-				    							<i class="icon-star"></i>
-				    							<i class="icon-star-o"></i>
-				    							<span>8 Rating</span>
-				    						</p>
+				    						<h3><a href="hotel-single.html">전포동, 부산진구</a></h3>
+
 			    						</div>
 			    						<div class="two">
-			    							<span class="price per-price">$40<br><small>/night</small></span>
+			    							<span class="price per-price"><small>1000/50</small></span>
 		    							</div>
 		    						</div>
-		    						<p>Far far away, behind the word mountains, far from the countries</p>
+		    						<p>한줄 방소개</p>
 		    						<hr>
 		    						<p class="bottom-area d-flex">
-		    							<span><i class="icon-map-o"></i> Miami, Fl</span> 
-		    							<span class="ml-auto"><a href="#">Book Now</a></span>
+		    							<span><i class="icon-map-o"></i> 찜하기</span> 
+		    							<span class="ml-auto"><a href="javascript:void(0);">call</a></span>
 		    						</p>
 		    					</div>
 		    				</div>
@@ -273,25 +264,18 @@
 		    					<div class="text p-3">
 		    						<div class="d-flex">
 		    							<div class="one">
-				    						<h3><a href="hotel-single.html">Hotel, Italy</a></h3>
-				    						<p class="rate">
-				    							<i class="icon-star"></i>
-				    							<i class="icon-star"></i>
-				    							<i class="icon-star"></i>
-				    							<i class="icon-star"></i>
-				    							<i class="icon-star-o"></i>
-				    							<span>8 Rating</span>
-				    						</p>
+				    						<h3><a href="hotel-single.html">전포동, 부산진구</a></h3>
+
 			    						</div>
 			    						<div class="two">
-			    							<span class="price per-price">$40<br><small>/night</small></span>
+			    							<span class="price per-price"><small>1000/50</small></span>
 		    							</div>
 		    						</div>
-		    						<p>Far far away, behind the word mountains, far from the countries</p>
+		    						<p>한줄 방소개</p>
 		    						<hr>
 		    						<p class="bottom-area d-flex">
-		    							<span><i class="icon-map-o"></i> Miami, Fl</span> 
-		    							<span class="ml-auto"><a href="#">Book Now</a></span>
+		    							<span><i class="icon-map-o"></i> 찜하기</span> 
+		    							<span class="ml-auto"><a href="javascript:void(0);">call</a></span>
 		    						</p>
 		    					</div>
 		    				</div>
@@ -306,25 +290,18 @@
 		    					<div class="text p-3">
 		    						<div class="d-flex">
 		    							<div class="one">
-				    						<h3><a href="hotel-single.html">Hotel, Italy</a></h3>
-				    						<p class="rate">
-				    							<i class="icon-star"></i>
-				    							<i class="icon-star"></i>
-				    							<i class="icon-star"></i>
-				    							<i class="icon-star"></i>
-				    							<i class="icon-star-o"></i>
-				    							<span>8 Rating</span>
-				    						</p>
+				    						<h3><a href="hotel-single.html">전포동, 부산진구</a></h3>
+
 			    						</div>
 			    						<div class="two">
-			    							<span class="price per-price">$40<br><small>/night</small></span>
+			    							<span class="price per-price"><small>1000/50</small></span>
 		    							</div>
 		    						</div>
-		    						<p>Far far away, behind the word mountains, far from the countries</p>
+		    						<p>한줄 방소개</p>
 		    						<hr>
 		    						<p class="bottom-area d-flex">
-		    							<span><i class="icon-map-o"></i> Miami, Fl</span> 
-		    							<span class="ml-auto"><a href="#">Book Now</a></span>
+		    							<span><i class="icon-map-o"></i> 찜하기</span> 
+		    							<span class="ml-auto"><a href="javascript:void(0);">call</a></span>
 		    						</p>
 		    					</div>
 		    				</div>
@@ -350,15 +327,13 @@
       </div>
     </section> <!-- .section -->
 
-
-<!-- 푸터 시작 -->
     <footer class="ftco-footer ftco-bg-dark ftco-section">
       <div class="container">
         <div class="row mb-5">
           <div class="col-md">
             <div class="ftco-footer-widget mb-4">
               <h2 class="ftco-heading-2">dirEngine</h2>
-              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+              <p>한줄 방소개</p>
               <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
                 <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
                 <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
@@ -421,23 +396,111 @@
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 
 
-  <script src="${pageContext.request.contextPath}/resources/js/jquery.min.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/js/jquery-migrate-3.0.1.min.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/js/popper.min.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/js/jquery.easing.1.3.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/js/jquery.waypoints.min.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/js/jquery.stellar.min.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/js/owl.carousel.min.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/js/jquery.magnific-popup.min.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/js/aos.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/js/jquery.animateNumber.min.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/js/bootstrap-datepicker.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/js/jquery.timepicker.min.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/js/scrollax.min.js"></script>
+  <script src="js/jquery.min.js"></script>
+  <script src="js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery.easing.1.3.js"></script>
+  <script src="js/jquery.waypoints.min.js"></script>
+  <script src="js/jquery.stellar.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/jquery.magnific-popup.min.js"></script>
+  <script src="js/aos.js"></script>
+  <script src="js/jquery.animateNumber.min.js"></script>
+  <script src="js/bootstrap-datepicker.js"></script>
+  <script src="js/jquery.timepicker.min.js"></script>
+  <script src="js/scrollax.min.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-  <script src="${pageContext.request.contextPath}/resources/js/google-map.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/js/main.js"></script>
+  <script src="js/google-map.js"></script>
+  <script src="js/main.js"></script>
+        <script src="../script/jquery-3.6.0.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+    	$('.button-class1').click(function(){
+    		if( $(this).hasClass('btn-default') ) $(this).removeClass('btn-default');
+    		if( !$(this).hasClass('btn-primary') ) $(this).addClass('btn-primary');
+    		if( $('.button-class2').hasClass('btn-primary') ) $('.button-class2').removeClass('btn-primary');
+      		if( $('.button-class3').hasClass('btn-primary') ) $('.button-class3').removeClass('btn-primary');
+      	 	if( $('.button-class4').hasClass('btn-primary') ) $('.button-class4').removeClass('btn-primary');
+    		if( !$('.button-class2').hasClass('btn-default') ) $('.button-class2').addClass('btn-default');
+    		if( !$('.button-class3').hasClass('btn-default') ) $('.button-class3').addClass('btn-default');
+    		if( !$('.button-class4').hasClass('btn-default') ) $('.button-class4').addClass('btn-default');
+    	});
+    	
+    	$('.button-class2').click(function(){
+    		if( $(this).hasClass('btn-default') ) $(this).removeClass('btn-default');
+    		if( !$(this).hasClass('btn-primary') ) $(this).addClass('btn-primary');
+    		if( $('.button-class1').hasClass('btn-primary') ) $('.button-class1').removeClass('btn-primary');
+    		if( !$('.button-class1').hasClass('btn-default') ) $('.button-class1').addClass('btn-default');
+    		
+        	$('.button-class2').click(function(){
+        		if( $(this).hasClass('btn-primary') ) $(this).removeClass('btn-primary');
+        		if( !$(this).hasClass('btn-default') ) $(this).addClass('btn-default');
+        	});
+
+    		
+    	});
+      
+      	$('.button-class3').click(function(){
+    		if( $(this).hasClass('btn-default') ) $(this).removeClass('btn-default');
+    		if( !$(this).hasClass('btn-primary') ) $(this).addClass('btn-primary');
+    		if( $('.button-class1').hasClass('btn-primary') ) $('.button-class1').removeClass('btn-primary');
+    		if( !$('.button-class1').hasClass('btn-default') ) $('.button-class1').addClass('btn-default');
+    	});
+      
+        	$('.button-class4').click(function(){
+    		if( $(this).hasClass('btn-default') ) $(this).removeClass('btn-default');
+    		if( !$(this).hasClass('btn-primary') ) $(this).addClass('btn-primary');
+    		if( $('.button-class1').hasClass('btn-primary') ) $('.button-class1').removeClass('btn-primary');
+    		if( !$('.button-class1').hasClass('btn-default') ) $('.button-class1').addClass('btn-default');
+    	});
+
+        	
+        	$('.button-class11').click(function(){
+        		if( $(this).hasClass('btn-default') ) $(this).removeClass('btn-default');
+        		if( !$(this).hasClass('btn-primary') ) $(this).addClass('btn-primary');
+        		if( $('.button-class12').hasClass('btn-primary') ) $('.button-class12').removeClass('btn-primary');
+          		if( $('.button-class13').hasClass('btn-primary') ) $('.button-class13').removeClass('btn-primary');
+        		if( !$('.button-class12').hasClass('btn-default') ) $('.button-class12').addClass('btn-default');
+        		if( !$('.button-class13').hasClass('btn-default') ) $('.button-class13').addClass('btn-default');
+        	});
+        	
+        	$('.button-class12').click(function(){
+        		if( $(this).hasClass('btn-default') ) $(this).removeClass('btn-default');
+        		if( !$(this).hasClass('btn-primary') ) $(this).addClass('btn-primary');
+        		if( $('.button-class11').hasClass('btn-primary') ) $('.button-class11').removeClass('btn-primary');
+        		if( $('.button-class13').hasClass('btn-primary') ) $('.button-class13').removeClass('btn-primary');
+        		if( !$('.button-class11').hasClass('btn-default') ) $('.button-class11').addClass('btn-default');
+        		if( !$('.button-class13').hasClass('btn-default') ) $('.button-class13').addClass('btn-default');
+        	});
+          
+          	$('.button-class13').click(function(){
+        		if( $(this).hasClass('btn-default') ) $(this).removeClass('btn-default');
+        		if( !$(this).hasClass('btn-primary') ) $(this).addClass('btn-primary');
+        		if( $('.button-class11').hasClass('btn-primary') ) $('.button-class11').removeClass('btn-primary');
+        		if( $('.button-class12').hasClass('btn-primary') ) $('.button-class12').removeClass('btn-primary');
+        		if( !$('.button-class11').hasClass('btn-default') ) $('.button-class11').addClass('btn-default');
+        		if( !$('.button-class12').hasClass('btn-default') ) $('.button-class12').addClass('btn-default');
+        	});
+
+        	$('.ml-auto').click(function () {    	
+        		var filter = "win16|win32|win64|mac|macintel"; 
+        		if ( navigator.platform ) { 
+        			if ( filter.indexOf( navigator.platform.toLowerCase() ) < 0 ) {
+        				location.href="tel:010-1234-5678";
+				
+        			} else { 
+        					alert('웹에서 전화걸기 ex. 010-1234-5678');	
+        			} 
+        		}
+    		
+    		});
+
+    });
+
     
+    </script>
+
+  
   </body>
 </html>
