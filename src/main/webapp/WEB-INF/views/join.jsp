@@ -4,7 +4,7 @@
 <html lang="en">
   <head>
     <title>DirEngine - Free Bootstrap 4 Template by Colorlib</title>
-    <script src="../script/jquery-3.6.0.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/script/jquery-3.6.0.js"></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
@@ -69,6 +69,8 @@
         </div>
         <script type="text/javascript">
         	$(document).ready(function(){
+        		alert('doc ready');
+        		
         		$('#login').submit(function(){
         			
         			var id = $('#id').val();
