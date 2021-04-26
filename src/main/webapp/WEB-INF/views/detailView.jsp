@@ -142,13 +142,14 @@
           		<div class="col-md-12 ftco-animate">
           			<div class="single-slider owl-carousel">
           				<div class="item">
-          					<div class="hotel-img" style="background-image: url(images/room-2.jpg);"></div>
+          					<div class="hotel-img"><img src="${pageContext.request.contextPath}/resources/images/room-2.png"></div>
+          					
           				</div>
           				<div class="item">
-          					<div class="hotel-img" style="background-image: url(images/room-1.jpg);"></div>
+          					<div class="hotel-img"><img src="${pageContext.request.contextPath}/resources/images/room-1.jpg"></div>
           				</div>
           				<div class="item">
-          					<div class="hotel-img" style="background-image: url(images/hotel-4.jpg);"></div>
+          					<div class="hotel-img"><img src="${pageContext.request.contextPath}/resources/images/room-3.jpg"></div>
           				</div>
           			</div>
           		</div>
@@ -168,7 +169,7 @@
 							</div>
 							
     						</p>
-    						<p>서면역 8번출구에서 도보로 4분거리인 신축 원룸 건물이 새로 나왔습니다. 간단한 상세정보를 입력하세요. 간단한 상세정보를 입력하세요..</p>
+    						<p>서면역 8번출구에서 도보로 4분거리인 신축 원룸 건물이 새로 나왔습니다. 간단한 상세정보를 입력하세요. 간단한 상세정보를 입력하세요...</p>
     						<div class="d-md-flex mt-5 mb-5">
     							<table id="table" border="1" style="width: 1000">
     								<tr>
@@ -201,7 +202,7 @@
           			<h4 class="mb-4">옵션 정보</h4>
           			<div class="block-16">
 		              <figure>
-		                <img src="${pageContext.request.contextPath}/resources/images/hotel-6.jpg" alt="Image placeholder" class="img-fluid">
+		                <img src="${pageContext.request.contextPath}/resources/images/room-2.png" alt="Image placeholder" class="img-fluid">
 		                <a href="https://vimeo.com/45830194" class="play-button popup-vimeo"><span class="icon-play"></span></a>
 		              </figure>
 		            </div>
