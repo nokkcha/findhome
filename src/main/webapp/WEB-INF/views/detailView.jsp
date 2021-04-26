@@ -34,6 +34,7 @@
  table-layout: fixed;
  }
  
+
  </style>
      <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 
@@ -152,16 +153,18 @@
           					<div class="hotel-img"><img src="${pageContext.request.contextPath}/resources/images/room-3.jpg"></div>
           				</div>
           			</div>
+          		<span><img src="${pageContext.request.contextPath}/resources/images/room-2.png" style="width: 100px; height: 100px; margin-right: 10px;"></span>
+          		<span><img src="${pageContext.request.contextPath}/resources/images/room-2.png" style="width: 100px; height: 100px; margin-right: 10px;"></span>
+          		<span><img src="${pageContext.request.contextPath}/resources/images/room-2.png" style="width: 100px; height: 100px; margin-right: 10px;"></span>
           		</div>
+          		
           		<div class="col-md-12 hotel-single mt-4 mb-5 ftco-animate">
           			<span>원룸/월세</span>
-          			<h2>역세권 위치 좋은 원룸</h2>
-          			<span><i class="fas fa-user" style="width: 30;height: 30"></i><h5>서면 공인중개사무소</h5></span>
+          			<h2>역세권 위치 좋은 원룸 <i class="far fa-heart fa-1x"></i></h2>
+          			<span><h5><i class="fas fa-user" style="width: 30;height: 30"></i> 서면 공인중개사무소</h5></span>
           			<p class="rate mb-5">
           				<span class="loc"><a href="#"><i class="icon-map"></i> 서울특별시 영등포구 여의동로 330 한강사업본부 여의도안내센터</a></span>
-          				<span class="heart"> 마음에 들어요
-    							<i class="far fa-heart"></i>
-							
+          				
 							
 							<div>
 								<a href="tel:02-1234-1234"><input type="image" src="${pageContext.request.contextPath}/resources/images/callButton.png" width="100";height="100" ></a>
