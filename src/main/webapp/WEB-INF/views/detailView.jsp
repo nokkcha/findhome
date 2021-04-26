@@ -35,6 +35,7 @@
  table-layout: fixed;
  }
  
+
  </style>
      <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 
@@ -204,33 +205,44 @@ RangeSlider();
           		<div class="col-md-12 ftco-animate">
           			<div class="single-slider owl-carousel">
           				<div class="item">
-          					<div class="hotel-img" style="background-image: url(images/room-2.jpg);"></div>
+          					<div class="hotel-img"><img src="${pageContext.request.contextPath}/resources/images/room-2.png"></div>
+          					
           				</div>
           				<div class="item">
-          					<div class="hotel-img" style="background-image: url(images/room-1.jpg);"></div>
+          					<div class="hotel-img"><img src="${pageContext.request.contextPath}/resources/images/room-1.jpg"></div>
           				</div>
           				<div class="item">
-          					<div class="hotel-img" style="background-image: url(images/hotel-4.jpg);"></div>
+          					<div class="hotel-img"><img src="${pageContext.request.contextPath}/resources/images/room-3.jpg"></div>
           				</div>
           			</div>
+          		
           		</div>
+          		
           		<div class="col-md-12 hotel-single mt-4 mb-5 ftco-animate">
           			<span>원룸/월세</span>
-          			<h2>역세권 위치 좋은 원룸</h2>
-          			<span><i class="fas fa-user" style="width: 30;height: 30"></i><h5>서면 공인중개사무소</h5></span>
+          			<h2>역세권 위치 좋은 원룸 <i class="far fa-heart fa-1x"></i></h2>
           			<p class="rate mb-5">
           				<span class="loc"><a href="#"><i class="icon-map"></i> 서울특별시 영등포구 여의동로 330 한강사업본부 여의도안내센터</a></span>
-          				<span class="heart"> 마음에 들어요
-    							<i class="far fa-heart"></i>
-							
-							
-							<div>
+          			<span><h5><i class="fas fa-user fa-1x" style="width: 20;height: 20"></i> 서면 공인중개사무소</h5>
+          					<div>
 								<a href="tel:02-1234-1234"><input type="image" src="${pageContext.request.contextPath}/resources/images/callButton.png" width="100";height="100" ></a>
 								<input type="image" src="${pageContext.request.contextPath}/resources/images/chatButton.png" width="100";height="100" >
 							</div>
+          			
+          			
+          			</span>
+          				
+							
+						
 							
     						</p>
+<<<<<<< HEAD
     						<p>서면역 8번출구에서 도보로 4분거리인 신축 원룸 건물이 새로 나왔습니다. 간단한 상세정보를 입력하세요. </p>
+=======
+    						<p>서면역 8번출구에서 도보로 4분거리인 신축 원룸 건물이 새로 나왔습니다. 간단한 상세정보를 입력하세요. 간단한 상세정보를 입력하세요...</p>
+    						<br>
+    						<h4 class="mb-4">옵션 정보</h4>
+>>>>>>> branch 'detailView' of https://github.com/imrutel/findhome.git
     						<div class="d-md-flex mt-5 mb-5">
     							<table id="table" border="1" style="width: 1000">
     								<tr>
@@ -260,6 +272,7 @@ RangeSlider();
 								빌트인원룸입니다. ✔ 직접 촬영한 100% 실매물입니다. ✔ 큰 길가, 건물 내/외부 CCTV 설치되어 안전해요</p>
 						</div>
 						
+<<<<<<< HEAD
 						<div id="map" style="width:500px;height:400px;"></div>
 						
 						<script>
@@ -279,7 +292,22 @@ RangeSlider();
 						
 						<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=YOUR_CLIENT_ID"></script>
 						
+=======
+						<!-- 동영상 부분 -->
+<!--           		<div class="col-md-12 hotel-single ftco-animate mb-5 mt-4"> -->
+          			
+<!--           			<div class="block-16"> -->
+<!-- 		              <figure> -->
+<%-- 		                <img src="${pageContext.request.contextPath}/resources/images/room-2.png" alt="Image placeholder" class="img-fluid"> --%>
+<!-- 		                <a href="https://vimeo.com/45830194" class="play-button popup-vimeo"><span class="icon-play"></span></a> -->
+<!-- 		              </figure> -->
+<!-- 		            </div> -->
+<!--           		</div> -->
+
+
+>>>>>>> branch 'detailView' of https://github.com/imrutel/findhome.git
           		<div class="col-md-12 hotel-single ftco-animate mb-5 mt-4">
+<<<<<<< HEAD
           			<h4 class="mb-4">옵션 정보</h4>
           			<div class="block-16">
 		              <figure>
@@ -290,10 +318,13 @@ RangeSlider();
           		</div>
           		<div class="col-md-12 hotel-single ftco-animate mb-5 mt-4">
           			<h4 class="mb-4">한줄 방소개</h4>
+=======
+          			<h4 class="mb-4">주변의 다른방 살펴보기</h4>
+>>>>>>> branch 'detailView' of https://github.com/imrutel/findhome.git
           			<div class="row">
           				<div class="col-md-4">
 				    				<div class="destination">
-				    					<a href="hotel-single.html" class="img img-2" style="background-image: url(images/room-4.jpg);"></a>
+				    					<a href="hotel-single.html" class="img img-2" src="${pageContext.request.contextPath}/resources/images/room-2.png"></a>
 				    					<div class="text p-3">
 				    						<div class="d-flex">
 				    							<div class="one">
