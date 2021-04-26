@@ -161,15 +161,19 @@
           		<div class="col-md-12 hotel-single mt-4 mb-5 ftco-animate">
           			<span>원룸/월세</span>
           			<h2>역세권 위치 좋은 원룸 <i class="far fa-heart fa-1x"></i></h2>
-          			<span><h5><i class="fas fa-user" style="width: 30;height: 30"></i> 서면 공인중개사무소</h5></span>
           			<p class="rate mb-5">
           				<span class="loc"><a href="#"><i class="icon-map"></i> 서울특별시 영등포구 여의동로 330 한강사업본부 여의도안내센터</a></span>
-          				
-							
-							<div>
+          			<span><h5><i class="fas fa-user fa-1x" style="width: 30;height: 30"></i> 서면 공인중개사무소</h5>
+          					<div>
 								<a href="tel:02-1234-1234"><input type="image" src="${pageContext.request.contextPath}/resources/images/callButton.png" width="100";height="100" ></a>
 								<input type="image" src="${pageContext.request.contextPath}/resources/images/chatButton.png" width="100";height="100" >
 							</div>
+          			
+          			
+          			</span>
+          				
+							
+						
 							
     						</p>
     						<p>서면역 8번출구에서 도보로 4분거리인 신축 원룸 건물이 새로 나왔습니다. 간단한 상세정보를 입력하세요. 간단한 상세정보를 입력하세요...</p>
