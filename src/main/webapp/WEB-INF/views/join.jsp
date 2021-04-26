@@ -6,6 +6,7 @@
 <title>DirEngine - Free Bootstrap 4 Template by Colorlib</title>
 <script
 	src="${pageContext.request.contextPath}/resources/script/jquery-3.6.0.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
 <meta charset="utf-8">
 <meta name="viewport"
@@ -86,8 +87,11 @@
 					var alphabetLowerRegex = /[a-z]/; // 소문자 판별
 					var numberRegex = /[0-9]/; // 숫자 판별
 					var specRegex = /[!@#$%]/; // 특수문자(!@#$%) 판별		
-					var element = document
+					var checkResult = document
 							.getElementById('checkPasswordResult');
+					
+					var checkResult2 = document
+					.getElementById('checkPasswordResult2');
 					
 					if (lengthRegex.exec(pass1)) {
 						var point = 0;
@@ -106,24 +110,25 @@
 
 						switch (point) {
 						case 4:
-							element.innerHTML = "안전";
+							checkResult.innerHTML = "<font color='#006400'>안전</font>";
 							break;
 						case 3:
-							element.innerHTML = "보통";
+							checkResult.innerHTML = "<font color='#FFD700'>보통</font>";
 							break;
 						case 2:
-							element.innerHTML = "위험";
+							checkResult.innerHTML = "<font color='#FF0000'>위험</font>";
 							break;
 						default:
-							element.innerHTML = "사용불가";
+							checkResult.innerHTML = "<font color='#FF0000'>사용불가</font>";
 						    break;
 						}
 					} else {
-						element.innerHTML = "사용불가";
+						checkResult2.innerHTML = "<font color='#FF0000'>8~16자 영문 대 소문자, 숫자, 특수문자를 사용하세요.</font>";
 					}
 				}
 				
 				$(document).ready(function() {
+					
 					$('#login').submit(function() {
 
 						var id = $('#id').val();
@@ -134,22 +139,22 @@
 						
 						if (id == "") {
 							$('#id').focus();
-							alert('아이디를 입력하세요');
+							swal.fire("ID 입력확인", "ID를 입력해주세요", "error") //"info,success,warning,error" 중 택1							
 							return false;
 						}
 						if (pass1 == "") {
 							$('#pass1').focus();
-							alert('패스워드를 입력하세요');
+							swal.fire("패스워드 입력확인", "패스워드를 입력해주세요", "error") //"info,success,warning,error" 중 택1
 							return false;
 						}
 						if (pass2 == "") {
 							$('#pass2').focus();
-							alert('패스워드 확인을 입력하세요');
+							swal.fire("패스워드 확인 입력확인", "패스워드 확인을 입력해주세요", "error") //"info,success,warning,error" 중 택1
 							return false;
 						}
 						if (phone == "") {
 							$('#phone').focus();
-							alert('전화번호를 입력하세요');
+							swal.fire("전화번호 입력확인", "전화번호를 입력해주세요", "error") //"info,success,warning,error" 중 택1
 							return false;
 						}
 
@@ -170,7 +175,10 @@
 							<label class="form-control-label">비밀번호</label><input
 								type="password" class="form-control" name="pass1" id="pass1"
 								onkeyup="checkPassword()"><span id="checkPasswordResult"></span>
+								
+						<br><span id="checkPasswordResult2"></span>
 						</div>
+						
 						<div class="form-group" align="left">
 							<label class="form-control-label">비밀번호 확인</label><input
 								type="password" class="form-control" name="pass2" id="pass2">
