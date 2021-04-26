@@ -153,9 +153,7 @@
           					<div class="hotel-img"><img src="${pageContext.request.contextPath}/resources/images/room-3.jpg"></div>
           				</div>
           			</div>
-          		<span><img src="${pageContext.request.contextPath}/resources/images/room-2.png" style="width: 100px; height: 100px; margin-right: 10px;"></span>
-          		<span><img src="${pageContext.request.contextPath}/resources/images/room-2.png" style="width: 100px; height: 100px; margin-right: 10px;"></span>
-          		<span><img src="${pageContext.request.contextPath}/resources/images/room-2.png" style="width: 100px; height: 100px; margin-right: 10px;"></span>
+          		
           		</div>
           		
           		<div class="col-md-12 hotel-single mt-4 mb-5 ftco-animate">
@@ -163,7 +161,7 @@
           			<h2>역세권 위치 좋은 원룸 <i class="far fa-heart fa-1x"></i></h2>
           			<p class="rate mb-5">
           				<span class="loc"><a href="#"><i class="icon-map"></i> 서울특별시 영등포구 여의동로 330 한강사업본부 여의도안내센터</a></span>
-          			<span><h5><i class="fas fa-user fa-1x" style="width: 30;height: 30"></i> 서면 공인중개사무소</h5>
+          			<span><h5><i class="fas fa-user fa-1x" style="width: 20;height: 20"></i> 서면 공인중개사무소</h5>
           					<div>
 								<a href="tel:02-1234-1234"><input type="image" src="${pageContext.request.contextPath}/resources/images/callButton.png" width="100";height="100" ></a>
 								<input type="image" src="${pageContext.request.contextPath}/resources/images/chatButton.png" width="100";height="100" >
@@ -177,6 +175,8 @@
 							
     						</p>
     						<p>서면역 8번출구에서 도보로 4분거리인 신축 원룸 건물이 새로 나왔습니다. 간단한 상세정보를 입력하세요. 간단한 상세정보를 입력하세요...</p>
+    						<br>
+    						<h4 class="mb-4">옵션 정보</h4>
     						<div class="d-md-flex mt-5 mb-5">
     							<table id="table" border="1" style="width: 1000">
     								<tr>
@@ -205,21 +205,25 @@
 							<p>● 보증금 100~300까지 조정가능 ● 위치 : 신림역 도보 2분 이내 ● 신림 초역세권의 깔끔한
 								빌트인원룸입니다. ✔ 직접 촬영한 100% 실매물입니다. ✔ 큰 길가, 건물 내/외부 CCTV 설치되어 안전해요</p>
 						</div>
+						
+						<!-- 동영상 부분 -->
+<!--           		<div class="col-md-12 hotel-single ftco-animate mb-5 mt-4"> -->
+          			
+<!--           			<div class="block-16"> -->
+<!-- 		              <figure> -->
+<%-- 		                <img src="${pageContext.request.contextPath}/resources/images/room-2.png" alt="Image placeholder" class="img-fluid"> --%>
+<!-- 		                <a href="https://vimeo.com/45830194" class="play-button popup-vimeo"><span class="icon-play"></span></a> -->
+<!-- 		              </figure> -->
+<!-- 		            </div> -->
+<!--           		</div> -->
+
+
           		<div class="col-md-12 hotel-single ftco-animate mb-5 mt-4">
-          			<h4 class="mb-4">옵션 정보</h4>
-          			<div class="block-16">
-		              <figure>
-		                <img src="${pageContext.request.contextPath}/resources/images/room-2.png" alt="Image placeholder" class="img-fluid">
-		                <a href="https://vimeo.com/45830194" class="play-button popup-vimeo"><span class="icon-play"></span></a>
-		              </figure>
-		            </div>
-          		</div>
-          		<div class="col-md-12 hotel-single ftco-animate mb-5 mt-4">
-          			<h4 class="mb-4">Our Rooms</h4>
+          			<h4 class="mb-4">주변의 다른방 살펴보기</h4>
           			<div class="row">
           				<div class="col-md-4">
 				    				<div class="destination">
-				    					<a href="hotel-single.html" class="img img-2" style="background-image: url(images/room-4.jpg);"></a>
+				    					<a href="hotel-single.html" class="img img-2" src="${pageContext.request.contextPath}/resources/images/room-2.png"></a>
 				    					<div class="text p-3">
 				    						<div class="d-flex">
 				    							<div class="one">
