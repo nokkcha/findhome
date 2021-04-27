@@ -32,8 +32,27 @@
   </head>
   <body>
     
-  <%@ include file="../views/top.jsp" %>
+  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">dirEngine.</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="oi oi-menu"></span> Menu
+      </button>
 
+      <div class="collapse navbar-collapse" id="ftco-nav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+          <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+          <li class="nav-item"><a href="tour.html" class="nav-link">Tour</a></li>
+          <li class="nav-item"><a href="hotel.html" class="nav-link">Hotels</a></li>
+          <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+          <li class="nav-item active"><a href="contact.html" class="nav-link">Contact</a></li>
+          <li class="nav-item cta"><a href="contact.html" class="nav-link"><span>Add listing</span></a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+    <!-- END nav -->
     
     <div class="hero-wrap js-fullheight" style="background-image: url('${pageContext.request.contextPath}/resources/images/bg_2.jpg');">
       <div class="overlay"></div>
@@ -69,54 +88,65 @@
         </div>
         <script type="text/javascript">
         	$(document).ready(function(){
-        		alert('doc ready');
+        		alert('dd');  
         		
-        		$('#login').submit(function(){
-        			
-        			var id = $('#id').val();
-        			var pass1 = $('#pass1').val();
-        			var pass2 = $('#pass2').val();
-        			var phone = $('#phone').val();
-        			
-        			if(id==""){
+        		$('#join').submit(function(){
+
+        			if($('#id').val()==""){
         				$('#id').focus();
         				alert('아이디를 입력하세요');
         				return false;
         			}
-        			
-        		});
+        		}
+        		
+        		
         	});
+        		
         	
-        	function checkagr(){
+        	function test () {
+        	      var p1 = document.getElementById('pass1').value;
+        	      var p2 = document.getElementById('pass2').value;
+        	      if( p1 != p2 ) {
+        	        alert("비밀번호가 일치 하지 않습니다");
+        	        return false;
+        	      } else{
+        	        
+        	        return true;
+        	      }
         		
         	}
+        	      
+        	      
+        	
         </script>
         <h2>회원가입</h2>
         <div class="row block-9">
           <div class="pr-md-5" > <!-- col-md-6 제거함 -->
-            <form action="#" id="login">
+            <form action="" id="join">
               <div class="form-group">
                 <label class="form-control-label">아이디</label>
                 	<input type="email" class="form-control" name="id" id="id">
                 	
               </div>
               <div class="form-group">
-               <label class="form-control-label">비밀번호</label><input type="password" class="form-control" name="pass1" id="pass1">
+               <label class="form-control-label">비밀번호</label>
+               <input type="password" class="form-control" name="pass1" id="pass1" >
               </div>
               <div class="form-group">
-                <label class="form-control-label">비밀번호 확인</label><input type="password" class="form-control" name="pass2" id="pass2">
+                <label class="form-control-label">비밀번호 확인</label>
+                <input type="password" class="form-control" name="pass2" id="pass2" >
               </div>
               <div class="form-group">
                 <label class="form-control-label">휴대폰 번호</label><input type="tel" class="form-control" name="phone" id="phone">
               </div>
                <div>
         		<label>
-            		<input type="checkbox" name="agreement" onclick="checkagr()"/>
+            		<input type="checkbox" name="agreement" />
             		<span><b>이용약관</b> 및 개인정보 취급방침에 동의합니다.</span>
          		</label>
     		</div>
               <div class="form-group">
-                <input type="submit" value="회원가입" class="btn btn-primary py-3 px-5" id="btn">
+                <input type="submit"  value="회원가입" class="btn btn-primary py-3 px-5" id="btn" onclick="test()">
               </div>
             </form>
           
