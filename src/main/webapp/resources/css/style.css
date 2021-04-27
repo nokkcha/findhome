@@ -9354,3 +9354,35 @@ textarea.form-control {
   100% {
     stroke-dasharray: 89, 200;
     stroke-dashoffset: -136px; } }
+
+     
+.te {
+	background-color: white;
+	margin: 10px;
+	border: 1px black;
+	display: inline-block;
+}
+
+.te:hover {
+	color: #f85959;
+}
+
+.btn_room {
+	display: inline-block;
+	margin-left: 40%;
+	margin-bottom: 30px;
+	color: black;
+	background-color: snow;
+}
+
+.btn_like {
+		margin-bottom: 30px;
+		color: black;
+		background-color: snow;
+}
+
+.btn_room:hover, .btn_like:hover {
+	background-color: #f85959;
+	color: white;
+}
+    
