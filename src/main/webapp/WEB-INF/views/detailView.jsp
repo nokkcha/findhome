@@ -253,7 +253,7 @@ RangeSlider();
     							<table id="table" border="1" style="width: 1000">
     						</table>
     						</div>
-    						
+    				ㅊㅊ		
     <style>
       table {
         width: 100%;
