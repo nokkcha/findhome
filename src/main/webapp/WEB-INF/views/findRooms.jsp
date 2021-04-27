@@ -168,7 +168,7 @@ RangeSlider();
 		    						<hr>
 		    						<p class="bottom-area d-flex">
 		    							<span><i class="icon-map-o"></i> 찜하기</span> 
-		    							<span class="ml-auto"><a href="javascript:void(0);">call</a></span>
+		    							<span class="ml-auto call"><a href="javascript:void(0);">call</a></span>
 		    							
 		    						</p>
 		    					</div>
@@ -195,7 +195,7 @@ RangeSlider();
 		    						<hr>
 		    						<p class="bottom-area d-flex">
 		    							<span><i class="icon-map-o"></i> 찜하기</span> 
-		    							<span class="ml-auto"><a href="javascript:void(0);">call</a></span>
+		    							<span class="ml-auto call"><a href="javascript:void(0);">call</a></span>
 		    						</p>
 		    					</div>
 		    				</div>
@@ -221,7 +221,7 @@ RangeSlider();
 		    						<hr>
 		    						<p class="bottom-area d-flex">
 		    							<span><i class="icon-map-o"></i> 찜하기</span> 
-		    							<span class="ml-auto"><a href="javascript:void(0);">call</a></span>
+		    							<span class="ml-auto call"><a href="javascript:void(0);">call</a></span>
 		    						</p>
 		    					</div>
 		    				</div>
@@ -247,7 +247,7 @@ RangeSlider();
 		    						<hr>
 		    						<p class="bottom-area d-flex">
 		    							<span><i class="icon-map-o"></i> 찜하기</span> 
-		    							<span class="ml-auto"><a href="javascript:void(0);">call</a></span>
+		    							<span class="ml-auto call"><a href="javascript:void(0);">call</a></span>
 		    						</p>
 		    					</div>
 		    				</div>
@@ -273,7 +273,7 @@ RangeSlider();
 		    						<hr>
 		    						<p class="bottom-area d-flex">
 		    							<span><i class="icon-map-o"></i> 찜하기</span> 
-		    							<span class="ml-auto"><a href="javascript:void(0);">call</a></span>
+		    							<span class="ml-auto call"><a href="javascript:void(0);">call</a></span>
 		    						</p>
 		    					</div>
 		    				</div>
@@ -299,7 +299,7 @@ RangeSlider();
 		    						<hr>
 		    						<p class="bottom-area d-flex">
 		    							<span><i class="icon-map-o"></i> 찜하기</span> 
-		    							<span class="ml-auto"><a href="javascript:void(0);">call</a></span>
+		    							<span class="ml-auto call"><a href="javascript:void(0);">call</a></span>
 		    						</p>
 		    					</div>
 		    				</div>
@@ -496,7 +496,7 @@ RangeSlider();
         	
 
 
-        	$('.ml-auto').click(function () {    	
+        	$('.call').click(function () {    	
         		var filter = "win16|win32|win64|mac|macintel"; 
         		if ( navigator.platform ) { 
         			if ( filter.indexOf( navigator.platform.toLowerCase() ) < 0 ) {
