@@ -108,6 +108,12 @@
 		</div>
 
 
+	
+
+
+
+
+
 
 
 										  
@@ -245,33 +251,69 @@ RangeSlider();
 >>>>>>> branch 'detailView' of https://github.com/imrutel/findhome.git
     						<div class="d-md-flex mt-5 mb-5">
     							<table id="table" border="1" style="width: 1000">
-    								<tr>
-    									<th>방방 형태</th>
-    									<td>분리형 원룸(욕실 1개)</td>
-    									<th>옵션</th>
-    									<td>풀옵션</td>
-    								</tr>
-    								
-    								<tr>
-    									<th>건물 크기</th>
-    									<td>24m<sup>2</sup></td>
-    									<th>건물 종류</th>
-    									<td>제2종근린생활시설</td>
-    								</tr>
-    								
-    								<tr>
-    									<th>건물 층수</th>
-    									<td>3</td>
-    									<th>입주 가능일</th>
-    									<td>즉시 가능</td>
-    								</tr>
-    							
-    							</table>
+    						</table>
     						</div>
-							<p>● 보증금 100~300까지 조정가능 ● 위치 : 신림역 도보 2분 d이내 ● 신림 초역세권의 깔끔한
-								빌트인원룸입니다. ✔ 직접 촬영한 100% 실매물입니다. ✔ 큰 길가, 건물 내/외부 CCTV 설치되어 안전해요</p>
+    						
+    <style>
+      table {
+        width: 100%;
+        border-top: 1px solid #444444;
+        border-collapse: collapse;
+      }
+      th, td {
+        border-bottom: 1px solid #444444;
+        padding: 10px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <table>
+      <thead>
+        <tr>
+          <th>구조</th><td>분리형 원룸(욕실 1개)</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>주차</th><td>1대 가능</td>
+        </tr>
+        <tr>
+          <th>면적(전용)</th><td>24m<sup>2</sup></td>
+        </tr>
+        <tr>
+           <th>건물 종류</th><td>다세대주택</td>
+        </tr>
+        <tr>
+           <th>층/건물층수</th><td>3/5	</td>
+        </tr>
+        <tr>
+          <th>입주 가능일</th><td>즉시 입주</td>
+        </tr>
+         <tr>
+           <th>관리비</th><td>15만원(관리비 외 사용 따라 부과
+전기, 가스, 수도, 인터넷, 티비)</td>
+        </tr>
+        <tr>
+           <th>방향</th><td>남향</td>
+        </tr>
+        <tr>
+           <th>주소</th><td>부산진구 전포동 123-45</td>
+        </tr>	
+      </tbody>
+    </table>
+    						
+    						
+							<p>● 보증금 100~300까지 조정가능 <br> 
+							● 위치 : 신림역 도보 2분 이내  <br>● 신림 초역세권의 깔끔한
+								빌트인원룸입니다.  <br>✔ 직접 촬영한 100% 실매물입니다.  <br>	✔ 큰 길가, 건물 내/외부 CCTV 설치되어 안전해요</p>
 						</div>
 						
+
+
+
+
+
 <<<<<<< HEAD
 						<div id="map" style="width:500px;height:400px;"></div>
 						
