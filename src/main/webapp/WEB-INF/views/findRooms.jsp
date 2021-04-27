@@ -32,8 +32,39 @@
   </head>
   <body>
     
- 
-	<%@ include file="../views/top.jsp" %>
+  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">dirEngine.</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="oi oi-menu"></span> Menu
+      </button>
+
+      <div class="collapse navbar-collapse" id="ftco-nav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+          <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+          <li class="nav-item"><a href="tour.html" class="nav-link">Tour</a></li>
+          <li class="nav-item active"><a href="hotel.html" class="nav-link">Hotels</a></li>
+          <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+          <li class="nav-item cta"><a href="contact.html" class="nav-link"><span>Add listing</span></a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+    <!-- END nav -->
+    
+    <div class="hero-wrap js-fullheight" style="background-image: url('images/bg_5.jpg');">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
+          <div class="col-md-9 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
+            <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="index.html">메인</a></span> <span>오피스텔</span></p>
+            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"> 원룸 </h1>
+          </div>
+        </div>
+      </div>
+    </div>
 
 
     <section class="ftco-section ftco-degree-bg">
@@ -53,9 +84,9 @@
 	                      구조
 	                 <div class="form-group">
 		                <input type="button" class="btn te btn-primary button-class1"  value="전체">
-		                <input type="button" class="btn te btn-default button-class2"  value="오픈형">
-		                <input type="button" class="btn te btn-default button-class3"  value="분리형">
-		                <input type="button" class="btn te btn-default button-class4"  value="복층형">
+		                <input type="button" class="btn te btn-default button-class2 rtype"  value="오픈형">
+		                <input type="button" class="btn te btn-default button-class3 rtype"  value="분리형">
+		                <input type="button" class="btn te btn-default button-class4 rtype"  value="복층형">
 		              </div>
 		              
 	                      층 수 옵션
@@ -69,31 +100,8 @@
 	                  </div>
 		              </div>
 
-		              <div class="form-group">
-		              보증금
-		              	<div class="range-slider">
-		              		<span>  <!-- 보증금 -->
-<!-- 								  <input type="number" value="0" min="0" max="120000" id = "slider_value_view"/>	- -->
-<!-- 								 <input type="number" value="50000" min="0" max="120000"/> -->
-<!-- 										  </span> -->
-										  
-										  
-<div class="Container" >
-  <font size = 2 >0</font>						  
-  <input oninput = 'ShowSliderValue(this.value)' style = "width:80%;" class="slider_range" type="range" value="0" min="0" max="1000"></input>
-   <font size = 2 id = "slider_value_view2">0</font>							  
-<input oninput = 'ShowSliderValue(this.value)'  type = "range" min='0' max='1000' value='100'>
-</div>
 
 
-
-
-										  
-<!-- 										  <input value="1000" id="value1" min="0" max="120000" step="500" type="range"/> -->
-<!-- 										  <input value="50000" min="0" max="120000" step="500" type="range"/> -->
-										  
-										  </svg>
-										</div>
 										<script language = "javascript">
 
 function ShowSliderValue(sVal) {
@@ -101,13 +109,13 @@ function ShowSliderValue(sVal) {
 	obValueView.innerHTML = sVal
 }
 
-function ShowSliderValue(sVal) {
+function ShowSliderValue2(sVal) {
 	var obValueView = document.getElementById("slider_value_view2");
 	obValueView.innerHTML = sVal
 }
 
 var RangeSlider = function(){
-	var range = $('.slider_range');
+	var range = $(this);
     
 	range.on('input', function(){		
 		ShowSliderValue(this.value);
@@ -119,7 +127,17 @@ RangeSlider();
 
 </script>
 
-
+		              <div class="form-group">
+		              보증금
+		              	<div class="range-slider">	  						  
+					<div class="Container" >
+					  <font size = 2 id ="slider_value_view">0</font>						  
+					  <input oninput = 'ShowSliderValue(this.value)' style = "width:80%;" class="slider_range" type="range" value="0" min="0" max="1000"  step="100">
+					  <font size = 2 id ="slider_value_view2">0</font>							  
+					<input oninput = 'ShowSliderValue2(this.value)'  type = "range" min='0' max='1000' value='100'>
+					</div>	  
+										  </svg>
+										</div>
 
 						월세
 		              	<div class="range-slider">
@@ -142,12 +160,14 @@ RangeSlider();
 	            </form>
         		</div>
         		
-        	
         		
         		
         		
           </div>
           <div class="col-lg-9">
+          <button class="btn_room btn"> 방 찾기 </button>
+          <button class="btn_like btn"> 찜한 매물 </button>
+        	
           	<div class="row">
           		<div class="col-md-4 ftco-animate">
 		    				<div class="destination">
@@ -416,72 +436,85 @@ RangeSlider();
         <script src="../script/jquery-3.6.0.js"></script>
     <script type="text/javascript">
     $(document).ready(function(){
+
     	$('.button-class1').click(function(){
-    		if( $(this).hasClass('btn-default') ) $(this).removeClass('btn-default');
-    		if( !$(this).hasClass('btn-primary') ) $(this).addClass('btn-primary');
-    		if( $('.button-class2').hasClass('btn-primary') ) $('.button-class2').removeClass('btn-primary');
-      		if( $('.button-class3').hasClass('btn-primary') ) $('.button-class3').removeClass('btn-primary');
-      	 	if( $('.button-class4').hasClass('btn-primary') ) $('.button-class4').removeClass('btn-primary');
-    		if( !$('.button-class2').hasClass('btn-default') ) $('.button-class2').addClass('btn-default');
-    		if( !$('.button-class3').hasClass('btn-default') ) $('.button-class3').addClass('btn-default');
-    		if( !$('.button-class4').hasClass('btn-default') ) $('.button-class4').addClass('btn-default');
+
+    		if( $(this).hasClass('btn-default') ) {
+    			$(this).removeClass('btn-default');
+    			$(this).addClass('btn-primary');
+    			
+    			$('.rtype').removeClass('btn-primary');
+    			$('.rtype').addClass('btn-default');
+
+    		} 
+	
     	});
     	
+    	$.fn.room= function (clickThis) { 		
+    		
+    	    if($(clickThis).hasClass('btn-default')) {
+    	        $(clickThis).removeClass('btn-default');
+    	        $(clickThis).addClass('btn-primary');
+    	        
+    	        if( $('.button-class1').hasClass('btn-primary')) {
+    	            $('.button-class1').removeClass('btn-primary');
+    	            $('.button-class1').addClass('btn-default');
+    	        }
+    	        
+    	    } else if ($(clickThis).hasClass('btn-primary')){
+    	        $(clickThis).removeClass('btn-primary');
+    	        $(clickThis).addClass('btn-default');
+    	    }    
+    	
+    	}
+    	
     	$('.button-class2').click(function(){
-    		if( $(this).hasClass('btn-default') ) $(this).removeClass('btn-default');
-    		if( !$(this).hasClass('btn-primary') ) $(this).addClass('btn-primary');
-    		if( $('.button-class1').hasClass('btn-primary') ) $('.button-class1').removeClass('btn-primary');
-    		if( !$('.button-class1').hasClass('btn-default') ) $('.button-class1').addClass('btn-default');
-    		
-        	$('.button-class2').click(function(){
-        		if( $(this).hasClass('btn-primary') ) $(this).removeClass('btn-primary');
-        		if( !$(this).hasClass('btn-default') ) $(this).addClass('btn-default');
-        	});
+            $.fn.room(this);
+		});
 
-    		
+    	$('.button-class3').click(function(){
+    		$.fn.room(this);
+    	});
+    	
+    	$('.button-class4').click(function(){
+    		$.fn.room(this);
     	});
       
-      	$('.button-class3').click(function(){
-    		if( $(this).hasClass('btn-default') ) $(this).removeClass('btn-default');
-    		if( !$(this).hasClass('btn-primary') ) $(this).addClass('btn-primary');
-    		if( $('.button-class1').hasClass('btn-primary') ) $('.button-class1').removeClass('btn-primary');
-    		if( !$('.button-class1').hasClass('btn-default') ) $('.button-class1').addClass('btn-default');
-    	});
-      
-        	$('.button-class4').click(function(){
-    		if( $(this).hasClass('btn-default') ) $(this).removeClass('btn-default');
-    		if( !$(this).hasClass('btn-primary') ) $(this).addClass('btn-primary');
-    		if( $('.button-class1').hasClass('btn-primary') ) $('.button-class1').removeClass('btn-primary');
-    		if( !$('.button-class1').hasClass('btn-default') ) $('.button-class1').addClass('btn-default');
-    	});
+        	
+        	$('.button-class11').click(function(){       		
+        		if( $(this).hasClass('btn-default') ) {
+        			$(this).removeClass('btn-default');
+        			$(this).addClass('btn-primary');
+        			$('.button-class12').addClass('btn-default');
+        			$('.button-class12').removeClass('btn-primary');
+        			$('.button-class13').addClass('btn-default');
+        			$('.button-class13').removeClass('btn-primary');
+        		}
+        	});
+        	
+        	$('.button-class12').click(function(){       		
+        		if( $(this).hasClass('btn-default') ) {
+        			$(this).removeClass('btn-default');
+        			$(this).addClass('btn-primary');
+        			$('.button-class11').addClass('btn-default');
+        			$('.button-class11').removeClass('btn-primary');
+        			$('.button-class13').addClass('btn-default');
+        			$('.button-class13').removeClass('btn-primary');
+        		}
+        	});
+        	
+        	$('.button-class13').click(function(){       		
+        		if( $(this).hasClass('btn-default') ) {
+        			$(this).removeClass('btn-default');
+        			$(this).addClass('btn-primary');
+        			$('.button-class11').addClass('btn-default');
+        			$('.button-class11').removeClass('btn-primary');
+        			$('.button-class12').addClass('btn-default');
+        			$('.button-class12').removeClass('btn-primary');
+        		}
+        	});
+        	
 
-        	
-        	$('.button-class11').click(function(){
-        		if( $(this).hasClass('btn-default') ) $(this).removeClass('btn-default');
-        		if( !$(this).hasClass('btn-primary') ) $(this).addClass('btn-primary');
-        		if( $('.button-class12').hasClass('btn-primary') ) $('.button-class12').removeClass('btn-primary');
-          		if( $('.button-class13').hasClass('btn-primary') ) $('.button-class13').removeClass('btn-primary');
-        		if( !$('.button-class12').hasClass('btn-default') ) $('.button-class12').addClass('btn-default');
-        		if( !$('.button-class13').hasClass('btn-default') ) $('.button-class13').addClass('btn-default');
-        	});
-        	
-        	$('.button-class12').click(function(){
-        		if( $(this).hasClass('btn-default') ) $(this).removeClass('btn-default');
-        		if( !$(this).hasClass('btn-primary') ) $(this).addClass('btn-primary');
-        		if( $('.button-class11').hasClass('btn-primary') ) $('.button-class11').removeClass('btn-primary');
-        		if( $('.button-class13').hasClass('btn-primary') ) $('.button-class13').removeClass('btn-primary');
-        		if( !$('.button-class11').hasClass('btn-default') ) $('.button-class11').addClass('btn-default');
-        		if( !$('.button-class13').hasClass('btn-default') ) $('.button-class13').addClass('btn-default');
-        	});
-          
-          	$('.button-class13').click(function(){
-        		if( $(this).hasClass('btn-default') ) $(this).removeClass('btn-default');
-        		if( !$(this).hasClass('btn-primary') ) $(this).addClass('btn-primary');
-        		if( $('.button-class11').hasClass('btn-primary') ) $('.button-class11').removeClass('btn-primary');
-        		if( $('.button-class12').hasClass('btn-primary') ) $('.button-class12').removeClass('btn-primary');
-        		if( !$('.button-class11').hasClass('btn-default') ) $('.button-class11').addClass('btn-default');
-        		if( !$('.button-class12').hasClass('btn-default') ) $('.button-class12').addClass('btn-default');
-        	});
 
         	$('.ml-auto').click(function () {    	
         		var filter = "win16|win32|win64|mac|macintel"; 
