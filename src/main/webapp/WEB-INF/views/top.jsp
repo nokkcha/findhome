@@ -13,7 +13,7 @@
 <!--           <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li> -->
           <li class="nav-item"><a href="./findRooms" class="nav-link">원룸</a></li>
           <li class="nav-item"><a href="./findRooms" class="nav-link">오피스텔</a></li>
-          <li class="nav-item"><a href="#" class="nav-link">매물 등록</a></li>
+          <li class="nav-item"><a href="./sellRoom" class="nav-link">매물 등록</a></li>
           <li class="nav-item"><a href="./detailView" class="nav-link">매물 상세</a></li>
 <!--           <li class="nav-item cta"><a href="contact.html" class="nav-link"><span>Add listing</span></a></li> -->
         </ul>

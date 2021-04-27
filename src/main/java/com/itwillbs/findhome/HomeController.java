@@ -51,4 +51,9 @@ public class HomeController {
 		return "findRooms";
 	}
 	
+	@RequestMapping(value = "/sellRoom",method = RequestMethod.GET )
+	public String sellRoom() {
+		return "sellRoom";
+	}
+	
 }
