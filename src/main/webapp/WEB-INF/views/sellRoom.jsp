@@ -105,58 +105,69 @@ table.table {
 								src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4e97625a0c2b00cdf9292bd703ece0f7&libraries=services,clusterer,drawing">
 								
 							</script>
+							
+							<script type="text/javascript">
+								function checkAddress() {
+									 var addr = document.getElementById( 'address' ).value;
+									
+									var mapContainer = document
+									.getElementById('map'), // 지도를 표시할 div 
+							mapOption = {
+								center : new kakao.maps.LatLng(33.450701,
+										126.570667), // 지도의 중심좌표
+								level : 3
+							// 지도의 확대 레벨
+							};
+
+							// 지도를 생성합니다    
+							var map = new kakao.maps.Map(mapContainer,
+									mapOption);
+
+							// 주소-좌표 변환 객체를 생성합니다
+							var geocoder = new kakao.maps.services.Geocoder();
+							
+							//var address = '서울특별시 영등포구 여의동로 330 한강사업본부 여의도안내센터';
+
+							// 주소로 좌표를 검색합니다
+							geocoder
+									.addressSearch(
+											addr,
+											function(result, status) {
+
+												// 정상적으로 검색이 완료됐으면 
+												if (status === kakao.maps.services.Status.OK) {
+
+													var coords = new kakao.maps.LatLng(
+															result[0].y,
+															result[0].x);
+
+													// 결과값으로 받은 위치를 마커로 표시합니다
+													var marker = new kakao.maps.Marker(
+															{
+																map : map,
+																position : coords
+															});
+
+													// 인포윈도우로 장소에 대한 설명을 표시합니다
+													var infowindow = new kakao.maps.InfoWindow(
+															{
+																content : '<div style="width:150px;text-align:center;padding:6px 0;">역세권 위치 좋은 원룸</div>'
+															});
+													infowindow.open(map,
+															marker);
+
+													// 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+													map.setCenter(coords);
+												} else {
+// 													alert("주소변환실패" + addr);
+												}
+											});
+								}
+							
+							</script>
 
 							<script>
-								var mapContainer = document
-										.getElementById('map'), // 지도를 표시할 div 
-								mapOption = {
-									center : new kakao.maps.LatLng(33.450701,
-											126.570667), // 지도의 중심좌표
-									level : 3
-								// 지도의 확대 레벨
-								};
-
-								// 지도를 생성합니다    
-								var map = new kakao.maps.Map(mapContainer,
-										mapOption);
-
-								// 주소-좌표 변환 객체를 생성합니다
-								var geocoder = new kakao.maps.services.Geocoder();
-
-								// 주소로 좌표를 검색합니다
-								geocoder
-										.addressSearch(
-												'서울특별시 영등포구 여의동로 330 한강사업본부 여의도안내센터',
-												function(result, status) {
-
-													// 정상적으로 검색이 완료됐으면 
-													if (status === kakao.maps.services.Status.OK) {
-
-														var coords = new kakao.maps.LatLng(
-																result[0].y,
-																result[0].x);
-
-														// 결과값으로 받은 위치를 마커로 표시합니다
-														var marker = new kakao.maps.Marker(
-																{
-																	map : map,
-																	position : coords
-																});
-
-														// 인포윈도우로 장소에 대한 설명을 표시합니다
-														var infowindow = new kakao.maps.InfoWindow(
-																{
-																	content : '<div style="width:150px;text-align:center;padding:6px 0;">역세권 위치 좋은 원룸</div>'
-																});
-														infowindow.open(map,
-																marker);
-
-														// 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-														map.setCenter(coords);
-													} else {
-														alert("주소변환실패");
-													}
-												});
+							checkAddress();								
 							</script>
 
 	<div class="container">
@@ -169,12 +180,14 @@ table.table {
 			<tbody align="left">
 			<tr>
 					<th style="background-color: #dedede;">주소</th>
-					<td><input type="text"><br>
+<!-- 					onkeyup="checkAddress()" -->
+					<td><input type="text" id="address" onkeyup="checkAddress()"><br>
 					· 주소와 단지명 모두 검색이 가능합니다.<br>
 					· 주소 입력 시에는 동/읍/면 으로 검색해 주세요. 예) 자곡동, 동읍면, 신월읍<br>
 					· 오피스텔을 검색할 때에는 동/읍/면 이름과 단지 명을 함께 입력하면 좀 더
-					  편하게 주소를 검색할 수 있습니다. 예) 계산동 하이베라스</td>
+					  편하게 주소를 검색할 수 있습니다. 예) 계산동 하이베라스</td>					  
 				</tr>
+<!-- 				<td><button onclick="checkAddress($'#address')">주소검색</button></td> -->
 				
 				<tr>
 					<th style="background-color: #dedede;">지도</th>
