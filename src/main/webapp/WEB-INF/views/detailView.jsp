@@ -132,24 +132,10 @@
   		<input oninput = 'ShowSliderValue(this.value)' style = "width:80%;" class="slider_range" type="range" value="0" min="0" max="1000"></input>
    <font size = 2 id = "slider_value_view2">0</font>							  
 		<input oninput = 'ShowSliderValue(this.value)'  type = "range" min='0' max='1000' value='100'>
->>>>>>> branch 'detailView' of https://github.com/imrutel/findhome.git
-		</div>
-<<<<<<< HEAD
-	</div>
-=======
+
 	 			</svg>
 			</div>
 		<script language = "javascript">
->>>>>>> branch 'detailView' of https://github.com/imrutel/findhome.git
-
-<<<<<<< HEAD
-
-	
-
-
-
-
-
 
 	<section class="ftco-section ftco-degree-bg">
 		<div class="container">
