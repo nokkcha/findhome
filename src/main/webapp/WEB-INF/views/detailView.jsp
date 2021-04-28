@@ -46,6 +46,9 @@
 	href="${pageContext.request.contextPath}/resources/css/icomoon.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/style.css">
+	
+
+	
 <style type="text/css">
 #table {
 	table-layout: fixed;
@@ -56,7 +59,57 @@
 	height: auto;
 	border: 0
 }
+
+table {
+	width: 100%;
+	border-top: 1px solid #dddddddd;
+	border-collapse: collapse;
+}
+
+th, td {
+	border-bottom: 1px solid #dddddddd;
+	padding: 10px;
+	text-align: center;
+	}
+			
+			
+.option-info-container{
+  padding: 50px 100px 50px 100px;
+  border-top: 1px solid #dddddddd;
+  border-bottom: 1px solid #dddddddd;
+}
+
+
+.room-detail-option-item-wrapper{
+	margin-top: 40px;
+	display: flex;
+
+}
+
+
+
+.room-detail-content-option-item {
+  text-align: center;
+  flex: 1;
+}
+
+.room-detail-content-option-item > img {
+  width: 60px;
+}
+
+.room-detail-content-option-item-name {
+  margin-top: 15px;
+  text-align: center;
+  font-size: 15px;
+}
+
+.room-detail-option-title {
+  font-size: 27px;
+  text-align: center;
+}
+							
 </style>
+
 <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 
 </head>
@@ -64,7 +117,6 @@
 
 	<%@ include file="../views/top.jsp"%>
 
-<<<<<<< HEAD
 	<div class="hero-wrap js-fullheight"
 		style="background-image: url('${pageContext.request.contextPath}/resources/images/bg_5.jpg');">
 		<div class="overlay"></div>
@@ -85,57 +137,10 @@
 						상세</h1>
 				</div>
 			</div>
-=======
+		</div>
+	</div>
 
-    
-    <section class="ftco-section ftco-degree-bg">
-      <div class="container">
-        <div class="row">
-        	<div class="col-lg-3 sidebar">
-        		<div class="sidebar-wrap bg-light ftco-animate">
-        			<h3 class="heading mb-4">검색 조건을 설정해주세요</h3>
-        			<form action="#">
-        				<div class="fields">
-		              <div class="form-group">
-		                <input type="text" class="form-control" placeholder="지역, 지하철역 검색">
-		              </div>
-		              <div class="form-group">
-		                <div class="select-wrap one-third">
 
-	                      구조
-	                 <div class="form-group">
-		                <input type="button" class="btn te btn-primary button-class1"  value="전체">
-		                <input type="button" class="btn te btn-default button-class2"  value="오픈형">
-		                <input type="button" class="btn te btn-default button-class3"  value="분리형">
-		                <input type="button" class="btn te btn-default button-class4"  value="복층형">
-		              </div>
-		              
-	                      층 수 옵션
-	                      <div class="form-group">
-	                       <input type="button" class="btn te btn-primary button-class11"  value="전체">
-		                	<input type="button" class="btn te btn-default button-class12"  value="지상층">
-		             		<input type="button" class="btn te btn-default button-class13"  value="반지하,옥탑">
-		              		</div>
-   						 </div>
-   						</div>
-		              <div class="form-group">
-		              보증금
-		              	<div class="range-slider">
-		              		<span>  <!-- 보증금 -->
-<!-- 								  <input type="number" value="0" min="0" max="120000" id = "slider_value_view"/>	- -->
-<!-- 								 <input type="number" value="50000" min="0" max="120000"/> -->
-<!-- 										  </span> -->
-	 </span>	
-										  
-		<div class="Container" >
-  		<font size = 2 >0</font>						  
-  		<input oninput = 'ShowSliderValue(this.value)' style = "width:80%;" class="slider_range" type="range" value="0" min="0" max="1000"></input>
-   <font size = 2 id = "slider_value_view2">0</font>							  
-		<input oninput = 'ShowSliderValue(this.value)'  type = "range" min='0' max='1000' value='100'>
-
-	 			</svg>
-			</div>
-		<script language = "javascript">
 
 	<section class="ftco-section ftco-degree-bg">
 		<div class="container">
@@ -171,27 +176,6 @@
 											<input type="button"
 												class="btn te btn-default button-class13" value="반지하,옥탑">
 										</div>
-=======
-	function ShowSliderValue(sVal) {
-	var obValueView = document.getElementById("slider_value_view");
-	obValueView.innerHTML = sVal
-}
-
-	function ShowSliderValue(sVal) {
-	var obValueView = document.getElementById("slider_value_view2");
-	obValueView.innerHTML = sVal
-}
-
-	var RangeSlider = function(){
-	var range = $('.slider_range');
-    
-	range.on('input', function(){		
-		ShowSliderValue(this.value);
-	});
-};
-
-	RangeSlider();
->>>>>>> branch 'detailView' of https://github.com/imrutel/findhome.git
 
 
 									</div>
@@ -271,27 +255,7 @@
 										class="btn btn-primary py-3 px-5">
 								</div>
 							</div>
-<<<<<<< HEAD
 						</form>
-=======
-
-		              </div>
-		             
-		              <div class="form-group">
-		                <input type="submit" value="Search" class="btn btn-primary py-3 px-5">
-		              </div>
-		            </div>
-	            </form>
-        		</div>
-        		<div class="sidebar-wrap bg-light ftco-animate">
-        		<h3 class="heading mb-4">별점</h3>
-        	<form method="post" class="star-rating">
-				 <div class="form-check">
-				<input type="checkbox" class="form-check-input" id="exampleCheck1">
-				<label class="form-check-label" for="exampleCheck1">
-			<p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i></span></p>
-				</label>
->>>>>>> branch 'detailView' of https://github.com/imrutel/findhome.git
 					</div>
 					<div class="sidebar-wrap bg-light ftco-animate">
 						<h3 class="heading mb-4">별점</h3>
@@ -307,7 +271,6 @@
 									</p>
 								</label>
 							</div>
-<<<<<<< HEAD
 							<div class="form-check">
 								<input type="checkbox" class="form-check-input"
 									id="exampleCheck1"> <label class="form-check-label"
@@ -355,7 +318,10 @@
 						</form>
 					</div>
 				</div>
-				<div class="col-lg-9">
+				
+				<!-- 이미지 슬라이더 -->
+
+								<div class="col-lg-9">
 					<div class="row">
 						<div class="col-md-12 ftco-animate">
 							<div class="single-slider owl-carousel">
@@ -387,14 +353,14 @@
 						<div class="col-md-12 hotel-single mt-4 mb-5 ftco-animate">
 							<span>원룸/월세</span>
 							<h2>
-								역세권 위치 좋은 원룸 <i class="far fa-heart fa-1x"></i>
+								역세권 위치 좋은 원룸 
 							</h2>
 							<p class="rate mb-5">
 								<span class="loc"><a href="#"><i class="icon-map"></i>
-										서울특별시 영등포구 여의동로 330 한강사업본부 여의도안내센터</a></span> <span><h5>
-										<i class="fas fa-user fa-1x" style="width: 20; height: 20"></i>
-										서면 공인중개사무소
-									</h5>
+										부산진구 전포동 123-45</a></span><br> 
+										<i class="far fa-heart fa-1x"></i> 마음에 들어요
+										<h5><i class="fas fa-user" style="width: 20; height: 20"></i>
+										서면 공인중개사무소 </h5>
 									<div>
 										<a href="tel:02-1234-1234"><input type="image"
 											src="${pageContext.request.contextPath}/resources/images/callButton.png"
@@ -408,141 +374,85 @@
 
 							</p>
 
-							<p>서면역 8번출구에서 도보로 4분거리인 신축 원룸 건물이 새로 나왔습니다. 간단한 상세정보를 입력하세요.
-							</p>
-
-							<br>
-							<h4 class="mb-4">옵션 정보</h4>
-
 							<div class="d-md-flex mt-5 mb-5">
-								<table id="table" border="1" style="width: 1000">
-									<tr>
-										<th>방방 형태</th>
-										<td>분리형 원룸(욕실 1개)</td>
-										<th>옵션</th>
-										<td>풀옵션</td>
-									</tr>
+									
+									<table>
+										<thead>
+											<tr>
+												<th>방 형태</th>
+												<td>분리형 원룸(욕실 1개)</td>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<th>건물 유형</th>
+												<td>다세대 주택</td>
+											</tr>
+											<tr>
+												<th>건물 크기</th>
+												<td>24m<sup>2</sup></td>
+											</tr>
+											<tr>
+												<th>건물 층수</th>
+												<td>3/5</td>
+											</tr>
+											<tr>
+												<th>입주 가능일</th>
+												<td>즉시 입주</td>
+											</tr>
 
-									<tr>
-										<th>건물 크기</th>
-										<td>24m<sup>2</sup></td>
-										<th>건물 종류</th>
-										<td>제2종근린생활시설</td>
-									</tr>
+											<tr>
+												<th>관리비</th>
+												<td>15만원(관리비 외 사용 따라 부과 전기, 가스, 수도, 인터넷, 티비)</td>
+											</tr>
 
-									<tr>
-										<th>건물 층수</th>
-										<td>3</td>
-										<th>입주 가능일</th>
-										<td>즉시 가능</td>
-									</tr>
-
-								</table>
+											<tr>
+												<th>주소</th>
+												<td>부산진구 전포동 123-45</td>
+											</tr>
+										</tbody>
+									</table>
+									
 							</div>
-							<p>● 보증금 100~300까지 조정가능 ● 위치 : 신림역 도보 2분 d이내 ● 신림 초역세권의 깔끔한
-								빌트인원룸입니다. ✔ 직접 촬영한 100% 실매물입니다. ✔ 큰 길가, 건물 내/외부 CCTV 설치되어 안전해요</p>
-=======
-          			
-          			
-          			</span>
-          				
 							
-						
+							<br>
 							
-    						</p>
-<<<<<<< HEAD
-    						<p>서면역 8번출구에서 도보로 4분거리인 신축 원룸 건물이 새로 나왔습니다. 간단한 상세정보를 입력하세요. </p>
-=======
-    						<p>서면역 8번출구에서 도보로 4분거리인 신축 원룸 건물이 새로 나왔습니다. 간단한 상세정보를 입력하세요. 간단한 상세정보를 입력하세요...</p>
-    						<br>
-    						<h4 class="mb-4">옵션 정보</h4>
->>>>>>> branch 'detailView' of https://github.com/imrutel/findhome.git
-    						<div class="d-md-flex mt-5 mb-5">
-    							<table id="table" border="1" style="width: 1000">
-    						</table>
-    						</div>
-    						
-    <style>
-      table {
-        width: 100%;
-        border-top: 1px solid #444444;
-        border-collapse: collapse;
-      }
-      th, td {
-        border-bottom: 1px solid #444444;
-        padding: 10px;
-        text-align: center;
-      }
-    </style>
- 	 </head>
- 	 <body>
-   	 <table>
-      <thead>
-        <tr>
-          <th>구조</th><td>분리형 원룸(욕실 1개)</td>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th>주차</th><td>1대 가능</td>
-        </tr>
-        <tr>
-          <th>면적(전용)</th><td>24m<sup>2</sup></td>
-        </tr>
-        <tr>
-           <th>건물 종류</th><td>다세대주택</td>
-        </tr>
-        <tr>
-           <th>층/건물층수</th><td>3/5	</td>
-        </tr>
-        <tr>
-          <th>입주 가능일</th><td>즉시 입주</td>
-        </tr>
-         <tr>
-           <th>관리비</th><td>15만원(관리비 외 사용 따라 부과
-			전기, 가스, 수도, 인터넷, 티비)</td>
-        </tr>
-        <tr>
-           <th>방향</th><td>남향</td>
-        </tr>
-        <tr>
-           <th>주소</th><td>부산진구 전포동 123-45</td>
-       		 </tr>	
-     	 </tbody>
-    	</table>
-    						
-    						
-<<<<<<< HEAD
-							<p>● 보증금 100~300까지 조정가능 <br> 
-							● 위치 : 신림역 도보 2분 이내  <br>● 신림 초역세권의 깔끔한
-								빌트인원룸입니다.  <br>✔ 직접 촬영한 100% 실매물입니다.  <br>	✔ 큰 길가, 건물 내/외부 CCTV 설치되어 안전해요</p>
->>>>>>> branch 'detailView' of https://github.com/imrutel/findhome.git
-=======
-		<p>● 보증금 100~300까지 조정가능 <br> 
-		● 위치 : 신림역 도보 2분 이내  <br>● 신림 초역세권의 깔끔한
-		빌트인원룸입니다.  <br>✔ 직접 촬영한 100% 실매물입니다.  <br>	✔ 큰 길가, 건물 내/외부 CCTV 설치되어 안전해요</p>
->>>>>>> branch 'detailView' of https://github.com/imrutel/findhome.git
-						</div>
-						<div id="map" style="width: 500px; height: 400px;"></div>
+							<div class="option-info-container">
+								<div class="room-detail-option-title">옵션</div>
+								<div class="room-detail-option-item-wrapper">
+								
+								<div class="room-detail-content-option-item">
+									<img src="${pageContext.request.contextPath}/resources/images/bed.png" width="50" height="50">
+									<div class="room-detail-content-option-item-name">침대</div>
+								</div>
+							
+								<div  class="room-detail-content-option-item">
+									<img src="${pageContext.request.contextPath}/resources/images/fridge.png" width="50" height="50">
+									<div class="room-detail-content-option-item-name">냉장고</div>
+								</div>
+								
+								<div  class="room-detail-content-option-item">
+									<img src="${pageContext.request.contextPath}/resources/images/television.png" width="50" height="50">
+									<div class="room-detail-content-option-item-name">TV</div>
+								</div>
+								</div>
+							</div>
+							
+							<br><br>
+							
+							<div id="map" style="width: 500px; height: 400px;">
+							
+							
+
+							
 <!-- 						<script type="text/javascript" -->
 <!-- 							src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4e97625a0c2b00cdf9292bd703ece0f7"></script> -->
 <!-- 						<script> -->
 						
-<<<<<<< HEAD
-<<<<<<< HEAD
 						<!-- services 라이브러리 불러오기 -->
 						<script type="text/javascript" 
 						src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4e97625a0c2b00cdf9292bd703ece0f7&libraries=services,clusterer,drawing">
 						</script>
-=======
-
-
-
-
-
-<<<<<<< HEAD
-						<div id="map" style="width:500px;height:400px;"></div>
->>>>>>> branch 'detailView' of https://github.com/imrutel/findhome.git
 						
 						<script>
 							var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
@@ -552,46 +462,7 @@
 								level : 3
 							// 지도의 확대 레벨
 							};
-=======
-<div id="map" style="width:500px;height:400px;"></div>						
-						<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4e97625a0c2b00cdf9292bd703ece0f7"></script>
-						<script>
-var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-    mapOption = {
-        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-        level: 3 // 지도의 확대 레벨
-    };  
-// 지도를 생성합니다    
-var map = new kakao.maps.Map(mapContainer, mapOption); 
-// 주소-좌표 변환 객체를 생성합니다
-var geocoder = new kakao.maps.services.Geocoder();
-// 주소로 좌표를 검색합니다
-geocoder.addressSearch('서울특별시 영등포구 여의동로 330', function(result, status) {
-    // 정상적으로 검색이 완료됐으면 
-     if (status === kakao.maps.services.Status.OK) {
-        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-        // 결과값으로 받은 위치를 마커로 표시합니다
-        var marker = new kakao.maps.Marker({
-            map: map,
-            position: coords
-        });
-        // 인포윈도우로 장소에 대한 설명을 표시합니다
-        var infowindow = new kakao.maps.InfoWindow({
-            content: '<div style="width:150px;text-align:center;padding:6px 0;">우리회사</div>'
-        });
-        infowindow.open(map, marker);
-        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-        map.setCenter(coords);
-    } 
-});    
-</script>
-						<div id="map" style="width: 500px; height: 400px;"></div>
-<!-- 						<script type="text/javascript" -->
-<!-- 							src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4e97625a0c2b00cdf9292bd703ece0f7"></script> -->
-<!-- 						<script> -->
->>>>>>> branch 'detailView' of https://github.com/imrutel/findhome.git
 
-<<<<<<< HEAD
 							// 지도를 생성합니다    
 							var map = new kakao.maps.Map(mapContainer,
 									mapOption);
@@ -629,81 +500,12 @@ geocoder.addressSearch('서울특별시 영등포구 여의동로 330', function
 													alert("주소변환실패");
 												}
 											});
-=======
-						<!-- services 라이브러리 불러오기 -->
-						<script type="text/javascript" 
-						src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4e97625a0c2b00cdf9292bd703ece0f7&libraries=services,clusterer,drawing">
->>>>>>> branch 'detailView' of https://github.com/imrutel/findhome.git
 						</script>
 
-<<<<<<< HEAD
-=======
-						<script>
-							var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-							mapOption = {
-								center : new kakao.maps.LatLng(33.450701,
-										126.570667), // 지도의 중심좌표
-								level : 3
-							// 지도의 확대 레벨
-							};
-							// 지도를 생성합니다    
-							var map = new kakao.maps.Map(mapContainer,
-									mapOption);
-							// 주소-좌표 변환 객체를 생성합니다
-							var geocoder = new kakao.maps.services.Geocoder();
-							// 주소로 좌표를 검색합니다
-							geocoder.addressSearch(
-											'서울특별시 영등포구 여의동로 330 한강사업본부 여의도안내센터',
-											function(result, status) {
-												// 정상적으로 검색이 완료됐으면 
-												if (status === kakao.maps.services.Status.OK) {
-													var coords = new kakao.maps.LatLng(result[0].y,result[0].x);
-													// 결과값으로 받은 위치를 마커로 표시합니다
-													var marker = new kakao.maps.Marker(
-															{
-																map : map,
-																position : coords
-															});
-													// 인포윈도우로 장소에 대한 설명을 표시합니다
-													var infowindow = new kakao.maps.InfoWindow(
-															{
-																content : '<div style="width:150px;text-align:center;padding:6px 0;">역세권 위치 좋은 원룸</div>'
-															});
-													infowindow.open(map, marker);
-													// 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-													map.setCenter(coords);
-												} else {
-													alert("주소변환실패");
-												}
-											});
-						</script>
->>>>>>> branch 'detailView' of https://github.com/imrutel/findhome.git
-
-						<!-- 동영상 부분 -->
-						<!--           		<div class="col-md-12 hotel-single ftco-animate mb-5 mt-4"> -->
-
-						<!--           			<div class="block-16"> -->
-						<!-- 		              <figure> -->
-						<%-- 		                <img src="${pageContext.request.contextPath}/resources/images/room-2.png" alt="Image placeholder" class="img-fluid"> --%>
-						<!-- 		                <a href="https://vimeo.com/45830194" class="play-button popup-vimeo"><span class="icon-play"></span></a> -->
-						<!-- 		              </figure> -->
-						<!-- 		            </div> -->
-						<!--           		</div> -->
-
-						<div class="col-md-12 hotel-single ftco-animate mb-5 mt-4">
-							<h4 class="mb-4">옵션 정보</h4>
-							<div class="block-16">
-								<figure>
-									<img
-										src="${pageContext.request.contextPath}/resources/images/hotel-6.jpg"
-										alt="Image placeholder" class="img-fluid">
-									<a href="https://vimeo.com/45830194"
-										class="play-button popup-vimeo"><span class="icon-play"></span></a>
-								</figure>
-							</div>
 						</div>
+
 						<div class="col-md-12 hotel-single ftco-animate mb-5 mt-4">
-							<h4 class="mb-4">한줄 방소개</h4>
+
 
 							<h4 class="mb-4">주변의 다른방 살펴보기</h4>
 
