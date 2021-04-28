@@ -81,15 +81,20 @@
 			<script type="text/javascript">
 			   function checkId() {
 				   var id = document.login.id.value;
-				   var idReg = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/;
+				   var lengthRegex1 = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/;
 					var checkIdResult = document.getElementById('checkIdResult');
 				   
 				   if(!lengthRegex1.exec(id)) {
 					   checkIdResult.innerHTML = "<font color='#FF0000'>올바르지 않은 이메일 양식입니다.</font>";
-					  
+					  return false;
+				   } else {
+					   checkIdResult.innerHTML = " ";
+					   return true;
 				   }
 				   
 			   }
+
+
 			   
 			   
 				function checkPassword() {
@@ -100,13 +105,10 @@
 					var alphabetLowerRegex = /[a-z]/; // 소문자 판별
 					var numberRegex = /[0-9]/; // 숫자 판별
 					var specRegex = /[!@#$%]/; // 특수문자(!@#$%) 판별		
-					var checkResult = document
-							.getElementById('checkPasswordResult');
+					var checkResult = document.getElementById('checkPasswordResult');
 					
-					var checkResult2 = document
-					.getElementById('checkPasswordResult2');
 					
-					if (lengthRegex.exec(pass1)) {
+					if (lengthRegex2.exec(pass1)) {
 						var point = 0;
 						if (alphabetUpperRegex.exec(pass1)) {
 							point = point + 1;
@@ -136,21 +138,27 @@
 						    break;
 						}
 					} else {
-						checkResult2.innerHTML = "<font color='#FF0000'>8~16자 영문 대 소문자, 숫자, 특수문자를 사용하세요.</font>";
-					}
+						checkResult.innerHTML = "<font color='#FF0000'>8~16자 영문 대 소문자, 숫자, 특수문자를 사용하세요.</font>";
+					} 
 				}
+				
 				
 				function checkPhone() {
 					var phone = $('#phone').val();
-					var element = document.getElementById('checkPhoneResult');
- 					var lengthRegex3 = /^(010|011)[-\s]?\d{3,4}[-\s]?\d{4}$/;
+					var checkPhone = document.getElementById('checkPhoneResult');
+ 					var lengthRegex3 = /^\d{3}-?\d{3,4}-?\d{4}$/;
 					
 					
 					if(!lengthRegex3.exec(phone)) {
-						element.innerHTML = "<font color='#FF0000'>올바르지 않은 휴대폰 번호입니다.</font>";
-						
-					} 
+						checkPhone.innerHTML = "<font color='#FF0000'>올바르지 않은 휴대폰 번호입니다.</font>";
+						return false;
+					} else {
+						checkPhone.innerHTML = " ";
+						return true;
+					}
 				}
+
+				
 				
 				$(document).ready(function() {
 					
@@ -190,17 +198,17 @@
 					});
 				});
 				
+				
 				function checkPassword2() {
 					var pass1 = $('#pass1').val();
 					var pass2 = $('#pass2').val();
 					
-					var checkResult3 = document
-					.getElementById('checkPasswordResult3');
+					var checkResult3 = document.getElementById('checkPasswordResult3');
 					
 					if(pass1 != pass2) {
 						checkResult3.innerHTML = "<font color='#FF0000'>비밀번호 불일치</font>";
 					} else {
-						checkResult3.innerHTML = "<font color='#FF0000'>비밀번호 일치</font>";
+						checkResult3.innerHTML = "<font color='#000000'>비밀번호 일치</font>";
 					}
 				}
 			</script>
@@ -212,30 +220,32 @@
 						<div class="form-group" align="left">
 							<label class="form-control-label">아이디</label> <input type="email"
 								class="form-control" name="id" id="id"
-								onkeyup="checkId()"><span id="checkIdResult"></span>
+								onkeyup="checkId()">
 								
-							<br><span id="checkIdResult"></span>	
+							<br><span class="check-group" id="checkIdResult"></span>	
 
 						</div>
 						<div class="form-group" align="left">
 							<label class="form-control-label">비밀번호</label><input
 								type="password" class="form-control" name="pass1" id="pass1"
-								onkeyup="checkPassword()"><span id="checkPasswordResult"></span>
+								onkeyup="checkPassword()">
 								
-						  <br><span id="checkPasswordResult2"></span>
+						  <br><span class="check-group" id="checkPasswordResult"></span>
 						</div>
 						
 						<div class="form-group" align="left">
 							<label class="form-control-label">비밀번호 확인</label><input
 								type="password" class="form-control" name="pass2" id="pass2"
-								onkeyup="checkPassword2()"><span id="checkPasswordResult3"></span>
+								onkeyup="checkPassword2()">
+								
+						  <br><span class="check-group" id="checkPasswordResult3"></span>
 						</div>
 						<div class="form-group" align="left">
 							<label class="form-control-label">휴대폰 번호</label><input type="tel"
 								class="form-control" name="phone" id="phone"
-								onkeyup="checkPhone()"><span id="checkPhoneResult"></span>
+								onkeyup="checkPhone()">
 								
-							<br><span id="checkPhoneResult"></span>	
+						  <br><span class="check-group" id="checkPhoneResult"></span>	
 						</div>
 						<div>
 							<label> <input type="checkbox" name="agreement"
