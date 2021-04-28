@@ -109,7 +109,7 @@
 					
 					var checkResult2 = document
 					.getElementById('checkPasswordResult2');
-					
+										
 					if (lengthRegex2.exec(pass1)) {
 						var point = 0;
 						if (alphabetUpperRegex.exec(pass1)) {
@@ -126,19 +126,18 @@
 						}
 
 						switch (point) {
-						case 4:
+						case 3:
 							checkResult.innerHTML = "<font color='#006400'>안전</font>";
 							break;
-						case 3:
+						case 2:
 							checkResult.innerHTML = "<font color='#FFD700'>보통</font>";
 							break;
-						case 2:
+						default:
 							checkResult.innerHTML = "<font color='#FF0000'>위험</font>";
 							break;
-						default:
-							checkResult.innerHTML = "<font color='#FF0000'>사용불가</font>";
-						    break;
 						}
+						
+						
 					} else {
 						checkResult.innerHTML = "<font color='#FF0000'>8~16자 영문 대 소문자, 숫자, 특수문자를 사용하세요.</font>";
 					} 
@@ -148,7 +147,7 @@
 				function checkPhone() {
 					var phone = $('#phone').val();
 					var checkPhone = document.getElementById('checkPhoneResult');
- 					var lengthRegex3 = /^\d{3}-?\d{3,4}-?\d{4}$/;
+ 					var lengthRegex3 = /^(010|011)[-\s]?\d{3,4}[-\s]?\d{4}$/;
 					
 					
 					if(!lengthRegex3.exec(phone)) {
@@ -170,28 +169,57 @@
 						var pass1 = $('#pass1').val();
 						var pass2 = $('#pass2').val();
 						var phone = $('#phone').val();
+						var lengthRegex1 = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/;
+						var lengthRegex2 = /^[A-Za-z0-9!@#$%]{8,16}$/;
+						var lengthRegex3 = /^(010|011)[-\s]?\d{3,4}[-\s]?\d{4}$/;
 						
 						
 						if (id == "") {
 							$('#id').focus();
-							swal.fire("ID 입력확인", "ID를 입력해주세요", "error") //"info,success,warning,error" 중 택1							
+							swal.fire("ID 입력", "ID를 입력해주세요", "error") //"info,success,warning,error" 중 택1							
 							return false;
 						}
 					
 						
+						if (!lengthRegex1.exec(id)) {
+							$('#id').focus();
+							swal.fire("ID 입력확인", "ID를 다시 입력해주세요", "error") //"info,success,warning,error" 중 택1							
+							return false;
+						}
+						
 						if (pass1 == "") {
 							$('#pass1').focus();
-							swal.fire("패스워드 입력확인", "패스워드를 입력해주세요", "error") //"info,success,warning,error" 중 택1
+							swal.fire("패스워드 입력", "패스워드를 입력해주세요", "error") //"info,success,warning,error" 중 택1
 							return false;
 						}
+						
 						if (pass2 == "") {
 							$('#pass2').focus();
-							swal.fire("패스워드 확인 입력확인", "패스워드 확인을 입력해주세요", "error") //"info,success,warning,error" 중 택1
+							swal.fire("패스워드 입력확인", "패스워드를 입력 해주세요", "error") //"info,success,warning,error" 중 택1
 							return false;
 						}
+						
+						if (pass1 != pass2) {
+							$('#pass2').focus();
+							swal.fire("패스워드 불일치", "패스워드를 다시 입력해주세요", "error") //"info,success,warning,error" 중 택1
+							return false;
+						}
+						
+						if (!lengthRegex2.exec(pass1)) {
+							$('#pass1').focus();
+							swal.fire("패스워드 입력확인", "사용할 수 없는 패스워드입니다", "error") //"info,success,warning,error" 중 택1
+							return false;
+						}
+						
 						if (phone == "") {
 							$('#phone').focus();
-							swal.fire("전화번호 입력확인", "전화번호를 입력해주세요", "error") //"info,success,warning,error" 중 택1
+							swal.fire("전화번호 입력", "전화번호를 입력해주세요", "error") //"info,success,warning,error" 중 택1
+							return false;
+						}
+						
+						if (!lengthRegex3.exec(phone)) {
+							$('#phone').focus();
+							swal.fire("전화번호 입력확인", "전화번호를 다시 입력해주세요", "error") //"info,success,warning,error" 중 택1
 							return false;
 						}
 						
@@ -220,7 +248,7 @@
 					<!-- col-md-6 제거함 -->
 					<form action="#" id="login" name="login">
 						<div class="form-group" align="left">
-							<label class="form-control-label">아이디</label> <input type="email"
+							<label class="form-control-label">아이디</label> <input type="text"
 								class="form-control" name="id" id="id"
 								onkeyup="checkId()">
 								
