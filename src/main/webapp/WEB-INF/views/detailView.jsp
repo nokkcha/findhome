@@ -362,11 +362,10 @@ th, td {
 										<h5><i class="fas fa-user" style="width: 20; height: 20"></i>
 										서면 공인중개사무소 </h5>
 									<div>
-										<a href="tel:02-1234-1234"><input type="image"
-											src="${pageContext.request.contextPath}/resources/images/callButton.png"
-											width="100" ;height="100"></a> <input type="image"
-											src="${pageContext.request.contextPath}/resources/images/chatButton.png"
-											width="100" ;height="100">
+									
+										<button type="button" class="btn btn-secondary"><a href="tel:02-1234-1234">전화하기</a></button>
+										<button type="button" class="btn btn-secondary">채팅하기</button>
+										
 									</div> </span>
 
 
