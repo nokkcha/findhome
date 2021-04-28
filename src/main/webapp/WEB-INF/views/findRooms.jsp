@@ -61,17 +61,17 @@
 
 	                      구조
 	                 <div class="form-group">
-		                <input type="button" class="btn te btn-primary button-class1"  value="전체">
-		                <input type="button" class="btn te btn-default button-class2 rtype"  value="오픈형">
-		                <input type="button" class="btn te btn-default button-class3 rtype"  value="분리형">
-		                <input type="button" class="btn te btn-default button-class4 rtype"  value="복층형">
+		                <input type="button" class="btn te btn-primary rtypeAll"  value="전체">
+		                <input type="button" class="btn te btn-default rtypeOpen rtype"  value="오픈형">
+		                <input type="button" class="btn te btn-default rtypeSeparate rtype"  value="분리형">
+		                <input type="button" class="btn te btn-default rtypeStairs rtype"  value="복층형">
 		              </div>
 		              
 	                      층 수 옵션
 	                      <div class="form-group">
-	                       <input type="button" class="btn te btn-primary button-class11"  value="전체">
-		                	<input type="button" class="btn te btn-default button-class12"  value="지상층">
-		             		<input type="button" class="btn te btn-default button-class13"  value="반지하,옥탑">
+	                       <input type="button" class="btn te btn-primary ftypeAll"  value="전체">
+		                	<input type="button" class="btn te btn-default floor"  value="지상층">
+		             		<input type="button" class="btn te btn-default ftypeOther"  value="반지하,옥탑">
 		              </div>
 
 
@@ -149,7 +149,7 @@ RangeSlider();
           	<div class="row">
           		<div class="col-md-4 ftco-animate">
 		    				<div class="destination">
-		    					<a href="hotel-single.html" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(images/hotel-1.jpg);">
+		    					<a href="hotel-single.html" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/hotel-1.jpg);">
 		    						<div class="icon d-flex justify-content-center align-items-center">
     							<span class="icon-search2"></span>
     						</div>
@@ -168,7 +168,7 @@ RangeSlider();
 		    						<hr>
 		    						<p class="bottom-area d-flex">
 		    							<span><i class="icon-map-o"></i> 찜하기</span> 
-		    							<span class="ml-auto"><a href="javascript:void(0);">call</a></span>
+		    							<span class="ml-auto call"><a href="javascript:void(0);">call</a></span>
 		    							
 		    						</p>
 		    					</div>
@@ -176,7 +176,7 @@ RangeSlider();
 		    			</div>
 		    			<div class="col-md-4 ftco-animate">
 		    				<div class="destination">
-		    					<a href="hotel-single.html" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(images/hotel-2.jpg);">
+		    					<a href="hotel-single.html" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/hotel-2.jpg);">
 		    						<div class="icon d-flex justify-content-center align-items-center">
     							<span class="icon-search2"></span>
     						</div>
@@ -195,14 +195,14 @@ RangeSlider();
 		    						<hr>
 		    						<p class="bottom-area d-flex">
 		    							<span><i class="icon-map-o"></i> 찜하기</span> 
-		    							<span class="ml-auto"><a href="javascript:void(0);">call</a></span>
+		    							<span class="ml-auto call"><a href="javascript:void(0);">call</a></span>
 		    						</p>
 		    					</div>
 		    				</div>
 		    			</div>
 		    			<div class="col-md-4 ftco-animate">
 		    				<div class="destination">
-		    					<a href="hotel-single.html" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(images/hotel-3.jpg);">
+		    					<a href="hotel-single.html" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/hotel-3.jpg);">
 		    						<div class="icon d-flex justify-content-center align-items-center">
     							<span class="icon-search2"></span>
     						</div>
@@ -221,14 +221,14 @@ RangeSlider();
 		    						<hr>
 		    						<p class="bottom-area d-flex">
 		    							<span><i class="icon-map-o"></i> 찜하기</span> 
-		    							<span class="ml-auto"><a href="javascript:void(0);">call</a></span>
+		    							<span class="ml-auto call"><a href="javascript:void(0);">call</a></span>
 		    						</p>
 		    					</div>
 		    				</div>
 		    			</div>
 		    			<div class="col-md-4 ftco-animate">
 		    				<div class="destination">
-		    					<a href="hotel-single.html" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(images/hotel-4.jpg);">
+		    					<a href="hotel-single.html" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/hotel-4.jpg);">
 		    						<div class="icon d-flex justify-content-center align-items-center">
     							<span class="icon-search2"></span>
     						</div>
@@ -247,14 +247,14 @@ RangeSlider();
 		    						<hr>
 		    						<p class="bottom-area d-flex">
 		    							<span><i class="icon-map-o"></i> 찜하기</span> 
-		    							<span class="ml-auto"><a href="javascript:void(0);">call</a></span>
+		    							<span class="ml-auto call"><a href="javascript:void(0);">call</a></span>
 		    						</p>
 		    					</div>
 		    				</div>
 		    			</div>
 		    			<div class="col-md-4 ftco-animate">
 		    				<div class="destination">
-		    					<a href="hotel-single.html" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(images/hotel-5.jpg);">
+		    					<a href="hotel-single.html" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/hotel-5.jpg);">
 		    						<div class="icon d-flex justify-content-center align-items-center">
     							<span class="icon-search2"></span>
     						</div>
@@ -273,14 +273,14 @@ RangeSlider();
 		    						<hr>
 		    						<p class="bottom-area d-flex">
 		    							<span><i class="icon-map-o"></i> 찜하기</span> 
-		    							<span class="ml-auto"><a href="javascript:void(0);">call</a></span>
+		    							<span class="ml-auto call"><a href="javascript:void(0);">call</a></span>
 		    						</p>
 		    					</div>
 		    				</div>
 		    			</div>
 		    			<div class="col-md-4 ftco-animate">
 		    				<div class="destination">
-		    					<a href="hotel-single.html" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(images/hotel-6.jpg);">
+		    					<a href="hotel-single.html" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/hotel-6.jpg);">
 		    						<div class="icon d-flex justify-content-center align-items-center">
     							<span class="icon-search2"></span>
     						</div>
@@ -299,7 +299,7 @@ RangeSlider();
 		    						<hr>
 		    						<p class="bottom-area d-flex">
 		    							<span><i class="icon-map-o"></i> 찜하기</span> 
-		    							<span class="ml-auto"><a href="javascript:void(0);">call</a></span>
+		    							<span class="ml-auto call"><a href="javascript:void(0);">call</a></span>
 		    						</p>
 		    					</div>
 		    				</div>
@@ -417,7 +417,7 @@ RangeSlider();
     <script type="text/javascript">
     $(document).ready(function(){
 
-    	$('.button-class1').click(function(){
+    	$('.rtypeAll').click(function(){
 
     		if( $(this).hasClass('btn-default') ) {
     			$(this).removeClass('btn-default');
@@ -436,9 +436,9 @@ RangeSlider();
     	        $(clickThis).removeClass('btn-default');
     	        $(clickThis).addClass('btn-primary');
     	        
-    	        if( $('.button-class1').hasClass('btn-primary')) {
-    	            $('.button-class1').removeClass('btn-primary');
-    	            $('.button-class1').addClass('btn-default');
+    	        if( $('.rtypeAll').hasClass('btn-primary')) {
+    	            $('.rtypeAll').removeClass('btn-primary');
+    	            $('.rtypeAll').addClass('btn-default');
     	        }
     	        
     	    } else if ($(clickThis).hasClass('btn-primary')){
@@ -448,55 +448,54 @@ RangeSlider();
     	
     	}
     	
-    	$('.button-class2').click(function(){
+    	$('.rtypeOpen').click(function(){
             $.fn.room(this);
 		});
 
-    	$('.button-class3').click(function(){
+    	$('.rtypeSeparate').click(function(){
     		$.fn.room(this);
     	});
     	
-    	$('.button-class4').click(function(){
+    	$('.rtypeStairs').click(function(){
     		$.fn.room(this);
     	});
       
         	
-        	$('.button-class11').click(function(){       		
+        	$('.ftypeAll ').click(function(){       		
         		if( $(this).hasClass('btn-default') ) {
         			$(this).removeClass('btn-default');
         			$(this).addClass('btn-primary');
-        			$('.button-class12').addClass('btn-default');
-        			$('.button-class12').removeClass('btn-primary');
-        			$('.button-class13').addClass('btn-default');
-        			$('.button-class13').removeClass('btn-primary');
+        			$('.floor').addClass('btn-default');
+        			$('.floor ').removeClass('btn-primary');
+        			$('.ftypeOther').addClass('btn-default');
+        			$('.ftypeOther').removeClass('btn-primary');
         		}
         	});
         	
-        	$('.button-class12').click(function(){       		
+        	$('.floor').click(function(){       		
         		if( $(this).hasClass('btn-default') ) {
         			$(this).removeClass('btn-default');
         			$(this).addClass('btn-primary');
-        			$('.button-class11').addClass('btn-default');
-        			$('.button-class11').removeClass('btn-primary');
-        			$('.button-class13').addClass('btn-default');
-        			$('.button-class13').removeClass('btn-primary');
+        			$('.ftypeAll ').addClass('btn-default');
+        			$('.ftypeAll ').removeClass('btn-primary');
+        			$('.ftypeOther').addClass('btn-default');
+        			$('.ftypeOther').removeClass('btn-primary');
         		}
         	});
         	
-        	$('.button-class13').click(function(){       		
+        	$('.ftypeOther').click(function(){       		
         		if( $(this).hasClass('btn-default') ) {
         			$(this).removeClass('btn-default');
         			$(this).addClass('btn-primary');
-        			$('.button-class11').addClass('btn-default');
-        			$('.button-class11').removeClass('btn-primary');
-        			$('.button-class12').addClass('btn-default');
-        			$('.button-class12').removeClass('btn-primary');
+        			$('.ftypeAll ').addClass('btn-default');
+        			$('.ftypeAll ').removeClass('btn-primary');
+        			$('.floor').addClass('btn-default');
+        			$('.floor').removeClass('btn-primary');
         		}
         	});
         	
 
-
-        	$('.ml-auto').click(function () {    	
+        	$('.call').click(function () {    	
         		var filter = "win16|win32|win64|mac|macintel"; 
         		if ( navigator.platform ) { 
         			if ( filter.indexOf( navigator.platform.toLowerCase() ) < 0 ) {
