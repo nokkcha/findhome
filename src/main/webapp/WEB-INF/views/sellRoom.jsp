@@ -99,8 +99,94 @@ table.table {
   (매매, 분양, 장기전세 / 고시텔, 원룸텔, 셰어하우스, 하숙, 게스트하우스, 숙박업소 등)
   </pre>
 	</div>
+	
+	<!-- services 라이브러리 불러오기 -->
+							<script type="text/javascript"
+								src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4e97625a0c2b00cdf9292bd703ece0f7&libraries=services,clusterer,drawing">
+								
+							</script>
+
+							<script>
+								var mapContainer = document
+										.getElementById('map'), // 지도를 표시할 div 
+								mapOption = {
+									center : new kakao.maps.LatLng(33.450701,
+											126.570667), // 지도의 중심좌표
+									level : 3
+								// 지도의 확대 레벨
+								};
+
+								// 지도를 생성합니다    
+								var map = new kakao.maps.Map(mapContainer,
+										mapOption);
+
+								// 주소-좌표 변환 객체를 생성합니다
+								var geocoder = new kakao.maps.services.Geocoder();
+
+								// 주소로 좌표를 검색합니다
+								geocoder
+										.addressSearch(
+												'서울특별시 영등포구 여의동로 330 한강사업본부 여의도안내센터',
+												function(result, status) {
+
+													// 정상적으로 검색이 완료됐으면 
+													if (status === kakao.maps.services.Status.OK) {
+
+														var coords = new kakao.maps.LatLng(
+																result[0].y,
+																result[0].x);
+
+														// 결과값으로 받은 위치를 마커로 표시합니다
+														var marker = new kakao.maps.Marker(
+																{
+																	map : map,
+																	position : coords
+																});
+
+														// 인포윈도우로 장소에 대한 설명을 표시합니다
+														var infowindow = new kakao.maps.InfoWindow(
+																{
+																	content : '<div style="width:150px;text-align:center;padding:6px 0;">역세권 위치 좋은 원룸</div>'
+																});
+														infowindow.open(map,
+																marker);
+
+														// 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+														map.setCenter(coords);
+													} else {
+														alert("주소변환실패");
+													}
+												});
+							</script>
 
 	<div class="container">
+	<table class="table">
+	<thead align="left">
+				<tr>
+					<th colspan="3">상세 정보</th>
+				</tr>
+			</thead>
+			<tbody align="left">
+			<tr>
+					<th style="background-color: #dedede;">주소</th>
+					<td><input type="text"><br>
+					· 주소와 단지명 모두 검색이 가능합니다.<br>
+					· 주소 입력 시에는 동/읍/면 으로 검색해 주세요. 예) 자곡동, 동읍면, 신월읍<br>
+					· 오피스텔을 검색할 때에는 동/읍/면 이름과 단지 명을 함께 입력하면 좀 더
+					  편하게 주소를 검색할 수 있습니다. 예) 계산동 하이베라스</td>
+				</tr>
+				
+				<tr>
+					<th style="background-color: #dedede;">지도</th>
+					<td id="map"></td>
+				</tr>
+<!-- 				<tr> -->
+<!-- 					<th style="background-color: #dedede;">나머지주소</th> -->
+<!-- 					<td><input type="text"></td> -->
+<!-- 				</tr> -->
+			</tbody>
+	</table>
+	
 		<table class="table">
 			<thead align="left">
 				<tr>
@@ -142,27 +228,90 @@ table.table {
 							<option value="1층">1층</option>
 							<option value="이상">...</option>
 					</select>
-					 / 해당 층 : <select name="romm_type">
+					 / 해당 층 : <select name="romm_floor">
 							<option value="">선택하세요</option>
 							<option value="1층">1층</option>
 							<option value="이상">...</option>
 					</select>
 					</td>
 				</tr>
+				<tr>
+					<th style="background-color: #dedede;">방향</th>
+					<td><select name="romm_direction">
+							<option value="">선택하세요</option>
+							<option value="동향">동향</option>
+							<option value="서향">서향</option>
+							<option value="기타">확인필요</option>
+					</select></td>
+				</tr>
+				<tr>
+					<th style="background-color: #dedede;">옵션</th>
+					<td><input type="checkbox" name="option">에어컨
+					<input type="checkbox" name="option">냉장고
+					<input type="checkbox" name="option">세탁기
+					<input type="checkbox" name="option">가스레인지
+					<input type="checkbox" name="option">인덕션
+					<input type="checkbox" name="option">전자레인지<br>
+					<input type="checkbox" name="option">책상
+					<input type="checkbox" name="option">책장
+					<input type="checkbox" name="option">침대
+					<input type="checkbox" name="option">옷장
+					<input type="checkbox" name="option">신발장
+					<input type="checkbox" name="option">싱크대<br>					
+					</td>
+				</tr>
+				<tr>
+					<th style="background-color: #dedede;">전세 대출</th>
+					<td><input type="radio" name="chk_household" value="가능">가능
+<input type="radio" name="chk_household" value="불가능">불가능
+<input type="radio" name="chk_household" value="확인필요">확인필요</td>
+				</tr>
+				<tr>
+					<th style="background-color: #dedede;">반려 동물</th>
+					<td><input type="radio" name="chk_pet" value="가능">가능
+<input type="radio" name="chk_household" value="불가능">불가능
+<input type="radio" name="chk_household" value="고양이만">고양이만
+<input type="radio" name="chk_household" value="확인필요">확인필요</td>
+				</tr>
+				<tr>
+					<th style="background-color: #dedede;">주차</th>
+					<td><input type="radio" name="chk_parking" value="가능">가능
+<input type="radio" name="chk_household" value="없음">없음</td>
+				</tr>
+				<tr>
+					<th style="background-color: #dedede;">엘리베이터</th>
+					<td><input type="radio" name="chk_elevator" value="있음">있음
+<input type="radio" name="chk_household" value="없음">없음</td>
+				</tr>
+				<tr>
+					<th style="background-color: #dedede;">입주가능일</th>
+					<td><input type="date"></td>
+				</tr>
+				<tr>
+					<th style="background-color: #dedede;">제목</th>
+					<td><input type="text">제목</td>
+				</tr>
+				<tr>
+					<th style="background-color: #dedede;">상세설명</th>
+					<td><textarea placeholder="해당 방에 대한 특징과 소개를 최소 50자 이상 입력해야 합니다." 
+					rows="10" cols="60"></textarea></td>
+				</tr>
+				<tr>
+					<th style="background-color: #dedede;">연락처</th>
+					<td><input type="text" readonly="readonly" value="010-8888-9999"></td>
+				</tr>
+				
 			</tbody>
 
-			<tbody align="left">
-				<th>건물 유형</th>
-				<td><button type="button" class="btn btn-info">원룸</button></td>
-				<td>오피스텔</td>
-			</tbody>
+<!-- 			<tbody align="left"> -->
+<!-- 				<th>건물 유형</th> -->
+<!-- 				<td><button type="button" class="btn btn-info">원룸</button></td> -->
+<!-- 				<td>오피스텔</td> -->
+<!-- 			</tbody> -->
 
 		</table>
 	</div>
-
-	<div class="container p-3 my-3 bg-dark text-white"></div>
-
-	<div class="container p-3 my-3 bg-primary text-white"></div>
+	
 
 	<footer class="ftco-footer ftco-bg-dark ftco-section">
 		<div class="container">
