@@ -113,7 +113,7 @@
 						var checkIdResult = document.getElementById('checkIdResult');
 					   
 					   if(!lengthRegex1.exec(id)) {
-						   checkIdResult.innerHTML = "<font color='#FF0000'>올바르지 않은 이메일 양식입니다.</font>";
+						   checkIdResult.innerHTML = "<font color='#FF0000'>잘못된 아이디 양식입니다.</font>";
 						  return false;
 					   } else {
 						   checkIdResult.innerHTML = " ";
