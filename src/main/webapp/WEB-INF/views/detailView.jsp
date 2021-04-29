@@ -385,8 +385,8 @@ th, td {
 
 							</p>
 
+
 							<div class="d-md-flex mt-5 mb-5">
-									
 									<table>
 										<thead>
 											<tr>
@@ -446,14 +446,24 @@ th, td {
 									<img src="${pageContext.request.contextPath}/resources/images/television.png" width="50" height="50">
 									<div class="room-detail-content-option-item-name">TV</div>
 								</div>
+								
+								<div  class="room-detail-content-option-item">
+									<img src="${pageContext.request.contextPath}/resources/images/television.png" width="50" height="50">
+									<div class="room-detail-content-option-item-name">TV</div>
+								</div>
+								
+								<div  class="room-detail-content-option-item">
+									<img src="${pageContext.request.contextPath}/resources/images/television.png" width="50" height="50">
+									<div class="room-detail-content-option-item-name">TV</div>
+								</div>
 								</div>
 							</div>
 							
 							<br><br>
 							
 							<div class="map-container">
-								<div id="map" style="width: 500px; height: 400px;">
 									<h4 class="mb-5">위치 정보</h4>
+								<div id="map" style="width: 500px; height: 400px;">
 							
 							
 
