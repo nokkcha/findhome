@@ -9388,7 +9388,6 @@ textarea.form-control {
 	color: white;
 }
 
-<<<<<<< HEAD
 .pri-page {
 	background-color: #f85959;
 	color: white;
@@ -9423,7 +9422,8 @@ textarea.form-control {
    cursor: pointer;
    color: #f85959;	
 	font-weight: bold;
-=======
+}
+
 .login {width: 600px !important;}
 
 .member-info-btn {
@@ -9467,5 +9467,4 @@ textarea.form-control {
 
 .deleteMember>ul {
 	text-align: left;
->>>>>>> refs/remotes/origin/memberInfo
 }
