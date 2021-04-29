@@ -79,24 +79,6 @@
 		<div class="container login">
 			<div class="row d-flex mb-5 contact-info"></div>
 			<script type="text/javascript">
-			
-			
-// 			function checkId() {
-// 				   var id = document.login.id.value;
-// 				   var lengthRegex1 = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/;
-// 					var checkIdResult = document.getElementById('checkIdResult');
-				   
-// 				   if(!lengthRegex1.exec(id)) {
-// 					   checkIdResult.innerHTML = "<font color='#FF0000'>올바르지 않은 이메일 양식입니다.</font>";
-// 					  return false;
-// 				   } else {
-// 					   checkIdResult.innerHTML = " ";
-// 					   return true;
-// 				   }
-				   
-// 			   }
-			
-			
 				
 				$(document).ready(function() {
 					
@@ -123,7 +105,20 @@
 					});
 				});
 				
-				
+				function checkId() {
+					   var id = document.login.id.value;
+					   var lengthRegex1 = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/;
+						var checkIdResult = document.getElementById('checkIdResult');
+					   
+					   if(!lengthRegex1.exec(id)) {
+						   checkIdResult.innerHTML = "<font color='#FF0000'>잘못된 아이디 양식입니다.</font>";
+						  return false;
+					   } else {
+						   checkIdResult.innerHTML = " ";
+						   return true;
+					   }
+					   
+				   }
 			
 			</script>
 			<h2>로그인</h2>
