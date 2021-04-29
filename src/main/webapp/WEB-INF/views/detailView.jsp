@@ -345,26 +345,27 @@ th, td {
 
 
 						<div class="col-md-12 hotel-single mt-4 mb-5 ftco-animate">
-							<span>원룸/월세</span>
-							<h2>역세권 위치 좋은 원룸</h2>
-							<p class="rate mb-5">
-								<span class="loc"><a href="#"><i class="icon-map"></i>
-										부산진구 전포동 123-45</a></span><br> <i class="far fa-heart fa-1x"></i>
-								마음에 들어요
+							<p style="text-align:left;"><span>원룸/월세</span></p>
+							<h2><p style="text-align:left;">즉시 입주 가능한 주방 분리형 원룸</p></h2>
+						
+						<p class="rate mb-5" style="text-align:left;"><span class="loc"><a href="#"><i class="icon-map"></i>
+										부산진구 전포동 123-45</a></span>
+										<p style="text-align:left;"> <i class="far fa-heart fa-1x"></i>
+									마음에 들어요 </p>
 							<h5>
-								<i class="fas fa-user" style="width: 20; height: 20"></i> 서면
+							<p style="text-align:left;">		<i class="fas fa-user" style="width: 20; height: 20"></i> 서면
 								공인중개사무소
-							</h5>
+							</h5></p>
 							<div>
 
-								<button type="button" class="btn btn-secondary">
+								<button type="button" class="btn btn-secondary" style="float: left;">
 									<a href="tel:02-1234-1234">전화하기</a>
 								</button>
-								<button type="button" class="btn btn-secondary">채팅하기</button>
+								<button type="button" class="btn btn-secondary" style="float: left;">채팅하기</button>
 
 							</div>
 							</span>
-
+<br>
 
 
 
@@ -376,7 +377,7 @@ th, td {
 									<thead>
 										<tr>
 											<th>방 형태</th>
-											<td>분리형 원룸(욕실 1개)</td>
+											<td>주방 분리형 원룸(욕실 1개)</td>
 										</tr>
 									</thead>
 									<tbody>
@@ -411,8 +412,8 @@ th, td {
 
 							</div>
 
-							<p>● 보증금 100~300까지 조정가능 ● 위치 : 신림역 도보 2분 d이내 ● 신림 초역세권의 깔끔한
-								빌트인원룸입니다. ✔ 직접 촬영한 100% 실매물입니다. ✔ 큰 길가, 건물 내/외부 CCTV 설치되어 안전해요</p>
+							<p>● 보증금 100~300까지 조정가능 ● 위치 : 서면역 도보 2분 이내 ● 서면 초역세권의 깔끔한
+								분리형 원룸입니다. ✔ 직접 촬영한 100% 실매물입니다. ✔ 큰 길가, 건물 내/외부 CCTV 설치되어 안전해요</p>
 						</div>
 						<div id="map" style="width: 500px; height: 400px;"></div>
 
