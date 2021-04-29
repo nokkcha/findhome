@@ -28,6 +28,9 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/flaticon.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/icomoon.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
+    
+    
+    
   </head>
   <body>
     
@@ -58,6 +61,13 @@
 		              </div>
 		              <div class="form-group">
 		                <div class="select-wrap one-third">
+		                
+		                계약 구분
+	                 <div class="form-group">
+		                <input type="button" class="btn te btn-primary rentAll"  value="전체">
+		                <input type="button" class="btn te btn-default rentMonthly"  value="월세">
+		                <input type="button" class="btn te btn-default rentJeonse"  value="전세">
+		              </div>
 
 	                      구조
 	                 <div class="form-group">
@@ -143,8 +153,8 @@ RangeSlider();
         		
           </div>
           <div class="col-lg-9">
-          <button class="btn_room btn"> 방 찾기 </button>
-          <button class="btn_like btn"> 찜한 매물 </button>
+          <button class="btn_room btn pri-page"> 방 찾기 </button>
+          <button class="btn_like btn notpri-page"> 찜한 매물 </button>
         	
           	<div class="row">
           		<div class="col-md-4 ftco-animate">
@@ -167,7 +177,8 @@ RangeSlider();
 		    						<p>한줄 방소개</p>
 		    						<hr>
 		    						<p class="bottom-area d-flex">
-		    							<span><i class="icon-map-o"></i> 찜하기</span> 
+		    							<span class="text-zzim icon-like zzim"></span> 
+		    							
 		    							<span class="ml-auto call"><a href="javascript:void(0);">call</a></span>
 		    							
 		    						</p>
@@ -194,7 +205,7 @@ RangeSlider();
 		    						<p>한줄 방소개</p>
 		    						<hr>
 		    						<p class="bottom-area d-flex">
-		    							<span><i class="icon-map-o"></i> 찜하기</span> 
+		    							<span class="text-zzim icon-like nozzim"></span> 
 		    							<span class="ml-auto call"><a href="javascript:void(0);">call</a></span>
 		    						</p>
 		    					</div>
@@ -220,7 +231,7 @@ RangeSlider();
 		    						<p>한줄 방소개</p>
 		    						<hr>
 		    						<p class="bottom-area d-flex">
-		    							<span><i class="icon-map-o"></i> 찜하기</span> 
+		    							<span class="text-zzim icon-like zzim"></span> 
 		    							<span class="ml-auto call"><a href="javascript:void(0);">call</a></span>
 		    						</p>
 		    					</div>
@@ -246,7 +257,7 @@ RangeSlider();
 		    						<p>한줄 방소개</p>
 		    						<hr>
 		    						<p class="bottom-area d-flex">
-		    							<span><i class="icon-map-o"></i> 찜하기</span> 
+		    							<span class="text-zzim icon-like nozzim"></span> 
 		    							<span class="ml-auto call"><a href="javascript:void(0);">call</a></span>
 		    						</p>
 		    					</div>
@@ -272,7 +283,7 @@ RangeSlider();
 		    						<p>한줄 방소개</p>
 		    						<hr>
 		    						<p class="bottom-area d-flex">
-		    							<span><i class="icon-map-o"></i> 찜하기</span> 
+		    							<span class="text-zzim icon-like nozzim"></span> 
 		    							<span class="ml-auto call"><a href="javascript:void(0);">call</a></span>
 		    						</p>
 		    					</div>
@@ -298,7 +309,7 @@ RangeSlider();
 		    						<p>한줄 방소개</p>
 		    						<hr>
 		    						<p class="bottom-area d-flex">
-		    							<span><i class="icon-map-o"></i> 찜하기</span> 
+		    							<span class="text-zzim icon-like nozzim"></span> 
 		    							<span class="ml-auto call"><a href="javascript:void(0);">call</a></span>
 		    						</p>
 		    					</div>
@@ -417,6 +428,7 @@ RangeSlider();
     <script type="text/javascript">
     $(document).ready(function(){
 
+    	// 검색 조건 - 구조 [전체] 클릭
     	$('.rtypeAll').click(function(){
 
     		if( $(this).hasClass('btn-default') ) {
@@ -430,6 +442,7 @@ RangeSlider();
 	
     	});
     	
+    	// 검색 조건 - 구조 다중 선택 메서드
     	$.fn.room= function (clickThis) { 		
     		
     	    if($(clickThis).hasClass('btn-default')) {
@@ -448,19 +461,23 @@ RangeSlider();
     	
     	}
     	
+    	// 검색 조건 - 구조 [오픈형] 클릭
     	$('.rtypeOpen').click(function(){
             $.fn.room(this);
 		});
-
+    	
+    	// 검색 조건 - 구조 [분리형] 클릭
     	$('.rtypeSeparate').click(function(){
     		$.fn.room(this);
     	});
     	
+    	// 검색 조건 - 구조 [복층형] 클릭
     	$('.rtypeStairs').click(function(){
     		$.fn.room(this);
     	});
       
         	
+    	// 검색 조건 - 층 수 옵션 [전체] 클릭
         	$('.ftypeAll ').click(function(){       		
         		if( $(this).hasClass('btn-default') ) {
         			$(this).removeClass('btn-default');
@@ -472,6 +489,7 @@ RangeSlider();
         		}
         	});
         	
+        	// 검색 조건 - 층 수 옵션 [지상층] 클릭
         	$('.floor').click(function(){       		
         		if( $(this).hasClass('btn-default') ) {
         			$(this).removeClass('btn-default');
@@ -483,6 +501,7 @@ RangeSlider();
         		}
         	});
         	
+        	// 검색 조건 - 층 수 옵션 [반지하, 옥탑] 클릭
         	$('.ftypeOther').click(function(){       		
         		if( $(this).hasClass('btn-default') ) {
         			$(this).removeClass('btn-default');
@@ -494,7 +513,82 @@ RangeSlider();
         		}
         	});
         	
+        	
+        	// 검색 조건 - 계약 구분 - [전체] 클릭
+        	$('.rentAll ').click(function(){       		
+        		if( $(this).hasClass('btn-default') ) {
+        			$(this).removeClass('btn-default');
+        			$(this).addClass('btn-primary');
+        			$('.rentMonthly').addClass('btn-default');
+        			$('.rentMonthly ').removeClass('btn-primary');
+        			$('.rentJeonse').addClass('btn-default');
+        			$('.rentJeonse').removeClass('btn-primary');
+        		}
+        	});
+        	
+        	// 검색 조건 - 계약 구분 - [월세] 클릭
+        	$('.rentMonthly ').click(function(){       		
+        		if( $(this).hasClass('btn-default') ) {
+        			$(this).removeClass('btn-default');
+        			$(this).addClass('btn-primary');
+        			$('.rentAll').addClass('btn-default');
+        			$('.rentAll ').removeClass('btn-primary');
+        			$('.rentJeonse').addClass('btn-default');
+        			$('.rentJeonse').removeClass('btn-primary');
+        		}
+        	});
+        	
+        	// 검색 조건 - 계약 구분 - [전세] 클릭
+        	$('.rentJeonse ').click(function(){       		
+        		if( $(this).hasClass('btn-default') ) {
+        			$(this).removeClass('btn-default');
+        			$(this).addClass('btn-primary');
+        			$('.rentAll').addClass('btn-default');
+        			$('.rentAll ').removeClass('btn-primary');
+        			$('.rentMonthly').addClass('btn-default');
+        			$('.rentMonthly').removeClass('btn-primary');
+        		}
+        	});
 
+        
+        	// 목록 - [방 찾기] 클릭
+        	$('.btn_room').click(function(){       		
+        		if( $(this).hasClass('notpri-page') ) {
+        			$(this).removeClass('notpri-page');
+        			$(this).addClass('pri-page');
+        			$('.btn_like').addClass('notpri-page');
+        			$('.btn_like').removeClass('pri-page');
+        		}
+        	});
+        	
+        	// 목록 - [찜한 매물] 클릭
+        	$('.btn_like').click(function(){       		
+        		if( $(this).hasClass('notpri-page') ) {
+        			$(this).removeClass('notpri-page');
+        			$(this).addClass('pri-page');
+        			$('.btn_room').addClass('notpri-page');
+        			$('.btn_room').removeClass('pri-page');
+        		}
+        	});
+        	
+    		
+        	// 목록 - [찜하기] 클릭
+        	$('.text-zzim').click(function(){   
+        	    if($(this).hasClass('nozzim')) {
+        	        $(this).removeClass('nozzim');
+        	        $(this).addClass('zzim');
+        	        $(this).addClass('icon-like');
+        	        
+        	    } else if ($(this).hasClass('zzim')){
+        	        $(this).removeClass('zzim');
+        	        $(this).removeClass('icon-like');
+        	        $(this).addClass('nozzim');
+        	    }    
+        	});
+
+        	
+		
+        	// 목록 - [call] 클릭
         	$('.call').click(function () {    	
         		var filter = "win16|win32|win64|mac|macintel"; 
         		if ( navigator.platform ) { 
