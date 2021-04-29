@@ -346,20 +346,23 @@ th, td {
 
 						<div class="col-md-12 hotel-single mt-4 mb-5 ftco-animate">
 							<p style="text-align:left;"><span>원룸/월세</span></p>
-							<h2><p style="text-align:left;">즉시 입주 가능한 주방 분리형 원룸</p></h2>
+							<h2 style="text-align:left;">즉시 입주 가능한 주방 분리형 원룸</h2>
 						
 						<p class="rate mb-5" style="text-align:left;"><span class="loc"><a href="#"><i class="icon-map"></i>
 										부산진구 전포동 123-45</a></span>
-										<p style="text-align:left;"> <i class="far fa-heart fa-1x"></i>
-									마음에 들어요 </p>
-							<h5>
-							<p style="text-align:left;">		<i class="fas fa-user" style="width: 20; height: 20"></i> 서면
+								<br>
+								<span style="margin-left:0.5em;color: #f85959;"><i class="far fa-heart fa-1x"></i> 마음에 들어요 </span>
+								
+<!-- 									style="margin-left:1.6em;padding:0.3em;color: #f85959;" -->
+										
+							<h5 style="text-align:left;"><i class="fas fa-user" style="width: 20; height: 20"></i> 서면
 								공인중개사무소
-							</h5></p>
+							</h5>
+							
 							<div>
 
-								<button type="button" class="btn btn-secondary" style="float: left;">
-									<a href="tel:02-1234-1234">전화하기</a>
+								<button type="button" class="btn btn-secondary" style="float: left;margin-right: 0.5em;">
+									<a href="tel:051-1234-1234">전화하기</a>
 								</button>
 								<button type="button" class="btn btn-secondary" style="float: left;">채팅하기</button>
 
@@ -367,7 +370,7 @@ th, td {
 							</span>
 <br>
 
-
+<br>
 
 							</p>
 
