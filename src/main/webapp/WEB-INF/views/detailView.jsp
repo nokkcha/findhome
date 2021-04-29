@@ -115,13 +115,19 @@ th, td {
 
 .map-container{
   padding-top: 50px;
+  padding-bottom: 50px;
   border-top: 1px solid #dddddddd;
   
 }
 .map-container #map {/* border:1px solid red;  */
   margin-left:auto !important; 
   margin-right:auto !important; }
-							
+  
+.info-container {
+	text-align: left;
+}
+  
+						
 </style>
 
 <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
@@ -365,27 +371,22 @@ th, td {
 
 
 						<div class="col-md-12 hotel-single mt-4 mb-5 ftco-animate">
+							<div class="info-container">
 							<span>원룸/월세</span>
-							<h2>
-								역세권 위치 좋은 원룸 
-							</h2>
+							<h2>역세권 위치 좋은 원룸</h2>
 							<p class="rate mb-5">
 								<span class="loc"><a href="#"><i class="icon-map"></i>
 										부산진구 전포동 123-45</a></span><br> 
 										<i class="far fa-heart fa-1x"></i> 마음에 들어요
-										<h5><i class="fas fa-user" style="width: 20; height: 20"></i>
-										서면 공인중개사무소 </h5>
-									<div>
-									
-										<button type="button" class="btn btn-secondary"><a href="tel:02-1234-1234">전화하기</a></button>
-										<button type="button" class="btn btn-secondary">채팅하기</button>
+										<h5><i class="fas fa-user" style="width: 20; height: 20"></i>서면 공인중개사무소 </h5>
 										
-									</div> </span>
+										
+									<div><button type="button" class="btn btn-secondary"><a href="tel:02-1234-1234">전화하기</a></button>
+										<button type="button" class="btn btn-secondary">채팅하기</button></div>
+								</div>
+								 </div>
+							</div>
 
-
-
-
-							</p>
 
 
 							<div class="d-md-flex mt-5 mb-5">
@@ -466,6 +467,7 @@ th, td {
 							
 							<div class="map-container">
 									<h4 class="mb-5">위치 정보</h4>
+									<h6 class="mb-5">부산진구 전포동 123-45 </h6>
 								<div id="map" style="width: 500px; height: 400px;">
 							
 							
@@ -537,56 +539,35 @@ th, td {
 							<h4 class="mb-5">매물 문의하기 &amp; 상담예약</h4>
 							<div class="fields">
 								<div class="row">
-									<div class="col-md-6">
+									<div class="col-md-12">
 										<div class="form-group">
-											<input type="text" class="form-control" placeholder="성명">
+											<input type="text" class="form-control" placeholder="이름">
 										</div>
 									</div>
-									<div class="col-md-6">
+									<div class="col-md-12">
 										<div class="form-group">
-											<input type="text" class="form-control" placeholder="이메일">
+											<input type="text" class="form-control" placeholder="휴대폰 번호">
 										</div>
 									</div>
-									<div class="col-md-6">
-										<div class="form-group">
-											<input type="text" id="checkin_date" class="form-control"
-												placeholder="">
-										</div>
-									</div>
-									<div class="col-md-6">
+									<div class="col-md-12">
 										<div class="form-group">
 											<input type="text" id="checkin_date" class="form-control"
-												placeholder="">
+												placeholder="방문하실 날짜">
 										</div>
 									</div>
-									<div class="col-md-6">
+
+
+									<div class="col-md-12">
 										<div class="form-group">
 											<div class="select-wrap one-third">
 												<div class="icon">
 													<span class="ion-ios-arrow-down"></span>
 												</div>
-												<select name="" id="" class="form-control" placeholder=".">
-													<option value="0">.</option>
-													<option value="1">1</option>
-													<option value="2">2</option>
-													<option value="3">3</option>
-													<option value="4">4</option>
-												</select>
-											</div>
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="form-group">
-											<div class="select-wrap one-third">
-												<div class="icon">
-													<span class="ion-ios-arrow-down"></span>
-												</div>
-												<select name="" id="" class="form-control" placeholder=".">
-													<option value="0">.</option>
-													<option value="1">1</option>
-													<option value="2">2</option>
-													<option value="3">3</option>
-													<option value="4">4</option>
+												<select name="form-control" id="" class="form-control">
+													<option value="0">문의할 내용을 입력하세요.</option>
+													<option value="1">이 집 볼 수 있나요?</option>
+													<option value="2">비슷한 조건의 다른집이 있나요?</option>
+													<option id="val3" value="3">문의할 내용을 직접 작성할게요.</option>
 												</select>
 											</div>
 										</div>
@@ -674,6 +655,9 @@ th, td {
 	<script
 		src="${pageContext.request.contextPath}/resources/js/google-map.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/js/main.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/script/jquery-3.6.0.js"></script>
+	
+
 
 </body>
 </html>
