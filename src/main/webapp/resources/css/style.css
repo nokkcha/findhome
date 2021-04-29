@@ -7835,7 +7835,7 @@ h1, h2, h3, h4, h5,
           .destination .text .bottom-area span:last-child {
             margin-left: 5px; } }
         .destination .text .bottom-area span:last-child a {
-          background: #8bc34a;
+          background: black;
           color: #fff;
           -webkit-border-radius: 4px;
           -moz-border-radius: 4px;
@@ -7843,7 +7843,7 @@ h1, h2, h3, h4, h5,
           border-radius: 4px;
           padding: 3px 5px; }
           .destination .text .bottom-area span:last-child a:hover {
-            background: #8bc34a;
+            background: #f85959;
             color: #fff; }
 
 .hotel-img {
@@ -9387,4 +9387,40 @@ textarea.form-control {
 .btn_room:hover, .btn_like:hover {
 	background-color: #f85959;
 	color: white;
+}
+
+.pri-page {
+	background-color: #f85959;
+	color: white;
+}
+
+.notpri-page {
+	color: black;
+	font-weight: normal;
+}
+
+
+.zzim:before {
+	content:"💓 찜한 매물";
+	color: #f85959;
+	font-weight: bold;
+}
+
+.zzim:hover:before {
+	content:"🤍 찜하기 취소";
+   cursor: pointer;
+   color: black;	
+   font-weight: normal;
+}
+
+
+.nozzim:before {
+	content:"🤍 찜하기";
+}
+
+.nozzim:hover:before {
+	content:"💓 찜하기";
+   cursor: pointer;
+   color: #f85959;	
+	font-weight: bold;
 }
