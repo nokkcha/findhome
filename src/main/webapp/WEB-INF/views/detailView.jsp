@@ -114,11 +114,13 @@ th, td {
 }
 
 .map-container{
-  padding-top: 100px;
+  padding-top: 50px;
   border-top: 1px solid #dddddddd;
+  
 }
-
-
+.map-container #map {/* border:1px solid red;  */
+  margin-left:auto !important; 
+  margin-right:auto !important; }
 							
 </style>
 
@@ -429,7 +431,8 @@ th, td {
 							<br>
 							
 							<div class="option-info-container">
-								<div class="room-detail-option-title">옵션</div>
+<!-- 								<div class="room-detail-option-title">옵션</div> -->
+								<h4 class="mb-5">옵션</h4>
 								<div class="room-detail-option-item-wrapper">
 								
 								<div class="room-detail-content-option-item">
@@ -448,18 +451,18 @@ th, td {
 								</div>
 								
 								<div  class="room-detail-content-option-item">
-									<img src="${pageContext.request.contextPath}/resources/images/television.png" width="50" height="50">
-									<div class="room-detail-content-option-item-name">TV</div>
+									<img src="${pageContext.request.contextPath}/resources/images/air-conditioner.png" width="50" height="50">
+									<div class="room-detail-content-option-item-name">에어컨</div>
 								</div>
 								
 								<div  class="room-detail-content-option-item">
-									<img src="${pageContext.request.contextPath}/resources/images/television.png" width="50" height="50">
-									<div class="room-detail-content-option-item-name">TV</div>
+									<img src="${pageContext.request.contextPath}/resources/images/microwave.png" width="50" height="50">
+									<div class="room-detail-content-option-item-name">전자레인지</div>
 								</div>
 								</div>
 							</div>
 							
-							<br><br>
+							<br>
 							
 							<div class="map-container">
 									<h4 class="mb-5">위치 정보</h4>
