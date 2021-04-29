@@ -472,7 +472,6 @@ pre {
   @media (min-width: 1200px) {
     .container {
       max-width: 1140px; } 
-    .login {width: 600px !important;}  
       }
 
 .container-fluid {
@@ -9387,4 +9386,49 @@ textarea.form-control {
 .btn_room:hover, .btn_like:hover {
 	background-color: #f85959;
 	color: white;
+}
+
+.login {width: 600px !important;}
+
+.member-info-btn {
+	background: #f85959;
+	color: white;
+	padding: 10px 20px;
+	width: 300px;
+	margin-left: 83px;
+	border: none;
+	border-radius: 10px;
+}
+
+.member-info-btn:hover {
+	cursor: pointer;
+	background: white;
+	border: 1px solid #f85959;
+	color: #f85959;
+}
+
+
+.member-delete-btn {
+	background: gray;
+	color: white;
+	padding: 10px 20px;
+	width: 300px;
+	margin-left: 30px;
+	border: none;
+	border-radius: 10px;
+}
+
+.member-delete-btn:hover {
+	cursor: pointer;
+	background: black;
+	color: white;
+}
+
+
+.delete-text {
+		margin-left: 75px;
+}
+
+.deleteMember>ul {
+	text-align: left;
 }
