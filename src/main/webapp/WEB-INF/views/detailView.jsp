@@ -60,6 +60,8 @@
 	border: 0
 }
 
+
+
 table {
 	width: 100%;
 	border-top: 1px solid #dddddddd;
@@ -134,6 +136,9 @@ th, td {
 .btn btn-secondary > a:link{
 	color: white;
 }
+
+
+
 					
 </style>
 
@@ -595,11 +600,19 @@ th, td {
 												</div>
 
 												<div class="collapse" id="collapseExample">
-													<div class="card card-body">Some placeholder content
-														for the collapse component. This panel is hidden by
-														default but revealed when the user activates the relevant
-														trigger.</div>
-												</div>
+													<div class="card card-body">
+														<input type="button" class="btn btn-light-1"
+														value="이 집 볼 수 있나요?">
+														<input type="button" class="btn btn-light-2"
+														value="비슷한 조건의 다른 집이 있나요?">
+														<input type="button" class="btn btn-light-3"
+														value="문의 내용을 직접 입력하고 싶어요.">
+														
+
+													
+														</div>
+	
+											</div>
 											</div>
 
 
@@ -689,14 +702,14 @@ th, td {
 	<script src="${pageContext.request.contextPath}/resources/script/jquery-3.6.0.js"></script>
 	<script type="text/javascript">
 		$(function() {
-			$('#collapseExample').hide();
 			
 			$('#contact-content').click(function() {
-					$('#collapseExample').show();
-				
+					$('#collapseExample').toggle('slow');
+
 			});
 		});
-	
+		
+
 	</script>
 
 
