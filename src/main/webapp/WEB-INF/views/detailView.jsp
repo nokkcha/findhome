@@ -46,9 +46,9 @@
 	href="${pageContext.request.contextPath}/resources/css/icomoon.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/style.css">
+	
 
-
-
+	
 <style type="text/css">
 #table {
 	table-layout: fixed;
@@ -70,38 +70,71 @@ th, td {
 	border-bottom: 1px solid #dddddddd;
 	padding: 10px;
 	text-align: center;
+	}
+			
+			
+.option-info-container{
+  padding: 50px 100px 50px 100px;
+  border-top: 1px solid #dddddddd;
+  border-bottom: 1px solid #dddddddd;
 }
 
-.option-info-container {
-	padding: 50px 100px 50px 100px;
-	border-top: 1px solid #dddddddd;
-	border-bottom: 1px solid #dddddddd;
-}
 
-.room-detail-option-item-wrapper {
+.room-detail-option-item-wrapper{
 	margin-top: 40px;
 	display: flex;
+
 }
+
+
 
 .room-detail-content-option-item {
-	text-align: center;
-	flex: 1;
+  text-align: center;
+  flex: 1;
 }
 
-.room-detail-content-option-item>img {
-	width: 60px;
+.room-detail-content-option-item > img {
+  width: 60px;
 }
 
 .room-detail-content-option-item-name {
-	margin-top: 15px;
-	text-align: center;
-	font-size: 15px;
+  margin-top: 15px;
+  text-align: center;
+  font-size: 15px;
 }
 
 .room-detail-option-title {
-	font-size: 27px;
-	text-align: center;
+  font-size: 27px;
+  text-align: center;
 }
+
+.room-contact-container{
+  margin-top: 25px;
+  border-top: 1px solid #dddddddd;
+}
+
+.map-container{
+  padding-top: 50px;
+  padding-bottom: 50px;
+  border-top: 1px solid #dddddddd;
+  
+}
+.map-container #map {/* border:1px solid red;  */
+  margin-left:auto !important; 
+  margin-right:auto !important; }
+  
+.info-container {
+	text-align: left;
+}
+  
+.btn btn-secondary > a:visited{
+	color: white;
+}
+
+.btn btn-secondary > a:link{
+	color: white;
+}
+					
 </style>
 
 <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
@@ -226,17 +259,17 @@ th, td {
 
 
 									월세
-									<!-- 									<div class="range-slider"> -->
-									<!-- 										<span>  -->
-									<!-- 										<input type="number" value="25000" -->
-									<!-- 											min="0" max="120000" /> - <input type="number" value="50000" -->
-									<!-- 											min="0" max="120000" /> -->
-									<!-- 										</span> <input value="1000" min="0" max="120000" step="500" -->
-									<!-- 											type="range" /> <input value="50000" min="0" max="120000" -->
-									<!-- 											step="500" type="range" /> -->
+<!-- 									<div class="range-slider"> -->
+<!-- 										<span>  -->
+<!-- 										<input type="number" value="25000" -->
+<!-- 											min="0" max="120000" /> - <input type="number" value="50000" -->
+<!-- 											min="0" max="120000" /> -->
+<!-- 										</span> <input value="1000" min="0" max="120000" step="500" -->
+<!-- 											type="range" /> <input value="50000" min="0" max="120000" -->
+<!-- 											step="500" type="range" /> -->
 
-									<!-- 										</svg> -->
-									<!-- 									</div> -->
+<!-- 										</svg> -->
+<!-- 									</div> -->
 
 
 								</div>
@@ -271,8 +304,8 @@ th, td {
 									for="exampleCheck1">
 									<p class="rate">
 										<span><i class="icon-star"></i><i class="icon-star"></i><i
-											class="icon-star"></i><i class="icon-star"></i><i
-											class="icon-star-o"></i></span>
+											class="icon-star"></i><i class="icon-star"></i>
+											<i class="icon-star-o"></i></span>
 									</p>
 								</label>
 							</div>
@@ -312,10 +345,10 @@ th, td {
 						</form>
 					</div>
 				</div>
-
+				
 				<!-- 이미지 슬라이더 -->
 
-				<div class="col-lg-9">
+								<div class="col-lg-9">
 					<div class="row">
 						<div class="col-md-12 ftco-animate">
 							<div class="single-slider owl-carousel">
@@ -344,40 +377,42 @@ th, td {
 
 
 
+
 						<div class="col-md-12 hotel-single mt-4 mb-5 ftco-animate">
-							<p style="text-align:left;"><span>원룸/월세</span></p>
-							<h2><p style="text-align:left;">즉시 입주 가능한 주방 분리형 원룸</p></h2>
-						
-						<p class="rate mb-5" style="text-align:left;"><span class="loc"><a href="#"><i class="icon-map"></i>
-										부산진구 전포동 123-45</a></span>
-										<p style="text-align:left;"> <i class="far fa-heart fa-1x"></i>
-									마음에 들어요 </p>
-							<h5>
-							<p style="text-align:left;">		<i class="fas fa-user" style="width: 20; height: 20"></i> 서면
-								공인중개사무소
-							</h5></p>
-							<div>
+							<div class="info-container">
+								<span>원룸/월세</span>
+							<h2>즉시 입주 가능한 주방 분리형 원룸</h2>
 
-								<button type="button" class="btn btn-secondary" style="float: left;">
-									<a href="tel:02-1234-1234">전화하기</a>
-								</button>
-								<button type="button" class="btn btn-secondary" style="float: left;">채팅하기</button>
+							<p class="rate mb-5">
+								<span class="loc"><a href="#"><i class="icon-map"></i>
+										부산진구 전포동 123-45</a></span><br> 
+										<span style="margin-left:0.5em;color: #f85959;"><i class="far fa-heart fa-1x"></i> 마음에 들어요 </span>
 
+								<h5 style="text-align: left;">
+									<i class="fas fa-user" style="width: 20; height: 20"></i> 서면
+									공인중개사무소
+								</h5>
+
+								<div>
+
+									<a href="tel:051-1234-1234"><button type="button" class="btn btn-secondary"
+										style="float: left; margin-right: 0.5em;">
+										전화하기
+									</button></a>
+									<button type="button" class="btn btn-secondary"
+										style="float: left;">채팅하기</button>
+
+								</div>
+							
+								</div>
+								 </div>
 							</div>
-							</span>
-<br>
-
-
-
-							</p>
-
 							<div class="d-md-flex mt-5 mb-5">
-
 								<table>
 									<thead>
 										<tr>
 											<th>방 형태</th>
-											<td>주방 분리형 원룸(욕실 1개)</td>
+											<td>분리형 원룸(욕실 1개)</td>
 										</tr>
 									</thead>
 									<tbody>
@@ -412,183 +447,179 @@ th, td {
 
 							</div>
 
-							<p>● 보증금 100~300까지 조정가능 ● 위치 : 서면역 도보 2분 이내 ● 서면 초역세권의 깔끔한
-								분리형 원룸입니다. ✔ 직접 촬영한 100% 실매물입니다. ✔ 큰 길가, 건물 내/외부 CCTV 설치되어 안전해요</p>
-						</div>
-						<div id="map" style="width: 500px; height: 400px;"></div>
+							<br>
 
+							<div class="option-info-container">
+								<!-- 								<div class="room-detail-option-title">옵션</div> -->
+								<h4 class="mb-5">옵션</h4>
+								<div class="room-detail-option-item-wrapper">
 
-						<br>
+									<div class="room-detail-content-option-item">
+										<img
+											src="${pageContext.request.contextPath}/resources/images/bed.png"
+											width="50" height="50">
+										<div class="room-detail-content-option-item-name">침대</div>
+									</div>
 
-						<div class="option-info-container">
-							<div class="room-detail-option-title">옵션</div>
-							<div class="room-detail-option-item-wrapper">
+									<div class="room-detail-content-option-item">
+										<img
+											src="${pageContext.request.contextPath}/resources/images/fridge.png"
+											width="50" height="50">
+										<div class="room-detail-content-option-item-name">냉장고</div>
+									</div>
 
-								<div class="room-detail-content-option-item">
-									<img
-										src="${pageContext.request.contextPath}/resources/images/bed.png"
-										width="50" height="50">
-									<div class="room-detail-content-option-item-name">침대</div>
-								</div>
+									<div class="room-detail-content-option-item">
+										<img
+											src="${pageContext.request.contextPath}/resources/images/television.png"
+											width="50" height="50">
+										<div class="room-detail-content-option-item-name">TV</div>
+									</div>
 
-								<div class="room-detail-content-option-item">
-									<img
-										src="${pageContext.request.contextPath}/resources/images/fridge.png"
-										width="50" height="50">
-									<div class="room-detail-content-option-item-name">냉장고</div>
-								</div>
+									<div class="room-detail-content-option-item">
+										<img
+											src="${pageContext.request.contextPath}/resources/images/air-conditioner.png"
+											width="50" height="50">
+										<div class="room-detail-content-option-item-name">에어컨</div>
+									</div>
 
-								<div class="room-detail-content-option-item">
-									<img
-										src="${pageContext.request.contextPath}/resources/images/television.png"
-										width="50" height="50">
-									<div class="room-detail-content-option-item-name">TV</div>
+									<div class="room-detail-content-option-item">
+										<img
+											src="${pageContext.request.contextPath}/resources/images/microwave.png"
+											width="50" height="50">
+										<div class="room-detail-content-option-item-name">전자레인지</div>
+									</div>
 								</div>
 							</div>
-						</div>
 
-						<br> <br>
+							<br>
 
-						<div id="map" style="width: 500px; height: 400px;">
-
-
-
-
-
-							<!-- services 라이브러리 불러오기 -->
-							<script type="text/javascript"
-								src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4e97625a0c2b00cdf9292bd703ece0f7&libraries=services,clusterer,drawing">
-								
-							</script>
-
-							<script>
-								var mapContainer = document
-										.getElementById('map'), // 지도를 표시할 div 
-								mapOption = {
-									center : new kakao.maps.LatLng(33.450701,
-											126.570667), // 지도의 중심좌표
-									level : 3
-								// 지도의 확대 레벨
-								};
-
-								// 지도를 생성합니다    
-								var map = new kakao.maps.Map(mapContainer,
-										mapOption);
-
-								// 주소-좌표 변환 객체를 생성합니다
-								var geocoder = new kakao.maps.services.Geocoder();
-
-								// 주소로 좌표를 검색합니다
-								geocoder
-										.addressSearch(
-												'서울특별시 영등포구 여의동로 330 한강사업본부 여의도안내센터',
-												function(result, status) {
-
-													// 정상적으로 검색이 완료됐으면 
-													if (status === kakao.maps.services.Status.OK) {
-
-														var coords = new kakao.maps.LatLng(
-																result[0].y,
-																result[0].x);
-
-														// 결과값으로 받은 위치를 마커로 표시합니다
-														var marker = new kakao.maps.Marker(
-																{
-																	map : map,
-																	position : coords
-																});
-
-														// 인포윈도우로 장소에 대한 설명을 표시합니다
-														var infowindow = new kakao.maps.InfoWindow(
-																{
-																	content : '<div style="width:150px;text-align:center;padding:6px 0;">역세권 위치 좋은 원룸</div>'
-																});
-														infowindow.open(map,
-																marker);
-
-														// 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-														map.setCenter(coords);
-													} else {
-														alert("주소변환실패");
-													}
-												});
-							</script>
+							<div class="map-container">
+								<h4 class="mb-5">위치 정보</h4>
+								<h6 class="mb-5">부산진구 전포동 123-45</h6>
+								<div id="map" style="width: 500px; height: 400px;">
 
 
-							<div class="col-md-12 hotel-single ftco-animate mb-5 mt-4">
-								<h4 class="mb-5">매물 문의하기 &amp; 상담예약</h4>
-								<div class="fields">
-									<div class="row">
-										<div class="col-md-6">
-											<div class="form-group">
-												<input type="text" class="form-control" placeholder="성명">
-											</div>
-										</div>
-										<div class="col-md-6">
-											<div class="form-group">
-												<input type="text" class="form-control" placeholder="이메일">
-											</div>
-										</div>
-										<div class="col-md-6">
-											<div class="form-group">
-												<input type="text" id="checkin_date" class="form-control"
-													placeholder="">
-											</div>
-										</div>
-										<div class="col-md-6">
-											<div class="form-group">
-												<input type="text" id="checkin_date" class="form-control"
-													placeholder="">
-											</div>
-										</div>
-										<div class="col-md-6">
-											<div class="form-group">
-												<div class="select-wrap one-third">
-													<div class="icon">
-														<span class="ion-ios-arrow-down"></span>
-													</div>
-													<select name="" id="" class="form-control" placeholder=".">
-														<option value="0">.</option>
-														<option value="1">1</option>
-														<option value="2">2</option>
-														<option value="3">3</option>
-														<option value="4">4</option>
-													</select>
+
+
+									<!-- 						<script type="text/javascript" -->
+									<!-- 							src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4e97625a0c2b00cdf9292bd703ece0f7"></script> -->
+									<!-- 						<script> -->
+
+									<!-- services 라이브러리 불러오기 -->
+									<script type="text/javascript"
+										src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4e97625a0c2b00cdf9292bd703ece0f7&libraries=services,clusterer,drawing">
+						</script>
+
+									<script>
+							var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+							mapOption = {
+								center : new kakao.maps.LatLng(33.450701,
+										126.570667), // 지도의 중심좌표
+								level : 3
+							// 지도의 확대 레벨
+							};
+
+							// 지도를 생성합니다    
+							var map = new kakao.maps.Map(mapContainer,
+									mapOption);
+
+							// 주소-좌표 변환 객체를 생성합니다
+							var geocoder = new kakao.maps.services.Geocoder();
+
+							// 주소로 좌표를 검색합니다
+							geocoder.addressSearch(
+											'서울특별시 영등포구 여의동로 330 한강사업본부 여의도안내센터',
+											function(result, status) {
+
+												// 정상적으로 검색이 완료됐으면 
+												if (status === kakao.maps.services.Status.OK) {
+
+													var coords = new kakao.maps.LatLng(result[0].y,result[0].x);
+
+													// 결과값으로 받은 위치를 마커로 표시합니다
+													var marker = new kakao.maps.Marker(
+															{
+																map : map,
+																position : coords
+															});
+
+													// 인포윈도우로 장소에 대한 설명을 표시합니다
+													var infowindow = new kakao.maps.InfoWindow(
+															{
+																content : '<div style="width:150px;text-align:center;padding:6px 0;">역세권 위치 좋은 원룸</div>'
+															});
+													infowindow.open(map, marker);
+
+													// 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+													map.setCenter(coords);
+												} else {
+													alert("주소변환실패");
+												}
+											});
+						</script>
+
+								</div>
+							</div>
+
+
+							<div class="room-contact-container">
+								<div class="col-md-12 hotel-single ftco-animate mb-5 mt-4">
+									<h4 class="mb-5">매물 문의하기 &amp; 상담예약</h4>
+									<div class="fields">
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group">
+													<input type="text" class="form-control" placeholder="이름">
 												</div>
 											</div>
-										</div>
-										<div class="col-md-6">
-											<div class="form-group">
-												<div class="select-wrap one-third">
-													<div class="icon">
-														<span class="ion-ios-arrow-down"></span>
-													</div>
-													<select name="" id="" class="form-control" placeholder=".">
-														<option value="0">.</option>
-														<option value="1">1</option>
-														<option value="2">2</option>
-														<option value="3">3</option>
-														<option value="4">4</option>
-													</select>
+											<div class="col-md-6">
+												<div class="form-group">
+													<input type="text" class="form-control"
+														placeholder="휴대폰 번호">
 												</div>
 											</div>
-										</div>
-										<div class="col-md-12">
-											<div class="form-group">
-												<input type="submit" value="문의 하기"
-													class="btn btn-primary py-3">
+											<div class="col-md-12">
+												<div class="form-group">
+													<input type="text" id="checkin_date" class="form-control"
+														placeholder="방문하실 날짜">
+												</div>
+											</div>
+
+
+											<div class="col-md-12">
+												<div class="form-group">
+													<a class="btn btn-primary py-3" id="contact-content"
+														data-bs-toggle="collapse" href="#collapseExample"
+														role="button" aria-expanded="false"
+														aria-controls="collapseExample"> 문의할 내용 </a>
+												</div>
+
+												<div class="collapse" id="collapseExample">
+													<div class="card card-body">Some placeholder content
+														for the collapse component. This panel is hidden by
+														default but revealed when the user activates the relevant
+														trigger.</div>
+												</div>
+											</div>
+
+
+											<div class="col-md-12">
+												<div class="form-group">
+													<input type="submit" value="문의 하기"
+														class="btn btn-primary py-3">
+												</div>
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
-
-
 						</div>
+						<!-- 문의하기 끝 -->
 					</div>
-					<!-- .col-md-8 -->
 				</div>
+				<!-- .col-md-8 -->
 			</div>
+		</div>
 	</section>
 	<!-- .section -->
 
@@ -655,6 +686,19 @@ th, td {
 	<script
 		src="${pageContext.request.contextPath}/resources/js/google-map.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/js/main.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/script/jquery-3.6.0.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			$('#collapseExample').hide();
+			
+			$('#contact-content').click(function() {
+					$('#collapseExample').show();
+				
+			});
+		});
+	
+	</script>
+
 
 </body>
 </html>
