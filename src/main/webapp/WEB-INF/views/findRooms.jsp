@@ -10,51 +10,31 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Alex+Brush" rel="stylesheet">
 
-    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
-    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/animate.css">
     
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/magnific-popup.css">
 
-    <link rel="stylesheet" href="css/aos.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/aos.css">
 
-    <link rel="stylesheet" href="css/ionicons.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/ionicons.min.css">
 
-    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="css/jquery.timepicker.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/jquery.timepicker.css">
 
     
-    <link rel="stylesheet" href="css/flaticon.css">
-    <link rel="stylesheet" href="css/icomoon.css">
-    <link rel="stylesheet" href="css/style.css">
-
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/flaticon.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/icomoon.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
   </head>
   <body>
     
-  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-    <div class="container">
-      <a class="navbar-brand" href="index.html">dirEngine.</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="oi oi-menu"></span> Menu
-      </button>
-
-      <div class="collapse navbar-collapse" id="ftco-nav">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
-          <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-          <li class="nav-item"><a href="tour.html" class="nav-link">Tour</a></li>
-          <li class="nav-item active"><a href="hotel.html" class="nav-link">Hotels</a></li>
-          <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
-          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-          <li class="nav-item cta"><a href="contact.html" class="nav-link"><span>Add listing</span></a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-    <!-- END nav -->
+  <%@ include file="../views/top.jsp" %>
     
-    <div class="hero-wrap js-fullheight" style="background-image: url('images/bg_5.jpg');">
+    
+    <div class="hero-wrap js-fullheight" style="background-image: url('${pageContext.request.contextPath}/resources/images/bg_5.jpg');">
       <div class="overlay"></div>
       <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
@@ -65,8 +45,6 @@
         </div>
       </div>
     </div>
-
-
     <section class="ftco-section ftco-degree-bg">
       <div class="container">
         <div class="row">
@@ -83,17 +61,17 @@
 
 	                      구조
 	                 <div class="form-group">
-		                <input type="button" class="btn te btn-primary button-class1"  value="전체">
-		                <input type="button" class="btn te btn-default button-class2 rtype"  value="오픈형">
-		                <input type="button" class="btn te btn-default button-class3 rtype"  value="분리형">
-		                <input type="button" class="btn te btn-default button-class4 rtype"  value="복층형">
+		                <input type="button" class="btn te btn-primary rtypeAll"  value="전체">
+		                <input type="button" class="btn te btn-default rtypeOpen rtype"  value="오픈형">
+		                <input type="button" class="btn te btn-default rtypeSeparate rtype"  value="분리형">
+		                <input type="button" class="btn te btn-default rtypeStairs rtype"  value="복층형">
 		              </div>
 		              
 	                      층 수 옵션
 	                      <div class="form-group">
-	                       <input type="button" class="btn te btn-primary button-class11"  value="전체">
-		                	<input type="button" class="btn te btn-default button-class12"  value="지상층">
-		             		<input type="button" class="btn te btn-default button-class13"  value="반지하,옥탑">
+	                       <input type="button" class="btn te btn-primary ftypeAll"  value="전체">
+		                	<input type="button" class="btn te btn-default floor"  value="지상층">
+		             		<input type="button" class="btn te btn-default ftypeOther"  value="반지하,옥탑">
 		              </div>
 
 
@@ -103,17 +81,14 @@
 
 
 										<script language = "javascript">
-
 function ShowSliderValue(sVal) {
 	var obValueView = document.getElementById("slider_value_view");
 	obValueView.innerHTML = sVal
 }
-
 function ShowSliderValue2(sVal) {
 	var obValueView = document.getElementById("slider_value_view2");
 	obValueView.innerHTML = sVal
 }
-
 var RangeSlider = function(){
 	var range = $(this);
     
@@ -121,10 +96,7 @@ var RangeSlider = function(){
 		ShowSliderValue(this.value);
 	});
 };
-
 RangeSlider();
-
-
 </script>
 
 		              <div class="form-group">
@@ -171,7 +143,7 @@ RangeSlider();
           	<div class="row">
           		<div class="col-md-4 ftco-animate">
 		    				<div class="destination">
-		    					<a href="hotel-single.html" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(images/hotel-1.jpg);">
+		    					<a href="hotel-single.html" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/hotel-1.jpg);">
 		    						<div class="icon d-flex justify-content-center align-items-center">
     							<span class="icon-search2"></span>
     						</div>
@@ -190,7 +162,7 @@ RangeSlider();
 		    						<hr>
 		    						<p class="bottom-area d-flex">
 		    							<span><i class="icon-map-o"></i> 찜하기</span> 
-		    							<span class="ml-auto"><a href="javascript:void(0);">call</a></span>
+		    							<span class="ml-auto call"><a href="javascript:void(0);">call</a></span>
 		    							
 		    						</p>
 		    					</div>
@@ -198,7 +170,7 @@ RangeSlider();
 		    			</div>
 		    			<div class="col-md-4 ftco-animate">
 		    				<div class="destination">
-		    					<a href="hotel-single.html" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(images/hotel-2.jpg);">
+		    					<a href="hotel-single.html" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/hotel-2.jpg);">
 		    						<div class="icon d-flex justify-content-center align-items-center">
     							<span class="icon-search2"></span>
     						</div>
@@ -217,14 +189,14 @@ RangeSlider();
 		    						<hr>
 		    						<p class="bottom-area d-flex">
 		    							<span><i class="icon-map-o"></i> 찜하기</span> 
-		    							<span class="ml-auto"><a href="javascript:void(0);">call</a></span>
+		    							<span class="ml-auto call"><a href="javascript:void(0);">call</a></span>
 		    						</p>
 		    					</div>
 		    				</div>
 		    			</div>
 		    			<div class="col-md-4 ftco-animate">
 		    				<div class="destination">
-		    					<a href="hotel-single.html" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(images/hotel-3.jpg);">
+		    					<a href="hotel-single.html" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/hotel-3.jpg);">
 		    						<div class="icon d-flex justify-content-center align-items-center">
     							<span class="icon-search2"></span>
     						</div>
@@ -243,14 +215,14 @@ RangeSlider();
 		    						<hr>
 		    						<p class="bottom-area d-flex">
 		    							<span><i class="icon-map-o"></i> 찜하기</span> 
-		    							<span class="ml-auto"><a href="javascript:void(0);">call</a></span>
+		    							<span class="ml-auto call"><a href="javascript:void(0);">call</a></span>
 		    						</p>
 		    					</div>
 		    				</div>
 		    			</div>
 		    			<div class="col-md-4 ftco-animate">
 		    				<div class="destination">
-		    					<a href="hotel-single.html" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(images/hotel-4.jpg);">
+		    					<a href="hotel-single.html" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/hotel-4.jpg);">
 		    						<div class="icon d-flex justify-content-center align-items-center">
     							<span class="icon-search2"></span>
     						</div>
@@ -269,14 +241,14 @@ RangeSlider();
 		    						<hr>
 		    						<p class="bottom-area d-flex">
 		    							<span><i class="icon-map-o"></i> 찜하기</span> 
-		    							<span class="ml-auto"><a href="javascript:void(0);">call</a></span>
+		    							<span class="ml-auto call"><a href="javascript:void(0);">call</a></span>
 		    						</p>
 		    					</div>
 		    				</div>
 		    			</div>
 		    			<div class="col-md-4 ftco-animate">
 		    				<div class="destination">
-		    					<a href="hotel-single.html" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(images/hotel-5.jpg);">
+		    					<a href="hotel-single.html" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/hotel-5.jpg);">
 		    						<div class="icon d-flex justify-content-center align-items-center">
     							<span class="icon-search2"></span>
     						</div>
@@ -295,14 +267,14 @@ RangeSlider();
 		    						<hr>
 		    						<p class="bottom-area d-flex">
 		    							<span><i class="icon-map-o"></i> 찜하기</span> 
-		    							<span class="ml-auto"><a href="javascript:void(0);">call</a></span>
+		    							<span class="ml-auto call"><a href="javascript:void(0);">call</a></span>
 		    						</p>
 		    					</div>
 		    				</div>
 		    			</div>
 		    			<div class="col-md-4 ftco-animate">
 		    				<div class="destination">
-		    					<a href="hotel-single.html" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(images/hotel-6.jpg);">
+		    					<a href="hotel-single.html" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/hotel-6.jpg);">
 		    						<div class="icon d-flex justify-content-center align-items-center">
     							<span class="icon-search2"></span>
     						</div>
@@ -321,7 +293,7 @@ RangeSlider();
 		    						<hr>
 		    						<p class="bottom-area d-flex">
 		    							<span><i class="icon-map-o"></i> 찜하기</span> 
-		    							<span class="ml-auto"><a href="javascript:void(0);">call</a></span>
+		    							<span class="ml-auto call"><a href="javascript:void(0);">call</a></span>
 		    						</p>
 		    					</div>
 		    				</div>
@@ -416,36 +388,35 @@ RangeSlider();
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 
 
-  <script src="js/jquery.min.js"></script>
-  <script src="js/jquery-migrate-3.0.1.min.js"></script>
-  <script src="js/popper.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/jquery.easing.1.3.js"></script>
-  <script src="js/jquery.waypoints.min.js"></script>
-  <script src="js/jquery.stellar.min.js"></script>
-  <script src="js/owl.carousel.min.js"></script>
-  <script src="js/jquery.magnific-popup.min.js"></script>
-  <script src="js/aos.js"></script>
-  <script src="js/jquery.animateNumber.min.js"></script>
-  <script src="js/bootstrap-datepicker.js"></script>
-  <script src="js/jquery.timepicker.min.js"></script>
-  <script src="js/scrollax.min.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/js/jquery.min.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/js/popper.min.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/js/jquery.easing.1.3.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/js/jquery.waypoints.min.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/js/jquery.stellar.min.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/js/owl.carousel.min.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/js/jquery.magnific-popup.min.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/js/aos.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/js/jquery.animateNumber.min.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/js/bootstrap-datepicker.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/js/jquery.timepicker.min.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/js/scrollax.min.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-  <script src="js/google-map.js"></script>
-  <script src="js/main.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/js/google-map.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/js/main.js"></script>
+  
+  
         <script src="../script/jquery-3.6.0.js"></script>
     <script type="text/javascript">
     $(document).ready(function(){
-
-    	$('.button-class1').click(function(){
-
+    	$('.rtypeAll').click(function(){
     		if( $(this).hasClass('btn-default') ) {
     			$(this).removeClass('btn-default');
     			$(this).addClass('btn-primary');
     			
     			$('.rtype').removeClass('btn-primary');
     			$('.rtype').addClass('btn-default');
-
     		} 
 	
     	});
@@ -456,9 +427,9 @@ RangeSlider();
     	        $(clickThis).removeClass('btn-default');
     	        $(clickThis).addClass('btn-primary');
     	        
-    	        if( $('.button-class1').hasClass('btn-primary')) {
-    	            $('.button-class1').removeClass('btn-primary');
-    	            $('.button-class1').addClass('btn-default');
+    	        if( $('.rtypeAll').hasClass('btn-primary')) {
+    	            $('.rtypeAll').removeClass('btn-primary');
+    	            $('.rtypeAll').addClass('btn-default');
     	        }
     	        
     	    } else if ($(clickThis).hasClass('btn-primary')){
@@ -468,55 +439,52 @@ RangeSlider();
     	
     	}
     	
-    	$('.button-class2').click(function(){
+    	$('.rtypeOpen').click(function(){
             $.fn.room(this);
 		});
-
-    	$('.button-class3').click(function(){
+    	$('.rtypeSeparate').click(function(){
     		$.fn.room(this);
     	});
     	
-    	$('.button-class4').click(function(){
+    	$('.rtypeStairs').click(function(){
     		$.fn.room(this);
     	});
       
         	
-        	$('.button-class11').click(function(){       		
+        	$('.ftypeAll ').click(function(){       		
         		if( $(this).hasClass('btn-default') ) {
         			$(this).removeClass('btn-default');
         			$(this).addClass('btn-primary');
-        			$('.button-class12').addClass('btn-default');
-        			$('.button-class12').removeClass('btn-primary');
-        			$('.button-class13').addClass('btn-default');
-        			$('.button-class13').removeClass('btn-primary');
+        			$('.floor').addClass('btn-default');
+        			$('.floor ').removeClass('btn-primary');
+        			$('.ftypeOther').addClass('btn-default');
+        			$('.ftypeOther').removeClass('btn-primary');
         		}
         	});
         	
-        	$('.button-class12').click(function(){       		
+        	$('.floor').click(function(){       		
         		if( $(this).hasClass('btn-default') ) {
         			$(this).removeClass('btn-default');
         			$(this).addClass('btn-primary');
-        			$('.button-class11').addClass('btn-default');
-        			$('.button-class11').removeClass('btn-primary');
-        			$('.button-class13').addClass('btn-default');
-        			$('.button-class13').removeClass('btn-primary');
+        			$('.ftypeAll ').addClass('btn-default');
+        			$('.ftypeAll ').removeClass('btn-primary');
+        			$('.ftypeOther').addClass('btn-default');
+        			$('.ftypeOther').removeClass('btn-primary');
         		}
         	});
         	
-        	$('.button-class13').click(function(){       		
+        	$('.ftypeOther').click(function(){       		
         		if( $(this).hasClass('btn-default') ) {
         			$(this).removeClass('btn-default');
         			$(this).addClass('btn-primary');
-        			$('.button-class11').addClass('btn-default');
-        			$('.button-class11').removeClass('btn-primary');
-        			$('.button-class12').addClass('btn-default');
-        			$('.button-class12').removeClass('btn-primary');
+        			$('.ftypeAll ').addClass('btn-default');
+        			$('.ftypeAll ').removeClass('btn-primary');
+        			$('.floor').addClass('btn-default');
+        			$('.floor').removeClass('btn-primary');
         		}
         	});
         	
-
-
-        	$('.ml-auto').click(function () {    	
+        	$('.call').click(function () {    	
         		var filter = "win16|win32|win64|mac|macintel"; 
         		if ( navigator.platform ) { 
         			if ( filter.indexOf( navigator.platform.toLowerCase() ) < 0 ) {
@@ -528,9 +496,7 @@ RangeSlider();
         		}
     		
     		});
-
     });
-
     
     </script>
 
