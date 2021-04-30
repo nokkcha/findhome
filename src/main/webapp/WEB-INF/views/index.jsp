@@ -87,35 +87,15 @@
               </div>
             </div>
             
-           
-            
             <div class="block-17 my-4">
               <form action="" method="post" class="d-block d-flex">
                 <div class="fields d-block d-flex">
-                  <div class="textfield-search one-third">
-                  	<input type="text" class="form-control" placeholder="Ex: food, service, hotel">
-                  </div>
-                  <div class="select-wrap one-third">
-                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                    <select name="" id="" class="form-control" placeholder="Keyword search">
-                      <option value="">Where</option>
-                      <option value="">San Francisco USA</option>
-                      <option value="">Berlin Germany</option>
-                      <option value="">Lodon United Kingdom</option>
-                      <option value="">Paris Italy</option>
-                    </select>
-                  </div>
+                  <input type="text" class="form-control" id="address" placeholder="원하시는 지역명, 지하철역을 입력해주세요">
                 </div>
                 <input type="submit" class="search-submit btn btn-primary" value="Search">  
               </form>
             </div>
-<!--             <p>Or browse the highlights</p> -->
-<!--             <p class="browse d-md-flex"> -->
-<!--             	<span class="d-flex justify-content-md-center align-items-md-center"><a href="#"><i class="flaticon-fork"></i>Restaurant</a></span> -->
-<!--             	<span class="d-flex justify-content-md-center align-items-md-center"><a href="#"><i class="flaticon-hotel"></i>Hotel</a></span>  -->
-<!--             	<span class="d-flex justify-content-md-center align-items-md-center"><a href="#"><i class="flaticon-meeting-point"></i>Places</a></span>  -->
-<!--             	<span class="d-flex justify-content-md-center align-items-md-	center"><a href="#"><i class="flaticon-shopping-bag"></i>Shopping</a></span> -->
-<!--             </p> -->
+
           </div>
         </div>
       </div>
@@ -384,8 +364,9 @@
   
   <script>
   $(document).ready(function(){	  
-      	  $('.button-class1').click(function(){      		  
-//       		  alert("원룸버튼클릭");
+      	  $('.button-class1').click(function(){
+      		$("#address").val('');
+			$("#address").attr("placeholder", "원하시는 지역명, 지하철역을 입력해주세요");
       		  
       	    if( $(this).hasClass('btn-default') ) $(this).removeClass('btn-default');
       	    if( !$(this).hasClass('btn-primary') ) $(this).addClass('btn-primary');
@@ -394,7 +375,8 @@
       	  });
       	  
       	  $('.button-class2').click(function(){
-//       		alert("오피스텔버튼클릭");
+      		$("#address").val('');
+      		$("#address").attr("placeholder", "원하시는 지역명, 지하철역, 오피스텔명을 입력해주세요");
       		  
       	    if( $(this).hasClass('btn-default') ) $(this).removeClass('btn-default');
       	    if( !$(this).hasClass('btn-primary') ) $(this).addClass('btn-primary');
