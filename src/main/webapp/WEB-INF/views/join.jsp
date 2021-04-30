@@ -33,6 +33,9 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/icomoon.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
     
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.js"></script>
+    
 
 
 
@@ -208,58 +211,73 @@
 					var pass1 = $('#pass1').val();
 					var pass2 = $('#pass2').val();
 					var phone = $('#phone').val();
+				    var agree = $('#agree').val();
 					var lengthRegex1 = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/;
 					var lengthRegex2 = /^[A-Za-z0-9!@#$%]{8,16}$/;
 					var lengthRegex3 = /^(010|011)[-\s]?\d{3,4}[-\s]?\d{4}$/;
 					
-					if ($('#id').val() == "") {
+					if (id == "") {
 						$('#id').focus();
-						swal.fire("ID 입력", "ID를 입력해주세요", "error") //"info,success,warning,error" 중 택1							
+// 						swal.fire("ID 입력", "ID를 입력해주세요", "error"); //"info,success,warning,error" 중 택1	
+						alert("ID를 입력해주세요");
 						return false;
 					}
 					
 					if (!lengthRegex1.exec(id)) {
 						$('#id').focus();
-						swal.fire("ID 입력확인", "ID를 다시 입력해주세요", "error") //"info,success,warning,error" 중 택1							
+// 						swal.fire("ID 입력확인", "ID를 다시 입력해주세요", "error"); //"info,success,warning,error" 중 택1
+						alert("ID를 다시 입력해주세요");
 						return false;
 					}
 					
-					if ($('#pass1').val() == "") {
+					if (pass1 == "") {
 						$('#pass1').focus();
-						swal.fire("패스워드 입력", "패스워드를 입력해주세요", "error") //"info,success,warning,error" 중 택1
-						return false;
-					}
-					
-					if ($('#pass2').val() == "") {
-						$('#pass2').focus();
-						swal.fire("패스워드 입력확인", "패스워드를 입력 해주세요", "error") //"info,success,warning,error" 중 택1
-						return false;
-					}
-					
-					if (pass1 != pass2) {
-						$('#pass2').focus();
-						swal.fire("패스워드 불일치", "패스워드를 다시 입력해주세요", "error") //"info,success,warning,error" 중 택1
+// 						swal.fire("패스워드 입력", "패스워드를 입력해주세요", "error"); //"info,success,warning,error" 중 택1
+						alert("패스워드를 입력해주세요");
 						return false;
 					}
 					
 					if (!lengthRegex2.exec(pass1)) {
 						$('#pass1').focus();
-						swal.fire("패스워드 입력확인", "사용할 수 없는 패스워드입니다", "error") //"info,success,warning,error" 중 택1
+// 						swal.fire("패스워드 입력확인", "사용할 수 없는 패스워드입니다", "error"); //"info,success,warning,error" 중 택1
+						alert("사용할 수 없는 패스워드입니다");
 						return false;
 					}
 					
-					if ($('#phone').val() == "") {
+					if (pass2 == "") {
+						$('#pass2').focus();
+// 						swal.fire("패스워드 입력확인", "패스워드를 입력 해주세요", "error"); //"info,success,warning,error" 중 택1
+						alert("패스워드를 입력 해주세요");
+						return false;
+					}
+					
+					if (pass1 != pass2) {
+						$('#pass2').focus();
+// 						swal.fire("패스워드 불일치", "패스워드를 다시 입력해주세요", "error"); //"info,success,warning,error" 중 택1
+						alert("패스워드를 다시 확인 해주세요");
+						return false;
+					}
+					
+					
+					if (phone == "") {
 						$('#phone').focus();
-						swal.fire("전화번호 입력", "전화번호를 입력해주세요", "error") //"info,success,warning,error" 중 택1
+// 						swal.fire("전화번호 입력", "전화번호를 입력해주세요", "error"); //"info,success,warning,error" 중 택1
+						alert("전화번호를 입력해주세요");
 						return false;
 					}
 					
 					if (!lengthRegex3.exec(phone)) {
 						$('#phone').focus();
-						swal.fire("전화번호 입력확인", "전화번호를 다시 입력해주세요", "error") //"info,success,warning,error" 중 택1
+// 						swal.fire("전화번호 입력확인", "전화번호를 다시 입력해주세요", "error"); //"info,success,warning,error" 중 택1
+						alert("전화번호를 다시 입력해주세요");
 						return false;
 					}
 					
+					
+					if($("#agree").is(":checked") == false){
+						alert("이용약관 및 개인 정보 수집에 동의 하셔야 가입이 가능합니다");
+						return false;
+					}
 					
 				});
 			});
@@ -278,8 +296,7 @@
 				}
 			}
         
-        
-
+			
 			$(document).ready(function(){
 				
 				$(".fpmgBt2").click(function(){	
@@ -289,12 +306,12 @@
 					}else if($("#chk2").is(":checked") == false){
 						alert("개인 정보 수집에 동의 하셔야 다음 단계로 진행 가능합니다");
 						return false;
-					}else{
-						$("#joinForm").submit();
 					}
+					
 				});	
 			});
-
+			
+			
 
 			function allCheck(obj) {
 				$("[name=check2]").prop("checked", $(obj).prop("checked")); 
@@ -334,11 +351,13 @@
 						});
 					});
 				});
-        
-		
+			
 
 
 	</script>
+	
+	
+	
        
         <h2>회원가입</h2>
 			<div class="row block-9">
@@ -376,25 +395,25 @@
 						  <br><span class="check-group" id="checkPhoneResult"></span>	
 						</div>
               <div>
+
         		<label>
 
             <!--  팝업창 관련    -->
-                      <input type="checkbox" class="fpmgBt1" data-toggle="modal" data-target="#exampleModalLong">
-                      이용약관 및 개인정보 취급방침에 동의합니다.
-  
-               </label>
-               
-                 <div class="form-group">
+                    
+                      <input type="checkbox" class="fpmgBt1" id="agree"  data-target="#exampleModalLong" data-toggle="modal"> 
+            	  	 이용약관 및 개인정보 취급방침에 동의합니다.
+            	   </label>
+
+                    <div class="form-group">
+                    
                 <input type="submit" value="회원가입" class="btn btn-primary py-3 px-5" id="btn">
               </div>
               
               </div>
             </form>
-            
-              </div>
-              
-
-<!-- Modal -->
+                 </div>      
+                 
+                      <!-- Modal -->
 <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -406,9 +425,8 @@
       </div>
       <div class="modal-body">
 <!--         ... -->
-
-
-
+  
+               
            <form action="http://localhost:8080/findhome/join" id="joinForm">
             <ul class="join_box">
                 <li class="checkBox check01">
@@ -442,6 +460,11 @@
 1.회원: '갑'과 서비스 이용에 관한 계약을 체결한 자
 2.아이디(ID): 회원 식별과 회원의 서비스 이용을 위하여 회원이 선정하고 '갑'이 승인하는 문자와 숫자의 조합
 3.비밀번호: 회원이 통신상의 자신의 비밀을 보호하기 위해 선정한 문자와 숫자의 조합
+제6조 (이용신청)
+1.회원 가입은 온라인으로 가입신청 양식에 기록하여 '갑'에 제출함으로써 이용신청을 할 수 있습니다.
+2.가입희망 회원은 반드시 자신의 본명 및 주민등록번호로 이용신청을 하여야 하며, 1개의 ID만 신청을 할 수 있습니다.
+제7조 (회원가입의 승낙)
+'갑'의 회원 가입 신청 양식에 가입 희망 회원이 인터넷으로 제6조와 같이 신청하면 '갑'은 바로 가입을 승인하여 서비스를 이용할 수 있다.
        </textarea>
                 </li>
                 <li class="checkBox check03">
@@ -465,6 +488,14 @@
 제2조(개인정보의 처리 및 보유 기간)
 ① 은(는) 법령에 따른 개인정보 보유·이용기간 또는 정보주체로부터 개인정보를 수집 시에 동의받은 개인정보 보유·이용기간 내에서 개인정보를 처리·보유합니다.
 ② 각각의 개인정보 처리 및 보유 기간은 다음과 같습니다.
+1.<홈페이지 회원가입 및 관리>
+<홈페이지 회원가입 및 관리>와 관련한 개인정보는 수집.이용에 관한 동의일로부터<1년>까지 위 이용목적을 위하여 보유.이용됩니다.
+보유근거 : 고객관리, 서비스 부정이용 방지
+관련법령 : 신용정보의 수집/처리 및 이용 등에 관한 기록 : 3년
+제3조(개인정보의 제3자 제공)
+① 은(는) 개인정보를 제1조(개인정보의 처리 목적)에서 명시한 범위 내에서만 처리하며, 정보주체의 동의, 법률의 특별한 규정 등 「개인정보 보호법」 제17조 및 제18조에 해당하는 경우에만 개인정보를 제3자에게 제공합니다.
+② 은(는) 다음과 같이 개인정보를 제3자에게 제공하고 있습니다.
+		</textarea>
                 </li>
                 <li class="checkBox check03">
                     <ul class="clearfix">
@@ -474,7 +505,9 @@
                         </li>
                     </ul>
  
-                    <textarea name="" id=""> 제 2 조 (이용약관의 효력 및 변경)
+                    <textarea name="" id=""> 제 1 조 (목적)
+본 약관은 findhome이 제공하는 위치기반서비스에 대해 회사와 위치기반서비스를 이용하는 개인위치정보주체(이하 "이용자")간의 권리·의무 및 책임사항, 기타 필요한 사항 규정을 목적으로 합니다.
+제 2 조 (이용약관의 효력 및 변경)
 ① 본 약관은 이용자가 본 약관에 동의하고 회사가 정한 절차에 따라 위치기반서비스의 이용자로 등록됨으로써 효력이 발생합니다.
 ② 회사는 법률이나 위치기반서비스의 변경사항을 반영하기 위한 목적 등으로 약관을 수정할 수 있습니다.
 ③ 약관이 변경되는 경우 회사는 변경사항을 최소 7일 전에 회사의 홈페이지 등 기타 공지사항 페이지를 통해 게시합니다.
@@ -490,6 +523,17 @@
 제 5 조 (서비스 이용요금)
 회사가 제공하는 위치기반서비스는 무료입니다.
 단, 무선 서비스 이용 시 발생하는 데이터 통신료는 별도이며, 이용자가 가입한 각 이동통신사의 정책에 따릅니다.
+제 6 조 (서비스 이용의 제한·중지)
+① 회사는 위치기반서비스사업자의 정책변경 등과 같이 회사의 제반사정 또는 법률상의 이유로 위치기반서비스를 유지할 수 없는 경우 위치기반서비스의 전부 또는 일부를 제한·변경·중지할 수 있습니다.
+② 단, 위 항에 의한 위치기반서비스 중단의 경우 회사는 사전에 회사 홈페이지 등 기타 공지사항 페이지를 통해 공지하거나 이용자에게 통지합니다.
+제 7 조 (개인위치정보주체의 권리)
+① 이용자는 언제든지 개인위치정보의 수집·이용·제공에 대한 동의 전부 또는 일부를 유보할 수 있습니다.
+② 이용자는 언제든지 개인위치정보의 수집·이용·제공에 대한 동의 전부 또는 일부를 철회할 수 있습니다. 이 경우 회사는 지체 없이 철회된 범위의 개인위치정보 및 위치정보 수집·이용·제공사실 확인자료를 파기합니다.
+③ 이용자는 개인위치정보의 수집·이용·제공의 일시적인 중지를 요구할 수 있으며, 이 경우 회사는 이를 거절할 수 없고 이를 충족하는 기술적 수단을 마련합니다.
+④ 이용자는 회사에 대하여 아래 자료에 대한 열람 또는 고지를 요구할 수 있으며, 해당 자료에 오류가 있는 경우에는 정정을 요구할 수 있습니다. 이 경우 정당한 사유 없이 요구를 거절하지 않습니다.
+1. 이용자에 대한 위치정보 수집·이용·제공사실 확인자료
+2. 이용자의 개인위치정보가 위치정보의 보호 및 이용 등에 관한 법률 또는 다른 법령의 규정에 의하여 제3자에게 제공된 이유 및 내용
+⑤ 이용자는 권리행사를 위해 본 약관 제14조의 연락처를 이용하여 회사에 요청할 수 있습니다.
        </textarea>
                 </li>
                 <li class="checkBox check04">
@@ -504,16 +548,12 @@
             </ul>
             <ul class="footBtwrap clearfix">
 <!--             <button type="button" class="btn " data-dismiss="modal">비동의</button> -->
-                <li><button type="button" class="fpmgBt1 " data-dismiss="modal">비동의</button></li>
-                <li><button type="submit" class="fpmgBt2">동의</button></li>
+<!--                 <li><button type="button" class="fpmgBt1 " data-dismiss="modal">동의</button></li> -->
+<!--                 <li><button type="button"  name="checkButton" class="fpmgBt2" data-dismiss="modal" >동의</button></li> -->
+					<li><input type="checkbox" class="fpmgBt1" >동의하지 않습니다</li>
+					<li><input type="checkbox" class="fpmgBt2" >동의합니다</li>
             </ul>
        </form>
-
-
-    		
-          
-        
-         
 
 <!--           <div class="col-md-6" id="map"></div> -->
         </div>
