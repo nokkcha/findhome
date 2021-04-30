@@ -41,20 +41,55 @@
 
 <!-- 팝업창 관련 -->
 
-<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
-<!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script> -->
-<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> -->
-<!-- <meta charset="EUC-KR"> -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<meta charset="EUC-KR">
 
 
-	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 
-	
-	
-	
-	
-	
+	<style type="text/css">
+		*{
+			font-family:'malgun gothic';
+		}
+		#content.cols-d { width: 200px; min-width: 400px; }
+		.form-f { position: relative; margin: 0; padding: 0; color: #666; }		
+		.form-f p { width: 100%; margin: 0 0 13px; font-size: 1.3em; text-align:center;margin-top:20px;}
+		.form-f p:after { content: ""; display: block; overflow: hidden; clear: both; height: 0; }	
+		.form-f textarea {
+			 position: relative; 
+			 width: 468px; height: 118px; min-height: 118px; 
+			 padding: 3px 3px 3px 6px; 
+			 border: 1px solid #ececec; 
+			 border-top-color: #e1e1e1; 
+			 border-left-color: #e1e1e1; 
+			 background: #ececec; 
+			 border-radius: 3px; 
+			-moz-border-radius: 3px; 
+			-webkit-border-radius: 3px; 
+		}		
+		.scheme-g { 
+			margin: 26px 0 8px; 
+			padding: 0px; 
+			font-size: 1.2em; 
+			font-weight: 100; 
+		}		
+		.button_big { 
+			float:right;
+			border: 0; border-radius: 3px; 
+			cursor: pointer; display: inline-block; 
+			font-size: 12px; font-weight: bold; 
+			line-height: 24px; 
+			margin-left: 5px; 
+			padding: 8px 16px; 
+			text-decoration: none; color:#fff; 
+			background:#0080ff; 
+			text-shadow: 1px 1px 1px #0066cc; 
+			-webkit-transition: all 0.2s ease-out; }
+	</style>
+
 	
     
   </head>
@@ -299,18 +334,21 @@
 			
 			$(document).ready(function(){
 				
-				$(".fpmgBt2").click(function(){	
-					if($("#chk1").is(":checked") == false){
-						alert("이용약관에 동의 하셔야 다음 단계로 진행 가능합니다");
-						return false;
-					}else if($("#chk2").is(":checked") == false){
-						alert("개인 정보 수집에 동의 하셔야 다음 단계로 진행 가능합니다");
-						return false;
+				$("#nextBtn").click(function(){	
+					if($("#check_1").is(":checked") == false){
+						alert("모든 약관에 동의 하셔야 다음 단계로 진행 가능합니다");
+						return;
+					}else if($("#check_2").is(":checked") == false){
+						alert("모든 약관에 동의 하셔야 다음 단계로 진행 가능합니다");
+						return;
+					}else if($("#check_3").is(":checked") == false){
+						alert("모든 약관에 동의 하셔야 다음 단계로 진행 가능합니다");
+						return;
+					}else{
+						$("#terms_form").submit();
 					}
-					
 				});	
 			});
-			
 			
 
 			function allCheck(obj) {
@@ -413,39 +451,26 @@
             </form>
                  </div>      
                  
-                      <!-- Modal -->
+                     
+<!-- Modal -->
 <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title" id="exampleModalLongTitle">이용약관</h4>
+        <h3 class="modal-title" id="exampleModalLongTitle">이용약관</h3>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
 <!--         ... -->
-  
-               
-           <form action="http://localhost:8080/findhome/join" id="joinForm">
-            <ul class="join_box">
-                <li class="checkBox check01">
-                    <ul class="clearfix">
-                        <li>이용약관, 개인정보 수집 및 이용,위치정보 이용약관(선택),<br>
-                        프로모션 안내 메일 수신(선택)에 모두 동의합니다.</li>
-                        <li class="checkAllBtn">
-                            <input type="checkbox" name="check1" id="chkAll" class="chkAll" onclick="allCheck()">
-                        </li>
-                    </ul>
-                </li>
-                <li class="checkBox check02">
-                    <ul class="clearfix">
-                        <li>이용약관 동의(필수)</li>
-                        <li class="checkBtn">
-                            <input type="checkbox" name="check2"  id="chk1"> 
-                        </li>
-                    </ul>
-                    <textarea name="" id="">제1조(목적)
+
+<article id="content" class="cols-d">
+	<div>
+		<form id="terms_form" class="form-f" action="http://localhost:8080/findhome/join">
+			<h4 class="scheme-g">●이용약관1</h4>
+			<textarea style="font-size:1em;" cols="64" rows="3">
+제1조(목적)
 본 회원약관은 findhome(이하 '갑'라 한다)이 운영하는 인터넷관련 서비스(이하 '서비스'라 한다)를 이용함에 있어 관리자와 이용자(이하 '회원'라 한다)의 권리, 의무 및 책임사항을 규정함을 목적으로 한다.
 제2조 (약관의 효력)
 1.본 약관은 '갑'에 회원 가입 시 회원들에게 통지함으로써 효력을 발생합니다.
@@ -460,22 +485,14 @@
 1.회원: '갑'과 서비스 이용에 관한 계약을 체결한 자
 2.아이디(ID): 회원 식별과 회원의 서비스 이용을 위하여 회원이 선정하고 '갑'이 승인하는 문자와 숫자의 조합
 3.비밀번호: 회원이 통신상의 자신의 비밀을 보호하기 위해 선정한 문자와 숫자의 조합
-제6조 (이용신청)
-1.회원 가입은 온라인으로 가입신청 양식에 기록하여 '갑'에 제출함으로써 이용신청을 할 수 있습니다.
-2.가입희망 회원은 반드시 자신의 본명 및 주민등록번호로 이용신청을 하여야 하며, 1개의 ID만 신청을 할 수 있습니다.
-제7조 (회원가입의 승낙)
-'갑'의 회원 가입 신청 양식에 가입 희망 회원이 인터넷으로 제6조와 같이 신청하면 '갑'은 바로 가입을 승인하여 서비스를 이용할 수 있다.
-       </textarea>
-                </li>
-                <li class="checkBox check03">
-                    <ul class="clearfix">
-                        <li>개인정보 수집 및 이용에 대한 안내(필수)</li>
-                        <li class="checkBtn">
-                            <input type="checkbox" name="check2" id="chk2" > 
-                        </li>
-                    </ul>
- 
-                    <textarea name="" id="">('http://localhost:8080/findhome/join'이하 'findhome')은(는) 「개인정보 보호법」 제30조에 따라 정부주체의 개인정보를 보호하고 이와 관련한 고충을 신속하고 원활하게 처리할 수 있도록 하기 위하여 다음과 같이 개인정보 처리방침을 수립·공개합니다.
+
+			</textarea>
+			<p>
+				<input type="checkbox" id="check_1"  name="" /> 위의 약관에 동의 합니다.<br />
+			</p>			
+			<h4 class="scheme-g">●이용약관2</h4>
+			<textarea style="font-size:1em;" cols="64" rows="3">
+('http://localhost:8080/findhome/join'이하 'findhome')은(는) 「개인정보 보호법」 제30조에 따라 정부주체의 개인정보를 보호하고 이와 관련한 고충을 신속하고 원활하게 처리할 수 있도록 하기 위하여 다음과 같이 개인정보 처리방침을 수립·공개합니다.
 ○ 이 개인정보처리방침은 2021년 4월 26부터 적용됩니다.
 제1조(개인정보의 처리 목적)
 ('http://localhost:8080/findhome/join'이하 'findhome')은(는) 다음의 목적을 위하여 개인정보를 처리합니다. 처리하고 있는 개인정보는 다음의 목적 이외의 용도로는 이용되지 않으며 이용 목적이 변경되는 겨우에는 「개인정보 보호법」 제18조에 따라 별도의 동의를 받는 등 필요한 조치를 이행할 예정입니다.
@@ -488,24 +505,14 @@
 제2조(개인정보의 처리 및 보유 기간)
 ① 은(는) 법령에 따른 개인정보 보유·이용기간 또는 정보주체로부터 개인정보를 수집 시에 동의받은 개인정보 보유·이용기간 내에서 개인정보를 처리·보유합니다.
 ② 각각의 개인정보 처리 및 보유 기간은 다음과 같습니다.
-1.<홈페이지 회원가입 및 관리>
-<홈페이지 회원가입 및 관리>와 관련한 개인정보는 수집.이용에 관한 동의일로부터<1년>까지 위 이용목적을 위하여 보유.이용됩니다.
-보유근거 : 고객관리, 서비스 부정이용 방지
-관련법령 : 신용정보의 수집/처리 및 이용 등에 관한 기록 : 3년
-제3조(개인정보의 제3자 제공)
-① 은(는) 개인정보를 제1조(개인정보의 처리 목적)에서 명시한 범위 내에서만 처리하며, 정보주체의 동의, 법률의 특별한 규정 등 「개인정보 보호법」 제17조 및 제18조에 해당하는 경우에만 개인정보를 제3자에게 제공합니다.
-② 은(는) 다음과 같이 개인정보를 제3자에게 제공하고 있습니다.
-		</textarea>
-                </li>
-                <li class="checkBox check03">
-                    <ul class="clearfix">
-                        <li>위치정보 이용약관 동의(선택)</li>
-                        <li class="checkBtn">
-                            <input type="checkbox" name="check2" >
-                        </li>
-                    </ul>
- 
-                    <textarea name="" id=""> 제 1 조 (목적)
+
+       
+			</textarea>
+			<p>
+				<input type="checkbox" id="check_2"  name="" /> 위의 약관에 동의 합니다.<br />
+			</p>
+			<h4 class="scheme-g">●개인정보취급방침</h4>
+			<textarea style="font-size:1em;" cols="64" rows="3"> 제 1 조 (목적)
 본 약관은 findhome이 제공하는 위치기반서비스에 대해 회사와 위치기반서비스를 이용하는 개인위치정보주체(이하 "이용자")간의 권리·의무 및 책임사항, 기타 필요한 사항 규정을 목적으로 합니다.
 제 2 조 (이용약관의 효력 및 변경)
 ① 본 약관은 이용자가 본 약관에 동의하고 회사가 정한 절차에 따라 위치기반서비스의 이용자로 등록됨으로써 효력이 발생합니다.
@@ -534,31 +541,25 @@
 1. 이용자에 대한 위치정보 수집·이용·제공사실 확인자료
 2. 이용자의 개인위치정보가 위치정보의 보호 및 이용 등에 관한 법률 또는 다른 법령의 규정에 의하여 제3자에게 제공된 이유 및 내용
 ⑤ 이용자는 권리행사를 위해 본 약관 제14조의 연락처를 이용하여 회사에 요청할 수 있습니다.
-       </textarea>
-                </li>
-                <li class="checkBox check04">
-                    <ul class="clearfix">
-                        <li>이벤트 등 프로모션 알림 메일 수신(선택)</li>
-                        <li class="checkBtn">
-                            <input type="checkbox" name="check2" >
-                        </li>
-                    </ul>
- 
-                </li>
-            </ul>
-            <ul class="footBtwrap clearfix">
-<!--             <button type="button" class="btn " data-dismiss="modal">비동의</button> -->
-<!--                 <li><button type="button" class="fpmgBt1 " data-dismiss="modal">동의</button></li> -->
-<!--                 <li><button type="button"  name="checkButton" class="fpmgBt2" data-dismiss="modal" >동의</button></li> -->
-					<li><input type="checkbox" class="fpmgBt1" >동의하지 않습니다</li>
-					<li><input type="checkbox" class="fpmgBt2" >동의합니다</li>
-            </ul>
-       </form>
 
-<!--           <div class="col-md-6" id="map"></div> -->
-        </div>
+			</textarea>
+			<p>
+				<input type="checkbox" id="check_3"  name="" /> 위의 약관에 동의 합니다.<br />
+<!-- 				<input type="button" id="nextBtn"  class="button_big" style="padding:0 10px 10px 10px;height:24px;" value="다음단계로"/> -->
+			</p>
+		</form>
+	</div>	
+</article>
+
       </div>
-       
+      <div class="modal-footer">
+  
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+       <input type="button" id="nextBtn"  class="button_big" style="padding:10px 20px 20px 20px;height:50px;" value="다음단계로"/>
+      </div>
+    </div>
+  </div>
+</div>
             
     </section>
 
