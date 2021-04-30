@@ -127,7 +127,14 @@ th, td {
 	text-align: left;
 }
   
-						
+.btn btn-secondary > a:visited{
+	color: white;
+}
+
+.btn btn-secondary > a:link{
+	color: white;
+}
+					
 </style>
 
 <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
@@ -297,8 +304,8 @@ th, td {
 									for="exampleCheck1">
 									<p class="rate">
 										<span><i class="icon-star"></i><i class="icon-star"></i><i
-											class="icon-star"></i><i class="icon-star"></i><i
-											class="icon-star-o"></i></span>
+											class="icon-star"></i><i class="icon-star"></i>
+											<i class="icon-star-o"></i></span>
 									</p>
 								</label>
 							</div>
@@ -370,119 +377,140 @@ th, td {
 
 
 
+
 						<div class="col-md-12 hotel-single mt-4 mb-5 ftco-animate">
 							<div class="info-container">
-							<span>원룸/월세</span>
-							<h2>역세권 위치 좋은 원룸</h2>
+								<span>원룸/월세</span>
+							<h2>즉시 입주 가능한 주방 분리형 원룸</h2>
+
 							<p class="rate mb-5">
 								<span class="loc"><a href="#"><i class="icon-map"></i>
 										부산진구 전포동 123-45</a></span><br> 
-										<i class="far fa-heart fa-1x"></i> 마음에 들어요
-										<h5><i class="fas fa-user" style="width: 20; height: 20"></i>서면 공인중개사무소 </h5>
-										
-										
-									<div><button type="button" class="btn btn-secondary"><a href="tel:02-1234-1234">전화하기</a></button>
-										<button type="button" class="btn btn-secondary">채팅하기</button></div>
+										<span style="margin-left:0.5em;color: #f85959;"><i class="far fa-heart fa-1x"></i> 마음에 들어요 </span>
+
+								<h5 style="text-align: left;">
+									<i class="fas fa-user" style="width: 20; height: 20"></i> 서면
+									공인중개사무소
+								</h5>
+
+								<div>
+
+									<a href="tel:051-1234-1234"><button type="button" class="btn btn-secondary"
+										style="float: left; margin-right: 0.5em;">
+										전화하기
+									</button></a>
+									<button type="button" class="btn btn-secondary"
+										style="float: left;">채팅하기</button>
+
+								</div>
+							
 								</div>
 								 </div>
 							</div>
-
-
-
 							<div class="d-md-flex mt-5 mb-5">
-									<table>
-										<thead>
-											<tr>
-												<th>방 형태</th>
-												<td>분리형 원룸(욕실 1개)</td>
-											</tr>
-										</thead>
-										<tbody>
-											<tr>
-												<th>건물 유형</th>
-												<td>다세대 주택</td>
-											</tr>
-											<tr>
-												<th>건물 크기</th>
-												<td>24m<sup>2</sup></td>
-											</tr>
-											<tr>
-												<th>건물 층수</th>
-												<td>3/5</td>
-											</tr>
-											<tr>
-												<th>입주 가능일</th>
-												<td>즉시 입주</td>
-											</tr>
+								<table>
+									<thead>
+										<tr>
+											<th>방 형태</th>
+											<td>분리형 원룸(욕실 1개)</td>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<th>건물 유형</th>
+											<td>다세대 주택</td>
+										</tr>
+										<tr>
+											<th>건물 크기</th>
+											<td>24m<sup>2</sup></td>
+										</tr>
+										<tr>
+											<th>건물 층수</th>
+											<td>3/5</td>
+										</tr>
+										<tr>
+											<th>입주 가능일</th>
+											<td>즉시 입주</td>
+										</tr>
 
-											<tr>
-												<th>관리비</th>
-												<td>15만원(관리비 외 사용 따라 부과 전기, 가스, 수도, 인터넷, 티비)</td>
-											</tr>
+										<tr>
+											<th>관리비</th>
+											<td>15만원(관리비 외 사용 따라 부과 전기, 가스, 수도, 인터넷, 티비)</td>
+										</tr>
 
-											<tr>
-												<th>주소</th>
-												<td>부산진구 전포동 123-45</td>
-											</tr>
-										</tbody>
-									</table>
-									
+										<tr>
+											<th>주소</th>
+											<td>부산진구 전포동 123-45</td>
+										</tr>
+									</tbody>
+								</table>
+
 							</div>
-							
+
 							<br>
-							
+
 							<div class="option-info-container">
-<!-- 								<div class="room-detail-option-title">옵션</div> -->
+								<!-- 								<div class="room-detail-option-title">옵션</div> -->
 								<h4 class="mb-5">옵션</h4>
 								<div class="room-detail-option-item-wrapper">
-								
-								<div class="room-detail-content-option-item">
-									<img src="${pageContext.request.contextPath}/resources/images/bed.png" width="50" height="50">
-									<div class="room-detail-content-option-item-name">침대</div>
-								</div>
-							
-								<div  class="room-detail-content-option-item">
-									<img src="${pageContext.request.contextPath}/resources/images/fridge.png" width="50" height="50">
-									<div class="room-detail-content-option-item-name">냉장고</div>
-								</div>
-								
-								<div  class="room-detail-content-option-item">
-									<img src="${pageContext.request.contextPath}/resources/images/television.png" width="50" height="50">
-									<div class="room-detail-content-option-item-name">TV</div>
-								</div>
-								
-								<div  class="room-detail-content-option-item">
-									<img src="${pageContext.request.contextPath}/resources/images/air-conditioner.png" width="50" height="50">
-									<div class="room-detail-content-option-item-name">에어컨</div>
-								</div>
-								
-								<div  class="room-detail-content-option-item">
-									<img src="${pageContext.request.contextPath}/resources/images/microwave.png" width="50" height="50">
-									<div class="room-detail-content-option-item-name">전자레인지</div>
-								</div>
+
+									<div class="room-detail-content-option-item">
+										<img
+											src="${pageContext.request.contextPath}/resources/images/bed.png"
+											width="50" height="50">
+										<div class="room-detail-content-option-item-name">침대</div>
+									</div>
+
+									<div class="room-detail-content-option-item">
+										<img
+											src="${pageContext.request.contextPath}/resources/images/fridge.png"
+											width="50" height="50">
+										<div class="room-detail-content-option-item-name">냉장고</div>
+									</div>
+
+									<div class="room-detail-content-option-item">
+										<img
+											src="${pageContext.request.contextPath}/resources/images/television.png"
+											width="50" height="50">
+										<div class="room-detail-content-option-item-name">TV</div>
+									</div>
+
+									<div class="room-detail-content-option-item">
+										<img
+											src="${pageContext.request.contextPath}/resources/images/air-conditioner.png"
+											width="50" height="50">
+										<div class="room-detail-content-option-item-name">에어컨</div>
+									</div>
+
+									<div class="room-detail-content-option-item">
+										<img
+											src="${pageContext.request.contextPath}/resources/images/microwave.png"
+											width="50" height="50">
+										<div class="room-detail-content-option-item-name">전자레인지</div>
+									</div>
 								</div>
 							</div>
-							
-							<br>
-							
-							<div class="map-container">
-									<h4 class="mb-5">위치 정보</h4>
-									<h6 class="mb-5">부산진구 전포동 123-45 </h6>
-								<div id="map" style="width: 500px; height: 400px;">
-							
-							
 
-							
-<!-- 						<script type="text/javascript" -->
-<!-- 							src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4e97625a0c2b00cdf9292bd703ece0f7"></script> -->
-<!-- 						<script> -->
-						
-						<!-- services 라이브러리 불러오기 -->
-						<script type="text/javascript" 
-						src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4e97625a0c2b00cdf9292bd703ece0f7&libraries=services,clusterer,drawing">
+							<br>
+
+							<div class="map-container">
+								<h4 class="mb-5">위치 정보</h4>
+								<h6 class="mb-5">부산진구 전포동 123-45</h6>
+								<div id="map" style="width: 500px; height: 400px;">
+
+
+
+
+									<!-- 						<script type="text/javascript" -->
+									<!-- 							src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4e97625a0c2b00cdf9292bd703ece0f7"></script> -->
+									<!-- 						<script> -->
+
+									<!-- services 라이브러리 불러오기 -->
+									<script type="text/javascript"
+										src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4e97625a0c2b00cdf9292bd703ece0f7&libraries=services,clusterer,drawing">
 						</script>
-						
-						<script>
+
+									<script>
 							var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 							mapOption = {
 								center : new kakao.maps.LatLng(33.450701,
@@ -530,66 +558,63 @@ th, td {
 											});
 						</script>
 
-						</div>
-					</div>
-						
-
-					<div class="room-contact-container">	
-						<div class="col-md-12 hotel-single ftco-animate mb-5 mt-4">
-							<h4 class="mb-5">매물 문의하기 &amp; 상담예약</h4>
-							<div class="fields">
-								<div class="row">
-									<div class="col-md-6">
-										<div class="form-group">
-											<input type="text" class="form-control" placeholder="이름">
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="form-group">
-											<input type="text" class="form-control" placeholder="휴대폰 번호">
-										</div>
-									</div>
-									<div class="col-md-12">
-										<div class="form-group">
-											<input type="text" id="checkin_date" class="form-control"
-												placeholder="방문하실 날짜">
-										</div>
-									</div>
+								</div>
+							</div>
 
 
-									<div class="col-md-12">
-										<div class="form-group">
-											<div class="select-wrap one-third">
-												<div class="icon">
-													<span class="ion-ios-arrow-down"></span>
+							<div class="room-contact-container">
+								<div class="col-md-12 hotel-single ftco-animate mb-5 mt-4">
+									<h4 class="mb-5">매물 문의하기 &amp; 상담예약</h4>
+									<div class="fields">
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group">
+													<input type="text" class="form-control" placeholder="이름">
 												</div>
-												<select name="form-control" id="contact-select" class="form-control">
-													<option value="0">문의할 내용을 입력하세요.</option>
-													<option value="1">이 집 볼 수 있나요?</option>
-													<option value="2">비슷한 조건의 다른집이 있나요?</option>
-													<option id="val3" value="3">문의할 내용을 직접 작성할게요.</option>
-												</select>
 											</div>
-										</div>
-									</div>
-												<div class="col-md-12">
-													<div class="form-group">
-														<input type="text" id="contact-form" class="form-control" placeholder="내용을 입력하세요.">
-													</div>
+											<div class="col-md-6">
+												<div class="form-group">
+													<input type="text" class="form-control"
+														placeholder="휴대폰 번호">
 												</div>
-												
-									<div class="col-md-12">
-										<div class="form-group">
-											<input type="submit" value="문의 하기"
-												class="btn btn-primary py-3">
+											</div>
+											<div class="col-md-12">
+												<div class="form-group">
+													<input type="text" id="checkin_date" class="form-control"
+														placeholder="방문하실 날짜">
+												</div>
+											</div>
+
+
+											<div class="col-md-12">
+												<div class="form-group">
+													<a class="btn btn-primary py-3" id="contact-content"
+														data-bs-toggle="collapse" href="#collapseExample"
+														role="button" aria-expanded="false"
+														aria-controls="collapseExample"> 문의할 내용 </a>
+												</div>
+
+												<div class="collapse" id="collapseExample">
+													<div class="card card-body">Some placeholder content
+														for the collapse component. This panel is hidden by
+														default but revealed when the user activates the relevant
+														trigger.</div>
+												</div>
+											</div>
+
+
+											<div class="col-md-12">
+												<div class="form-group">
+													<input type="submit" value="문의 하기"
+														class="btn btn-primary py-3">
+												</div>
+											</div>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-				</div>		
-					<!-- 문의하기 끝 -->
+						<!-- 문의하기 끝 -->
 					</div>
 				</div>
 				<!-- .col-md-8 -->
@@ -664,14 +689,11 @@ th, td {
 	<script src="${pageContext.request.contextPath}/resources/script/jquery-3.6.0.js"></script>
 	<script type="text/javascript">
 		$(function() {
-			$('#contact-form').hide();
+			$('#collapseExample').hide();
 			
-			$('#contact-select').change(function() {
-				if($('#contact-select').val()=="3"){
-					$('#contact-form').show();
-				}else{
-					$('#contact-form').hide();
-				}
+			$('#contact-content').click(function() {
+					$('#collapseExample').show();
+				
 			});
 		});
 	
