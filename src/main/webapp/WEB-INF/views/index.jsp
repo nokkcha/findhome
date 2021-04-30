@@ -28,6 +28,44 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/flaticon.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/icomoon.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
+    
+    <style type="text/css">
+    	body {
+  margin: 0;
+  font-family: "Work Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  text-align: left;
+  
+  .container {
+  padding: 20px 10px;
+}
+
+.speech-bubble {
+	position: relative;
+	background: #302c2c;
+	border-radius: .4em;
+}
+
+.speech-bubble:after {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	width: 0;
+	height: 0;
+	border: 32px solid transparent;
+	border-top-color: #302c2c;
+	border-bottom: 0;
+	border-right: 0;
+	margin-left: -16px;
+	margin-bottom: -32px;
+}
+  
+    </style>    
+   
   </head>
   <body>
   
@@ -39,7 +77,18 @@
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start" data-scrollax-parent="true">
           <div class="col-md-9 ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
             <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><strong>좋은 방을 <br></strong> 찾으시나요?</h1>
-            <p data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Find great places to stay, eat, shop, or visit from local experts</p>
+            
+<!--             <p data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Find great places to stay, eat, shop, or visit from local experts</p> -->
+
+            <div class="container">
+              <div class="btn-group" role="group" aria-label="...">
+                  <button type="button" class="btn btn-primary button-class1">원룸</button>
+                  <button type="button" class="btn btn-default button-class2">오피스텔</button>
+              </div>
+            </div>
+            
+           
+            
             <div class="block-17 my-4">
               <form action="" method="post" class="d-block d-flex">
                 <div class="fields d-block d-flex">
@@ -75,7 +124,8 @@
 <!-- 인기 매물 시작-->
     <section class="ftco-section">
     	<div class="container">
-				<div class="row justify-content-start mb-5 pb-3">
+				<div class="row justify-content-start"> 
+<!-- 				mb-5 pb-3 -->
           <div class="col-md-7 heading-section ftco-animate">
           	<span class="subheading">Special Offers</span>
             <h2 class="mb-4"><strong>인기</strong> 매물</h2>
@@ -193,7 +243,8 @@
 
 <section class="ftco-section ftco-destination">
     	<div class="container">
-    		<div class="row justify-content-start mb-5 pb-3">
+    		<div class="row justify-content-start">
+<!--     		 mb-5 pb-3 -->
           <div class="col-md-7 heading-section ftco-animate">
           	<span class="subheading">Featured</span>
             <h2 class="mb-4"><strong>최신</strong> 매물</h2>
@@ -328,7 +379,32 @@
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 
 
-  <script src="${pageContext.request.contextPath}/resources/js/jquery.min.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js">
+  </script>
+  
+  <script>
+  $(document).ready(function(){	  
+      	  $('.button-class1').click(function(){      		  
+//       		  alert("원룸버튼클릭");
+      		  
+      	    if( $(this).hasClass('btn-default') ) $(this).removeClass('btn-default');
+      	    if( !$(this).hasClass('btn-primary') ) $(this).addClass('btn-primary');
+      	    if( $('.button-class2').hasClass('btn-primary') ) $('.button-class2').removeClass('btn-primary');
+      	    if( !$('.button-class2').hasClass('btn-default') ) $('.button-class2').addClass('btn-default');
+      	  });
+      	  
+      	  $('.button-class2').click(function(){
+//       		alert("오피스텔버튼클릭");
+      		  
+      	    if( $(this).hasClass('btn-default') ) $(this).removeClass('btn-default');
+      	    if( !$(this).hasClass('btn-primary') ) $(this).addClass('btn-primary');
+      	    if( $('.button-class1').hasClass('btn-primary') ) $('.button-class1').removeClass('btn-primary');
+      	    if( !$('.button-class1').hasClass('btn-default') ) $('.button-class1').addClass('btn-default');
+      	  });
+	  });
+  </script>
+  
+  
   <script src="${pageContext.request.contextPath}/resources/js/jquery-migrate-3.0.1.min.js"></script>
   <script src="${pageContext.request.contextPath}/resources/js/popper.min.js"></script>
   <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
@@ -340,10 +416,10 @@
   <script src="${pageContext.request.contextPath}/resources/js/aos.js"></script>
   <script src="${pageContext.request.contextPath}/resources/js/jquery.animateNumber.min.js"></script>
   <script src="${pageContext.request.contextPath}/resources/js/bootstrap-datepicker.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/js/jquery.timepicker.min.js"></script>
+<%--   <script src="${pageContext.request.contextPath}/resources/js/jquery.timepicker.min.js"></script> --%>
   <script src="${pageContext.request.contextPath}/resources/js/scrollax.min.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-  <script src="${pageContext.request.contextPath}/resources/js/google-map.js"></script>
+<!--   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script> -->
+<%--   <script src="${pageContext.request.contextPath}/resources/js/google-map.js"></script> --%>
   <script src="${pageContext.request.contextPath}/resources/js/main.js"></script>
     
   </body>
