@@ -79,170 +79,38 @@
 		<div class="container login">
 			<div class="row d-flex mb-5 contact-info"></div>
 			<script type="text/javascript">
-			   function checkId() {
-				   var id = document.login.id.value;
-				   var lengthRegex1 = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/;
-					var checkIdResult = document.getElementById('checkIdResult');
-				   
-				   if(!lengthRegex1.exec(id)) {
-					   checkIdResult.innerHTML = "<font color='#FF0000'>올바르지 않은 이메일 양식입니다.</font>";
-					  return false;
-				   } else {
-					   checkIdResult.innerHTML = " ";
-					   return true;
-				   }
-				   
-			   }
-
-
-			   
-			   
-				function checkPassword() {
-					var pass1 = $('#pass1').val();
-
-					var lengthRegex2 = /^[A-Za-z0-9!@#$%]{8,16}$/;
-					var alphabetUpperRegex = /[A-Z]/; // 대문자 판별
-					var alphabetLowerRegex = /[a-z]/; // 소문자 판별
-					var numberRegex = /[0-9]/; // 숫자 판별
-					var specRegex = /[!@#$%]/; // 특수문자(!@#$%) 판별		
-					var checkResult = document.getElementById('checkPasswordResult');
-					
-					var checkResult2 = document
-					.getElementById('checkPasswordResult2');
-										
-					if (lengthRegex2.exec(pass1)) {
-						var point = 0;
-						if (alphabetUpperRegex.exec(pass1)) {
-							point = point + 1;
-						}
-						if (alphabetLowerRegex.exec(pass1)) {
-							point = point + 1;
-						}
-						if (numberRegex.exec(pass1)) {
-							point = point + 1;
-						}
-						if (specRegex.exec(pass1)) {
-							point = point + 1;
-						}
-
-						switch (point) {
-						case 3:
-							checkResult.innerHTML = "<font color='#006400'>안전</font>";
-							break;
-						case 2:
-							checkResult.innerHTML = "<font color='#FFD700'>보통</font>";
-							break;
-						default:
-							checkResult.innerHTML = "<font color='#FF0000'>위험</font>";
-							break;
-						}
-						
-						
-					} else {
-						checkResult.innerHTML = "<font color='#FF0000'>8~16자 영문 대 소문자, 숫자, 특수문자를 사용하세요.</font>";
-					} 
-				}
-				
-				
-				function checkPhone() {
-					var phone = $('#phone').val();
-					var checkPhone = document.getElementById('checkPhoneResult');
- 					var lengthRegex3 = /^(010|011)[-\s]?\d{3,4}[-\s]?\d{4}$/;
-					
-					
-					if(!lengthRegex3.exec(phone)) {
-						checkPhone.innerHTML = "<font color='#FF0000'>올바르지 않은 휴대폰 번호입니다.</font>";
-						return false;
-					} else {
-						checkPhone.innerHTML = " ";
-						return true;
-					}
-				}
-
-				
+			
+			
 				
 				$(document).ready(function() {
 					
 					$('#login').submit(function() {
 
-						var id = $('#id').val();
-						var pass1 = $('#pass1').val();
-						var pass2 = $('#pass2').val();
-						var phone = $('#phone').val();
-						var lengthRegex1 = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/;
-						var lengthRegex2 = /^[A-Za-z0-9!@#$%]{8,16}$/;
-						var lengthRegex3 = /^(010|011)[-\s]?\d{3,4}[-\s]?\d{4}$/;
 						
+						var checkIdResult = document.getElementById('checkIdResult');
+						var checkResult = document.getElementById('checkPasswordResult');
 						
-						if (id == "") {
+						if ($('#id').val() == "") {
 							$('#id').focus();
-							swal.fire("ID 입력", "ID를 입력해주세요", "error") //"info,success,warning,error" 중 택1							
-							return false;
-						}
-					
-						
-						if (!lengthRegex1.exec(id)) {
-							$('#id').focus();
-							swal.fire("ID 입력확인", "ID를 다시 입력해주세요", "error") //"info,success,warning,error" 중 택1							
+							checkIdResult.innerHTML = "<font color='#FF0000'>아이디를 입력하세요.</font>";						
 							return false;
 						}
 						
-						if (pass1 == "") {
+						
+						if ($('#pass1').val() == "") {
 							$('#pass1').focus();
-							swal.fire("패스워드 입력", "패스워드를 입력해주세요", "error") //"info,success,warning,error" 중 택1
-							return false;
-						}
-						
-						if (pass2 == "") {
-							$('#pass2').focus();
-							swal.fire("패스워드 입력확인", "패스워드를 입력 해주세요", "error") //"info,success,warning,error" 중 택1
-							return false;
-						}
-						
-						if (pass1 != pass2) {
-							$('#pass2').focus();
-							swal.fire("패스워드 불일치", "패스워드를 다시 입력해주세요", "error") //"info,success,warning,error" 중 택1
-							return false;
-						}
-						
-						if (!lengthRegex2.exec(pass1)) {
-							$('#pass1').focus();
-							swal.fire("패스워드 입력확인", "사용할 수 없는 패스워드입니다", "error") //"info,success,warning,error" 중 택1
-							return false;
-						}
-						
-						if (phone == "") {
-							$('#phone').focus();
-							swal.fire("전화번호 입력", "전화번호를 입력해주세요", "error") //"info,success,warning,error" 중 택1
-							return false;
-						}
-						
-						if (!lengthRegex3.exec(phone)) {
-							$('#phone').focus();
-							swal.fire("전화번호 입력확인", "전화번호를 다시 입력해주세요", "error") //"info,success,warning,error" 중 택1
+							checkResult.innerHTML = "<font color='#FF0000'>비밀번호를 입력하세요.</font>";	
 							return false;
 						}
 						
 						
-
 					});
 				});
 				
 				
-				function checkPassword2() {
-					var pass1 = $('#pass1').val();
-					var pass2 = $('#pass2').val();
-					
-					var checkResult3 = document.getElementById('checkPasswordResult3');
-					
-					if(pass1 != pass2) {
-						checkResult3.innerHTML = "<font color='#FF0000'>비밀번호 불일치</font>";
-					} else {
-						checkResult3.innerHTML = "<font color='#000000'>비밀번호 일치</font>";
-					}
-				}
+			
 			</script>
-			<h2>회원가입</h2>
+			<h2>로그인</h2>
 			<div class="row block-9">
 				<div class="pr-md-5">
 					<!-- col-md-6 제거함 -->
@@ -263,28 +131,8 @@
 						  <br><span class="check-group" id="checkPasswordResult"></span>
 						</div>
 						
-						<div class="form-group" align="left">
-							<label class="form-control-label">비밀번호 확인</label><input
-								type="password" class="form-control" name="pass2" id="pass2"
-								onkeyup="checkPassword2()">
-								
-						  <br><span class="check-group" id="checkPasswordResult3"></span>
-						</div>
-						<div class="form-group" align="left">
-							<label class="form-control-label">휴대폰 번호</label><input type="tel"
-								class="form-control" name="phone" id="phone"
-								onkeyup="checkPhone()">
-								
-						  <br><span class="check-group" id="checkPhoneResult"></span>	
-						</div>
-						<div>
-							<label> <input type="checkbox" name="agreement"
-								onclick="checkagr()" /> <span><b>이용약관</b> 및 개인정보 취급방침에
-									동의합니다.</span>
-							</label>
-						</div>
 						<div class="form-group">
-							<input type="submit" value="회원가입"
+							<input type="submit" value="로그인"
 								class="btn btn-primary py-3 px-5" id="btn">
 						</div>
 					</form>

@@ -46,6 +46,9 @@
 	href="${pageContext.request.contextPath}/resources/css/icomoon.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/style.css">
+	
+
+	
 <style type="text/css">
 #table {
 	table-layout: fixed;
@@ -56,7 +59,84 @@
 	height: auto;
 	border: 0
 }
+
+table {
+	width: 100%;
+	border-top: 1px solid #dddddddd;
+	border-collapse: collapse;
+}
+
+th, td {
+	border-bottom: 1px solid #dddddddd;
+	padding: 10px;
+	text-align: center;
+	}
+			
+			
+.option-info-container{
+  padding: 50px 100px 50px 100px;
+  border-top: 1px solid #dddddddd;
+  border-bottom: 1px solid #dddddddd;
+}
+
+
+.room-detail-option-item-wrapper{
+	margin-top: 40px;
+	display: flex;
+
+}
+
+
+
+.room-detail-content-option-item {
+  text-align: center;
+  flex: 1;
+}
+
+.room-detail-content-option-item > img {
+  width: 60px;
+}
+
+.room-detail-content-option-item-name {
+  margin-top: 15px;
+  text-align: center;
+  font-size: 15px;
+}
+
+.room-detail-option-title {
+  font-size: 27px;
+  text-align: center;
+}
+
+.room-contact-container{
+  margin-top: 25px;
+  border-top: 1px solid #dddddddd;
+}
+
+.map-container{
+  padding-top: 50px;
+  padding-bottom: 50px;
+  border-top: 1px solid #dddddddd;
+  
+}
+.map-container #map {/* border:1px solid red;  */
+  margin-left:auto !important; 
+  margin-right:auto !important; }
+  
+.info-container {
+	text-align: left;
+}
+  
+.btn btn-secondary > a:visited{
+	color: white;
+}
+
+.btn btn-secondary > a:link{
+	color: white;
+}
+					
 </style>
+
 <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 
 </head>
@@ -224,8 +304,8 @@
 									for="exampleCheck1">
 									<p class="rate">
 										<span><i class="icon-star"></i><i class="icon-star"></i><i
-											class="icon-star"></i><i class="icon-star"></i><i
-											class="icon-star-o"></i></span>
+											class="icon-star"></i><i class="icon-star"></i>
+											<i class="icon-star-o"></i></span>
 									</p>
 								</label>
 							</div>
@@ -265,7 +345,10 @@
 						</form>
 					</div>
 				</div>
-				<div class="col-lg-9">
+				
+				<!-- 이미지 슬라이더 -->
+
+								<div class="col-lg-9">
 					<div class="row">
 						<div class="col-md-12 ftco-animate">
 							<div class="single-slider owl-carousel">
@@ -294,75 +377,140 @@
 
 
 
+
 						<div class="col-md-12 hotel-single mt-4 mb-5 ftco-animate">
-							<span>원룸/월세</span>
-							<h2>
-								역세권 위치 좋은 원룸 <i class="far fa-heart fa-1x"></i>
-							</h2>
+							<div class="info-container">
+								<span>원룸/월세</span>
+							<h2>즉시 입주 가능한 주방 분리형 원룸</h2>
+
 							<p class="rate mb-5">
 								<span class="loc"><a href="#"><i class="icon-map"></i>
-										서울특별시 영등포구 여의동로 330 한강사업본부 여의도안내센터</a></span> <span><h5>
-										<i class="fas fa-user fa-1x" style="width: 20; height: 20"></i>
-										서면 공인중개사무소
-									</h5>
-									<div>
-										<a href="tel:02-1234-1234"><input type="image"
-											src="${pageContext.request.contextPath}/resources/images/callButton.png"
-											width="100" ;height="100"></a> <input type="image"
-											src="${pageContext.request.contextPath}/resources/images/chatButton.png"
-											width="100" ;height="100">
-									</div> </span>
+										부산진구 전포동 123-45</a></span><br> 
+										<span style="margin-left:0.5em;color: #f85959;"><i class="far fa-heart fa-1x"></i> 마음에 들어요 </span>
 
+								<h5 style="text-align: left;">
+									<i class="fas fa-user" style="width: 20; height: 20"></i> 서면
+									공인중개사무소
+								</h5>
 
+								<div>
 
+									<a href="tel:051-1234-1234"><button type="button" class="btn btn-secondary"
+										style="float: left; margin-right: 0.5em;">
+										전화하기
+									</button></a>
+									<button type="button" class="btn btn-secondary"
+										style="float: left;">채팅하기</button>
 
-							</p>
+								</div>
+							
+								</div>
+								 </div>
+							</div>
+							<div class="d-md-flex mt-5 mb-5">
+								<table>
+									<thead>
+										<tr>
+											<th>방 형태</th>
+											<td>분리형 원룸(욕실 1개)</td>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<th>건물 유형</th>
+											<td>다세대 주택</td>
+										</tr>
+										<tr>
+											<th>건물 크기</th>
+											<td>24m<sup>2</sup></td>
+										</tr>
+										<tr>
+											<th>건물 층수</th>
+											<td>3/5</td>
+										</tr>
+										<tr>
+											<th>입주 가능일</th>
+											<td>즉시 입주</td>
+										</tr>
 
-							<p>서면역 8번출구에서 도보로 4분거리인 신축 원룸 건물이 새로 나왔습니다. 간단한 상세정보를 입력하세요.
-							</p>
+										<tr>
+											<th>관리비</th>
+											<td>15만원(관리비 외 사용 따라 부과 전기, 가스, 수도, 인터넷, 티비)</td>
+										</tr>
+
+										<tr>
+											<th>주소</th>
+											<td>부산진구 전포동 123-45</td>
+										</tr>
+									</tbody>
+								</table>
+
+							</div>
 
 							<br>
-							<h4 class="mb-4">옵션 정보</h4>
 
-							<div class="d-md-flex mt-5 mb-5">
-								<table id="table" border="1" style="width: 1000">
-									<tr>
-										<th>방방 형태</th>
-										<td>분리형 원룸(욕실 1개)</td>
-										<th>옵션</th>
-										<td>풀옵션</td>
-									</tr>
+							<div class="option-info-container">
+								<!-- 								<div class="room-detail-option-title">옵션</div> -->
+								<h4 class="mb-5">옵션</h4>
+								<div class="room-detail-option-item-wrapper">
 
-									<tr>
-										<th>건물 크기</th>
-										<td>24m<sup>2</sup></td>
-										<th>건물 종류</th>
-										<td>제2종근린생활시설</td>
-									</tr>
+									<div class="room-detail-content-option-item">
+										<img
+											src="${pageContext.request.contextPath}/resources/images/bed.png"
+											width="50" height="50">
+										<div class="room-detail-content-option-item-name">침대</div>
+									</div>
 
-									<tr>
-										<th>건물 층수</th>
-										<td>3</td>
-										<th>입주 가능일</th>
-										<td>즉시 가능</td>
-									</tr>
+									<div class="room-detail-content-option-item">
+										<img
+											src="${pageContext.request.contextPath}/resources/images/fridge.png"
+											width="50" height="50">
+										<div class="room-detail-content-option-item-name">냉장고</div>
+									</div>
 
-								</table>
+									<div class="room-detail-content-option-item">
+										<img
+											src="${pageContext.request.contextPath}/resources/images/television.png"
+											width="50" height="50">
+										<div class="room-detail-content-option-item-name">TV</div>
+									</div>
+
+									<div class="room-detail-content-option-item">
+										<img
+											src="${pageContext.request.contextPath}/resources/images/air-conditioner.png"
+											width="50" height="50">
+										<div class="room-detail-content-option-item-name">에어컨</div>
+									</div>
+
+									<div class="room-detail-content-option-item">
+										<img
+											src="${pageContext.request.contextPath}/resources/images/microwave.png"
+											width="50" height="50">
+										<div class="room-detail-content-option-item-name">전자레인지</div>
+									</div>
+								</div>
 							</div>
-							<p>● 보증금 100~300까지 조정가능 ● 위치 : 신림역 도보 2분 d이내 ● 신림 초역세권의 깔끔한
-								빌트인원룸입니다. ✔ 직접 촬영한 100% 실매물입니다. ✔ 큰 길가, 건물 내/외부 CCTV 설치되어 안전해요</p>
-						</div>
-						<div id="map" style="width: 500px; height: 400px;"></div>
-<!-- 						<script type="text/javascript" -->
-<!-- 							src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4e97625a0c2b00cdf9292bd703ece0f7"></script> -->
-<!-- 						<script> -->
-						
-						<!-- services 라이브러리 불러오기 -->
-						<script type="text/javascript" 
-						src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4e97625a0c2b00cdf9292bd703ece0f7&libraries=services,clusterer,drawing">
+
+							<br>
+
+							<div class="map-container">
+								<h4 class="mb-5">위치 정보</h4>
+								<h6 class="mb-5">부산진구 전포동 123-45</h6>
+								<div id="map" style="width: 500px; height: 400px;">
+
+
+
+
+									<!-- 						<script type="text/javascript" -->
+									<!-- 							src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4e97625a0c2b00cdf9292bd703ece0f7"></script> -->
+									<!-- 						<script> -->
+
+									<!-- services 라이브러리 불러오기 -->
+									<script type="text/javascript"
+										src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4e97625a0c2b00cdf9292bd703ece0f7&libraries=services,clusterer,drawing">
 						</script>
-						
-						<script>
+
+									<script>
 							var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 							mapOption = {
 								center : new kakao.maps.LatLng(33.450701,
@@ -410,359 +558,63 @@
 											});
 						</script>
 
-
-						<!-- 동영상 부분 -->
-						<!--           		<div class="col-md-12 hotel-single ftco-animate mb-5 mt-4"> -->
-
-						<!--           			<div class="block-16"> -->
-						<!-- 		              <figure> -->
-						<%-- 		                <img src="${pageContext.request.contextPath}/resources/images/room-2.png" alt="Image placeholder" class="img-fluid"> --%>
-						<!-- 		                <a href="https://vimeo.com/45830194" class="play-button popup-vimeo"><span class="icon-play"></span></a> -->
-						<!-- 		              </figure> -->
-						<!-- 		            </div> -->
-						<!--           		</div> -->
-
-						<div class="col-md-12 hotel-single ftco-animate mb-5 mt-4">
-							<h4 class="mb-4">옵션 정보</h4>
-							<div class="block-16">
-								<figure>
-									<img
-										src="${pageContext.request.contextPath}/resources/images/hotel-6.jpg"
-										alt="Image placeholder" class="img-fluid">
-									<a href="https://vimeo.com/45830194"
-										class="play-button popup-vimeo"><span class="icon-play"></span></a>
-								</figure>
+								</div>
 							</div>
-						</div>
-						<div class="col-md-12 hotel-single ftco-animate mb-5 mt-4">
-							<h4 class="mb-4">한줄 방소개</h4>
 
-							<h4 class="mb-4">주변의 다른방 살펴보기</h4>
 
-							<div class="row">
-								<div class="col-md-4">
-									<div class="destination">
-										<a href="hotel-single.html" class="img img-2"
-											src="${pageContext.request.contextPath}/resources/images/room-2.png"></a>
-										<div class="text p-3">
-											<div class="d-flex">
-												<div class="one">
-													<h3>
-														<a href="hotel-single.html">전포동, 부산진구</a>
-													</h3>
-													<p class="rate">
-														<i class="icon-star"></i> <i class="icon-star"></i> <i
-															class="icon-star"></i> <i class="icon-star"></i> <i
-															class="icon-star-o"></i> <span>8 Rating</span>
-													</p>
-												</div>
-												<div class="two">
-													<span class="price per-price">1000<br>
-													<small>/50</small></span>
+							<div class="room-contact-container">
+								<div class="col-md-12 hotel-single ftco-animate mb-5 mt-4">
+									<h4 class="mb-5">매물 문의하기 &amp; 상담예약</h4>
+									<div class="fields">
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group">
+													<input type="text" class="form-control" placeholder="이름">
 												</div>
 											</div>
-											<p>주변이 조용하고 깨끗한 매물입니다</p>
-											<hr>
-											<p class="bottom-area d-flex">
-												<span><i class="icon-map-o"></i> 전포동, 부산진구</span> <span
-													class="ml-auto"><a href="#">매물 문의</a></span>
-											</p>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-4">
-									<div class="destination">
-										<a href="hotel-single.html" class="img img-2"
-											style="background-image: url(images/room-5.jpg);"></a>
-										<div class="text p-3">
-											<div class="d-flex">
-												<div class="one">
-													<h3>
-														<a href="hotel-single.html">전포동, 부산진구</a>
-													</h3>
-													<p class="rate">
-														<i class="icon-star"></i> <i class="icon-star"></i> <i
-															class="icon-star"></i> <i class="icon-star"></i> <i
-															class="icon-star-o"></i> <span>8 Rating</span>
-													</p>
-												</div>
-												<div class="two">
-													<span class="price per-price">1000<br>
-													<small>/50</small></span>
+											<div class="col-md-6">
+												<div class="form-group">
+													<input type="text" class="form-control"
+														placeholder="휴대폰 번호">
 												</div>
 											</div>
-											<p>주변이 조용하고 깨끗한 매물입니다</p>
-											<hr>
-											<p class="bottom-area d-flex">
-												<span><i class="icon-map-o"></i> 전포동, 부산진구</span> <span
-													class="ml-auto"><a href="#">매물 문의</a></span>
-											</p>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-4">
-									<div class="destination">
-										<a href="hotel-single.html" class="img img-2"
-											style="background-image: url(images/room-6.jpg);"></a>
-										<div class="text p-3">
-											<div class="d-flex">
-												<div class="one">
-													<h3>
-														<a href="hotel-single.html">전포동, 부산진구</a>
-													</h3>
-													<p class="rate">
-														<i class="icon-star"></i> <i class="icon-star"></i> <i
-															class="icon-star"></i> <i class="icon-star"></i> <i
-															class="icon-star-o"></i> <span>8 Rating</span>
-													</p>
-												</div>
-												<div class="two">
-													<span class="price per-price">1000<br>
-													<small>/50</small></span>
+											<div class="col-md-12">
+												<div class="form-group">
+													<input type="text" id="checkin_date" class="form-control"
+														placeholder="방문하실 날짜">
 												</div>
 											</div>
-											<p>주변이 조용하고 깨끗한 매물입니다</p>
-											<hr>
-											<p class="bottom-area d-flex">
-												<span><i class="icon-map-o"></i> 전포동, 부산진구</span> <span
-													class="ml-auto"><a href="#">매물 문의</a></span>
-											</p>
+
+
+											<div class="col-md-12">
+												<div class="form-group">
+													<a class="btn btn-primary py-3" id="contact-content"
+														data-bs-toggle="collapse" href="#collapseExample"
+														role="button" aria-expanded="false"
+														aria-controls="collapseExample"> 문의할 내용 </a>
+												</div>
+
+												<div class="collapse" id="collapseExample">
+													<div class="card card-body">Some placeholder content
+														for the collapse component. This panel is hidden by
+														default but revealed when the user activates the relevant
+														trigger.</div>
+												</div>
+											</div>
+
+
+											<div class="col-md-12">
+												<div class="form-group">
+													<input type="submit" value="문의 하기"
+														class="btn btn-primary py-3">
+												</div>
+											</div>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-						<div class="col-md-12 hotel-single ftco-animate mb-5 mt-4">
-							<h4 class="mb-5">매물 문의하기 &amp; 상담예약</h4>
-							<div class="fields">
-								<div class="row">
-									<div class="col-md-6">
-										<div class="form-group">
-											<input type="text" class="form-control" placeholder="성명">
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="form-group">
-											<input type="text" class="form-control" placeholder="이메일">
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="form-group">
-											<input type="text" id="checkin_date" class="form-control"
-												placeholder="">
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="form-group">
-											<input type="text" id="checkin_date" class="form-control"
-												placeholder="">
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="form-group">
-											<div class="select-wrap one-third">
-												<div class="icon">
-													<span class="ion-ios-arrow-down"></span>
-												</div>
-												<select name="" id="" class="form-control" placeholder=".">
-													<option value="0">.</option>
-													<option value="1">1</option>
-													<option value="2">2</option>
-													<option value="3">3</option>
-													<option value="4">4</option>
-												</select>
-											</div>
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="form-group">
-											<div class="select-wrap one-third">
-												<div class="icon">
-													<span class="ion-ios-arrow-down"></span>
-												</div>
-												<select name="" id="" class="form-control" placeholder=".">
-													<option value="0">.</option>
-													<option value="1">1</option>
-													<option value="2">2</option>
-													<option value="3">3</option>
-													<option value="4">4</option>
-												</select>
-											</div>
-										</div>
-									</div>
-									<div class="col-md-12">
-										<div class="form-group">
-											<input type="submit" value="문의 하기"
-												class="btn btn-primary py-3">
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-12 hotel-single ftco-animate mb-5 mt-4">
-							<h4 class="mb-4">리뷰 &amp; 별점</h4>
-							<div class="row">
-								<div class="col-md-6">
-									<form method="post" class="star-rating">
-										<div class="form-check">
-											<input type="checkbox" class="form-check-input"
-												id="exampleCheck1"> <label class="form-check-label"
-												for="exampleCheck1">
-												<p class="rate">
-													<span><i class="icon-star"></i><i class="icon-star"></i><i
-														class="icon-star"></i><i class="icon-star"></i><i
-														class="icon-star"></i> 100 Ratings</span>
-												</p>
-											</label>
-										</div>
-										<div class="form-check">
-											<input type="checkbox" class="form-check-input"
-												id="exampleCheck1"> <label class="form-check-label"
-												for="exampleCheck1">
-												<p class="rate">
-													<span><i class="icon-star"></i><i class="icon-star"></i><i
-														class="icon-star"></i><i class="icon-star"></i><i
-														class="icon-star-o"></i> 30 Ratings</span>
-												</p>
-											</label>
-										</div>
-										<div class="form-check">
-											<input type="checkbox" class="form-check-input"
-												id="exampleCheck1"> <label class="form-check-label"
-												for="exampleCheck1">
-												<p class="rate">
-													<span><i class="icon-star"></i><i class="icon-star"></i><i
-														class="icon-star"></i><i class="icon-star-o"></i><i
-														class="icon-star-o"></i> 5 Ratings</span>
-												</p>
-											</label>
-										</div>
-										<div class="form-check">
-											<input type="checkbox" class="form-check-input"
-												id="exampleCheck1"> <label class="form-check-label"
-												for="exampleCheck1">
-												<p class="rate">
-													<span><i class="icon-star"></i><i class="icon-star"></i><i
-														class="icon-star-o"></i><i class="icon-star-o"></i><i
-														class="icon-star-o"></i> 0 Ratings</span>
-												</p>
-											</label>
-										</div>
-										<div class="form-check">
-											<input type="checkbox" class="form-check-input"
-												id="exampleCheck1"> <label class="form-check-label"
-												for="exampleCheck1">
-												<p class="rate">
-													<span><i class="icon-star"></i><i
-														class="icon-star-o"></i><i class="icon-star-o"></i><i
-														class="icon-star-o"></i><i class="icon-star-o"></i> 0
-														Ratings</span>
-												</p>
-											</label>
-										</div>
-									</form>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-12 hotel-single ftco-animate mb-5 mt-5">
-							<h4 class="mb-4">비슷한 매물</h4>
-							<div class="row">
-								<div class="col-md-4">
-									<div class="destination">
-										<a href="hotel-single.html" class="img img-2"
-											style="background-image: url(images/hotel-1.jpg);"></a>
-										<div class="text p-3">
-											<div class="d-flex">
-												<div class="one">
-													<h3>
-														<a href="hotel-single.html">전포동, 부산진구</a>
-													</h3>
-													<p class="rate">
-														<i class="icon-star"></i> <i class="icon-star"></i> <i
-															class="icon-star"></i> <i class="icon-star"></i> <i
-															class="icon-star-o"></i> <span>8 Rating</span>
-													</p>
-												</div>
-												<div class="two">
-													<span class="price per-price">1000<br>
-													<small>/50</small></span>
-												</div>
-											</div>
-											<p>Far far away, behind the word mountains, far from the
-												countries</p>
-											<hr>
-											<p class="bottom-area d-flex">
-												<span><i class="icon-map-o"></i> 전포동, 부산진구</span> <span
-													class="ml-auto"><a href="#">매물 문의</a></span>
-											</p>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-4">
-									<div class="destination">
-										<a href="hotel-single.html" class="img img-2"
-											style="background-image: url(images/hotel-2.jpg);"></a>
-										<div class="text p-3">
-											<div class="d-flex">
-												<div class="one">
-													<h3>
-														<a href="hotel-single.html">전포동, 부산진구</a>
-													</h3>
-													<p class="rate">
-														<i class="icon-star"></i> <i class="icon-star"></i> <i
-															class="icon-star"></i> <i class="icon-star"></i> <i
-															class="icon-star-o"></i> <span>8 Rating</span>
-													</p>
-												</div>
-												<div class="two">
-													<span class="price per-price">1000<br>
-													<small>/50</small></span>
-												</div>
-											</div>
-											<p>Far far away, behind the word mountains, far from the
-												countries</p>
-											<hr>
-											<p class="bottom-area d-flex">
-												<span><i class="icon-map-o"></i> 전포동, 부산진구</span> <span
-													class="ml-auto"><a href="#">매물 문의</a></span>
-											</p>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-4">
-									<div class="destination">
-										<a href="hotel-single.html" class="img img-2"
-											style="background-image: url(images/hotel-3.jpg);"></a>
-										<div class="text p-3">
-											<div class="d-flex">
-												<div class="one">
-													<h3>
-														<a href="hotel-single.html">전포동, 부산진구</a>
-													</h3>
-													<p class="rate">
-														<i class="icon-star"></i> <i class="icon-star"></i> <i
-															class="icon-star"></i> <i class="icon-star"></i> <i
-															class="icon-star-o"></i> <span>8 Rating</span>
-													</p>
-												</div>
-												<div class="two">
-													<span class="price per-price">1000<br>
-													<small>/50</small></span>
-												</div>
-											</div>
-											<p>Far far away, behind the word mountains, far from the
-												countries</p>
-											<hr>
-											<p class="bottom-area d-flex">
-												<span><i class="icon-map-o"></i> 전포동, 부산진구</span> <span
-													class="ml-auto"><a href="#">매물 문의</a></span>
-											</p>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-
+						<!-- 문의하기 끝 -->
 					</div>
 				</div>
 				<!-- .col-md-8 -->
@@ -834,6 +686,19 @@
 	<script
 		src="${pageContext.request.contextPath}/resources/js/google-map.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/js/main.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/script/jquery-3.6.0.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			$('#collapseExample').hide();
+			
+			$('#contact-content').click(function() {
+					$('#collapseExample').show();
+				
+			});
+		});
+	
+	</script>
+
 
 </body>
 </html>

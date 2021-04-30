@@ -41,6 +41,11 @@ public class HomeController {
 		return "join";
 	}
 	
+	@RequestMapping(value = "/login",method = RequestMethod.GET )
+	public String login() {
+		return "login";
+	}
+	
 	@RequestMapping(value = "/detailView",method = RequestMethod.GET )
 	public String detailView() {
 		return "detailView";
@@ -49,6 +54,21 @@ public class HomeController {
 	@RequestMapping(value = "/findRooms",method = RequestMethod.GET )
 	public String findRooms() {
 		return "findRooms";
+	}
+	
+	@RequestMapping(value = "/sellRoom",method = RequestMethod.GET )
+	public String sellRoom() {
+		return "sellRoom";
+	}
+	
+	@RequestMapping(value = "/memberInfo",method = RequestMethod.GET )
+	public String memberinfo() {
+		return "memberInfo";
+	}
+	
+	@RequestMapping(value = "/memberDelete",method = RequestMethod.GET )
+	public String memberdelete() {
+		return "memberDelete";
 	}
 	
 }

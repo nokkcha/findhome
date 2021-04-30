@@ -472,7 +472,6 @@ pre {
   @media (min-width: 1200px) {
     .container {
       max-width: 1140px; } 
-    .login {width: 600px !important;}  
       }
 
 .container-fluid {
@@ -1704,6 +1703,9 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
 .input-group-lg > .input-group-prepend > select.btn:not([size]):not([multiple]),
 .input-group-lg > .input-group-append > select.btn:not([size]):not([multiple]) {
   height: calc(2.875rem + 2px); }
+
+.check-group {
+  margin-left: 6.5rem;}
 
 .form-group {
   margin-bottom: 1rem; }
@@ -7832,7 +7834,7 @@ h1, h2, h3, h4, h5,
           .destination .text .bottom-area span:last-child {
             margin-left: 5px; } }
         .destination .text .bottom-area span:last-child a {
-          background: #8bc34a;
+          background: black;
           color: #fff;
           -webkit-border-radius: 4px;
           -moz-border-radius: 4px;
@@ -7840,7 +7842,7 @@ h1, h2, h3, h4, h5,
           border-radius: 4px;
           padding: 3px 5px; }
           .destination .text .bottom-area span:last-child a:hover {
-            background: #8bc34a;
+            background: #f85959;
             color: #fff; }
 
 .hotel-img {
@@ -9354,3 +9356,115 @@ textarea.form-control {
   100% {
     stroke-dasharray: 89, 200;
     stroke-dashoffset: -136px; } }
+
+     
+.te {
+	background-color: white;
+	margin: 10px;
+	border: 1px black;
+	display: inline-block;
+}
+
+.te:hover {
+	color: #f85959;
+}
+
+.btn_room {
+	display: inline-block;
+	margin-left: 40%;
+	margin-bottom: 30px;
+	color: black;
+	background-color: snow;
+}
+
+.btn_like {
+		margin-bottom: 30px;
+		color: black;
+		background-color: snow;
+}
+
+.btn_room:hover, .btn_like:hover {
+	background-color: #f85959;
+	color: white;
+}
+
+.pri-page {
+	background-color: #f85959;
+	color: white;
+}
+
+.notpri-page {
+	color: black;
+	font-weight: normal;
+}
+
+
+.zzim:before {
+	content:"💓 찜한 매물";
+	color: #f85959;
+	font-weight: bold;
+}
+
+.zzim:hover:before {
+	content:"🤍 찜하기 취소";
+   cursor: pointer;
+   color: black;	
+   font-weight: normal;
+}
+
+
+.nozzim:before {
+	content:"🤍 찜하기";
+}
+
+.nozzim:hover:before {
+	content:"💓 찜하기";
+   cursor: pointer;
+   color: #f85959;	
+	font-weight: bold;
+}
+
+.login {width: 600px !important;}
+
+.member-info-btn {
+	background: #f85959;
+	color: white;
+	padding: 10px 20px;
+	width: 300px;
+	margin-left: 83px;
+	border: none;
+	border-radius: 10px;
+}
+
+.member-info-btn:hover {
+	cursor: pointer;
+	background: white;
+	border: 1px solid #f85959;
+	color: #f85959;
+}
+
+
+.member-delete-btn {
+	background: gray;
+	color: white;
+	padding: 10px 20px;
+	width: 300px;
+	margin-left: 30px;
+	border: none;
+	border-radius: 10px;
+}
+
+.member-delete-btn:hover {
+	cursor: pointer;
+	background: black;
+	color: white;
+}
+
+
+.delete-text {
+		margin-left: 75px;
+}
+
+.deleteMember>ul {
+	text-align: left;
+}
