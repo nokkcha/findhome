@@ -539,12 +539,12 @@ th, td {
 							<h4 class="mb-5">매물 문의하기 &amp; 상담예약</h4>
 							<div class="fields">
 								<div class="row">
-									<div class="col-md-12">
+									<div class="col-md-6">
 										<div class="form-group">
 											<input type="text" class="form-control" placeholder="이름">
 										</div>
 									</div>
-									<div class="col-md-12">
+									<div class="col-md-6">
 										<div class="form-group">
 											<input type="text" class="form-control" placeholder="휴대폰 번호">
 										</div>
@@ -563,7 +563,7 @@ th, td {
 												<div class="icon">
 													<span class="ion-ios-arrow-down"></span>
 												</div>
-												<select name="form-control" id="" class="form-control">
+												<select name="form-control" id="contact-select" class="form-control">
 													<option value="0">문의할 내용을 입력하세요.</option>
 													<option value="1">이 집 볼 수 있나요?</option>
 													<option value="2">비슷한 조건의 다른집이 있나요?</option>
@@ -572,6 +572,12 @@ th, td {
 											</div>
 										</div>
 									</div>
+												<div class="col-md-12">
+													<div class="form-group">
+														<input type="text" id="contact-form" class="form-control" placeholder="내용을 입력하세요.">
+													</div>
+												</div>
+												
 									<div class="col-md-12">
 										<div class="form-group">
 											<input type="submit" value="문의 하기"
@@ -656,7 +662,20 @@ th, td {
 		src="${pageContext.request.contextPath}/resources/js/google-map.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/js/main.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/script/jquery-3.6.0.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			$('#contact-form').hide();
+			
+			$('#contact-select').change(function() {
+				if($('#contact-select').val()=="3"){
+					$('#contact-form').show();
+				}else{
+					$('#contact-form').hide();
+				}
+			});
+		});
 	
+	</script>
 
 
 </body>
