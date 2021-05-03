@@ -50,7 +50,29 @@
 
 	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 
+	<style type="text/css">
 	
+		*{margin: 0;padding: 0;box-sizing: border-box}
+		body{background-color: #f7f7f7;}
+		ul>li{list-style: none}
+		a{text-decoration: none;}
+		.clearfix::after{content: "";display: block;clear: both;}
+
+		#joinForm{width: 460px;margin: 0 auto;}
+		ul.join_box{border: 1px solid #ddd;background-color: #fff;}
+		.checkBox,.checkBox>ul{position: relative;}
+		.checkBox>ul>li{float: left;}
+		.checkBox>ul>li:first-child{width: 85%;padding: 15px;font-weight: 600;color: #888;}
+		.checkBox>ul>li:nth-child(2){position: absolute;top: 50%;right: 30px;margin-top: -12px;}
+		.checkBox textarea{width: 96%;height: 90px; margin: 0 2%;background-color: #f7f7f7;color: #888; border: none;}
+		.footBtwrap{margin-top: 15px;}
+		.footBtwrap>li{float: left;width: 50%;height: 60px;}
+		.footBtwrap>li>button{display: block; width: 100%;height: 100%; font-size: 20px;text-align: center;line-height: 60px;}
+		.fpmgBt1{background-color: #fff;color:#888}
+		.fpmgBt2{background-color: #f85959; color: #fff}
+		
+	
+	</style>
 	
 	
 	
@@ -295,6 +317,8 @@
 					checkResult3.innerHTML = "<font color='#000000'>비밀번호 일치</font>";
 				}
 			}
+			
+			
         
 			
 			$(document).ready(function(){
@@ -306,9 +330,22 @@
 					}else if($("#chk2").is(":checked") == false){
 						alert("개인 정보 수집에 동의 하셔야 다음 단계로 진행 가능합니다");
 						return false;
+					} else {
+						 $("#exampleModalLong").modal("toggle");
 					}
 					
 				});	
+				 $(".agree").click(function(){
+					    $("#exampleModalLong").modal({backdrop: "static"});
+					  });
+			});
+			
+			
+			
+			$(document).ready(function(){
+				  $(".fpmgBt1").click(function(){
+					    $("#exampleModalLong").modal("toggle");
+					  });
 			});
 			
 			
@@ -351,9 +388,27 @@
 						});
 					});
 				});
-			
+				
+				$(document).ready(function () {
+			        $('#fpmgBt1').click(function () {
+			      
+			          var check = $('input:checkbox[id="agree"]').is(':checked');
+			          $("input:checkbox[id='agree']").prop("checked", false);
+			          
+			        });
+			      });
 
-
+				$(document).ready(function () {
+			        $('#fpmgBt2').click(function () {
+			      
+			          var check = $('input:checkbox[id="agree"]').is(':checked');
+			          $("input:checkbox[id='agree']").prop("checked", true);
+			          
+			        });
+			      });
+				
+				
+				
 	</script>
 	
 	
@@ -400,9 +455,11 @@
 
             <!--  팝업창 관련    -->
                     
-                      <input type="checkbox" class="fpmgBt1" id="agree"  data-target="#exampleModalLong" data-toggle="modal"> 
-            	  	 이용약관 및 개인정보 취급방침에 동의합니다.
-            	   </label>
+                      <input type="checkbox" name="chkbox1" id="agree" value="0" onclick="return false;"> 
+                       </label>
+            	  	 <a href="#exampleModalLong" data-target="#exampleModalLong" data-toggle="modal" class="agree"  >
+            	  	  <em>이용약관 및 개인정보 취급방침(자세히)</em></a>에 동의합니다.
+            	  
 
                     <div class="form-group">
                     
@@ -431,7 +488,7 @@
             <ul class="join_box">
                 <li class="checkBox check01">
                     <ul class="clearfix">
-                        <li>이용약관, 개인정보 수집 및 이용,위치정보 이용약관(선택),<br>
+                        <li>이용약관, 개인정보 수집 및 이용,위치정보 이용약관(선택),
                         프로모션 안내 메일 수신(선택)에 모두 동의합니다.</li>
                         <li class="checkAllBtn">
                             <input type="checkbox" name="check1" id="chkAll" class="chkAll" onclick="allCheck()">
@@ -550,8 +607,8 @@
 <!--             <button type="button" class="btn " data-dismiss="modal">비동의</button> -->
 <!--                 <li><button type="button" class="fpmgBt1 " data-dismiss="modal">동의</button></li> -->
 <!--                 <li><button type="button"  name="checkButton" class="fpmgBt2" data-dismiss="modal" >동의</button></li> -->
-					<li><input type="checkbox" class="fpmgBt1" >동의하지 않습니다</li>
-					<li><input type="checkbox" class="fpmgBt2" >동의합니다</li>
+					<li><input type="checkbox" class="fpmgBt1" id="fpmgBt1" onclick="myFun1()">동의하지 않습니다</li>
+					<li><input type="checkbox" class="fpmgBt2" id="fpmgBt2" onclick="myFun2()" >동의합니다</li>
             </ul>
        </form>
 
