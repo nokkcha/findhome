@@ -28,6 +28,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/flaticon.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/icomoon.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/findRoom.css">
     
     
     
@@ -53,14 +54,14 @@
         <div class="row">
         	<div class="col-lg-3 sidebar">
         		<div class="sidebar-wrap bg-light ftco-animate">
-        			<h3 class="heading mb-4">검색 조건을 설정해주세요</h3>
+        			<h3 class="heading mb-4">검색 조건 설정</h3>
         			<form action="#">
         				<div class="fields">
 		              <div class="form-group">
 		                <input type="text" class="form-control" placeholder="지역, 지하철역 검색">
 		              </div>
 		              <div class="form-group">
-		                <div class="select-wrap one-third">
+		                <div class="select-wrap2 one-third">
 		                
 		                계약 구분
 	                 <div class="form-group">
