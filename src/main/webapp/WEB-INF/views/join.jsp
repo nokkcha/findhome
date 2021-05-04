@@ -396,10 +396,6 @@
 			          var check = $('input:checkbox[id="agree"]').is(':checked');
 			          $("input:checkbox[id='agree']").prop("checked", false);
 			          $("input:checkbox[id='chkAll']").prop("checked", false);
-			          $("input:checkbox[id='chk1']").prop("checked", false);
-			          $("input:checkbox[id='chk2']").prop("checked", false);
-			          $("input:checkbox[id='chk3']").prop("checked", false);
-			          $("input:checkbox[id='chk4']").prop("checked", false);
 			          $("input:checkbox[id='fpmgBt2']").prop("checked", false);
 			          
 			        });
