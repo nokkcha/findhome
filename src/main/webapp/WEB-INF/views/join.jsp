@@ -324,10 +324,10 @@
 			$(document).ready(function(){
 				
 				$(".fpmgBt2").click(function(){	
-					if($("#chk1").is(":checked") == false){
+					if($(".chk1").is(":checked") == false){
 						alert("이용약관에 동의 하셔야 다음 단계로 진행 가능합니다");
 						return false;
-					}else if($("#chk2").is(":checked") == false){
+					}else if($(".chk2").is(":checked") == false){
 						alert("개인 정보 수집에 동의 하셔야 다음 단계로 진행 가능합니다");
 						return false;
 					} else {
@@ -335,19 +335,19 @@
 					}
 					
 				});	
-				 $(".agree").click(function(){
+				
+				  $(".fpmgBt1").click(function(){
+					    $("#exampleModalLong").modal("toggle");
+					  });
+				  
+				  $(".agree").click(function(){
 					    $("#exampleModalLong").modal({backdrop: "static"});
 					  });
 			});
 			
 			
 			
-			$(document).ready(function(){
-				  $(".fpmgBt1").click(function(){
-					    $("#exampleModalLong").modal("toggle");
-					  });
-			});
-			
+ 			
 			
 
 			function allCheck(obj) {
@@ -389,23 +389,31 @@
 					});
 				});
 				
+				
 				$(document).ready(function () {
 			        $('#fpmgBt1').click(function () {
 			      
 			          var check = $('input:checkbox[id="agree"]').is(':checked');
 			          $("input:checkbox[id='agree']").prop("checked", false);
+			          $("input:checkbox[id='chkAll']").prop("checked", false);
+			          $("input:checkbox[id='chk1']").prop("checked", false);
+			          $("input:checkbox[id='chk2']").prop("checked", false);
+			          $("input:checkbox[id='chk3']").prop("checked", false);
+			          $("input:checkbox[id='chk4']").prop("checked", false);
+			          $("input:checkbox[id='fpmgBt2']").prop("checked", false);
 			          
 			        });
+			       
+			        $('#fpmgBt2').click(function () {
+					      
+				          var check = $('input:checkbox[id="agree"]').is(':checked');
+				          $("input:checkbox[id='agree']").prop("checked", true);
+				          $("input:checkbox[id='fpmgBt1']").prop("checked", false);
+				          
+				        });
 			      });
 
-				$(document).ready(function () {
-			        $('#fpmgBt2').click(function () {
-			      
-			          var check = $('input:checkbox[id="agree"]').is(':checked');
-			          $("input:checkbox[id='agree']").prop("checked", true);
-			          
-			        });
-			      });
+
 				
 				
 				
@@ -499,7 +507,7 @@
                     <ul class="clearfix">
                         <li>이용약관 동의(필수)</li>
                         <li class="checkBtn">
-                            <input type="checkbox" name="check2"  id="chk1"> 
+                            <input type="checkbox" name="check2"  class="chk1" id="chkAll"> 
                         </li>
                     </ul>
                     <textarea name="" id="">제1조(목적)
@@ -528,7 +536,7 @@
                     <ul class="clearfix">
                         <li>개인정보 수집 및 이용에 대한 안내(필수)</li>
                         <li class="checkBtn">
-                            <input type="checkbox" name="check2" id="chk2" > 
+                            <input type="checkbox" name="check2" class="chk2" id="chkAll"> 
                         </li>
                     </ul>
  
@@ -558,7 +566,7 @@
                     <ul class="clearfix">
                         <li>위치정보 이용약관 동의(선택)</li>
                         <li class="checkBtn">
-                            <input type="checkbox" name="check2" >
+                            <input type="checkbox" name="check2" id="chkAll">
                         </li>
                     </ul>
  
@@ -597,7 +605,7 @@
                     <ul class="clearfix">
                         <li>이벤트 등 프로모션 알림 메일 수신(선택)</li>
                         <li class="checkBtn">
-                            <input type="checkbox" name="check2" >
+                            <input type="checkbox" name="check2" id="chkAll">
                         </li>
                     </ul>
  
