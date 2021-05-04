@@ -49,6 +49,7 @@
         </div>
       </div>
     </div>
+    
     <section class="ftco-section ftco-degree-bg">
       <div class="container">
         <div class="row">
@@ -99,8 +100,9 @@
 				  		<font size = 2 id = "slider_value_view1">0</font>						  
 				  			<input oninput = 'ShowSliderValue1(this.value)' style = "width:100%;" class="slider_range1" type="range" step="100" value="0" min="0" max="50000"></input>
 				   		<font size = 2 id = "slider_value_view2">0</font>							  
-							<input oninput = 'ShowSliderValue2(this.value)' style = "width:100%;" class="slider_range2" type="range" step="100" value="0" min="0" max="50000"></input>
+							<input oninput = 'ShowSliderValue2(this.value)' style = "width:100%;" class="slider_range2" type="range" step="100" value="50000" min="0" max="50000" ></input>
 					</div>
+				
 
 							</svg>
 								</div>
@@ -112,7 +114,7 @@
 					  		<font size = 2 id = "slider_value_view3">0</font>						  
 					  			<input oninput = 'ShowSliderValue3(this.value)' style = "width:100%;" class="slider_range3" type="range" step="10" value="0" min="0" max="500"></input>
 					   		<font size = 2 id = "slider_value_view4">0</font>							  
-								<input oninput = 'ShowSliderValue4(this.value)' style = "width:100%;" class="slider_range4" type="range" step="10"value="0" min="0" max="500"></input>
+								<input oninput = 'ShowSliderValue4(this.value)' style = "width:100%;" class="slider_range4" type="range" step="10"value="500" min="0" max="500"></input>
 						</div>
 									</svg>
 										</div>
