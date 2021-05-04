@@ -147,15 +147,16 @@
         function checkId() {
 			   var id = document.login.id.value;
 			   var lengthRegex1 = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/;
-				var checkIdResult = document.getElementById('checkIdResult');
-			   
-			   if(!lengthRegex1.exec(id)) {
-				   checkIdResult.innerHTML = "<font color='#FF0000'>올바르지 않은 이메일 양식입니다.</font>";
-				  return false;
-			   } else {
-				   checkIdResult.innerHTML = " ";
-				   return true;
-			   }
+			   var checkIdResult = document.getElementById('checkIdResult');
+				
+				if(!lengthRegex1.exec(id)) {
+				    checkIdResult.innerHTML = "<font color='#FF0000'>올바르지 않은 이메일 양식입니다.</font>";
+					return false;
+				 } else {
+					 checkIdResult.innerHTML = " ";
+					 return true;
+				 }
+			  
 			   
 		   }
 
@@ -213,7 +214,6 @@
 				var checkPhone = document.getElementById('checkPhoneResult');
 				var lengthRegex3 = /^(010|011)[-\s]?\d{3,4}[-\s]?\d{4}$/;
 				
-				
 				if(!lengthRegex3.exec(phone)) {
 					checkPhone.innerHTML = "<font color='#FF0000'>올바르지 않은 휴대폰 번호입니다.</font>";
 					return false;
@@ -221,6 +221,7 @@
 					checkPhone.innerHTML = " ";
 					return true;
 				}
+				
 			}
 
 			
@@ -238,15 +239,17 @@
 					var lengthRegex2 = /^[A-Za-z0-9!@#$%]{8,16}$/;
 					var lengthRegex3 = /^(010|011)[-\s]?\d{3,4}[-\s]?\d{4}$/;
 					
+					
 					if (id == "") {
 						$('#id').focus();
 // 						swal.fire("ID 입력", "ID를 입력해주세요", "error"); //"info,success,warning,error" 중 택1	
-						alert("ID를 입력해주세요");
+						alert("ID를 입력해주세요"); 
 						return false;
-					}
+					} 
 					
 					if (!lengthRegex1.exec(id)) {
 						$('#id').focus();
+						checkIdResult.innerHTML = "<font color='#FF0000'>올바르지 않은 이메일 양식입니다.</font>";
 // 						swal.fire("ID 입력확인", "ID를 다시 입력해주세요", "error"); //"info,success,warning,error" 중 택1
 						alert("ID를 다시 입력해주세요");
 						return false;
@@ -294,7 +297,6 @@
 						alert("전화번호를 다시 입력해주세요");
 						return false;
 					}
-					
 					
 					if($("#agree").is(":checked") == false){
 						alert("이용약관 및 개인 정보 수집에 동의 하셔야 가입이 가능합니다");
@@ -424,7 +426,7 @@
 					<!-- col-md-6 제거함 -->
 					<form action="#" id="login" name="login">
 						<div class="form-group" align="left">
-							<label class="form-control-label">아이디</label> <input type="text"
+							<label class="form-control-label">이메일(ID)</label> <input type="text"
 								class="form-control" name="id" id="id"
 								onkeyup="checkId()">
 								
@@ -459,10 +461,10 @@
 
             <!--  팝업창 관련    -->
                     
-                      <input type="checkbox" name="chkbox1" id="agree" value="0" onclick="return false;"> 
+                      <input type="checkbox" name="chkbox1" id="agree" value="0" data-toggle="modal" class="agree"> 
+            	  	  이용약관 및 개인정보 취급방침에 동의합니다.
                        </label>
-            	  	 <a href="#exampleModalLong" data-target="#exampleModalLong" data-toggle="modal" class="agree"  >
-            	  	  <em>이용약관 및 개인정보 취급방침(자세히)</em></a>에 동의합니다.
+            	  	
             	  
 
                     <div class="form-group">
