@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,50 +7,33 @@
 
 
 <title>DirEngine - Free Bootstrap 4 Template by Colorlib</title>
-<script
-	src="${pageContext.request.contextPath}/resources/script/jquery-3.6.0.js"></script>
+<script src="${pageContext.request.contextPath}/resources/script/jquery-3.6.0.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
 <meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<link
-	href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700"
-	rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Alex+Brush"
-	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Alex+Brush" rel="stylesheet">
 
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/open-iconic-bootstrap.min.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/animate.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/open-iconic-bootstrap.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/animate.css">
 
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/owl.carousel.min.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/owl.theme.default.min.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/magnific-popup.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/owl.carousel.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/owl.theme.default.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/magnific-popup.css">
 
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/aos.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/aos.css">
 
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/ionicons.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/ionicons.min.css">
 
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/bootstrap-datepicker.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/jquery.timepicker.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap-datepicker.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/jquery.timepicker.css">
 
 
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/flaticon.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/icomoon.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/style.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/flaticon.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/icomoon.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
 
 <style type="text/css">
 .ftco-navbar-light {
@@ -64,7 +47,8 @@
 
 	<%@ include file="../views/top.jsp"%>
 
-	<section class="ftco-section ftco-degree-bg">>
+	<section class="ftco-section ftco-degree-bg">
+		>
 		<div class="container" align="left">
 			<br>
 			<h1>매물 등록</h1>
@@ -96,10 +80,7 @@
 						<th style="background-color: #dedede;">주소</th>
 						<!-- 					onkeyup="checkAddress()" -->
 						<td><input type="text" id="address">
-							<button onclick="checkAddress()">위치확인하기</button> <br> · 주소와
-							단지명 모두 검색이 가능합니다.<br> · 주소 입력 시에는 동/읍/면 으로 검색해 주세요. 예) 자곡동,
-							동읍면, 신월읍<br> · 오피스텔을 검색할 때에는 동/읍/면 이름과 단지 명을 함께 입력하면 좀 더 편하게
-							주소를 검색할 수 있습니다. 예) 계산동 하이베라스</td>
+							<button onclick="checkAddress()">위치확인하기</button> <br> · 주소와 단지명 모두 검색이 가능합니다.<br> · 주소 입력 시에는 동/읍/면 으로 검색해 주세요. 예) 자곡동, 동읍면, 신월읍<br> · 오피스텔을 검색할 때에는 동/읍/면 이름과 단지 명을 함께 입력하면 좀 더 편하게 주소를 검색할 수 있습니다. 예) 계산동 하이베라스</td>
 					</tr>
 
 					<tr>
@@ -113,20 +94,6 @@
 				</tbody>
 			</table>
 
-
-			<script type="text/javascript">
-				$(function() {
-					$('#btn-upload').click(function(e) {
-						e.preventDefault();
-						$('#file').click();
-					});
-				});
-
-				function changeValue(obj) {
-					alert(obj.value);
-				}
-			</script>
-
 			<table class="table">
 				<thead align="left">
 					<tr>
@@ -135,10 +102,7 @@
 				</thead>
 				<tbody align="left">
 					<tr>
-						<td colspan="2">· 사진 최소 5장 최대 15장 까지 등록할 수 있습니다.<br> ·
-							아래에 등록 버튼을 클릭하여 사진을 선택하거나, 마우스로 사진을 끌어와서 등록할 수도 있습니다.<br> ·
-							한꺼번에 여러 장 등록도 가능합니다.<br> · 직접 찍은 실제 방 사진의 원본을 등록해야 합니다.<br>
-							· 워터마크, 날짜, 전화번호 등이 포함된 사진이나 방과 관련없는 사진을 등록할 경우 중개가 종료될 수 있습니다.
+						<td colspan="2">· 사진 최소 5장 최대 15장 까지 등록할 수 있습니다.<br> · 아래에 등록 버튼을 클릭하여 사진을 선택하거나, 마우스로 사진을 끌어와서 등록할 수도 있습니다.<br> · 한꺼번에 여러 장 등록도 가능합니다.<br> · 직접 찍은 실제 방 사진의 원본을 등록해야 합니다.<br> · 워터마크, 날짜, 전화번호 등이 포함된 사진이나 방과 관련없는 사진을 등록할 경우 중개가 종료될 수 있습니다.
 						</td>
 					</tr>
 				</tbody>
@@ -151,12 +115,7 @@
 						<td style="background-color: #dedede;"><button>+등록</button> <br>화장실</td>
 						<td style="background-color: #dedede;"><button>+등록</button> <br>주방</td>
 
-						<td style="background-color: #dedede;"><input type="file"
-							id="file" onChange="ajaxFileChange();" style="display: none;" />
-							<input type="button" id="btn-upload" onClick="ajaxFileUpload();"
-							value="+등록" /><br>방사진 <!-- 					<input type="file" id="file" name="file" onchange="changeValue(this)"/> -->
-							<!-- 					<button type="button" id="btn-upload">+등록</button><br>방사진 -->
-						</td>
+						<td style="background-color: #dedede;"><input type="file" id="file" onChange="ajaxFileChange();" style="display: none;" /> <input type="button" id="btn-upload" onClick="ajaxFileUpload();" value="+등록" /><br>방사진 <!-- 					<input type="file" id="file" name="file" onchange="changeValue(this)"/> --> <!-- 					<button type="button" id="btn-upload">+등록</button><br>방사진 --></td>
 
 						<td style="background-color: #dedede;"><button>+등록</button> <br>방사진</td>
 					</tr>
@@ -207,21 +166,24 @@
 					</tr>
 					<tr>
 						<th style="background-color: #dedede;">크기</th>
-						<td>전용면적 : <input type="text">m<sup>2</sup>=<input
-							type="text"><sup>P</sup> <br>계약면적 : <input
-							type="text">m<sup>2</sup>=<input type="text"><sup>P</sup>
+						<td>전용면적 : <input type="text">m<sup>2</sup>=<input type="text"><sup>P</sup> <br>계약면적 : <input type="text">m<sup>2</sup>=<input type="text"><sup>P</sup>
 						</td>
 					</tr>
 					<tr>
 						<th style="background-color: #dedede;">층수</th>
 						<td>건물 층 수 : <select name="romm_type">
 								<option value="">선택하세요</option>
-								<option value="1층">1층</option>
-								<option value="이상">...</option>
+								<c:forEach var="i" begin="1" end="80">
+									<option value="${i}층">${i}층</option>
+								</c:forEach>
+
 						</select> / 해당 층 : <select name="romm_floor">
 								<option value="">선택하세요</option>
-								<option value="1층">1층</option>
-								<option value="이상">...</option>
+								<option value="반지하">반지하</option>
+								<option value="옥탑방">옥탑방</option>
+								<c:forEach var="i" begin="1" end="80">
+									<option value="${i}층">${i}층</option>
+								</c:forEach>
 						</select>
 						</td>
 					</tr>
@@ -231,44 +193,35 @@
 								<option value="">선택하세요</option>
 								<option value="동향">동향</option>
 								<option value="서향">서향</option>
+								<option value="남향">남향</option>
+								<option value="북향">북향</option>
+								<option value="남동">남동</option>
+								<option value="남서">남서</option>
+								<option value="북동">북동</option>
+								<option value="북서">북서</option>
 								<option value="기타">확인필요</option>
 						</select></td>
 					</tr>
+
 					<tr>
 						<th style="background-color: #dedede;">옵션</th>
-						<td><input type="checkbox" name="option">에어컨 <input
-							type="checkbox" name="option">냉장고 <input type="checkbox"
-							name="option">세탁기 <input type="checkbox" name="option">가스레인지
-							<input type="checkbox" name="option">인덕션 <input
-							type="checkbox" name="option">전자레인지<br> <input
-							type="checkbox" name="option">책상 <input type="checkbox"
-							name="option">책장 <input type="checkbox" name="option">침대
-							<input type="checkbox" name="option">옷장 <input
-							type="checkbox" name="option">신발장 <input type="checkbox"
-							name="option">싱크대<br></td>
+						<td><input type="checkbox" name="option">에어컨 <input type="checkbox" name="option">냉장고 <input type="checkbox" name="option">세탁기 <input type="checkbox" name="option">가스레인지 <input type="checkbox" name="option">인덕션 <input type="checkbox" name="option">전자레인지<br> <input type="checkbox" name="option">책상 <input type="checkbox" name="option">책장 <input type="checkbox" name="option">침대 <input type="checkbox" name="option">옷장 <input type="checkbox" name="option">신발장 <input type="checkbox" name="option">싱크대<br></td>
 					</tr>
 					<tr>
 						<th style="background-color: #dedede;">전세 대출</th>
-						<td><input type="radio" name="chk_household" value="가능">가능
-							<input type="radio" name="chk_household" value="불가능">불가능
-							<input type="radio" name="chk_household" value="확인필요">확인필요</td>
+						<td><input type="radio" name="chk_household" value="가능">가능 <input type="radio" name="chk_household" value="불가능">불가능 <input type="radio" name="chk_household" value="확인필요">확인필요</td>
 					</tr>
 					<tr>
 						<th style="background-color: #dedede;">반려 동물</th>
-						<td><input type="radio" name="chk_pet" value="가능">가능
-							<input type="radio" name="chk_household" value="불가능">불가능
-							<input type="radio" name="chk_household" value="고양이만">고양이만
-							<input type="radio" name="chk_household" value="확인필요">확인필요</td>
+						<td><input type="radio" name="chk_pet" value="가능">가능 <input type="radio" name="chk_household" value="불가능">불가능 <input type="radio" name="chk_household" value="고양이만">고양이만 <input type="radio" name="chk_household" value="확인필요">확인필요</td>
 					</tr>
 					<tr>
 						<th style="background-color: #dedede;">주차</th>
-						<td><input type="radio" name="chk_parking" value="가능">가능
-							<input type="radio" name="chk_parking" value="없음">없음</td>
+						<td><input type="radio" name="chk_parking" value="가능">가능 <input type="radio" name="chk_parking" value="없음">없음</td>
 					</tr>
 					<tr>
 						<th style="background-color: #dedede;">엘리베이터</th>
-						<td><input type="radio" name="chk_elevator" value="있음">있음
-							<input type="radio" name="chk_elevator" value="없음">없음</td>
+						<td><input type="radio" name="chk_elevator" value="있음">있음 <input type="radio" name="chk_elevator" value="없음">없음</td>
 					</tr>
 					<tr>
 						<th style="background-color: #dedede;">입주가능일</th>
@@ -280,14 +233,11 @@
 					</tr>
 					<tr>
 						<th style="background-color: #dedede;">상세설명</th>
-						<td><textarea
-								placeholder="해당 방에 대한 특징과 소개를 최소 50자 이상 입력해야 합니다." rows="10"
-								cols="60"></textarea></td>
+						<td><textarea placeholder="해당 방에 대한 특징과 소개를 최소 50자 이상 입력해야 합니다." rows="10" cols="60"></textarea></td>
 					</tr>
 					<tr>
 						<th style="background-color: #dedede;">연락처</th>
-						<td><input type="text" readonly="readonly"
-							value="010-8888-9999"></td>
+						<td><input type="text" readonly="readonly" value="010-8888-9999"></td>
 					</tr>
 
 				</tbody>
@@ -313,9 +263,7 @@
 						<script>
 							document.write(new Date().getFullYear());
 						</script>
-						All rights reserved | This template is made with <i
-							class="icon-heart" aria-hidden="true"></i> by <a
-							href="https://colorlib.com" target="_blank">Colorlib</a>
+						All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
 						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 					</p>
 				</div>
@@ -328,15 +276,12 @@
 	<!-- loader -->
 	<div id="ftco-loader" class="show fullscreen">
 		<svg class="circular" width="48px" height="48px">
-			<circle class="path-bg" cx="24" cy="24" r="22" fill="none"
-				stroke-width="4" stroke="#eeeeee" />
-			<circle class="path" cx="24" cy="24" r="22" fill="none"
-				stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg>
+			<circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
+			<circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg>
 	</div>
 
 	<!-- services 라이브러리 불러오기 -->
-	<script type="text/javascript"
-		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4e97625a0c2b00cdf9292bd703ece0f7&libraries=services,clusterer,drawing">
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4e97625a0c2b00cdf9292bd703ece0f7&libraries=services,clusterer,drawing">
 		
 	</script>
 
@@ -398,6 +343,20 @@
 	</script>
 
 	<script type="text/javascript">
+		$(function() {
+			$('#btn-upload').click(function(e) {
+				e.preventDefault();
+				$('#file').click();
+			});
+		});
+
+		function changeValue(obj) {
+			alert(obj.value);
+		}
+	</script>
+
+
+	<script type="text/javascript">
 		function ajaxFileUpload() {
 			// 업로드 버튼이 클릭되면 파일 찾기 창을 띄운다.
 			jQuery("#ajaxFile").click();
@@ -428,37 +387,24 @@
 	</script>
 
 
-	<script
-		src="${pageContext.request.contextPath}/resources/js/jquery.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/js/jquery-migrate-3.0.1.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/js/popper.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/js/jquery.easing.1.3.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/js/jquery.waypoints.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/js/jquery.stellar.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/js/owl.carousel.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/js/jquery.magnific-popup.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/jquery.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/jquery-migrate-3.0.1.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/popper.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/jquery.easing.1.3.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/jquery.waypoints.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/jquery.stellar.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/owl.carousel.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/jquery.magnific-popup.min.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/js/aos.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/js/jquery.animateNumber.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/js/bootstrap-datepicker.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/jquery.animateNumber.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/bootstrap-datepicker.js"></script>
 	<!-- 	<script -->
 	<%-- 		src="${pageContext.request.contextPath}/resources/js/jquery.timepicker.min.js"></script> --%>
-	<script
-		src="${pageContext.request.contextPath}/resources/js/scrollax.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/scrollax.min.js"></script>
 	<!-- 	<script -->
 	<!-- 		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script> -->
-	<script
-		src="${pageContext.request.contextPath}/resources/js/google-map.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/google-map.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/js/main.js"></script>
 </body>
 </html>

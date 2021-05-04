@@ -38,6 +38,16 @@
   line-height: 1.5;
   color: #212529;
   text-align: left;
+}
+
+body {
+  text-align: left; }
+
+.row {
+  margin-left: -15px; }
+
+.form-control {
+  width: 100%; }
   
   .container {
   padding: 20px 10px;
