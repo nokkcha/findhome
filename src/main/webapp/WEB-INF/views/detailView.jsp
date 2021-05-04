@@ -60,6 +60,22 @@
 	border: 0
 }
 
+#btn01 {
+	margin-bottom: 10px;
+}
+
+#btn02 {
+	margin-bottom: 10px;
+}
+
+#btn03 {
+	margin-bottom: 10px;
+}
+
+#contact-btn{
+	margin-top: 10px;
+}
+
 
 
 table {
@@ -136,6 +152,32 @@ th, td {
 .btn btn-secondary > a:link{
 	color: white;
 }
+
+.zzim:before {
+	content:"💓 찜한 매물";
+	color: #f85959;
+	font-weight: bold;
+}
+
+.zzim:hover:before {
+	content:"🤍 찜하기 취소";
+   cursor: pointer;
+   color: black;	
+   font-weight: normal;
+}
+
+
+.nozzim:before {
+	content:"🤍 찜하기";
+}
+
+.nozzim:hover:before {
+	content:"💓 찜하기";
+   cursor: pointer;
+   color: #f85959;	
+	font-weight: bold;
+}
+
 
 
 
@@ -391,12 +433,13 @@ th, td {
 							<p class="rate mb-5">
 								<span class="loc"><a href="#"><i class="icon-map"></i>
 										부산진구 전포동 123-45</a></span><br> 
-										<span style="margin-left:0.5em;color: #f85959;"><i class="far fa-heart fa-1x"></i> 마음에 들어요 </span>
+										<span class="text-zzim icon-like nozzim"></span>
+										<span class="text-zzim icon-like zzim"></span>
 
-								<h5 style="text-align: left;">
+								<h6 style="text-align: left;">
 									<i class="fas fa-user" style="width: 20; height: 20"></i> 서면
 									공인중개사무소
-								</h5>
+								</h6>
 
 								<div>
 
@@ -593,7 +636,7 @@ th, td {
 
 											<div class="col-md-12">
 												<div class="form-group">
-													<a class="btn btn-primary py-3" id="contact-content"
+													<a class="btn btn-secondary py-3" id="contact-content"
 														data-bs-toggle="collapse" href="#collapseExample"
 														role="button" aria-expanded="false"
 														aria-controls="collapseExample"> 문의할 내용 </a>
@@ -601,16 +644,20 @@ th, td {
 
 												<div class="collapse" id="collapseExample">
 													<div class="card card-body">
-														<input type="button" class="btn btn-light-1"
+														<input type="button" class="btn btn-light" id="btn01"
 														value="이 집 볼 수 있나요?">
-														<input type="button" class="btn btn-light-2"
+														<input type="button" class="btn btn-light" id="btn02"
 														value="비슷한 조건의 다른 집이 있나요?">
-														<input type="button" class="btn btn-light-3"
+														<input type="button" class="btn btn-light" id="btn03"
 														value="문의 내용을 직접 입력하고 싶어요.">
 														
-
+												<div class="input-group">
 													
-														</div>
+													<textarea class="form-control" id="contact-form" aria-label="With textarea" placeholder="문의할 내용을 직접 작성해주세요." ></textarea>
+												</div>
+
+
+											</div>
 	
 											</div>
 											</div>
@@ -619,6 +666,7 @@ th, td {
 											<div class="col-md-12">
 												<div class="form-group">
 													<input type="submit" value="문의 하기"
+													id="contact-btn"
 														class="btn btn-primary py-3">
 												</div>
 											</div>
@@ -702,13 +750,47 @@ th, td {
 	<script src="${pageContext.request.contextPath}/resources/script/jquery-3.6.0.js"></script>
 	<script type="text/javascript">
 		$(function() {
-			
+			//문의하기 - [문의내용] 클릭
 			$('#contact-content').click(function() {
-					$('#collapseExample').toggle('slow');
-
+					$('#collapseExample').show();
+					
 			});
 		});
 		
+    	// 목록 - [찜하기] 클릭
+    	$('.text-zzim').click(function(){   
+    	    if($(this).hasClass('nozzim')) {
+    	        $(this).removeClass('nozzim');
+    	        $(this).addClass('zzim');
+    	        $(this).addClass('icon-like');
+    	        
+    	    } else if ($(this).hasClass('zzim')){
+    	        $(this).removeClass('zzim');
+    	        $(this).removeClass('icon-like');
+    	        $(this).addClass('nozzim');
+    	    }    
+    	});
+    	
+    	//
+    	
+    	
+    	
+    	
+    	
+    	$('#contact-form').hide();
+    		$('#btn03').click(function() {
+    		$('#btn01').hide();
+    		$('#btn02').hide();
+			$('#contact-form').show();
+			$('#contact-form').focus();
+		});
+    		
+    	$('#contact-content').click(function() {
+    		$('#btn01').show();
+    		$('#btn02').show();
+    		$('#btn03').show();
+    		$('#contact-form').hide();
+		});
 
 	</script>
 
