@@ -331,66 +331,7 @@ th, td {
 							</div>
 						</form>
 					</div>
-					<div class="sidebar-wrap bg-light ftco-animate">
-						<h3 class="heading mb-4">별점</h3>
-						<form method="post" class="star-rating">
-							<div class="form-check">
-								<input type="checkbox" class="form-check-input"
-									id="exampleCheck1"> <label class="form-check-label"
-									for="exampleCheck1">
-									<p class="rate">
-										<span><i class="icon-star"></i><i class="icon-star"></i><i
-											class="icon-star"></i><i class="icon-star"></i><i
-											class="icon-star"></i></span>
-									</p>
-								</label>
-							</div>
-							<div class="form-check">
-								<input type="checkbox" class="form-check-input"
-									id="exampleCheck1"> <label class="form-check-label"
-									for="exampleCheck1">
-									<p class="rate">
-										<span><i class="icon-star"></i><i class="icon-star"></i><i
-											class="icon-star"></i><i class="icon-star"></i>
-											<i class="icon-star-o"></i></span>
-									</p>
-								</label>
-							</div>
-							<div class="form-check">
-								<input type="checkbox" class="form-check-input"
-									id="exampleCheck1"> <label class="form-check-label"
-									for="exampleCheck1">
-									<p class="rate">
-										<span><i class="icon-star"></i><i class="icon-star"></i><i
-											class="icon-star"></i><i class="icon-star-o"></i><i
-											class="icon-star-o"></i></span>
-									</p>
-								</label>
-							</div>
-							<div class="form-check">
-								<input type="checkbox" class="form-check-input"
-									id="exampleCheck1"> <label class="form-check-label"
-									for="exampleCheck1">
-									<p class="rate">
-										<span><i class="icon-star"></i><i class="icon-star"></i><i
-											class="icon-star-o"></i><i class="icon-star-o"></i><i
-											class="icon-star-o"></i></span>
-									</p>
-								</label>
-							</div>
-							<div class="form-check">
-								<input type="checkbox" class="form-check-input"
-									id="exampleCheck1"> <label class="form-check-label"
-									for="exampleCheck1">
-									<p class="rate">
-										<span><i class="icon-star"></i><i class="icon-star-o"></i><i
-											class="icon-star-o"></i><i class="icon-star-o"></i><i
-											class="icon-star-o"></i></span>
-									</p>
-								</label>
-							</div>
-						</form>
-					</div>
+					
 				</div>
 				
 				<!-- 이미지 슬라이더 -->
@@ -443,10 +384,10 @@ th, td {
 
 								<div>
 
-									<a href="tel:051-1234-1234"><button type="button" class="btn btn-secondary"
+									<button type="button" id="call" class="btn btn-secondary"
 										style="float: left; margin-right: 0.5em;">
 										전화하기
-									</button></a>
+									</button>
 									<button type="button" class="btn btn-secondary"
 										style="float: left;">채팅하기</button>
 
@@ -455,6 +396,7 @@ th, td {
 								</div>
 								 </div>
 							</div>
+
 							<div class="d-md-flex mt-5 mb-5">
 								<table>
 									<thead>
@@ -771,12 +713,7 @@ th, td {
     	    }    
     	});
     	
-    	//
-    	
-    	
-    	
-    	
-    	
+    	// 문의하기 - 토글
     	$('#contact-form').hide();
     		$('#btn03').click(function() {
     		$('#btn01').hide();
@@ -790,6 +727,21 @@ th, td {
     		$('#btn02').show();
     		$('#btn03').show();
     		$('#contact-form').hide();
+		});
+    	
+    	
+    	// 목록 - [call] 클릭
+    	$('#call').click(function () {    	
+    		var filter = "win16|win32|win64|mac|macintel"; 
+    		if ( navigator.platform ) { 
+    			if ( filter.indexOf( navigator.platform.toLowerCase() ) < 0 ) {
+    				location.href="tel:010-1234-5678";
+			
+    			} else { 
+    					alert('웹에서 전화걸기 ex. 010-1234-5678');	
+    			} 
+    		}
+		
 		});
 
 	</script>
