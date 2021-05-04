@@ -41,6 +41,11 @@ public class HomeController {
 		return "join";
 	}
 	
+	@RequestMapping(value = "/join_choice",method = RequestMethod.GET )
+	public String join_choice() {
+		return "join_choice";
+	}
+	
 	@RequestMapping(value = "/login",method = RequestMethod.GET )
 	public String login() {
 		return "login";
