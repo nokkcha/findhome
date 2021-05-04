@@ -247,9 +247,11 @@
 				<!-- 				<td><button type="button" class="btn btn-info">원룸</button></td> -->
 				<!-- 				<td>오피스텔</td> -->
 				<!-- 			</tbody> -->
-
 			</table>
-		</div>
+			<button class="btn btn-primary btn-lg btn-block">방 내놓기</button>
+			
+		</div> <!-- 		end of container -->	
+		
 	</section>
 
 
@@ -273,12 +275,12 @@
 
 
 
-	<!-- loader -->
-	<div id="ftco-loader" class="show fullscreen">
-		<svg class="circular" width="48px" height="48px">
-			<circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
-			<circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg>
-	</div>
+<!-- 	<!-- loader --> -->
+<!-- 	<div id="ftco-loader" class="show fullscreen"> -->
+<!-- 		<svg class="circular" width="48px" height="48px"> -->
+<%-- 			<circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" /> --%>
+<%-- 			<circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg> --%>
+<!-- 	</div> -->
 
 	<!-- services 라이브러리 불러오기 -->
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4e97625a0c2b00cdf9292bd703ece0f7&libraries=services,clusterer,drawing">
