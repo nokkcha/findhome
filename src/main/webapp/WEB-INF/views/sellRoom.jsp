@@ -166,7 +166,7 @@
 					</tr>
 					<tr>
 						<th style="background-color: #dedede;">크기</th>
-						<td>전용면적 : <input type="text">m<sup>2</sup>=<input type="text"><sup>P</sup> <br>계약면적 : <input type="text">m<sup>2</sup>=<input type="text"><sup>P</sup>
+						<td>전용면적 : <input type="text" id="cal2">m<sup>2</sup>=<input type="text" id="cal1">평 <br>계약면적 : <input type="text" id="cal4">m<sup>2</sup>=<input type="text" id="cal3">평
 						</td>
 					</tr>
 					<tr>
@@ -353,10 +353,32 @@
 		function changeValue(obj) {
 			alert(obj.value);
 		}
-	</script>
 
+		// 전용면적(exclusive private area) 평수 계산
+		$('#cal1').focusout(
+				function() {
+					document.getElementById('cal2').value = parseFloat(document
+							.getElementById('cal1').value) * 3.3058;
+				})
 
-	<script type="text/javascript">
+		$('#cal2').focusout(
+				function() {
+					document.getElementById('cal1').value = parseFloat(document
+							.getElementById('cal2').value) / 3.3058;
+				})
+
+		$('#cal3').focusout(
+				function() {
+					document.getElementById('cal4').value = parseFloat(document
+							.getElementById('cal3').value) * 3.3058;
+				})
+
+		$('#cal4').focusout(
+				function() {
+					document.getElementById('cal3').value = parseFloat(document
+							.getElementById('cal4').value) / 3.3058;
+				})
+
 		function ajaxFileUpload() {
 			// 업로드 버튼이 클릭되면 파일 찾기 창을 띄운다.
 			jQuery("#ajaxFile").click();
