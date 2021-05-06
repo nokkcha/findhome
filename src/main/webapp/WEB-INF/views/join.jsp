@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -424,7 +424,7 @@
 			<div class="row block-9">
 				<div class="pr-md-5">
 					<!-- col-md-6 제거함 -->
-					<form action="#" id="login" name="login">
+					<form action='<c:url value="/joinPro" />' method="post" id="login" name="login">
 						<div class="form-group" align="left">
 							<label class="form-control-label">이메일(ID)</label> <input type="text"
 								class="form-control" name="id" id="id"
@@ -435,7 +435,7 @@
 						</div>
 						<div class="form-group" align="left">
 							<label class="form-control-label">비밀번호</label><input
-								type="password" class="form-control" name="pass1" id="pass1"
+								type="password" class="form-control" name="password" id="pass1"
 								onkeyup="checkPassword()">
 								
 						  <br><span class="check-group" id="checkPasswordResult"></span>
@@ -450,7 +450,7 @@
 						</div>
 						<div class="form-group" align="left">
 							<label class="form-control-label">휴대폰 번호</label><input type="tel"
-								class="form-control" name="phone" id="phone"
+								class="form-control" name="phone_number" id="phone"
 								onkeyup="checkPhone()">
 								
 						  <br><span class="check-group" id="checkPhoneResult"></span>	
@@ -461,7 +461,7 @@
 
             <!--  팝업창 관련    -->
                     
-                      <input type="checkbox" name="chkbox1" id="agree" value="0" data-toggle="modal" class="agree"> 
+                      <input type="checkbox" name="is_confirm" id="agree" value="0" data-toggle="modal" class="agree"> 
             	  	  이용약관 및 개인정보 취급방침에 동의합니다.
                        </label>
             	  	

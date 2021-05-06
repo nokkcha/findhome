@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!--     메뉴(네비게이션) 시작 -->
   <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
     <div class="container">
@@ -22,7 +23,7 @@
       <div class="collapse navbar-collapse" id="ftco-nav">
         <ul class="navbar-nav ml-auto">          
           <li class="nav-item"><a href="./login" class="nav-link">로그인</a></li>
-          <li class="nav-item"><a href="./join_choice" class="nav-link">회원가입</a></li>
+          <li class="nav-item"><a href='<c:url value="/join_choice" />' class="nav-link">회원가입</a></li>
           <li class="nav-item"><a href="./memberInfo" class="nav-link">회원정보</a></li>
         </ul>
       </div>
