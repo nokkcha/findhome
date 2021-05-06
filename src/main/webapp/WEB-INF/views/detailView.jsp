@@ -178,7 +178,19 @@ th, td {
 	font-weight: bold;
 }
 
+.te {
+	background-color: white;
+	display: inline-block;
+}
 
+.te:hover {
+	color: #f85959;
+}
+
+.sidebar-wrap .fields .select-wrap2 {
+    position: relative;
+    margin-right: 10px;
+}
 
 
 					
@@ -221,7 +233,7 @@ th, td {
 			<div class="row">
 				<div class="col-lg-3 sidebar">
 					<div class="sidebar-wrap bg-light ftco-animate">
-						<h3 class="heading mb-4">검색 조건을 설정해주세요</h3>
+						<h3 class="heading mb-4">검색 조건 설정</h3>
 						<form action="#">
 							<div class="fields">
 								<div class="form-group">
@@ -231,25 +243,27 @@ th, td {
 								<div class="form-group">
 									<div class="select-wrap one-third">
 
-										구조
-										<div class="form-group">
-											<input type="button" class="btn te btn-primary button-class1"
-												value="전체"> <input type="button"
-												class="btn te btn-default button-class2" value="오픈형">
-											<input type="button" class="btn te btn-default button-class3"
-												value="분리형"> <input type="button"
-												class="btn te btn-default button-class4" value="복층형">
-										</div>
+		                계약 구분
+	                 <div class="form-group">
+		                <input type="button" class="btn te btn-primary rentAll"  value="전체">
+		                <input type="button" class="btn te btn-default rentMonthly"  value="월세">
+		                <input type="button" class="btn te btn-default rentJeonse"  value="전세">
+		              </div>
 
-										층 수 옵션
-										<div class="form-group">
-											<input type="button"
-												class="btn te btn-primary button-class11" value="전체">
-											<input type="button"
-												class="btn te btn-default button-class12" value="지상층">
-											<input type="button"
-												class="btn te btn-default button-class13" value="반지하,옥탑">
-										</div>
+	                      구조
+	                 <div class="form-group">
+		                <input type="button" class="btn te btn-primary rtypeAll"  value="전체">
+		                <input type="button" class="btn te btn-default rtypeOpen rtype"  value="오픈형">
+		                <input type="button" class="btn te btn-default rtypeSeparate rtype"  value="분리형">
+		                <input type="button" class="btn te btn-default rtypeStairs rtype"  value="복층형">
+		              </div>
+		              
+	                      층 수 옵션
+	                      <div class="form-group">
+	                       <input type="button" class="btn te btn-primary ftypeAll"  value="전체">
+		                	<input type="button" class="btn te btn-default floor"  value="지상층">
+		             		<input type="button" class="btn te btn-default ftypeOther"  value="반지하,옥탑">
+		              </div>
 
 
 									</div>
@@ -258,26 +272,28 @@ th, td {
 								<div class="form-group">
 									보증금
 									<div class="range-slider">
-										<span> <!-- 보증금 --> <!-- 								  <input type="number" value="0" min="0" max="120000" id = "slider_value_view"/>	- -->
-											<!-- 								 <input type="number" value="50000" min="0" max="120000"/> -->
-											<!-- 										  </span> -->
-										</span>
 
 										<div class="Container">
-											<font size=2>0</font> <input
-												oninput='ShowSliderValue(this.value)' style="width: 80%;"
-												class="slider_range" type="range" value="0" min="0"
-												max="1000"></input> <font size=2 id="slider_value_view2">0</font>
-											<input oninput='ShowSliderValue(this.value)' type="range"
-												min='0' max='1000' value='100'>
+											<font size = 2 id = "slider_value_view1">0</font>						  
+				  			<input oninput = 'ShowSliderValue1(this.value)' style = "width:100%;" class="slider_range1" type="range" step="100" value="0" min="0" max="50000"></input>
+				   		<font size = 2 id = "slider_value_view2">0</font>							  
+							<input oninput = 'ShowSliderValue2(this.value)' style = "width:100%;" class="slider_range2" type="range" step="100" value="0" min="0" max="50000"></input>
 										</div>
 
-
-
-
-
-										</svg>
+											</svg>
 									</div>
+									
+									월세
+		              	<div class="range-slider">
+
+						<div class="Container2" >
+					  		<font size = 2 id = "slider_value_view3">0</font>						  
+					  			<input oninput = 'ShowSliderValue3(this.value)' style = "width:100%;" class="slider_range3" type="range" step="10" value="0" min="0" max="500"></input>
+					   		<font size = 2 id = "slider_value_view4">0</font>							  
+								<input oninput = 'ShowSliderValue4(this.value)' style = "width:100%;" class="slider_range4" type="range" step="10"value="0" min="0" max="500"></input>
+						</div>
+									</svg>
+										</div>
 									<script language="javascript">
 										function ShowSliderValue(sVal) {
 											var obValueView = document
@@ -305,18 +321,6 @@ th, td {
 
 
 
-									월세
-<!-- 									<div class="range-slider"> -->
-<!-- 										<span>  -->
-<!-- 										<input type="number" value="25000" -->
-<!-- 											min="0" max="120000" /> - <input type="number" value="50000" -->
-<!-- 											min="0" max="120000" /> -->
-<!-- 										</span> <input value="1000" min="0" max="120000" step="500" -->
-<!-- 											type="range" /> <input value="50000" min="0" max="120000" -->
-<!-- 											step="500" type="range" /> -->
-
-<!-- 										</svg> -->
-<!-- 									</div> -->
 
 
 								</div>
@@ -743,6 +747,172 @@ th, td {
     		}
 		
 		});
+    	
+    	
+    	   $(document).ready(function(){
+
+    	    	// 검색 조건 - 구조 [전체] 클릭
+    	    	$('.rtypeAll').click(function(){
+
+    	    		if( $(this).hasClass('btn-default') ) {
+    	    			$(this).removeClass('btn-default');
+    	    			$(this).addClass('btn-primary');
+    	    			
+    	    			$('.rtype').removeClass('btn-primary');
+    	    			$('.rtype').addClass('btn-default');
+
+    	    		} 
+    		
+    	    	});
+    	    	
+    	    	// 검색 조건 - 구조 다중 선택 메서드
+    	    	$.fn.room= function (clickThis) { 		
+    	    		
+    	    	    if($(clickThis).hasClass('btn-default')) {
+    	    	        $(clickThis).removeClass('btn-default');
+    	    	        $(clickThis).addClass('btn-primary');
+    	    	        
+    	    	        if( $('.rtypeAll').hasClass('btn-primary')) {
+    	    	            $('.rtypeAll').removeClass('btn-primary');
+    	    	            $('.rtypeAll').addClass('btn-default');
+    	    	        }
+    	    	        
+    	    	    } else if ($(clickThis).hasClass('btn-primary')){
+    	    	        $(clickThis).removeClass('btn-primary');
+    	    	        $(clickThis).addClass('btn-default');
+    	    	    }    
+    	    	
+    	    	}
+    	    	
+    	    	// 검색 조건 - 구조 [오픈형] 클릭
+    	    	$('.rtypeOpen').click(function(){
+    	            $.fn.room(this);
+    			});
+    	    	
+    	    	// 검색 조건 - 구조 [분리형] 클릭
+    	    	$('.rtypeSeparate').click(function(){
+    	    		$.fn.room(this);
+    	    	});
+    	    	
+    	    	// 검색 조건 - 구조 [복층형] 클릭
+    	    	$('.rtypeStairs').click(function(){
+    	    		$.fn.room(this);
+    	    	});
+    	      
+    	        	
+    	    	// 검색 조건 - 층 수 옵션 [전체] 클릭
+    	        	$('.ftypeAll ').click(function(){       		
+    	        		if( $(this).hasClass('btn-default') ) {
+    	        			$(this).removeClass('btn-default');
+    	        			$(this).addClass('btn-primary');
+    	        			$('.floor').addClass('btn-default');
+    	        			$('.floor ').removeClass('btn-primary');
+    	        			$('.ftypeOther').addClass('btn-default');
+    	        			$('.ftypeOther').removeClass('btn-primary');
+    	        		}
+    	        	});
+    	        	
+    	        	// 검색 조건 - 층 수 옵션 [지상층] 클릭
+    	        	$('.floor').click(function(){       		
+    	        		if( $(this).hasClass('btn-default') ) {
+    	        			$(this).removeClass('btn-default');
+    	        			$(this).addClass('btn-primary');
+    	        			$('.ftypeAll ').addClass('btn-default');
+    	        			$('.ftypeAll ').removeClass('btn-primary');
+    	        			$('.ftypeOther').addClass('btn-default');
+    	        			$('.ftypeOther').removeClass('btn-primary');
+    	        		}
+    	        	});
+    	        	
+    	        	// 검색 조건 - 층 수 옵션 [반지하, 옥탑] 클릭
+    	        	$('.ftypeOther').click(function(){       		
+    	        		if( $(this).hasClass('btn-default') ) {
+    	        			$(this).removeClass('btn-default');
+    	        			$(this).addClass('btn-primary');
+    	        			$('.ftypeAll ').addClass('btn-default');
+    	        			$('.ftypeAll ').removeClass('btn-primary');
+    	        			$('.floor').addClass('btn-default');
+    	        			$('.floor').removeClass('btn-primary');
+    	        		}
+    	        	});
+    	        	
+    	        	
+    	        	// 검색 조건 - 계약 구분 - [전체] 클릭
+    	        	$('.rentAll ').click(function(){       		
+    	        		if( $(this).hasClass('btn-default') ) {
+    	        			$(this).removeClass('btn-default');
+    	        			$(this).addClass('btn-primary');
+    	        			$('.rentMonthly').addClass('btn-default');
+    	        			$('.rentMonthly ').removeClass('btn-primary');
+    	        			$('.rentJeonse').addClass('btn-default');
+    	        			$('.rentJeonse').removeClass('btn-primary');
+    	        		}
+    	        	});
+    	        	
+    	        	// 검색 조건 - 계약 구분 - [월세] 클릭
+    	        	$('.rentMonthly ').click(function(){       		
+    	        		if( $(this).hasClass('btn-default') ) {
+    	        			$(this).removeClass('btn-default');
+    	        			$(this).addClass('btn-primary');
+    	        			$('.rentAll').addClass('btn-default');
+    	        			$('.rentAll ').removeClass('btn-primary');
+    	        			$('.rentJeonse').addClass('btn-default');
+    	        			$('.rentJeonse').removeClass('btn-primary');
+    	        		}
+    	        	});
+    	        	
+    	        	// 검색 조건 - 계약 구분 - [전세] 클릭
+    	        	$('.rentJeonse ').click(function(){       		
+    	        		if( $(this).hasClass('btn-default') ) {
+    	        			$(this).removeClass('btn-default');
+    	        			$(this).addClass('btn-primary');
+    	        			$('.rentAll').addClass('btn-default');
+    	        			$('.rentAll ').removeClass('btn-primary');
+    	        			$('.rentMonthly').addClass('btn-default');
+    	        			$('.rentMonthly').removeClass('btn-primary');
+    	        		}
+    	        	});
+
+    	    
+
+    	    });
+
+    	    
+    	    
+    	 // 보증금 최저
+    	    function ShowSliderValue1(sVal) {
+    	    	var obValueView = document.getElementById("slider_value_view1");
+    	    	if(sVal>=10000){
+    	    	obValueView.innerHTML = (sVal*0.0001).toFixed(1)+"억 ~ ";
+    	    	}else{		
+    	    	obValueView.innerHTML = sVal+"만 ~ ";
+    	    	}
+    	    	
+    	    	
+    	    }
+
+    	    // 보증금 최대
+    	    function ShowSliderValue2(sVal) {
+    	    	var obValueView = document.getElementById("slider_value_view2");
+    	    	if(sVal>=10000){
+    	    	obValueView.innerHTML = (sVal*0.0001).toFixed(1)+"억";
+    	    	}else{		
+    	    	obValueView.innerHTML = sVal+"만";
+    	    	}
+    	    }
+
+    	    // 월세 최소
+    	    function ShowSliderValue3(sVal) {
+    	    	var obValueView = document.getElementById("slider_value_view3");
+    	    	obValueView.innerHTML = sVal+"만 ~ ";
+    	    }
+
+    	    // 월세 최대
+    	    function ShowSliderValue4(sVal) {
+    	    	var obValueView = document.getElementById("slider_value_view4");
+    	    	obValueView.innerHTML = sVal+"만";
+    	    }
+
 
 	</script>
 
