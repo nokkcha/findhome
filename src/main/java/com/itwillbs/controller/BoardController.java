@@ -1,7 +1,9 @@
 package com.itwillbs.controller;
 
 import java.io.File;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.annotation.Resource;
@@ -15,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.itwillbs.domain.BoardBean;
+import com.itwillbs.domain.OneRoomBean;
 import com.itwillbs.domain.PageBean;
 import com.itwillbs.service.BoardService;
 
@@ -34,13 +38,23 @@ public class BoardController {
 		return "board/writeForm";
 	}
 
-	@RequestMapping(value = "/board/writePro", method = RequestMethod.POST)
+	@RequestMapping(value = "/writePro", method = RequestMethod.POST)
 	public String writePro(BoardBean bb) {
-		// BoardService boardService=new BoardServiceImpl(); 객체생성
-		// boardService.insertBoard(bb); 메서드 호출
-		boardService.insertBoard(bb);
+		OneRoomBean testBean = new OneRoomBean();
+		testBean.setSeller_id("admin@gmail.com");
 
-		return "redirect:/board/list";
+		Map<String, Object> option = new HashMap();
+		Map<String, Object> include_fees = new HashMap();
+		include_fees.put("전기세", "Y");
+		option.put("에어컨", "Y");
+		option.put("냉장고", "N");
+		
+		testBean.setInclude_fees(include_fees);
+		testBean.setOption(option);
+
+		boardService.insertRoom(testBean);
+
+		return "redirect:/";
 	}
 
 //	http://localhost:8080/myweb2/board/list
@@ -145,16 +159,16 @@ public class BoardController {
 			return "member/msg";
 		}
 	}
-	
+
 	@RequestMapping(value = "/board/delete", method = RequestMethod.GET)
 	public String delete(HttpServletRequest request, Model model) {
 		int num = Integer.parseInt(request.getParameter("num"));
-		
+
 		model.addAttribute("num", num);
-		
+
 		return "board/deleteForm";
 	}
-	
+
 	@RequestMapping(value = "/board/deletePro", method = RequestMethod.POST)
 	public String deletePro(BoardBean bb, Model model) {
 		BoardBean bb2 = boardService.numCheck(bb);

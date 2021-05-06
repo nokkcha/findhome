@@ -247,8 +247,11 @@
 				<!-- 				<td><button type="button" class="btn btn-info">원룸</button></td> -->
 				<!-- 				<td>오피스텔</td> -->
 				<!-- 			</tbody> -->
-			</table>
-			<button class="btn btn-primary btn-lg btn-block">방 내놓기</button>
+			</table>			
+			<form action='<c:url value="/writePro"/>'  method="post" id="testForm">
+			<input type="text" id="seller_id" hidden="" name="seller_id" value="admin@gmail.com"> 
+			<button class="btn btn-primary btn-lg btn-block" id="sellRoom">방 내놓기</button>
+			</form>
 			
 		</div> <!-- 		end of container -->	
 		
@@ -349,6 +352,13 @@
 			$('#btn-upload').click(function(e) {
 				e.preventDefault();
 				$('#file').click();
+			});
+		});
+		
+		// 매물 내놓기 버튼 클릭 이벤트
+		$(function() {
+			$('#sellRoom').click(function(e) {
+				
 			});
 		});
 

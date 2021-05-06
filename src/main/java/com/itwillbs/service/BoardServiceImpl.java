@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.itwillbs.dao.BoardDAO;
 import com.itwillbs.domain.BoardBean;
+import com.itwillbs.domain.OneRoomBean;
 import com.itwillbs.domain.PageBean;
 
 @Service
@@ -72,6 +73,12 @@ public class BoardServiceImpl implements BoardService{
 	public void deleteBoard(BoardBean bb) {
 		// TODO Auto-generated method stub
 		boardDAO.deleteBoard(bb);
+	}
+
+	@Override
+	public void insertRoom(OneRoomBean bb) {
+		// TODO Auto-generated method stub
+		boardDAO.insertRoom(bb);
 	}
 	
 

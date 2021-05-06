@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.itwillbs.domain.BoardBean;
+import com.itwillbs.domain.OneRoomBean;
 import com.itwillbs.domain.PageBean;
 
 @Repository
@@ -60,6 +61,11 @@ public class BoardDAOImpl implements BoardDAO{
 	public void deleteBoard(BoardBean bb) {
 		// TODO Auto-generated method stub
 		sqlSession.delete(namespace+".deleteBoard",bb);
+	}
+
+	@Override
+	public void insertRoom(OneRoomBean bb) {
+		sqlSession.insert(namespace+".insertRoom",bb);
 	}
 
 }

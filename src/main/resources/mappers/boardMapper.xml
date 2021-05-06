@@ -2,41 +2,73 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
+
 <mapper namespace="com.itwillbs.mapper.BoardMapper">
 
-  <select id="getMaxNum" resultType="java.lang.Integer">
-		select max(num) from board
-  </select>
+	<select id="getMaxNum" resultType="java.lang.Integer">
+		select max(room_id) from
+		one_room
+	</select>
 
-  <insert id="insertBoard">
-  	insert into board(num,name,pass,subject,content,readcount,date,file) values(#{num},#{name},#{pass},#{subject},#{content},#{readcount},#{date},#{file})
-  </insert>
-  
-  <select id="getBoardList" resultType="com.itwillbs.domain.BoardBean">
-  	select * from board order by num desc limit #{startRow},#{pageSize}
-  </select>
-  
-  <select id="getBoardCount" resultType="java.lang.Integer">
-		select count(*) from board
-  </select>
-  
-  <select id="getBoard" resultType="com.itwillbs.domain.BoardBean">
-  		select * from board where num=#{num}
-  </select>
-  
-  <select id="numCheck" resultType="com.itwillbs.domain.BoardBean">
-  		select * from board where num=#{num} and pass=#{pass}
-  </select>
-  
-  <update id="updateBoard">
-  		update board set name=#{name}, subject=#{subject}, content=#{content} where num=#{num}
-  </update>
-  
-  <delete id="deleteBoard">
-  		delete from board where num=#{num}
-  </delete>
-  
+	<!-- <resultMap id="one_room" -->
+	<!-- type="com.itwillbs.domain.OneRoomBean"> -->
+	<!-- <result property="json" column="include_fees" -->
+	<!-- typeHandler="com.itwillbs.mapper.type.JSONTypeHandler" /> -->
+	<!-- <result property="json" column="option" -->
+	<!-- typeHandler="com.itwillbs.mapper.type.JSONTypeHandler" /> -->
+	<!-- </resultMap> -->
+	
+<!-- 		<insert id="insertRoom"> -->
+<!-- 		INSERT INTO one_room (seller_id) VALUES ( -->
+<!-- 		#{seller_id} -->
+<!-- 		) -->
+<!-- 	</insert> -->
+	
+
+	<insert id="insertRoom">
+		INSERT INTO one_room (include_fees, option, seller_id) VALUES (
+		#{include_fees, typeHandler=com.itwillbs.mapper.type.JSONTypeHandler},
+		#{option, typeHandler=com.itwillbs.mapper.type.JSONTypeHandler},
+		#{seller_id}
+		)
+	</insert>
+
+<!-- 	<insert id="insertRoom"> -->
+<!-- 		INSERT INTO one_room ( include_fees, -->
+<!-- 		option,seller_id) -->
+<!-- 		VALUES ( #{include_fees}, #{option}, #{seller_id} ) -->
+<!-- 	</insert> -->
+
+	<select id="getBoardList"
+		resultType="com.itwillbs.domain.BoardBean">
+		select * from one_room order by room_id desc limit #{startRow},#{pageSize}
+	</select>
+
+	<select id="getBoardCount" resultType="java.lang.Integer">
+		select count(*) from
+		one_room
+	</select>
+
+	<select id="getBoard" resultType="com.itwillbs.domain.BoardBean">
+		select * from one_room where
+		room_id=#{room_id}
+	</select>
+
+	<select id="numCheck" resultType="com.itwillbs.domain.BoardBean">
+		select * from one_room where
+		room_id=#{room_id} and pass=#{pass}
+	</select>
+
+	<update id="updateBoard">
+		update one_room set name=#{name}, subject=#{subject},
+		content=#{content}
+		where room_id=#{room_id}
+	</update>
+
+	<delete id="deleteBoard">
+		delete from one_room where room_id=#{room_id}
+	</delete>
+
 </mapper>
 
 
