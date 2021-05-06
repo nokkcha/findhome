@@ -6,42 +6,20 @@
 <mapper namespace="com.itwillbs.mapper.BoardMapper">
 
 	<select id="getMaxNum" resultType="java.lang.Integer">
-		select max(room_id) from
-		one_room
+		select max(room_id) from one_room
 	</select>
 
-	<!-- <resultMap id="one_room" -->
-	<!-- type="com.itwillbs.domain.OneRoomBean"> -->
-	<!-- <result property="json" column="include_fees" -->
-	<!-- typeHandler="com.itwillbs.mapper.type.JSONTypeHandler" /> -->
-	<!-- <result property="json" column="option" -->
-	<!-- typeHandler="com.itwillbs.mapper.type.JSONTypeHandler" /> -->
-	<!-- </resultMap> -->
-	
-<!-- 		<insert id="insertRoom"> -->
-<!-- 		INSERT INTO one_room (seller_id) VALUES ( -->
-<!-- 		#{seller_id} -->
-<!-- 		) -->
-<!-- 	</insert> -->
-	
-
 	<insert id="insertRoom">
-		INSERT INTO one_room (include_fees, option, seller_id) VALUES (
-		#{include_fees, typeHandler=com.itwillbs.mapper.type.JSONTypeHandler},
+	INSERT INTO `one_room` (`include_fees`, `option`, `seller_id`) 
+		VALUES (#{include_fees, typeHandler=com.itwillbs.mapper.type.JSONTypeHandler},
 		#{option, typeHandler=com.itwillbs.mapper.type.JSONTypeHandler},
-		#{seller_id}
-		)
+		#{seller_id})
 	</insert>
-
-<!-- 	<insert id="insertRoom"> -->
-<!-- 		INSERT INTO one_room ( include_fees, -->
-<!-- 		option,seller_id) -->
-<!-- 		VALUES ( #{include_fees}, #{option}, #{seller_id} ) -->
-<!-- 	</insert> -->
 
 	<select id="getBoardList"
 		resultType="com.itwillbs.domain.BoardBean">
-		select * from one_room order by room_id desc limit #{startRow},#{pageSize}
+		select * from one_room order by room_id desc limit
+		#{startRow},#{pageSize}
 	</select>
 
 	<select id="getBoardCount" resultType="java.lang.Integer">
