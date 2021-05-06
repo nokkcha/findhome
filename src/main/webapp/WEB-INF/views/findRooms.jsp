@@ -28,6 +28,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/flaticon.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/icomoon.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/findRoom.css">
     
     
     
@@ -48,19 +49,20 @@
         </div>
       </div>
     </div>
+    
     <section class="ftco-section ftco-degree-bg">
       <div class="container">
         <div class="row">
         	<div class="col-lg-3 sidebar">
         		<div class="sidebar-wrap bg-light ftco-animate">
-        			<h3 class="heading mb-4">검색 조건을 설정해주세요</h3>
+        			<h3 class="heading mb-4">검색 조건 설정</h3>
         			<form action="#">
         				<div class="fields">
 		              <div class="form-group">
 		                <input type="text" class="form-control" placeholder="지역, 지하철역 검색">
 		              </div>
 		              <div class="form-group">
-		                <div class="select-wrap one-third">
+		                <div class="select-wrap2 one-third">
 		                
 		                계약 구분
 	                 <div class="form-group">
@@ -90,54 +92,33 @@
 
 
 
-										<script language = "javascript">
-
-function ShowSliderValue(sVal) {
-	var obValueView = document.getElementById("slider_value_view");
-	obValueView.innerHTML = sVal
-}
-
-function ShowSliderValue2(sVal) {
-	var obValueView = document.getElementById("slider_value_view2");
-	obValueView.innerHTML = sVal
-}
-
-var RangeSlider = function(){
-	var range = $(this);
-    
-	range.on('input', function(){		
-		ShowSliderValue(this.value);
-	});
-};
-
-RangeSlider();
-
-
-</script>
-
-		              <div class="form-group">
+										<div class="form-group">
 		              보증금
-		              	<div class="range-slider">	  						  
-					<div class="Container" >
-					  <font size = 2 id ="slider_value_view">0</font>						  
-					  <input oninput = 'ShowSliderValue(this.value)' style = "width:80%;" class="slider_range" type="range" value="0" min="0" max="1000"  step="100">
-					  <font size = 2 id ="slider_value_view2">0</font>							  
-					<input oninput = 'ShowSliderValue2(this.value)'  type = "range" min='0' max='1000' value='100'>
-					</div>	  
-										  </svg>
-										</div>
+		              	<div class="range-slider">
 
+					<div class="Container" >
+				  		<font size = 2 id = "slider_value_view1">0</font>						  
+				  			<input oninput = 'ShowSliderValue1(this.value)' style = "width:100%;" class="slider_range1" type="range" step="100" value="0" min="0" max="50000"></input>
+				   		<font size = 2 id = "slider_value_view2">0</font>							  
+							<input oninput = 'ShowSliderValue2(this.value)' style = "width:100%;" class="slider_range2" type="range" step="100" value="50000" min="0" max="50000" ></input>
+					</div>
+				
+
+							</svg>
+								</div>
+	
 						월세
 		              	<div class="range-slider">
-		              		<span>  <!-- 월세 -->
-										    <input type="number" value="25000" min="0" max="120000"/>	-
-										    <input type="number" value="50000" min="0" max="120000"/>
-										  </span>
-										  <input value="1000" min="0" max="120000" step="500" type="range"/>
-										  <input value="50000" min="0" max="120000" step="500" type="range"/>
-										  
-										  </svg>
+
+						<div class="Container2" >
+					  		<font size = 2 id = "slider_value_view3">0</font>						  
+					  			<input oninput = 'ShowSliderValue3(this.value)' style = "width:100%;" class="slider_range3" type="range" step="10" value="0" min="0" max="500"></input>
+					   		<font size = 2 id = "slider_value_view4">0</font>							  
+								<input oninput = 'ShowSliderValue4(this.value)' style = "width:100%;" class="slider_range4" type="range" step="10"value="500" min="0" max="500"></input>
+						</div>
+									</svg>
 										</div>
+											
 	
 		              </div>
 
@@ -604,6 +585,43 @@ RangeSlider();
 
     });
 
+    
+    
+ // 보증금 최저
+    function ShowSliderValue1(sVal) {
+    	var obValueView = document.getElementById("slider_value_view1");
+    	if(sVal>=10000){
+    	obValueView.innerHTML = (sVal*0.0001).toFixed(1)+"억 ~ ";
+    	}else{		
+    	obValueView.innerHTML = sVal+"만 ~ ";
+    	}
+    	
+    	
+    }
+
+    // 보증금 최대
+    function ShowSliderValue2(sVal) {
+    	var obValueView = document.getElementById("slider_value_view2");
+    	if(sVal>=10000){
+    	obValueView.innerHTML = (sVal*0.0001).toFixed(1)+"억";
+    	}else{		
+    	obValueView.innerHTML = sVal+"만";
+    	}
+    }
+
+    // 월세 최소
+    function ShowSliderValue3(sVal) {
+    	var obValueView = document.getElementById("slider_value_view3");
+    	obValueView.innerHTML = sVal+"만 ~ ";
+    }
+
+    // 월세 최대
+    function ShowSliderValue4(sVal) {
+    	var obValueView = document.getElementById("slider_value_view4");
+    	obValueView.innerHTML = sVal+"만";
+    }
+
+    
     
     </script>
 

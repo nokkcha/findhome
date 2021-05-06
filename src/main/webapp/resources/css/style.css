@@ -61,7 +61,7 @@ body {
   font-weight: 400;
   line-height: 1.5;
   color: #212529;
-  text-align: center;
+  text-align: left;
   background-color: #fff; }
 
 [tabindex="-1"]:focus {
@@ -471,8 +471,7 @@ pre {
       max-width: 960px; } }
   @media (min-width: 1200px) {
     .container {
-      max-width: 1140px; } 
-      }
+      max-width: 1140px; } }
 
 .container-fluid {
   width: 100%;
@@ -488,7 +487,7 @@ pre {
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   margin-right: -15px;
-  margin-left: 35px; }
+  margin-left: -15px; }
 
 .no-gutters {
   margin-right: 0;
@@ -1558,7 +1557,7 @@ pre {
 
 .form-control {
   display: block;
-  width: 200%;
+  width: 100%;
   padding: 0.375rem 0.75rem;
   font-size: 1rem;
   line-height: 1.5;
@@ -1572,19 +1571,6 @@ pre {
   -o-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out; }
- 
- 
- /*  */
- #login .form-control { 
- display: inline-block !important;
-  width: 300px !important; }
- 
-.form-control-label { 
-	/* border:1px solid red; */
- display: inline-block !important;
- width: 100px !important; }
- 
- 
   @media screen and (prefers-reduced-motion: reduce) {
     .form-control {
       -webkit-transition: none;
@@ -1703,9 +1689,6 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
 .input-group-lg > .input-group-prepend > select.btn:not([size]):not([multiple]),
 .input-group-lg > .input-group-append > select.btn:not([size]):not([multiple]) {
   height: calc(2.875rem + 2px); }
-
-.check-group {
-  margin-left: 6.5rem;}
 
 .form-group {
   margin-bottom: 1rem; }
@@ -9356,115 +9339,3 @@ textarea.form-control {
   100% {
     stroke-dasharray: 89, 200;
     stroke-dashoffset: -136px; } }
-
-     
-.te {
-	background-color: white;
-	margin: 10px;
-	border: 1px black;
-	display: inline-block;
-}
-
-.te:hover {
-	color: #f85959;
-}
-
-.btn_room {
-	display: inline-block;
-	margin-left: 40%;
-	margin-bottom: 30px;
-	color: black;
-	background-color: snow;
-}
-
-.btn_like {
-		margin-bottom: 30px;
-		color: black;
-		background-color: snow;
-}
-
-.btn_room:hover, .btn_like:hover {
-	background-color: #f85959;
-	color: white;
-}
-
-.pri-page {
-	background-color: #f85959;
-	color: white;
-}
-
-.notpri-page {
-	color: black;
-	font-weight: normal;
-}
-
-
-.zzim:before {
-	content:"💓 찜한 매물";
-	color: #f85959;
-	font-weight: bold;
-}
-
-.zzim:hover:before {
-	content:"🤍 찜하기 취소";
-   cursor: pointer;
-   color: black;	
-   font-weight: normal;
-}
-
-
-.nozzim:before {
-	content:"🤍 찜하기";
-}
-
-.nozzim:hover:before {
-	content:"💓 찜하기";
-   cursor: pointer;
-   color: #f85959;	
-	font-weight: bold;
-}
-
-.login {width: 600px !important;}
-
-.member-info-btn {
-	background: #f85959;
-	color: white;
-	padding: 10px 20px;
-	width: 300px;
-	margin-left: 83px;
-	border: none;
-	border-radius: 10px;
-}
-
-.member-info-btn:hover {
-	cursor: pointer;
-	background: white;
-	border: 1px solid #f85959;
-	color: #f85959;
-}
-
-
-.member-delete-btn {
-	background: gray;
-	color: white;
-	padding: 10px 20px;
-	width: 300px;
-	margin-left: 30px;
-	border: none;
-	border-radius: 10px;
-}
-
-.member-delete-btn:hover {
-	cursor: pointer;
-	background: black;
-	color: white;
-}
-
-
-.delete-text {
-		margin-left: 75px;
-}
-
-.deleteMember>ul {
-	text-align: left;
-}
