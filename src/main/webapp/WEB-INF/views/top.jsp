@@ -22,7 +22,7 @@
       <div class="collapse navbar-collapse" id="ftco-nav">
         <ul class="navbar-nav ml-auto">          
           <li class="nav-item"><a href="./login" class="nav-link">로그인</a></li>
-          <li class="nav-item"><a href="./join" class="nav-link">회원가입</a></li>
+          <li class="nav-item"><a href="./join_choice" class="nav-link">회원가입</a></li>
           <li class="nav-item"><a href="./memberInfo" class="nav-link">회원정보</a></li>
         </ul>
       </div>
