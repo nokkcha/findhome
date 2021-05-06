@@ -6,28 +6,10 @@
 <mapper namespace="com.itwillbs.mapper.MemberMapper">
 
 	<insert id="insertMember">
-		insert into member(id,pass,name,date) values(#{id},#{pass},#{name},#{date})
+		insert into member_seller (id, password, phone_number, is_confirm) values(#{id},#{password},#{phone_number},#{is_confirm})
 	</insert>
 	
-	<select id="userCheck" resultType="com.itwillbs.domain.MemberBean">
-		select * from member where id=#{id} and pass=#{pass}
-	</select>
 	
-	<select id="getMember" resultType="com.itwillbs.domain.MemberBean">
-		select * from member where id=#{id}
-	</select>
-	
-	<update id="updateMember">
-		update member set name=#{name} where id=#{id}
-	</update>
-	
-	<delete id="deleteMember">
-		delete from member where id=#{id}
-	</delete>
-	
-	<select id="getMemberList" resultType="com.itwillbs.domain.MemberBean">
-		select * from member
-	</select>
   
 </mapper>
 
