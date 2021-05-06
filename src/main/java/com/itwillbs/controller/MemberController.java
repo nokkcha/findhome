@@ -22,134 +22,25 @@ public class MemberController {
 	@Inject
 	private MemberService memberService;
 	
-	@RequestMapping(value = "/member/insert", method = RequestMethod.GET)
-	public String insert() {
-		//  /WEB-INF/views/member/insertForm.jsp
-		return "member/insertForm";
+	@RequestMapping(value = "/join_choice",method = RequestMethod.GET )
+	public String join_choice() {
+		return "join_choice";
 	}
 	
-	@RequestMapping(value = "/member/insertPro", method = RequestMethod.POST)
-	public String insertPro(MemberBean mb) {
-		// MemberService memberService=new MemberServiceImpl(); 객체생성
-		// memberService.insertMember(mb); 메서드 호출 
+	@RequestMapping(value = "/join",method = RequestMethod.GET )
+	public String join() {
+		return "join";
+	}
+	
+	
+	@RequestMapping(value = "/joinPro", method = RequestMethod.POST)
+	public String joinPro(MemberBean mb) {
+	
 		memberService.insertMember(mb);
 		
-		return "redirect:/member/login";
+		return "redirect:/";
 	}
 	
-	@RequestMapping(value = "/member/login", method = RequestMethod.GET)
-	public String login() {
-		//  /WEB-INF/views/member/loginForm.jsp
-		return "member/loginForm";
-	}
-	
-	// /member/loginPro
-	@RequestMapping(value = "/member/loginPro", method = RequestMethod.POST)
-	public String loginPro(MemberBean mb, HttpSession session, Model model) {
-		
-		MemberBean mb2=memberService.userCheck(mb);
-		if(mb2!=null) {
-			//세션값 생성 "id"
-			session.setAttribute("id", mb.getId());
-			return "redirect:/member/main";
-		}else {
-			// 입력하신 정보가 틀립니다. 
-			model.addAttribute("msg","입력하신 정보가 틀립니다.");
-		//  /WEB-INF/views/member/msg.jsp
-			return "member/msg";
-		}
-		
-		
-	}
-	
-	@RequestMapping(value = "/member/main", method = RequestMethod.GET)
-	public String main() {
-		//  /WEB-INF/views/member/main.jsp
-		return "member/main";
-	}
-	
-	@RequestMapping(value = "/member/logout", method = RequestMethod.GET)
-	public String logout(HttpSession session) {
-		
-		session.invalidate();
-		
-		return "redirect:/member/login";
-	}
-	
-	@RequestMapping(value = "/member/info", method = RequestMethod.GET)
-	public String info(HttpSession session, Model model) {
-		// String id = 세션값 가져오기
-		String id=(String)session.getAttribute("id");
-		// MemberBean mb = 세션에 해당하는 정보 조회 getMember(id)   MemberBean 리턴
-		MemberBean mb=memberService.getMember(id);
-		// model "mb",mb
-		model.addAttribute("mb",mb);
-		
-		//  /WEB-INF/views/member/info.jsp
-		return "member/info";
-	}
-	
-	@RequestMapping(value = "/member/update", method = RequestMethod.GET)
-	public String update(HttpSession session, Model model) {
-		// String id = 세션값 가져오기
-		String id=(String)session.getAttribute("id");
-		// MemberBean mb = 세션에 해당하는 정보 조회 getMember(id)   MemberBean 리턴
-		MemberBean mb=memberService.getMember(id);
-		// model "mb",mb
-		model.addAttribute("mb",mb);
-		
-		//  /WEB-INF/views/member/updateForm.jsp
-		return "member/updateForm";
-	}
-	
-	@RequestMapping(value = "/member/updatePro", method = RequestMethod.POST)
-	public String updatePro(MemberBean mb,  Model model) {
-		
-		MemberBean mb2=memberService.userCheck(mb);
-		if(mb2!=null) {
-			// 수정
-			memberService.updateMember(mb);
-			return "redirect:/member/main";
-		}else {
-			// 입력하신 정보가 틀립니다. 
-			model.addAttribute("msg","입력하신 정보가 틀립니다.");
-		//  /WEB-INF/views/member/msg.jsp
-			return "member/msg";
-		}
-	}
-	
-	@RequestMapping(value = "/member/delete", method = RequestMethod.GET)
-	public String delete() {
-		//  /WEB-INF/views/member/deleteForm.jsp
-		return "member/deleteForm";
-	}
-	
-	@RequestMapping(value = "/member/deletePro", method = RequestMethod.POST)
-	public String deletePro(MemberBean mb,  Model model) {
-		
-		MemberBean mb2=memberService.userCheck(mb);
-		if(mb2!=null) {
-			// 삭제
-			memberService.deleteMember(mb);
-			return "redirect:/member/main";
-		}else {
-			// 입력하신 정보가 틀립니다. 
-			model.addAttribute("msg","입력하신 정보가 틀립니다.");
-		//  /WEB-INF/views/member/msg.jsp
-			return "member/msg";
-		}
-	}
-	
-	@RequestMapping(value = "/member/list", method = RequestMethod.GET)
-	public String list( Model model) {
-		// List<MemberBean> mbList = 회원전체 정보 조회 getMemberList()   List<MemberBean> 리턴
-		List<MemberBean> mbList=memberService.getMemberList();
-		// model "mbList",mbList
-		model.addAttribute("mbList",mbList);
-		
-		//  /WEB-INF/views/member/list.jsp
-		return "member/list";
-	}
 	
 }
 
