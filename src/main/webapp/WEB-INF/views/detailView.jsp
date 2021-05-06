@@ -193,6 +193,24 @@ th, td {
 }
 
 
+.modal-background{
+	display: none;
+	position: fixed;
+	top: 0; left: 0; bottom: 0; right: 0;
+	background: rgba(0,0,0,0.8);
+}
+
+.modal-content{
+	  display: none;
+	  position: absolute;
+	  top: calc(50vh - 100px); left: calc(50vw - 200px);
+	  background-color: white;
+	  display: flex; justify-content: center;
+	  align-items: center;
+	  border-radius: 10px;
+	  width: 400px;
+	  height: 200px;
+}
 					
 </style>
 
@@ -347,20 +365,20 @@ th, td {
 								<div class="item">
 									<div class="hotel-img">
 										<img
-											src="${pageContext.request.contextPath}/resources/images/room-2.png">
+											src="${pageContext.request.contextPath}/resources/images/room-4.jpg">
 									</div>
 
 								</div>
 								<div class="item">
 									<div class="hotel-img">
 										<img
-											src="${pageContext.request.contextPath}/resources/images/room-1.jpg">
+											src="${pageContext.request.contextPath}/resources/images/room-5.jpg">
 									</div>
 								</div>
 								<div class="item">
 									<div class="hotel-img">
 										<img
-											src="${pageContext.request.contextPath}/resources/images/room-3.jpg">
+											src="${pageContext.request.contextPath}/resources/images/room-6.jpg">
 									</div>
 								</div>
 							</div>
@@ -376,10 +394,10 @@ th, td {
 							<h2>즉시 입주 가능한 주방 분리형 원룸</h2>
 
 							<p class="rate mb-5">
-								<span class="loc"><a href="#"><i class="icon-map"></i>
+								<span class="loc"><a href="#map-info"><i class="icon-map"></i>
 										부산진구 전포동 123-45</a></span><br> 
 										<span class="text-zzim icon-like nozzim"></span>
-										<span class="text-zzim icon-like zzim"></span>
+<!-- 										<span class="text-zzim icon-like zzim"></span> -->
 
 								<h6 style="text-align: left;">
 									<i class="fas fa-user" style="width: 20; height: 20"></i> 서면
@@ -388,10 +406,22 @@ th, td {
 
 								<div>
 
-									<button type="button" id="call" class="btn btn-secondary"
+									<button type="button" id="btn-call" class="btn btn-secondary"
 										style="float: left; margin-right: 0.5em;">
 										전화하기
 									</button>
+									
+										<!-- Modal -->
+									
+										<div class="modal-background" id="modal-content">
+											<div class="modal-content" id="modal-content">		
+												웹에서 전화걸기<br>
+												ex.010-0000-0000<br>
+												<button type="button" id="btn-close" class="btn btn-secondary">닫기</button>
+											</div>
+										</div>					
+
+									
 									<button type="button" class="btn btn-secondary"
 										style="float: left;">채팅하기</button>
 
@@ -487,7 +517,7 @@ th, td {
 
 							<br>
 
-							<div class="map-container">
+							<div class="map-container"  id="map-info">
 								<h4 class="mb-5">위치 정보</h4>
 								<h6 class="mb-5">부산진구 전포동 123-45</h6>
 								<div id="map" style="width: 500px; height: 400px;">
@@ -695,6 +725,10 @@ th, td {
 	<script src="${pageContext.request.contextPath}/resources/js/main.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/script/jquery-3.6.0.js"></script>
 	<script type="text/javascript">
+	
+    
+	
+	
 		$(function() {
 			//문의하기 - [문의내용] 클릭
 			$('#contact-content').click(function() {
@@ -735,186 +769,196 @@ th, td {
     	
     	
     	// 목록 - [call] 클릭
-    	$('#call').click(function () {    	
-    		var filter = "win16|win32|win64|mac|macintel"; 
-    		if ( navigator.platform ) { 
-    			if ( filter.indexOf( navigator.platform.toLowerCase() ) < 0 ) {
-    				location.href="tel:010-1234-5678";
+//     	$('#call').click(function () {    	
+//     		var filter = "win16|win32|win64|mac|macintel"; 
+//     		if ( navigator.platform ) { 
+//     			if ( filter.indexOf( navigator.platform.toLowerCase() ) < 0 ) {
+//     				location.href="tel:010-1234-5678";
 			
-    			} else { 
-    					alert('웹에서 전화걸기 ex. 010-1234-5678');	
-    			} 
-    		}
+//     			} else { 
+//     					alert('웹에서 전화걸기 ex. 010-1234-5678');	
+//     			} 
+//     		}
 		
+// 		});
+    	
+    	// 전화하기 - [call] 클릭 후 모달창
+    	$(document).ready(function() {
+			$('#btn-call').click(function() {
+				$('#modal-content').show();
+			});
+			
+			$('#btn-close').click(function() {
+				$('#modal-content').hide();
+			})
 		});
-    	
-    	
-    	   $(document).ready(function(){
+	
 
-    	    	// 검색 조건 - 구조 [전체] 클릭
-    	    	$('.rtypeAll').click(function(){
+		$(document).ready(function() {
 
-    	    		if( $(this).hasClass('btn-default') ) {
-    	    			$(this).removeClass('btn-default');
-    	    			$(this).addClass('btn-primary');
-    	    			
-    	    			$('.rtype').removeClass('btn-primary');
-    	    			$('.rtype').addClass('btn-default');
+			// 검색 조건 - 구조 [전체] 클릭
+			$('.rtypeAll').click(function() {
 
-    	    		} 
-    		
-    	    	});
-    	    	
-    	    	// 검색 조건 - 구조 다중 선택 메서드
-    	    	$.fn.room= function (clickThis) { 		
-    	    		
-    	    	    if($(clickThis).hasClass('btn-default')) {
-    	    	        $(clickThis).removeClass('btn-default');
-    	    	        $(clickThis).addClass('btn-primary');
-    	    	        
-    	    	        if( $('.rtypeAll').hasClass('btn-primary')) {
-    	    	            $('.rtypeAll').removeClass('btn-primary');
-    	    	            $('.rtypeAll').addClass('btn-default');
-    	    	        }
-    	    	        
-    	    	    } else if ($(clickThis).hasClass('btn-primary')){
-    	    	        $(clickThis).removeClass('btn-primary');
-    	    	        $(clickThis).addClass('btn-default');
-    	    	    }    
-    	    	
-    	    	}
-    	    	
-    	    	// 검색 조건 - 구조 [오픈형] 클릭
-    	    	$('.rtypeOpen').click(function(){
-    	            $.fn.room(this);
-    			});
-    	    	
-    	    	// 검색 조건 - 구조 [분리형] 클릭
-    	    	$('.rtypeSeparate').click(function(){
-    	    		$.fn.room(this);
-    	    	});
-    	    	
-    	    	// 검색 조건 - 구조 [복층형] 클릭
-    	    	$('.rtypeStairs').click(function(){
-    	    		$.fn.room(this);
-    	    	});
-    	      
-    	        	
-    	    	// 검색 조건 - 층 수 옵션 [전체] 클릭
-    	        	$('.ftypeAll ').click(function(){       		
-    	        		if( $(this).hasClass('btn-default') ) {
-    	        			$(this).removeClass('btn-default');
-    	        			$(this).addClass('btn-primary');
-    	        			$('.floor').addClass('btn-default');
-    	        			$('.floor ').removeClass('btn-primary');
-    	        			$('.ftypeOther').addClass('btn-default');
-    	        			$('.ftypeOther').removeClass('btn-primary');
-    	        		}
-    	        	});
-    	        	
-    	        	// 검색 조건 - 층 수 옵션 [지상층] 클릭
-    	        	$('.floor').click(function(){       		
-    	        		if( $(this).hasClass('btn-default') ) {
-    	        			$(this).removeClass('btn-default');
-    	        			$(this).addClass('btn-primary');
-    	        			$('.ftypeAll ').addClass('btn-default');
-    	        			$('.ftypeAll ').removeClass('btn-primary');
-    	        			$('.ftypeOther').addClass('btn-default');
-    	        			$('.ftypeOther').removeClass('btn-primary');
-    	        		}
-    	        	});
-    	        	
-    	        	// 검색 조건 - 층 수 옵션 [반지하, 옥탑] 클릭
-    	        	$('.ftypeOther').click(function(){       		
-    	        		if( $(this).hasClass('btn-default') ) {
-    	        			$(this).removeClass('btn-default');
-    	        			$(this).addClass('btn-primary');
-    	        			$('.ftypeAll ').addClass('btn-default');
-    	        			$('.ftypeAll ').removeClass('btn-primary');
-    	        			$('.floor').addClass('btn-default');
-    	        			$('.floor').removeClass('btn-primary');
-    	        		}
-    	        	});
-    	        	
-    	        	
-    	        	// 검색 조건 - 계약 구분 - [전체] 클릭
-    	        	$('.rentAll ').click(function(){       		
-    	        		if( $(this).hasClass('btn-default') ) {
-    	        			$(this).removeClass('btn-default');
-    	        			$(this).addClass('btn-primary');
-    	        			$('.rentMonthly').addClass('btn-default');
-    	        			$('.rentMonthly ').removeClass('btn-primary');
-    	        			$('.rentJeonse').addClass('btn-default');
-    	        			$('.rentJeonse').removeClass('btn-primary');
-    	        		}
-    	        	});
-    	        	
-    	        	// 검색 조건 - 계약 구분 - [월세] 클릭
-    	        	$('.rentMonthly ').click(function(){       		
-    	        		if( $(this).hasClass('btn-default') ) {
-    	        			$(this).removeClass('btn-default');
-    	        			$(this).addClass('btn-primary');
-    	        			$('.rentAll').addClass('btn-default');
-    	        			$('.rentAll ').removeClass('btn-primary');
-    	        			$('.rentJeonse').addClass('btn-default');
-    	        			$('.rentJeonse').removeClass('btn-primary');
-    	        		}
-    	        	});
-    	        	
-    	        	// 검색 조건 - 계약 구분 - [전세] 클릭
-    	        	$('.rentJeonse ').click(function(){       		
-    	        		if( $(this).hasClass('btn-default') ) {
-    	        			$(this).removeClass('btn-default');
-    	        			$(this).addClass('btn-primary');
-    	        			$('.rentAll').addClass('btn-default');
-    	        			$('.rentAll ').removeClass('btn-primary');
-    	        			$('.rentMonthly').addClass('btn-default');
-    	        			$('.rentMonthly').removeClass('btn-primary');
-    	        		}
-    	        	});
+				if ($(this).hasClass('btn-default')) {
+					$(this).removeClass('btn-default');
+					$(this).addClass('btn-primary');
 
-    	    
+					$('.rtype').removeClass('btn-primary');
+					$('.rtype').addClass('btn-default');
 
-    	    });
+				}
 
-    	    
-    	    
-    	 // 보증금 최저
-    	    function ShowSliderValue1(sVal) {
-    	    	var obValueView = document.getElementById("slider_value_view1");
-    	    	if(sVal>=10000){
-    	    	obValueView.innerHTML = (sVal*0.0001).toFixed(1)+"억 ~ ";
-    	    	}else{		
-    	    	obValueView.innerHTML = sVal+"만 ~ ";
-    	    	}
-    	    	
-    	    	
-    	    }
+			});
 
-    	    // 보증금 최대
-    	    function ShowSliderValue2(sVal) {
-    	    	var obValueView = document.getElementById("slider_value_view2");
-    	    	if(sVal>=10000){
-    	    	obValueView.innerHTML = (sVal*0.0001).toFixed(1)+"억";
-    	    	}else{		
-    	    	obValueView.innerHTML = sVal+"만";
-    	    	}
-    	    }
+			// 검색 조건 - 구조 다중 선택 메서드
+			$.fn.room = function(clickThis) {
 
-    	    // 월세 최소
-    	    function ShowSliderValue3(sVal) {
-    	    	var obValueView = document.getElementById("slider_value_view3");
-    	    	obValueView.innerHTML = sVal+"만 ~ ";
-    	    }
+				if ($(clickThis).hasClass('btn-default')) {
+					$(clickThis).removeClass('btn-default');
+					$(clickThis).addClass('btn-primary');
 
-    	    // 월세 최대
-    	    function ShowSliderValue4(sVal) {
-    	    	var obValueView = document.getElementById("slider_value_view4");
-    	    	obValueView.innerHTML = sVal+"만";
-    	    }
+					if ($('.rtypeAll').hasClass('btn-primary')) {
+						$('.rtypeAll').removeClass('btn-primary');
+						$('.rtypeAll').addClass('btn-default');
+					}
 
+				} else if ($(clickThis).hasClass('btn-primary')) {
+					$(clickThis).removeClass('btn-primary');
+					$(clickThis).addClass('btn-default');
+				}
 
+			}
+
+			// 검색 조건 - 구조 [오픈형] 클릭
+			$('.rtypeOpen').click(function() {
+				$.fn.room(this);
+			});
+
+			// 검색 조건 - 구조 [분리형] 클릭
+			$('.rtypeSeparate').click(function() {
+				$.fn.room(this);
+			});
+
+			// 검색 조건 - 구조 [복층형] 클릭
+			$('.rtypeStairs').click(function() {
+				$.fn.room(this);
+			});
+
+			// 검색 조건 - 층 수 옵션 [전체] 클릭
+			$('.ftypeAll ').click(function() {
+				if ($(this).hasClass('btn-default')) {
+					$(this).removeClass('btn-default');
+					$(this).addClass('btn-primary');
+					$('.floor').addClass('btn-default');
+					$('.floor ').removeClass('btn-primary');
+					$('.ftypeOther').addClass('btn-default');
+					$('.ftypeOther').removeClass('btn-primary');
+				}
+			});
+
+			// 검색 조건 - 층 수 옵션 [지상층] 클릭
+			$('.floor').click(function() {
+				if ($(this).hasClass('btn-default')) {
+					$(this).removeClass('btn-default');
+					$(this).addClass('btn-primary');
+					$('.ftypeAll ').addClass('btn-default');
+					$('.ftypeAll ').removeClass('btn-primary');
+					$('.ftypeOther').addClass('btn-default');
+					$('.ftypeOther').removeClass('btn-primary');
+				}
+			});
+
+			// 검색 조건 - 층 수 옵션 [반지하, 옥탑] 클릭
+			$('.ftypeOther').click(function() {
+				if ($(this).hasClass('btn-default')) {
+					$(this).removeClass('btn-default');
+					$(this).addClass('btn-primary');
+					$('.ftypeAll ').addClass('btn-default');
+					$('.ftypeAll ').removeClass('btn-primary');
+					$('.floor').addClass('btn-default');
+					$('.floor').removeClass('btn-primary');
+				}
+			});
+
+			// 검색 조건 - 계약 구분 - [전체] 클릭
+			$('.rentAll ').click(function() {
+				if ($(this).hasClass('btn-default')) {
+					$(this).removeClass('btn-default');
+					$(this).addClass('btn-primary');
+					$('.rentMonthly').addClass('btn-default');
+					$('.rentMonthly ').removeClass('btn-primary');
+					$('.rentJeonse').addClass('btn-default');
+					$('.rentJeonse').removeClass('btn-primary');
+				}
+			});
+
+			// 검색 조건 - 계약 구분 - [월세] 클릭
+			$('.rentMonthly ').click(function() {
+				if ($(this).hasClass('btn-default')) {
+					$(this).removeClass('btn-default');
+					$(this).addClass('btn-primary');
+					$('.rentAll').addClass('btn-default');
+					$('.rentAll ').removeClass('btn-primary');
+					$('.rentJeonse').addClass('btn-default');
+					$('.rentJeonse').removeClass('btn-primary');
+				}
+			});
+
+			// 검색 조건 - 계약 구분 - [전세] 클릭
+			$('.rentJeonse ').click(function() {
+				if ($(this).hasClass('btn-default')) {
+					$(this).removeClass('btn-default');
+					$(this).addClass('btn-primary');
+					$('.rentAll').addClass('btn-default');
+					$('.rentAll ').removeClass('btn-primary');
+					$('.rentMonthly').addClass('btn-default');
+					$('.rentMonthly').removeClass('btn-primary');
+				}
+			});
+
+		});
+
+		// 보증금 최저
+		function ShowSliderValue1(sVal) {
+			var obValueView = document.getElementById("slider_value_view1");
+			if (sVal >= 10000) {
+				obValueView.innerHTML = (sVal * 0.0001).toFixed(1) + "억 ~ ";
+			} else {
+				obValueView.innerHTML = sVal + "만 ~ ";
+			}
+
+		}
+
+		// 보증금 최대
+		function ShowSliderValue2(sVal) {
+			var obValueView = document.getElementById("slider_value_view2");
+			if (sVal >= 10000) {
+				obValueView.innerHTML = (sVal * 0.0001).toFixed(1) + "억";
+			} else {
+				obValueView.innerHTML = sVal + "만";
+			}
+		}
+
+		// 월세 최소
+		function ShowSliderValue3(sVal) {
+			var obValueView = document.getElementById("slider_value_view3");
+			obValueView.innerHTML = sVal + "만 ~ ";
+		}
+
+		// 월세 최대
+		function ShowSliderValue4(sVal) {
+			var obValueView = document.getElementById("slider_value_view4");
+			obValueView.innerHTML = sVal + "만";
+		}
+		
+		
+	      function CloseModal(){
+	         var CloseModal = document.querySelector(".modal-container");
+	         CloseModal.classList.add("CloseModal");
+	      }
 	</script>
+	</script>
+
 
 
 </body>
