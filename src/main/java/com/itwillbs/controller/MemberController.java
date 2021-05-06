@@ -37,26 +37,29 @@ public class MemberController {
 		return "redirect:/member/login";
 	}
 	
-	@RequestMapping(value = "/member/login", method = RequestMethod.GET)
+	@RequestMapping(value = "/login",method = RequestMethod.GET )
 	public String login() {
-		//  /WEB-INF/views/member/loginForm.jsp
-		return "member/loginForm";
+		return "login";
 	}
 	
 	// /member/loginPro
-	@RequestMapping(value = "/member/loginPro", method = RequestMethod.POST)
+	@RequestMapping(value ="/loginPro", method = RequestMethod.POST)
 	public String loginPro(MemberBean mb, HttpSession session, Model model) {
+		System.out.println(mb.getPass());
+		System.out.println(mb.getId());
+		
 		
 		MemberBean mb2=memberService.userCheck(mb);
 		if(mb2!=null) {
 			//세션값 생성 "id"
 			session.setAttribute("id", mb.getId());
-			return "redirect:/member/main";
+			System.out.println(session.getAttribute("id"));
+			return "redirect:/";
 		}else {
 			// 입력하신 정보가 틀립니다. 
 			model.addAttribute("msg","입력하신 정보가 틀립니다.");
-		//  /WEB-INF/views/member/msg.jsp
-			return "member/msg";
+		//  /WEB-INF/views/msg.jsp
+			return "msg";
 		}
 		
 		
@@ -113,8 +116,8 @@ public class MemberController {
 		}else {
 			// 입력하신 정보가 틀립니다. 
 			model.addAttribute("msg","입력하신 정보가 틀립니다.");
-		//  /WEB-INF/views/member/msg.jsp
-			return "member/msg";
+		//  /WEB-INF/views/msg.jsp
+			return "msg";
 		}
 	}
 	
@@ -135,8 +138,8 @@ public class MemberController {
 		}else {
 			// 입력하신 정보가 틀립니다. 
 			model.addAttribute("msg","입력하신 정보가 틀립니다.");
-		//  /WEB-INF/views/member/msg.jsp
-			return "member/msg";
+		//  /WEB-INF/views/msg.jsp
+			return "msg";
 		}
 	}
 	

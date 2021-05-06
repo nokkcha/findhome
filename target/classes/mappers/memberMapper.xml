@@ -6,27 +6,27 @@
 <mapper namespace="com.itwillbs.mapper.MemberMapper">
 
 	<insert id="insertMember">
-		insert into member(id,pass,name,date) values(#{id},#{pass},#{name},#{date})
+		insert into member_normal(id,pass,name,date) values(#{id},#{pass},#{name},#{date})
 	</insert>
 	
 	<select id="userCheck" resultType="com.itwillbs.domain.MemberBean">
-		select * from member where id=#{id} and pass=#{pass}
+		select * from member_normal where id=#{id} and pass=#{pass}
 	</select>
 	
 	<select id="getMember" resultType="com.itwillbs.domain.MemberBean">
-		select * from member where id=#{id}
+		select * from member_normal where id=#{id}
 	</select>
 	
 	<update id="updateMember">
-		update member set name=#{name} where id=#{id}
+		update member_normal set name=#{name} where id=#{id}
 	</update>
 	
 	<delete id="deleteMember">
-		delete from member where id=#{id}
+		delete from member_normal where id=#{id}
 	</delete>
 	
 	<select id="getMemberList" resultType="com.itwillbs.domain.MemberBean">
-		select * from member
+		select * from member_normal
 	</select>
   
 </mapper>
