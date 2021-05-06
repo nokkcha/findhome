@@ -36,6 +36,7 @@ public class HomeController {
 		return "index";
 	}
 	
+<<<<<<< HEAD
 //	@RequestMapping(value = "/join_choice",method = RequestMethod.GET )
 //	public String join_choice() {
 //		return "join_choice";
@@ -45,6 +46,14 @@ public class HomeController {
 //	public String join() {
 //		return "join";
 //	}
+=======
+	@RequestMapping(value = "/join_choice",method = RequestMethod.GET )
+	public String join_choice() {
+		return "join_choice";
+	}
+	
+	
+>>>>>>> branch 'login_backend' of https://github.com/imrutel/findhome.git
 	
 	@RequestMapping(value = "/detailView",method = RequestMethod.GET )
 	public String detailView() {

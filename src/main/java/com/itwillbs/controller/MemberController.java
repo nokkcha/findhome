@@ -42,6 +42,26 @@ public class MemberController {
 	}
 	
 	
+	@RequestMapping(value = "/member/main", method = RequestMethod.GET)
+	public String main() {
+		//  /WEB-INF/views/member/main.jsp
+		return "member/main";
+	}
+	
+	@RequestMapping(value = "/member/logout", method = RequestMethod.GET)
+	public String logout(HttpSession session) {
+		
+		session.invalidate();
+		
+		return "redirect:/member/login";
+	}
+	
+	@RequestMapping(value = "/member/delete", method = RequestMethod.GET)
+	public String delete() {
+		//  /WEB-INF/views/member/deleteForm.jsp
+		return "member/deleteForm";
+	}	
+	
 }
 
 
