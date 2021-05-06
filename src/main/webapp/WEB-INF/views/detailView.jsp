@@ -60,6 +60,24 @@
 	border: 0
 }
 
+#btn01 {
+	margin-bottom: 10px;
+}
+
+#btn02 {
+	margin-bottom: 10px;
+}
+
+#btn03 {
+	margin-bottom: 10px;
+}
+
+#contact-btn{
+	margin-top: 10px;
+}
+
+
+
 table {
 	width: 100%;
 	border-top: 1px solid #dddddddd;
@@ -134,6 +152,35 @@ th, td {
 .btn btn-secondary > a:link{
 	color: white;
 }
+
+.zzim:before {
+	content:"💓 찜한 매물";
+	color: #f85959;
+	font-weight: bold;
+}
+
+.zzim:hover:before {
+	content:"🤍 찜하기 취소";
+   cursor: pointer;
+   color: black;	
+   font-weight: normal;
+}
+
+
+.nozzim:before {
+	content:"🤍 찜하기";
+}
+
+.nozzim:hover:before {
+	content:"💓 찜하기";
+   cursor: pointer;
+   color: #f85959;	
+	font-weight: bold;
+}
+
+
+
+
 					
 </style>
 
@@ -284,66 +331,7 @@ th, td {
 							</div>
 						</form>
 					</div>
-					<div class="sidebar-wrap bg-light ftco-animate">
-						<h3 class="heading mb-4">별점</h3>
-						<form method="post" class="star-rating">
-							<div class="form-check">
-								<input type="checkbox" class="form-check-input"
-									id="exampleCheck1"> <label class="form-check-label"
-									for="exampleCheck1">
-									<p class="rate">
-										<span><i class="icon-star"></i><i class="icon-star"></i><i
-											class="icon-star"></i><i class="icon-star"></i><i
-											class="icon-star"></i></span>
-									</p>
-								</label>
-							</div>
-							<div class="form-check">
-								<input type="checkbox" class="form-check-input"
-									id="exampleCheck1"> <label class="form-check-label"
-									for="exampleCheck1">
-									<p class="rate">
-										<span><i class="icon-star"></i><i class="icon-star"></i><i
-											class="icon-star"></i><i class="icon-star"></i>
-											<i class="icon-star-o"></i></span>
-									</p>
-								</label>
-							</div>
-							<div class="form-check">
-								<input type="checkbox" class="form-check-input"
-									id="exampleCheck1"> <label class="form-check-label"
-									for="exampleCheck1">
-									<p class="rate">
-										<span><i class="icon-star"></i><i class="icon-star"></i><i
-											class="icon-star"></i><i class="icon-star-o"></i><i
-											class="icon-star-o"></i></span>
-									</p>
-								</label>
-							</div>
-							<div class="form-check">
-								<input type="checkbox" class="form-check-input"
-									id="exampleCheck1"> <label class="form-check-label"
-									for="exampleCheck1">
-									<p class="rate">
-										<span><i class="icon-star"></i><i class="icon-star"></i><i
-											class="icon-star-o"></i><i class="icon-star-o"></i><i
-											class="icon-star-o"></i></span>
-									</p>
-								</label>
-							</div>
-							<div class="form-check">
-								<input type="checkbox" class="form-check-input"
-									id="exampleCheck1"> <label class="form-check-label"
-									for="exampleCheck1">
-									<p class="rate">
-										<span><i class="icon-star"></i><i class="icon-star-o"></i><i
-											class="icon-star-o"></i><i class="icon-star-o"></i><i
-											class="icon-star-o"></i></span>
-									</p>
-								</label>
-							</div>
-						</form>
-					</div>
+					
 				</div>
 				
 				<!-- 이미지 슬라이더 -->
@@ -386,19 +374,20 @@ th, td {
 							<p class="rate mb-5">
 								<span class="loc"><a href="#"><i class="icon-map"></i>
 										부산진구 전포동 123-45</a></span><br> 
-										<span style="margin-left:0.5em;color: #f85959;"><i class="far fa-heart fa-1x"></i> 마음에 들어요 </span>
+										<span class="text-zzim icon-like nozzim"></span>
+										<span class="text-zzim icon-like zzim"></span>
 
-								<h5 style="text-align: left;">
+								<h6 style="text-align: left;">
 									<i class="fas fa-user" style="width: 20; height: 20"></i> 서면
 									공인중개사무소
-								</h5>
+								</h6>
 
 								<div>
 
-									<a href="tel:051-1234-1234"><button type="button" class="btn btn-secondary"
+									<button type="button" id="call" class="btn btn-secondary"
 										style="float: left; margin-right: 0.5em;">
 										전화하기
-									</button></a>
+									</button>
 									<button type="button" class="btn btn-secondary"
 										style="float: left;">채팅하기</button>
 
@@ -407,6 +396,7 @@ th, td {
 								</div>
 								 </div>
 							</div>
+
 							<div class="d-md-flex mt-5 mb-5">
 								<table>
 									<thead>
@@ -588,24 +578,37 @@ th, td {
 
 											<div class="col-md-12">
 												<div class="form-group">
-													<a class="btn btn-primary py-3" id="contact-content"
+													<a class="btn btn-secondary py-3" id="contact-content"
 														data-bs-toggle="collapse" href="#collapseExample"
 														role="button" aria-expanded="false"
 														aria-controls="collapseExample"> 문의할 내용 </a>
 												</div>
 
 												<div class="collapse" id="collapseExample">
-													<div class="card card-body">Some placeholder content
-														for the collapse component. This panel is hidden by
-														default but revealed when the user activates the relevant
-														trigger.</div>
+													<div class="card card-body">
+														<input type="button" class="btn btn-light" id="btn01"
+														value="이 집 볼 수 있나요?">
+														<input type="button" class="btn btn-light" id="btn02"
+														value="비슷한 조건의 다른 집이 있나요?">
+														<input type="button" class="btn btn-light" id="btn03"
+														value="문의 내용을 직접 입력하고 싶어요.">
+														
+												<div class="input-group">
+													
+													<textarea class="form-control" id="contact-form" aria-label="With textarea" placeholder="문의할 내용을 직접 작성해주세요." ></textarea>
 												</div>
+
+
+											</div>
+	
+											</div>
 											</div>
 
 
 											<div class="col-md-12">
 												<div class="form-group">
 													<input type="submit" value="문의 하기"
+													id="contact-btn"
 														class="btn btn-primary py-3">
 												</div>
 											</div>
@@ -689,14 +692,58 @@ th, td {
 	<script src="${pageContext.request.contextPath}/resources/script/jquery-3.6.0.js"></script>
 	<script type="text/javascript">
 		$(function() {
-			$('#collapseExample').hide();
-			
+			//문의하기 - [문의내용] 클릭
 			$('#contact-content').click(function() {
 					$('#collapseExample').show();
-				
+					
 			});
 		});
-	
+		
+    	// 목록 - [찜하기] 클릭
+    	$('.text-zzim').click(function(){   
+    	    if($(this).hasClass('nozzim')) {
+    	        $(this).removeClass('nozzim');
+    	        $(this).addClass('zzim');
+    	        $(this).addClass('icon-like');
+    	        
+    	    } else if ($(this).hasClass('zzim')){
+    	        $(this).removeClass('zzim');
+    	        $(this).removeClass('icon-like');
+    	        $(this).addClass('nozzim');
+    	    }    
+    	});
+    	
+    	// 문의하기 - 토글
+    	$('#contact-form').hide();
+    		$('#btn03').click(function() {
+    		$('#btn01').hide();
+    		$('#btn02').hide();
+			$('#contact-form').show();
+			$('#contact-form').focus();
+		});
+    		
+    	$('#contact-content').click(function() {
+    		$('#btn01').show();
+    		$('#btn02').show();
+    		$('#btn03').show();
+    		$('#contact-form').hide();
+		});
+    	
+    	
+    	// 목록 - [call] 클릭
+    	$('#call').click(function () {    	
+    		var filter = "win16|win32|win64|mac|macintel"; 
+    		if ( navigator.platform ) { 
+    			if ( filter.indexOf( navigator.platform.toLowerCase() ) < 0 ) {
+    				location.href="tel:010-1234-5678";
+			
+    			} else { 
+    					alert('웹에서 전화걸기 ex. 010-1234-5678');	
+    			} 
+    		}
+		
+		});
+
 	</script>
 
 
