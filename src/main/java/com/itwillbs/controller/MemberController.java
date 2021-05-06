@@ -32,6 +32,30 @@ public class MemberController {
 		return "join";
 	}
 	
+	@RequestMapping(value = "/login",method = RequestMethod.GET )
+	public String login() {
+		return "login";
+	}
+	
+	// /member/loginPro
+		@RequestMapping(value = "/loginPro", method = RequestMethod.POST)
+		public String loginPro(MemberBean mb, HttpSession session, Model model) {
+			
+			MemberBean mb2=memberService.userCheck(mb);
+			if(mb2!=null) {
+				//세션값 생성 "id"
+				session.setAttribute("id", mb.getId());
+				return "redirect:/main";
+			}else {
+				// 입력하신 정보가 틀립니다. 
+				model.addAttribute("msg","입력하신 정보가 틀립니다.");
+			//  /WEB-INF/views/member/msg.jsp
+				return "msg";
+			}
+			
+			
+		}
+	
 	
 	@RequestMapping(value = "/joinPro", method = RequestMethod.POST)
 	public String joinPro(MemberBean mb) {

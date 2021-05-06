@@ -98,8 +98,8 @@
 						}
 						
 						
-						if ($('#pass1').val() == "") {
-							$('#pass1').focus();
+						if ($('#password').val() == "") {
+							$('#password').focus();
 							checkResult.innerHTML = "<font color='#FF0000'>비밀번호를 입력하세요.</font>";	
 							return false;
 						}
@@ -126,7 +126,7 @@
 						</div>
 						<div class="form-group" align="left">
 							<label class="form-control-label">비밀번호</label><input
-								type="password" class="form-control" name="pass" id="pass"
+								type="password" class="form-control" name="password" id="password"
 								onkeyup="checkPassword()">
 								
 						  <br><span class="check-group" id="checkPasswordResult"></span>

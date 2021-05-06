@@ -10,13 +10,9 @@
 			value="com.mysql.jdbc.Driver"></property>
 		<property name="url"
 			value="jdbc:mysql://localhost:3306/findhome"></property>
-<<<<<<< HEAD
-		<property name="username" value="root"></property>
-		<property name="password" value="1234"></property>
-=======
+
 		<property name="username" value="jspid"></property>
 		<property name="password" value="jsppass"></property>
->>>>>>> branch 'login_backend' of https://github.com/imrutel/findhome.git
 	</bean>
 
 	<bean id="sqlSessionFactory"
