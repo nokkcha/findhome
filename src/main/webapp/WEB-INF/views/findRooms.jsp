@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -129,10 +130,11 @@
 	            </form>
         		</div>
         		
-        		
-        		
-        		
           </div>
+          
+          
+          
+          
           <div class="col-lg-9">
           <button class="btn_room btn pri-page"> 방 찾기 </button>
           <button class="btn_like btn notpri-page"> 찜한 매물 </button>
@@ -155,7 +157,7 @@
 			    							<span class="price per-price"><small>1000/50</small></span>
 		    							</div>
 		    						</div>
-		    						<p>한줄 방소개</p>
+		    						<p>${roomList.subject }</p>
 		    						<hr>
 		    						<p class="bottom-area d-flex">
 		    							<span class="text-zzim icon-like zzim"></span> 
@@ -166,6 +168,13 @@
 		    					</div>
 		    				</div>
 		    			</div>
+		    			
+		    			
+		    			
+		    			
+		    			
+		    			
+		    			
 		    			<div class="col-md-4 ftco-animate">
 		    				<div class="destination">
 		    					<a href="hotel-single.html" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/hotel-2.jpg);">

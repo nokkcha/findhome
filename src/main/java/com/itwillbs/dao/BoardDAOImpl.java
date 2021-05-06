@@ -46,13 +46,11 @@ public class BoardDAOImpl implements BoardDAO{
 
 	@Override
 	public BoardBean numCheck(BoardBean bb) {
-		// TODO Auto-generated method stub
 		return sqlSession.selectOne(namespace+".numCheck", bb);
 	}
 
 	@Override
 	public void updateBoard(BoardBean bb) {
-		// TODO Auto-generated method stub
 		sqlSession.insert(namespace+".updateBoard",bb);		
 	}
 
