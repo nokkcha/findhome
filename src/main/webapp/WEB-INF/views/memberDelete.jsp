@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -99,11 +100,11 @@
 					
 					<hr>
 					
-					<form action="#" id="login" name="login">
+					<form action="<c:url value="/memberDeletePro" />" id="login" name="login">
 
 						<div class="form-group" align="left">
 							<label class="form-control-label">비밀번호</label><input
-								type="password" class="form-control" name="pass1" id="pass1">
+								type="password" class="form-control" name="password" id="pass1" >
 								
 						  <br><span class="check-group" id="checkPasswordResult"></span>
 						</div>
