@@ -45,7 +45,7 @@ public class MemberController {
 		if (mb2 != null) {
 			// 세션값 생성 "id"
 			session.setAttribute("id", mb.getId());
-			return "redirect:/main";
+			return "redirect:/";
 		} else {
 			// 입력하신 정보가 틀립니다.
 			model.addAttribute("msg", "입력하신 정보가 틀립니다.");
