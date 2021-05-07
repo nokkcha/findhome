@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -96,7 +97,7 @@
 			   
 			   
 				function checkPassword() {
-					var pass1 = $('#pass1').val();
+					var pass1 = $('#password').val();
 
 					var lengthRegex2 = /^[A-Za-z0-9!@#$%]{8,16}$/;
 					var alphabetUpperRegex = /[A-Z]/; // 대문자 판별
@@ -143,7 +144,7 @@
 				
 				
 				function checkPhone() {
-					var phone = $('#phone').val();
+					var phone = $('#phone_number').val();
 					var checkPhone = document.getElementById('checkPhoneResult');
  					var lengthRegex3 = /^(010|011)[-\s]?\d{3,4}[-\s]?\d{4}$/;
 					
@@ -164,12 +165,12 @@
 					$('#login').submit(function() {
 
 						var id = $('#id').val();
-						var pass1 = $('#pass1').val();
-						var pass2 = $('#pass2').val();
-						var phone = $('#phone').val();
+						var pass1 = $('#password').val();
+						var pass2 = $('#password').val();
+						var phone = $('#phone_number').val();
 						var lengthRegex1 = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/;
 						var lengthRegex2 = /^[A-Za-z0-9!@#$%]{8,16}$/;
-						var lengthRegex3 = /^(010|011)[-\s]?\d{3,4}[-\s]?\d{4}$/;
+						/* var lengthRegex3 = /^(010|011)[-\s]?\d{3,4}[-\s]?\d{4}$/; */
 						
 						
 						if (id == "") {
@@ -186,37 +187,37 @@
 						}
 						
 						if (pass1 == "") {
-							$('#pass1').focus();
+							$('#password').focus();
 							swal.fire("패스워드 입력", "패스워드를 입력해주세요", "error") //"info,success,warning,error" 중 택1
 							return false;
 						}
 						
 						if (pass2 == "") {
-							$('#pass2').focus();
+							$('#password').focus();
 							swal.fire("패스워드 입력확인", "패스워드를 입력 해주세요", "error") //"info,success,warning,error" 중 택1
 							return false;
 						}
 						
 						if (pass1 != pass2) {
-							$('#pass2').focus();
+							$('#password').focus();
 							swal.fire("패스워드 불일치", "패스워드를 다시 입력해주세요", "error") //"info,success,warning,error" 중 택1
 							return false;
 						}
 						
 						if (!lengthRegex2.exec(pass1)) {
-							$('#pass1').focus();
+							$('#password').focus();
 							swal.fire("패스워드 입력확인", "사용할 수 없는 패스워드입니다", "error") //"info,success,warning,error" 중 택1
 							return false;
 						}
 						
 						if (phone == "") {
-							$('#phone').focus();
+							$('#phone_number').focus();
 							swal.fire("전화번호 입력", "전화번호를 입력해주세요", "error") //"info,success,warning,error" 중 택1
 							return false;
 						}
 						
 						if (!lengthRegex3.exec(phone)) {
-							$('#phone').focus();
+							$('#phone_number').focus();
 							swal.fire("전화번호 입력확인", "전화번호를 다시 입력해주세요", "error") //"info,success,warning,error" 중 택1
 							return false;
 						}
@@ -228,8 +229,8 @@
 				
 				
 				function checkPassword2() {
-					var pass1 = $('#pass1').val();
-					var pass2 = $('#pass2').val();
+					var pass1 = $('#password').val();
+					var pass2 = $('#password').val();
 					
 					var checkResult3 = document.getElementById('checkPasswordResult3');
 					
@@ -244,10 +245,10 @@
 			<div class="row block-9">
 				<div class="pr-md-5">
 					<!-- col-md-6 제거함 -->
-					<form action="#" id="login" name="login">
+					<form action='<c:url value="/memberInfoPro" />' id="login" name="login">
 						<div class="form-group" align="left">
 							<label class="form-control-label">아이디</label> <input type="text"
-								class="form-control" name="id" id="id"
+								class="form-control" name="id" id="id" value="${mb.id }" readonly
 								onkeyup="checkId()">
 								
 							<br><span class="check-group" id="checkIdResult"></span>	
@@ -255,7 +256,7 @@
 						</div>
 						<div class="form-group" align="left">
 							<label class="form-control-label">비밀번호</label><input
-								type="password" class="form-control" name="pass1" id="pass1"
+								type="password" class="form-control" name="password" id="pass1"
 								onkeyup="checkPassword()">
 								
 						  <br><span class="check-group" id="checkPasswordResult"></span>
@@ -263,14 +264,14 @@
 						
 						<div class="form-group" align="left">
 							<label class="form-control-label">비밀번호 확인</label><input
-								type="password" class="form-control" name="pass2" id="pass2"
+								type="password" class="form-control" name="password" id="pass2"
 								onkeyup="checkPassword2()">
 								
 						  <br><span class="check-group" id="checkPasswordResult3"></span>
 						</div>
 						<div class="form-group" align="left">
 							<label class="form-control-label">휴대폰 번호</label><input type="tel"
-								class="form-control" name="phone" id="phone"
+								class="form-control" name="phone_number" id="phone" value="${mb.phone_number }"
 								onkeyup="checkPhone()">
 								
 						  <br><span class="check-group" id="checkPhoneResult"></span>	
