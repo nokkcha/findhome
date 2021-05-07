@@ -101,10 +101,10 @@
 					<hr>
 					
 					<form action="<c:url value="/memberDeletePro" />" id="login" name="login">
-
+						<input type="hidden" name="id" value="${sessionScope.id}">
 						<div class="form-group" align="left">
 							<label class="form-control-label">비밀번호</label><input
-								type="password" class="form-control" name="password" id="pass1" >
+								type="password" class="form-control" name="password" id="password" >
 								
 						  <br><span class="check-group" id="checkPasswordResult"></span>
 						</div>
