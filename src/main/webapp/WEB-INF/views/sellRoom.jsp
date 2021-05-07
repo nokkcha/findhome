@@ -48,7 +48,7 @@
 	<%@ include file="../views/top.jsp"%>
 
 	<section class="ftco-section ftco-degree-bg">
-		>
+		
 		<div class="container" align="left">
 			<br>
 			<h1>매물 등록</h1>
@@ -69,192 +69,218 @@
 
 
 		<div class="container">
-			<table class="table">
-				<thead align="left">
-					<tr>
-						<th colspan="3">위치 정보</th>
-					</tr>
-				</thead>
-				<tbody align="left">
-					<tr>
-						<th style="background-color: #dedede;">주소</th>
-						<!-- 					onkeyup="checkAddress()" -->
-						<td><input type="text" id="address">
-							<button onclick="checkAddress()">위치확인하기</button> <br> · 주소와 단지명 모두 검색이 가능합니다.<br> · 주소 입력 시에는 동/읍/면 으로 검색해 주세요. 예) 자곡동, 동읍면, 신월읍<br> · 오피스텔을 검색할 때에는 동/읍/면 이름과 단지 명을 함께 입력하면 좀 더 편하게 주소를 검색할 수 있습니다. 예) 계산동 하이베라스</td>
-					</tr>
 
-					<tr>
-						<th style="background-color: #dedede;">지도</th>
-						<td id="map">주소 입력 후 위치확인하기를 누르면 이 곳에 지도가 나타납니다.</td>
-					</tr>
-					<!-- 				<tr> -->
-					<!-- 					<th style="background-color: #dedede;">나머지주소</th> -->
-					<!-- 					<td><input type="text"></td> -->
-					<!-- 				</tr> -->
-				</tbody>
-			</table>
+			<form action='<c:url value="/writePro"/>' method="post" id="testForm">
 
-			<table class="table">
-				<thead align="left">
-					<tr>
-						<th colspan="3">사진 등록</th>
-					</tr>
-				</thead>
-				<tbody align="left">
-					<tr>
-						<td colspan="2">· 사진 최소 5장 최대 15장 까지 등록할 수 있습니다.<br> · 아래에 등록 버튼을 클릭하여 사진을 선택하거나, 마우스로 사진을 끌어와서 등록할 수도 있습니다.<br> · 한꺼번에 여러 장 등록도 가능합니다.<br> · 직접 찍은 실제 방 사진의 원본을 등록해야 합니다.<br> · 워터마크, 날짜, 전화번호 등이 포함된 사진이나 방과 관련없는 사진을 등록할 경우 중개가 종료될 수 있습니다.
-						</td>
-					</tr>
-				</tbody>
-			</table>
+				<table class="table">
+					<thead align="left">
+						<tr>
+							<th colspan="3">위치 정보</th>
+						</tr>
+					</thead>
+					<tbody align="left">
+						<tr>
+							<th style="background-color: #dedede;">주소</th>
+							<!-- 					onkeyup="checkAddress()" -->
+							<td><input type="text" id="address">
+								<button onclick="checkAddress()">위치확인하기</button> <br> · 주소와 단지명 모두 검색이 가능합니다.<br> · 주소 입력 시에는 동/읍/면 으로 검색해 주세요. 예) 자곡동, 동읍면, 신월읍<br> · 오피스텔을 검색할 때에는 동/읍/면 이름과 단지 명을 함께 입력하면 좀 더 편하게 주소를 검색할 수 있습니다. 예) 계산동 하이베라스</td>
+						</tr>
 
-			<table class="table">
-				<tbody align="left">
-					<tr>
-						<td style="background-color: #dedede;"><button>+등록</button> <br>대표사진</td>
-						<td style="background-color: #dedede;"><button>+등록</button> <br>화장실</td>
-						<td style="background-color: #dedede;"><button>+등록</button> <br>주방</td>
+						<tr>
+							<th style="background-color: #dedede;">지도</th>
+							<td id="map">주소 입력 후 위치확인하기를 누르면 이 곳에 지도가 나타납니다.</td>
+						</tr>
+						<!-- 				<tr> -->
+						<!-- 					<th style="background-color: #dedede;">나머지주소</th> -->
+						<!-- 					<td><input type="text"></td> -->
+						<!-- 				</tr> -->
+					</tbody>
+				</table>
 
-						<td style="background-color: #dedede;"><input type="file" id="file" onChange="ajaxFileChange();" style="display: none;" /> <input type="button" id="btn-upload" onClick="ajaxFileUpload();" value="+등록" /><br>방사진 <!-- 					<input type="file" id="file" name="file" onchange="changeValue(this)"/> --> <!-- 					<button type="button" id="btn-upload">+등록</button><br>방사진 --></td>
+				<table class="table">
+					<thead align="left">
+						<tr>
+							<th colspan="3">사진 등록</th>
+						</tr>
+					</thead>
+					<tbody align="left">
+						<tr>
+							<td colspan="2">· 사진 최소 5장 최대 15장 까지 등록할 수 있습니다.<br> · 아래에 등록 버튼을 클릭하여 사진을 선택하거나, 마우스로 사진을 끌어와서 등록할 수도 있습니다.<br> · 한꺼번에 여러 장 등록도 가능합니다.<br> · 직접 찍은 실제 방 사진의 원본을 등록해야 합니다.<br> · 워터마크, 날짜, 전화번호 등이 포함된 사진이나 방과 관련없는 사진을 등록할 경우 중개가 종료될 수 있습니다.
+							</td>
+						</tr>
+					</tbody>
+				</table>
 
-						<td style="background-color: #dedede;"><button>+등록</button> <br>방사진</td>
-					</tr>
-					<tr>
-						<td style="background-color: #dedede;"><button>+등록</button></td>
-						<td style="background-color: #dedede;"><button>+등록</button></td>
-						<td style="background-color: #dedede;"><button>+등록</button></td>
-						<td style="background-color: #dedede;"><button>+등록</button></td>
-						<td style="background-color: #dedede;"><button>+등록</button></td>
-					</tr>
-					<tr>
-						<td style="background-color: #dedede;"><button>+등록</button></td>
-						<td style="background-color: #dedede;"><button>+등록</button></td>
-						<td style="background-color: #dedede;"><button>+등록</button></td>
-						<td style="background-color: #dedede;"><button>+등록</button></td>
-						<td style="background-color: #dedede;"><button>+등록</button></td>
-					</tr>
-				</tbody>
-			</table>
+				<table class="table">
+					<tbody align="left">
+						<tr>
+							<td style="background-color: #dedede;"><button>+등록</button> <br>대표사진</td>
+							<td style="background-color: #dedede;"><button>+등록</button> <br>화장실</td>
+							<td style="background-color: #dedede;"><button>+등록</button> <br>주방</td>
 
-			<table class="table">
-				<thead align="left">
-					<tr>
-						<th colspan="3">상세 정보</th>
-					</tr>
-				</thead>
-				<tbody align="left">
-					<tr>
-						<th style="background-color: #dedede;">보증금</th>
-						<td><input type="text">만원</td>
-					</tr>
-					<tr>
-						<th style="background-color: #dedede;">월세</th>
-						<td><input type="text">만원</td>
-					</tr>
-					<tr>
-						<th style="background-color: #dedede;">방구조</th>
-						<td><select name="romm_type">
-								<option value="">선택하세요</option>
-								<option value="오픈형 원룸">오픈형 원룸</option>
-								<option value="복층형 원룸">복층형 원룸</option>
-								<option value="기타">기타</option>
-						</select></td>
-					</tr>
-					<tr>
-						<th style="background-color: #dedede;">관리비</th>
-						<td><input type="text">만원</td>
-					</tr>
-					<tr>
-						<th style="background-color: #dedede;">크기</th>
-						<td>전용면적 : <input type="text" id="cal2">m<sup>2</sup>=<input type="text" id="cal1">평 <br>계약면적 : <input type="text" id="cal4">m<sup>2</sup>=<input type="text" id="cal3">평
-						</td>
-					</tr>
-					<tr>
-						<th style="background-color: #dedede;">층수</th>
-						<td>건물 층 수 : <select name="romm_type">
-								<option value="">선택하세요</option>
-								<c:forEach var="i" begin="1" end="80">
-									<option value="${i}층">${i}층</option>
-								</c:forEach>
+							<td style="background-color: #dedede;"><input type="file" id="file" onChange="ajaxFileChange();" style="display: none;" /> <input type="button" id="btn-upload" onClick="ajaxFileUpload();" value="+등록" /><br>방사진 <!-- 					<input type="file" id="file" name="file" onchange="changeValue(this)"/> --> <!-- 					<button type="button" id="btn-upload">+등록</button><br>방사진 --></td>
 
-						</select> / 해당 층 : <select name="romm_floor">
-								<option value="">선택하세요</option>
-								<option value="반지하">반지하</option>
-								<option value="옥탑방">옥탑방</option>
-								<c:forEach var="i" begin="1" end="80">
-									<option value="${i}층">${i}층</option>
-								</c:forEach>
-						</select>
-						</td>
-					</tr>
-					<tr>
-						<th style="background-color: #dedede;">방향</th>
-						<td><select name="romm_direction">
-								<option value="">선택하세요</option>
-								<option value="동향">동향</option>
-								<option value="서향">서향</option>
-								<option value="남향">남향</option>
-								<option value="북향">북향</option>
-								<option value="남동">남동</option>
-								<option value="남서">남서</option>
-								<option value="북동">북동</option>
-								<option value="북서">북서</option>
-								<option value="기타">확인필요</option>
-						</select></td>
-					</tr>
+							<td style="background-color: #dedede;"><button>+등록</button> <br>방사진</td>
+						</tr>
+						<tr>
+							<td style="background-color: #dedede;"><button>+등록</button></td>
+							<td style="background-color: #dedede;"><button>+등록</button></td>
+							<td style="background-color: #dedede;"><button>+등록</button></td>
+							<td style="background-color: #dedede;"><button>+등록</button></td>
+							<td style="background-color: #dedede;"><button>+등록</button></td>
+						</tr>
+						<tr>
+							<td style="background-color: #dedede;"><button>+등록</button></td>
+							<td style="background-color: #dedede;"><button>+등록</button></td>
+							<td style="background-color: #dedede;"><button>+등록</button></td>
+							<td style="background-color: #dedede;"><button>+등록</button></td>
+							<td style="background-color: #dedede;"><button>+등록</button></td>
+						</tr>
+					</tbody>
+				</table>
 
-					<tr>
-						<th style="background-color: #dedede;">옵션</th>
-						<td><input type="checkbox" name="option">에어컨 <input type="checkbox" name="option">냉장고 <input type="checkbox" name="option">세탁기 <input type="checkbox" name="option">가스레인지 <input type="checkbox" name="option">인덕션 <input type="checkbox" name="option">전자레인지<br> <input type="checkbox" name="option">책상 <input type="checkbox" name="option">책장 <input type="checkbox" name="option">침대 <input type="checkbox" name="option">옷장 <input type="checkbox" name="option">신발장 <input type="checkbox" name="option">싱크대<br></td>
-					</tr>
-					<tr>
-						<th style="background-color: #dedede;">전세 대출</th>
-						<td><input type="radio" name="chk_household" value="가능">가능 <input type="radio" name="chk_household" value="불가능">불가능 <input type="radio" name="chk_household" value="확인필요">확인필요</td>
-					</tr>
-					<tr>
-						<th style="background-color: #dedede;">반려 동물</th>
-						<td><input type="radio" name="chk_pet" value="가능">가능 <input type="radio" name="chk_household" value="불가능">불가능 <input type="radio" name="chk_household" value="고양이만">고양이만 <input type="radio" name="chk_household" value="확인필요">확인필요</td>
-					</tr>
-					<tr>
-						<th style="background-color: #dedede;">주차</th>
-						<td><input type="radio" name="chk_parking" value="가능">가능 <input type="radio" name="chk_parking" value="없음">없음</td>
-					</tr>
-					<tr>
-						<th style="background-color: #dedede;">엘리베이터</th>
-						<td><input type="radio" name="chk_elevator" value="있음">있음 <input type="radio" name="chk_elevator" value="없음">없음</td>
-					</tr>
-					<tr>
-						<th style="background-color: #dedede;">입주가능일</th>
-						<td><input type="date"></td>
-					</tr>
-					<tr>
-						<th style="background-color: #dedede;">제목</th>
-						<td><input type="text">제목</td>
-					</tr>
-					<tr>
-						<th style="background-color: #dedede;">상세설명</th>
-						<td><textarea placeholder="해당 방에 대한 특징과 소개를 최소 50자 이상 입력해야 합니다." rows="10" cols="60"></textarea></td>
-					</tr>
-					<tr>
-						<th style="background-color: #dedede;">연락처</th>
-						<td><input type="text" readonly="readonly" value="010-8888-9999"></td>
-					</tr>
+				<table class="table">
+					<thead align="left">
+						<tr>
+							<th colspan="3">상세 정보</th>
+						</tr>
+					</thead>
+					<tbody align="left">
+						<tr>
+							<th style="background-color: #dedede;">보증금</th>
+							<td><input type="text" id="deposit" name="deposit">만원</td>
+						</tr>
+						<tr>
+							<th style="background-color: #dedede;">월세</th>
+							<td><input type="text" id="monthly_rent" name="monthly_rent">만원</td>
+						</tr>
+						<tr>
+							<th style="background-color: #dedede;">방구조</th>
+							<td><select name="room_type">
+									<option value="">선택하세요</option>
+									<option value="오픈형 원룸 (방1)">오픈형 원룸 (방1)</option>
+									<option value="분리형 원룸 (방1,거실1)">분리형 원룸 (방1,거실1)</option>
+									<option value="복층형 원룸">복층형 원룸</option>
+									<option value="투룸 (방2,거실1)">투룸 (방2,거실1)</option>
+									<option value="쓰리룸+">쓰리룸+</option>
+							</select></td>
+						</tr>
+						<tr>
+							<th style="background-color: #dedede;">관리비</th>
+							<td><input type="text" id="fees" name="fees">만원 &nbsp;
+							<input type="checkbox" id="include_fees" name="include_fees">없음<br>
+							<b>관리비 포함 항목 </b>
+							<input type="checkbox" id="include_fees" name="include_fees">전기세
+							<input type="checkbox" id="include_fees" name="include_fees">가스
+							<input type="checkbox" id="include_fees" name="include_fees">수도
+							<input type="checkbox" id="include_fees" name="include_fees">인터넷
+							<input type="checkbox" id="include_fees" name="include_fees">TV
+							</td>
+						</tr>
+						<tr>
+							<th style="background-color: #dedede;">크기</th>
+							<td>전용면적 : <input type="text" id="cal2" name="exclusive_area_m">m<sup>2</sup>
+							=<input type="text" id="cal1" name="exclusive_area_p">평 <br>
+							계약면적 : <input type="text" id="cal4" name="contract_area_m">m<sup>2</sup>
+							=<input type="text" id="cal3"  name="contract_area_p">평
+							</td>
+						</tr>
+						<tr>
+							<th style="background-color: #dedede;">층수</th>
+							<td>건물 층 수 : <select name="floor">
+									<option value="">선택하세요</option>
+									<c:forEach var="i" begin="1" end="80">
+										<option value="${i}층">${i}층</option>
+									</c:forEach>
 
-				</tbody>
+							</select> / 해당 층 : <select name="living_floor">
+									<option value="">선택하세요</option>
+									<option value="반지하">반지하</option>
+									<option value="옥탑방">옥탑방</option>
+									<c:forEach var="i" begin="1" end="80">
+										<option value="${i}층">${i}층</option>
+									</c:forEach>
+							</select>
+							</td>
+						</tr>
+						<tr>
+							<th style="background-color: #dedede;">방향</th>
+							<td><select name="direction">
+									<option value="">선택하세요</option>
+									<option value="동향">동향</option>
+									<option value="서향">서향</option>
+									<option value="남향">남향</option>
+									<option value="북향">북향</option>
+									<option value="남동">남동</option>
+									<option value="남서">남서</option>
+									<option value="북동">북동</option>
+									<option value="북서">북서</option>
+									<option value="기타">확인필요</option>
+							</select></td>
+						</tr>
 
-				<!-- 			<tbody align="left"> -->
-				<!-- 				<th>건물 유형</th> -->
-				<!-- 				<td><button type="button" class="btn btn-info">원룸</button></td> -->
-				<!-- 				<td>오피스텔</td> -->
-				<!-- 			</tbody> -->
-			</table>			
-			<form action='<c:url value="/writePro"/>'  method="post" id="testForm">
-			<input type="text" id="seller_id" hidden="" name="seller_id" value="admin@gmail.com"> 
-			<button class="btn btn-primary btn-lg btn-block" id="sellRoom">방 내놓기</button>
+						<tr>
+							<th style="background-color: #dedede;">옵션</th>
+							<td><input type="checkbox" id="options" name="options">에어컨 <input type="checkbox" name="option">냉장고 <input type="checkbox" name="option">세탁기 <input type="checkbox" name="option">가스레인지 <input type="checkbox" name="option">인덕션 <input type="checkbox" name="option">전자레인지<br> <input type="checkbox" name="option">책상 <input type="checkbox" name="option">책장 <input type="checkbox" name="option">침대 <input type="checkbox" name="option">옷장 <input type="checkbox" name="option">신발장 <input type="checkbox" name="option">싱크대<br></td>
+						</tr>
+						<tr>
+							<th style="background-color: #dedede;">전세 대출</th>
+							<td><input type="radio" name="loan" id="loan" value="가능">가능 
+							<input type="radio" name="loan" id="loan" value="불가능">불가능 
+							<input type="radio" name="loan" id="loan" value="확인필요">확인필요</td>
+						</tr>
+						<tr>
+							<th style="background-color: #dedede;">반려 동물</th>
+							<td><input type="radio" name="pet" id="pet" value="가능">가능 
+							<input type="radio" name="pet" id="pet"  value="불가능">불가능 
+							<input type="radio"  name="pet" id="pet"  value="고양이만">고양이만 
+							<input type="radio"  name="pet" id="pet"  value="확인필요">확인필요</td>
+						</tr>
+						<tr>
+							<th style="background-color: #dedede;">주차</th>
+							<td><input type="radio"  name="parking" id="parking" value="가능">가능 
+							<input type="radio" name="parking" id="parking"  value="없음">없음</td>
+						</tr>
+						<tr>
+							<th style="background-color: #dedede;">엘리베이터</th>
+							<td><input type="radio" name="elevator" id="elevator" value="있음">있음 
+							<input type="radio" name="elevator" id="elevator"  value="없음">없음</td>
+						</tr>
+						<tr>
+							<th style="background-color: #dedede;">입주가능일</th>
+							<td><input type="date" name="m_date" id="m_date"></td>
+						</tr>
+						<tr>
+							<th style="background-color: #dedede;">제목</th>
+							<td><input type="text" name="subject" id="subject">제목</td>
+						</tr>
+						<tr>
+							<th style="background-color: #dedede;">상세설명</th>
+							<td><textarea name="content" id="content" 
+							placeholder="해당 방에 대한 특징과 소개를 최소 50자 이상 입력해야 합니다."  rows="10" cols="60"></textarea></td>
+						</tr>
+						<tr>
+							<th style="background-color: #dedede;">연락처</th>
+							<td><input type="text" readonly="readonly" name="phone_number" id="phone_number" value="010-8888-9999"></td>
+						</tr>
+
+					</tbody>
+
+					<!-- 			<tbody align="left"> -->
+					<!-- 				<th>건물 유형</th> -->
+					<!-- 				<td><button type="button" class="btn btn-info">원룸</button></td> -->
+					<!-- 				<td>오피스텔</td> -->
+					<!-- 			</tbody> -->
+				</table>
+
+				<input type="text" id="seller_id" hidden="" name="seller_id" value="admin@gmail.com">
+				
+				<button class="btn btn-primary btn-lg btn-block" id="sellRoom">방 내놓기</button>
 			</form>
-			
-		</div> <!-- 		end of container -->	
-		
+
+		</div>
+		<!-- 		end of container -->
+
 	</section>
 
 
@@ -278,12 +304,13 @@
 
 
 
-<!-- 	<!-- loader --> -->
-<!-- 	<div id="ftco-loader" class="show fullscreen"> -->
-<!-- 		<svg class="circular" width="48px" height="48px"> -->
-<%-- 			<circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" /> --%>
-<%-- 			<circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg> --%>
-<!-- 	</div> -->
+	<!-- 	<!-- loader -->
+	-->
+	<!-- 	<div id="ftco-loader" class="show fullscreen"> -->
+	<!-- 		<svg class="circular" width="48px" height="48px"> -->
+	<%-- 			<circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" /> --%>
+	<%-- 			<circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg> --%>
+	<!-- 	</div> -->
 
 	<!-- services 라이브러리 불러오기 -->
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4e97625a0c2b00cdf9292bd703ece0f7&libraries=services,clusterer,drawing">
@@ -354,11 +381,11 @@
 				$('#file').click();
 			});
 		});
-		
+
 		// 매물 내놓기 버튼 클릭 이벤트
 		$(function() {
 			$('#sellRoom').click(function(e) {
-				
+
 			});
 		});
 
