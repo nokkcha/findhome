@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -77,6 +77,9 @@
 }
 
 
+h4{
+	text-align: center;
+}
 
 table {
 	width: 100%;
@@ -211,6 +214,10 @@ th, td {
 	  width: 400px;
 	  height: 200px;
 }
+
+.mb-5 {
+	text-align: center !important;
+}
 					
 </style>
 
@@ -232,9 +239,7 @@ th, td {
 					data-scrollax=" properties: { translateY: '70%' }">
 					<p class="breadcrumbs"
 						data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">
-						<span class="mr-2"><a href="index.html">Home</a></span> <span
-							class="mr-2"><a href="hotel.html">Hotel</a></span> <span>Hotel
-							Single</span>
+						<span class="mr-2"><a href="index.html">원룸</a></span> 
 					</p>
 					<h1 class="mb-3 bread"
 						data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">매물
@@ -390,18 +395,18 @@ th, td {
 
 						<div class="col-md-12 hotel-single mt-4 mb-5 ftco-animate">
 							<div class="info-container">
-								<span>원룸/월세</span>
-							<h2>즉시 입주 가능한 주방 분리형 원룸</h2>
+								<span>원룸 </span>
+							<h2>${ob.subject }</h2>
 
-							<p class="rate mb-5">
+							<p class="rate mb">
 								<span class="loc"><a href="#map-info"><i class="icon-map"></i>
-										부산진구 전포동 123-45</a></span><br> 
+										${ob.address }</a></span><br> 
 										<span class="text-zzim icon-like nozzim"></span>
 <!-- 										<span class="text-zzim icon-like zzim"></span> -->
 
 								<h6 style="text-align: left;">
-									<i class="fas fa-user" style="width: 20; height: 20"></i> 서면
-									공인중개사무소
+									<i class="fas fa-user" style="width: 20; height: 20"></i> 
+									${ob.seller_id }
 								</h6>
 
 								<div>
@@ -436,41 +441,57 @@ th, td {
 									<thead>
 										<tr>
 											<th>방 형태</th>
-											<td>분리형 원룸(욕실 1개)</td>
+											<td>${ob.room_type }</td>
 										</tr>
 									</thead>
 									<tbody>
 										<tr>
-											<th>건물 유형</th>
-											<td>다세대 주택</td>
+											<th>보증금</th>
+											<td>${ob.deposit}</td>
+										</tr>
+											<tr>
+											<th>월세</th>
+											<td>${ob.monthly_rent}</td>
 										</tr>
 										<tr>
-											<th>건물 크기</th>
-											<td>24m<sup>2</sup></td>
+											<th>전용 면적</th>
+											<td>${exclusive_area_m }m<sup>2</sup>(${exclusive_area_p }평)</td>
 										</tr>
 										<tr>
 											<th>건물 층수</th>
-											<td>3/5</td>
+											<td>${ob.living_floor}/${ob.floor}</td>
 										</tr>
 										<tr>
 											<th>입주 가능일</th>
-											<td>즉시 입주</td>
+											<td>${ob.m_date}</td>
+										</tr>
+										<tr>
+											<th>엘리베이터</th>
+											<td>${ob.elevator}</td>
+										</tr>
+										
+										<tr>
+											<th>주차장</th>
+											<td>${ob.parking}</td>
 										</tr>
 
 										<tr>
 											<th>관리비</th>
-											<td>15만원(관리비 외 사용 따라 부과 전기, 가스, 수도, 인터넷, 티비)</td>
+											<td>${ob.include_fees}</td>
 										</tr>
 
 										<tr>
-											<th>주소</th>
-											<td>부산진구 전포동 123-45</td>
+											<th>반려동물</th>
+											<td>무조건 가능합니다.</td>
 										</tr>
 									</tbody>
 								</table>
 
 							</div>
-
+							<div class="map-container"  id="map-info">
+							<h4 class="mb-5">상세 설명</h4>
+								<div>${ob.content }</div>
+							</div>
 							<br>
 
 							<div class="option-info-container">
@@ -519,7 +540,7 @@ th, td {
 
 							<div class="map-container"  id="map-info">
 								<h4 class="mb-5">위치 정보</h4>
-								<h6 class="mb-5">부산진구 전포동 123-45</h6>
+								<h6 class="mb-5">${ob.address }</h6>
 								<div id="map" style="width: 500px; height: 400px;">
 
 
