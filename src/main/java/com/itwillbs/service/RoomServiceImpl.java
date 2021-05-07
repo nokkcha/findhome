@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.itwillbs.dao.RoomDAO;
+import com.itwillbs.domain.PageBean;
 import com.itwillbs.domain.RoomBean;
 
 @Service
@@ -15,8 +16,13 @@ public class RoomServiceImpl implements RoomService{
 	private RoomDAO roomDAO;
 
 	@Override
-	public List<RoomBean> getRoomList() {	
-		return roomDAO.getRoomList();
+	public List<RoomBean> getRoomList(PageBean pb) {	
+		return roomDAO.getRoomList(pb);
+	}
+	
+	@Override
+	public Integer getBoardCount() {
+		return roomDAO.getBoardCount();
 	}
 
 }
