@@ -13,7 +13,7 @@ public interface BoardService {
 	
 	public void insertRoom(OneRoomBean bb);
 	
-	public List<BoardBean> getBoardList(PageBean pb);
+	public List<OneRoomBean> getBoardList(PageBean pb);
 	public Integer getBoardCount();
 
 	public BoardBean getBoard(int num);

@@ -70,3 +70,31 @@
     position: relative;
     margin-right: 10px;
 }
+
+.roomlist {
+	border: 1px solid red;
+	display: inline-block;
+	width: 240px;
+	margin-left: 30px;
+	margin-bottom: 35px;
+	box-sizing: border-box;
+}
+
+.roomlist_moum {
+	border: 1px solid blue;
+}
+
+
+  .col-lg-roomlist {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 75%;
+    flex: 0 0 75%;
+    max-width: 75%;     
+    border: 1px purple solid;
+    }
+    
+   .row-list {
+  display: flex;
+  margin-right: -15px;
+  margin-left: -15px;
+    flex-wrap: wrap; }

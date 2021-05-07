@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -52,7 +53,7 @@
     
     <section class="ftco-section ftco-degree-bg">
       <div class="container">
-        <div class="row">
+        <div class="row-list">
         	<div class="col-lg-3 sidebar">
         		<div class="sidebar-wrap bg-light ftco-animate">
         			<h3 class="heading mb-4">검색 조건 설정</h3>
@@ -104,7 +105,6 @@
 					</div>
 				
 
-							</svg>
 								</div>
 	
 						월세
@@ -116,269 +116,85 @@
 					   		<font size = 2 id = "slider_value_view4">0</font>							  
 								<input oninput = 'ShowSliderValue4(this.value)' style = "width:100%;" class="slider_range4" type="range" step="10"value="500" min="0" max="500"></input>
 						</div>
-									</svg>
+
 										</div>
 											
 	
 		              </div>
 
-		              <div class="form-group">
-		                <input type="submit" value="Search" class="btn btn-primary py-3 px-5">
-		              </div>
+<!-- 		              <div class="form-group"> -->
+<!-- 		                <input type="submit" value="Search" class="btn btn-primary py-3 px-5"> -->
+<!-- 		              </div> -->
 		            </div>
 	            </form>
         		</div>
         		
         		
-        		
-        		
           </div>
-          <div class="col-lg-9">
+          <div class="col-lg-roomlist">
           <button class="btn_room btn pri-page"> 방 찾기 </button>
           <button class="btn_like btn notpri-page"> 찜한 매물 </button>
         	
-          	<div class="row">
-          		<div class="col-md-4 ftco-animate">
-		    				<div class="destination">
-		    					<a href="hotel-single.html" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/hotel-1.jpg);">
-		    						<div class="icon d-flex justify-content-center align-items-center">
-    							<span class="icon-search2"></span>
-    						</div>
-		    					</a>
-		    					<div class="text p-3">
-		    						<div class="d-flex">
-		    							<div class="one">
-				    						<h3><a href="hotel-single.html">전포동, 부산진구</a></h3>
+        	
+        	<div class="roomlist_moum"> 
+        	     <c:forEach var="roomList" items="${roomList }">
+						<div class="roomlist">
+						
+				    		<h3><a href="hotel-single.html">${roomList.address }</a></h3>
+			    			<span class="price per-price"><small>${roomList.deposit} / ${roomList.monthly_rent}</small></span>
+		    				<p>${roomList.subject}</p>
+ 						</div>
+		        </c:forEach>	
+		        		
+		    	</div>		
 
-			    						</div>
-			    						<div class="two">
-			    							<span class="price per-price"><small>1000/50</small></span>
-		    							</div>
-		    						</div>
-		    						<p>한줄 방소개</p>
-		    						<hr>
-		    						<p class="bottom-area d-flex">
-		    							<span class="text-zzim icon-like zzim"></span> 
-		    							
-		    							<span class="ml-auto call"><a href="javascript:void(0);">call</a></span>
-		    							
-		    						</p>
-		    					</div>
-		    				</div>
-		    			</div>
-		    			<div class="col-md-4 ftco-animate">
-		    				<div class="destination">
-		    					<a href="hotel-single.html" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/hotel-2.jpg);">
-		    						<div class="icon d-flex justify-content-center align-items-center">
-    							<span class="icon-search2"></span>
-    						</div>
-		    					</a>
-		    					<div class="text p-3">
-		    						<div class="d-flex">
-		    							<div class="one">
-				    						<h3><a href="hotel-single.html">전포동, 부산진구</a></h3>
-
-			    						</div>
-			    						<div class="two">
-			    							<span class="price per-price"><small>1000/50</small></span>
-		    							</div>
-		    						</div>
-		    						<p>한줄 방소개</p>
-		    						<hr>
-		    						<p class="bottom-area d-flex">
-		    							<span class="text-zzim icon-like nozzim"></span> 
-		    							<span class="ml-auto call"><a href="javascript:void(0);">call</a></span>
-		    						</p>
-		    					</div>
-		    				</div>
-		    			</div>
-		    			<div class="col-md-4 ftco-animate">
-		    				<div class="destination">
-		    					<a href="hotel-single.html" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/hotel-3.jpg);">
-		    						<div class="icon d-flex justify-content-center align-items-center">
-    							<span class="icon-search2"></span>
-    						</div>
-		    					</a>
-		    					<div class="text p-3">
-		    						<div class="d-flex">
-		    							<div class="one">
-				    						<h3><a href="hotel-single.html">전포동, 부산진구</a></h3>
-
-			    						</div>
-			    						<div class="two">
-			    							<span class="price per-price"><small>1000/50</small></span>
-		    							</div>
-		    						</div>
-		    						<p>한줄 방소개</p>
-		    						<hr>
-		    						<p class="bottom-area d-flex">
-		    							<span class="text-zzim icon-like zzim"></span> 
-		    							<span class="ml-auto call"><a href="javascript:void(0);">call</a></span>
-		    						</p>
-		    					</div>
-		    				</div>
-		    			</div>
-		    			<div class="col-md-4 ftco-animate">
-		    				<div class="destination">
-		    					<a href="hotel-single.html" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/hotel-4.jpg);">
-		    						<div class="icon d-flex justify-content-center align-items-center">
-    							<span class="icon-search2"></span>
-    						</div>
-		    					</a>
-		    					<div class="text p-3">
-		    						<div class="d-flex">
-		    							<div class="one">
-				    						<h3><a href="hotel-single.html">전포동, 부산진구</a></h3>
-
-			    						</div>
-			    						<div class="two">
-			    							<span class="price per-price"><small>1000/50</small></span>
-		    							</div>
-		    						</div>
-		    						<p>한줄 방소개</p>
-		    						<hr>
-		    						<p class="bottom-area d-flex">
-		    							<span class="text-zzim icon-like nozzim"></span> 
-		    							<span class="ml-auto call"><a href="javascript:void(0);">call</a></span>
-		    						</p>
-		    					</div>
-		    				</div>
-		    			</div>
-		    			<div class="col-md-4 ftco-animate">
-		    				<div class="destination">
-		    					<a href="hotel-single.html" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/hotel-5.jpg);">
-		    						<div class="icon d-flex justify-content-center align-items-center">
-    							<span class="icon-search2"></span>
-    						</div>
-		    					</a>
-		    					<div class="text p-3">
-		    						<div class="d-flex">
-		    							<div class="one">
-				    						<h3><a href="hotel-single.html">전포동, 부산진구</a></h3>
-
-			    						</div>
-			    						<div class="two">
-			    							<span class="price per-price"><small>1000/50</small></span>
-		    							</div>
-		    						</div>
-		    						<p>한줄 방소개</p>
-		    						<hr>
-		    						<p class="bottom-area d-flex">
-		    							<span class="text-zzim icon-like nozzim"></span> 
-		    							<span class="ml-auto call"><a href="javascript:void(0);">call</a></span>
-		    						</p>
-		    					</div>
-		    				</div>
-		    			</div>
-		    			<div class="col-md-4 ftco-animate">
-		    				<div class="destination">
-		    					<a href="hotel-single.html" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/hotel-6.jpg);">
-		    						<div class="icon d-flex justify-content-center align-items-center">
-    							<span class="icon-search2"></span>
-    						</div>
-		    					</a>
-		    					<div class="text p-3">
-		    						<div class="d-flex">
-		    							<div class="one">
-				    						<h3><a href="hotel-single.html">전포동, 부산진구</a></h3>
-
-			    						</div>
-			    						<div class="two">
-			    							<span class="price per-price"><small>1000/50</small></span>
-		    							</div>
-		    						</div>
-		    						<p>한줄 방소개</p>
-		    						<hr>
-		    						<p class="bottom-area d-flex">
-		    							<span class="text-zzim icon-like nozzim"></span> 
-		    							<span class="ml-auto call"><a href="javascript:void(0);">call</a></span>
-		    						</p>
-		    					</div>
-		    				</div>
-		    			</div>
           	</div>
-          	<div class="row mt-5">
-		          <div class="col text-center">
-		            <div class="block-27">
-		              <ul>
-		                <li><a href="#">&lt;</a></li>
-		                <li class="active"><span>1</span></li>
-		                <li><a href="#">2</a></li>
-		                <li><a href="#">3</a></li>
-		                <li><a href="#">4</a></li>
-		                <li><a href="#">5</a></li>
-		                <li><a href="#">&gt;</a></li>
-		              </ul>
-		            </div>
-		          </div>
-		        </div>
+          	
+          	
+          	
+<!--           	<div class="row mt-5"> -->
+<!-- 		          <div class="col text-center"> -->
+<!-- 		            <div class="block-27"> -->
+<!-- 		              <ul> -->
+<!-- 		                <li><a href="#">&lt;</a></li> -->
+<!-- 		                <li class="active"><span>1</span></li> -->
+<!-- 		                <li><a href="#">2</a></li> -->
+<!-- 		                <li><a href="#">3</a></li> -->
+<!-- 		                <li><a href="#">4</a></li> -->
+<!-- 		                <li><a href="#">5</a></li> -->
+<!-- 		                <li><a href="#">&gt;</a></li> -->
+<!-- 		              </ul> -->
+<!-- 		            </div> -->
+<!-- 		          </div> -->
+<!-- 		        </div> -->
+		        
+		        
+		        
           </div> <!-- .col-md-8 -->
         </div>
-      </div>
+<!--       </div> -->
+      
     </section> <!-- .section -->
 
-    <footer class="ftco-footer ftco-bg-dark ftco-section">
-      <div class="container">
-        <div class="row mb-5">
-          <div class="col-md">
-            <div class="ftco-footer-widget mb-4">
-              <h2 class="ftco-heading-2">dirEngine</h2>
-              <p>한줄 방소개</p>
-              <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
-                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-md">
-            <div class="ftco-footer-widget mb-4 ml-md-5">
-              <h2 class="ftco-heading-2">Information</h2>
-              <ul class="list-unstyled">
-                <li><a href="#" class="py-2 d-block">About</a></li>
-                <li><a href="#" class="py-2 d-block">Service</a></li>
-                <li><a href="#" class="py-2 d-block">Terms and Conditions</a></li>
-                <li><a href="#" class="py-2 d-block">Become a partner</a></li>
-                <li><a href="#" class="py-2 d-block">Best Price Guarantee</a></li>
-                <li><a href="#" class="py-2 d-block">Privacy and Policy</a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-md">
-             <div class="ftco-footer-widget mb-4">
-              <h2 class="ftco-heading-2">Customer Support</h2>
-              <ul class="list-unstyled">
-                <li><a href="#" class="py-2 d-block">FAQ</a></li>
-                <li><a href="#" class="py-2 d-block">Payment Option</a></li>
-                <li><a href="#" class="py-2 d-block">Booking Tips</a></li>
-                <li><a href="#" class="py-2 d-block">How it works</a></li>
-                <li><a href="#" class="py-2 d-block">Contact Us</a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-md">
-            <div class="ftco-footer-widget mb-4">
-            	<h2 class="ftco-heading-2">Have a Questions?</h2>
-            	<div class="block-23 mb-3">
-	              <ul>
-	                <li><span class="icon icon-map-marker"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
-	                <li><a href="#"><span class="icon icon-phone"></span><span class="text">+2 392 3929 210</span></a></li>
-	                <li><a href="#"><span class="icon icon-envelope"></span><span class="text">info@yourdomain.com</span></a></li>
-	              </ul>
-	            </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12 text-center">
-
-            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-          </div>
-        </div>
-      </div>
-    </footer>
+	<footer class="ftco-footer ftco-bg-dark ftco-section">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 text-center">
+					<p>
+						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+						Copyright &copy;
+						<script>
+							document.write(new Date().getFullYear());
+						</script>
+						All rights reserved | This template is made with <i
+							class="icon-heart" aria-hidden="true"></i> by <a
+							href="https://colorlib.com" target="_blank">Colorlib</a>
+						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+					</p>
+				</div>
+			</div>
+		</div>
+	</footer>
     
   
 

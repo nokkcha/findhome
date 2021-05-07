@@ -59,30 +59,27 @@ public class BoardController {
 		return "redirect:/";
 	}
 
-//	http://localhost:8080/myweb2/board/list
-//	http://localhost:8080/myweb2/board/list?pageNum=5
-	@RequestMapping(value = "/board/list", method = RequestMethod.GET)
+
+	@RequestMapping(value = "/findRooms", method = RequestMethod.GET)
 	public String list(HttpServletRequest request, Model model) {
 		PageBean pb = new PageBean();
 		if (request.getParameter("pageNum") != null) {
-			// 있으면 가져온값 5
 			pb.setPageNum(request.getParameter("pageNum"));
 		} else {
-			// 없으면 1
 			pb.setPageNum("1");
 		}
 		pb.setPageSize(10);
 
-		List<BoardBean> bbList = boardService.getBoardList(pb);
+		List<OneRoomBean> roomList = boardService.getBoardList(pb);
 
 		// count(*) 구하기 => set메서드 호출 => pageBlock, startPage, endPage, pageCount구하기
 		pb.setCount(boardService.getBoardCount());
 
-		model.addAttribute("bbList", bbList);
+		model.addAttribute("roomList", roomList);
 		model.addAttribute("pb", pb);
 
 		// /WEB-INF/views/board/list.jsp
-		return "board/list";
+		return "findRooms";
 	}
 
 //	http://localhost:8080/myweb2/board/fwrite

@@ -36,7 +36,7 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
-	public List<BoardBean> getBoardList(PageBean pb) {
+	public List<OneRoomBean> getBoardList(PageBean pb) {
 		// #{startRow} 계산
 		pb.setCurrentPage(Integer.parseInt(pb.getPageNum()));
 		// int startRow=(currentPage-1)*pageSize+1;

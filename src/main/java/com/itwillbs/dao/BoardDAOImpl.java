@@ -18,7 +18,7 @@ public class BoardDAOImpl implements BoardDAO{
 	@Inject
 	private SqlSession sqlSession;
 	
-	private static final String namespace="com.itwillbs.mapper.BoardMapper";
+	private static final String namespace="com.itwillbs.mapper.OneRoomMapper";
 	
 	@Override
 	public void insertBoard(BoardBean bb) {
@@ -31,7 +31,7 @@ public class BoardDAOImpl implements BoardDAO{
 	}
 
 	@Override
-	public List<BoardBean> getBoardList(PageBean pb) {
+	public List<OneRoomBean> getBoardList(PageBean pb) {
 		return sqlSession.selectList(namespace+".getBoardList", pb);
 	}
 
