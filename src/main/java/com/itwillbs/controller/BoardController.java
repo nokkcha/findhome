@@ -43,14 +43,13 @@ public class BoardController {
 		OneRoomBean testBean = new OneRoomBean();
 		testBean.setSeller_id("admin@gmail.com");
 
-		Map<String, Object> options = new HashMap();
-		
+//		Map<String, Object> options = new HashMap();
+//		options.put("에어컨", "Y");
+//		options.put("냉장고", "N");
 //		Map<String, Object> include_fees = new HashMap();
 //		include_fees.put("전기세", "Y");
-		String[] include_fees = new String[] {"전기세", "수도세"};		
-		
-		options.put("에어컨", "Y");
-		options.put("냉장고", "N");
+		String[] include_fees = new String[] {"전기세", "수도세"};
+		String[] options = new String[] {"에어컨", "냉장고", "TV"};
 		
 		testBean.setInclude_fees(include_fees);
 		testBean.setOption(options);
