@@ -10,9 +10,9 @@
 	</select>
 
 	<insert id="insertRoom">
-	INSERT INTO `one_room` (`include_fees`, `option`, `seller_id`) 
+	INSERT INTO `one_room` (`include_fees`, `options`, `seller_id`) 
 		VALUES (#{include_fees, typeHandler=com.itwillbs.mapper.type.JSONTypeHandler},
-		#{option, typeHandler=com.itwillbs.mapper.type.JSONTypeHandler},
+		#{options, typeHandler=com.itwillbs.mapper.type.JSONTypeHandler},
 		#{seller_id})
 	</insert>
 

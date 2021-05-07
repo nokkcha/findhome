@@ -22,7 +22,7 @@ public class OneRoomBean {
 	private String floor; // DEFAULT "1층" COMMENT "건물층수",
 	private String living_floor; // DEFAULT "반지하" COMMENT "반지하,옥탑방,1~80",
 	private String direction; // DEFAULT "동향" COMMENT "동,서,남,북,남동,남서,북동,북서,확인필요",
-	private Map<String, Object> option; // COMMENT ""option"": [ {""name"": ""에어컨""}, {""name"": ""냉장고""}, {""name"":
+	private Map<String, Object> options; // COMMENT ""option"": [ {""name"": ""에어컨""}, {""name"": ""냉장고""}, {""name"":
 										// ""세탁기""}, {""name"": ""가스레인지""}, {""name"": ""인덕션""}, {""name"": ""전자레인지""},
 										// {""name"": ""세탁기""}, {""name"": ""책상""}, {""name"": ""침대""}, {""name"":
 										// ""옷장""}, {""name"": ""신발장""}, {""name"": ""싱크대""} }",
@@ -150,11 +150,11 @@ public class OneRoomBean {
 	}
 
 	public Map<String, Object> getOption() {
-		return option;
+		return options;
 	}
 
 	public void setOption(Map<String, Object> option) {
-		this.option = option;
+		this.options = option;
 	}
 
 	public String getLoan() {
