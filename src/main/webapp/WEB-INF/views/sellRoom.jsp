@@ -70,7 +70,7 @@
 
 		<div class="container">
 
-			<form action='<c:url value="/writePro"/>' method="post" id="testForm">
+			<form action='<c:url value="/sellRoom/writePro"/>' method="post" id="sellForm">
 
 				<table class="table">
 					<thead align="left">
@@ -83,7 +83,7 @@
 							<th style="background-color: #dedede;">주소</th>
 							<!-- 					onkeyup="checkAddress()" -->
 							<td><input type="text" id="address">
-								<button onclick="checkAddress()">위치확인하기</button> <br> · 주소와 단지명 모두 검색이 가능합니다.<br> · 주소 입력 시에는 동/읍/면 으로 검색해 주세요. 예) 자곡동, 동읍면, 신월읍<br> · 오피스텔을 검색할 때에는 동/읍/면 이름과 단지 명을 함께 입력하면 좀 더 편하게 주소를 검색할 수 있습니다. 예) 계산동 하이베라스</td>
+								<button type="button" onclick="checkAddress()">위치확인하기</button> <br> · 주소와 단지명 모두 검색이 가능합니다.<br> · 주소 입력 시에는 동/읍/면 으로 검색해 주세요. 예) 자곡동, 동읍면, 신월읍<br> · 오피스텔을 검색할 때에는 동/읍/면 이름과 단지 명을 함께 입력하면 좀 더 편하게 주소를 검색할 수 있습니다. 예) 계산동 하이베라스</td>
 						</tr>
 
 						<tr>
@@ -118,7 +118,11 @@
 							<td style="background-color: #dedede;"><button>+등록</button> <br>화장실</td>
 							<td style="background-color: #dedede;"><button>+등록</button> <br>주방</td>
 
-							<td style="background-color: #dedede;"><input type="file" id="file" onChange="ajaxFileChange();" style="display: none;" /> <input type="button" id="btn-upload" onClick="ajaxFileUpload();" value="+등록" /><br>방사진 <!-- 					<input type="file" id="file" name="file" onchange="changeValue(this)"/> --> <!-- 					<button type="button" id="btn-upload">+등록</button><br>방사진 --></td>
+							<td style="background-color: #dedede;">
+<!-- 							<input type="file" id="file" onChange="ajaxFileChange();" style="display: none;" />  -->
+<!-- 							<input type="button" id="btn-upload" onClick="ajaxFileUpload();" value="+등록" /> -->
+							<br>방사진							
+							</td>
 
 							<td style="background-color: #dedede;"><button>+등록</button> <br>방사진</td>
 						</tr>
@@ -275,7 +279,7 @@
 
 				<input type="text" id="seller_id" hidden="" name="seller_id" value="admin@gmail.com">
 				
-				<button class="btn btn-primary btn-lg btn-block" id="sellRoom">방 내놓기</button>
+				<button class="btn btn-primary btn-lg btn-block" type="submit" id="sellRoom">방 내놓기</button>
 			</form>
 
 		</div>
@@ -384,8 +388,23 @@
 
 		// 매물 내놓기 버튼 클릭 이벤트
 		$(function() {
-			$('#sellRoom').click(function(e) {
-
+// 			$('#sellRoom').click(function(e) {
+			$('#sellForm').submit(function() {
+						
+				var is_empty = false;
+				$('#sellForm').find('input[type!="hidden"]').each(function(){
+				    if(!$(this).val()) {
+				        is_empty = true;
+				    }
+				});
+				 
+				if(is_empty) {
+				    alert('값을 전부 입력하시오');
+				    return false;
+				}
+				alert("test!");		
+				
+				return true;
 			});
 		});
 

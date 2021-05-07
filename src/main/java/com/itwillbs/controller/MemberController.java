@@ -76,7 +76,7 @@ public class MemberController {
 
 		return "redirect:/member/login";
 	}
-	@RequestMapping(value = "/memberInfo", method = RequestMethod.POST)
+	@RequestMapping(value = "/memberInfo", method = RequestMethod.GET)
 	public String update(HttpSession session, Model model) {
 		// String id = 세션값 가져오기
 		String id=(String)session.getAttribute("id");
@@ -89,7 +89,7 @@ public class MemberController {
 		return "memberInfo";
 	}
 	
-	@RequestMapping(value = "/memberInfoPro", method = RequestMethod.POST)
+	@RequestMapping(value = "/memberInfoPro", method = RequestMethod.GET)
 	public String updatePro(MemberBean mb,  Model model) {
 		
 		MemberBean mb2=memberService.userCheck(mb);
@@ -114,6 +114,9 @@ public class MemberController {
 	@RequestMapping(value = "/memberDeletePro",method = RequestMethod.GET )
 	public String memberdelete(MemberBean mb,  Model model) {
 		MemberBean mb2=memberService.userCheck(mb);
+		
+		System.out.println(mb.getPassword());
+		
 		if(mb2!=null) {
 			// 삭제
 			memberService.deleteMember(mb);

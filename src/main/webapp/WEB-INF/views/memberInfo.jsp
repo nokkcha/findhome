@@ -166,12 +166,11 @@
 
 						var id = $('#id').val();
 						var pass1 = $('#password').val();
-						var pass2 = $('#password').val();
+						var pass2 = $('#password2').val();
 						var phone = $('#phone_number').val();
 						var lengthRegex1 = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/;
 						var lengthRegex2 = /^[A-Za-z0-9!@#$%]{8,16}$/;
 						/* var lengthRegex3 = /^(010|011)[-\s]?\d{3,4}[-\s]?\d{4}$/; */
-						
 						
 						if (id == "") {
 							$('#id').focus();
@@ -230,7 +229,7 @@
 				
 				function checkPassword2() {
 					var pass1 = $('#password').val();
-					var pass2 = $('#password').val();
+					var pass2 = $('#password2').val();
 					
 					var checkResult3 = document.getElementById('checkPasswordResult3');
 					
@@ -256,7 +255,7 @@
 						</div>
 						<div class="form-group" align="left">
 							<label class="form-control-label">비밀번호</label><input
-								type="password" class="form-control" name="password" id="pass1"
+								type="password" class="form-control" name="password" id="password"
 								onkeyup="checkPassword()">
 								
 						  <br><span class="check-group" id="checkPasswordResult"></span>
@@ -264,7 +263,7 @@
 						
 						<div class="form-group" align="left">
 							<label class="form-control-label">비밀번호 확인</label><input
-								type="password" class="form-control" name="password" id="pass2"
+								type="password" class="form-control" name="password2" id="password2"
 								onkeyup="checkPassword2()">
 								
 						  <br><span class="check-group" id="checkPasswordResult3"></span>
