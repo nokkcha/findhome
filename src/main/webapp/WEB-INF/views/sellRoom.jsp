@@ -388,10 +388,12 @@ only screen and (max-width: 760px),
 	<script type="text/javascript">
 		function checkAddress() {
 			var addr = document.getElementById('address').value;
-			if (addr == null) {
-				//return;
-				addr = '서울특별시 영등포구 여의동로 330 한강사업본부 여의도안내센터';
+			if (addr == null || addr == "") {
+				alert('주소를 입력해주세요');
+				return;
+				//addr = '서울특별시 영등포구 여의동로 330 한강사업본부 여의도안내센터';
 			}
+			console.log('사용자 입력 주소 : ' + addr);
 
 			var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 			mapOption = {
@@ -400,9 +402,7 @@ only screen and (max-width: 760px),
 			// 지도의 확대 레벨
 			};
 
-			// 지도를 생성합니다    
-			var map = new kakao.maps.Map(mapContainer, mapOption);
-
+			
 			// 주소-좌표 변환 객체를 생성합니다
 			var geocoder = new kakao.maps.services.Geocoder();
 
@@ -416,6 +416,9 @@ only screen and (max-width: 760px),
 
 								// 정상적으로 검색이 완료됐으면 
 								if (status === kakao.maps.services.Status.OK) {
+									
+									// 지도를 생성합니다    
+									var map = new kakao.maps.Map(mapContainer, mapOption);
 
 									var coords = new kakao.maps.LatLng(
 											result[0].y, result[0].x);
@@ -436,7 +439,8 @@ only screen and (max-width: 760px),
 									// 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
 									map.setCenter(coords);
 								} else {
-									alert("주소를 다시 확인해주세요"); //+ addr);
+									alert(addr + "는 없는 주소입니다.\n주소를 다시 확인해주세요");
+									document.getElementById('address').value = "";
 								}
 							});
 		}
