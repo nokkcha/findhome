@@ -1,7 +1,5 @@
 @charset "UTF-8";
 
-
-     
 .te {
 	background-color: white;
 	display: inline-block;
@@ -41,6 +39,17 @@
 	font-weight: normal;
 }
 
+button.text-zzim {
+	background: white;
+	border: none;
+}
+
+button.text-zzim:focus{ 	
+    border: none;
+    outline:none;
+    }
+
+
 .zzim:before {
 	content:"💓 찜한 매물";
 	color: #f85959;
@@ -53,7 +62,6 @@
    color: black;	
    font-weight: normal;
 }
-
 
 .nozzim:before {
 	content:"🤍 찜하기";
@@ -72,7 +80,6 @@
 }
 
 .roomlist {
-	border: 1px solid red;
 	display: inline-block;
 	width: 240px;
 	margin-left: 30px;
@@ -80,21 +87,40 @@
 	box-sizing: border-box;
 }
 
-.roomlist_moum {
-	border: 1px solid blue;
+.col-lg-roomlist {
+-webkit-box-flex: 0;
+-ms-flex: 0 0 75%;
+flex: 0 0 75%;
+max-width: 75%;     
+}
+    
+  .row-list {
+ display: flex;
+ margin-right: -15px;
+ margin-left: -15px;
+flex-wrap: wrap;
 }
 
-
-  .col-lg-roomlist {
-    -webkit-box-flex: 0;
-    -ms-flex: 0 0 75%;
-    flex: 0 0 75%;
-    max-width: 75%;     
-    border: 1px purple solid;
-    }
+.block-27-page ul {
+  padding: 0;
+  margin: 0; }
+  
+  .block-27-page ul li {
+    display: inline-block;
+    margin-bottom: 4px;
+    font-weight: 400; }
     
-   .row-list {
-  display: flex;
-  margin-right: -15px;
-  margin-left: -15px;
-    flex-wrap: wrap; }
+    .block-27-page ul li a, .block-27-page ul li span {
+      color: #f85959;
+      text-align: center;
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      line-height: 40px;
+      border-radius: 50%;
+      border: 1px solid #fdd3d3; }
+      
+    .block-27-page ul li.active a, .block-27-page ul li.active span {
+      background: #fdd3d3;
+      color: #f85959;
+      border: 1px solid transparent; }

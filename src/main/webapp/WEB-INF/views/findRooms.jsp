@@ -57,7 +57,9 @@
         	<div class="col-lg-3 sidebar">
         		<div class="sidebar-wrap bg-light ftco-animate">
         			<h3 class="heading mb-4">검색 조건 설정</h3>
-        			<form action="#">
+        			
+<!--         			<form action="#"> -->
+        			
         				<div class="fields">
 		              <div class="form-group">
 		                <input type="text" class="form-control" placeholder="지역, 지하철역 검색">
@@ -65,12 +67,12 @@
 		              <div class="form-group">
 		                <div class="select-wrap2 one-third">
 		                
-		                계약 구분
-	                 <div class="form-group">
-		                <input type="button" class="btn te btn-primary rentAll"  value="전체">
-		                <input type="button" class="btn te btn-default rentMonthly"  value="월세">
-		                <input type="button" class="btn te btn-default rentJeonse"  value="전세">
-		              </div>
+<!-- 		                계약 구분 -->
+<!-- 	                 <div class="form-group"> -->
+<!-- 		                <input type="button" class="btn te btn-primary rentAll"  value="전체"> -->
+<!-- 		                <input type="button" class="btn te btn-default rentMonthly"  value="월세"> -->
+<!-- 		                <input type="button" class="btn te btn-default rentJeonse"  value="전세"> -->
+<!-- 		              </div> -->
 
 	                      구조
 	                 <div class="form-group">
@@ -93,86 +95,104 @@
 
 
 
-										<div class="form-group">
+			<div class="form-group">
 		              보증금
-		              	<div class="range-slider">
-
+		        <div class="range-slider">
 					<div class="Container" >
 				  		<font size = 2 id = "slider_value_view1">0</font>						  
 				  			<input oninput = 'ShowSliderValue1(this.value)' style = "width:100%;" class="slider_range1" type="range" step="100" value="0" min="0" max="50000"></input>
-				   		<font size = 2 id = "slider_value_view2">0</font>							  
+				   		<font size = 2 id = "slider_value_view2">5억</font>							  
 							<input oninput = 'ShowSliderValue2(this.value)' style = "width:100%;" class="slider_range2" type="range" step="100" value="50000" min="0" max="50000" ></input>
 					</div>
-				
-
-								</div>
+				</div>
 	
 						월세
 		              	<div class="range-slider">
-
 						<div class="Container2" >
 					  		<font size = 2 id = "slider_value_view3">0</font>						  
 					  			<input oninput = 'ShowSliderValue3(this.value)' style = "width:100%;" class="slider_range3" type="range" step="10" value="0" min="0" max="500"></input>
-					   		<font size = 2 id = "slider_value_view4">0</font>							  
+					   		<font size = 2 id = "slider_value_view4">500만원</font>							  
 								<input oninput = 'ShowSliderValue4(this.value)' style = "width:100%;" class="slider_range4" type="range" step="10"value="500" min="0" max="500"></input>
+							</div>
 						</div>
-
-										</div>
-											
-	
-		              </div>
-
-<!-- 		              <div class="form-group"> -->
-<!-- 		                <input type="submit" value="Search" class="btn btn-primary py-3 px-5"> -->
-<!-- 		              </div> -->
+						
+						<div class="form-group">
+<!-- 							<input type="submit" value="Search" class="btn btn-primary py-3 px-5" id="filter-search"> -->
+							<input type="button" value="Search" class="btn btn-primary py-3 px-5" id="filter-search">
+						</div>
+					 </div>
 		            </div>
+
 	            </form>
         		</div>
-        		
-        		
           </div>
-          <div class="col-lg-roomlist">
-          <button class="btn_room btn pri-page"> 방 찾기 </button>
-          <button class="btn_like btn notpri-page"> 찜한 매물 </button>
-        	
-        	
+                   
+       
+           <div class="col-lg-roomlist">
+          	<button class="btn_room btn pri-page"> 방 찾기 </button>
+          	<button class="btn_like btn notpri-page"> 찜한 매물 </button>        	
         	<div class="roomlist_moum"> 
+        	
         	     <c:forEach var="roomList" items="${roomList }">
-						<div class="roomlist">
-						
-				    		<h3><a href="hotel-single.html">${roomList.address }</a></h3>
-			    			<span class="price per-price"><small>${roomList.deposit} / ${roomList.monthly_rent}</small></span>
-		    				<p>${roomList.subject}</p>
- 						</div>
+        	     <div class="roomlist">
+		    				<div class="destination">
+		    					<a href='<c:url value="/content?num=${roomList.room_id}" />' class="img img-2 d-flex justify-content-center align-items-center" 
+		    					style="background-image: url(${pageContext.request.contextPath}/resources/images/hotel-1.jpg);"></a>
+
+		    					<div class="text p-3">
+		    						<div class="d-flex">
+		    							<div class="one">
+				    						<h3><a href='<c:url value="/content?num=${roomList.room_id}" />'> ${roomList.address } ${roomList.room_id }</a></h3>
+			    						</div>
+			    						<div class="two">
+			    							<span class="price per-price"><small>${roomList.deposit} / ${roomList.monthly_rent}</small></span>
+		    							</div>
+		    						</div>
+		    						<p>${roomList.subject}</p>
+		    						<hr>
+		    						<p class="bottom-area d-flex">
+		    						
+		    						
+		    							<button id="zzim-id-${roomList.room_id}" class="text-zzim nozzim"></button>
+		    							
+		    							
+		    						<span class="ml-auto call"><a href="javascript:void(0);">call</a></span>	
+		    						</p>
+		    						
+		    						<input type="hidden" value="<c:out value='${roomList.room_id}'/>" id="room_id">
+
+		    					</div>
+		    				</div>
+					</div>
 		        </c:forEach>	
 		        		
 		    	</div>		
-
           	</div>
           	
-          	
-          	
-<!--           	<div class="row mt-5"> -->
-<!-- 		          <div class="col text-center"> -->
-<!-- 		            <div class="block-27"> -->
-<!-- 		              <ul> -->
-<!-- 		                <li><a href="#">&lt;</a></li> -->
-<!-- 		                <li class="active"><span>1</span></li> -->
-<!-- 		                <li><a href="#">2</a></li> -->
-<!-- 		                <li><a href="#">3</a></li> -->
-<!-- 		                <li><a href="#">4</a></li> -->
-<!-- 		                <li><a href="#">5</a></li> -->
-<!-- 		                <li><a href="#">&gt;</a></li> -->
-<!-- 		              </ul> -->
-<!-- 		            </div> -->
-<!-- 		          </div> -->
-<!-- 		        </div> -->
 		        
 		        
 		        
-          </div> <!-- .col-md-8 -->
+          </div><!-- .col-md-8 -->
         </div>
-<!--       </div> -->
+
+          	<div class="row mt-5">
+		          <div class="col text-center">
+		            <div class="block-27-page">
+		              <ul>
+		              
+		                <c:if test="${pb.startPage > pb.pageBlock }">
+		                <li> <a href='<c:url value="findRooms?pageNum=${pb.startPage-pb.pageBlock}" />'>&lt;</a></li>
+					</c:if>
+					<c:forEach var="i" begin="${pb.startPage }" end="${pb.endPage}" step="1">
+		                <li class="active"><span> <a href='<c:url value="findRooms?pageNum=${i}" />'>${i}</a> </span></li>
+					</c:forEach>
+					<c:if test="${pb.endPage < pb.pageCount }">
+		                <li><a href='<c:url value="findRooms?pageNum=${pb.startPage+pb.pageBlock}" />'>&gt;</a></li>
+					</c:if>
+		              </ul>
+		            </div>
+		          </div>
+		        </div>
       
     </section> <!-- .section -->
 
@@ -221,10 +241,10 @@
   <script src="${pageContext.request.contextPath}/resources/js/main.js"></script>
   
   
-        <script src="../script/jquery-3.6.0.js"></script>
-    <script type="text/javascript">
+<script src="../script/jquery-3.6.0.js"></script>
+<script type="text/javascript">
     $(document).ready(function(){
-
+    	
     	// 검색 조건 - 구조 [전체] 클릭
     	$('.rtypeAll').click(function(){
 
@@ -370,21 +390,32 @@
         	
     		
         	// 목록 - [찜하기] 클릭
-        	$('.text-zzim').click(function(){   
-        	    if($(this).hasClass('nozzim')) {
-        	        $(this).removeClass('nozzim');
-        	        $(this).addClass('zzim');
-        	        $(this).addClass('icon-like');
-        	        
-        	    } else if ($(this).hasClass('zzim')){
-        	        $(this).removeClass('zzim');
-        	        $(this).removeClass('icon-like');
-        	        $(this).addClass('nozzim');
-        	    }    
-        	});
+        	$('.text-zzim').click(function(){
+        		var room_id = $(this).parent().parent().children("input")[0].value;
+        		
+        	 	$.ajax('<c:url value="/zzim" />',{
+        	 		data:{wish:room_id},
+        	 		success:function(rdata){
+        	 			
+        	 			if(rdata=="zzim"){
+        	 				rdata = "찜";
+        	 				$('#zzim-id-'+room_id).removeClass('nozzim');
+        	 				$('#zzim-id-'+room_id).addClass('zzim');
 
+        	 			}else if(rdata=="nozzim"){
+        	 				rdata = "찜안함";
+                	        $('#zzim-id-'+room_id).removeClass('zzim');
+        	 				$('#zzim-id-'+room_id).addClass('nozzim');
+        	 			} else {
+        	 				rdata = "로그인하세요";
+        	 			}
+        	 			
+        	 			alert(rdata );
+        	 		}
+        	 	});
+
+        	});
         	
-		
         	// 목록 - [call] 클릭
         	$('.call').click(function () {    	
         		var filter = "win16|win32|win64|mac|macintel"; 
@@ -401,7 +432,6 @@
 
     });
 
-    
     
  // 보증금 최저
     function ShowSliderValue1(sVal) {
@@ -437,7 +467,6 @@
     	obValueView.innerHTML = sVal+"만";
     }
 
-    
     
     </script>
 

@@ -10,7 +10,7 @@
 	</insert>
 	
 	<select id="userCheck" resultType="com.itwillbs.domain.MemberBean">
-		select * from member_seller where id=#{id} and password=#{password}
+		select * from member_normal where id=#{id} and password=#{password}
 	</select>
 
 	<select id="getMember" resultType="com.itwillbs.domain.MemberBean">
@@ -28,6 +28,22 @@
 	<select id="getMemberList" resultType="com.itwillbs.domain.MemberBean">
 		select * from member_seller
 	</select>
+
+<select id="getWish" resultType="com.itwillbs.domain.MemberBean">
+	select * from wish_list where id=#{id} and wish=#{wish};
+</select>
+
+<insert id="insertWish">
+	insert into wish_list(id,wish) values(#{id},#{wish})
+</insert>
+
+<delete id="deleteWish">
+	delete from wish_list where wish=#{wish} and id=#{id}
+</delete>
+
+<select id="getWishList" resultType="com.itwillbs.domain.MemberBean">
+	select * from wish_list where id=#{id}
+</select>
 
   
 </mapper>

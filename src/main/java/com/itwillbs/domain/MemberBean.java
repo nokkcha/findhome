@@ -9,6 +9,9 @@ public class MemberBean {
 	private String phone_number;
 	private char is_confirm = 'N';
 	
+	private int no;
+	private int wish;
+	
 	public String getId() {
 		return id;
 	}
@@ -33,13 +36,19 @@ public class MemberBean {
 	public void setIs_confirm(char is_confirm) {
 		this.is_confirm = is_confirm;
 	}
+	public int getNo() {
+		return no;
+	}
+	public void setNo(int no) {
+		this.no = no;
+	}
+	public int getWish() {
+		return wish;
+	}
+	public void setWish(int wish) {
+		this.wish = wish;
+	}
 
-	
-	
-
-	
-	
-	
 	
 	
 }

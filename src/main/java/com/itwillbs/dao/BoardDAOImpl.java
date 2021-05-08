@@ -18,7 +18,7 @@ public class BoardDAOImpl implements BoardDAO{
 	@Inject
 	private SqlSession sqlSession;
 	
-	private static final String namespace="com.itwillbs.mapper.OneRoomMapper";
+	private static final String namespace="com.itwillbs.mapper.BoardMapper";
 	
 	@Override
 	public void insertBoard(BoardBean bb) {

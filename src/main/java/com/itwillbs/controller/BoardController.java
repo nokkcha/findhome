@@ -9,6 +9,7 @@ import java.util.UUID;
 import javax.annotation.Resource;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,14 +20,19 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.itwillbs.domain.BoardBean;
+import com.itwillbs.domain.MemberBean;
 import com.itwillbs.domain.OneRoomBean;
 import com.itwillbs.domain.PageBean;
 import com.itwillbs.service.BoardService;
+import com.itwillbs.service.MemberService;
 
 @Controller
 public class BoardController {
 	@Inject
 	private BoardService boardService;
+	
+	@Inject
+	private MemberService memberService;
 
 	@Resource(name = "uploadPath")
 	private String uploadPath;
@@ -61,27 +67,32 @@ public class BoardController {
 
 
 	@RequestMapping(value = "/findRooms", method = RequestMethod.GET)
-	public String list(HttpServletRequest request, Model model) {
+	public String list(HttpServletRequest request, Model model, HttpSession session) {
 		PageBean pb = new PageBean();
 		if (request.getParameter("pageNum") != null) {
 			pb.setPageNum(request.getParameter("pageNum"));
 		} else {
 			pb.setPageNum("1");
 		}
-		pb.setPageSize(10);
+		pb.setPageSize(9);
 
 		List<OneRoomBean> roomList = boardService.getBoardList(pb);
 
-		// count(*) 구하기 => set메서드 호출 => pageBlock, startPage, endPage, pageCount구하기
 		pb.setCount(boardService.getBoardCount());
 
 		model.addAttribute("roomList", roomList);
 		model.addAttribute("pb", pb);
-
-		// /WEB-INF/views/board/list.jsp
+		
+		String id = (String) session.getAttribute("id");
+	
+		if(id != null) {
+			List<MemberBean> wishList=memberService.getWishList(id);	
+			model.addAttribute("wishList", wishList);
+		}
 		return "findRooms";
 	}
 
+	
 //	http://localhost:8080/myweb2/board/fwrite
 	@RequestMapping(value = "/board/fwrite", method = RequestMethod.GET)
 	public String fwrite() {
@@ -182,5 +193,7 @@ public class BoardController {
 			return "member/msg";
 		}
 	}
+	
+	
 
 }

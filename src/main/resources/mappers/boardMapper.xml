@@ -17,7 +17,7 @@
 	</insert>
 
 	<select id="getBoardList"
-		resultType="com.itwillbs.domain.BoardBean">
+		resultType="com.itwillbs.domain.OneRoomBean">
 		select * from one_room order by room_id desc limit
 		#{startRow},#{pageSize}
 	</select>
@@ -27,12 +27,12 @@
 		one_room
 	</select>
 
-	<select id="getBoard" resultType="com.itwillbs.domain.BoardBean">
+	<select id="getBoard" resultType="com.itwillbs.domain.OneRoomBean">
 		select * from one_room where
 		room_id=#{room_id}
 	</select>
 
-	<select id="numCheck" resultType="com.itwillbs.domain.BoardBean">
+	<select id="numCheck" resultType="com.itwillbs.domain.OneRoomBean">
 		select * from one_room where
 		room_id=#{room_id} and pass=#{pass}
 	</select>

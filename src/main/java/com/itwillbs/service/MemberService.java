@@ -17,6 +17,14 @@ public interface MemberService {
 	public void deleteMember(MemberBean mb);
 	
 	public List<MemberBean> getMemberList();
+
+	public MemberBean getWish(MemberBean mb);
+	
+	public void insertWish(MemberBean mb);
+	
+	public void deleteWish(MemberBean mb);
+
+	public List<MemberBean> getWishList(String id);
 }
 
 
