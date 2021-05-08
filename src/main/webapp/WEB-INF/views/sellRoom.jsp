@@ -58,11 +58,60 @@
 	background-color: #000 !important;
 	top: 0 !important;
 }
-.room_img_list {position:absolute; z-index:100;}
-.back {position:absolute; z-index:1;} 
-/* #room_pic img{ */
-/*       display:block; width:100%; height:auto; border: 10px solid sky; */
-/* } */
+
+
+
+/* .td-style {  */
+/*  	border: 1px solid #444444;  */
+/*      margin: 10px;  */
+/*      background-color: #dedede;  */
+/*      width="20%";   */
+/*      height="33.3%";  */
+/* }   */
+
+@media 
+only screen and (max-width: 760px),
+(min-device-width: 768px) and (max-device-width: 1024px)  {
+
+	/* Force table to not be like tables anymore */
+	table, thead, tbody, th, td, tr { 
+		display: block; 
+	}
+	
+	/* Hide table headers (but not display: none;, for accessibility) */
+	thead tr { 
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+	
+	tr { border: 1px solid #ccc; }
+	
+	td { 
+		/* Behave  like a "row" */
+		border: none;
+		border-bottom: 1px solid #eee; 
+		position: relative;
+		padding-left: 50%; 
+		
+/* 		background-color: #dedede;  */
+	}
+	
+	td:before { 
+		/* Now like a table header */
+		position: absolute;
+		/* Top/left values mimic padding */
+		top: 6px;
+		left: 6px;
+		width: 45%; 
+		padding-right: 10px; 
+		white-space: nowrap;
+		
+ 		background-color: #dedede;  
+ 		
+	}
+	
+}
 </style>
 
 </head>
@@ -102,9 +151,8 @@
 						</tr>
 					</thead>
 					<tbody align="left">
-						<tr>
-							<th style="background-color: #dedede;">주소</th>
-							<!-- 					onkeyup="checkAddress()" -->
+						<tr>						
+							<th style="background-color: #dedede;">주소 </th>
 							<td><input type="text" id="address">
 								<button onclick="checkAddress()">위치확인하기</button> <br> · 주소와
 								단지명 모두 검색이 가능합니다.<br> · 주소 입력 시에는 동/읍/면 으로 검색해 주세요. 예) 자곡동,
@@ -113,13 +161,9 @@
 						</tr>
 
 						<tr>
-							<th style="background-color: #dedede;">지도</th>
+							<th style="background-color: #dedede;">지도 </th>
 							<td id="map">주소 입력 후 위치확인하기를 누르면 이 곳에 지도가 나타납니다.</td>
 						</tr>
-						<!-- 				<tr> -->
-						<!-- 					<th style="background-color: #dedede;">나머지주소</th> -->
-						<!-- 					<td><input type="text"></td> -->
-						<!-- 				</tr> -->
 					</tbody>
 				</table>
 
@@ -131,7 +175,7 @@
 					</thead>
 					<tbody align="left">
 						<tr>
-							<td colspan="2">· 사진 최소 5장 최대 15장 까지 등록할 수 있습니다.<br> ·
+							<td>· 사진 최소 5장 최대 15장 까지 등록할 수 있습니다.<br> ·
 								아래에 등록 버튼을 클릭하여 사진을 선택하거나, 마우스로 사진을 끌어와서 등록할 수도 있습니다.<br> ·
 								한꺼번에 여러 장 등록도 가능합니다.<br> · 직접 찍은 실제 방 사진의 원본을 등록해야 합니다.<br>
 								· 워터마크, 날짜, 전화번호 등이 포함된 사진이나 방과 관련없는 사진을 등록할 경우 중개가 종료될 수 있습니다.
@@ -469,13 +513,12 @@
 			var str_html = '<tbody align="left"><tr>';
 			
 			for (var i = 1; i <= 15; i++) {
-				var html_td = '<td style="background-color: #dedede;" width="100px" height="150px">';
+				var html_td = '<td style="background-color: #dedede;" >';
 				html_td += '<input type="file" id="file'+i+'" class="file_list"  style="display: none;" accept="image/jpeg,image/png" />';
-				html_td += '<div style="width:100%; height:auto;" >';
-				html_td += '<img id="room_img'+i+'" src="" class="room_img_list"></div><div class="back">'
-				
-				// onClick="ajaxFileUpload();"
-				var html_btn = '<input type="button" onClick="ajaxFileUpload()" class="btn-upload_list" id="btn-upload'+i+'" value="+등록" /><br>{}</div></td>';
+// 				html_td += '<div style="width:20%; height:auto;" >';
+				html_td += '<img id="room_img'+i+'" src="" class="room_img_list"></div><div class="back">'				
+// 				var html_btn = '<input type="button" onClick="ajaxFileUpload()" class="btn-upload_list" id="btn-upload'+i+'" value="+등록" /><br>{}</div></td>';
+				var html_btn = '<input type="button" onClick="ajaxFileUpload()" class="btn-upload_list" id="btn-upload'+i+'" value="+등록" /><br>{}</td>';
 				
 				switch (i) {
 				case 1:
@@ -500,13 +543,7 @@
 				if (i % 5 == 0) {
 					str_html += '</tr>';
 				}
-				
-				
-// 				$( "#elements" ).delegate( "div p", "click", function( event ) {} );
-				//$(".file_list").eq(i).on( "change", function( event ) { alert('!'); } );
-				
-
-// 				$(".file_list").eq(i).on("change", ajaxFileTransmit);				
+						
 			}
 			
 			str_html += '</tbody></table>';
@@ -557,9 +594,6 @@
 						success : function(data) {
 							
 							var str = "";
-							// 이미지 파일이면 썸네일 이미지 출력
-							//if(checkImageType(data)){ 
-							//str = "<div><a href='${path}/upload/displayFile?fileName="+getImageLink(data)+"'>";
 							str += "<img src='${path}/findhome/upload/displayFile?fileName="
 									+ data + "'></a>";
 							$("#btn-upload").append(str);
@@ -568,8 +602,7 @@
 							data = '/findhome/upload/displayFile?fileName=' + data;
 							
 							$(".room_img_list").eq(idx).attr("src",data);	
-// 							$("#room_img1").attr("src",data);							
-							//}
+							$(".btn-upload_list").eq(idx).hide();
 						}
 					});
 			
@@ -577,50 +610,7 @@
 			
 		});
 
-		function ajaxFileTransmit(e) {
-			//alert("FileTransmit");
-			alert('ajaxFileTransmit');
-			var files = e.target.files;
-			
-			// 첫번째 파일
-			var file = files[0];
-			// 콘솔에서 파일정보 확인
-			console.log('ajaxFileTransmit' + file);
-
-			// ajax로 전달할 폼 객체
-			var formData = new FormData();
-			// 폼 객체에 파일추가, append("변수명", 값)
-			formData.append("file", file);
-
-			$
-					.ajax({
-						type : "post",
-						url : "/findhome/upload/uploadAjax",
-						data : formData,
-						// processData: true=> get방식, false => post방식
-						dataType : "text",
-						// contentType: true => application/x-www-form-urlencoded, 
-						//                false => multipart/form-data
-						processData : false,
-						contentType : false,
-						success : function(data) {
-							
-							var str = "";
-							// 이미지 파일이면 썸네일 이미지 출력
-							//if(checkImageType(data)){ 
-							//str = "<div><a href='${path}/upload/displayFile?fileName="+getImageLink(data)+"'>";
-							str += "<img src='${path}/findhome/upload/displayFile?fileName="
-									+ data + "'></a>";
-							$("#btn-upload").append(str);
-							$('div').children('span');
-
-							data = '/findhome/upload/displayFile?fileName=' + data;
-							
-							$("#room_img").attr("src",data);							
-							//}
-						}
-					});
-		}
+		
 	</script>
 
 
