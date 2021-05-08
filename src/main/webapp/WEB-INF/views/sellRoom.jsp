@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -7,39 +8,61 @@
 
 
 <title>DirEngine - Free Bootstrap 4 Template by Colorlib</title>
-<script src="${pageContext.request.contextPath}/resources/script/jquery-3.6.0.js"></script>
+<script
+	src="${pageContext.request.contextPath}/resources/script/jquery-3.6.0.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Alex+Brush" rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700"
+	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Alex+Brush"
+	rel="stylesheet">
 
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/open-iconic-bootstrap.min.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/animate.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/open-iconic-bootstrap.min.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/animate.css">
 
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/owl.carousel.min.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/owl.theme.default.min.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/magnific-popup.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/owl.carousel.min.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/owl.theme.default.min.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/magnific-popup.css">
 
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/aos.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/aos.css">
 
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/ionicons.min.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/ionicons.min.css">
 
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap-datepicker.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/jquery.timepicker.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/bootstrap-datepicker.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/jquery.timepicker.css">
 
 
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/flaticon.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/icomoon.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/flaticon.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/icomoon.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/style.css">
 
 <style type="text/css">
 .ftco-navbar-light {
 	background-color: #000 !important;
 	top: 0 !important;
 }
+.front {position:absolute; z-index:100;}
+.back {position:absolute; z-index:1;} 
+/* #room_pic img{ */
+/*       display:block; width:100%; height:auto; border: 10px solid sky; */
+/* } */
 </style>
 
 </head>
@@ -48,7 +71,7 @@
 	<%@ include file="../views/top.jsp"%>
 
 	<section class="ftco-section ftco-degree-bg">
-		
+
 		<div class="container" align="left">
 			<br>
 			<h1>매물 등록</h1>
@@ -83,7 +106,10 @@
 							<th style="background-color: #dedede;">주소</th>
 							<!-- 					onkeyup="checkAddress()" -->
 							<td><input type="text" id="address">
-								<button onclick="checkAddress()">위치확인하기</button> <br> · 주소와 단지명 모두 검색이 가능합니다.<br> · 주소 입력 시에는 동/읍/면 으로 검색해 주세요. 예) 자곡동, 동읍면, 신월읍<br> · 오피스텔을 검색할 때에는 동/읍/면 이름과 단지 명을 함께 입력하면 좀 더 편하게 주소를 검색할 수 있습니다. 예) 계산동 하이베라스</td>
+								<button onclick="checkAddress()">위치확인하기</button> <br> · 주소와
+								단지명 모두 검색이 가능합니다.<br> · 주소 입력 시에는 동/읍/면 으로 검색해 주세요. 예) 자곡동,
+								동읍면, 신월읍<br> · 오피스텔을 검색할 때에는 동/읍/면 이름과 단지 명을 함께 입력하면 좀 더
+								편하게 주소를 검색할 수 있습니다. 예) 계산동 하이베라스</td>
 						</tr>
 
 						<tr>
@@ -105,22 +131,39 @@
 					</thead>
 					<tbody align="left">
 						<tr>
-							<td colspan="2">· 사진 최소 5장 최대 15장 까지 등록할 수 있습니다.<br> · 아래에 등록 버튼을 클릭하여 사진을 선택하거나, 마우스로 사진을 끌어와서 등록할 수도 있습니다.<br> · 한꺼번에 여러 장 등록도 가능합니다.<br> · 직접 찍은 실제 방 사진의 원본을 등록해야 합니다.<br> · 워터마크, 날짜, 전화번호 등이 포함된 사진이나 방과 관련없는 사진을 등록할 경우 중개가 종료될 수 있습니다.
+							<td colspan="2">· 사진 최소 5장 최대 15장 까지 등록할 수 있습니다.<br> ·
+								아래에 등록 버튼을 클릭하여 사진을 선택하거나, 마우스로 사진을 끌어와서 등록할 수도 있습니다.<br> ·
+								한꺼번에 여러 장 등록도 가능합니다.<br> · 직접 찍은 실제 방 사진의 원본을 등록해야 합니다.<br>
+								· 워터마크, 날짜, 전화번호 등이 포함된 사진이나 방과 관련없는 사진을 등록할 경우 중개가 종료될 수 있습니다.
 							</td>
 						</tr>
 					</tbody>
 				</table>
 
-				<table class="table">
+				<table class="table" id="room_pic">
 					<tbody align="left">
 						<tr>
-							<td style="background-color: #dedede;"><button>+등록</button> <br>대표사진</td>
-							<td style="background-color: #dedede;"><button>+등록</button> <br>화장실</td>
-							<td style="background-color: #dedede;"><button>+등록</button> <br>주방</td>
+							<td style="background-color: #dedede;"><button>+등록</button>
+								<br>대표사진</td>
+							<td style="background-color: #dedede;"><button>+등록</button>
+								<br>화장실</td>
+							<td style="background-color: #dedede;"><button>+등록</button>
+								<br>주방</td>
 
-							<td style="background-color: #dedede;"><input type="file" id="file" style="display: none;" /> <input type="button" id="btn-upload" onClick="ajaxFileUpload();" value="+등록" /><br>방사진 <!-- 					<input type="file" id="file" name="file" onchange="changeValue(this)"/> --> <!-- 					<button type="button" id="btn-upload">+등록</button><br>방사진 --></td>
+<td style="background-color: #dedede;" width="100px" height="150px"><input type="file" id="file" style="display: none;" 
+accept="image/jpeg,image/png" /> 
+<div style="width:100%; height:auto;" >
+<img id="room_img"  src=""  class="front">
+</div> 
+<div class="back">
+<input type="button"  id="btn-upload" onClick="ajaxFileUpload();" value="+등록" /><br>방사진
+</div>
+</td>
 
-							<td style="background-color: #dedede;"><button>+등록</button> <br>방사진</td>
+							
+
+							<td style="background-color: #dedede;"><button>+등록</button>
+								<br>방사진</td>
 						</tr>
 						<tr>
 							<td style="background-color: #dedede;"><button>+등록</button></td>
@@ -167,22 +210,23 @@
 						</tr>
 						<tr>
 							<th style="background-color: #dedede;">관리비</th>
-							<td><input type="text" id="fees" name="fees">만원 &nbsp;
-							<input type="checkbox" id="include_fees" name="include_fees">없음<br>
-							<b>관리비 포함 항목 </b>
-							<input type="checkbox" id="include_fees" name="include_fees">전기세
-							<input type="checkbox" id="include_fees" name="include_fees">가스
-							<input type="checkbox" id="include_fees" name="include_fees">수도
-							<input type="checkbox" id="include_fees" name="include_fees">인터넷
-							<input type="checkbox" id="include_fees" name="include_fees">TV
+							<td><input type="text" id="fees" name="fees">만원
+								&nbsp; <input type="checkbox" id="include_fees"
+								name="include_fees">없음<br> <b>관리비 포함 항목 </b> <input
+								type="checkbox" id="include_fees" name="include_fees">전기세
+								<input type="checkbox" id="include_fees" name="include_fees">가스
+								<input type="checkbox" id="include_fees" name="include_fees">수도
+								<input type="checkbox" id="include_fees" name="include_fees">인터넷
+								<input type="checkbox" id="include_fees" name="include_fees">TV
 							</td>
 						</tr>
 						<tr>
 							<th style="background-color: #dedede;">크기</th>
-							<td>전용면적 : <input type="text" id="cal2" name="exclusive_area_m">m<sup>2</sup>
-							=<input type="text" id="cal1" name="exclusive_area_p">평 <br>
-							계약면적 : <input type="text" id="cal4" name="contract_area_m">m<sup>2</sup>
-							=<input type="text" id="cal3"  name="contract_area_p">평
+							<td>전용면적 : <input type="text" id="cal2"
+								name="exclusive_area_m">m<sup>2</sup> =<input
+								type="text" id="cal1" name="exclusive_area_p">평 <br>
+								계약면적 : <input type="text" id="cal4" name="contract_area_m">m<sup>2</sup>
+								=<input type="text" id="cal3" name="contract_area_p">평
 							</td>
 						</tr>
 						<tr>
@@ -221,30 +265,41 @@
 
 						<tr>
 							<th style="background-color: #dedede;">옵션</th>
-							<td><input type="checkbox" id="options" name="options">에어컨 <input type="checkbox" name="option">냉장고 <input type="checkbox" name="option">세탁기 <input type="checkbox" name="option">가스레인지 <input type="checkbox" name="option">인덕션 <input type="checkbox" name="option">전자레인지<br> <input type="checkbox" name="option">책상 <input type="checkbox" name="option">책장 <input type="checkbox" name="option">침대 <input type="checkbox" name="option">옷장 <input type="checkbox" name="option">신발장 <input type="checkbox" name="option">싱크대<br></td>
+							<td><input type="checkbox" id="options" name="options">에어컨
+								<input type="checkbox" name="option">냉장고 <input
+								type="checkbox" name="option">세탁기 <input type="checkbox"
+								name="option">가스레인지 <input type="checkbox" name="option">인덕션
+								<input type="checkbox" name="option">전자레인지<br> <input
+								type="checkbox" name="option">책상 <input type="checkbox"
+								name="option">책장 <input type="checkbox" name="option">침대
+								<input type="checkbox" name="option">옷장 <input
+								type="checkbox" name="option">신발장 <input type="checkbox"
+								name="option">싱크대<br></td>
 						</tr>
 						<tr>
 							<th style="background-color: #dedede;">전세 대출</th>
-							<td><input type="radio" name="loan" id="loan" value="가능">가능 
-							<input type="radio" name="loan" id="loan" value="불가능">불가능 
-							<input type="radio" name="loan" id="loan" value="확인필요">확인필요</td>
+							<td><input type="radio" name="loan" id="loan" value="가능">가능
+								<input type="radio" name="loan" id="loan" value="불가능">불가능
+								<input type="radio" name="loan" id="loan" value="확인필요">확인필요</td>
 						</tr>
 						<tr>
 							<th style="background-color: #dedede;">반려 동물</th>
-							<td><input type="radio" name="pet" id="pet" value="가능">가능 
-							<input type="radio" name="pet" id="pet"  value="불가능">불가능 
-							<input type="radio"  name="pet" id="pet"  value="고양이만">고양이만 
-							<input type="radio"  name="pet" id="pet"  value="확인필요">확인필요</td>
+							<td><input type="radio" name="pet" id="pet" value="가능">가능
+								<input type="radio" name="pet" id="pet" value="불가능">불가능
+								<input type="radio" name="pet" id="pet" value="고양이만">고양이만
+								<input type="radio" name="pet" id="pet" value="확인필요">확인필요</td>
 						</tr>
 						<tr>
 							<th style="background-color: #dedede;">주차</th>
-							<td><input type="radio"  name="parking" id="parking" value="가능">가능 
-							<input type="radio" name="parking" id="parking"  value="없음">없음</td>
+							<td><input type="radio" name="parking" id="parking"
+								value="가능">가능 <input type="radio" name="parking"
+								id="parking" value="없음">없음</td>
 						</tr>
 						<tr>
 							<th style="background-color: #dedede;">엘리베이터</th>
-							<td><input type="radio" name="elevator" id="elevator" value="있음">있음 
-							<input type="radio" name="elevator" id="elevator"  value="없음">없음</td>
+							<td><input type="radio" name="elevator" id="elevator"
+								value="있음">있음 <input type="radio" name="elevator"
+								id="elevator" value="없음">없음</td>
 						</tr>
 						<tr>
 							<th style="background-color: #dedede;">입주가능일</th>
@@ -256,12 +311,14 @@
 						</tr>
 						<tr>
 							<th style="background-color: #dedede;">상세설명</th>
-							<td><textarea name="content" id="content" 
-							placeholder="해당 방에 대한 특징과 소개를 최소 50자 이상 입력해야 합니다."  rows="10" cols="60"></textarea></td>
+							<td><textarea name="content" id="content"
+									placeholder="해당 방에 대한 특징과 소개를 최소 50자 이상 입력해야 합니다." rows="10"
+									cols="60"></textarea></td>
 						</tr>
 						<tr>
 							<th style="background-color: #dedede;">연락처</th>
-							<td><input type="text" readonly="readonly" name="phone_number" id="phone_number" value="010-8888-9999"></td>
+							<td><input type="text" readonly="readonly"
+								name="phone_number" id="phone_number" value="010-8888-9999"></td>
 						</tr>
 
 					</tbody>
@@ -273,9 +330,11 @@
 					<!-- 			</tbody> -->
 				</table>
 
-				<input type="text" id="seller_id" hidden="" name="seller_id" value="admin@gmail.com">
-				
-				<button class="btn btn-primary btn-lg btn-block" id="sellRoom">방 내놓기</button>
+				<input type="text" id="seller_id" hidden="" name="seller_id"
+					value="admin@gmail.com">
+
+				<button class="btn btn-primary btn-lg btn-block" id="sellRoom">방
+					내놓기</button>
 			</form>
 
 		</div>
@@ -294,7 +353,9 @@
 						<script>
 							document.write(new Date().getFullYear());
 						</script>
-						All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+						All rights reserved | This template is made with <i
+							class="icon-heart" aria-hidden="true"></i> by <a
+							href="https://colorlib.com" target="_blank">Colorlib</a>
 						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 					</p>
 				</div>
@@ -313,7 +374,8 @@
 	<!-- 	</div> -->
 
 	<!-- services 라이브러리 불러오기 -->
-	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4e97625a0c2b00cdf9292bd703ece0f7&libraries=services,clusterer,drawing">
+	<script type="text/javascript"
+		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4e97625a0c2b00cdf9292bd703ece0f7&libraries=services,clusterer,drawing">
 		
 	</script>
 
@@ -382,13 +444,6 @@
 			});
 		});
 
-		// 매물 내놓기 버튼 클릭 이벤트
-		$(function() {
-			$('#sellRoom').click(function(e) {
-
-			});
-		});
-
 		function changeValue(obj) {
 			alert(obj.value);
 		}
@@ -425,60 +480,86 @@
 
 		// 파일이 추가되는 순간 addFiles 함수가 실행된다.
 		$(document).ready(function() {
-		    $("#file").on("change", ajaxFileTransmit);
+			$("#file").on("change", ajaxFileTransmit);
 		});
 
 		function ajaxFileTransmit(e) {
 			//alert("FileTransmit");
-			
 			var files = e.target.files;
 			
 			// 첫번째 파일
-            var file = files[0];
-            // 콘솔에서 파일정보 확인
-            console.log(file);
+			var file = files[0];
+			// 콘솔에서 파일정보 확인
+			console.log(file);
 
-            // ajax로 전달할 폼 객체
-            var formData = new FormData();
-            // 폼 객체에 파일추가, append("변수명", 값)
-            formData.append("file", file);
+			// ajax로 전달할 폼 객체
+			var formData = new FormData();
+			// 폼 객체에 파일추가, append("변수명", 값)
+			formData.append("file", file);
 
-            $.ajax({
-                type: "post",
-                url: "/findhome/upload/uploadAjax",
-                data: formData,
-                // processData: true=> get방식, false => post방식
-                dataType: "text",
-                // contentType: true => application/x-www-form-urlencoded, 
-                //                false => multipart/form-data
-                processData: false,
-                contentType: false,
-                success: function(data){
-                    alert(data);
-                }
-            });
+			$
+					.ajax({
+						type : "post",
+						url : "/findhome/upload/uploadAjax",
+						data : formData,
+						// processData: true=> get방식, false => post방식
+						dataType : "text",
+						// contentType: true => application/x-www-form-urlencoded, 
+						//                false => multipart/form-data
+						processData : false,
+						contentType : false,
+						success : function(data) {
+							
+							var str = "";
+							// 이미지 파일이면 썸네일 이미지 출력
+							//if(checkImageType(data)){ 
+							//str = "<div><a href='${path}/upload/displayFile?fileName="+getImageLink(data)+"'>";
+							str += "<img src='${path}/findhome/upload/displayFile?fileName="
+									+ data + "'></a>";
+							$("#btn-upload").append(str);
+							$('div').children('span');
+
+							data = '/findhome/upload/displayFile?fileName=' + data;
+							
+							$("#room_img").attr("src",data);							
+							//}
+						}
+					});
 		}
 	</script>
 
 
-	<script src="${pageContext.request.contextPath}/resources/js/jquery.min.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/js/jquery-migrate-3.0.1.min.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/js/popper.min.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/js/jquery.easing.1.3.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/js/jquery.waypoints.min.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/js/jquery.stellar.min.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/js/owl.carousel.min.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/js/jquery.magnific-popup.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/resources/js/jquery.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/resources/js/jquery-migrate-3.0.1.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/resources/js/popper.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/resources/js/jquery.easing.1.3.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/resources/js/jquery.waypoints.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/resources/js/jquery.stellar.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/resources/js/owl.carousel.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/resources/js/jquery.magnific-popup.min.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/js/aos.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/js/jquery.animateNumber.min.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/js/bootstrap-datepicker.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/resources/js/jquery.animateNumber.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/resources/js/bootstrap-datepicker.js"></script>
 	<!-- 	<script -->
 	<%-- 		src="${pageContext.request.contextPath}/resources/js/jquery.timepicker.min.js"></script> --%>
-	<script src="${pageContext.request.contextPath}/resources/js/scrollax.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/resources/js/scrollax.min.js"></script>
 	<!-- 	<script -->
 	<!-- 		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script> -->
-	<script src="${pageContext.request.contextPath}/resources/js/google-map.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/resources/js/google-map.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/js/main.js"></script>
 </body>
 </html>
