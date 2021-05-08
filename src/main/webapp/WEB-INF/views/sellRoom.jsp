@@ -93,7 +93,7 @@
 
 		<div class="container">
 
-			<form action='<c:url value="/writePro"/>' method="post" id="testForm">
+			<form action='<c:url value="/writePro"/>' method="post" id="sellForm">
 
 				<table class="table">
 					<thead align="left">
@@ -141,45 +141,7 @@
 				</table>
 
 				<table class="table" id="room_pic">
-					<tbody align="left">
-						<tr>
-							<td style="background-color: #dedede;"><button>+등록</button>
-								<br>대표사진</td>
-							<td style="background-color: #dedede;"><button>+등록</button>
-								<br>화장실</td>
-							<td style="background-color: #dedede;"><button>+등록</button>
-								<br>주방</td>
-
-<td style="background-color: #dedede;" width="100px" height="150px"><input type="file" id="file" style="display: none;" 
-accept="image/jpeg,image/png" /> 
-<div style="width:100%; height:auto;" >
-<img id="room_img"  src=""  class="front">
-</div> 
-<div class="back">
-<input type="button"  id="btn-upload" onClick="ajaxFileUpload();" value="+등록" /><br>방사진
-</div>
-</td>
-
-							
-
-							<td style="background-color: #dedede;"><button>+등록</button>
-								<br>방사진</td>
-						</tr>
-						<tr>
-							<td style="background-color: #dedede;"><button>+등록</button></td>
-							<td style="background-color: #dedede;"><button>+등록</button></td>
-							<td style="background-color: #dedede;"><button>+등록</button></td>
-							<td style="background-color: #dedede;"><button>+등록</button></td>
-							<td style="background-color: #dedede;"><button>+등록</button></td>
-						</tr>
-						<tr>
-							<td style="background-color: #dedede;"><button>+등록</button></td>
-							<td style="background-color: #dedede;"><button>+등록</button></td>
-							<td style="background-color: #dedede;"><button>+등록</button></td>
-							<td style="background-color: #dedede;"><button>+등록</button></td>
-							<td style="background-color: #dedede;"><button>+등록</button></td>
-						</tr>
-					</tbody>
+					
 				</table>
 
 				<table class="table">
@@ -447,6 +409,27 @@ accept="image/jpeg,image/png" />
 		function changeValue(obj) {
 			alert(obj.value);
 		}
+		
+		// 매물 내놓기 버튼 클릭 이벤트
+		$(function() {
+// 			$('#sellRoom').click(function(e) {
+			$('#sellForm').submit(function() {
+						
+				var is_empty = false;
+				$('#sellForm').find('input[type!="hidden"]').each(function(){
+				    if(!$(this).val()) {
+				        is_empty = true;
+				    }
+				});
+				 
+				if(is_empty) {
+				    //alert('값을 전부 입력하시오');
+				    return false;
+				}
+				
+				return true;
+			});
+		});
 
 		// 전용면적(exclusive private area) 평수 계산
 		$('#cal1').focusout(
@@ -481,7 +464,58 @@ accept="image/jpeg,image/png" />
 		// 파일이 추가되는 순간 addFiles 함수가 실행된다.
 		$(document).ready(function() {
 			$("#file").on("change", ajaxFileTransmit);
+			
+			var str_html = '<tbody align="left"><tr>';
+			
+			for (var i = 1; i <= 15; i++) {
+				var html_td = '<td style="background-color: #dedede;" width="100px" height="150px">';
+				html_td += '<input type="file" id="file" style="display: none;" accept="image/jpeg,image/png" />';
+				html_td += '<div style="width:100%; height:auto;" >';
+				html_td += '<img id="room_img"  src=""  class="front"></div><div class="back">'
+				
+				// onClick="ajaxFileUpload();"
+				var html_btn = '<input type="button" id="btn-upload" value="+등록" /><br>{}</div></td>';
+				
+				switch (i) {
+				case 1:
+					html_btn = html_btn.replace('{}', '대표사진');					
+					break;
+				case 2:
+					html_btn = html_btn.replace('{}', '화장실');					
+					break;
+				case 3:
+					html_btn = html_btn.replace('{}', '주방');					
+					break;
+				case 4:
+					html_btn = html_btn.replace('{}', '방사진');					
+					break;
+				default:
+					html_btn = html_btn.replace('{}', '방사진');					
+					break;
+				}
+				
+				str_html = str_html + html_td + html_btn; //+ '\n';
+								
+				if (i % 5 == 0) {
+					str_html += '</tr>';
+				}
+			}
+			
+			str_html += '</tbody></table>';
+			
+			//console.log(str_html);
+			
+			$('#room_pic').html(str_html);
+			
 		});
+		
+		$(document).on("click", "#btn-upload", function(){
+             var idx = $(this).index();
+             
+             console.log('버튼 {}을 눌렀습니다.'.replace('{}', idx))
+             
+             ajaxFileUpload();
+        });
 
 		function ajaxFileTransmit(e) {
 			//alert("FileTransmit");
