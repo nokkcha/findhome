@@ -58,7 +58,7 @@
 	background-color: #000 !important;
 	top: 0 !important;
 }
-.front {position:absolute; z-index:100;}
+.room_img_list {position:absolute; z-index:100;}
 .back {position:absolute; z-index:1;} 
 /* #room_pic img{ */
 /*       display:block; width:100%; height:auto; border: 10px solid sky; */
@@ -399,12 +399,13 @@
 	</script>
 
 	<script type="text/javascript">
-		$(function() {
-			$('#btn-upload').click(function(e) {
-				e.preventDefault();
-				$('#file').click();
-			});
-		});
+// 		$(function() {
+// 			$('#btn-upload').click(function(e) {
+// 				e.preventDefault();
+// 				alert("btnUploadClick");
+// 				$('#file').click();
+// 			});
+// 		});
 
 		function changeValue(obj) {
 			alert(obj.value);
@@ -458,23 +459,23 @@
 
 		function ajaxFileUpload() {
 			// 업로드 버튼이 클릭되면 파일 찾기 창을 띄운다.
+			//alert("ajaxFileupload");
 			jQuery("#ajaxFile").click();
 		}
 
 		// 파일이 추가되는 순간 addFiles 함수가 실행된다.
 		$(document).ready(function() {
-			$("#file").on("change", ajaxFileTransmit);
 			
 			var str_html = '<tbody align="left"><tr>';
 			
 			for (var i = 1; i <= 15; i++) {
 				var html_td = '<td style="background-color: #dedede;" width="100px" height="150px">';
-				html_td += '<input type="file" id="file" style="display: none;" accept="image/jpeg,image/png" />';
+				html_td += '<input type="file" id="file'+i+'" class="file_list"  style="display: none;" accept="image/jpeg,image/png" />';
 				html_td += '<div style="width:100%; height:auto;" >';
-				html_td += '<img id="room_img"  src=""  class="front"></div><div class="back">'
+				html_td += '<img id="room_img'+i+'" src="" class="room_img_list"></div><div class="back">'
 				
 				// onClick="ajaxFileUpload();"
-				var html_btn = '<input type="button" id="btn-upload" value="+등록" /><br>{}</div></td>';
+				var html_btn = '<input type="button" onClick="ajaxFileUpload()" class="btn-upload_list" id="btn-upload'+i+'" value="+등록" /><br>{}</div></td>';
 				
 				switch (i) {
 				case 1:
@@ -499,6 +500,13 @@
 				if (i % 5 == 0) {
 					str_html += '</tr>';
 				}
+				
+				
+// 				$( "#elements" ).delegate( "div p", "click", function( event ) {} );
+				//$(".file_list").eq(i).on( "change", function( event ) { alert('!'); } );
+				
+
+// 				$(".file_list").eq(i).on("change", ajaxFileTransmit);				
 			}
 			
 			str_html += '</tbody></table>';
@@ -507,24 +515,77 @@
 			
 			$('#room_pic').html(str_html);
 			
-		});
+			var $item = $('.btn-upload_list').on('click', function() {
+				  var idx = $item.index(this); 
+				  console.log(idx);
+				  
+				  $('.file_list').eq(idx).click();
+			});			
+			
+		});	// end of funtion
 		
-		$(document).on("click", "#btn-upload", function(){
-             var idx = $(this).index();
-             
-             console.log('버튼 {}을 눌렀습니다.'.replace('{}', idx))
-             
-             ajaxFileUpload();
-        });
+		$(document).on("change", ".file_list", function(event) {
+			//alert('File is changed');			
+			var idx = $('.file_list').index(this); 
+			console.log('File is changed : ' + idx);
+			  
+			var files = event.target.files;
+			
+			// 첫번째 파일
+			var file = files[0];
+			// 콘솔에서 파일정보 확인
+			console.log('ajaxFileTransmit' + file);
+
+			// ajax로 전달할 폼 객체
+			var formData = new FormData();
+			// 폼 객체에 파일추가, append("변수명", 값)
+			var target = "file"; //+ idx.toString();
+			
+			formData.append(target, file);
+
+			$
+					.ajax({
+						type : "post",
+						url : "/findhome/upload/uploadAjax",
+						data : formData,
+						// processData: true=> get방식, false => post방식
+						dataType : "text",
+						// contentType: true => application/x-www-form-urlencoded, 
+						//                false => multipart/form-data
+						processData : false,
+						contentType : false,
+						success : function(data) {
+							
+							var str = "";
+							// 이미지 파일이면 썸네일 이미지 출력
+							//if(checkImageType(data)){ 
+							//str = "<div><a href='${path}/upload/displayFile?fileName="+getImageLink(data)+"'>";
+							str += "<img src='${path}/findhome/upload/displayFile?fileName="
+									+ data + "'></a>";
+							$("#btn-upload").append(str);
+							$('div').children('span');
+
+							data = '/findhome/upload/displayFile?fileName=' + data;
+							
+							$(".room_img_list").eq(idx).attr("src",data);	
+// 							$("#room_img1").attr("src",data);							
+							//}
+						}
+					});
+			
+			
+			
+		});
 
 		function ajaxFileTransmit(e) {
 			//alert("FileTransmit");
+			alert('ajaxFileTransmit');
 			var files = e.target.files;
 			
 			// 첫번째 파일
 			var file = files[0];
 			// 콘솔에서 파일정보 확인
-			console.log(file);
+			console.log('ajaxFileTransmit' + file);
 
 			// ajax로 전달할 폼 객체
 			var formData = new FormData();
