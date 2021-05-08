@@ -45,7 +45,7 @@ public class MemberController {
 		if (mb2 != null) {
 			// 세션값 생성 "id"
 			session.setAttribute("id", mb.getId());
-			return "redirect:/";
+			return "redirect:/main";
 		} else {
 			// 입력하신 정보가 틀립니다.
 			model.addAttribute("msg", "입력하신 정보가 틀립니다.");
@@ -76,57 +76,11 @@ public class MemberController {
 
 		return "redirect:/member/login";
 	}
-	@RequestMapping(value = "/memberInfo", method = RequestMethod.GET)
-	public String update(HttpSession session, Model model) {
-		// String id = 세션값 가져오기
-		String id=(String)session.getAttribute("id");
-		// MemberBean mb = 세션에 해당하는 정보 조회 getMember(id)   MemberBean 리턴
-		MemberBean mb=memberService.getMember(id);
-		// model "mb",mb
-		model.addAttribute("mb",mb);
-		
-		//  /WEB-INF/views/member/updateForm.jsp
-		return "memberInfo";
-	}
-	
-	@RequestMapping(value = "/memberInfoPro", method = RequestMethod.GET)
-	public String updatePro(MemberBean mb,  Model model) {
-		
-		MemberBean mb2=memberService.userCheck(mb);
-		if(mb2!=null) {
-			// 수정
-			memberService.updateMember(mb);
-			return "redirect:/";
-		}else {
-			// 입력하신 정보가 틀립니다. 
-			model.addAttribute("msg","입력하신 정보가 틀립니다.");
-		//  /WEB-INF/views/member/msg.jsp
-			return "msg";
-		}
-	}
-	
-	
-	@RequestMapping(value = "/memberDelete", method = RequestMethod.GET)
+
+	@RequestMapping(value = "/member/delete", method = RequestMethod.GET)
 	public String delete() {
 		// /WEB-INF/views/member/deleteForm.jsp
-		return "memberDelete";
-	}
-	@RequestMapping(value = "/memberDeletePro",method = RequestMethod.GET )
-	public String memberdelete(MemberBean mb,  Model model) {
-		MemberBean mb2=memberService.userCheck(mb);
-		
-		System.out.println(mb.getPassword());
-		
-		if(mb2!=null) {
-			// 삭제
-			memberService.deleteMember(mb);
-			return "redirect:/";
-		}else {
-			// 입력하신 정보가 틀립니다. 
-			model.addAttribute("msg","입력하신 정보가 틀립니다.");
-		//  /WEB-INF/views/member/msg.jsp
-			return "msg";
-		}
+		return "member/deleteForm";
 	}
 
 }

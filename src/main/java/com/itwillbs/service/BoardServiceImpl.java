@@ -78,9 +78,6 @@ public class BoardServiceImpl implements BoardService{
 	@Override
 	public void insertRoom(OneRoomBean bb) {
 		// TODO Auto-generated method stub
-		System.out.println(bb.getContent());
-		System.out.println(bb.getLoan());
-		System.out.println(bb.getSubject());
 		boardDAO.insertRoom(bb);
 	}
 	

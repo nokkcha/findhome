@@ -10,18 +10,10 @@
 	</select>
 
 	<insert id="insertRoom">
-	INSERT INTO `one_room` 
-	(`address`, `deposit`, `monthly_rent`, `room_type`, `fees`, 
-	`include_fees`, `exclusive_area_m`, `exclusive_area_p`, `contract_area_m`, `contract_area_p`, 
-	`floor`, `living_floor`, `direction`, `options`, `loan`, `pet`, `parking`, `elevator`, `m_date`, `subject`, 
-	`content`, `phone_number`, `seller_id`) VALUES (
-		#{address}, #{deposit}, #{monthly_rent}, #{room_type}, #{fees},
-		#{include_fees, typeHandler=com.itwillbs.mapper.type.JSONTypeHandler},
-		#{exclusive_area_m}, #{exclusive_area_p}, #{contract_area_m}, #{contract_area_p}, 
-		#{floor}, #{living_floor}, #{direction}, 
-		#{options, typeHandler=com.itwillbs.mapper.type.JSONTypeHandler},
-		#{loan}, #{pet}, #{parking}, #{elevator}, #{m_date}, #{subject},
-		#{content}, #{phone_number}, #{seller_id})
+	INSERT INTO `one_room` (`include_fees`, `option`, `seller_id`) 
+		VALUES (#{include_fees, typeHandler=com.itwillbs.mapper.type.JSONTypeHandler},
+		#{option, typeHandler=com.itwillbs.mapper.type.JSONTypeHandler},
+		#{seller_id})
 	</insert>
 
 	<select id="getBoardList"

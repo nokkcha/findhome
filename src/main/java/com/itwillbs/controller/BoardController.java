@@ -38,23 +38,21 @@ public class BoardController {
 		return "board/writeForm";
 	}
 
-	@RequestMapping(value = "/sellRoom/writePro", method = RequestMethod.POST)
-	public String writePro(OneRoomBean bean) {
-//		OneRoomBean testBean = new OneRoomBean();
-		bean.setSeller_id("admin@gmail.com");
+	@RequestMapping(value = "/writePro", method = RequestMethod.POST)
+	public String writePro(BoardBean bb) {
+		OneRoomBean testBean = new OneRoomBean();
+		testBean.setSeller_id("admin@gmail.com");
 
-//		Map<String, Object> options = new HashMap();
-//		options.put("에어컨", "Y");
-//		options.put("냉장고", "N");
-//		Map<String, Object> include_fees = new HashMap();
-//		include_fees.put("전기세", "Y");
-		String[] include_fees = new String[] {"전기세", "수도세"};
-		String[] options = new String[] {"에어컨", "냉장고", "TV"};
-				
-		bean.setInclude_fees(include_fees);
-		bean.setOption(options);
+		Map<String, Object> option = new HashMap();
+		Map<String, Object> include_fees = new HashMap();
+		include_fees.put("전기세", "Y");
+		option.put("에어컨", "Y");
+		option.put("냉장고", "N");
+		
+		testBean.setInclude_fees(include_fees);
+		testBean.setOption(option);
 
-		boardService.insertRoom(bean);
+		boardService.insertRoom(testBean);
 
 		return "redirect:/";
 	}
