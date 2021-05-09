@@ -13,9 +13,11 @@ public interface BoardDAO {
 		
 		public List<OneRoomBean> getBoardList(PageBean pb);
 		public Integer getBoardCount();
+		public Integer getWishCount(String id);
 		public BoardBean getBoard(int num);
 		public BoardBean numCheck(BoardBean bb);
 		public void updateBoard(BoardBean bb);
 		public void deleteBoard(BoardBean bb);
 		public void insertRoom(OneRoomBean bb);
+		public List<OneRoomBean> getSearchList(OneRoomBean ob);
 }

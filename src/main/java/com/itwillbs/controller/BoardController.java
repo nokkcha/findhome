@@ -91,6 +91,78 @@ public class BoardController {
 		}
 		return "findRooms";
 	}
+	
+	@RequestMapping(value = "/findRooms-zzim", method = RequestMethod.GET)
+	public String zzimList(HttpServletRequest request, Model model, HttpSession session) {
+		String id = (String) session.getAttribute("id");
+		
+		PageBean pb = new PageBean();
+		if (request.getParameter("pageNum") != null) {
+			pb.setPageNum(request.getParameter("pageNum"));
+		} else {
+			pb.setPageNum("1");
+		}
+		pb.setPageSize(9);
+		
+		List<OneRoomBean> roomList = boardService.getBoardList(pb);
+		
+		pb.setCount(boardService.getWishCount(id));
+		
+		model.addAttribute("roomList", roomList);
+		model.addAttribute("pb", pb);
+		
+		if(id != null) {
+			List<MemberBean> wishList=memberService.getWishList(id);	
+			model.addAttribute("wishList", wishList);
+		}
+		return "zzimList";
+	}
+	
+	
+	@RequestMapping(value = "/findRooms-search", method = RequestMethod.GET)
+	public String search(HttpServletRequest request, Model model, HttpSession session, OneRoomBean ob) {
+		String id = (String) session.getAttribute("id");
+		
+//		PageBean pb = new PageBean();
+//		if (request.getParameter("pageNum") != null) {
+//			pb.setPageNum(request.getParameter("pageNum"));
+//		} else {
+//			pb.setPageNum("1");
+//		}
+//		pb.setPageSize(9);
+		ob.setSearch("%"+ob.getSearch()+"%");
+		System.out.println("검색어 : " + ob.getSearch());
+		
+		if(ob.getRoom_type().equals("전체")) {
+			
+		}
+		
+		System.out.println("방구조 : " + ob.getRoom_type());
+		
+		ob.setLiving_floor("%"+ob.getLiving_floor());
+		System.out.println("층수 : " + ob.getLiving_floor());
+		
+		System.out.println("월세 최소 : " +ob.getMonthly_rent_min());
+		System.out.println("월세 최대 : " +ob.getMonthly_rent_max());
+		
+		System.out.println("보증금 최소 : " + ob.getDeposit_min());
+		System.out.println("보증금 최대 : " + ob.getDeposit_max());
+		
+		List<OneRoomBean> roomList = boardService.getSearchList(ob);
+		
+//		pb.setCount(boardService.getWishCount(id));
+//		model.addAttribute("pb", pb);
+		
+		model.addAttribute("roomList", roomList);
+		
+		if(id != null) {
+			List<MemberBean> wishList=memberService.getWishList(id);	
+			model.addAttribute("wishList", wishList);
+		}
+		return "findRooms-search";
+	}
+	
+
 
 	
 //	http://localhost:8080/myweb2/board/fwrite

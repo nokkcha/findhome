@@ -49,6 +49,7 @@ public class MemberBean {
 		this.wish = wish;
 	}
 
+
 	
 	
 }

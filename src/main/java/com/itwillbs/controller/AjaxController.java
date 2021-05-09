@@ -10,10 +10,16 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.itwillbs.domain.BoardBean;
 import com.itwillbs.domain.MemberBean;
+import com.itwillbs.domain.OneRoomBean;
+import com.itwillbs.domain.PageBean;
+import com.itwillbs.service.BoardService;
+import com.itwillbs.service.BoardServiceImpl;
 import com.itwillbs.service.MemberService;
 
 @Controller
@@ -21,6 +27,8 @@ public class AjaxController {
 	
 	@Inject
 	private MemberService memberService;
+	@Inject
+	private BoardService boardService;
 	
 	@RequestMapping(value = "/zzim", method = RequestMethod.GET)
 	public ResponseEntity<String> zzim(MemberBean mb, HttpSession session) {
@@ -55,6 +63,35 @@ public class AjaxController {
 		}
 		return entity;
 	}
+	
+
+//	@RequestMapping(value = "/findRooms-search", method = RequestMethod.GET)
+//	public ResponseEntity<List<OneRoomBean>> list2(OneRoomBean ob, Model model) {
+//		ResponseEntity<List<OneRoomBean>> entity=null;
+//		
+//		try {
+//			PageBean pb=new PageBean();
+//			pb.setPageNum("1");
+//			pb.setPageSize(5);
+//			
+//			System.out.println("검색어 : " + ob.getSearch());
+////			System.out.println("방구조 : " + ob.getRoom_type());
+//			System.out.println("층수 : " + ob.getLiving_floor());
+//			
+//			
+//			List<OneRoomBean> roomList=boardService.getSearchList(ob);
+//			model.addAttribute("roomList", roomList);
+//			entity=new ResponseEntity<List<OneRoomBean>>(roomList,HttpStatus.OK);
+//			
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//			entity=new ResponseEntity<List<OneRoomBean>>(HttpStatus.BAD_REQUEST);
+//		}
+//		return entity;
+//	}
+	
+	///============================
+
 	
 //	@RequestMapping(value = "/zzimList", method = RequestMethod.GET)
 //	public ResponseEntity<String> zzimList(MemberBean mb, HttpSession session, Model model) {

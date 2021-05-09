@@ -21,11 +21,31 @@
 		select * from one_room order by room_id desc limit
 		#{startRow},#{pageSize}
 	</select>
+	
+	<select id="getSearchList"
+		resultType="com.itwillbs.domain.OneRoomBean">
+ 		select room_type, living_floor, deposit, monthly_rent, subject, content, address
+		from one_room
+		<![CDATA[ 
+		where 
+        (subject like #{search} || content like #{search} || address like #{search})
+		and (room_type=#{room_type})
+		and (living_floor like #{living_floor})
+        and (deposit >= #{deposit_min} and deposit <= #{deposit_max})
+        and (monthly_rent >= #{monthly_rent_min} and monthly_rent <= #{monthly_rent_max})
+       ]]>
+        
+	</select>
 
 	<select id="getBoardCount" resultType="java.lang.Integer">
 		select count(*) from
 		one_room
 	</select>
+	
+	<select id="getWishCount" resultType="java.lang.Integer">
+	select count(*) from wish_list where id=#{id}
+	</select>
+	
 
 	<select id="getBoard" resultType="com.itwillbs.domain.OneRoomBean">
 		select * from one_room where

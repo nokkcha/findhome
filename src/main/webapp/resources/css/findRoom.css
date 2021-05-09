@@ -48,27 +48,32 @@ button.text-zzim:focus{
     border: none;
     outline:none;
     }
-
+    
+.zzim111:before {
+	content:"찜한 매물";
+	color: #f85959;
+	font-weight: bold;
+}
 
 .zzim:before {
-	content:"💓 찜한 매물";
+	content:"💓";
 	color: #f85959;
 	font-weight: bold;
 }
 
 .zzim:hover:before {
-	content:"🤍 찜하기 취소";
+	content:"🤍";
    cursor: pointer;
    color: black;	
    font-weight: normal;
 }
 
 .nozzim:before {
-	content:"🤍 찜하기";
+	content:"🤍 ";
 }
 
 .nozzim:hover:before {
-	content:"💓 찜하기";
+	content:"💓 ";
    cursor: pointer;
    color: #f85959;	
 	font-weight: bold;
@@ -82,6 +87,7 @@ button.text-zzim:focus{
 .roomlist {
 	display: inline-block;
 	width: 240px;
+	height:353px;
 	margin-left: 30px;
 	margin-bottom: 35px;
 	box-sizing: border-box;
@@ -91,7 +97,7 @@ button.text-zzim:focus{
 -webkit-box-flex: 0;
 -ms-flex: 0 0 75%;
 flex: 0 0 75%;
-max-width: 75%;     
+max-width: 75%;
 }
     
   .row-list {
@@ -106,21 +112,41 @@ flex-wrap: wrap;
   margin: 0; }
   
   .block-27-page ul li {
-    display: inline-block;
-    margin-bottom: 4px;
-    font-weight: 400; }
+display: inline-block;
+margin-bottom: 4px;
+font-weight: 400; }
     
-    .block-27-page ul li a, .block-27-page ul li span {
-      color: #f85959;
-      text-align: center;
-      display: inline-block;
-      width: 40px;
-      height: 40px;
-      line-height: 40px;
-      border-radius: 50%;
-      border: 1px solid #fdd3d3; }
+.block-27-page ul li a, .block-27-page ul li span {
+color: #f85959;
+text-align: center;
+display: inline-block;
+width: 40px;
+height: 40px;
+line-height: 40px;
+border-radius: 50%;
+border: 1px solid #fdd3d3; }
       
-    .block-27-page ul li.active a, .block-27-page ul li.active span {
-      background: #fdd3d3;
-      color: #f85959;
-      border: 1px solid transparent; }
+ .block-27-page ul li.active a, .block-27-page ul li.active span {
+background: #fdd3d3;
+color: #f85959;
+border: 1px solid transparent; }
+     
+.label-class {
+	display: block;
+}
+
+.cktag{
+/* 	visibility: collapse; */
+}
+
+.no-ck{
+	color: red;
+}
+
+.pri-ck{
+	color: blue;
+}
+
+.rtypeOpen:checked{
+color:red;
+}

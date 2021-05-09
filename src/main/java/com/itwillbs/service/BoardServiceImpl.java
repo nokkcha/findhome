@@ -50,6 +50,11 @@ public class BoardServiceImpl implements BoardService{
 	public Integer getBoardCount() {
 		return boardDAO.getBoardCount();
 	}
+	
+	@Override
+	public Integer getWishCount(String id) {
+		return boardDAO.getWishCount(id);
+	}
 
 	@Override
 	public BoardBean getBoard(int num) {
@@ -80,6 +85,11 @@ public class BoardServiceImpl implements BoardService{
 		// TODO Auto-generated method stub
 		boardDAO.insertRoom(bb);
 	}
+
 	
+	@Override
+	public List<OneRoomBean> getSearchList(OneRoomBean ob) {
+		return boardDAO.getSearchList(ob);
+	}
 
 }

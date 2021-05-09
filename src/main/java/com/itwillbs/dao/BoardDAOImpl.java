@@ -39,6 +39,11 @@ public class BoardDAOImpl implements BoardDAO{
 	public Integer getBoardCount() {
 		return sqlSession.selectOne(namespace+".getBoardCount");
 	}
+	
+	@Override
+	public Integer getWishCount(String id) {
+		return sqlSession.selectOne(namespace+".getWishCount", id);
+	}
 
 	@Override
 	public BoardBean getBoard(int num) {
@@ -66,6 +71,11 @@ public class BoardDAOImpl implements BoardDAO{
 	@Override
 	public void insertRoom(OneRoomBean bb) {
 		sqlSession.insert(namespace+".insertRoom",bb);
+	}
+	
+	@Override
+	public List<OneRoomBean> getSearchList(OneRoomBean ob) {
+		return sqlSession.selectList(namespace+".getSearchList", ob);
 	}
 
 }

@@ -62,7 +62,7 @@
         			
         				<div class="fields">
 		              <div class="form-group">
-		                <input type="text" class="form-control" placeholder="지역, 지하철역 검색" name="search" id="filter-search">
+		                <input type="text" class="form-control" placeholder="지역, 지하철역 검색">
 		              </div>
 		              <div class="form-group">
 		                <div class="select-wrap2 one-third">
@@ -76,41 +76,18 @@
 
 	                      구조
 	                 <div class="form-group">
-	                 
-	              <label class="label-class">  <span class="btn te"> 
-	              <input type="checkbox" name="room_type" value="전체" class="cktag rtypeAll" checked>전체</span></label>
-	              
-	                 <label class="label-class"> <span class="btn te"> 
-	                 <input type="checkbox" name="room_type" value="오픈형 원룸 (방1)" class="cktag r-not-pri rtypeOpen">오픈형 </span></label>
-	                 
-	                  <label class="label-class"><span class="btn te"> 
-	                  <input type="checkbox" name="room_type" value="분리형 원룸 (방1,거실1)" class="cktag r-not-pri rtypeSeparate">분리형 </span></label>
-	                  
-	                <label class="label-class"> <span class="btn te"> 
-	                <input type="checkbox" name="room_type" value="복층형 원룸" class="cktag r-not-pri rtypeStairs">복층형 </span></label>
-	                 
-	                 
-<!-- 		                <input type="button" class="btn te btn-primary rtag rtypeAll"  name="room_type"  value="전체"> -->
-<!-- 		                <input type="button" class="btn te btn-default rtypeOpen rtype"  value="오픈형"> -->
-<!-- 		                <input type="button" class="btn te btn-default rtypeSeparate rtype"   value="분리형"> -->
-<!-- 		                <input type="button" class="btn te btn-default rtypeStairs rtype"  value="복층형"> -->
+		                <input type="button" class="btn te btn-primary rtypeAll"  value="전체">
+		                <input type="button" class="btn te btn-default rtypeOpen rtype"  value="오픈형">
+		                <input type="button" class="btn te btn-default rtypeSeparate rtype"  value="분리형">
+		                <input type="button" class="btn te btn-default rtypeStairs rtype"  value="복층형">
 		              </div>
 		              
 	                      층 수 옵션
 	                      <div class="form-group">
-<!-- 	                       <input type="button" class="btn te btn-primary ftag ftypeAll"   value="전체"> -->
-<!-- 		                	<input type="button" class="btn te btn-default floor"   value="지상층"> -->
-<!-- 		             		<input type="button" class="btn te btn-default ftypeOther" value="반지하,옥탑"> -->
-		             	  <label class="label-class"><span class="btn te"> <input type="checkbox" name="living_floor" value="전체" checked> 전체 </span></label>
-		             	  <label class="label-class"><span class="btn te"><input type="checkbox" name="living_floor" value="층"> 지상층 </span></label>
-		             	 <label class="label-class"><span class="btn te">	 <input type="checkbox" name="living_floor" value="반지하"> 반지하 </span></label>
-		             	 <label class="label-class"><span class="btn te">	 <input type="checkbox" name="living_floor" value="옥탑방"> 옥탑 </span></label>
-
-<!-- 	                       <input type="button" class="btn te btn-primary ftag ftypeAll"   value="전체"> -->
-<!-- 		                	<input type="button" class="btn te btn-default floor"   value="지상층"> -->
-<!-- 		             		<input type="button" class="btn te btn-default ftypeOther" value="반지하,옥탑"> -->
-
-		             </div>
+	                       <input type="button" class="btn te btn-primary ftypeAll"  value="전체">
+		                	<input type="button" class="btn te btn-default floor"  value="지상층">
+		             		<input type="button" class="btn te btn-default ftypeOther"  value="반지하,옥탑">
+		              </div>
 	                  </div>
 		              </div>
 
@@ -119,32 +96,23 @@
 		        <div class="range-slider">
 					<div class="Container" >
 				  		<font size = 2 id = "slider_value_view1">0</font>						  
-				  			<input oninput = 'ShowSliderValue1(this.value)' style = "width:100%;" class="slider_range1"
-				  			 type="range" step="100" value="0" min="0" max="50000" name="deposit_min" ></input>
-				  			 
+				  			<input oninput = 'ShowSliderValue1(this.value)' style = "width:100%;" class="slider_range1" type="range" step="100" value="0" min="0" max="50000"></input>
 				   		<font size = 2 id = "slider_value_view2">5억</font>							  
-							<input oninput = 'ShowSliderValue2(this.value)' style = "width:100%;" class="slider_range2" 
-							type="range" step="100" value="50000" min="0" max="50000" name="deposit_max" ></input>
+							<input oninput = 'ShowSliderValue2(this.value)' style = "width:100%;" class="slider_range2" type="range" step="100" value="50000" min="0" max="50000" ></input>
 					</div>
 				</div>
-				
 	
 						월세
 		              	<div class="range-slider">
 						<div class="Container2" >
 					  		<font size = 2 id = "slider_value_view3">0</font>						  
-					  			<input oninput = 'ShowSliderValue3(this.value)' style = "width:100%;" class="slider_range3" 
-					  			type="range" step="10" value="0" min="0" max="500" name="monthly_rent_min"></input>
-					  			
+					  			<input oninput = 'ShowSliderValue3(this.value)' style = "width:100%;" class="slider_range3" type="range" step="10" value="0" min="0" max="500"></input>
 					   		<font size = 2 id = "slider_value_view4">500만원</font>							  
-								<input oninput = 'ShowSliderValue4(this.value)' style = "width:100%;" class="slider_range4" 
-								type="range" step="10"value="500" min="0" max="500" name="monthly_rent_max"></input>
+								<input oninput = 'ShowSliderValue4(this.value)' style = "width:100%;" class="slider_range4" type="range" step="10"value="500" min="0" max="500"></input>
 							</div>
 						</div>
 						
 						<div class="form-group">
-<!-- 							<input type="button" value="Search" class="btn btn-primary py-3 px-5" id="search-ok"> -->
-
 							<input type="submit" value="Search" class="btn btn-primary py-3 px-5" id="filter-search">
 						</div>
 					 </div>
@@ -155,11 +123,14 @@
           </div>
                    
            <div class="col-lg-roomlist">
-          	<button class="btn_room btn pri-page"> 방 찾기</button>
-          	<button class="btn_like btn notpri-page" onclick="location.href='<c:url value="findRooms-zzim"/>'"> 찜한 매물 </button>        	
+          	<button class="btn_room btn notpri-page" onclick="location.href='<c:url value="findRooms"/>'"> 방 찾기 </button>
+          	<button class="btn_like btn pri-page"> 찜한 매물 </button>        	
         	<div class="roomlist_moum"> 
         	
         	     <c:forEach var="roomList" items="${roomList }">
+        			  <c:forEach var="wishList" items="${wishList }">
+		    		<c:if test="${roomList.room_id == wishList.wish}">		  
+		    			
         	     <div class="roomlist">
 		    				<div class="destination">
 		    					<a href='<c:url value="/content?num=${roomList.room_id}" />' class="img img-2 d-flex justify-content-center align-items-center" 
@@ -168,7 +139,7 @@
 		    					<div class="text p-3">
 		    						<div class="d-flex">
 		    							<div class="one">
-				    						<h3><a href='<c:url value="/content?num=${roomList.room_id}" />'> ${roomList.address } ${roomList.room_id} </a></h3>
+				    						<h3><a href='<c:url value="/content?num=${roomList.room_id}" />'> ${roomList.address } ${roomList.room_id } </a></h3>
 			    						</div>
 			    						<div class="two">
 			    							<span class="price per-price"><small>${roomList.deposit} / ${roomList.monthly_rent}</small></span>
@@ -180,13 +151,9 @@
 		    						  						
 		    							<button id="zzim-id-${roomList.room_id}" class="text-zzim nozzim">
 		    							
-		    							<c:forEach var="wishList" items="${wishList }">
-		    							
-		    							<c:if test="${roomList.room_id == wishList.wish}">		    							
-		    							<span class="zzim111" id="zzim-ok-${roomList.room_id}"></span>	
-		    						</c:if>
-
-		    						</c:forEach>
+    							
+		    							<span class="zzim111" id="zzim-ok-${roomList.room_id}"></span>	    							
+		    		
 		    							
 		    							</button>
 		    							
@@ -197,7 +164,12 @@
 		    					</div>
 		    				</div>
 					</div>
+					
+										</c:if>
+
+		    						</c:forEach>
 		        </c:forEach>	
+		        		
 		        		
 		    	</div>		
           	</div>
@@ -214,13 +186,13 @@
 		              <ul>
 		              
 		                <c:if test="${pb.startPage > pb.pageBlock }">
-		                <li> <a href='<c:url value="findRooms?pageNum=${pb.startPage-pb.pageBlock}" />'>&lt;</a></li>
+		                <li> <a href='<c:url value="findRooms-zzim?pageNum=${pb.startPage-pb.pageBlock}" />'>&lt;</a></li>
 					</c:if>
 					<c:forEach var="i" begin="${pb.startPage }" end="${pb.endPage}" step="1">
-		                <li class="active"><span> <a href='<c:url value="findRooms?pageNum=${i}" />'>${i}</a> </span></li>
+		                <li class="active"><span> <a href='<c:url value="findRooms-zzim?pageNum=${i}" />'>${i}</a> </span></li>
 					</c:forEach>
 					<c:if test="${pb.endPage < pb.pageCount }">
-		                <li><a href='<c:url value="findRooms?pageNum=${pb.startPage+pb.pageBlock}" />'>&gt;</a></li>
+		                <li><a href='<c:url value="findRooms-zzim?pageNum=${pb.startPage+pb.pageBlock}" />'>&gt;</a></li>
 					</c:if>
 		              </ul>
 		            </div>
@@ -278,19 +250,15 @@
 <script type="text/javascript">
     $(document).ready(function(){
     	
-    	
-
     	// 검색 조건 - 구조 [전체] 클릭
-    	$('.te').click(function(){
+    	$('.rtypeAll').click(function(){
 
-    		if( $(this).hasClass('no-ck') ) {
-    			$(this).removeClass('no-ck');
-    			$(this).addClass('pri-ck');
-    			$(this).addClass('rtag');
+    		if( $(this).hasClass('btn-default') ) {
+    			$(this).removeClass('btn-default');
+    			$(this).addClass('btn-primary');
     			
-    			$('.rtype').removeClass('pri-ck');
-    			$('.rtype').removeClass('rtag');
-    			$('.rtype').addClass('no-ck');
+    			$('.rtype').removeClass('btn-primary');
+    			$('.rtype').addClass('btn-default');
 
     		} 
 	
@@ -299,21 +267,18 @@
     	// 검색 조건 - 구조 다중 선택 메서드
     	$.fn.room= function (clickThis) { 		
     		
-    	    if($(clickThis).hasClass('no-ck')) {
-    	        $(clickThis).removeClass('no-ck');
-    	        $(clickThis).addClass('pri-ck');
-    	        $(clickThis).addClass('rtag');
+    	    if($(clickThis).hasClass('btn-default')) {
+    	        $(clickThis).removeClass('btn-default');
+    	        $(clickThis).addClass('btn-primary');
     	        
-    	        if( $('.rtypeAll').hasClass('pri-ck')) {
-    	            $('.rtypeAll').removeClass('pri-ck');
-    	            $('.rtypeAll').removeClass('rtag');
-    	            $('.rtypeAll').addClass('no-ck');
+    	        if( $('.rtypeAll').hasClass('btn-primary')) {
+    	            $('.rtypeAll').removeClass('btn-primary');
+    	            $('.rtypeAll').addClass('btn-default');
     	        }
     	        
-    	    } else if ($(clickThis).hasClass('pri-ck')){
-    	        $(clickThis).removeClass('pri-ck');
-    	        $(clickThis).removeClass('rtag');
-    	        $(clickThis).addClass('no-ck');
+    	    } else if ($(clickThis).hasClass('btn-primary')){
+    	        $(clickThis).removeClass('btn-primary');
+    	        $(clickThis).addClass('btn-default');
     	    }    
     	
     	}
@@ -339,13 +304,10 @@
         		if( $(this).hasClass('btn-default') ) {
         			$(this).removeClass('btn-default');
         			$(this).addClass('btn-primary');
-        			$(this).addClass('ftag');
         			$('.floor').addClass('btn-default');
         			$('.floor ').removeClass('btn-primary');
-        			$('.floor ').removeClass('ftag');
         			$('.ftypeOther').addClass('btn-default');
         			$('.ftypeOther').removeClass('btn-primary');
-        			$('.ftypeOther').removeClass('ftag');
         		}
         	});
         	
@@ -354,13 +316,10 @@
         		if( $(this).hasClass('btn-default') ) {
         			$(this).removeClass('btn-default');
         			$(this).addClass('btn-primary');
-        			$(this).addClass('ftag');
         			$('.ftypeAll ').addClass('btn-default');
         			$('.ftypeAll ').removeClass('btn-primary');
-        			$('.ftypeAll ').removeClass('ftag');
         			$('.ftypeOther').addClass('btn-default');
         			$('.ftypeOther').removeClass('btn-primary');
-        			$('.ftypeOther').removeClass('ftag');
         		}
         	});
         	
@@ -369,13 +328,10 @@
         		if( $(this).hasClass('btn-default') ) {
         			$(this).removeClass('btn-default');
         			$(this).addClass('btn-primary');
-        			$(this).addClass('ftag');
         			$('.ftypeAll ').addClass('btn-default');
         			$('.ftypeAll ').removeClass('btn-primary');
-        			$('.ftypeAll ').removeClass('ftag');
         			$('.floor').addClass('btn-default');
         			$('.floor').removeClass('btn-primary');
-        			$('.floor').removeClass('ftag');
         		}
         	});
         	
@@ -462,6 +418,11 @@
         	 	});
 
         	});
+        	
+        	
+        	
+        	
+        	
         	
         	// 목록 - [call] 클릭
         	$('.call').click(function () {    	
