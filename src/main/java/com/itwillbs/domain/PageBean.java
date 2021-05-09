@@ -50,6 +50,7 @@ public class PageBean {
 		startPage=(currentPage-1)/pageBlock*pageBlock+1;
 		endPage=startPage+pageBlock-1;
 		pageCount=count/pageSize+(count%pageSize==0?0:1);
+		
 		 if(endPage > pageCount){
 		 	endPage = pageCount;
 		 }
