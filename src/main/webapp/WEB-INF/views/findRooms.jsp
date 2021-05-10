@@ -127,7 +127,6 @@
 							type="range" step="100" value="50000" min="0" max="50000" name="deposit_max" ></input>
 					</div>
 				</div>
-				
 	
 						월세
 		              	<div class="range-slider">
