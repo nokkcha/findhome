@@ -1,6 +1,8 @@
 package com.itwillbs.service;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -83,14 +85,30 @@ public class BoardServiceImpl implements BoardService{
 		
 		System.out.println("등록한 방의 ID : " + bb.getRoom_id());
 		
-		//Room_Image
-		//boardDAO.insertRoomImage();
+		ImageBean imageBean = new ImageBean();
+		String[] fileList = bb.getFileList();
+		List<ImageBean> list = new ArrayList<ImageBean>();
+		
+		for (String string : fileList) {
+			if (string == "")
+				continue;
+			
+			imageBean.setRoom_id(bb.getRoom_id());
+			imageBean.setFile_name(string);
+
+			list.add(imageBean);
+		}				
+		
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("list", list);
+		
+		insertRoomImags(map);
 	}
 
 	@Override
-	public void insertRoomImags(ImageBean bean) {
+	public void insertRoomImags(HashMap<String, Object> map) {
 		// TODO Auto-generated method stub
-		boardDAO.insertRoomImages(bean);
+		boardDAO.insertRoomImages(map);
 	}
 	
 

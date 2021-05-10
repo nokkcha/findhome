@@ -24,9 +24,19 @@
 		#{content}, #{phone_number}, #{seller_id})
 	</insert>
 	
-	<insert id="insertRoomImages">
+	<insert id="insertRoomImg">
 	INSERT INTO `one_room_pic` (`id`, `room_id`, `file_name`) VALUES (#{id}, #{room_id}, #{file_name})
 	</insert>
+	
+	<insert id="insertRoomImages" parameterType="java.util.List">
+    INSERT INTO
+        one_room_pic
+        (room_id, file_name)
+    VALUES
+    <foreach collection="list" item="item" separator=",">
+        (#{item.room_id}, #{item.file_name})
+    </foreach>
+    </insert>	
 
 	<select id="getBoardList"
 		resultType="com.itwillbs.domain.BoardBean">

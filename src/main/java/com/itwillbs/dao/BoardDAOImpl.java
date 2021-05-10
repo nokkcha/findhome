@@ -1,5 +1,6 @@
 package com.itwillbs.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -70,7 +71,7 @@ public class BoardDAOImpl implements BoardDAO{
 	}
 
 	@Override
-	public void insertRoomImages(ImageBean bean) {
+	public void insertRoomImages(HashMap<String, Object> bean) {
 		// TODO Auto-generated method stub
 		sqlSession.insert(namespace+".insertRoomImages",bean);
 	}

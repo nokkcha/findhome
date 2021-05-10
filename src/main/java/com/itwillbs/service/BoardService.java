@@ -1,9 +1,9 @@
 package com.itwillbs.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.itwillbs.domain.BoardBean;
-import com.itwillbs.domain.ImageBean;
 import com.itwillbs.domain.OneRoomBean;
 import com.itwillbs.domain.PageBean;
 
@@ -14,7 +14,7 @@ public interface BoardService {
 	// 방등록
 	public void insertRoom(OneRoomBean bb);
 	// 방 이미지 등록
-	public void insertRoomImags(ImageBean bean);
+	public void insertRoomImags(HashMap<String, Object> bean);
 	
 	public List<BoardBean> getBoardList(PageBean pb);
 	public Integer getBoardCount();

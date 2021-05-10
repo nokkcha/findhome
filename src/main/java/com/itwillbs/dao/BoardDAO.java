@@ -1,5 +1,6 @@
 package com.itwillbs.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.itwillbs.domain.BoardBean;
@@ -19,5 +20,5 @@ public interface BoardDAO {
 		public void updateBoard(BoardBean bb);
 		public void deleteBoard(BoardBean bb);
 		public void insertRoom(OneRoomBean bb);
-		public void insertRoomImages(ImageBean bean);
+		public void insertRoomImages(HashMap<String, Object> map);
 }

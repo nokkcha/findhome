@@ -622,7 +622,8 @@
 											$(".room_img_list").eq(idx).attr(
 													"src", data);
 											$(".btn-upload_list").eq(idx)
-													.hide();
+													.hide();											
+											
 										}
 									});
 
