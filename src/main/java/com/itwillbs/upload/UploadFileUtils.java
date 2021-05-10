@@ -7,6 +7,7 @@ import java.util.Calendar;
 import java.util.UUID;
 
 import javax.imageio.ImageIO;
+import javax.servlet.http.HttpServletRequest;
 
 import org.imgscalr.Scalr;
 import org.springframework.util.FileCopyUtils;
@@ -17,6 +18,7 @@ public class UploadFileUtils {
 	        UUID uuid = UUID.randomUUID();
 	        // 저장할 파일명 = UUID + 원본이름
 	        String savedName = uuid.toString() + "_" + originalName;
+	        
 	        // 업로드할 디렉토리(날짜별 폴더) 생성 
 	        String savedPath = calcPath(uploadPath);
 	        // 파일 경로(기존의 업로드경로+날짜별경로), 파일명을 받아 파일 객체 생성
