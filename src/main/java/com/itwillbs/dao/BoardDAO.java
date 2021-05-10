@@ -3,6 +3,7 @@ package com.itwillbs.dao;
 import java.util.List;
 
 import com.itwillbs.domain.BoardBean;
+import com.itwillbs.domain.ImageBean;
 import com.itwillbs.domain.OneRoomBean;
 import com.itwillbs.domain.PageBean;
 
@@ -18,4 +19,5 @@ public interface BoardDAO {
 		public void updateBoard(BoardBean bb);
 		public void deleteBoard(BoardBean bb);
 		public void insertRoom(OneRoomBean bb);
+		public void insertRoomImages(ImageBean bean);
 }

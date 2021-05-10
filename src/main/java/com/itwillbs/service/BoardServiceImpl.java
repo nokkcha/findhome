@@ -11,6 +11,7 @@ import com.itwillbs.dao.BoardDAO;
 import com.itwillbs.domain.BoardBean;
 import com.itwillbs.domain.OneRoomBean;
 import com.itwillbs.domain.PageBean;
+import com.itwillbs.domain.ImageBean;
 
 @Service
 public class BoardServiceImpl implements BoardService{
@@ -79,6 +80,17 @@ public class BoardServiceImpl implements BoardService{
 	public void insertRoom(OneRoomBean bb) {
 		// TODO Auto-generated method stub
 		boardDAO.insertRoom(bb);
+		
+		System.out.println("등록한 방의 ID : " + bb.getRoom_id());
+		
+		//Room_Image
+		//boardDAO.insertRoomImage();
+	}
+
+	@Override
+	public void insertRoomImags(ImageBean bean) {
+		// TODO Auto-generated method stub
+		boardDAO.insertRoomImages(bean);
 	}
 	
 

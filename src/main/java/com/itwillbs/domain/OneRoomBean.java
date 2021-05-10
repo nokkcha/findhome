@@ -7,6 +7,16 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class OneRoomBean {
 	private int room_id; // 매물 ID
+	private String[] fileList;
+	
+	public String[] getFileList() {
+		return fileList;
+	}
+
+	public void setFileList(String[] fileList) {
+		this.fileList = fileList;
+	}
+
 	private String address; // 주소
 	private int deposit; // 보증금
 	private int monthly_rent; // 월세

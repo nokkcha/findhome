@@ -405,10 +405,11 @@
 			$('#sellForm').submit(function() {
 
 				var is_empty = false;
-				$('#sellForm').find('input[type!="hidden"]').each(function() {
+				$('#sellForm').find('input[type!="hidden"]').not(".file_list").each(function() {
 					if (!$(this).val()) {
 						is_empty = true;
 						alert('값을 전부 입력하시오 ' + $(this).attr('id'));
+						$(this).focus();
 						return false;
 					}
 				});
@@ -493,7 +494,7 @@
 		$(document).ready(function() {
 			setTestData();
 
-			//setRoomImageTable();
+			setRoomImageTable();
 			
 			$('#is_include_fees').change( function(){
 			    var isChecked = $(this).is(":checked");
@@ -526,7 +527,7 @@
 
 			for (var i = 1; i <= 15; i++) {
 				var html_td = '<td style="background-color: #dedede;" >';
-				html_td += '<input type="file" id="file'+i+'" class="file_list" hidden="" style="display: none;" accept="image/jpeg,image/png" />';
+				html_td += '<input type="file" id="file'+i+'" class="file_list" hidden="" name="fileList" style="display: none;" accept="image/jpeg,image/png" />';
 				// 				html_td += '<div style="width:20%; height:auto;" >';
 				html_td += '<img id="room_img'+i+'" src="" class="room_img_list"></div><div class="back">'
 				// 				var html_btn = '<input type="button" onClick="ajaxFileUpload()" class="btn-upload_list" id="btn-upload'+i+'" value="+등록" /><br>{}</div></td>';

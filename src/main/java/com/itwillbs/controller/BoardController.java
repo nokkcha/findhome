@@ -40,8 +40,10 @@ public class BoardController {
 
 	@RequestMapping(value = "/writePro", method = RequestMethod.POST)
 	public String writePro(OneRoomBean bb) {		
-		
-		// System.out.println(bb.getOptions());
+		String[] fileList = bb.getFileList();
+		for (String string : fileList) {
+			System.out.println("FileList : " + string);
+		}
 		boardService.insertRoom(bb);
 
 		return "redirect:/";
