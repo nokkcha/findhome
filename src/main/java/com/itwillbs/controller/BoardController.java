@@ -131,13 +131,22 @@ public class BoardController {
 //			pb.setPageNum("1");
 //		}
 //		pb.setPageSize(9);
+		
 		ob.setSearch("%"+ob.getSearch()+"%");
 		System.out.println("검색어 : " + ob.getSearch());
 		
-		ob.setRoom_type("["+ob.getRoom_type()+"]");
-		System.out.println("방구조 : " + ob.getRoom_type());
-		
-		ob.setLiving_floor("["+ob.getLiving_floor()+"]");
+		if(ob.getRoom_type() == null) {
+			ob.setRoom_type("^");
+		} else if(ob.getRoom_type().contains(",")) {
+			ob.setRoom_type(ob.getRoom_type().replaceAll(",", "|"));
+		}
+		System.out.println("방구조 : " + ob.getRoom_type() );
+	
+		if(ob.getLiving_floor() == null) {
+			ob.setLiving_floor("^");
+		}else if(ob.getLiving_floor().contains(",")) {
+			ob.setLiving_floor(ob.getLiving_floor().replaceAll(",", "|"));
+		}
 		System.out.println("층수 : " + ob.getLiving_floor());
 		
 		System.out.println("월세 최소 : " +ob.getMonthly_rent_min());

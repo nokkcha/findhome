@@ -31,7 +31,7 @@
         (subject like #{search} || content like #{search} || address like #{search})
 		and (room_type REGEXP #{room_type})
 		and (living_floor REGEXP #{living_floor})
-        and (deposit >= #{deposit_min} and deposit <= #{deposit_max})
+		 and (deposit >= #{deposit_min} and deposit <= #{deposit_max})
         and (monthly_rent >= #{monthly_rent_min} and monthly_rent <= #{monthly_rent_max})
        ]]>
         

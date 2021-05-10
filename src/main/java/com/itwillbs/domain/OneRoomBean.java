@@ -24,7 +24,6 @@ public class OneRoomBean {
 	private float contract_area_p; // DEFAULT 1.00 COMMENT "계약면적 (평)",
 	private String floor; // DEFAULT "1층" COMMENT "건물층수",
 	private String living_floor; // DEFAULT "반지하" COMMENT "반지하,옥탑방,1~80",
-	private List<String> living_floor2;
 	
 	private String direction; // DEFAULT "동향" COMMENT "동,서,남,북,남동,남서,북동,북서,확인필요",
 	private String[] options; // {"냉장고": "N", "에어컨": "Y"}
@@ -290,14 +289,6 @@ public class OneRoomBean {
 
 	public void setDeposit_max(int deposit_max) {
 		this.deposit_max = deposit_max;
-	}
-
-	public List<String> getLiving_floor2() {
-		return living_floor2;
-	}
-
-	public void setLiving_floor2(List<String> living_floor2) {
-		this.living_floor2 = living_floor2;
 	}
 
 	
