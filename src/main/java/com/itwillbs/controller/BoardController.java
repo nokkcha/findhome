@@ -39,18 +39,9 @@ public class BoardController {
 	}
 
 	@RequestMapping(value = "/writePro", method = RequestMethod.POST)
-	public String writePro(OneRoomBean bb) {
-		//testBean.setSeller_id("admin@gmail.com");
-
-		String[] include_fees = new String[] {"전기세", "수도세"};
-		String[] options = new String[] {"에어컨", "냉장고", "TV"};
-				
+	public String writePro(OneRoomBean bb) {		
 		
-		System.out.println(bb.getOptions()); 
-		
-//		testBean.setInclude_fees(include_fees);
-//		testBean.setOption(options);
-
+		// System.out.println(bb.getOptions());
 		boardService.insertRoom(bb);
 
 		return "redirect:/";
