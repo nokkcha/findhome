@@ -14,7 +14,6 @@ public class OneRoomBean {
 	private int deposit; // 보증금
 	private int monthly_rent; // 월세
 	private String room_type; // "오픈형 원룸 (방1)" COMMENT "방구조",
-	private List<String> room_type2; // "오픈형 원룸 (방1)" COMMENT "방구조",
 	private int fees; // DEFAULT 0 COMMENT "관리비",
 //	private Map<String, Object> include_fees; // {"전기세": "Y"}
 	private String[] include_fees; // {"전기세": "Y"}
@@ -25,6 +24,8 @@ public class OneRoomBean {
 	private float contract_area_p; // DEFAULT 1.00 COMMENT "계약면적 (평)",
 	private String floor; // DEFAULT "1층" COMMENT "건물층수",
 	private String living_floor; // DEFAULT "반지하" COMMENT "반지하,옥탑방,1~80",
+	private List<String> living_floor2;
+	
 	private String direction; // DEFAULT "동향" COMMENT "동,서,남,북,남동,남서,북동,북서,확인필요",
 	private String[] options; // {"냉장고": "N", "에어컨": "Y"}
 	private String loan; // DEFAULT "불가능" COMMENT "가능 불가능 확인필요",
@@ -291,13 +292,14 @@ public class OneRoomBean {
 		this.deposit_max = deposit_max;
 	}
 
-	public List<String> getRoom_type2() {
-		return room_type2;
+	public List<String> getLiving_floor2() {
+		return living_floor2;
 	}
 
-	public void setRoom_type2(List<String> room_type2) {
-		this.room_type2 = room_type2;
+	public void setLiving_floor2(List<String> living_floor2) {
+		this.living_floor2 = living_floor2;
 	}
+
 	
 	
 

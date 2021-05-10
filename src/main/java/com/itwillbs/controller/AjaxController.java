@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.itwillbs.domain.BoardBean;
 import com.itwillbs.domain.MemberBean;
@@ -23,7 +24,7 @@ import com.itwillbs.service.BoardService;
 import com.itwillbs.service.BoardServiceImpl;
 import com.itwillbs.service.MemberService;
 
-@Controller
+@RestController
 public class AjaxController {
 	
 	@Inject
@@ -65,16 +66,24 @@ public class AjaxController {
 		return entity;
 	}
 	
+	
 
 	@RequestMapping(value = "/ajaxSearch_findRooms", method = RequestMethod.GET)
-	public ResponseEntity<List<OneRoomBean>> list2(OneRoomBean ob, Model model) {
+	public ResponseEntity<List<OneRoomBean>> list2(HttpSession session, OneRoomBean ob, Model model, @RequestParam(value="room_type2[]") List<String> rtype) {
 		ResponseEntity<List<OneRoomBean>> entity=null;
 		
 		try {
+			String id = (String) session.getAttribute("id");
+			
 			PageBean pb=new PageBean();
 			
 			ob.setSearch("%"+ob.getSearch()+"%");
 			System.out.println("검색어 : " + ob.getSearch());
+			
+			for(String rArr : rtype) {
+				
+				System.out.println("결과 : " + rArr);
+			}
 			
 //			System.out.println("방 구조 : " + ob.getRoom_type());
 			
@@ -90,6 +99,12 @@ public class AjaxController {
 			
 			List<OneRoomBean> roomList=boardService.getSearchList(ob);
 			model.addAttribute("roomList", roomList);
+			
+			if(id != null) {
+				List<MemberBean> wishList=memberService.getWishList(id);	
+				model.addAttribute("wishList", wishList);
+			}
+			
 			entity=new ResponseEntity<List<OneRoomBean>>(roomList,HttpStatus.OK);
 			
 		} catch (Exception e) {
@@ -98,6 +113,7 @@ public class AjaxController {
 		}
 		return entity;
 	}
+	
 	
 	///============================
 

@@ -57,12 +57,11 @@
         	<div class="col-lg-3 sidebar">
         		<div class="sidebar-wrap bg-light ftco-animate">
         			<h3 class="heading mb-4">검색 조건 설정</h3>
-        			
-<!--         			<form action="#"> -->
+             			<form action='<c:url value="findRooms-search"/>'>
         			
         				<div class="fields">
 		              <div class="form-group">
-		                <input type="text" class="form-control" placeholder="지역, 지하철역 검색">
+		                <input type="text" class="form-control" placeholder="지역, 지하철역 검색" name="search" id="filter-search">
 		              </div>
 		              <div class="form-group">
 		                <div class="select-wrap2 one-third">
@@ -76,53 +75,87 @@
 
 	                      구조
 	                 <div class="form-group">
-		                <input type="button" class="btn te btn-primary rtypeAll"  value="전체">
-		                <input type="button" class="btn te btn-default rtypeOpen rtype"  value="오픈형">
-		                <input type="button" class="btn te btn-default rtypeSeparate rtype"  value="분리형">
-		                <input type="button" class="btn te btn-default rtypeStairs rtype"  value="복층형">
+	                 
+	              <label class="label-class">  <span class="btn te"> 
+	              <input type="checkbox" name="room_type" value="전체" class="cktag rtypeAll" checked>전체</span></label>
+	              
+	                 <label class="label-class"> <span class="btn te"> 
+	                 <input type="checkbox" name="room_type" value="오픈형 원룸 (방1)" class="cktag r-not-pri rtypeOpen">오픈형 </span></label>
+	                 
+	                  <label class="label-class"><span class="btn te"> 
+	                  <input type="checkbox" name="room_type" value="분리형 원룸 (방1,거실1)" class="cktag r-not-pri rtypeSeparate">분리형 </span></label>
+	                  
+	                <label class="label-class"> <span class="btn te"> 
+	                <input type="checkbox" name="room_type" value="복층형 원룸" class="cktag r-not-pri rtypeStairs">복층형 </span></label>
+	                 
+	                 
+<!-- 		                <input type="button" class="btn te btn-primary rtag rtypeAll"  name="room_type"  value="전체"> -->
+<!-- 		                <input type="button" class="btn te btn-default rtypeOpen rtype"  value="오픈형"> -->
+<!-- 		                <input type="button" class="btn te btn-default rtypeSeparate rtype"   value="분리형"> -->
+<!-- 		                <input type="button" class="btn te btn-default rtypeStairs rtype"  value="복층형"> -->
 		              </div>
 		              
 	                      층 수 옵션
 	                      <div class="form-group">
-	                       <input type="button" class="btn te btn-primary ftypeAll"  value="전체">
-		                	<input type="button" class="btn te btn-default floor"  value="지상층">
-		             		<input type="button" class="btn te btn-default ftypeOther"  value="반지하,옥탑">
-		              </div>
+<!-- 	                       <input type="button" class="btn te btn-primary ftag ftypeAll"   value="전체"> -->
+<!-- 		                	<input type="button" class="btn te btn-default floor"   value="지상층"> -->
+<!-- 		             		<input type="button" class="btn te btn-default ftypeOther" value="반지하,옥탑"> -->
+		             	  <label class="label-class"><span class="btn te"> <input type="checkbox" name="living_floor" value="전체" checked> 전체 </span></label>
+		             	  <label class="label-class"><span class="btn te"><input type="checkbox" name="living_floor" value="층"> 지상층 </span></label>
+		             	 <label class="label-class"><span class="btn te">	 <input type="checkbox" name="living_floor" value="반지하"> 반지하 </span></label>
+		             	 <label class="label-class"><span class="btn te">	 <input type="checkbox" name="living_floor" value="옥탑방"> 옥탑 </span></label>
+
+<!-- 	                       <input type="button" class="btn te btn-primary ftag ftypeAll"   value="전체"> -->
+<!-- 		                	<input type="button" class="btn te btn-default floor"   value="지상층"> -->
+<!-- 		             		<input type="button" class="btn te btn-default ftypeOther" value="반지하,옥탑"> -->
+
+		             </div>
 	                  </div>
 		              </div>
 
 			<div class="form-group">
 		              보증금
 		        <div class="range-slider">
-					<div class="Container" >
-				  		<font size = 2 id = "slider_value_view1">0</font>						  
-				  			<input oninput = 'ShowSliderValue1(this.value)' style = "width:100%;" class="slider_range1" type="range" step="100" value="0" min="0" max="50000"></input>
-				   		<font size = 2 id = "slider_value_view2">5억</font>							  
-							<input oninput = 'ShowSliderValue2(this.value)' style = "width:100%;" class="slider_range2" type="range" step="100" value="50000" min="0" max="50000" ></input>
+					<div class="Container"  style="text-align: center;" >
+				  		<font size = 3 style="color: gray" id = "slider_value_view1">0</font>						  
+				  			<input oninput = 'ShowSliderValue1(this.value)' style = "width:100%;" class="slider_range1"
+				  			 type="range" step="100" value="0" min="0" max="50000" name="deposit_min" ></input>
+				  			 
+				  			 <span style="margin: 0 15%"> - </span>
+				  			 
+				   		<font size = 3 style="color: gray" id = "slider_value_view2">5억</font>							  
+							<input oninput = 'ShowSliderValue2(this.value)' style = "width:100%;" class="slider_range2" 
+							type="range" step="100" value="50000" min="0" max="50000" name="deposit_max" ></input>
 					</div>
 				</div>
 	
 						월세
 		              	<div class="range-slider">
-						<div class="Container2" >
-					  		<font size = 2 id = "slider_value_view3">0</font>						  
-					  			<input oninput = 'ShowSliderValue3(this.value)' style = "width:100%;" class="slider_range3" type="range" step="10" value="0" min="0" max="500"></input>
-					   		<font size = 2 id = "slider_value_view4">500만원</font>							  
-								<input oninput = 'ShowSliderValue4(this.value)' style = "width:100%;" class="slider_range4" type="range" step="10"value="500" min="0" max="500"></input>
+						<div class="Container2"  style="text-align: center;">
+					  		<font size = 3 style="color: gray" id = "slider_value_view3">0</font>						  
+					  			<input oninput = 'ShowSliderValue3(this.value)' style = "width:100%;" class="slider_range3" 
+					  			type="range" step="10" value="0" min="0" max="500" name="monthly_rent_min"></input>
+					  			
+					  		<span style="margin: 0 15%"> - </span>
+					  			
+					   		<font size = 3 style="color: gray" id = "slider_value_view4">500만원</font>							  
+								<input oninput = 'ShowSliderValue4(this.value)' style = "width:100%;" class="slider_range4" 
+								type="range" step="10"value="500" min="0" max="500" name="monthly_rent_max"></input>
 							</div>
 						</div>
 						
 						<div class="form-group">
-<!-- 							<input type="submit" value="Search" class="btn btn-primary py-3 px-5" id="filter-search"> -->
-							<input type="button" value="Search" class="btn btn-primary py-3 px-5" id="filter-search">
+							<input type="button" value="AJAX 전송" class="btn btn-primary py-3 px-5" id="search-ok">
+
+							<input type="submit" value="Form으로 전송" class="btn btn-primary py-3 px-5" id="filter-search">
 						</div>
 					 </div>
 		            </div>
 
-<!-- 	            </form> -->
+	            </form>
         		</div>
           </div>
-                   
+                
            <div class="col-lg-roomlist">
           	<button class="btn_room btn pri-page" onclick="location.href='<c:url value="findRooms"/>'"> 방 찾기</button>
           	<button class="btn_like btn notpri-page" onclick="location.href='<c:url value="findRooms-zzim"/>'"> 찜한 매물 </button>        	

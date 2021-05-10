@@ -119,6 +119,7 @@ public class BoardController {
 	}
 	
 	
+	
 	@RequestMapping(value = "/findRooms-search", method = RequestMethod.GET)
 	public String search(HttpServletRequest request, Model model, HttpSession session, OneRoomBean ob) {
 		String id = (String) session.getAttribute("id");
@@ -133,9 +134,10 @@ public class BoardController {
 		ob.setSearch("%"+ob.getSearch()+"%");
 		System.out.println("검색어 : " + ob.getSearch());
 		
+		ob.setRoom_type("["+ob.getRoom_type()+"]");
 		System.out.println("방구조 : " + ob.getRoom_type());
 		
-		ob.setLiving_floor("%"+ob.getLiving_floor());
+		ob.setLiving_floor("["+ob.getLiving_floor()+"]");
 		System.out.println("층수 : " + ob.getLiving_floor());
 		
 		System.out.println("월세 최소 : " +ob.getMonthly_rent_min());

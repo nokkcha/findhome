@@ -117,12 +117,14 @@
 			<div class="form-group">
 		              보증금
 		        <div class="range-slider">
-					<div class="Container" >
-				  		<font size = 2 id = "slider_value_view1">0</font>						  
+					<div class="Container"  style="text-align: center;" >
+				  		<font size = 3 style="color: gray" id = "slider_value_view1">0</font>						  
 				  			<input oninput = 'ShowSliderValue1(this.value)' style = "width:100%;" class="slider_range1"
 				  			 type="range" step="100" value="0" min="0" max="50000" name="deposit_min" ></input>
 				  			 
-				   		<font size = 2 id = "slider_value_view2">5억</font>							  
+				  			 <span style="margin: 0 15%"> - </span>
+				  			 
+				   		<font size = 3 style="color: gray" id = "slider_value_view2">5억</font>							  
 							<input oninput = 'ShowSliderValue2(this.value)' style = "width:100%;" class="slider_range2" 
 							type="range" step="100" value="50000" min="0" max="50000" name="deposit_max" ></input>
 					</div>
@@ -130,12 +132,14 @@
 	
 						월세
 		              	<div class="range-slider">
-						<div class="Container2" >
-					  		<font size = 2 id = "slider_value_view3">0</font>						  
+						<div class="Container2"  style="text-align: center;">
+					  		<font size = 3 style="color: gray" id = "slider_value_view3">0</font>						  
 					  			<input oninput = 'ShowSliderValue3(this.value)' style = "width:100%;" class="slider_range3" 
 					  			type="range" step="10" value="0" min="0" max="500" name="monthly_rent_min"></input>
 					  			
-					   		<font size = 2 id = "slider_value_view4">500만원</font>							  
+					  		<span style="margin: 0 15%"> - </span>
+					  			
+					   		<font size = 3 style="color: gray" id = "slider_value_view4">500만원</font>							  
 								<input oninput = 'ShowSliderValue4(this.value)' style = "width:100%;" class="slider_range4" 
 								type="range" step="10"value="500" min="0" max="500" name="monthly_rent_max"></input>
 							</div>
@@ -417,6 +421,13 @@
 
         
         	
+        	
+        	
+        	// ==================================================================
+        	
+        	
+        	
+        	
         	// 검색 조건 - [search] 클릭
      		$('#search-ok').click(function(){
      			
@@ -429,14 +440,11 @@
 				var monthly_rent_max = $('.slider_range4').val(); // 최대 월세
 				
 				// 구조 
-				var room_type = [];
+				var room_type2 = [];
 				  $("input[name='room_type']:checked").each(function(i){
-					  room_type.push($(this).val());
+					  room_type2.push($(this).val());
 				  });
 				
-// 	            var room_type = $('.cktag').val();
-				
-
         	 	$.ajax('<c:url value="/ajaxSearch_findRooms" />',{
         	 		
         	 		data:{
@@ -444,29 +452,26 @@
         	 			deposit_min:deposit_min,
         	 			deposit_max:deposit_max,
         	 			monthly_rent_min:monthly_rent_min,
-        	 			monthly_rent_max:monthly_rent_max
-//         	 			room_type:room_type
+        	 			monthly_rent_max:monthly_rent_max,
+        	 			room_type2:room_type2
         	 			},
         	 		
         	 		
         	 		success:function(rdata){
-//         	 		$('body').css('background','red');
         	 			alert("성공");
-        	 			alert(room_type);
+        	 			$('body').css('background','skyblue');
+        	 			$('.roomlist_moum').html("테스트");
 
         	 		}
         	 	});
-     			
-     			// main2.jsp 가서 최근글 5개를 json형태로 가져와서 
-     			// table태그 뒤부분에 추가
-//      			$.getJSON('<c:url value="/findRooms-search" />',function(rdata){				
-//      				$.each(rdata,function(index,item){
-//      					$(body).append(item.subject+item.content);
-//      				});
-//      			});
+
     		});
         	
         	
+        	
+        	
+        	// ==================================================================
+       	
         	
         	
         	
@@ -544,9 +549,9 @@
     function ShowSliderValue1(sVal) {
     	var obValueView = document.getElementById("slider_value_view1");
     	if(sVal>=10000){
-    	obValueView.innerHTML = (sVal*0.0001).toFixed(1)+"억 ~ ";
+    	obValueView.innerHTML = (sVal*0.0001).toFixed(1)+"억";
     	}else{		
-    	obValueView.innerHTML = sVal+"만 ~ ";
+    	obValueView.innerHTML = sVal+"만";
     	}
     	
     	
@@ -565,7 +570,7 @@
     // 월세 최소
     function ShowSliderValue3(sVal) {
     	var obValueView = document.getElementById("slider_value_view3");
-    	obValueView.innerHTML = sVal+"만 ~ ";
+    	obValueView.innerHTML = sVal+"만";
     }
 
     // 월세 최대
