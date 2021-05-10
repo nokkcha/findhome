@@ -116,7 +116,11 @@
 		<div class="container">
 
 			<form action='<c:url value="/writePro"/>' method="post" id="sellForm">
-
+			
+			<c:forEach var="i" begin="1" end="15">										
+				<input type="hidden" class="fileList" name="fileList" />
+			</c:forEach>
+			
 				<table class="table">
 					<thead align="left">
 						<tr>
@@ -527,10 +531,12 @@
 
 			for (var i = 1; i <= 15; i++) {
 				var html_td = '<td style="background-color: #dedede;" >';
-				html_td += '<input type="file" id="file'+i+'" class="file_list" hidden="" name="fileList" style="display: none;" accept="image/jpeg,image/png" />';
-				// 				html_td += '<div style="width:20%; height:auto;" >';
+				
+				//html_td += '<input type="text" hidden="" class="fileList" name="fileList" />';
+				
+				html_td += '<input type="file" id="file'+i+'" class="file_list" hidden="" style="display: none;" accept="image/jpeg,image/png" />';				
 				html_td += '<img id="room_img'+i+'" src="" class="room_img_list"></div><div class="back">'
-				// 				var html_btn = '<input type="button" onClick="ajaxFileUpload()" class="btn-upload_list" id="btn-upload'+i+'" value="+등록" /><br>{}</div></td>';
+				
 				var html_btn = '<input type="button" onClick="ajaxFileUpload()"  class="btn-upload_list" id="btn-upload'
 						+ i + '" value="+등록" /><br>{}</td>';
 
@@ -573,6 +579,13 @@
 				$('.file_list').eq(idx).click();
 			});
 		}
+		
+		function getOriginalName(fileName) {
+		    
+		    // uuid를 제외한 원래 파일 이름을 리턴
+		    var idx = fileName.indexOf("_")+1;
+		    return fileName.substr(idx);
+		}
 
 		$(document)
 				.on(
@@ -611,8 +624,14 @@
 										success : function(data) {
 
 											var str = "";
+											// 섬네일 생성하고 이미지 표시
 											str += "<img src='${path}/findhome/upload/displayFile?fileName="
 													+ data + "'></a>";
+											// 원래 파일 경로 얻기
+// 											var str2 = "<div><a href='${path}/upload/displayFile?fileName="+data+"'>"+getOriginalName(data)+"</a>";
+											var str2 = "" + data;
+											console.log('originalFileName : ' + str2);
+													
 											$("#btn-upload").append(str);
 											$('div').children('span');
 
@@ -622,8 +641,10 @@
 											$(".room_img_list").eq(idx).attr(
 													"src", data);
 											$(".btn-upload_list").eq(idx)
-													.hide();											
-											
+													.hide();
+											// 실제파일경로 폼 hidden tag내 삽입
+											$(".fileList").eq(idx).attr(
+													"value", str2);											
 										}
 									});
 
