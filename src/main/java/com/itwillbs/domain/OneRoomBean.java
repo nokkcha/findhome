@@ -1,5 +1,6 @@
 package com.itwillbs.domain;
 
+import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -13,6 +14,7 @@ public class OneRoomBean {
 	private int deposit; // 보증금
 	private int monthly_rent; // 월세
 	private String room_type; // "오픈형 원룸 (방1)" COMMENT "방구조",
+	private List<String> room_type2; // "오픈형 원룸 (방1)" COMMENT "방구조",
 	private int fees; // DEFAULT 0 COMMENT "관리비",
 //	private Map<String, Object> include_fees; // {"전기세": "Y"}
 	private String[] include_fees; // {"전기세": "Y"}
@@ -287,6 +289,14 @@ public class OneRoomBean {
 
 	public void setDeposit_max(int deposit_max) {
 		this.deposit_max = deposit_max;
+	}
+
+	public List<String> getRoom_type2() {
+		return room_type2;
+	}
+
+	public void setRoom_type2(List<String> room_type2) {
+		this.room_type2 = room_type2;
 	}
 	
 	

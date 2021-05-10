@@ -434,47 +434,6 @@
         	});
         	
 
-     		$('#search-ok').click(function(){
-				var search = $('#filter-search').val();
-				
-// 	             $(".rtag").each(function (i) {
-// 	 		      var ing += $(".rtag").eq(i).attr("value");
-// 	             });
-
-	            	 
-// 	              $(".rtag").each(function (i) {
-// 	 		      	$(".rtag").eq(i).attr("value")+"";
-// 	             });
-	             
-	             
-// 	            	 var ing = ($(".rtag").eq(0).attr("value")+$(".rtag").eq(1).attr("value")+$(".rtag").eq(2).attr("value"));
-	             
-				var living_floor = $('.ftag').val();
-
-        	 	$.ajax('<c:url value="/findRooms-search" />',{
-        	 		
-        	 		data:{
-        	 			search:search,
-        	 			living_floor :living_floor
-        	 			},
-	
-        	 		success:function(rdata){
-        	 			alert("성공");
-        	 			
-        	 		}
-        	 	});
-     			
-     			// main2.jsp 가서 최근글 5개를 json형태로 가져와서 
-     			// table태그 뒤부분에 추가
-//      			$.getJSON('<c:url value="/findRooms-search" />',function(rdata){				
-//      				$.each(rdata,function(index,item){
-//      					$(body).append(item.subject+item.content);
-//      				});
-//      			});
-    		});
-
-        	
-        	
         	// 목록 - [call] 클릭
         	$('.call').click(function () {    	
         		var filter = "win16|win32|win64|mac|macintel"; 

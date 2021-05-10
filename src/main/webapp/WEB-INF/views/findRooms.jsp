@@ -142,9 +142,9 @@
 						</div>
 						
 						<div class="form-group">
-<!-- 							<input type="button" value="Search" class="btn btn-primary py-3 px-5" id="search-ok"> -->
+							<input type="button" value="AJAX 전송" class="btn btn-primary py-3 px-5" id="search-ok">
 
-							<input type="submit" value="Search" class="btn btn-primary py-3 px-5" id="filter-search">
+							<input type="submit" value="Form으로 전송" class="btn btn-primary py-3 px-5" id="filter-search">
 						</div>
 					 </div>
 		            </div>
@@ -416,6 +416,68 @@
         	});
 
         
+        	
+        	// 검색 조건 - [search] 클릭
+     		$('#search-ok').click(function(){
+     			
+				var search = $('#filter-search').val();
+				
+				var deposit_min = $('.slider_range1').val();
+				var deposit_max = $('.slider_range2').val();
+
+				var monthly_rent_min = $('.slider_range3').val();
+				var monthly_rent_max = $('.slider_range4').val();
+				
+				
+				var room_type = [];
+				  $("input[name='room_type']:checked").each(function(i){
+					  room_type.push($(this).val());
+				  });
+				
+
+// 	            var room_type = $('.rtag').val();
+// 				var living_floor = $('.ftag').val();
+				
+
+        	 	$.ajax('<c:url value="/ajaxSearch_findRooms" />',{
+        	 		
+        	 		data:{
+        	 			search:search,
+        	 			deposit_min:deposit_min,
+        	 			deposit_max:deposit_max,
+        	 			monthly_rent_min:monthly_rent_min,
+        	 			monthly_rent_max:monthly_rent_max
+        	 			},
+        	 		
+        	 		
+        	 		success:function(rdata){
+//         	 			$('body').css('background','red');
+        	 			alert("성공");
+        	 			alert(room_type);
+
+        	 		}
+        	 	});
+     			
+     			// main2.jsp 가서 최근글 5개를 json형태로 가져와서 
+     			// table태그 뒤부분에 추가
+//      			$.getJSON('<c:url value="/findRooms-search" />',function(rdata){				
+//      				$.each(rdata,function(index,item){
+//      					$(body).append(item.subject+item.content);
+//      				});
+//      			});
+    		});
+        	
+        	
+        	
+        	
+        	
+        	
+        	
+        	
+        	
+        	
+        	
+        	
         	// 목록 - [방 찾기] 클릭
         	$('.btn_room').click(function(){       		
         		if( $(this).hasClass('notpri-page') ) {

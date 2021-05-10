@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.itwillbs.domain.BoardBean;
 import com.itwillbs.domain.MemberBean;
@@ -65,30 +66,43 @@ public class AjaxController {
 	}
 	
 
-//	@RequestMapping(value = "/findRooms-search", method = RequestMethod.GET)
-//	public ResponseEntity<List<OneRoomBean>> list2(OneRoomBean ob, Model model) {
-//		ResponseEntity<List<OneRoomBean>> entity=null;
-//		
-//		try {
-//			PageBean pb=new PageBean();
-//			pb.setPageNum("1");
-//			pb.setPageSize(5);
-//			
-//			System.out.println("검색어 : " + ob.getSearch());
-////			System.out.println("방구조 : " + ob.getRoom_type());
+	@RequestMapping(value = "/ajaxSearch_findRooms", method = RequestMethod.GET)
+	public ResponseEntity<List<OneRoomBean>> list2(OneRoomBean ob, Model model) {
+		ResponseEntity<List<OneRoomBean>> entity=null;
+		
+		try {
+			PageBean pb=new PageBean();
+			pb.setPageNum("1");
+			pb.setPageSize(5);
+			
+			ob.setSearch("%"+ob.getSearch()+"%");
+			System.out.println("검색어 : " + ob.getSearch());
+			
+//			if(ob.getRoom_type().equals("전체")) {
+//				
+//			}
+			
+			
+//			ob.setLiving_floor("%"+ob.getLiving_floor());
 //			System.out.println("층수 : " + ob.getLiving_floor());
-//			
-//			
-//			List<OneRoomBean> roomList=boardService.getSearchList(ob);
-//			model.addAttribute("roomList", roomList);
-//			entity=new ResponseEntity<List<OneRoomBean>>(roomList,HttpStatus.OK);
-//			
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//			entity=new ResponseEntity<List<OneRoomBean>>(HttpStatus.BAD_REQUEST);
-//		}
-//		return entity;
-//	}
+			
+			System.out.println("월세 최소 : " +ob.getMonthly_rent_min());
+			System.out.println("월세 최대 : " +ob.getMonthly_rent_max());
+			
+			System.out.println("보증금 최소 : " + ob.getDeposit_min());
+			System.out.println("보증금 최대 : " + ob.getDeposit_max());
+			
+			
+			List<OneRoomBean> roomList=boardService.getSearchList(ob);
+			model.addAttribute("roomList", roomList);
+			entity=new ResponseEntity<List<OneRoomBean>>(roomList,HttpStatus.OK);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			entity=new ResponseEntity<List<OneRoomBean>>(HttpStatus.BAD_REQUEST);
+		}
+		return entity;
+	}
 	
 	///============================
 
