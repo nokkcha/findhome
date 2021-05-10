@@ -198,16 +198,9 @@
 					</div>
 		        </c:forEach>	
 		        		
-		    	</div>		
-          	</div>
-          	
-		        
-		        
-		        
-          </div><!-- .col-md-8 -->
-        </div>
-
-          	<div class="row mt-5">
+		    	</div>	
+		    	
+		    	<div class="row mt-5">
 		          <div class="col text-center">
 		            <div class="block-27-page">
 		              <ul>
@@ -225,6 +218,13 @@
 		            </div>
 		          </div>
 		        </div>
+		    		
+          	</div>
+          	
+          </div><!-- .col-md-8 -->
+        </div>
+
+          	
       
     </section> <!-- .section -->
 
@@ -420,23 +420,21 @@
         	// 검색 조건 - [search] 클릭
      		$('#search-ok').click(function(){
      			
-				var search = $('#filter-search').val();
+				var search = $('#filter-search').val(); // 검색어 입력
 				
-				var deposit_min = $('.slider_range1').val();
-				var deposit_max = $('.slider_range2').val();
+				var deposit_min = $('.slider_range1').val(); // 최소 보증금
+				var deposit_max = $('.slider_range2').val(); // 최대 보증금
 
-				var monthly_rent_min = $('.slider_range3').val();
-				var monthly_rent_max = $('.slider_range4').val();
+				var monthly_rent_min = $('.slider_range3').val(); // 최소 월세
+				var monthly_rent_max = $('.slider_range4').val(); // 최대 월세
 				
-				
+				// 구조 
 				var room_type = [];
 				  $("input[name='room_type']:checked").each(function(i){
 					  room_type.push($(this).val());
 				  });
 				
-
-// 	            var room_type = $('.rtag').val();
-// 				var living_floor = $('.ftag').val();
+// 	            var room_type = $('.cktag').val();
 				
 
         	 	$.ajax('<c:url value="/ajaxSearch_findRooms" />',{
@@ -447,11 +445,12 @@
         	 			deposit_max:deposit_max,
         	 			monthly_rent_min:monthly_rent_min,
         	 			monthly_rent_max:monthly_rent_max
+//         	 			room_type:room_type
         	 			},
         	 		
         	 		
         	 		success:function(rdata){
-//         	 			$('body').css('background','red');
+//         	 		$('body').css('background','red');
         	 			alert("성공");
         	 			alert(room_type);
 

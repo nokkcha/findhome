@@ -72,16 +72,11 @@ public class AjaxController {
 		
 		try {
 			PageBean pb=new PageBean();
-			pb.setPageNum("1");
-			pb.setPageSize(5);
 			
 			ob.setSearch("%"+ob.getSearch()+"%");
 			System.out.println("검색어 : " + ob.getSearch());
 			
-//			if(ob.getRoom_type().equals("전체")) {
-//				
-//			}
-			
+//			System.out.println("방 구조 : " + ob.getRoom_type());
 			
 //			ob.setLiving_floor("%"+ob.getLiving_floor());
 //			System.out.println("층수 : " + ob.getLiving_floor());

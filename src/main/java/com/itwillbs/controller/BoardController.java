@@ -133,10 +133,6 @@ public class BoardController {
 		ob.setSearch("%"+ob.getSearch()+"%");
 		System.out.println("검색어 : " + ob.getSearch());
 		
-		if(ob.getRoom_type().equals("전체")) {
-			
-		}
-		
 		System.out.println("방구조 : " + ob.getRoom_type());
 		
 		ob.setLiving_floor("%"+ob.getLiving_floor());
