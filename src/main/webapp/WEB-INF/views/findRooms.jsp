@@ -461,6 +461,7 @@
         	 			alert("성공");
         	 			$('body').css('background','skyblue');
         	 			$('.roomlist_moum').html("테스트");
+        	 			
 
         	 		}
         	 	});
@@ -503,6 +504,8 @@
         	});
         	
     		
+        	
+        	
         	// 목록 - [찜하기] 클릭
         	$('.text-zzim').click(function(){
         		var room_id = $(this).parent().parent().children("input")[0].value;
@@ -527,6 +530,11 @@
         	 	});
 
         	});
+        	
+        	
+        	
+        	
+        	
         	
         	// 목록 - [call] 클릭
         	$('.call').click(function () {    	

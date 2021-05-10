@@ -100,11 +100,6 @@ public class AjaxController {
 			List<OneRoomBean> roomList=boardService.getSearchList(ob);
 			model.addAttribute("roomList", roomList);
 			
-			if(id != null) {
-				List<MemberBean> wishList=memberService.getWishList(id);	
-				model.addAttribute("wishList", wishList);
-			}
-			
 			entity=new ResponseEntity<List<OneRoomBean>>(roomList,HttpStatus.OK);
 			
 		} catch (Exception e) {

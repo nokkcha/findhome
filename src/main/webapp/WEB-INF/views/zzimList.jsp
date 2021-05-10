@@ -161,17 +161,17 @@
 		    						</p>
 		    						<input type="hidden" value="<c:out value='${roomList.room_id}'/>" id="room_id">
 		    						
+		    						</div>
 		    					</div>
-		    				</div>
-					</div>
-					
-										</c:if>
-
-		    						</c:forEach>
-		        </c:forEach>	
+							</div>
+							
+						</c:if>
+		
+				   		</c:forEach>
+					  </c:forEach>	
 		        		
 		        		
-		    	</div>		
+				</div>		
           	</div>
           	
 		        
