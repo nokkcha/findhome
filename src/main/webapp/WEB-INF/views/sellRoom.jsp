@@ -153,8 +153,8 @@ only screen and (max-width: 760px),
 					<tbody align="left">
 						<tr>						
 							<th style="background-color: #dedede;">주소 </th>
-							<td><input type="text" id="address">
-								<button onclick="checkAddress()">위치확인하기</button> <br> · 주소와
+							<td><input type="text" id="address" name="address">
+								<button type="button" onclick="checkAddress()">위치확인하기</button> <br> · 주소와
 								단지명 모두 검색이 가능합니다.<br> · 주소 입력 시에는 동/읍/면 으로 검색해 주세요. 예) 자곡동,
 								동읍면, 신월읍<br> · 오피스텔을 검색할 때에는 동/읍/면 이름과 단지 명을 함께 입력하면 좀 더
 								편하게 주소를 검색할 수 있습니다. 예) 계산동 하이베라스</td>
@@ -237,17 +237,19 @@ only screen and (max-width: 760px),
 						</tr>
 						<tr>
 							<th style="background-color: #dedede;">층수</th>
-							<td>건물 층 수 : <select name="floor">
+							<td>건물 층 수 : <select name="floor" id="floor">
 									<option value="">선택하세요</option>
 									<c:forEach var="i" begin="1" end="80">
+<%-- 										<option selected="selected" value="${i}층">${i}층</option> --%>
 										<option value="${i}층">${i}층</option>
 									</c:forEach>
 
-							</select> / 해당 층 : <select name="living_floor">
+							</select> / 해당 층 : <select name="living_floor" id="living_floor">
 									<option value="">선택하세요</option>
 									<option value="반지하">반지하</option>
 									<option value="옥탑방">옥탑방</option>
 									<c:forEach var="i" begin="1" end="80">
+<%-- 										<option selected="selected" value="${i}층">${i}층</option> --%>
 										<option value="${i}층">${i}층</option>
 									</c:forEach>
 							</select>
@@ -255,7 +257,7 @@ only screen and (max-width: 760px),
 						</tr>
 						<tr>
 							<th style="background-color: #dedede;">방향</th>
-							<td><select name="direction">
+							<td><select name="direction" id="direction">
 									<option value="">선택하세요</option>
 									<option value="동향">동향</option>
 									<option value="서향">서향</option>
@@ -460,14 +462,13 @@ only screen and (max-width: 760px),
 				$('#sellForm').find('input[type!="hidden"]').each(function(){
 				    if(!$(this).val()) {
 				        is_empty = true;				        
-				        alert($(this).attr('id'));
-				        //alert('값을 전부 입력하시오');
+				        alert('값을 전부 입력하시오 ' + $(this).attr('id'));
 					    return false;
 				    }
 				});
 				 
 				if(is_empty) {
-				    alert('값을 전부 입력하시오');
+				    //alert('값을 전부 입력하시오');
 				    return false;
 				}
 				
@@ -507,7 +508,7 @@ only screen and (max-width: 760px),
 		}
 		
 		function setTestData() {
-			document.getElementById('address').value = "진남로 220번길";
+			document.getElementById('address').value = "부산광역시 부산진구 부전동 동천로 109 삼한골든게이트 아이티윌 부산교육센터 7층";
 			document.getElementById('deposit').value = "500";
 			document.getElementById('monthly_rent').value = "30";
 			$("#room_type option:eq(1)").prop("selected", true);
@@ -517,9 +518,11 @@ only screen and (max-width: 760px),
 			document.getElementById('contract_area_p').value = "30.00";// 크기
 			document.getElementById('exclusive_area_m').value = "99.17";
 			document.getElementById('contract_area_m').value = "99.17";
-			$('#floor option:eq(2)').attr("selected", "selected");			  
-			//"living_floor"// 층수
-			//direction// 방향			
+			$('#floor option:eq(10)').attr("selected", "selected");			  
+			$('#living_floor option:eq(2)').attr("selected", "selected");
+			//$('#direction').val('동향').prop("selected",true);
+			$("#direction option:eq(2)").prop("selected",true);			
+			
 			$('#options').prop('checked', true);
 			$('#loan').prop('checked', true);
 			$('#pet').prop('checked', true);
