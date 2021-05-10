@@ -228,11 +228,11 @@ only screen and (max-width: 760px),
 						</tr>
 						<tr>
 							<th style="background-color: #dedede;">크기</th>
-							<td>전용면적 : <input type="text" id="cal2"
+							<td>전용면적 : <input type="text" id="exclusive_area_m"
 								name="exclusive_area_m">m<sup>2</sup> =<input
-								type="text" id="cal1" name="exclusive_area_p">평 <br>
-								계약면적 : <input type="text" id="cal4" name="contract_area_m">m<sup>2</sup>
-								=<input type="text" id="cal3" name="contract_area_p">평
+								type="text" id="exclusive_area_p" name="exclusive_area_p">평 <br>
+								계약면적 : <input type="text" id="contract_area_m" name="contract_area_m">m<sup>2</sup>
+								=<input type="text" id="contract_area_p" name="contract_area_p">평
 							</td>
 						</tr>
 						<tr>
@@ -309,11 +309,11 @@ only screen and (max-width: 760px),
 						</tr>
 						<tr>
 							<th style="background-color: #dedede;">입주가능일</th>
-							<td><input type="date" name="m_date" id="m_date"></td>
+							<td><input type="text" name="m_date" id="m_date" ></td>
 						</tr>
 						<tr>
 							<th style="background-color: #dedede;">제목</th>
-							<td><input type="text" name="subject" id="subject">제목</td>
+							<td><input type="text" name="subject" id="subject"></td>
 						</tr>
 						<tr>
 							<th style="background-color: #dedede;">상세설명</th>
@@ -447,13 +447,6 @@ only screen and (max-width: 760px),
 	</script>
 
 	<script type="text/javascript">
-// 		$(function() {
-// 			$('#btn-upload').click(function(e) {
-// 				e.preventDefault();
-// 				alert("btnUploadClick");
-// 				$('#file').click();
-// 			});
-// 		});
 
 		function changeValue(obj) {
 			alert(obj.value);
@@ -461,18 +454,20 @@ only screen and (max-width: 760px),
 		
 		// 매물 내놓기 버튼 클릭 이벤트
 		$(function() {
-// 			$('#sellRoom').click(function(e) {
 			$('#sellForm').submit(function() {
 						
 				var is_empty = false;
 				$('#sellForm').find('input[type!="hidden"]').each(function(){
 				    if(!$(this).val()) {
-				        is_empty = true;
+				        is_empty = true;				        
+				        alert($(this).attr('id'));
+				        //alert('값을 전부 입력하시오');
+					    return false;
 				    }
 				});
 				 
 				if(is_empty) {
-				    //alert('값을 전부 입력하시오');
+				    alert('값을 전부 입력하시오');
 				    return false;
 				}
 				
@@ -481,28 +476,28 @@ only screen and (max-width: 760px),
 		});
 
 		// 전용면적(exclusive private area) 평수 계산
-		$('#cal1').focusout(
+		$('#exclusive_area_p').focusout(
 				function() {
-					document.getElementById('cal2').value = parseFloat(document
-							.getElementById('cal1').value) * 3.3058;
+					document.getElementById('exclusive_area_m').value = parseFloat(document
+							.getElementById('exclusive_area_p').value) * 3.3058;
 				})
 
-		$('#cal2').focusout(
+		$('#exclusive_area_m').focusout(
 				function() {
-					document.getElementById('cal1').value = parseFloat(document
-							.getElementById('cal2').value) / 3.3058;
+					document.getElementById('exclusive_area_p').value = parseFloat(document
+							.getElementById('exclusive_area_m').value) / 3.3058;
 				})
 
-		$('#cal3').focusout(
+		$('#contract_area_p').focusout(
 				function() {
-					document.getElementById('cal4').value = parseFloat(document
-							.getElementById('cal3').value) * 3.3058;
+					document.getElementById('contract_area_m').value = parseFloat(document
+							.getElementById('contract_area_p').value) * 3.3058;
 				})
 
-		$('#cal4').focusout(
+		$('#contract_area_m').focusout(
 				function() {
-					document.getElementById('cal3').value = parseFloat(document
-							.getElementById('cal4').value) / 3.3058;
+					document.getElementById('contract_area_p').value = parseFloat(document
+							.getElementById('contract_area_m').value) / 3.3058;
 				})
 
 		function ajaxFileUpload() {
@@ -510,19 +505,49 @@ only screen and (max-width: 760px),
 			//alert("ajaxFileupload");
 			jQuery("#ajaxFile").click();
 		}
+		
+		function setTestData() {
+			document.getElementById('address').value = "진남로 220번길";
+			document.getElementById('deposit').value = "500";
+			document.getElementById('monthly_rent').value = "30";
+			$("#room_type option:eq(1)").prop("selected", true);
+			document.getElementById('fees').value = "20";
+			$('input:checkbox[id="include_fees"]').attr("checked", true);
+			document.getElementById('exclusive_area_p').value = "30.00";// 크기
+			document.getElementById('contract_area_p').value = "30.00";// 크기
+			document.getElementById('exclusive_area_m').value = "99.17";
+			document.getElementById('contract_area_m').value = "99.17";
+			$('#floor option:eq(2)').attr("selected", "selected");			  
+			//"living_floor"// 층수
+			//direction// 방향			
+			$('#options').prop('checked', true);
+			$('#loan').prop('checked', true);
+			$('#pet').prop('checked', true);
+			$('#parking').prop('checked', true);
+			$('#elevator').prop('checked', true);
+			document.getElementById('m_date').value = "즉시 입주";
+			document.getElementById('subject').value = "방제목 테스트";
+			document.getElementById('content').value = "상세설명 테스트";
+		}		
 
-		// 파일이 추가되는 순간 addFiles 함수가 실행된다.
+		// 사진 테이블 동적 초기화 및 함수 연결
 		$(document).ready(function() {
+			setTestData();			
+					
+			//setRoomImageTable();
 			
+		});	// end of funtion
+		
+		function setRoomImageTable() {
 			var str_html = '<tbody align="left"><tr>';
 			
 			for (var i = 1; i <= 15; i++) {
 				var html_td = '<td style="background-color: #dedede;" >';
-				html_td += '<input type="file" id="file'+i+'" class="file_list"  style="display: none;" accept="image/jpeg,image/png" />';
+				html_td += '<input type="file" id="file'+i+'" class="file_list" hidden="" style="display: none;" accept="image/jpeg,image/png" />';
 // 				html_td += '<div style="width:20%; height:auto;" >';
 				html_td += '<img id="room_img'+i+'" src="" class="room_img_list"></div><div class="back">'				
 // 				var html_btn = '<input type="button" onClick="ajaxFileUpload()" class="btn-upload_list" id="btn-upload'+i+'" value="+등록" /><br>{}</div></td>';
-				var html_btn = '<input type="button" onClick="ajaxFileUpload()" class="btn-upload_list" id="btn-upload'+i+'" value="+등록" /><br>{}</td>';
+				var html_btn = '<input type="button" onClick="ajaxFileUpload()"  class="btn-upload_list" id="btn-upload'+i+'" value="+등록" /><br>{}</td>';
 				
 				switch (i) {
 				case 1:
@@ -561,9 +586,9 @@ only screen and (max-width: 760px),
 				  console.log(idx);
 				  
 				  $('.file_list').eq(idx).click();
-			});			
-			
-		});	// end of funtion
+			});	
+		}
+		
 		
 		$(document).on("change", ".file_list", function(event) {
 			//alert('File is changed');			

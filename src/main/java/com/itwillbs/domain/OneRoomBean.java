@@ -1,7 +1,5 @@
 package com.itwillbs.domain;
 
-import java.util.Map;
-
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -14,7 +12,9 @@ public class OneRoomBean {
 	private int monthly_rent; // 월세
 	private String room_type; // "오픈형 원룸 (방1)" COMMENT "방구조",
 	private int fees; // DEFAULT 0 COMMENT "관리비",
-	private Map<String, Object> include_fees; // "fees": [ {"name": "전기세"}, (...), {"name": "TV"}, ]
+//	private Map<String, Object> include_fees; // {"전기세": "Y"}
+	private String[] include_fees; // {"전기세": "Y"}
+	
 	private float exclusive_area_m; // DEFAULT 3.31 COMMENT "전용면적 (제곱미터)",
 	private float exclusive_area_p; // DEFAULT 1.00 COMMENT "전용면적 (평)",
 	private float contract_area_m; // DEFAULT 3.31 COMMENT "계약면적 (제곱미터)",
@@ -22,10 +22,7 @@ public class OneRoomBean {
 	private String floor; // DEFAULT "1층" COMMENT "건물층수",
 	private String living_floor; // DEFAULT "반지하" COMMENT "반지하,옥탑방,1~80",
 	private String direction; // DEFAULT "동향" COMMENT "동,서,남,북,남동,남서,북동,북서,확인필요",
-	private Map<String, Object> option; // COMMENT ""option"": [ {""name"": ""에어컨""}, {""name"": ""냉장고""}, {""name"":
-										// ""세탁기""}, {""name"": ""가스레인지""}, {""name"": ""인덕션""}, {""name"": ""전자레인지""},
-										// {""name"": ""세탁기""}, {""name"": ""책상""}, {""name"": ""침대""}, {""name"":
-										// ""옷장""}, {""name"": ""신발장""}, {""name"": ""싱크대""} }",
+	private String[] options; // {"냉장고": "N", "에어컨": "Y"}
 	private String loan; // DEFAULT "불가능" COMMENT "가능 불가능 확인필요",
 	private String pet = "불가능"; // COMMENT "가능 불가능 고양이만 확인필요",
 	private String parking;// DEFAULT "없음" COMMENT "가능 없음 엘리베이터 있음 없음",
@@ -85,11 +82,11 @@ public class OneRoomBean {
 		this.fees = fees;
 	}
 
-	public Map<String, Object> getInclude_fees() {
+	public String[] getInclude_fees() {
 		return include_fees;
 	}
 
-	public void setInclude_fees(Map<String, Object> include_fees) {
+	public void setInclude_fees(String[] include_fees) {
 		this.include_fees = include_fees;
 	}
 
@@ -149,12 +146,12 @@ public class OneRoomBean {
 		this.direction = direction;
 	}
 
-	public Map<String, Object> getOption() {
-		return option;
+	public String[] getOptions() {
+		return options;
 	}
 
-	public void setOption(Map<String, Object> option) {
-		this.option = option;
+	public void setOptions(String[] option) {
+		this.options = option;
 	}
 
 	public String getLoan() {
