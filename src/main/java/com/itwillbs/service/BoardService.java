@@ -3,6 +3,7 @@ package com.itwillbs.service;
 import java.util.List;
 
 import com.itwillbs.domain.BoardBean;
+import com.itwillbs.domain.OneRoomBean;
 import com.itwillbs.domain.PageBean;
 
 public interface BoardService {
@@ -20,4 +21,6 @@ public interface BoardService {
 	public void updateBoard(BoardBean bb);
 
 	public void deleteBoard(BoardBean bb);
+	
+	public OneRoomBean getRoom(int room_id);
 }
