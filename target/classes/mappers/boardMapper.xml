@@ -66,6 +66,11 @@
 	<delete id="deleteBoard">
 		delete from one_room where room_id=#{room_id}
 	</delete>
+	
+		<select id="getRoom" resultType="com.itwillbs.domain.OneRoomBean">
+		select * from one_room where
+		room_id=#{room_id}
+	</select>
 
 </mapper>
 

@@ -74,5 +74,10 @@ public class BoardDAOImpl implements BoardDAO{
 	public List<OneRoomBean> getSearchList(OneRoomBean ob) {
 		return sqlSession.selectList(namespace+".getSearchList", ob);
 	}
+	
+	@Override
+	public OneRoomBean getRoom(int room_id) {
+		return sqlSession.selectOne(namespace+".getRoom", room_id);
+	}
 
 }

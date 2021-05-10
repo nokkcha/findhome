@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -77,6 +77,9 @@
 }
 
 
+h4{
+	text-align: center;
+}
 
 table {
 	width: 100%;
@@ -211,6 +214,10 @@ th, td {
 	  width: 400px;
 	  height: 200px;
 }
+
+.mb-5 {
+	text-align: center !important;
+}
 					
 </style>
 
@@ -232,9 +239,7 @@ th, td {
 					data-scrollax=" properties: { translateY: '70%' }">
 					<p class="breadcrumbs"
 						data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">
-						<span class="mr-2"><a href="index.html">Home</a></span> <span
-							class="mr-2"><a href="hotel.html">Hotel</a></span> <span>Hotel
-							Single</span>
+						<span class="mr-2"><a href="index.html">원룸</a></span> 
 					</p>
 					<h1 class="mb-3 bread"
 						data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">매물
@@ -390,18 +395,18 @@ th, td {
 
 						<div class="col-md-12 hotel-single mt-4 mb-5 ftco-animate">
 							<div class="info-container">
-								<span>원룸/월세</span>
-							<h2>즉시 입주 가능한 주방 분리형 원룸</h2>
+								<span>원룸/월세 </span>
+							<h2>${ob.subject }</h2>
 
-							<p class="rate mb-5">
+							<p class="rate mb">
 								<span class="loc"><a href="#map-info"><i class="icon-map"></i>
-										부산진구 전포동 123-45</a></span><br> 
+										${ob.address }</a></span><br> 
 										<span class="text-zzim icon-like nozzim"></span>
 <!-- 										<span class="text-zzim icon-like zzim"></span> -->
 
 								<h6 style="text-align: left;">
-									<i class="fas fa-user" style="width: 20; height: 20"></i> 서면
-									공인중개사무소
+									<i class="fas fa-user" style="width: 20; height: 20"></i> 
+									${ob.seller_id }
 								</h6>
 
 								<div>
@@ -436,41 +441,68 @@ th, td {
 									<thead>
 										<tr>
 											<th>방 형태</th>
-											<td>분리형 원룸(욕실 1개)</td>
+											<td>
+											<c:out value="${ob.room_type }"/>
+											</td>
 										</tr>
 									</thead>
 									<tbody>
 										<tr>
-											<th>건물 유형</th>
-											<td>다세대 주택</td>
+											<th>보증금</th>
+											<td>${ob.deposit}</td>
+										</tr>
+											<tr>
+											<th>월세</th>
+											<td>${ob.monthly_rent}</td>
+										</tr>
+											<tr>
+											<th>대출 여부</th>
+											<td>${ob.loan}</td>
 										</tr>
 										<tr>
-											<th>건물 크기</th>
-											<td>24m<sup>2</sup></td>
+											<th>전용 면적</th>
+											<td>${exclusive_area_m }m<sup>2</sup>(${exclusive_area_p }평)</td>
 										</tr>
 										<tr>
 											<th>건물 층수</th>
-											<td>3/5</td>
+											<td>${ob.living_floor}/${ob.floor}</td>
 										</tr>
 										<tr>
 											<th>입주 가능일</th>
-											<td>즉시 입주</td>
+											<td>${ob.m_date}</td>
+										</tr>
+										<tr>
+											<th>엘리베이터</th>
+											<td>${ob.elevator}</td>
+										</tr>
+										
+										<tr>
+											<th>주차장</th>
+											<td>${ob.parking}</td>
 										</tr>
 
 										<tr>
 											<th>관리비</th>
-											<td>15만원(관리비 외 사용 따라 부과 전기, 가스, 수도, 인터넷, 티비)</td>
+											<td>${ob.include_fees}</td>
 										</tr>
 
 										<tr>
-											<th>주소</th>
-											<td>부산진구 전포동 123-45</td>
+											<th>반려동물</th>
+											<td>${ob.pet }무조건 가능합니다.</td>
 										</tr>
 									</tbody>
 								</table>
 
 							</div>
-
+							<div class="map-container"  id="map-info">
+							<h4 class="mb-5">상세 설명</h4>
+								<div class="mb-5">${ob.content }곳으로 평화스러운 커다란 옷을 피는 대고, 뼈 쓸쓸하랴?
+							이상 싹이 커다란 미인을 반짝이는 대한 가슴이 고동을 생생하며, 철환하였는가? 풀이 가치를 위하여 청춘의 같이 얼마나
+							역사를 과실이 위하여, 약동하다. 뜨고, 시들어 아니더면, 그들의 동산에는 전인 설산에서 것이다. 하는 끝까지 트고,
+							그리하였는가? 그들의 거선의 품었기 사랑의 많이 가치를 때에, 설산에서 있으며, 사막이다. 능히 모래뿐일 위하여
+							유소년에게서 부패를 것이다.보라, 위하여, 있으랴? 얼음이 밝은 구하지 그들의 품에 가치를 무엇을 사막이다. 힘차게
+							만천하의 날카로우나 든 풍부하게 무엇을 있다. 고동을 그들을 구하지 이상의 이는 바로 있다.</div>
+							</div>
 							<br>
 
 							<div class="option-info-container">
@@ -519,7 +551,7 @@ th, td {
 
 							<div class="map-container"  id="map-info">
 								<h4 class="mb-5">위치 정보</h4>
-								<h6 class="mb-5">부산진구 전포동 123-45</h6>
+								<h6 class="mb-5">${ob.address }</h6>
 								<div id="map" style="width: 500px; height: 400px;">
 
 
@@ -570,7 +602,7 @@ th, td {
 													// 인포윈도우로 장소에 대한 설명을 표시합니다
 													var infowindow = new kakao.maps.InfoWindow(
 															{
-																content : '<div style="width:150px;text-align:center;padding:6px 0;">역세권 위치 좋은 원룸</div>'
+																content : '<div style="width:150px;text-align:center;padding:6px 0;">${subject}</div>'
 															});
 													infowindow.open(map, marker);
 

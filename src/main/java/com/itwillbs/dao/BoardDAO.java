@@ -20,4 +20,5 @@ public interface BoardDAO {
 		public void deleteBoard(BoardBean bb);
 		public void insertRoom(OneRoomBean bb);
 		public List<OneRoomBean> getSearchList(OneRoomBean ob);
+		public OneRoomBean getRoom(int room_id);
 }

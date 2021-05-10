@@ -26,4 +26,6 @@ public interface BoardService {
 	public void deleteBoard(BoardBean bb);
 
 	public List<OneRoomBean> getSearchList(OneRoomBean ob);
+	
+	public OneRoomBean getRoom(int room_id);
 }
