@@ -39,7 +39,7 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
-	public List<BoardBean> getBoardList(PageBean pb) {
+	public List<OneRoomBean> getBoardList(PageBean pb) {
 		// #{startRow} 계산
 		pb.setCurrentPage(Integer.parseInt(pb.getPageNum()));
 		// int startRow=(currentPage-1)*pageSize+1;
@@ -52,6 +52,11 @@ public class BoardServiceImpl implements BoardService{
 	@Override
 	public Integer getBoardCount() {
 		return boardDAO.getBoardCount();
+	}
+	
+	@Override
+	public Integer getWishCount(String id) {
+		return boardDAO.getWishCount(id);
 	}
 
 	@Override
@@ -110,6 +115,16 @@ public class BoardServiceImpl implements BoardService{
 		// TODO Auto-generated method stub
 		boardDAO.insertRoomImages(map);
 	}
+
 	
+	@Override
+	public List<OneRoomBean> getSearchList(OneRoomBean ob) {
+		return boardDAO.getSearchList(ob);
+	}
+	
+	@Override
+	public OneRoomBean getRoom(int room_id) {
+		return boardDAO.getRoom(room_id);
+	}
 
 }

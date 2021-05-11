@@ -50,4 +50,26 @@ public class MemberServiceImpl implements MemberService{
 		return memberDAO.getMemberList();
 	}
 
+	@Override
+	public MemberBean getWish(MemberBean mb) {
+		return memberDAO.getWish(mb);
+	}
+
+	@Override
+	public void insertWish(MemberBean bb) {
+		memberDAO.insertWish(bb);
+	}
+
+	@Override
+	public void deleteWish(MemberBean bb) {
+		memberDAO.deleteWish(bb);
+	}
+
+	@Override
+	public List<MemberBean> getWishList(String id) {
+		return memberDAO.getWishList(id);
+	}
+
+
+
 }

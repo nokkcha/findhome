@@ -39,22 +39,42 @@
     </insert>	
 
 	<select id="getBoardList"
-		resultType="com.itwillbs.domain.BoardBean">
+		resultType="com.itwillbs.domain.OneRoomBean">
 		select * from one_room order by room_id desc limit
 		#{startRow},#{pageSize}
+	</select>
+	
+	<select id="getSearchList"
+		resultType="com.itwillbs.domain.OneRoomBean">
+ 		select *
+		from one_room
+		<![CDATA[ 
+		where 
+        (subject like #{search} || content like #{search} || address like #{search})
+		and (room_type REGEXP #{room_type})
+		and (living_floor REGEXP #{living_floor})
+		 and (deposit >= #{deposit_min} and deposit <= #{deposit_max})
+        and (monthly_rent >= #{monthly_rent_min} and monthly_rent <= #{monthly_rent_max})
+       ]]>
+        
 	</select>
 
 	<select id="getBoardCount" resultType="java.lang.Integer">
 		select count(*) from
 		one_room
 	</select>
+	
+	<select id="getWishCount" resultType="java.lang.Integer">
+	select count(*) from wish_list where id=#{id}
+	</select>
+	
 
-	<select id="getBoard" resultType="com.itwillbs.domain.BoardBean">
+	<select id="getBoard" resultType="com.itwillbs.domain.OneRoomBean">
 		select * from one_room where
 		room_id=#{room_id}
 	</select>
 
-	<select id="numCheck" resultType="com.itwillbs.domain.BoardBean">
+	<select id="numCheck" resultType="com.itwillbs.domain.OneRoomBean">
 		select * from one_room where
 		room_id=#{room_id} and pass=#{pass}
 	</select>
@@ -68,6 +88,11 @@
 	<delete id="deleteBoard">
 		delete from one_room where room_id=#{room_id}
 	</delete>
+	
+		<select id="getRoom" resultType="com.itwillbs.domain.OneRoomBean">
+		select * from one_room where
+		room_id=#{room_id}
+	</select>
 
 </mapper>
 

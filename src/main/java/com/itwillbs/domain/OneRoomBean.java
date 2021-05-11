@@ -24,13 +24,14 @@ public class OneRoomBean {
 	private int fees; // DEFAULT 0 COMMENT "관리비",
 //	private Map<String, Object> include_fees; // {"전기세": "Y"}
 	private String[] include_fees; // {"전기세": "Y"}
-	
+
 	private float exclusive_area_m; // DEFAULT 3.31 COMMENT "전용면적 (제곱미터)",
 	private float exclusive_area_p; // DEFAULT 1.00 COMMENT "전용면적 (평)",
 	private float contract_area_m; // DEFAULT 3.31 COMMENT "계약면적 (제곱미터)",
 	private float contract_area_p; // DEFAULT 1.00 COMMENT "계약면적 (평)",
 	private String floor; // DEFAULT "1층" COMMENT "건물층수",
 	private String living_floor; // DEFAULT "반지하" COMMENT "반지하,옥탑방,1~80",
+	
 	private String direction; // DEFAULT "동향" COMMENT "동,서,남,북,남동,남서,북동,북서,확인필요",
 	private String[] options; // {"냉장고": "N", "에어컨": "Y"}
 	private String loan; // DEFAULT "불가능" COMMENT "가능 불가능 확인필요",
@@ -43,7 +44,15 @@ public class OneRoomBean {
 	private String phone_number; // "판매자 연락처",
 	private String seller_id; // "판매자 ID",
 	private char is_selling = 'Y'; // "판매중 여부(Y,N)
-
+	
+	
+	private String search;
+	private int monthly_rent_min;
+	private int monthly_rent_max;
+	private int deposit_min;
+	private int deposit_max;
+	
+	
 	public int getRoom_id() {
 		return room_id;
 	}
@@ -249,4 +258,45 @@ public class OneRoomBean {
 		return ToStringBuilder.reflectionToString(this);
 	}
 
+	public String getSearch() {
+		return search;
+	}
+
+	public void setSearch(String search) {
+		this.search = search;
+	}
+
+	public int getMonthly_rent_min() {
+		return monthly_rent_min;
+	}
+
+	public void setMonthly_rent_min(int monthly_rent_min) {
+		this.monthly_rent_min = monthly_rent_min;
+	}
+
+	public int getMonthly_rent_max() {
+		return monthly_rent_max;
+	}
+
+	public void setMonthly_rent_max(int monthly_rent_max) {
+		this.monthly_rent_max = monthly_rent_max;
+	}
+
+	public int getDeposit_min() {
+		return deposit_min;
+	}
+
+	public void setDeposit_min(int deposit_min) {
+		this.deposit_min = deposit_min;
+	}
+
+	public int getDeposit_max() {
+		return deposit_max;
+	}
+
+	public void setDeposit_max(int deposit_max) {
+		this.deposit_max = deposit_max;
+	}	
+
 }
+

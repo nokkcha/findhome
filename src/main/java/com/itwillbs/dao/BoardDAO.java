@@ -13,12 +13,18 @@ public interface BoardDAO {
 		public void insertBoard(BoardBean bb);
 		public Integer getMaxNum();
 		
-		public List<BoardBean> getBoardList(PageBean pb);
+		public List<OneRoomBean> getBoardList(PageBean pb);
 		public Integer getBoardCount();
+		public Integer getWishCount(String id);
 		public BoardBean getBoard(int num);
 		public BoardBean numCheck(BoardBean bb);
 		public void updateBoard(BoardBean bb);
 		public void deleteBoard(BoardBean bb);
 		public void insertRoom(OneRoomBean bb);
+
 		public void insertRoomImages(HashMap<String, Object> map);
+
+		public List<OneRoomBean> getSearchList(OneRoomBean ob);
+		public OneRoomBean getRoom(int room_id);
+
 }

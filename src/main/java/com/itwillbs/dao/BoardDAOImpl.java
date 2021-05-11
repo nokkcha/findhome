@@ -9,7 +9,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.itwillbs.domain.BoardBean;
-import com.itwillbs.domain.ImageBean;
 import com.itwillbs.domain.OneRoomBean;
 import com.itwillbs.domain.PageBean;
 
@@ -33,13 +32,18 @@ public class BoardDAOImpl implements BoardDAO{
 	}
 
 	@Override
-	public List<BoardBean> getBoardList(PageBean pb) {
+	public List<OneRoomBean> getBoardList(PageBean pb) {
 		return sqlSession.selectList(namespace+".getBoardList", pb);
 	}
 
 	@Override
 	public Integer getBoardCount() {
 		return sqlSession.selectOne(namespace+".getBoardCount");
+	}
+	
+	@Override
+	public Integer getWishCount(String id) {
+		return sqlSession.selectOne(namespace+".getWishCount", id);
 	}
 
 	@Override
@@ -49,25 +53,32 @@ public class BoardDAOImpl implements BoardDAO{
 
 	@Override
 	public BoardBean numCheck(BoardBean bb) {
-		// TODO Auto-generated method stub
 		return sqlSession.selectOne(namespace+".numCheck", bb);
 	}
 
 	@Override
 	public void updateBoard(BoardBean bb) {
-		// TODO Auto-generated method stub
 		sqlSession.insert(namespace+".updateBoard",bb);		
 	}
 
 	@Override
 	public void deleteBoard(BoardBean bb) {
-		// TODO Auto-generated method stub
 		sqlSession.delete(namespace+".deleteBoard",bb);
 	}
 
 	@Override
 	public void insertRoom(OneRoomBean bb) {
 		sqlSession.insert(namespace+".insertRoom",bb);
+	}
+	
+	@Override
+	public List<OneRoomBean> getSearchList(OneRoomBean ob) {
+		return sqlSession.selectList(namespace+".getSearchList", ob);
+	}
+	
+	@Override
+	public OneRoomBean getRoom(int room_id) {
+		return sqlSession.selectOne(namespace+".getRoom", room_id);
 	}
 
 	@Override

@@ -36,15 +36,11 @@ public class HomeController {
 		return "index";
 	}
 			
-	@RequestMapping(value = "/detailView",method = RequestMethod.GET )
-	public String detailView() {
-		return "detailView";
-	}
+//	@RequestMapping(value = "/detailView",method = RequestMethod.GET )
+//	public String detailView() {
+//		return "detailView";
+//	}
 	
-	@RequestMapping(value = "/findRooms",method = RequestMethod.GET )
-	public String findRooms() {
-		return "findRooms";
-	}
 	
 	@RequestMapping(value = "/sellRoom",method = RequestMethod.GET )
 	public String sellRoom() {

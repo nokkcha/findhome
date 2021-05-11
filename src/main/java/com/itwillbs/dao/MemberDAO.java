@@ -5,7 +5,7 @@ import java.util.List;
 import com.itwillbs.domain.MemberBean;
 
 public interface MemberDAO {
-		// 추상메서드
+
 		public void insertMember(MemberBean mb);
 		
 		public MemberBean userCheck(MemberBean mb);
@@ -17,5 +17,13 @@ public interface MemberDAO {
 		public void deleteMember(MemberBean mb);
 		
 		public List<MemberBean> getMemberList();
+
+		public MemberBean getWish(MemberBean mb);
+		
+		public void insertWish(MemberBean bb);
+		
+		public void deleteWish(MemberBean bb);
+
+		public List<MemberBean> getWishList(String id);
 
 }

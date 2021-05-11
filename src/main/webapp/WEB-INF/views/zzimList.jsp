@@ -62,74 +62,43 @@
         			
         				<div class="fields">
 		              <div class="form-group">
-		                <input type="text" class="form-control" placeholder="지역, 지하철역 검색" name="search" id="filter-search">
+		                <input type="text" class="form-control" placeholder="지역, 지하철역 검색">
 		              </div>
 		              <div class="form-group">
 		                <div class="select-wrap2 one-third">
-
+		                
+<!-- 		                계약 구분 -->
+<!-- 	                 <div class="form-group"> -->
+<!-- 		                <input type="button" class="btn te btn-primary rentAll"  value="전체"> -->
+<!-- 		                <input type="button" class="btn te btn-default rentMonthly"  value="월세"> -->
+<!-- 		                <input type="button" class="btn te btn-default rentJeonse"  value="전세"> -->
+<!-- 		              </div> -->
 
 	                      구조
 	                 <div class="form-group">
-	                 
-	              <label class="label-class">  <span class="btn te"> 
-	              <input type="checkbox" name="room_all" value="전체" class="cktag rtypeAll" id="rtypeAll"
-	              onclick="rtypeSelectAll(this)">전체</span></label>
-
-	                 <label class="label-class"> <span class="btn te"> 
-	                 <input type="checkbox" name="room_type" value="오픈형" class="cktag r-not-pri rtypeOpen"
-	                 onclick="rtypeCheckSelectAll(this)">오픈형 </span></label>
-	                 
-	                  <label class="label-class"><span class="btn te"> 
-	                  <input type="checkbox" name="room_type" value="분리형" class="cktag r-not-pri rtypeSeparate"
-	                  onclick="rtypeCheckSelectAll(this)">분리형 </span></label>
-	                  
-	                <label class="label-class"> <span class="btn te"> 
-	                <input type="checkbox" name="room_type" value="복층형" class="cktag r-not-pri rtypeStairs"
-	                onclick="rtypeCheckSelectAll(this)">복층형 </span></label>
-
+		                <input type="button" class="btn te btn-primary rtypeAll"  value="전체">
+		                <input type="button" class="btn te btn-default rtypeOpen rtype"  value="오픈형">
+		                <input type="button" class="btn te btn-default rtypeSeparate rtype"  value="분리형">
+		                <input type="button" class="btn te btn-default rtypeStairs rtype"  value="복층형">
 		              </div>
 		              
 	                      층 수 옵션
 	                      <div class="form-group">
-		             	  <label class="label-class"><span class="btn te">
-		             	  <input type="checkbox" name="floor_all" value="전체"
-		             	   onclick="floorSelectAll(this)"> 전체 </span></label>
-		             	  
-		             	  <label class="label-class"><span class="btn te">
-		             	  <input type="checkbox" name="living_floor" value="층"
-		             	  onclick="floorCheckSelectAll(this)"> 지상층 </span></label>
-		             	  
-		             	 <label class="label-class"><span class="btn te">	 
-		             	 <input type="checkbox" name="living_floor" value="반지하"
-		             	 onclick="floorCheckSelectAll(this)"> 반지하 </span></label>
-		             	 
-		             	 <label class="label-class"><span class="btn te">	 
-		             	 <input type="checkbox" name="living_floor" value="옥탑방"
-		             	 onclick="floorCheckSelectAll(this)"> 옥탑 </span></label>
-		             </div>
+	                       <input type="button" class="btn te btn-primary ftypeAll"  value="전체">
+		                	<input type="button" class="btn te btn-default floor"  value="지상층">
+		             		<input type="button" class="btn te btn-default ftypeOther"  value="반지하,옥탑">
+		              </div>
 	                  </div>
 		              </div>
-		              
-		       		   <script type="text/javascript">
-
-		              </script>       
-		              
-		              
-		              
-		              
-		              
 
 			<div class="form-group">
 		              보증금
 		        <div class="range-slider">
 					<div class="Container" >
 				  		<font size = 2 id = "slider_value_view1">0</font>						  
-				  			<input oninput = 'ShowSliderValue1(this.value)' style = "width:100%;" class="slider_range1"
-				  			 type="range" step="100" value="0" min="0" max="50000" name="deposit_min" ></input>
-				  			 
+				  			<input oninput = 'ShowSliderValue1(this.value)' style = "width:100%;" class="slider_range1" type="range" step="100" value="0" min="0" max="50000"></input>
 				   		<font size = 2 id = "slider_value_view2">5억</font>							  
-							<input oninput = 'ShowSliderValue2(this.value)' style = "width:100%;" class="slider_range2" 
-							type="range" step="100" value="50000" min="0" max="50000" name="deposit_max" ></input>
+							<input oninput = 'ShowSliderValue2(this.value)' style = "width:100%;" class="slider_range2" type="range" step="100" value="50000" min="0" max="50000" ></input>
 					</div>
 				</div>
 	
@@ -137,18 +106,13 @@
 		              	<div class="range-slider">
 						<div class="Container2" >
 					  		<font size = 2 id = "slider_value_view3">0</font>						  
-					  			<input oninput = 'ShowSliderValue3(this.value)' style = "width:100%;" class="slider_range3" 
-					  			type="range" step="10" value="0" min="0" max="500" name="monthly_rent_min"></input>
-					  			
+					  			<input oninput = 'ShowSliderValue3(this.value)' style = "width:100%;" class="slider_range3" type="range" step="10" value="0" min="0" max="500"></input>
 					   		<font size = 2 id = "slider_value_view4">500만원</font>							  
-								<input oninput = 'ShowSliderValue4(this.value)' style = "width:100%;" class="slider_range4" 
-								type="range" step="10"value="500" min="0" max="500" name="monthly_rent_max"></input>
+								<input oninput = 'ShowSliderValue4(this.value)' style = "width:100%;" class="slider_range4" type="range" step="10"value="500" min="0" max="500"></input>
 							</div>
 						</div>
 						
 						<div class="form-group">
-<!-- 							<input type="button" value="Search" class="btn btn-primary py-3 px-5" id="search-ok"> -->
-
 							<input type="submit" value="Search" class="btn btn-primary py-3 px-5" id="filter-search">
 						</div>
 					 </div>
@@ -159,11 +123,14 @@
           </div>
                    
            <div class="col-lg-roomlist">
-          	<button class="btn_room btn pri-page"> 방 찾기</button>
-          	<button class="btn_like btn notpri-page" onclick="location.href='<c:url value="findRooms-zzim"/>'"> 찜한 매물 </button>        	
+          	<button class="btn_room btn notpri-page" onclick="location.href='<c:url value="findRooms"/>'"> 방 찾기 </button>
+          	<button class="btn_like btn pri-page"> 찜한 매물 </button>        	
         	<div class="roomlist_moum"> 
         	
         	     <c:forEach var="roomList" items="${roomList }">
+        			  <c:forEach var="wishList" items="${wishList }">
+		    		<c:if test="${roomList.room_id == wishList.wish}">		  
+		    			
         	     <div class="roomlist">
 		    				<div class="destination">
 		    					<a href='<c:url value="/content?num=${roomList.room_id}" />' class="img img-2 d-flex justify-content-center align-items-center" 
@@ -172,7 +139,7 @@
 		    					<div class="text p-3">
 		    						<div class="d-flex">
 		    							<div class="one">
-				    						<h3><a href='<c:url value="/content?num=${roomList.room_id}" />'> ${roomList.address } ${roomList.room_id} </a></h3>
+				    						<h3><a href='<c:url value="/content?num=${roomList.room_id}" />'> ${roomList.address } ${roomList.room_id } </a></h3>
 			    						</div>
 			    						<div class="two">
 			    							<span class="price per-price"><small>${roomList.deposit} / ${roomList.monthly_rent}</small></span>
@@ -184,13 +151,9 @@
 		    						  						
 		    							<button id="zzim-id-${roomList.room_id}" class="text-zzim nozzim">
 		    							
-		    							<c:forEach var="wishList" items="${wishList }">
-		    							
-		    							<c:if test="${roomList.room_id == wishList.wish}">		    							
-		    							<span class="zzim111" id="zzim-ok-${roomList.room_id}"></span>	
-		    						</c:if>
-
-		    						</c:forEach>
+    							
+		    							<span class="zzim111" id="zzim-ok-${roomList.room_id}"></span>	    							
+		    		
 		    							
 		    							</button>
 		    							
@@ -198,12 +161,17 @@
 		    						</p>
 		    						<input type="hidden" value="<c:out value='${roomList.room_id}'/>" id="room_id">
 		    						
+		    						</div>
 		    					</div>
-		    				</div>
-					</div>
-		        </c:forEach>	
+							</div>
+							
+						</c:if>
+		
+				   		</c:forEach>
+					  </c:forEach>	
 		        		
-		    	</div>		
+		        		
+				</div>		
           	</div>
           	
 		        
@@ -218,13 +186,13 @@
 		              <ul>
 		              
 		                <c:if test="${pb.startPage > pb.pageBlock }">
-		                <li> <a href='<c:url value="findRooms?pageNum=${pb.startPage-pb.pageBlock}" />'>&lt;</a></li>
+		                <li> <a href='<c:url value="findRooms-zzim?pageNum=${pb.startPage-pb.pageBlock}" />'>&lt;</a></li>
 					</c:if>
 					<c:forEach var="i" begin="${pb.startPage }" end="${pb.endPage}" step="1">
-		                <li class="active"><span> <a href='<c:url value="findRooms?pageNum=${i}" />'>${i}</a> </span></li>
+		                <li class="active"><span> <a href='<c:url value="findRooms-zzim?pageNum=${i}" />'>${i}</a> </span></li>
 					</c:forEach>
 					<c:if test="${pb.endPage < pb.pageCount }">
-		                <li><a href='<c:url value="findRooms?pageNum=${pb.startPage+pb.pageBlock}" />'>&gt;</a></li>
+		                <li><a href='<c:url value="findRooms-zzim?pageNum=${pb.startPage+pb.pageBlock}" />'>&gt;</a></li>
 					</c:if>
 		              </ul>
 		            </div>
@@ -280,9 +248,131 @@
   
 <script src="../script/jquery-3.6.0.js"></script>
 <script type="text/javascript">
-
     $(document).ready(function(){
+    	
+    	// 검색 조건 - 구조 [전체] 클릭
+    	$('.rtypeAll').click(function(){
 
+    		if( $(this).hasClass('btn-default') ) {
+    			$(this).removeClass('btn-default');
+    			$(this).addClass('btn-primary');
+    			
+    			$('.rtype').removeClass('btn-primary');
+    			$('.rtype').addClass('btn-default');
+
+    		} 
+	
+    	});
+    	
+    	// 검색 조건 - 구조 다중 선택 메서드
+    	$.fn.room= function (clickThis) { 		
+    		
+    	    if($(clickThis).hasClass('btn-default')) {
+    	        $(clickThis).removeClass('btn-default');
+    	        $(clickThis).addClass('btn-primary');
+    	        
+    	        if( $('.rtypeAll').hasClass('btn-primary')) {
+    	            $('.rtypeAll').removeClass('btn-primary');
+    	            $('.rtypeAll').addClass('btn-default');
+    	        }
+    	        
+    	    } else if ($(clickThis).hasClass('btn-primary')){
+    	        $(clickThis).removeClass('btn-primary');
+    	        $(clickThis).addClass('btn-default');
+    	    }    
+    	
+    	}
+    	
+    	// 검색 조건 - 구조 [오픈형] 클릭
+    	$('.rtypeOpen').click(function(){
+            $.fn.room(this);
+		});
+    	
+    	// 검색 조건 - 구조 [분리형] 클릭
+    	$('.rtypeSeparate').click(function(){
+    		$.fn.room(this);
+    	});
+    	
+    	// 검색 조건 - 구조 [복층형] 클릭
+    	$('.rtypeStairs').click(function(){
+    		$.fn.room(this);
+    	});
+      
+        	
+    	// 검색 조건 - 층 수 옵션 [전체] 클릭
+        	$('.ftypeAll ').click(function(){       		
+        		if( $(this).hasClass('btn-default') ) {
+        			$(this).removeClass('btn-default');
+        			$(this).addClass('btn-primary');
+        			$('.floor').addClass('btn-default');
+        			$('.floor ').removeClass('btn-primary');
+        			$('.ftypeOther').addClass('btn-default');
+        			$('.ftypeOther').removeClass('btn-primary');
+        		}
+        	});
+        	
+        	// 검색 조건 - 층 수 옵션 [지상층] 클릭
+        	$('.floor').click(function(){       		
+        		if( $(this).hasClass('btn-default') ) {
+        			$(this).removeClass('btn-default');
+        			$(this).addClass('btn-primary');
+        			$('.ftypeAll ').addClass('btn-default');
+        			$('.ftypeAll ').removeClass('btn-primary');
+        			$('.ftypeOther').addClass('btn-default');
+        			$('.ftypeOther').removeClass('btn-primary');
+        		}
+        	});
+        	
+        	// 검색 조건 - 층 수 옵션 [반지하, 옥탑] 클릭
+        	$('.ftypeOther').click(function(){       		
+        		if( $(this).hasClass('btn-default') ) {
+        			$(this).removeClass('btn-default');
+        			$(this).addClass('btn-primary');
+        			$('.ftypeAll ').addClass('btn-default');
+        			$('.ftypeAll ').removeClass('btn-primary');
+        			$('.floor').addClass('btn-default');
+        			$('.floor').removeClass('btn-primary');
+        		}
+        	});
+        	
+        	
+        	// 검색 조건 - 계약 구분 - [전체] 클릭
+        	$('.rentAll ').click(function(){       		
+        		if( $(this).hasClass('btn-default') ) {
+        			$(this).removeClass('btn-default');
+        			$(this).addClass('btn-primary');
+        			$('.rentMonthly').addClass('btn-default');
+        			$('.rentMonthly ').removeClass('btn-primary');
+        			$('.rentJeonse').addClass('btn-default');
+        			$('.rentJeonse').removeClass('btn-primary');
+        		}
+        	});
+        	
+        	// 검색 조건 - 계약 구분 - [월세] 클릭
+        	$('.rentMonthly ').click(function(){       		
+        		if( $(this).hasClass('btn-default') ) {
+        			$(this).removeClass('btn-default');
+        			$(this).addClass('btn-primary');
+        			$('.rentAll').addClass('btn-default');
+        			$('.rentAll ').removeClass('btn-primary');
+        			$('.rentJeonse').addClass('btn-default');
+        			$('.rentJeonse').removeClass('btn-primary');
+        		}
+        	});
+        	
+        	// 검색 조건 - 계약 구분 - [전세] 클릭
+        	$('.rentJeonse ').click(function(){       		
+        		if( $(this).hasClass('btn-default') ) {
+        			$(this).removeClass('btn-default');
+        			$(this).addClass('btn-primary');
+        			$('.rentAll').addClass('btn-default');
+        			$('.rentAll ').removeClass('btn-primary');
+        			$('.rentMonthly').addClass('btn-default');
+        			$('.rentMonthly').removeClass('btn-primary');
+        		}
+        	});
+
+        
         	// 목록 - [방 찾기] 클릭
         	$('.btn_room').click(function(){       		
         		if( $(this).hasClass('notpri-page') ) {
@@ -328,6 +418,11 @@
         	 	});
 
         	});
+        	
+        	
+        	
+        	
+        	
         	
         	// 목록 - [call] 클릭
         	$('.call').click(function () {    	
@@ -380,61 +475,6 @@
     	obValueView.innerHTML = sVal+"만";
     }
 
-    // 목록 [구조] 선택
-      function floorCheckSelectAll()  {
-	  // 전체 체크박스
-	  const checkboxes 
-	    = document.querySelectorAll('input[name="living_floor"]');
-	  // 선택된 체크박스
-	  const checked 
-	    = document.querySelectorAll('input[name="living_floor"]:checked');
-	  // select all 체크박스
-	  const selectAll 
-	    = document.querySelector('input[name="floor_all"]');
-	  
-	  if(checkboxes.length === checked.length)  {
-	    selectAll.checked = true;
-	  }else {
-	    selectAll.checked = false;
-	  }
-	}
-
-function floorSelectAll(selectAll)  {
-  const checkboxes 
-     = document.getElementsByName('living_floor');
-  
-  checkboxes.forEach((checkbox) => {
-    checkbox.checked = selectAll.checked
-  })
-}
-
-// 목록 [층수 옵션] 선택
-     function rtypeCheckSelectAll()  {
-   	  // 전체 체크박스
-   	  const checkboxes 
-   	    = document.querySelectorAll('input[name="room_type"]');
-   	  // 선택된 체크박스
-   	  const checked 
-   	    = document.querySelectorAll('input[name="room_type"]:checked');
-   	  // select all 체크박스
-   	  const selectAll 
-   	    = document.querySelector('input[name="room_all"]');
-   	  
-   	  if(checkboxes.length === checked.length)  {
-   	    selectAll.checked = true;
-   	  }else {
-   	    selectAll.checked = false;
-   	  }
-   	}
-
-   	function rtypeSelectAll(selectAll)  {
-   	  const checkboxes 
-   	     = document.getElementsByName('room_type');
-   	  
-   	  checkboxes.forEach((checkbox) => {
-   	    checkbox.checked = selectAll.checked
-   	  })
-   	}
     
     </script>
 

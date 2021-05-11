@@ -16,8 +16,9 @@ public interface BoardService {
 	// 방 이미지 등록
 	public void insertRoomImags(HashMap<String, Object> bean);
 	
-	public List<BoardBean> getBoardList(PageBean pb);
+	public List<OneRoomBean> getBoardList(PageBean pb);
 	public Integer getBoardCount();
+	public Integer getWishCount(String id);
 
 	public BoardBean getBoard(int num);
 
@@ -26,4 +27,8 @@ public interface BoardService {
 	public void updateBoard(BoardBean bb);
 
 	public void deleteBoard(BoardBean bb);
+
+	public List<OneRoomBean> getSearchList(OneRoomBean ob);
+	
+	public OneRoomBean getRoom(int room_id);
 }
