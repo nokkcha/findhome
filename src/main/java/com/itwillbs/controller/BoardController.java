@@ -172,7 +172,7 @@ public class BoardController {
 	}
 
 	@RequestMapping(value = "/detailView",method = RequestMethod.GET )
-	public String detailView(HttpServletRequest request, Model model) {
+	public String getRoom(HttpServletRequest request, Model model) {
 		try {
 			int room_id = Integer.parseInt(request.getParameter("room_id"));
 			OneRoomBean ob = boardService.getRoom(room_id);
