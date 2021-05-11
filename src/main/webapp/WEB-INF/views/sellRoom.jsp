@@ -168,11 +168,11 @@
 					<tbody align="left">
 						<tr>
 							<th style="background-color: #dedede;">보증금</th>
-							<td><input type="text" id="deposit" name="deposit">만원</td>
+							<td><input type="number" id="deposit" name="deposit">만원</td>
 						</tr>
 						<tr>
 							<th style="background-color: #dedede;">월세</th>
-							<td><input type="text" id="monthly_rent" name="monthly_rent">만원</td>
+							<td><input type="number" id="monthly_rent" name="monthly_rent">만원</td>
 						</tr>
 						<tr>
 							<th style="background-color: #dedede;">방구조</th>
@@ -187,7 +187,7 @@
 						</tr>
 						<tr>
 							<th style="background-color: #dedede;">관리비</th>
-							<td><input type="text" id="fees" name="fees">만원 &nbsp; 
+							<td><input type="number" id="fees" name="fees">만원 &nbsp; 
 							<input type="checkbox" id="is_include_fees" name="is_include_fees">없음<br> 
 							<b>관리비 포함 항목 </b> 
 							<input type="checkbox" id="include_fees" class="include_fees"  value="전기세" name="include_fees">전기세 
@@ -198,7 +198,8 @@
 						</tr>
 						<tr>
 							<th style="background-color: #dedede;">크기</th>
-							<td>전용면적 : <input type="text" id="exclusive_area_m" name="exclusive_area_m">m<sup>2</sup> =<input type="text" id="exclusive_area_p" name="exclusive_area_p">평 <br> 계약면적 : <input type="text" id="contract_area_m" name="contract_area_m">m<sup>2</sup> =<input type="text" id="contract_area_p" name="contract_area_p">평
+							<td>전용면적 : <input type="number" step="0.01" id="exclusive_area_m" name="exclusive_area_m">m<sup>2</sup> =<input type="number" step="0.01" id="exclusive_area_p" name="exclusive_area_p">평 <br> 
+							계약면적 : <input type="number" step="0.01" id="contract_area_m" name="contract_area_m">m<sup>2</sup> =<input type="number" step="0.01" id="contract_area_p" name="contract_area_p">평
 							</td>
 						</tr>
 						<tr>
@@ -437,29 +438,29 @@
 		$('#exclusive_area_p')
 				.focusout(
 						function() {
-							document.getElementById('exclusive_area_m').value = parseFloat(document
-									.getElementById('exclusive_area_p').value) * 3.3058;
+							var v = parseFloat(document.getElementById('exclusive_area_p').value) * 3.3058;
+							document.getElementById('exclusive_area_m').value = v.toFixed(2);
 						})
 
 		$('#exclusive_area_m')
 				.focusout(
 						function() {
-							document.getElementById('exclusive_area_p').value = parseFloat(document
-									.getElementById('exclusive_area_m').value) / 3.3058;
+							document.getElementById('exclusive_area_p').value = parseFloat((document
+									.getElementById('exclusive_area_m').value) / 3.3058).toFixed(2);
 						})
 
 		$('#contract_area_p')
 				.focusout(
 						function() {
-							document.getElementById('contract_area_m').value = parseFloat(document
-									.getElementById('contract_area_p').value) * 3.3058;
+							document.getElementById('contract_area_m').value = parseFloat((document
+									.getElementById('contract_area_p').value) * 3.3058).toFixed(2);
 						})
 
 		$('#contract_area_m')
 				.focusout(
 						function() {
-							document.getElementById('contract_area_p').value = parseFloat(document
-									.getElementById('contract_area_m').value) / 3.3058;
+							document.getElementById('contract_area_p').value = parseFloat((document
+									.getElementById('contract_area_m').value) / 3.3058).toFixed(2);
 						})
 
 		function ajaxFileUpload() {
@@ -501,34 +502,57 @@
 			setRoomImageTable();
 		}); // end of funtion
 		
+		// 관리비 없음 체크 시 동작 함수
 		$(function(){
 			$('#is_include_fees').change( function(){
 			    var isChecked = $(this).is(":checked");
 			    console.log('관리비 없음 체크 여부 : '+isChecked);
 			    if (isChecked) {
-			    	$('input:checkbox[id="include_fees"]').attr("checked", false);
+			    	$('input:checkbox[id="include_fees"]').prop('checked', false);
+			    	$('#fees').val('0');
 			    }			    
 			});
 			
+		});
+		
+		// 관리비 포함 항목 체크 시 동작 함수
+		$(function(){
 			$(".include_fees").change(function(){
 				var imChecked = $(this).is(":checked");
 				
 		        if(imChecked){
 		        	console.log('관리비 포함항목 체크 여부 : '+imChecked);
-		        	$('input:checkbox[id="is_include_fees"]').attr("checked", false);
+		        	$('input:checkbox[id="is_include_fees"]').prop('checked', false);
+		        	
 		        }else{
 		        	if($(".include_fees:checked").length == 0) { 
 		        		console.log('관리비 포함항목 전체 체크 해제');
-// 		        		$('input:checkbox[id="is_include_fees"]').attr("checked", false);
+		        		$('input:checkbox[id="is_include_fees"]').prop('checked', true);
+		        	} else {
+		        		console.log('관리비 포함항목 체크 해제');
 		        	}
 		        }
 		    });
-			
-// 			$('#include_fees').change( function(){
-// 			    var imChecked = $(this).is(":checked");
-// 			    console.log('체크 여부 : '+imChecked);
-// 			});
 		});
+		
+		// 건물 해당 층 수 변경 시 동작 함수
+		$(function() {			
+			$("#living_floor").change(function() {				
+				var living_floorIdx = $("#living_floor option").index( $("#living_floor option:selected") );
+				living_floorIdx -= 2;
+				var floorIdx = $("#floor option").index( $("#floor option:selected") );
+				
+				if (living_floorIdx > floorIdx) {
+					alert('해당 층이 건물 층 보다 클 수는 없습니다. \n해당 층 : ' 
+							+ living_floorIdx + ' 건물 층 : ' + floorIdx);
+				}				
+				
+				console.log("선택한 index : " + living_floorIdx);
+			});
+		});
+		
+
+		
 
 		function setRoomImageTable() {
 			var str_html = '<tbody align="left"><tr>';
