@@ -1,14 +1,5 @@
 @charset "UTF-8";
 
-.te {
-	background-color: white;
-	display: inline-block;
-}
-
-.te:hover {
-	color: #f85959;
-}
-
 .btn_room {
 	display: inline-block;
 /* 	margin-left: 9%; */
@@ -49,7 +40,7 @@ button.text-zzim:focus{
     outline:none;
     }
     
-.zzim111:before {
+.zzim-showtext:before {
 	content:"찜한 매물";
 	color: #f85959;
 	font-weight: bold;
@@ -57,14 +48,12 @@ button.text-zzim:focus{
 
 .zzim:before {
 	content:"💓";
-	color: #f85959;
-	font-weight: bold;
 }
 
 .zzim:hover:before {
-	content:"🤍";
+	content:"취소";
    cursor: pointer;
-   color: black;	
+   color: gray;	
    font-weight: normal;
 }
 
@@ -75,8 +64,6 @@ button.text-zzim:focus{
 .nozzim:hover:before {
 	content:"💓 ";
    cursor: pointer;
-   color: #f85959;	
-	font-weight: bold;
 }
 
 .sidebar-wrap .fields .select-wrap2 {
@@ -87,10 +74,14 @@ button.text-zzim:focus{
 .roomlist {
 	display: inline-block;
 	width: 240px;
-	height:353px;
 	margin-left: 30px;
 	margin-bottom: 35px;
 	box-sizing: border-box;
+}
+
+.text-mi {
+	height: 100px;
+	
 }
 
 .col-lg-roomlist {
@@ -139,36 +130,30 @@ border: 1px solid transparent; }
 /* 	visibility: collapse; */
 }
 
-.no-ck{
-	color: red;
+.op-ck {
+	background: #f85959;
+	color: white;
 }
 
-.pri-ck{
-	color: blue;
+.op-ck:hover {
+	color: #f85959;
+	background: white;
 }
 
-.rtypeOpen:checked{
-color:red;
+.op-no-ck {
+	background-color: white;
+	display: inline-block;
 }
 
-/* The Modal (background) */
-.searchModal {
-display: none; /* Hidden by default */
-position: fixed; /* Stay in place */
-z-index: 10; /* Sit on top */
-left: 0;
-top: 0;
-width: 100%; /* Full width */
-height: 100%; /* Full height */
-overflow: auto; /* Enable scroll if needed */
-background-color: rgb(0,0,0); /* Fallback color */
-background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+.op-no-ck:hover {
+	color: #f85959;
 }
-/* Modal Content/Box */
-.search-modal-content {
-background-color: #fefefe;
-margin: 15% auto; /* 15% from the top and centered */
-padding: 20px;
-border: 1px solid #888;
-width: 70%; /* Could be more or less, depending on screen size */
+
+.filter-search-01 {
+	background: none;
+	text-align: right;
+}
+
+.filter-search-01:hover {
+	color: #f85959;
 }

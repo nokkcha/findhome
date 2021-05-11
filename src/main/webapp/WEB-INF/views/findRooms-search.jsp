@@ -72,15 +72,15 @@
 	                 <div class="form-group">
 	                 
 	              <label class="label-class">  <span class="btn te"> 
-	              <input type="checkbox" name="room_all" value="전체" class="cktag rtypeAll" id="rtypeAll"
+	              <input type="checkbox" name="room_all" value="전체" class="rtypeAll" id="rtypeAll"
 	              onclick="rtypeSelectAll(this)">전체</span></label>
 
 	                 <label class="label-class"> <span class="btn te"> 
-	                 <input type="checkbox" name="room_type" value="오픈형" class="cktag r-not-pri rtypeOpen"
+	                 <input type="checkbox" name="room_type" value="오픈형" class="r-not-pri rtypeOpen"
 	                 onclick="rtypeCheckSelectAll(this)">오픈형 </span></label>
 	                 
 	                  <label class="label-class"><span class="btn te"> 
-	                  <input type="checkbox" name="room_type" value="분리형" class="cktag r-not-pri rtypeSeparate"
+	                  <input type="checkbox" name="room_type" value="분리형" class=" r-not-pri rtypeSeparate"
 	                  onclick="rtypeCheckSelectAll(this)">분리형 </span></label>
 	                  
 	                <label class="label-class"> <span class="btn te"> 
@@ -187,7 +187,7 @@
 		    							<c:forEach var="wishList" items="${wishList }">
 		    							
 		    							<c:if test="${roomList.room_id == wishList.wish}">		    							
-		    							<span class="zzim111" id="zzim-ok-${roomList.room_id}"></span>	
+		    							<span class="zzim-showtext" id="zzim-ok-${roomList.room_id}"></span>	
 		    						</c:if>
 
 		    						</c:forEach>
@@ -203,15 +203,7 @@
 					</div>
 		        </c:forEach>	
 		        		
-		    	</div>		
-          	</div>
-          	
 		        
-		        
-		        
-          </div><!-- .col-md-8 -->
-        </div>
-
           	<div class="row mt-5">
 		          <div class="col text-center">
 		            <div class="block-27-page">
@@ -230,6 +222,15 @@
 		            </div>
 		          </div>
 		        </div>
+
+		        		
+		    	</div>		
+          	</div>
+          	
+		        
+          </div><!-- .col-md-8 -->
+        </div>
+
       
     </section> <!-- .section -->
 
@@ -316,13 +317,13 @@
         	 				rdata = "찜";
         	 				$('#zzim-id-'+room_id).removeClass('nozzim');
         	 				$('#zzim-id-'+room_id).addClass('zzim');
-        	 				$('#zzim-ok-'+room_id).addClass('zzim111');
+        	 				$('#zzim-ok-'+room_id).addClass('zzim-showtext');
 
         	 			}else if(rdata=="nozzim"){
         	 				rdata = "찜안함";
                 	        $('#zzim-id-'+room_id).removeClass('zzim');
         	 				$('#zzim-id-'+room_id).addClass('nozzim');
-        	 				$('#zzim-ok-'+room_id).removeClass('zzim111');
+        	 				$('#zzim-ok-'+room_id).removeClass('zzim-showtext');
         	 			}
         	 		}
         	 	});
@@ -350,9 +351,9 @@
     function ShowSliderValue1(sVal) {
     	var obValueView = document.getElementById("slider_value_view1");
     	if(sVal>=10000){
-    	obValueView.innerHTML = (sVal*0.0001).toFixed(1)+"억 ~ ";
+    	obValueView.innerHTML = (sVal*0.0001).toFixed(1)+"억";
     	}else{		
-    	obValueView.innerHTML = sVal+"만 ~ ";
+    	obValueView.innerHTML = sVal+"만";
     	}
     	
     	
@@ -371,7 +372,7 @@
     // 월세 최소
     function ShowSliderValue3(sVal) {
     	var obValueView = document.getElementById("slider_value_view3");
-    	obValueView.innerHTML = sVal+"만 ~ ";
+    	obValueView.innerHTML = sVal+"만";
     }
 
     // 월세 최대
