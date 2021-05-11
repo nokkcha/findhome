@@ -44,19 +44,10 @@ public class HomeController {
 		return "index";
 	}
 	
-	@RequestMapping(value = "/join_choice",method = RequestMethod.GET )
-	public String join_choice() {
-		return "join_choice";
-	}
-	
-	@RequestMapping(value = "/login",method = RequestMethod.GET )
-	public String login() {
-		return "login";
-	}
 		
-	@RequestMapping(value = "/findRooms",method = RequestMethod.GET )
-	public String findRooms() {
-		return "findRooms";
+	@RequestMapping(value = "/findRoom",method = RequestMethod.GET )
+	public String findRoom() {
+		return "findRoom";
 	}
 	
 	@RequestMapping(value = "/sellRoom",method = RequestMethod.GET )
@@ -64,14 +55,5 @@ public class HomeController {
 		return "sellRoom";
 	}
 	
-	@RequestMapping(value = "/memberInfo",method = RequestMethod.GET )
-	public String memberinfo() {
-		return "memberInfo";
-	}
-	
-	@RequestMapping(value = "/memberDelete",method = RequestMethod.GET )
-	public String memberdelete() {
-		return "memberDelete";
-	}
 	
 }

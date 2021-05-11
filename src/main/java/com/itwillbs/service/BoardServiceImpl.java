@@ -92,11 +92,19 @@ public class BoardServiceImpl implements BoardService{
 		
 		ImageBean imageBean = new ImageBean();
 		String[] fileList = bb.getFileList();
+		
+		if (fileList.length > 0) {
+			if (fileList[0] == "") {
+				return;
+			}
+		}
+		
 		List<ImageBean> list = new ArrayList<ImageBean>();
 		
 		for (String string : fileList) {
-			if (string == "")
+			if (string == "") {
 				continue;
+			}
 			
 			imageBean.setRoom_id(bb.getRoom_id());
 			imageBean.setFile_name(string);

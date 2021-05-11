@@ -82,5 +82,16 @@ public class MemberController {
 		// /WEB-INF/views/member/deleteForm.jsp
 		return "member/deleteForm";
 	}
+	
+	@RequestMapping(value = "/memberInfo",method = RequestMethod.GET )
+	public String memberinfo() {
+		return "memberInfo";
+	}
+	
+	@RequestMapping(value = "/memberDelete",method = RequestMethod.GET )
+	public String memberdelete() {
+		return "memberDelete";
+	}
+	
 
 }
