@@ -370,7 +370,7 @@ th, td {
 								<div class="item">
 									<div class="hotel-img">
 										<img
-											src="${pageContext.request.contextPath}/resources/images/room-4.jpg">
+											src='<c:url value="/resources/upload/${ib.file_name}" />'>
 									</div>
 
 								</div>
@@ -447,19 +447,33 @@ th, td {
 									<tbody>
 										<tr>
 											<th>보증금</th>
-											<td>${ob.deposit}</td>
+											<td>${ob.deposit}만원</td>
 										</tr>
 											<tr>
 											<th>월세</th>
-											<td>${ob.monthly_rent}</td>
+											<td>${ob.monthly_rent}만원</td>
+										</tr>
+										<tr>
+											<th>관리비</th>
+											<td>${ob.fees}만원</td>
+										</tr>
+										<tr>
+											<th>관리비 포함_내역</th>
+											<td>
+											
+											<c:forEach items="${ob.include_fees_array }" var="list" >
+											<div>${list}</div>
+											</c:forEach> 
+											
+											</td>
 										</tr>
 											<tr>
 											<th>대출 여부</th>
 											<td>${ob.loan}</td>
 										</tr>
 										<tr>
-											<th>전용 면적</th>
-											<td>${exclusive_area_m }m<sup>2</sup>(${exclusive_area_p }평)</td>
+											<th>면적</th>
+											<td>${ob.exclusive_area_m }m<sup>2</sup>(${ob.exclusive_area_p }평)</td>
 										</tr>
 										<tr>
 											<th>건물 층수</th>
@@ -481,11 +495,6 @@ th, td {
 										<tr>
 											<th>주차장</th>
 											<td>${ob.parking}</td>
-										</tr>
-
-										<tr>
-											<th>관리비</th>
-											<td>${ob.fees}</td>
 										</tr>
 
 										<tr>
@@ -754,8 +763,8 @@ th, td {
 	<script src="${pageContext.request.contextPath}/resources/js/main.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/script/jquery-3.6.0.js"></script>
 	<script type="text/javascript">
-	
-    
+		
+
 	
 	
 		$(function() {
@@ -985,7 +994,6 @@ th, td {
 	         var CloseModal = document.querySelector(".modal-container");
 	         CloseModal.classList.add("CloseModal");
 	      }
-	</script>
 	</script>
 
 
