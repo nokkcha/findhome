@@ -421,7 +421,7 @@ th, td {
 										<div class="modal-background" id="modal-content">
 											<div class="modal-content" id="modal-content">		
 												웹에서 전화걸기<br>
-												ex.010-0000-0000<br>
+												${ob.phone_number }<br>
 												<button type="button" id="btn-close" class="btn btn-secondary">닫기</button>
 											</div>
 										</div>					
@@ -441,9 +441,7 @@ th, td {
 									<thead>
 										<tr>
 											<th>방 형태</th>
-											<td>
-											<c:out value="${ob.room_type }"/>
-											</td>
+											<td>${ob.room_type }</td>
 										</tr>
 									</thead>
 									<tbody>
@@ -465,7 +463,11 @@ th, td {
 										</tr>
 										<tr>
 											<th>건물 층수</th>
-											<td>${ob.living_floor}/${ob.floor}</td>
+											<td>${ob.living_floor}</td>
+										</tr>
+											<tr>
+											<th>방향</th>
+											<td>${ob.direction}</td>
 										</tr>
 										<tr>
 											<th>입주 가능일</th>
@@ -483,12 +485,12 @@ th, td {
 
 										<tr>
 											<th>관리비</th>
-											<td>${ob.include_fees}</td>
+											<td>${ob.fees}</td>
 										</tr>
 
 										<tr>
 											<th>반려동물</th>
-											<td>${ob.pet }무조건 가능합니다.</td>
+											<td>${ob.pet }</td>
 										</tr>
 									</tbody>
 								</table>
@@ -496,12 +498,7 @@ th, td {
 							</div>
 							<div class="map-container"  id="map-info">
 							<h4 class="mb-5">상세 설명</h4>
-								<div class="mb-5">${ob.content }곳으로 평화스러운 커다란 옷을 피는 대고, 뼈 쓸쓸하랴?
-							이상 싹이 커다란 미인을 반짝이는 대한 가슴이 고동을 생생하며, 철환하였는가? 풀이 가치를 위하여 청춘의 같이 얼마나
-							역사를 과실이 위하여, 약동하다. 뜨고, 시들어 아니더면, 그들의 동산에는 전인 설산에서 것이다. 하는 끝까지 트고,
-							그리하였는가? 그들의 거선의 품었기 사랑의 많이 가치를 때에, 설산에서 있으며, 사막이다. 능히 모래뿐일 위하여
-							유소년에게서 부패를 것이다.보라, 위하여, 있으랴? 얼음이 밝은 구하지 그들의 품에 가치를 무엇을 사막이다. 힘차게
-							만천하의 날카로우나 든 풍부하게 무엇을 있다. 고동을 그들을 구하지 이상의 이는 바로 있다.</div>
+								<div class="mb-5">${ob.content }</div>
 							</div>
 							<br>
 
@@ -602,7 +599,7 @@ th, td {
 													// 인포윈도우로 장소에 대한 설명을 표시합니다
 													var infowindow = new kakao.maps.InfoWindow(
 															{
-																content : '<div style="width:150px;text-align:center;padding:6px 0;">${subject}</div>'
+																content : '<div style="width:150px;text-align:center;padding:6px 0;">${ob.subject}</div>'
 															});
 													infowindow.open(map, marker);
 

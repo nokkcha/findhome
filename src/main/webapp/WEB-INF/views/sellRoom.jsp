@@ -190,11 +190,11 @@
 							<td><input type="text" id="fees" name="fees">만원 &nbsp; 
 							<input type="checkbox" id="is_include_fees" name="is_include_fees">없음<br> 
 							<b>관리비 포함 항목 </b> 
-							<input type="checkbox" id="include_fees" value="전기세" name="include_fees">전기세 
-							<input type="checkbox" id="include_fees" value="가스" name="include_fees">가스
-							<input type="checkbox" id="include_fees" value="수도"  name="include_fees">수도 
-							<input type="checkbox" id="include_fees" value="인터넷"  name="include_fees">인터넷 
-							<input type="checkbox" id="include_fees" value="TV"  name="include_fees">TV</td>
+							<input type="checkbox" id="include_fees" class="include_fees"  value="전기세" name="include_fees">전기세 
+							<input type="checkbox" id="include_fees" class="include_fees"  value="가스" name="include_fees">가스
+							<input type="checkbox" id="include_fees" class="include_fees"  value="수도"  name="include_fees">수도 
+							<input type="checkbox" id="include_fees" class="include_fees"  value="인터넷"  name="include_fees">인터넷 
+							<input type="checkbox" id="include_fees" class="include_fees"  value="TV"  name="include_fees">TV</td>
 						</tr>
 						<tr>
 							<th style="background-color: #dedede;">크기</th>
@@ -499,31 +499,35 @@
 			setTestData();
 
 			setRoomImageTable();
-			
+		}); // end of funtion
+		
+		$(function(){
 			$('#is_include_fees').change( function(){
 			    var isChecked = $(this).is(":checked");
-			    console.log('관리비 없음 체크된 여부 : '+isChecked);
+			    console.log('관리비 없음 체크 여부 : '+isChecked);
 			    if (isChecked) {
 			    	$('input:checkbox[id="include_fees"]').attr("checked", false);
 			    }			    
 			});
 			
-// 			$('#include_fees').change( function(){
-// 			    var isChecked2 = $(this).is(":checked");
-// 			    console.log('관리비 항목 체크 여부 : '+isChecked2);
-// 			    if (isChecked2) {
-// 			    	$('input:checkbox[id="is_include_fees"]').attr("checked", false);
-// 			    }			    
-// 			});
+			$(".include_fees").change(function(){
+				var imChecked = $(this).is(":checked");
+				
+		        if(imChecked){
+		        	console.log('관리비 포함항목 체크 여부 : '+imChecked);
+		        	$('input:checkbox[id="is_include_fees"]').attr("checked", false);
+		        }else{
+		        	if($(".include_fees:checked").length == 0) { 
+		        		console.log('관리비 포함항목 전체 체크 해제');
+// 		        		$('input:checkbox[id="is_include_fees"]').attr("checked", false);
+		        	}
+		        }
+		    });
 			
-
-		}); // end of funtion
-		
-		$(function(){
-			$('#include_fees').change( function(){
-			    var imChecked = $(this).is(":checked");
-			    console.log('체크된 여부 : '+imChecked);
-			});
+// 			$('#include_fees').change( function(){
+// 			    var imChecked = $(this).is(":checked");
+// 			    console.log('체크 여부 : '+imChecked);
+// 			});
 		});
 
 		function setRoomImageTable() {

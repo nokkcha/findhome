@@ -10,7 +10,6 @@
 			value="com.mysql.jdbc.Driver"></property>
 		<property name="url"
 			value="jdbc:mysql://localhost:3306/findhome"></property>
-
 		<property name="username" value="jspid"></property>
 		<property name="password" value="jsppass"></property>
 	</bean>

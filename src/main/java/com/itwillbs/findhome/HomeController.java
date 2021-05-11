@@ -4,6 +4,9 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -11,11 +14,16 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.itwillbs.domain.OneRoomBean;
+import com.itwillbs.service.BoardService;
+
 /**
  * Handles requests for the application home page.
  */
 @Controller
 public class HomeController {
+	@Inject
+	private BoardService boardService;
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
@@ -35,12 +43,21 @@ public class HomeController {
 		
 		return "index";
 	}
-			
-//	@RequestMapping(value = "/detailView",method = RequestMethod.GET )
-//	public String detailView() {
-//		return "detailView";
-//	}
 	
+	@RequestMapping(value = "/join_choice",method = RequestMethod.GET )
+	public String join_choice() {
+		return "join_choice";
+	}
+	
+	@RequestMapping(value = "/login",method = RequestMethod.GET )
+	public String login() {
+		return "login";
+	}
+		
+	@RequestMapping(value = "/findRooms",method = RequestMethod.GET )
+	public String findRooms() {
+		return "findRooms";
+	}
 	
 	@RequestMapping(value = "/sellRoom",method = RequestMethod.GET )
 	public String sellRoom() {

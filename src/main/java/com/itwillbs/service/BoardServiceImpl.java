@@ -116,15 +116,13 @@ public class BoardServiceImpl implements BoardService{
 		boardDAO.insertRoomImages(map);
 	}
 
+	public OneRoomBean getRoom(int room_id) {
+		return boardDAO.getRoom(room_id);
+	}
 	
 	@Override
 	public List<OneRoomBean> getSearchList(OneRoomBean ob) {
 		return boardDAO.getSearchList(ob);
-	}
-	
-	@Override
-	public OneRoomBean getRoom(int room_id) {
-		return boardDAO.getRoom(room_id);
-	}
+	}	
 
 }

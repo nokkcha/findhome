@@ -278,4 +278,21 @@ public class BoardController {
 	}
 	
 
+	@RequestMapping(value = "/detailView",method = RequestMethod.GET )
+	public String getRoom(HttpServletRequest request, Model model) {
+		try {
+			int room_id = Integer.parseInt(request.getParameter("room_id"));
+			OneRoomBean ob = boardService.getRoom(room_id);
+			// ob를 담아서 detailView.jsp 이동
+			model.addAttribute("ob", ob);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "detailView";
+	}
+	
+	
+	
+
 }
