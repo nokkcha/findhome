@@ -2,50 +2,56 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
+
 <mapper namespace="com.itwillbs.mapper.MemberMapper">
 
 	<insert id="insertMember">
-		insert into member_seller (id, password, phone_number, is_confirm) values(#{id},#{password},#{phone_number},#{is_confirm})
+		insert into member_seller (id, password,
+		phone_number, is_confirm)
+		values(#{id},#{password},#{phone_number},#{is_confirm})
 	</insert>
-	
-	<select id="userCheck" resultType="com.itwillbs.domain.MemberBean">
-		select * from member_seller where id=#{id} and password=#{password}
+
+	<select id="userCheck"
+		resultType="com.itwillbs.domain.MemberBean">
+		select * from member_seller where id=#{id} and
+		password=#{password}
 	</select>
 
-	<select id="getMember" resultType="com.itwillbs.domain.MemberBean">
+	<select id="getMember"
+		resultType="com.itwillbs.domain.MemberBean">
 		select * from member_seller where id=#{id}
 	</select>
-	
+
 	<update id="updateMember">
 		update member_seller set name=#{name} where id=#{id}
 	</update>
-	
+
 	<delete id="deleteMember">
 		delete from member_seller where id=#{id}
 	</delete>
-	
-	<select id="getMemberList" resultType="com.itwillbs.domain.MemberBean">
+
+	<select id="getMemberList"
+		resultType="com.itwillbs.domain.MemberBean">
 		select * from member_seller
 	</select>
 
-<select id="getWish" resultType="com.itwillbs.domain.MemberBean">
-	select * from wish_list where id=#{id} and wish=#{wish};
-</select>
+	<select id="getWish" resultType="com.itwillbs.domain.MemberBean">
+		select * from wish_list where id=#{id} and wish=#{wish};
+	</select>
 
-<insert id="insertWish">
-	insert into wish_list(id,wish) values(#{id},#{wish})
-</insert>
+	<insert id="insertWish">
+		insert into wish_list(id,wish) values(#{id},#{wish})
+	</insert>
 
-<delete id="deleteWish">
-	delete from wish_list where wish=#{wish} and id=#{id}
-</delete>
+	<delete id="deleteWish">
+		delete from wish_list where wish=#{wish} and id=#{id}
+	</delete>
 
-<select id="getWishList" resultType="com.itwillbs.domain.MemberBean">
-	select * from wish_list where id=#{id}
-</select>
+	<select id="getWishList"
+		resultType="com.itwillbs.domain.MemberBean">
+		select * from wish_list where id=#{id}
+	</select>
 
-  
 </mapper>
 
 

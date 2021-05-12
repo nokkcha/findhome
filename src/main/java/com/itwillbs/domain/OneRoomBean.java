@@ -1,5 +1,7 @@
 package com.itwillbs.domain;
 
+import java.util.Map;
+
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -22,8 +24,18 @@ public class OneRoomBean {
 	private int monthly_rent; // 월세
 	private String room_type; // "오픈형 원룸 (방1)" COMMENT "방구조",
 	private int fees; // DEFAULT 0 COMMENT "관리비",
-//	private Map<String, Object> include_fees; // {"전기세": "Y"}
-	private String[] include_fees; // {"전기세": "Y"}
+	private String include_fees; // {"전기세": "Y"}
+	
+	private String[] include_fees_array;
+	
+	public String[] getInclude_fees_array() {
+		String[] ary = include_fees.split(",");
+		return include_fees_array;
+	}
+
+	public void setInclude_fees_array(String[] include_fees_array) {
+		this.include_fees_array = include_fees_array;
+	}
 
 	private float exclusive_area_m; // DEFAULT 3.31 COMMENT "전용면적 (제곱미터)",
 	private float exclusive_area_p; // DEFAULT 1.00 COMMENT "전용면적 (평)",
@@ -101,11 +113,11 @@ public class OneRoomBean {
 		this.fees = fees;
 	}
 
-	public String[] getInclude_fees() {
+	public String getInclude_fees() {
 		return include_fees;
 	}
 
-	public void setInclude_fees(String[] include_fees) {
+	public void setInclude_fees(String include_fees) {
 		this.include_fees = include_fees;
 	}
 

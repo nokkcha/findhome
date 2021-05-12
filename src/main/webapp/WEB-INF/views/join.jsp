@@ -121,10 +121,13 @@
 <!--         <script type="text/javascript"> -->
 			   
 <!-- 			</script> -->
+
+		
 			
         
         <script type="text/javascript">
-        
+
+		     
         function checkId() {
 			   var id = document.login.id.value;
 			   var lengthRegex1 = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/;
@@ -137,13 +140,30 @@
 					 checkIdResult.innerHTML = " ";
 					 return true;
 				 }
-			  
-			   
-		   }
-
-
+				
+        }
+        
+        $(document).ready(function() {
+        	$('#id').keyup(function(){
+          		$.ajax('<c:url value = "/join/id_check" />', {
+            		data : {id : $('#id').val()},
+    			    success: function(result){
+    			         if(result == "iddup"){
+    			        	 $("#checkIdResult").html("<font color='#FF0000'>이미 사용중인 이메일입니다.</font>");
+    			         }else{
+    			        	 
+    			         }
+    			         
+    			    }
+    			     
+    			                      
+    			});
+        	});
+  
+        });
+        
 		   
-		   
+        
 			function checkPassword() {
 				var pass1 = $('#pass1').val();
 
@@ -279,7 +299,7 @@
 						return false;
 					}
 					
-					if($("#agree").is(":checked") == false){
+					if($('#agree').is(':checked') == false){
 						alert("이용약관 및 개인 정보 수집에 동의 하셔야 가입이 가능합니다");
 						return false;
 					}
@@ -411,7 +431,7 @@
 								class="form-control" name="id" id="id"
 								onkeyup="checkId()">
 								
-							<br><span class="check-group" id="checkIdResult"></span>	
+							<br><span class="check-group" id="checkIdResult"></span>
 
 						</div>
 						<div class="form-group" align="left">

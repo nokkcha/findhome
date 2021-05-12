@@ -7,6 +7,7 @@ import com.itwillbs.domain.MemberBean;
 public interface MemberDAO {
 
 		public void insertMember(MemberBean mb);
+		public MemberBean getMember(String id);
 		
 		public MemberBean userCheck(MemberBean mb);
 		
