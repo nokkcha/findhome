@@ -1,13 +1,22 @@
 package com.itwillbs.controller;
 
 import java.io.File;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 import java.util.UUID;
 
 import javax.annotation.Resource;
 import javax.inject.Inject;
+import javax.mail.Address;
+import javax.mail.Authenticator;
+import javax.mail.Message;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -23,6 +32,7 @@ import com.itwillbs.domain.BoardBean;
 import com.itwillbs.domain.MemberBean;
 import com.itwillbs.domain.OneRoomBean;
 import com.itwillbs.domain.PageBean;
+import com.itwillbs.mailtest.GoogleAuthentication;
 import com.itwillbs.service.BoardService;
 import com.itwillbs.service.MemberService;
 
@@ -285,6 +295,57 @@ public class BoardController {
 			e.printStackTrace();
 		}
 		return "detailView";
+	}
+	
+	@RequestMapping(value = "/mailpro", method = RequestMethod.POST)
+	public String mailpro(HttpServletRequest request, Model model) {
+		
+		String sender ="hyunjoon42311@gamil.com";
+		String receiver = "tcandyman@naver.com";
+		String phone = request.getParameter("phone");
+		String content = request.getParameter("content");
+		String name = request.getParameter("name");
+		String date1 = request.getParameter("date1");
+		content=content+name+phone+date1;
+		
+		try{
+			// 서버정보를 => Properties 객체 저장
+			Properties properties=System.getProperties();
+			// gmail은 무조건 true 고정
+			properties.put("mail.smtp.starttls.enable", "true");
+			// smtp 서버주소
+			properties.put("mail.smtp.host", "smtp.gmail.com");
+			// auth gmail은 무조건 true 고정
+			properties.put("mail.smtp.auth", "true");
+			// gmail 포트
+			properties.put("mail.smtp.port", "587");
+			// 구글메일인증
+			// 패키지 mailtest 파일이름 GoogleAuthentication
+			Authenticator auth=new GoogleAuthentication();
+			//메일전송하는 역할을 하는 단위 Session객체 생성
+			Session s=Session.getDefaultInstance(properties, auth);
+			// Session 이용해서 전송할 Message객체생성
+			Message message=new MimeMessage(s);
+			Address sender_address=new InternetAddress(sender);
+			Address receiver_address=new InternetAddress(receiver);
+			message.setHeader("content-Type", "text/html; charset=UTF-8");
+			message.setFrom(sender_address);
+			message.addRecipient(Message.RecipientType.TO, receiver_address);
+			message.setSubject("문의사항");
+			message.setContent(content,"text/html; charset=UTF-8");
+			message.setSentDate(new Date());
+			//메시지 전송
+			Transport.send(message);
+			
+			
+		}catch(Exception e){
+			
+			e.printStackTrace();
+		}
+		
+		model.addAttribute("msg","문의가 정상적으로 접수되었습니다.");
+		
+		return "msg";
 	}
 	
 

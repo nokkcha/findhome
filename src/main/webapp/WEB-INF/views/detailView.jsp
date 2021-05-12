@@ -624,6 +624,10 @@ th, td {
 							</div>
 
 
+
+
+
+			<form action='<c:url value="/mailpro"/>' method="post"> 
 							<div class="room-contact-container">
 								<div class="col-md-12 hotel-single ftco-animate mb-5 mt-4">
 									<h4 class="mb-5">매물 문의하기 &amp; 상담예약</h4>
@@ -631,19 +635,19 @@ th, td {
 										<div class="row">
 											<div class="col-md-6">
 												<div class="form-group">
-													<input type="text" class="form-control" placeholder="이름">
+													<input type="text" class="form-control" placeholder="이름" name="name">
 												</div>
 											</div>
 											<div class="col-md-6">
 												<div class="form-group">
 													<input type="text" class="form-control"
-														placeholder="휴대폰 번호">
+														placeholder="휴대폰 번호" name="phone">
 												</div>
 											</div>
 											<div class="col-md-12">
 												<div class="form-group">
 													<input type="text" id="checkin_date" class="form-control"
-														placeholder="방문하실 날짜">
+														placeholder="방문하실 날짜" name="date1">
 												</div>
 											</div>
 
@@ -667,7 +671,7 @@ th, td {
 														
 												<div class="input-group">
 													
-													<textarea class="form-control" id="contact-form" aria-label="With textarea" placeholder="문의할 내용을 직접 작성해주세요." ></textarea>
+													<textarea class="form-control" id="contact-form" aria-label="With textarea" placeholder="문의할 내용을 직접 작성해주세요." name="content" ></textarea>
 												</div>
 
 
@@ -675,7 +679,7 @@ th, td {
 	
 											</div>
 											</div>
-
+								
 
 											<div class="col-md-12">
 												<div class="form-group">
@@ -687,8 +691,9 @@ th, td {
 										</div>
 									</div>
 								</div>
-							</div>
+							</div> </form>
 						</div>
+						
 						<!-- 문의하기 끝 -->
 					</div>
 				</div>
