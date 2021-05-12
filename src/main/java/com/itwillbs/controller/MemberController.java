@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.itwillbs.domain.MemberBean;
+import com.itwillbs.domain.Member_normalBean;
 import com.itwillbs.service.MemberService;
 
 @Controller
@@ -24,6 +25,7 @@ public class MemberController {
 	// 부모인터페이스 멤버변수에 객체생성한 값을 전달 MemberService memberService
 	@Inject
 	private MemberService memberService;
+ 
 
 	@RequestMapping(value = "/join_choice", method = RequestMethod.GET)
 	public String join_choice() {
@@ -33,6 +35,11 @@ public class MemberController {
 	@RequestMapping(value = "/join", method = RequestMethod.GET)
 	public String join() {
 		return "join";
+	}
+	
+	@RequestMapping(value = "/join2", method = RequestMethod.GET)
+	public String join2() {
+		return "join2";
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
@@ -62,6 +69,14 @@ public class MemberController {
 	public String joinPro(MemberBean mb) {
 
 		memberService.insertMember(mb);
+
+		return "redirect:/";
+	}
+	
+	@RequestMapping(value = "/joinPro2", method = RequestMethod.POST)
+	public String joinPro2(Member_normalBean mb) {
+
+		memberService.insertMember2(mb);
 
 		return "redirect:/";
 	}
@@ -107,6 +122,28 @@ public class MemberController {
 			System.out.println(id);
 			MemberBean mb = memberService.getMember(id);
 			if(mb != null) {
+				result = "iddup";
+			} else {
+				result = "idok";
+			}
+			entity = new ResponseEntity<String>(result, HttpStatus.OK);
+		} catch (Exception e) {
+			e.printStackTrace();
+			entity = new ResponseEntity<String>(HttpStatus.BAD_REQUEST);; 
+		}
+		return entity;
+	}
+	
+	@RequestMapping(value = "/join2/id_check2", method = RequestMethod.GET )
+	public ResponseEntity<String> id_check2(HttpServletRequest request) {
+		
+		ResponseEntity<String> entity = null;
+		String result = "";
+		try {
+			String id = request.getParameter("id");
+			System.out.println(id);
+			Member_normalBean mnb = memberService.getMember2(id);
+			if(mnb != null) {
 				result = "iddup";
 			} else {
 				result = "idok";

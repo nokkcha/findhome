@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.itwillbs.dao.MemberDAO;
 import com.itwillbs.domain.MemberBean;
+import com.itwillbs.domain.Member_normalBean;
 
 @Service
 public class MemberServiceImpl implements MemberService{
@@ -70,6 +71,16 @@ public class MemberServiceImpl implements MemberService{
 		return memberDAO.getWishList(id);
 	}
 
+	@Override
+	public Member_normalBean getMember2(String id) {
+		return memberDAO.getMember2(id);
+	}
 
+
+	@Override
+	public void insertMember2(Member_normalBean mnb) {
+		
+		memberDAO.insertMember2(mnb);
+	}
 
 }
