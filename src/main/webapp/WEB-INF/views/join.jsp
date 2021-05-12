@@ -150,8 +150,9 @@
     			    success: function(result){
     			         if(result == "iddup"){
     			        	 $("#checkIdResult").html("<font color='#FF0000'>이미 사용중인 이메일입니다.</font>");
+    			        	 $("#btn").attr("disabled", "disabled");
     			         }else{
-    			        	 
+    			        	 $("#btn").removeAttr("disabled");
     			         }
     			         
     			    }
