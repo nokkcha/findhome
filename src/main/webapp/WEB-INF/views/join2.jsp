@@ -150,21 +150,19 @@
     			    success: function(result){
     			         if(result == "iddup"){
     			        	 $("#checkIdResult").html("<font color='#FF0000'>이미 사용중인 이메일입니다.</font>");
-    			        	 $("#btn").attr("disabled", "disabled");
+    			   	 
     			         }else{
-    			        	 $("#btn").removeAttr("disabled");
+    			        	 $('#idHidden').value="idok";
     			         }
-    			         
+
     			    }
-    			     
-    			                      
+                 
     			});
         	});
   
         });
         
-		   
-        
+
 			function checkPassword() {
 				var pass1 = $('#pass1').val();
 
@@ -174,8 +172,7 @@
 				var numberRegex = /[0-9]/; // 숫자 판별
 				var specRegex = /[!@#$%]/; // 특수문자(!@#$%) 판별		
 				var checkResult = document.getElementById('checkPasswordResult');
-				
-				
+
 				
 				if (lengthRegex2.exec(pass1)) {
 					var point = 0;
@@ -257,6 +254,11 @@
 						return false;
 					}
 					
+					if($('#idHidden').val() == "iddup") {
+						$('#id').focus();
+						return false;
+					}
+					
 					if (pass1 == "") {
 						$('#pass1').focus();
 // 						swal.fire("패스워드 입력", "패스워드를 입력해주세요", "error"); //"info,success,warning,error" 중 택1
@@ -334,10 +336,6 @@
 					  });
 			});
 			
-			
-			
- 			
-			
 
 			function allCheck(obj) {
 				$("[name=check2]").prop("checked", $(obj).prop("checked")); 
@@ -398,14 +396,9 @@
 				        });
 			      });
 
-
-				
-				
-				
+	
 	</script>
-	
-	
-	
+
        
         <h2>회원가입</h2>
 			<div class="row block-9">
@@ -416,6 +409,7 @@
 							<label class="form-control-label">이메일(ID)</label> <input type="text"
 								class="form-control" name="id" id="id"
 								onkeyup="checkId()">
+								<input type="hidden" name="idHidden" value="iddup" id="idHidden">
 								
 							<br><span class="check-group" id="checkIdResult"></span>
 
