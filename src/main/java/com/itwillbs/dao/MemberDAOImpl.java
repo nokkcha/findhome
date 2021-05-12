@@ -25,6 +25,12 @@ public class MemberDAOImpl implements MemberDAO{
 		sqlSession.insert(namespace+".insertMember",mb);
 	}
 
+	@Override
+	public MemberBean getMember(String id) {
+		
+		return sqlSession.selectOne(namespace + ".getMember", id);
+	}
+
 	
 	
 

@@ -9,7 +9,9 @@
 		insert into member_seller (id, password, phone_number, is_confirm) values(#{id},#{password},#{phone_number},#{is_confirm})
 	</insert>
 	
-	
+	<select id="getMember" resultType="com.itwillbs.domain.MemberBean">
+		select * from member_seller where id = #{id}
+	</select>
   
 </mapper>
 

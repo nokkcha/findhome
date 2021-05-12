@@ -23,6 +23,12 @@ public class MemberServiceImpl implements MemberService{
 		
 	}
 
+	@Override
+	public MemberBean getMember(String id) {
+		// TODO Auto-generated method stub
+		return memberDAO.getMember(id);
+	}
+
 	
 
 }
