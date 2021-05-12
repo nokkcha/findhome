@@ -12,6 +12,7 @@
 	
 	<resultMap id="OneRoomBean" type="com.itwillbs.domain.OneRoomBean">		
 		<result property="options" column="options" typeHandler="com.itwillbs.mapper.type.JSONTypeHandler" />
+		<result property="include_fees" column="include_fees" typeHandler="com.itwillbs.mapper.type.JSONTypeHandler" />
 	</resultMap>
 
 	<insert id="insertRoom" useGeneratedKeys="true"

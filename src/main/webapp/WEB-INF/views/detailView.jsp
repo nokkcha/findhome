@@ -453,7 +453,7 @@ th, td {
 						<div class="mb-5">${ob.content }</div>
 					</div>
 					<br>
-					
+
 					<div class="option-info-container">
 						<h4 class="mb-5">관리비 포함 항목</h4>
 
@@ -470,9 +470,9 @@ th, td {
 
 					<div class="option-info-container">
 						<!-- 								<div class="room-detail-option-title">옵션</div> -->
-						
-						
-						
+
+
+
 						<h4 class="mb-5">옵션</h4>
 
 						<div class="room-detail-option-item-wrapper">

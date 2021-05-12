@@ -280,17 +280,7 @@ public class BoardController {
 			OneRoomBean ob = boardService.getRoom(room_id);
 			// ob를 담아서 detailView.jsp 이동
 			model.addAttribute("ob", ob);
-			
-			if (ob.getInclude_fees() != null) {
-				System.out.println("ob.getInclude_fees() : " + ob.getInclude_fees());
-				String var = ob.getInclude_fees().replace("\"", "");
-				ob.setInclude_fees_array(var.split(","));
-				String[] arr = ob.getInclude_fees_array();
-				for (String string : arr) {
-					System.out.println("fees : " + string);
-				}
-			}
-			
+						
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

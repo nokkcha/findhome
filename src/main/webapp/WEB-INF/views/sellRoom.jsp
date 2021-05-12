@@ -405,10 +405,67 @@
 			alert(obj.value);
 		}
 		
+		HashMap = function(){  
+		    this.map = new Array();
+		};  
+		HashMap.prototype = {  
+		    put : function(key, value){  
+		        this.map[key] = value;
+		    },  
+		    get : function(key){  
+		        return this.map[key];
+		    },  
+		    getAll : function(){  
+		        return this.map;
+		    },  
+		    clear : function(){  
+		        this.map = new Array();
+		    },  
+		    isEmpty : function(){    
+		         return (this.map.size() == 0);
+		    },
+		    remove : function(key){    
+		         delete this.map[key];
+		    },
+		    toString : function(){
+		        var temp = '';
+		        for(i in this.map){  
+		            temp = temp + ',' + i + ':' +  this.map[i];
+		        }
+		        temp = temp.replace(',','');
+		          return temp;
+		    },
+		    keySet : function(){  
+		        var keys = new Array();  
+		        for(i in this.map){  
+		            keys.push(i);
+		        }  
+		        return keys;
+		    }
+		};
+
+		
 		// 매물 내놓기 버튼 클릭 이벤트
 		$(function() {
 			$('#sellForm').submit(function() {
 
+				var array = new Array(); // 배열 선언
+				$('input:checkbox[name=options]:checked').each(function() { // 체크된 체크박스의 value 값을 가지고 온다.
+				    array.push(this.value);
+				});
+				
+				$("#options").val(array);
+				alert(array);
+
+				var array2 = new Array(); // 배열 선언
+				$('input:checkbox[name=include_fees]:checked').each(function() { // 체크된 체크박스의 value 값을 가지고 온다.
+				    array2.push(this.value);
+				});
+				$("#include_fees").val(array2);
+				alert(array2);
+				
+// 				return false;
+				
 				var is_empty = false;
 				$('#sellForm').find('input[type!="hidden"]').not(".file_list").each(function() {
 					if (!$(this).val()) {
