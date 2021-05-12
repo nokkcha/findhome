@@ -9,6 +9,10 @@
 		select max(room_id) from
 		one_room
 	</select>
+	
+	<resultMap id="OneRoomBean" type="com.itwillbs.domain.OneRoomBean">		
+		<result property="options" column="options" typeHandler="com.itwillbs.mapper.type.JSONTypeHandler" />
+	</resultMap>
 
 	<insert id="insertRoom" useGeneratedKeys="true"
 		keyProperty="room_id">
@@ -25,13 +29,11 @@
 		`phone_number`, `seller_id`) VALUES (
 		#{address}, #{deposit},
 		#{monthly_rent}, #{room_type}, #{fees},
-		#{include_fees,
-		typeHandler=com.itwillbs.mapper.type.JSONTypeHandler},
+		#{include_fees,typeHandler=com.itwillbs.mapper.type.JSONTypeHandler},
 		#{exclusive_area_m}, #{exclusive_area_p}, #{contract_area_m},
 		#{contract_area_p},
 		#{floor}, #{living_floor}, #{direction},
-		#{options,
-		typeHandler=com.itwillbs.mapper.type.JSONTypeHandler},
+		#{options,typeHandler=com.itwillbs.mapper.type.JSONTypeHandler},
 		#{loan},
 		#{pet},
 		#{parking}, #{elevator}, #{m_date}, #{subject},
@@ -110,8 +112,7 @@
 		delete from one_room where room_id=#{room_id}
 	</delete>
 
-	<select id="getRoom" resultType="com.itwillbs.domain.OneRoomBean"
-		 >
+	<select id="getRoom" resultMap="OneRoomBean">
 		select * from
 		one_room where
 		room_id=#{room_id}
