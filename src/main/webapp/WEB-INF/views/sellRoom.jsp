@@ -176,7 +176,7 @@
 						</tr>
 						<tr>
 							<th style="background-color: #dedede;">방구조</th>
-							<td><select name="room_type">
+							<td><select name="room_type" id="room_type">
 									<option value="">선택하세요</option>
 									<option value="오픈형 원룸 (방1)">오픈형 원룸 (방1)</option>
 									<option value="분리형 원룸 (방1,거실1)">분리형 원룸 (방1,거실1)</option>
@@ -404,7 +404,7 @@
 		function changeValue(obj) {
 			alert(obj.value);
 		}
-
+		
 		// 매물 내놓기 버튼 클릭 이벤트
 		$(function() {
 			$('#sellForm').submit(function() {
@@ -418,9 +418,30 @@
 						return false;
 					}
 				});
+				
+				// 방구조 선택 확인
+				var idx = $("#room_type option").index($("#room_type option:selected"));
+				if (idx == 0) {
+					is_empty = true;
+				}
+				
+				idx = $("#floor option").index($("#floor option:selected"));
+				if (idx == 0) {
+					is_empty = true;
+				}	
+				
+				idx = $("#living_floor option").index($("#living_floor option:selected"));
+				if (idx == 0) {
+					is_empty = true;
+				}
+				
+				idx = $("#direction option").index($("#direction option:selected"));
+				if (idx == 0) {
+					is_empty = true;
+				}				
 
 				if (is_empty) {
-					//alert('값을 전부 입력하시오');
+					alert('값을 전부 입력하시오');
 					return false;
 				}
 				
@@ -473,16 +494,20 @@
 			document.getElementById('address').value = "부산광역시 부산진구 부전동 동천로 109 삼한골든게이트 아이티윌 부산교육센터 7층";
 			document.getElementById('deposit').value = "500";
 			document.getElementById('monthly_rent').value = "30";
-			$("#room_type option:eq(1)").prop("selected", true);
+			$('#room_type option:eq(1)').attr("selected", "selected");
 			document.getElementById('fees').value = "20";
 			$('input:checkbox[id="include_fees"]').attr("checked", true);
-			document.getElementById('exclusive_area_p').value = "30.00";// 크기
-			document.getElementById('contract_area_p').value = "30.00";// 크기
+			
+			// 크기
+			document.getElementById('exclusive_area_p').value = "30.00";
+			document.getElementById('contract_area_p').value = "30.00";
 			document.getElementById('exclusive_area_m').value = "99.17";
 			document.getElementById('contract_area_m').value = "99.17";
+			
+			// 층 수
 			$('#floor option:eq(10)').attr("selected", "selected");
 			$('#living_floor option:eq(2)').attr("selected", "selected");
-			//$('#direction').val('동향').prop("selected",true);
+			// 방향
 			$("#direction option:eq(2)").prop("selected", true);
 
 			$('#options').prop('checked', true);
@@ -545,6 +570,8 @@
 				if (living_floorIdx > floorIdx) {
 					alert('해당 층이 건물 층 보다 클 수는 없습니다. \n해당 층 : ' 
 							+ living_floorIdx + ' 건물 층 : ' + floorIdx);
+					
+					$("#living_floor option:eq(0)").attr("selected", "selected");
 				}				
 				
 				console.log("선택한 index : " + living_floorIdx);
