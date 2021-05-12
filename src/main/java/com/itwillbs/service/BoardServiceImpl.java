@@ -1,6 +1,7 @@
 package com.itwillbs.service;
 
 import java.sql.Timestamp;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -14,6 +15,9 @@ import com.itwillbs.domain.BoardBean;
 import com.itwillbs.domain.OneRoomBean;
 import com.itwillbs.domain.PageBean;
 import com.itwillbs.domain.ImageBean;
+
+import lombok.Getter;
+import lombok.Setter;
 
 @Service
 public class BoardServiceImpl implements BoardService{

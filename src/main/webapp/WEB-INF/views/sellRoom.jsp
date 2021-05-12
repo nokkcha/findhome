@@ -399,7 +399,7 @@
 							});
 		}
 	</script>
-	
+
 	<script type="text/javascript">
 		function changeValue(obj) {
 			alert(obj.value);
@@ -449,22 +449,22 @@
 		$(function() {
 			$('#sellForm').submit(function() {
 
+// 				var array = new Array(); // 배열 선언
+// 				$('input:checkbox[name=options]:checked').each(function() { // 체크된 체크박스의 value 값을 가지고 온다.
+// 				    array.push(this.value);
+// 				});
 				
-				
-				var array = new Array(); // 배열 선언
-				$('input:checkbox[name=options]:checked').each(function() { // 체크된 체크박스의 value 값을 가지고 온다.
-				    array.push(this.value);
-				});
-				
-				$("#options").val(array);
-				alert(array);
-				return false;
+// 				$("#options").val(array);
+// 				alert(array);
 
-				var array2 = new Array(); // 배열 선언
-				$('input:checkbox[name=include_fees]:checked').each(function() { // 체크된 체크박스의 value 값을 가지고 온다.
-				    array2.push(this.value);
-				});
-				$("#include_fees").val(array2);
+// 				var array2 = new Array(); // 배열 선언
+// 				$('input:checkbox[name=include_fees]:checked').each(function() { // 체크된 체크박스의 value 값을 가지고 온다.
+// 				    array2.push(this.value);
+// 				});
+// 				$("#include_fees").val(array2);
+// 				alert(array2);
+				
+// 				return false;
 				
 				var is_empty = false;
 				$('#sellForm').find('input[type!="hidden"]').not(".file_list").each(function() {
@@ -502,7 +502,13 @@
 					return false;
 				}
 				
-				
+				// 관리비 포함 영역 로그 출력테스트
+// 				$('input:checkbox[id="include_fees"]').each(function(){
+// 				    var thisOptionValue=$(this).val();
+// 				    rr.push(thisOptionValue)
+// 				    console.log('fees : ' + rr);
+// 				    return false;
+// 				});
 			});
 		});
 

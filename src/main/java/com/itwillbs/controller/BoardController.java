@@ -56,14 +56,11 @@ public class BoardController {
 	}
 
 	@RequestMapping(value = "/writePro", method = RequestMethod.POST)
-//	public String writePro(OneRoomBean bb) {
-	public String writePro(@RequestParam Map map, Model model, OneRoomBean bb) {
+	public String writePro(OneRoomBean bb) {
 		String[] fileList = bb.getFileList();
 		for (String string : fileList) {
 			System.out.println("FileList : " + string);
 		}
-		model.addAttribute("AttributeName", map);
-		
 		boardService.insertRoom(bb);
 
 		return "redirect:/";
