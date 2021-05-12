@@ -86,12 +86,12 @@ public class MemberController {
 		return "member/main";
 	}
 
-	@RequestMapping(value = "/member/logout", method = RequestMethod.GET)
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(HttpSession session) {
 
 		session.invalidate();
 
-		return "redirect:/member/login";
+		return "redirect:/";
 	}
 
 	@RequestMapping(value = "/member/delete", method = RequestMethod.GET)

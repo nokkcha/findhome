@@ -39,6 +39,7 @@
                 <li class="nav-item"><a href='<c:url value="/join_choice" />' class="nav-link">회원가입</a></li>
          <%}else{ %>   
                <li class="nav-item"><a href="./memberInfo" class="nav-link">회원정보</a></li>
+                 <li class="nav-item"><a href="./logout" class="nav-link">로그아웃</a></li>
       
           <%} %>
         </ul>
