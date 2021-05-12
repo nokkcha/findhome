@@ -145,7 +145,7 @@
         
         $(document).ready(function() {
         	$('#id').keyup(function(){
-          		$.ajax('<c:url value = "/join/id_check" />', {
+          		$.ajax('<c:url value = "/join2/id_check2" />', {
             		data : {id : $('#id').val()},
     			    success: function(result){
     			         if(result == "iddup"){
@@ -285,20 +285,7 @@
 						return false;
 					}
 					
-					
-					if (phone == "") {
-						$('#phone').focus();
-// 						swal.fire("전화번호 입력", "전화번호를 입력해주세요", "error"); //"info,success,warning,error" 중 택1
-						alert("전화번호를 입력해주세요");
-						return false;
-					}
-					
-					if (!lengthRegex3.exec(phone)) {
-						$('#phone').focus();
-// 						swal.fire("전화번호 입력확인", "전화번호를 다시 입력해주세요", "error"); //"info,success,warning,error" 중 택1
-						alert("전화번호를 다시 입력해주세요");
-						return false;
-					}
+			
 					
 					if($('#agree').is(':checked') == false){
 						alert("이용약관 및 개인 정보 수집에 동의 하셔야 가입이 가능합니다");
@@ -322,8 +309,6 @@
 				}
 			}
 			
-			
-        
 			
 			$(document).ready(function(){
 				
@@ -426,7 +411,7 @@
 			<div class="row block-9">
 				<div class="pr-md-5">
 					<!-- col-md-6 제거함 -->
-					<form action='<c:url value="/joinPro" />' method="post" id="login" name="login">
+					<form action='<c:url value="/joinPro2" />' method="post" id="login" name="login">
 						<div class="form-group" align="left">
 							<label class="form-control-label">이메일(ID)</label> <input type="text"
 								class="form-control" name="id" id="id"
@@ -463,7 +448,7 @@
 
             <!--  팝업창 관련    -->
                     
-                      <input type="checkbox" name="is_confirm" id="agree" value="0" data-toggle="modal" class="agree"> 
+                      <input type="checkbox" id="agree" value="0" data-toggle="modal" class="agree"> 
             	  	  이용약관 및 개인정보 취급방침에 동의합니다.
                        </label>
             	  	

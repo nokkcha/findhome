@@ -70,6 +70,16 @@ public class MemberServiceImpl implements MemberService{
 		return memberDAO.getWishList(id);
 	}
 
+	@Override
+	public MemberBean getMember2(String id) {
+		return memberDAO.getMember2(id);
+	}
 
+
+	@Override
+	public void insertMember2(MemberBean mb) {
+		
+		memberDAO.insertMember2(mb);
+	}
 
 }

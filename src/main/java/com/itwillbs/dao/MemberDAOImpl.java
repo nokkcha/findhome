@@ -72,5 +72,16 @@ public class MemberDAOImpl implements MemberDAO{
 		return sqlSession.selectList(namespace+".getWishList", id);
 	}
 
+	@Override
+	public MemberBean getMember2(String id) {
+		return sqlSession.selectOne(namespace+".getMember2", id);
+	}
+
+	@Override
+	public void insertMember2(MemberBean mb) {
+		
+		sqlSession.insert(namespace+".insertMember2",mb);
+	}
+
 
 }

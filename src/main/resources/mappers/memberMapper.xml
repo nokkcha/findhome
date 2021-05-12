@@ -10,6 +10,12 @@
 		phone_number, is_confirm)
 		values(#{id},#{password},#{phone_number},#{is_confirm})
 	</insert>
+	
+	<insert id="insertMember2">
+		insert into member_normal (id, password,
+		phone_number)
+		values(#{id},#{password},#{phone_number})
+	</insert>
 
 	<select id="userCheck"
 		resultType="com.itwillbs.domain.MemberBean">
@@ -20,6 +26,11 @@
 	<select id="getMember"
 		resultType="com.itwillbs.domain.MemberBean">
 		select * from member_seller where id=#{id}
+	</select>
+	
+	<select id="getMember2"
+		resultType="com.itwillbs.domain.MemberBean">
+		select * from member_normal where id=#{id}
 	</select>
 
 	<update id="updateMember">
