@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.itwillbs.domain.MemberBean;
-import com.itwillbs.domain.Member_normalBean;
 import com.itwillbs.service.MemberService;
 
 @Controller
@@ -74,7 +73,7 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "/joinPro2", method = RequestMethod.POST)
-	public String joinPro2(Member_normalBean mb) {
+	public String joinPro2(MemberBean mb) {
 
 		memberService.insertMember2(mb);
 
@@ -142,8 +141,8 @@ public class MemberController {
 		try {
 			String id = request.getParameter("id");
 			System.out.println(id);
-			Member_normalBean mnb = memberService.getMember2(id);
-			if(mnb != null) {
+			MemberBean mb = memberService.getMember2(id);
+			if(mb != null) {
 				result = "iddup";
 			} else {
 				result = "idok";

@@ -8,7 +8,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.itwillbs.domain.MemberBean;
-import com.itwillbs.domain.Member_normalBean;
 
 @Repository
 public class MemberDAOImpl implements MemberDAO{
@@ -74,14 +73,14 @@ public class MemberDAOImpl implements MemberDAO{
 	}
 
 	@Override
-	public Member_normalBean getMember2(String id) {
+	public MemberBean getMember2(String id) {
 		return sqlSession.selectOne(namespace+".getMember2", id);
 	}
 
 	@Override
-	public void insertMember2(Member_normalBean mnb) {
+	public void insertMember2(MemberBean mb) {
 		
-		sqlSession.insert(namespace+".insertMember2",mnb);
+		sqlSession.insert(namespace+".insertMember2",mb);
 	}
 
 

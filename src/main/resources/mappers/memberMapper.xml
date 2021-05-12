@@ -29,7 +29,7 @@
 	</select>
 	
 	<select id="getMember2"
-		resultType="com.itwillbs.domain.Member_normalBean">
+		resultType="com.itwillbs.domain.MemberBean">
 		select * from member_normal where id=#{id}
 	</select>
 

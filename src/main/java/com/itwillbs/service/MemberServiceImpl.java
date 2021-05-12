@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import com.itwillbs.dao.MemberDAO;
 import com.itwillbs.domain.MemberBean;
-import com.itwillbs.domain.Member_normalBean;
 
 @Service
 public class MemberServiceImpl implements MemberService{
@@ -72,15 +71,15 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public Member_normalBean getMember2(String id) {
+	public MemberBean getMember2(String id) {
 		return memberDAO.getMember2(id);
 	}
 
 
 	@Override
-	public void insertMember2(Member_normalBean mnb) {
+	public void insertMember2(MemberBean mb) {
 		
-		memberDAO.insertMember2(mnb);
+		memberDAO.insertMember2(mb);
 	}
 
 }
