@@ -10,9 +10,7 @@ public interface MemberDAO {
 		public MemberBean getMember(String id);
 		
 		public MemberBean userCheck(MemberBean mb);
-		
-		public MemberBean getMember(String id);
-		
+				
 		public void updateMember(MemberBean mb);
 		
 		public void deleteMember(MemberBean mb);
