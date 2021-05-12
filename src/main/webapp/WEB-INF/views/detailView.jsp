@@ -453,9 +453,26 @@ th, td {
 						<div class="mb-5">${ob.content }</div>
 					</div>
 					<br>
+					
+					<div class="option-info-container">
+						<h4 class="mb-5">관리비 포함 항목</h4>
+
+						<div class="room-detail-option-item-wrapper">
+
+							<c:forEach items="${ob.include_fees}" var="list">
+								<div class="room-detail-content-option-item">
+									<img src="${pageContext.request.contextPath}/resources/images/fees/${list.value}.png" width="50" height="50">
+									<div class="room-detail-content-option-item-name">${list.key}</div>
+								</div>
+							</c:forEach>
+						</div>
+					</div>
 
 					<div class="option-info-container">
 						<!-- 								<div class="room-detail-option-title">옵션</div> -->
+						
+						
+						
 						<h4 class="mb-5">옵션</h4>
 
 						<div class="room-detail-option-item-wrapper">
