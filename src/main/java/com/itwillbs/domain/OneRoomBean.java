@@ -35,8 +35,36 @@ public class OneRoomBean {
 
 		Map<String, Object> option = new HashMap<String, Object>();
 
-		String[] s = json;
+//		"전기세":"electric", 
+//		"가스":"gas",
+//		"수도":"water",
+//		"인터넷":"wifi",
+//		"TV":"television",
+//		
+		//String[] s = json;
+		String[] s = new String[json.length];
+		
 		for (int i = 0; i < s.length; i++) {
+			switch (json[i]) {
+			case "전기세":
+				s[i] = "electric";
+				break;
+			case "가스":
+				s[i] = "gas";
+				break;
+			case "수도":
+				s[i] = "water";
+				break;
+			case "인터넷":
+				s[i] = "wifi";
+				break;
+			case "TV":
+				s[i] = "television";
+				break;
+
+			default:
+				break;
+			}
 			option.put(json[i], s[i]);
 		}
 

@@ -25,6 +25,7 @@ import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -55,11 +56,14 @@ public class BoardController {
 	}
 
 	@RequestMapping(value = "/writePro", method = RequestMethod.POST)
-	public String writePro(OneRoomBean bb) {		
+//	public String writePro(OneRoomBean bb) {
+	public String writePro(@RequestParam Map map, Model model, OneRoomBean bb) {
 		String[] fileList = bb.getFileList();
 		for (String string : fileList) {
 			System.out.println("FileList : " + string);
 		}
+		model.addAttribute("AttributeName", map);
+		
 		boardService.insertRoom(bb);
 
 		return "redirect:/";
