@@ -188,13 +188,13 @@
 						<tr>
 							<th style="background-color: #dedede;">관리비</th>
 							<td><input type="number" id="fees" name="fees">만원 &nbsp; 
-							<input type="checkbox" id="is_include_fees" name="is_include_fees">없음<br> 
+							<input type="checkbox" id="is_include_feesArray" name="is_include_feesArray">없음<br> 
 							<b>관리비 포함 항목 </b> 
-							<input type="checkbox" id="include_fees" class="include_fees"  value="전기세" name="include_fees">전기세 
-							<input type="checkbox" id="include_fees" class="include_fees"  value="가스" name="include_fees">가스
-							<input type="checkbox" id="include_fees" class="include_fees"  value="수도"  name="include_fees">수도 
-							<input type="checkbox" id="include_fees" class="include_fees"  value="인터넷"  name="include_fees">인터넷 
-							<input type="checkbox" id="include_fees" class="include_fees"  value="TV"  name="include_fees">TV</td>
+							<input type="checkbox" id="include_feesArray" class="include_feesArray"  value="전기세" name="include_feesArray">전기세 
+							<input type="checkbox" id="include_feesArray" class="include_feesArray"  value="가스" name="include_feesArray">가스
+							<input type="checkbox" id="include_feesArray" class="include_feesArray"  value="수도"  name="include_feesArray">수도 
+							<input type="checkbox" id="include_feesArray" class="include_feesArray"  value="인터넷"  name="include_feesArray">인터넷 
+							<input type="checkbox" id="include_feesArray" class="include_feesArray"  value="TV"  name="include_feesArray">TV</td>
 						</tr>
 						<tr>
 							<th style="background-color: #dedede;">크기</th>
@@ -240,18 +240,18 @@
 
 						<tr>
 							<th style="background-color: #dedede;">옵션</th>
-							<td><input type="checkbox" id="options" name="options" value="에어컨">에어컨 
-							<input type="checkbox" id="options" name="options" value="냉장고">냉장고 
-							<input type="checkbox" id="options" name="options" value="세탁기">세탁기 
-							<input type="checkbox" id="options" name="options" value="가스레인지">가스레인지 
-							<input type="checkbox" id="options" name="options" value="인덕션">인덕션 
-							<input type="checkbox" id="options" name="options" value="전자레인지">전자레인지<br> 
-							<input type="checkbox" id="options" name="options" value="책상">책상 
-							<input type="checkbox" id="options" name="options" value="책장">책장 
-							<input type="checkbox" id="options" name="options" value="침대">침대 
-							<input type="checkbox" id="options" name="options" value="옷장">옷장 
-							<input type="checkbox" id="options" name="options" value="신발장">신발장 
-							<input type="checkbox" id="options" name="options" value="싱크대">싱크대<br></td>
+							<td><input type="checkbox" id="include_optionsArray" name="include_optionsArray" value="에어컨">에어컨 
+							<input type="checkbox" id="include_optionsArray" name="include_optionsArray" value="냉장고">냉장고 
+							<input type="checkbox" id="include_optionsArray" name="include_optionsArray" value="세탁기">세탁기 
+							<input type="checkbox" id="include_optionsArray" name="include_optionsArray" value="가스레인지">가스레인지 
+							<input type="checkbox" id="include_optionsArray" name="include_optionsArray" value="인덕션">인덕션 
+							<input type="checkbox" id="include_optionsArray" name="include_optionsArray" value="전자레인지">전자레인지<br> 
+							<input type="checkbox" id="include_optionsArray" name="include_optionsArray" value="책상">책상 
+							<input type="checkbox" id="include_optionsArray" name="include_optionsArray" value="책장">책장 
+							<input type="checkbox" id="include_optionsArray" name="include_optionsArray" value="침대">침대 
+							<input type="checkbox" id="include_optionsArray" name="include_optionsArray" value="옷장">옷장 
+							<input type="checkbox" id="include_optionsArray" name="include_optionsArray" value="신발장">신발장 
+							<input type="checkbox" id="include_optionsArray" name="include_optionsArray" value="싱크대">싱크대<br></td>
 						</tr>
 						<tr>
 							<th style="background-color: #dedede;">전세 대출</th>
@@ -458,10 +458,10 @@
 // 				alert(array);
 
 // 				var array2 = new Array(); // 배열 선언
-// 				$('input:checkbox[name=include_fees]:checked').each(function() { // 체크된 체크박스의 value 값을 가지고 온다.
+// 				$('input:checkbox[name=include_feesArray]:checked').each(function() { // 체크된 체크박스의 value 값을 가지고 온다.
 // 				    array2.push(this.value);
 // 				});
-// 				$("#include_fees").val(array2);
+// 				$("#include_feesArray").val(array2);
 // 				alert(array2);
 				
 // 				return false;
@@ -503,7 +503,7 @@
 				}
 				
 				// 관리비 포함 영역 로그 출력테스트
-// 				$('input:checkbox[id="include_fees"]').each(function(){
+// 				$('input:checkbox[id="include_feesArray"]').each(function(){
 // 				    var thisOptionValue=$(this).val();
 // 				    rr.push(thisOptionValue)
 // 				    console.log('fees : ' + rr);
@@ -553,7 +553,7 @@
 			document.getElementById('monthly_rent').value = "30";
 			$('#room_type option:eq(1)').attr("selected", "selected");
 			document.getElementById('fees').value = "20";
-			$('input:checkbox[id="include_fees"]').attr("checked", true);
+			$('input:checkbox[id="include_feesArray"]').attr("checked", true);
 			
 			// 크기
 			document.getElementById('exclusive_area_p').value = "30.00";
@@ -567,7 +567,7 @@
 			// 방향
 			$("#direction option:eq(2)").prop("selected", true);
 
-			$('#options').prop('checked', true);
+			$('#include_optionsArray').prop('checked', true);
 			$('#loan').prop('checked', true);
 			$('#pet').prop('checked', true);
 			$('#parking').prop('checked', true);
@@ -586,11 +586,11 @@
 		
 		// 관리비 없음 체크 시 동작 함수
 		$(function(){
-			$('#is_include_fees').change( function(){
+			$('#is_include_feesArray').change( function(){
 			    var isChecked = $(this).is(":checked");
 			    console.log('관리비 없음 체크 여부 : '+isChecked);
 			    if (isChecked) {
-			    	$('input:checkbox[id="include_fees"]').prop('checked', false);
+			    	$('input:checkbox[id="include_feesArray"]').prop('checked', false);
 			    	$('#fees').val('0');
 			    }			    
 			});
@@ -599,17 +599,17 @@
 		
 		// 관리비 포함 항목 체크 시 동작 함수
 		$(function(){
-			$(".include_fees").change(function(){
+			$(".include_feesArray").change(function(){
 				var imChecked = $(this).is(":checked");
 				
 		        if(imChecked){
 		        	console.log('관리비 포함항목 체크 여부 : '+imChecked);
-		        	$('input:checkbox[id="is_include_fees"]').prop('checked', false);
+		        	$('input:checkbox[id="is_include_feesArray"]').prop('checked', false);
 		        	
 		        }else{
-		        	if($(".include_fees:checked").length == 0) { 
+		        	if($(".include_feesArray:checked").length == 0) { 
 		        		console.log('관리비 포함항목 전체 체크 해제');
-		        		$('input:checkbox[id="is_include_fees"]').prop('checked', true);
+		        		$('input:checkbox[id="is_include_feesArray"]').prop('checked', true);
 		        	} else {
 		        		console.log('관리비 포함항목 체크 해제');
 		        	}

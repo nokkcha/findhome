@@ -61,6 +61,10 @@ public class BoardController {
 		for (String string : fileList) {
 			System.out.println("FileList : " + string);
 		}
+		
+		bb.setInclude_fees(bb.getInclude_feesArray());
+		bb.setInclude_options(bb.getInclude_optionsArray());
+		
 		boardService.insertRoom(bb);
 
 		return "redirect:/";

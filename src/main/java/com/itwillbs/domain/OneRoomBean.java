@@ -74,6 +74,10 @@ public class OneRoomBean {
 	}
 
 	public void setInclude_fees(String[] json) {
+		
+		if (json == null)
+			return;
+		
 		Map<String, Object> include_fees = new HashMap<String, Object>();
 		System.out.println(json);
 
@@ -85,18 +89,24 @@ public class OneRoomBean {
 		this.include_fees = include_fees;
 	}
 
+	String[] include_optionsArray;
+	String[] include_feesArray;
+	
 	Map<String, Object> include_options; // = new HashMap<>();
 
-	public Map<String, Object> getOptions() {
+	public Map<String, Object> getInclude_options() {
 		return include_options;
 	}
 	
-	public void setOptions(Map<String, Object> options) {
+	public void setInclude_options(Map<String, Object> options) {
 		this.include_options = options;
 	}
 
-	public void setOptions(String[] json) {
+	public void setInclude_options(String[] json) {
 
+		if (json == null)
+			return;
+		
 		Map<String, Object> options = new HashMap<String, Object>();
 
 		for (int i = 0; i < json.length; i++) {
