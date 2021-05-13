@@ -14,7 +14,16 @@ public class PageBean {
 	private int pageCount;
 	
 	private String id;
+	private String category;
 	
+	
+	
+	public String getCategory() {
+		return category;
+	}
+	public void setCategory(String category) {
+		this.category = category;
+	}
 	public String getId() {
 		return id;
 	}

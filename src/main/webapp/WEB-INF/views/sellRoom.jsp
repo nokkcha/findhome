@@ -40,6 +40,51 @@
 	background-color: #000 !important;
 	top: 0 !important;
 }
+
+/* .td-style {  */
+/*  	border: 1px solid #444444;  */
+/*      margin: 10px;  */
+/*      background-color: #dedede;  */
+/*      width="20%";   */
+/*      height="33.3%";  */
+/* }   */
+@media only screen and (max-width: 760px) , ( min-device-width : 768px)
+	and (max-device-width: 1024px) {
+	/* Force table to not be like tables anymore */
+	table, thead, tbody, th, td, tr {
+		display: block;
+	}
+
+	/* Hide table headers (but not display: none;, for accessibility) */
+	thead tr {
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+	tr {
+		border: 1px solid #ccc;
+	}
+	td {
+		/* Behave  like a "row" */
+		border: none;
+		border-bottom: 1px solid #eee;
+		position: relative;
+		padding-left: 50%;
+
+		/* 		background-color: #dedede;  */
+	}
+	td:before {
+		/* Now like a table header */
+		position: absolute;
+		/* Top/left values mimic padding */
+		top: 6px;
+		left: 6px;
+		width: 45%;
+		padding-right: 10px;
+		white-space: nowrap;
+		background-color: #dedede;
+	}
+}
 </style>
 
 </head>
@@ -48,7 +93,7 @@
 	<%@ include file="../views/top.jsp"%>
 
 	<section class="ftco-section ftco-degree-bg">
-		
+
 		<div class="container" align="left">
 			<br>
 			<h1>매물 등록</h1>
@@ -70,8 +115,12 @@
 
 		<div class="container">
 
-			<form action='<c:url value="/writePro"/>' method="post" id="testForm">
-
+			<form action='<c:url value="/writePro"/>' method="post" id="sellForm">
+			
+			<c:forEach var="i" begin="1" end="15">										
+				<input type="hidden" class="fileList" name="fileList" />
+			</c:forEach>
+			
 				<table class="table">
 					<thead align="left">
 						<tr>
@@ -81,19 +130,14 @@
 					<tbody align="left">
 						<tr>
 							<th style="background-color: #dedede;">주소</th>
-							<!-- 					onkeyup="checkAddress()" -->
-							<td><input type="text" id="address">
-								<button onclick="checkAddress()">위치확인하기</button> <br> · 주소와 단지명 모두 검색이 가능합니다.<br> · 주소 입력 시에는 동/읍/면 으로 검색해 주세요. 예) 자곡동, 동읍면, 신월읍<br> · 오피스텔을 검색할 때에는 동/읍/면 이름과 단지 명을 함께 입력하면 좀 더 편하게 주소를 검색할 수 있습니다. 예) 계산동 하이베라스</td>
+							<td><input type="text" id="address" name="address">
+								<button type="button" onclick="checkAddress()">위치확인하기</button> <br> · 주소와 단지명 모두 검색이 가능합니다.<br> · 주소 입력 시에는 동/읍/면 으로 검색해 주세요. 예) 자곡동, 동읍면, 신월읍<br> · 오피스텔을 검색할 때에는 동/읍/면 이름과 단지 명을 함께 입력하면 좀 더 편하게 주소를 검색할 수 있습니다. 예) 계산동 하이베라스</td>
 						</tr>
 
 						<tr>
 							<th style="background-color: #dedede;">지도</th>
 							<td id="map">주소 입력 후 위치확인하기를 누르면 이 곳에 지도가 나타납니다.</td>
 						</tr>
-						<!-- 				<tr> -->
-						<!-- 					<th style="background-color: #dedede;">나머지주소</th> -->
-						<!-- 					<td><input type="text"></td> -->
-						<!-- 				</tr> -->
 					</tbody>
 				</table>
 
@@ -105,38 +149,14 @@
 					</thead>
 					<tbody align="left">
 						<tr>
-							<td colspan="2">· 사진 최소 5장 최대 15장 까지 등록할 수 있습니다.<br> · 아래에 등록 버튼을 클릭하여 사진을 선택하거나, 마우스로 사진을 끌어와서 등록할 수도 있습니다.<br> · 한꺼번에 여러 장 등록도 가능합니다.<br> · 직접 찍은 실제 방 사진의 원본을 등록해야 합니다.<br> · 워터마크, 날짜, 전화번호 등이 포함된 사진이나 방과 관련없는 사진을 등록할 경우 중개가 종료될 수 있습니다.
+							<td>· 사진 최소 5장 최대 15장 까지 등록할 수 있습니다.<br> · 아래에 등록 버튼을 클릭하여 사진을 선택하거나, 마우스로 사진을 끌어와서 등록할 수도 있습니다.<br> · 한꺼번에 여러 장 등록도 가능합니다.<br> · 직접 찍은 실제 방 사진의 원본을 등록해야 합니다.<br> · 워터마크, 날짜, 전화번호 등이 포함된 사진이나 방과 관련없는 사진을 등록할 경우 중개가 종료될 수 있습니다.
 							</td>
 						</tr>
 					</tbody>
 				</table>
 
-				<table class="table">
-					<tbody align="left">
-						<tr>
-							<td style="background-color: #dedede;"><button>+등록</button> <br>대표사진</td>
-							<td style="background-color: #dedede;"><button>+등록</button> <br>화장실</td>
-							<td style="background-color: #dedede;"><button>+등록</button> <br>주방</td>
+				<table class="table" id="room_pic">
 
-							<td style="background-color: #dedede;"><input type="file" id="file" onChange="ajaxFileChange();" style="display: none;" /> <input type="button" id="btn-upload" onClick="ajaxFileUpload();" value="+등록" /><br>방사진 <!-- 					<input type="file" id="file" name="file" onchange="changeValue(this)"/> --> <!-- 					<button type="button" id="btn-upload">+등록</button><br>방사진 --></td>
-
-							<td style="background-color: #dedede;"><button>+등록</button> <br>방사진</td>
-						</tr>
-						<tr>
-							<td style="background-color: #dedede;"><button>+등록</button></td>
-							<td style="background-color: #dedede;"><button>+등록</button></td>
-							<td style="background-color: #dedede;"><button>+등록</button></td>
-							<td style="background-color: #dedede;"><button>+등록</button></td>
-							<td style="background-color: #dedede;"><button>+등록</button></td>
-						</tr>
-						<tr>
-							<td style="background-color: #dedede;"><button>+등록</button></td>
-							<td style="background-color: #dedede;"><button>+등록</button></td>
-							<td style="background-color: #dedede;"><button>+등록</button></td>
-							<td style="background-color: #dedede;"><button>+등록</button></td>
-							<td style="background-color: #dedede;"><button>+등록</button></td>
-						</tr>
-					</tbody>
 				</table>
 
 				<table class="table">
@@ -148,15 +168,15 @@
 					<tbody align="left">
 						<tr>
 							<th style="background-color: #dedede;">보증금</th>
-							<td><input type="text" id="deposit" name="deposit">만원</td>
+							<td><input type="number" id="deposit" name="deposit">만원</td>
 						</tr>
 						<tr>
 							<th style="background-color: #dedede;">월세</th>
-							<td><input type="text" id="monthly_rent" name="monthly_rent">만원</td>
+							<td><input type="number" id="monthly_rent" name="monthly_rent">만원</td>
 						</tr>
 						<tr>
 							<th style="background-color: #dedede;">방구조</th>
-							<td><select name="room_type">
+							<td><select name="room_type" id="room_type">
 									<option value="">선택하세요</option>
 									<option value="오픈형 원룸 (방1)">오픈형 원룸 (방1)</option>
 									<option value="분리형 원룸 (방1,거실1)">분리형 원룸 (방1,거실1)</option>
@@ -167,37 +187,36 @@
 						</tr>
 						<tr>
 							<th style="background-color: #dedede;">관리비</th>
-							<td><input type="text" id="fees" name="fees">만원 &nbsp;
-							<input type="checkbox" id="include_fees" name="include_fees">없음<br>
-							<b>관리비 포함 항목 </b>
-							<input type="checkbox" id="include_fees" name="include_fees">전기세
-							<input type="checkbox" id="include_fees" name="include_fees">가스
-							<input type="checkbox" id="include_fees" name="include_fees">수도
-							<input type="checkbox" id="include_fees" name="include_fees">인터넷
-							<input type="checkbox" id="include_fees" name="include_fees">TV
-							</td>
+							<td><input type="number" id="fees" name="fees">만원 &nbsp; 
+							<input type="checkbox" id="is_include_fees" name="is_include_fees">없음<br> 
+							<b>관리비 포함 항목 </b> 
+							<input type="checkbox" id="include_fees" class="include_fees"  value="전기세" name="include_fees">전기세 
+							<input type="checkbox" id="include_fees" class="include_fees"  value="가스" name="include_fees">가스
+							<input type="checkbox" id="include_fees" class="include_fees"  value="수도"  name="include_fees">수도 
+							<input type="checkbox" id="include_fees" class="include_fees"  value="인터넷"  name="include_fees">인터넷 
+							<input type="checkbox" id="include_fees" class="include_fees"  value="TV"  name="include_fees">TV</td>
 						</tr>
 						<tr>
 							<th style="background-color: #dedede;">크기</th>
-							<td>전용면적 : <input type="text" id="cal2" name="exclusive_area_m">m<sup>2</sup>
-							=<input type="text" id="cal1" name="exclusive_area_p">평 <br>
-							계약면적 : <input type="text" id="cal4" name="contract_area_m">m<sup>2</sup>
-							=<input type="text" id="cal3"  name="contract_area_p">평
+							<td>전용면적 : <input type="number" step="0.01" id="exclusive_area_m" name="exclusive_area_m">m<sup>2</sup> =<input type="number" step="0.01" id="exclusive_area_p" name="exclusive_area_p">평 <br> 
+							계약면적 : <input type="number" step="0.01" id="contract_area_m" name="contract_area_m">m<sup>2</sup> =<input type="number" step="0.01" id="contract_area_p" name="contract_area_p">평
 							</td>
 						</tr>
 						<tr>
 							<th style="background-color: #dedede;">층수</th>
-							<td>건물 층 수 : <select name="floor">
+							<td>건물 층 수 : <select name="floor" id="floor">
 									<option value="">선택하세요</option>
 									<c:forEach var="i" begin="1" end="80">
+										<%-- 										<option selected="selected" value="${i}층">${i}층</option> --%>
 										<option value="${i}층">${i}층</option>
 									</c:forEach>
 
-							</select> / 해당 층 : <select name="living_floor">
+							</select> / 해당 층 : <select name="living_floor" id="living_floor">
 									<option value="">선택하세요</option>
 									<option value="반지하">반지하</option>
 									<option value="옥탑방">옥탑방</option>
 									<c:forEach var="i" begin="1" end="80">
+										<%-- 										<option selected="selected" value="${i}층">${i}층</option> --%>
 										<option value="${i}층">${i}층</option>
 									</c:forEach>
 							</select>
@@ -205,7 +224,7 @@
 						</tr>
 						<tr>
 							<th style="background-color: #dedede;">방향</th>
-							<td><select name="direction">
+							<td><select name="direction" id="direction">
 									<option value="">선택하세요</option>
 									<option value="동향">동향</option>
 									<option value="서향">서향</option>
@@ -221,43 +240,46 @@
 
 						<tr>
 							<th style="background-color: #dedede;">옵션</th>
-							<td><input type="checkbox" id="options" name="options">에어컨 <input type="checkbox" name="option">냉장고 <input type="checkbox" name="option">세탁기 <input type="checkbox" name="option">가스레인지 <input type="checkbox" name="option">인덕션 <input type="checkbox" name="option">전자레인지<br> <input type="checkbox" name="option">책상 <input type="checkbox" name="option">책장 <input type="checkbox" name="option">침대 <input type="checkbox" name="option">옷장 <input type="checkbox" name="option">신발장 <input type="checkbox" name="option">싱크대<br></td>
+							<td><input type="checkbox" id="options" name="options" value="에어컨">에어컨 
+							<input type="checkbox" id="options" name="options" value="냉장고">냉장고 
+							<input type="checkbox" id="options" name="options" value="세탁기">세탁기 
+							<input type="checkbox" id="options" name="options" value="가스레인지">가스레인지 
+							<input type="checkbox" id="options" name="options" value="인덕션">인덕션 
+							<input type="checkbox" id="options" name="options" value="전자레인지">전자레인지<br> 
+							<input type="checkbox" id="options" name="options" value="책상">책상 
+							<input type="checkbox" id="options" name="options" value="책장">책장 
+							<input type="checkbox" id="options" name="options" value="침대">침대 
+							<input type="checkbox" id="options" name="options" value="옷장">옷장 
+							<input type="checkbox" id="options" name="options" value="신발장">신발장 
+							<input type="checkbox" id="options" name="options" value="싱크대">싱크대<br></td>
 						</tr>
 						<tr>
 							<th style="background-color: #dedede;">전세 대출</th>
-							<td><input type="radio" name="loan" id="loan" value="가능">가능 
-							<input type="radio" name="loan" id="loan" value="불가능">불가능 
-							<input type="radio" name="loan" id="loan" value="확인필요">확인필요</td>
+							<td><input type="radio" name="loan" id="loan" value="가능">가능 <input type="radio" name="loan" id="loan" value="불가능">불가능 <input type="radio" name="loan" id="loan" value="확인필요">확인필요</td>
 						</tr>
 						<tr>
 							<th style="background-color: #dedede;">반려 동물</th>
-							<td><input type="radio" name="pet" id="pet" value="가능">가능 
-							<input type="radio" name="pet" id="pet"  value="불가능">불가능 
-							<input type="radio"  name="pet" id="pet"  value="고양이만">고양이만 
-							<input type="radio"  name="pet" id="pet"  value="확인필요">확인필요</td>
+							<td><input type="radio" name="pet" id="pet" value="가능">가능 <input type="radio" name="pet" id="pet" value="불가능">불가능 <input type="radio" name="pet" id="pet" value="고양이만">고양이만 <input type="radio" name="pet" id="pet" value="확인필요">확인필요</td>
 						</tr>
 						<tr>
 							<th style="background-color: #dedede;">주차</th>
-							<td><input type="radio"  name="parking" id="parking" value="가능">가능 
-							<input type="radio" name="parking" id="parking"  value="없음">없음</td>
+							<td><input type="radio" name="parking" id="parking" value="가능">가능 <input type="radio" name="parking" id="parking" value="없음">없음</td>
 						</tr>
 						<tr>
 							<th style="background-color: #dedede;">엘리베이터</th>
-							<td><input type="radio" name="elevator" id="elevator" value="있음">있음 
-							<input type="radio" name="elevator" id="elevator"  value="없음">없음</td>
+							<td><input type="radio" name="elevator" id="elevator" value="있음">있음 <input type="radio" name="elevator" id="elevator" value="없음">없음</td>
 						</tr>
 						<tr>
 							<th style="background-color: #dedede;">입주가능일</th>
-							<td><input type="date" name="m_date" id="m_date"></td>
+							<td><input type="text" name="m_date" id="m_date"></td>
 						</tr>
 						<tr>
 							<th style="background-color: #dedede;">제목</th>
-							<td><input type="text" name="subject" id="subject">제목</td>
+							<td><input type="text" name="subject" id="subject"></td>
 						</tr>
 						<tr>
 							<th style="background-color: #dedede;">상세설명</th>
-							<td><textarea name="content" id="content" 
-							placeholder="해당 방에 대한 특징과 소개를 최소 50자 이상 입력해야 합니다."  rows="10" cols="60"></textarea></td>
+							<td><textarea name="content" id="content" placeholder="해당 방에 대한 특징과 소개를 최소 50자 이상 입력해야 합니다." rows="10" cols="60"></textarea></td>
 						</tr>
 						<tr>
 							<th style="background-color: #dedede;">연락처</th>
@@ -274,7 +296,7 @@
 				</table>
 
 				<input type="text" id="seller_id" hidden="" name="seller_id" value="admin@gmail.com">
-				
+
 				<button class="btn btn-primary btn-lg btn-block" id="sellRoom">방 내놓기</button>
 			</form>
 
@@ -320,10 +342,12 @@
 	<script type="text/javascript">
 		function checkAddress() {
 			var addr = document.getElementById('address').value;
-			if (addr == null) {
-				//return;
-				addr = '서울특별시 영등포구 여의동로 330 한강사업본부 여의도안내센터';
+			if (addr == null || addr == "") {
+				alert('주소를 입력해주세요');
+				return;
+				//addr = '서울특별시 영등포구 여의동로 330 한강사업본부 여의도안내센터';
 			}
+			console.log('사용자 입력 주소 : ' + addr);
 
 			var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 			mapOption = {
@@ -331,9 +355,6 @@
 				level : 3
 			// 지도의 확대 레벨
 			};
-
-			// 지도를 생성합니다    
-			var map = new kakao.maps.Map(mapContainer, mapOption);
 
 			// 주소-좌표 변환 객체를 생성합니다
 			var geocoder = new kakao.maps.services.Geocoder();
@@ -348,6 +369,10 @@
 
 								// 정상적으로 검색이 완료됐으면 
 								if (status === kakao.maps.services.Status.OK) {
+
+									// 지도를 생성합니다    
+									var map = new kakao.maps.Map(mapContainer,
+											mapOption);
 
 									var coords = new kakao.maps.LatLng(
 											result[0].y, result[0].x);
@@ -368,83 +393,317 @@
 									// 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
 									map.setCenter(coords);
 								} else {
-									alert("주소를 다시 확인해주세요"); //+ addr);
+									alert(addr + "는 없는 주소입니다.\n주소를 다시 확인해주세요");
+									document.getElementById('address').value = "";
 								}
 							});
 		}
 	</script>
 
 	<script type="text/javascript">
-		$(function() {
-			$('#btn-upload').click(function(e) {
-				e.preventDefault();
-				$('#file').click();
-			});
-		});
-
-		// 매물 내놓기 버튼 클릭 이벤트
-		$(function() {
-			$('#sellRoom').click(function(e) {
-
-			});
-		});
-
 		function changeValue(obj) {
 			alert(obj.value);
 		}
+		
+		// 매물 내놓기 버튼 클릭 이벤트
+		$(function() {
+			$('#sellForm').submit(function() {
+
+				var is_empty = false;
+				$('#sellForm').find('input[type!="hidden"]').not(".file_list").each(function() {
+					if (!$(this).val()) {
+						is_empty = true;
+						alert('값을 전부 입력하시오 ' + $(this).attr('id'));
+						$(this).focus();
+						return false;
+					}
+				});
+				
+				// 방구조 선택 확인
+				var idx = $("#room_type option").index($("#room_type option:selected"));
+				if (idx == 0) {
+					is_empty = true;
+				}
+				
+				idx = $("#floor option").index($("#floor option:selected"));
+				if (idx == 0) {
+					is_empty = true;
+				}	
+				
+				idx = $("#living_floor option").index($("#living_floor option:selected"));
+				if (idx == 0) {
+					is_empty = true;
+				}
+				
+				idx = $("#direction option").index($("#direction option:selected"));
+				if (idx == 0) {
+					is_empty = true;
+				}				
+
+				if (is_empty) {
+					alert('값을 전부 입력하시오');
+					return false;
+				}
+				
+				// 관리비 포함 영역 로그 출력테스트
+// 				$('input:checkbox[id="include_fees"]').each(function(){
+// 				    var thisOptionValue=$(this).val();
+// 				    rr.push(thisOptionValue)
+// 				    console.log('fees : ' + rr);
+// 				    return false;
+// 				});
+			});
+		});
 
 		// 전용면적(exclusive private area) 평수 계산
-		$('#cal1').focusout(
-				function() {
-					document.getElementById('cal2').value = parseFloat(document
-							.getElementById('cal1').value) * 3.3058;
-				})
+		$('#exclusive_area_p')
+				.focusout(
+						function() {
+							var v = parseFloat(document.getElementById('exclusive_area_p').value) * 3.3058;
+							document.getElementById('exclusive_area_m').value = v.toFixed(2);
+						})
 
-		$('#cal2').focusout(
-				function() {
-					document.getElementById('cal1').value = parseFloat(document
-							.getElementById('cal2').value) / 3.3058;
-				})
+		$('#exclusive_area_m')
+				.focusout(
+						function() {
+							document.getElementById('exclusive_area_p').value = parseFloat((document
+									.getElementById('exclusive_area_m').value) / 3.3058).toFixed(2);
+						})
 
-		$('#cal3').focusout(
-				function() {
-					document.getElementById('cal4').value = parseFloat(document
-							.getElementById('cal3').value) * 3.3058;
-				})
+		$('#contract_area_p')
+				.focusout(
+						function() {
+							document.getElementById('contract_area_m').value = parseFloat((document
+									.getElementById('contract_area_p').value) * 3.3058).toFixed(2);
+						})
 
-		$('#cal4').focusout(
-				function() {
-					document.getElementById('cal3').value = parseFloat(document
-							.getElementById('cal4').value) / 3.3058;
-				})
+		$('#contract_area_m')
+				.focusout(
+						function() {
+							document.getElementById('contract_area_p').value = parseFloat((document
+									.getElementById('contract_area_m').value) / 3.3058).toFixed(2);
+						})
 
 		function ajaxFileUpload() {
 			// 업로드 버튼이 클릭되면 파일 찾기 창을 띄운다.
+			//alert("ajaxFileupload");
 			jQuery("#ajaxFile").click();
 		}
 
-		function ajaxFileChange() {
-			// 파일이 선택되면 업로드를 진행한다.
-			ajaxFileTransmit();
+		function setTestData() {
+			document.getElementById('address').value = "부산광역시 부산진구 부전동 동천로 109 삼한골든게이트 아이티윌 부산교육센터 7층";
+			document.getElementById('deposit').value = "500";
+			document.getElementById('monthly_rent').value = "30";
+			$('#room_type option:eq(1)').attr("selected", "selected");
+			document.getElementById('fees').value = "20";
+			$('input:checkbox[id="include_fees"]').attr("checked", true);
+			
+			// 크기
+			document.getElementById('exclusive_area_p').value = "30.00";
+			document.getElementById('contract_area_p').value = "30.00";
+			document.getElementById('exclusive_area_m').value = "99.17";
+			document.getElementById('contract_area_m').value = "99.17";
+			
+			// 층 수
+			$('#floor option:eq(10)').attr("selected", "selected");
+			$('#living_floor option:eq(2)').attr("selected", "selected");
+			// 방향
+			$("#direction option:eq(2)").prop("selected", true);
+
+			$('#options').prop('checked', true);
+			$('#loan').prop('checked', true);
+			$('#pet').prop('checked', true);
+			$('#parking').prop('checked', true);
+			$('#elevator').prop('checked', true);
+			document.getElementById('m_date').value = "즉시 입주";
+			document.getElementById('subject').value = "방제목 테스트";
+			document.getElementById('content').value = "상세설명 테스트";
 		}
 
-		function ajaxFileTransmit() {
-			var form = jQuery("ajaxFrom")[0];
-			var formData = new FormData(form);
-			formData.append("message", "파일 확인 창 숨기기");
-			formData.append("file", jQuery("#ajaxFile")[0].files[0]);
+		// 사진 테이블 동적 초기화 및 함수 연결
+		$(document).ready(function() {
+			setTestData();
 
-			jQuery.ajax({
-				url : "./ajaxFormReceive.php",
-				type : "POST",
-				processData : false,
-				contentType : false,
-				data : formData,
-				success : function(json) {
-					var obj = JSON.parse(json);
+			setRoomImageTable();
+		}); // end of funtion
+		
+		// 관리비 없음 체크 시 동작 함수
+		$(function(){
+			$('#is_include_fees').change( function(){
+			    var isChecked = $(this).is(":checked");
+			    console.log('관리비 없음 체크 여부 : '+isChecked);
+			    if (isChecked) {
+			    	$('input:checkbox[id="include_fees"]').prop('checked', false);
+			    	$('#fees').val('0');
+			    }			    
+			});
+			
+		});
+		
+		// 관리비 포함 항목 체크 시 동작 함수
+		$(function(){
+			$(".include_fees").change(function(){
+				var imChecked = $(this).is(":checked");
+				
+		        if(imChecked){
+		        	console.log('관리비 포함항목 체크 여부 : '+imChecked);
+		        	$('input:checkbox[id="is_include_fees"]').prop('checked', false);
+		        	
+		        }else{
+		        	if($(".include_fees:checked").length == 0) { 
+		        		console.log('관리비 포함항목 전체 체크 해제');
+		        		$('input:checkbox[id="is_include_fees"]').prop('checked', true);
+		        	} else {
+		        		console.log('관리비 포함항목 체크 해제');
+		        	}
+		        }
+		    });
+		});
+		
+		// 건물 해당 층 수 변경 시 동작 함수
+		$(function() {			
+			$("#living_floor").change(function() {				
+				var living_floorIdx = $("#living_floor option").index( $("#living_floor option:selected") );
+				living_floorIdx -= 2;
+				var floorIdx = $("#floor option").index( $("#floor option:selected") );
+				
+				if (living_floorIdx > floorIdx) {
+					alert('해당 층이 건물 층 보다 클 수는 없습니다. \n해당 층 : ' 
+							+ living_floorIdx + ' 건물 층 : ' + floorIdx);
+					
+					$("#living_floor option:eq(0)").attr("selected", "selected");
+				}				
+				
+				console.log("선택한 index : " + living_floorIdx);
+			});
+		});
+		
+
+		
+
+		function setRoomImageTable() {
+			var str_html = '<tbody align="left"><tr>';
+
+			for (var i = 1; i <= 15; i++) {
+				var html_td = '<td style="background-color: #dedede;" >';
+				
+				//html_td += '<input type="text" hidden="" class="fileList" name="fileList" />';
+				
+				html_td += '<input type="file" id="file'+i+'" class="file_list" hidden="" style="display: none;" accept="image/jpeg,image/png" />';				
+				html_td += '<img id="room_img'+i+'" src="" class="room_img_list"></div><div class="back">'
+				
+				var html_btn = '<input type="button" onClick="ajaxFileUpload()"  class="btn-upload_list" id="btn-upload'
+						+ i + '" value="+등록" /><br>{}</td>';
+
+				switch (i) {
+				case 1:
+					html_btn = html_btn.replace('{}', '대표사진');
+					break;
+				case 2:
+					html_btn = html_btn.replace('{}', '화장실');
+					break;
+				case 3:
+					html_btn = html_btn.replace('{}', '주방');
+					break;
+				case 4:
+					html_btn = html_btn.replace('{}', '방사진');
+					break;
+				default:
+					html_btn = html_btn.replace('{}', '방사진');
+					break;
 				}
+
+				str_html = str_html + html_td + html_btn; //+ '\n';
+
+				if (i % 5 == 0) {
+					str_html += '</tr>';
+				}
+
+			}
+
+			str_html += '</tbody></table>';
+
+			//console.log(str_html);
+
+			$('#room_pic').html(str_html);
+
+			var $item = $('.btn-upload_list').on('click', function() {
+				var idx = $item.index(this);
+				console.log(idx);
+
+				$('.file_list').eq(idx).click();
 			});
 		}
+		
+		function getOriginalName(fileName) {
+		    
+		    // uuid를 제외한 원래 파일 이름을 리턴
+		    var idx = fileName.indexOf("_")+1;
+		    return fileName.substr(idx);
+		}
+
+		$(document)
+				.on(
+						"change",
+						".file_list",
+						function(event) {
+							//alert('File is changed');			
+							var idx = $('.file_list').index(this);
+							console.log('File is changed : ' + idx);
+
+							var files = event.target.files;
+
+							// 첫번째 파일
+							var file = files[0];
+							// 콘솔에서 파일정보 확인
+							console.log('ajaxFileTransmit' + file);
+
+							// ajax로 전달할 폼 객체
+							var formData = new FormData();
+							// 폼 객체에 파일추가, append("변수명", 값)
+							var target = "file"; //+ idx.toString();
+
+							formData.append(target, file);
+
+							$
+									.ajax({
+										type : "post",
+										url : "/findhome/upload/uploadAjax",
+										data : formData,
+										// processData: true=> get방식, false => post방식
+										dataType : "text",
+										// contentType: true => application/x-www-form-urlencoded, 
+										//                false => multipart/form-data
+										processData : false,
+										contentType : false,
+										success : function(data) {
+
+											var str = "";
+											// 섬네일 생성하고 이미지 표시
+											str += "<img src='${path}/findhome/upload/displayFile?fileName="
+													+ data + "'></a>";
+											// 원래 파일 경로 얻기
+// 											var str2 = "<div><a href='${path}/upload/displayFile?fileName="+data+"'>"+getOriginalName(data)+"</a>";
+											var str2 = "" + data;
+											console.log('originalFileName : ' + str2);
+													
+											$("#btn-upload").append(str);
+											$('div').children('span');
+
+											data = '/findhome/upload/displayFile?fileName='
+													+ data;
+
+											$(".room_img_list").eq(idx).attr(
+													"src", data);
+											$(".btn-upload_list").eq(idx)
+													.hide();
+											// 실제파일경로 폼 hidden tag내 삽입
+											$(".fileList").eq(idx).attr(
+													"value", str2);											
+										}
+									});
+
+						});
 	</script>
 
 

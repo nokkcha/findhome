@@ -18,7 +18,7 @@ public interface BoardService {
 	
 	public List<OneRoomBean> getBoardList(PageBean pb);
 	public List<OneRoomBean> getWishList(PageBean pb);
-	public Integer getBoardCount();
+	public Integer getBoardCount(PageBean pb);
 	public Integer getWishCount(String id);
 
 	public BoardBean getBoard(int num);

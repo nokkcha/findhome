@@ -60,17 +60,19 @@
 
 	<select id="getBoardList"
 		resultType="com.itwillbs.domain.OneRoomBean">
-		select * from one_room order by room_id desc limit
+		select * from one_room 
+		where category=#{category}
+		order by room_id desc limit
 		#{startRow},#{pageSize}
 	</select>
 
 	<select id="getWishList"
 		resultType="com.itwillbs.domain.OneRoomBean">
-		select address, subject, room_id, monthly_rent, deposit, phone_number, id
+		select address, subject, room_id, monthly_rent, deposit, phone_number, id, category
 		from wish_list
 		join one_room
 		on wish_list.wish = one_room.room_id
-		where id= #{id}
+		where id= #{id} and category=#{category}
 		order by room_id desc limit #{startRow},#{pageSize}		
 	</select>
 
@@ -92,6 +94,7 @@
 		and (living_floor REGEXP #{living_floor})
 		 and (deposit >= #{deposit_min} and deposit <= #{deposit_max})
         and (monthly_rent >= #{monthly_rent_min} and monthly_rent <= #{monthly_rent_max})
+        and (category=#{category})
        ]]>
 
 	</select>
@@ -99,6 +102,7 @@
 	<select id="getBoardCount" resultType="java.lang.Integer">
 		select count(*) from
 		one_room
+		where category=#{category}
 	</select>
 
 

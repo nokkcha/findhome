@@ -69,8 +69,8 @@ public class BoardServiceImpl implements BoardService{
 	
 	
 	@Override
-	public Integer getBoardCount() {
-		return boardDAO.getBoardCount();
+	public Integer getBoardCount(PageBean pb) {
+		return boardDAO.getBoardCount(pb);
 	}
 	
 	@Override

@@ -25,7 +25,18 @@ public class OneRoomBean {
 	private String room_type; // "오픈형 원룸 (방1)" COMMENT "방구조",
 	private int fees; // DEFAULT 0 COMMENT "관리비",
 	private String include_fees; // {"전기세": "Y"}
+	private String category;
 	
+	
+	
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
+
 	private String[] include_fees_array;
 	
 	public String[] getInclude_fees_array() {

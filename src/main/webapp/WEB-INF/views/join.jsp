@@ -82,26 +82,7 @@
   </head>
   <body>
     
-  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-    <div class="container">
-      <a class="navbar-brand" href="index.html">dirEngine.</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="oi oi-menu"></span> Menu
-      </button>
-
-      <div class="collapse navbar-collapse" id="ftco-nav">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
-          <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-          <li class="nav-item"><a href="tour.html" class="nav-link">Tour</a></li>
-          <li class="nav-item"><a href="hotel.html" class="nav-link">Hotels</a></li>
-          <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
-          <li class="nav-item active"><a href="contact.html" class="nav-link">Contact</a></li>
-          <li class="nav-item cta"><a href="contact.html" class="nav-link"><span>Add listing</span></a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+  <%@ include file="../views/top.jsp"%>
     <!-- END nav -->
     
     <div class="hero-wrap js-fullheight" style="background-image: url('${pageContext.request.contextPath}/resources/images/bg_2.jpg');">
@@ -140,10 +121,13 @@
 <!--         <script type="text/javascript"> -->
 			   
 <!-- 			</script> -->
+
+		
 			
         
         <script type="text/javascript">
-        
+
+		     
         function checkId() {
 			   var id = document.login.id.value;
 			   var lengthRegex1 = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/;
@@ -156,13 +140,30 @@
 					 checkIdResult.innerHTML = " ";
 					 return true;
 				 }
-			  
-			   
-		   }
-
-
+				
+        }
+        
+        $(document).ready(function() {
+        	$('#id').keyup(function(){
+          		$.ajax('<c:url value = "/join/id_check" />', {
+            		data : {id : $('#id').val()},
+    			    success: function(result){
+    			         if(result == "iddup"){
+    			        	 $("#checkIdResult").html("<font color='#FF0000'>이미 사용중인 이메일입니다.</font>");
+    			         }else{
+    			        	 
+    			         }
+    			         
+    			    }
+    			     
+    			                      
+    			});
+        	});
+  
+        });
+        
 		   
-		   
+        
 			function checkPassword() {
 				var pass1 = $('#pass1').val();
 
@@ -298,7 +299,7 @@
 						return false;
 					}
 					
-					if($("#agree").is(":checked") == false){
+					if($('#agree').is(':checked') == false){
 						alert("이용약관 및 개인 정보 수집에 동의 하셔야 가입이 가능합니다");
 						return false;
 					}
@@ -430,7 +431,7 @@
 								class="form-control" name="id" id="id"
 								onkeyup="checkId()">
 								
-							<br><span class="check-group" id="checkIdResult"></span>	
+							<br><span class="check-group" id="checkIdResult"></span>
 
 						</div>
 						<div class="form-group" align="left">

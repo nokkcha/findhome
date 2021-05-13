@@ -47,8 +47,8 @@ public class BoardDAOImpl implements BoardDAO{
 	
 
 	@Override
-	public Integer getBoardCount() {
-		return sqlSession.selectOne(namespace+".getBoardCount");
+	public Integer getBoardCount(PageBean pb) {
+		return sqlSession.selectOne(namespace+".getBoardCount",pb);
 	}
 	
 	@Override

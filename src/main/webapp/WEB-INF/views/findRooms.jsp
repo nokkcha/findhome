@@ -45,7 +45,9 @@
       <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
           <div class="col-md-9 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
-            <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="index.html">메인</a></span> <span>오피스텔</span></p>
+            <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">
+            <span class="mr-2"><a href="<c:url value="findRooms"/>">원룸</a></span>
+             <span><a href="<c:url value="findOfficetel"/>">오피스텔</a></span></p>
             <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"> 원룸 </h1>
           </div>
         </div>
@@ -61,6 +63,8 @@
         			<h3 class="heading mb-4">검색 조건 설정</h3>
         			
         			<form action='<c:url value="findRooms-search"/>'>
+        			<input type="hidden" value="OneRoom" name="category">
+        			
         			
         				<div class="fields">
 		              <div class="form-group">
@@ -189,13 +193,15 @@
 		    					<div class="text-mi"> 
 		    						<div class="d-flex">
 		    							<div class="one">
-				    						<h3><a href='<c:url value="detailView?room_id=${roomList.room_id}" />'> ${roomList.address } ${roomList.room_id} </a></h3>
+				    						<h3><a href='<c:url value="detailView?room_id=${roomList.room_id}" />'> ${roomList.subject} </a></h3>
 			    						</div>
 			    						<div class="two">
 			    							<span class="price per-price"><small>${roomList.deposit} / ${roomList.monthly_rent}</small></span>
 		    							</div>
 		    						</div>
-		    						<p>${roomList.subject}</p>
+		    						<p>
+		    						${roomList.address }
+		    						</p>
 		    						
 		    						</div>
 		    						

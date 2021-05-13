@@ -25,6 +25,7 @@
 	<context:component-scan base-package="com.itwillbs.controller" />
 	<context:component-scan base-package="com.itwillbs.service" />
 	<context:component-scan base-package="com.itwillbs.dao" />
+
 	
 	<!-- 최대업로드크기 : 10MB -->
 	<beans:bean id="multipartResolver"
@@ -33,7 +34,7 @@
 	</beans:bean>
 
 	<beans:bean id="uploadPath" class="java.lang.String">
-		<beans:constructor-arg value="D:\\workspace_sts7\\SpringProject2\\src\\main\\webapp\\resources\\upload">
+		<beans:constructor-arg value="C:\\Users\\imrut\\git\\findhome\\src\\main\\webapp\\resources\\upload">
 		</beans:constructor-arg>
 	</beans:bean>
 	
