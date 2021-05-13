@@ -7,10 +7,10 @@ import com.itwillbs.domain.MemberBean;
 public interface MemberDAO {
 
 		public void insertMember(MemberBean mb);
+		public MemberBean getMember(String id);
 		
 		public MemberBean userCheck(MemberBean mb);
 		
-		public MemberBean getMember(String id);
 		
 		public void updateMember(MemberBean mb);
 		
@@ -24,6 +24,6 @@ public interface MemberDAO {
 		
 		public void deleteWish(MemberBean bb);
 
-		public List<MemberBean> getWishList(String id);
+		public List<MemberBean> getMemberWishList(String id);
 
 }

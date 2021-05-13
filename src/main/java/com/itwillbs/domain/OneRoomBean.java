@@ -1,6 +1,5 @@
 package com.itwillbs.domain;
 
-import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -10,13 +9,33 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class OneRoomBean {
 	private int room_id; // 매물 ID
+	private String[] fileList;
+	
+	public String[] getFileList() {
+		return fileList;
+	}
+
+	public void setFileList(String[] fileList) {
+		this.fileList = fileList;
+	}
+
 	private String address; // 주소
 	private int deposit; // 보증금
 	private int monthly_rent; // 월세
 	private String room_type; // "오픈형 원룸 (방1)" COMMENT "방구조",
 	private int fees; // DEFAULT 0 COMMENT "관리비",
-//	private Map<String, Object> include_fees; // {"전기세": "Y"}
-	private String[] include_fees; // {"전기세": "Y"}
+	private String include_fees; // {"전기세": "Y"}
+	
+	private String[] include_fees_array;
+	
+	public String[] getInclude_fees_array() {
+		String[] ary = include_fees.split(",");
+		return include_fees_array;
+	}
+
+	public void setInclude_fees_array(String[] include_fees_array) {
+		this.include_fees_array = include_fees_array;
+	}
 
 	private float exclusive_area_m; // DEFAULT 3.31 COMMENT "전용면적 (제곱미터)",
 	private float exclusive_area_p; // DEFAULT 1.00 COMMENT "전용면적 (평)",
@@ -44,8 +63,17 @@ public class OneRoomBean {
 	private int monthly_rent_max;
 	private int deposit_min;
 	private int deposit_max;
+	private String id;
 	
 	
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
 	public int getRoom_id() {
 		return room_id;
 	}
@@ -94,11 +122,11 @@ public class OneRoomBean {
 		this.fees = fees;
 	}
 
-	public String[] getInclude_fees() {
+	public String getInclude_fees() {
 		return include_fees;
 	}
 
-	public void setInclude_fees(String[] include_fees) {
+	public void setInclude_fees(String include_fees) {
 		this.include_fees = include_fees;
 	}
 
@@ -158,11 +186,11 @@ public class OneRoomBean {
 		this.direction = direction;
 	}
 
-	public String[] getOption() {
+	public String[] getOptions() {
 		return options;
 	}
 
-	public void setOption(String[] option) {
+	public void setOptions(String[] option) {
 		this.options = option;
 	}
 
@@ -289,9 +317,6 @@ public class OneRoomBean {
 
 	public void setDeposit_max(int deposit_max) {
 		this.deposit_max = deposit_max;
-	}
-
-	
-	
+	}	
 
 }

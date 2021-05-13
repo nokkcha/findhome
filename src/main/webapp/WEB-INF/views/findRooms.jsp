@@ -41,6 +41,7 @@
     
     <div class="hero-wrap js-fullheight" style="background-image: url('${pageContext.request.contextPath}/resources/images/bg_5.jpg');">
       <div class="overlay"></div>
+      
       <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
           <div class="col-md-9 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
@@ -49,6 +50,7 @@
           </div>
         </div>
       </div>
+      
     </div>
     
     <section class="ftco-section ftco-degree-bg">
@@ -62,9 +64,10 @@
         			
         				<div class="fields">
 		              <div class="form-group">
+		              <input type="reset" value="재설정" class="filter-reset">
 		                <input type="text" class="form-control" placeholder="지역, 지하철역 검색" name="search" id="filter-search">
 		                
-					<input type="submit" value="검색" class="btn filter-search-01" id="filter-search">
+					<input type="submit" value="검색" class="btn filter-search-submit" id="filter-search-submit">
 		              </div>
 		              <div class="form-group">
 		                <div class="select-wrap2 one-third">
@@ -72,46 +75,53 @@
 
 	                      구조
 	                 <div class="form-group">
-	                 
-		              <label class="label-class">  <span class="btn te op-ck" id="rtag-all"> 
-		              <input type="checkbox" name="room_all" value="전체" class="cktag rtypeAll"
-		              onclick="rtypeSelectAll(this)">전체</span></label>
-		              
-	              <div class="ck-op-one"> 
 	
-		                 <label class="label-class"> <span class="btn te op-no-ck"> 
-		                 <input type="checkbox" name="room_type" value="오픈형" class="cktag"
-		                 onclick="rtypeCheckSelectAll(this)">오픈형 </span></label>
+					<input type="checkbox" name="room_all" value="전체" class="cktag" id="rtypeAll" 
+		              onclick="rtypeSelectAll(this)" checked> 
+		              <label class="label-class" for="rtypeAll">
+		              <span class="btn op-css" id=" span-rtypeAll"> 전체  </span></label>
+	
+					<input type="checkbox" name="room_type" value="오픈형" class="cktag"  id="rtypeOpen" 
+	                 onclick="rtypeCheckSelectAll(this)">
+	                 <label class="label-class" for="rtypeOpen">
+	                 <span class="btn op-css rtypeOther"> 오픈형  </span> </label>
 		                 
-		                  <label class="label-class"><span class="btn te op-no-ck"> 
-		                  <input type="checkbox" name="room_type" value="분리형" class="cktag"
-		                  onclick="rtypeCheckSelectAll(this)">분리형 </span></label>
+	                  <input type="checkbox" name="room_type" value="분리형" class="cktag"  id="rtypeSeparate"
+	                  onclick="rtypeCheckSelectAll(this)">  
+	                 <label class="label-class" for="rtypeSeparate">
+	                 <span class="btn op-css rtypeOther"> 분리형</span></label>
 		                  
-		                <label class="label-class"> <span class="btn te op-no-ck"> 
-		                <input type="checkbox" name="room_type" value="복층형" class="cktag"
-		                onclick="rtypeCheckSelectAll(this)">복층형 </span></label>
-					</div>
-					
+		            <input type="checkbox" name="room_type" value="복층형" class="cktag"  id="rtypeStairs"
+	                onclick="rtypeCheckSelectAll(this)">
+	                 <label class="label-class" for="rtypeStairs"> 
+	                 <span class="btn op-css rtypeOther"> 복층형
+	                 </span></label>
+
+
 		              </div>
 		              
 	                      층 수 옵션
 	                      <div class="form-group">
 
-		             	  <label class="label-class"><span class="btn te op-ck" id="ftag-all">
-		             	  <input type="checkbox" name="floor_all" value="전체" class="cktag"
-		             	   onclick="floorSelectAll(this)"> 전체 </span></label>
+						<input type="checkbox" name="floor_all" value="전체" class="cktag" id="ftypeAll"
+		             	   onclick="ftypeSelectAll(this)" checked> 
+		             	  <label class="label-class" for="ftypeAll">
+		             	  <span class="btn op-css" id="span-ftypeAll"> 전체 </span></label>
 		             	  
-		             	  <label class="label-class"><span class="btn te op-no-ck">
-		             	  <input type="checkbox" name="living_floor" value="층" class="cktag"
-		             	  onclick="floorCheckSelectAll(this)"> 지상층 </span></label>
+		             	  <input type="checkbox" name="living_floor" value="층" class="cktag" id="ftypeFloor"
+		             	  onclick="ftypeCheckSelectAll(this)">
+		             	  <label class="label-class" for="ftypeFloor">
+		             	  <span class="btn op-css"> 지상층 </span></label>
 		             	  
-		             	 <label class="label-class"><span class="btn te op-no-ck">	 
-		             	 <input type="checkbox" name="living_floor" value="반지하" class="cktag"
-		             	 onclick="floorCheckSelectAll(this)"> 반지하 </span></label>
-		             	 
-		             	 <label class="label-class"><span class="btn te op-no-ck">	 
-		             	 <input type="checkbox" name="living_floor" value="옥탑방" class="cktag"
-		             	 onclick="floorCheckSelectAll(this)"> 옥탑 </span></label>
+		             	  <input type="checkbox" name="living_floor" value="반지하" class="cktag" id="ftypeBottom"
+		             	 onclick="ftypeCheckSelectAll(this)">
+		             	 <label class="label-class" for="ftypeBottom">
+		             	 <span class="btn op-css">	반지하 </span></label>
+		             	  
+		             	 <input type="checkbox" name="living_floor" value="옥탑방" class="cktag" id="ftypeTop"
+		             	 onclick="ftypeCheckSelectAll(this)">
+		             	 <label class="label-class" for="ftypeTop">
+		             	 <span class="btn op-css"> 옥탑방 </span></label>
 		             </div>
 	                  </div>
 		              </div>
@@ -124,8 +134,9 @@
 		              보증금
 		        <div class="range-slider">
 					<div class="Container" style="text-align: center;" >
-				  		<font size = 3 id = "slider_value_view1" style="color: gray;">0</font>						  
-				  			<input oninput = 'ShowSliderValue1(this.value)' style = "width:100%;" class="slider_range1"
+				  		<font size = 3 id = "slider_value_view1" style="color: gray;">0</font>	
+				  							  
+				  			<input oninput = 'ShowSliderValue1(this.value)' style = "width:100%;" class="slider_range1" id="rangeTest"
 				  			 type="range" step="100" value="0" min="0" max="50000" name="deposit_min" ></input>
 				  			 
 				  			 <span style="margin: 0 15%"> - </span>
@@ -139,7 +150,8 @@
 						월세
 		              	<div class="range-slider">
 						<div class="Container2" style="text-align: center;" >
-					  		<font size = 3 id = "slider_value_view3" style="color: gray;">0</font>						  
+					  		<font size = 3 id = "slider_value_view3" style="color: gray;">0</font>		
+					  						  
 					  			<input oninput = 'ShowSliderValue3(this.value)' style = "width:100%;" class="slider_range3" 
 					  			type="range" step="10" value="0" min="0" max="500" name="monthly_rent_min"></input>
 					  			
@@ -169,7 +181,7 @@
         	     <c:forEach var="roomList" items="${roomList }">
         	     <div class="roomlist">
 		    				<div class="destination">
-		    					<a href='<c:url value="/content?num=${roomList.room_id}" />' class="img img-2 d-flex justify-content-center align-items-center" 
+		    					<a href='<c:url value="/detailView?room_id=${roomList.room_id}" />' class="img img-2 d-flex justify-content-center align-items-center" 
 		    					style="background-image: url(${pageContext.request.contextPath}/resources/images/hotel-1.jpg);"></a>
 
 		    					<div class="text p-3">
@@ -177,7 +189,7 @@
 		    					<div class="text-mi"> 
 		    						<div class="d-flex">
 		    							<div class="one">
-				    						<h3><a href='<c:url value="/content?num=${roomList.room_id}" />'> ${roomList.address } ${roomList.room_id} </a></h3>
+				    						<h3><a href='<c:url value="detailView?room_id=${roomList.room_id}" />'> ${roomList.address } ${roomList.room_id} </a></h3>
 			    						</div>
 			    						<div class="two">
 			    							<span class="price per-price"><small>${roomList.deposit} / ${roomList.monthly_rent}</small></span>
@@ -202,11 +214,22 @@
 		    						</c:forEach>
 		    							
 		    							</button>
-		    							
-		    						<span class="ml-auto call"><a href="javascript:void(0);">call</a></span>	
-		    						</p>
 
+		    						<span class="ml-auto call"><a href="javascript:void(0);">call</a></span>
+									<input type="hidden" value="<c:out value='${roomList.phone_number}'/>" id="phone_number">
+
+		    						</p>
 		    						
+		    						
+		    						<div class="modal">
+									  <div class="modal_content" 
+									       title="클릭하면 창이 닫힙니다.">
+									    
+									  </div>
+									</div>
+
+
+
 		    					</div>
 		    				</div>
 					</div>
@@ -316,7 +339,7 @@
     		
         	// 목록 - [찜하기] 클릭
         	$('.text-zzim').click(function(){
-        		var room_id = $(this).parent().children("input")[0].value;
+        		var room_id = $(this).parent().children("#room_id")[0].value;
         		
         	 	$.ajax('<c:url value="/zzim" />',{
         	 		data:{wish:room_id},
@@ -343,12 +366,21 @@
         	// 목록 - [call] 클릭
         	$('.call').click(function () {    	
         		var filter = "win16|win32|win64|mac|macintel"; 
+        		var phone_number = $(this).parent().children('#phone_number')[0].value;
+        		
         		if ( navigator.platform ) { 
         			if ( filter.indexOf( navigator.platform.toLowerCase() ) < 0 ) {
-        				location.href="tel:010-1234-5678";
+        				location.href="tel:"+phone_number;
 				
-        			} else { 
-        					alert('웹에서 전화걸기 ex. 010-1234-5678');	
+        			} else {
+        				$(".modal_content").html("문의하기 <br> 전화번호 : " +phone_number)
+        				
+        				$(".modal").fadeIn();
+        				
+        				$(".modal_content").click(function(){
+        					$(".modal").fadeOut(); 
+        					});
+
         			} 
         		}
     		
@@ -365,8 +397,7 @@
     	}else{		
     	obValueView.innerHTML = sVal+"만";
     	}
-    	
-    	
+ 	
     }
 
     // 보증금 최대
@@ -390,91 +421,67 @@
     	var obValueView = document.getElementById("slider_value_view4");
     	obValueView.innerHTML = sVal+"만";
     }
+    
+    
+ // 목록 [구조] 선택
+    function rtypeCheckSelectAll()  {
+  	  // 전체 체크박스
+  	  const checkboxes 
+  	    = document.querySelectorAll('input[name="room_type"]');
+  	  // 선택된 체크박스
+  	  const checked 
+  	    = document.querySelectorAll('input[name="room_type"]:checked');
+  	  // select all 체크박스
+  	  const selectAll 
+  	    = document.querySelector('input[name="room_all"]');
+  	  
+  	  if(checkboxes.length === checked.length)  {
+  	    selectAll.checked = true;
+  	  }else {
+  	    selectAll.checked = false;
+  	  }
+  	}
 
-    // 목록 [층 수 옵션] 선택
-      function floorCheckSelectAll()  {
-	  // 전체 체크박스
-	  const checkboxes 
-	    = document.querySelectorAll('input[name="living_floor"]');
-	  // 선택된 체크박스
-	  const checked 
-	    = document.querySelectorAll('input[name="living_floor"]:checked');
-	  // select all 체크박스
-	  const selectAll 
-	    = document.querySelector('input[name="floor_all"]');
-	  
-   	  // 전체 체크박스 span 태그 영역 (css)
-   	  const checkedSection
-   	  = document.getElementById('ftag-all');
-	  
-	  
-	  if(checkboxes.length === checked.length)  {
-	    selectAll.checked = true;
-  		 checkedSection.classList.add('op-ck');
-   		 checkedSection.classList.remove('op-no-ck');
-	  }else {
-	    selectAll.checked = false;
-   	 	checkedSection.classList.add('op-no-ck');
-	   	checkedSection.classList.remove('op-ck');
-	  }
-	}
+  	function rtypeSelectAll(selectAll)  {
+  		
+  	  const checkboxes 
+  	     = document.getElementsByName('room_type');
+  	  
+  	  
+  	  checkboxes.forEach((checkbox) => {
+  	    checkbox.checked = selectAll.checked
+  	  })
+  	}
+    
+ // 목록 [층 수 옵션]] 선택
+    function ftypeCheckSelectAll()  {
+  	  // 전체 체크박스
+  	  const checkboxes 
+  	    = document.querySelectorAll('input[name="living_floor"]');
+  	  // 선택된 체크박스
+  	  const checked 
+  	    = document.querySelectorAll('input[name="living_floor"]:checked');
+  	  // select all 체크박스
+  	  const selectAll 
+  	    = document.querySelector('input[name="floor_all"]');
+  	  
+  	  if(checkboxes.length === checked.length)  {
+  	    selectAll.checked = true;
+  	  }else {
+  	    selectAll.checked = false;
+  	  }
+  	}
 
-	function floorSelectAll(selectAll)  {
-		
-	  const checkboxes 
-	     = document.getElementsByName('living_floor');
-	  
-	  checkboxes.forEach((checkbox) => {
-	    checkbox.checked = selectAll.checked
-		  alert(checkbox.val());
-	  })
-	  
-	  
-	}
-
-	
-	
-	
-	
-
-
-// 목록 [구조] 선택
-     function rtypeCheckSelectAll()  {
-   	  // 전체 체크박스
-   	  const checkboxes 
-   	    = document.querySelectorAll('input[name="room_type"]');
-   	  // 선택된 체크박스
-   	  const checked 
-   	    = document.querySelectorAll('input[name="room_type"]:checked');
-   	  // select all 체크박스
-   	  const selectAll 
-   	    = document.querySelector('input[name="room_all"]');
-   	  
-   	  // 전체 체크박스 span 태그 영역 (css)
-   	  const checkedSection
-   	  = document.getElementById('rtag-all');
-   	  
-   	  if(checkboxes.length === checked.length)  {
-   	    selectAll.checked = true;
-   		 checkedSection.classList.add('op-ck');
-   		 checkedSection.classList.remove('op-no-ck');
-   	  }else {
-   	    selectAll.checked = false;
-   	 	checkedSection.classList.add('op-no-ck');
-	   	checkedSection.classList.remove('op-ck');
-   	  }
-   	}
-
-   	function rtypeSelectAll(selectAll)  {
-   		
-   	  const checkboxes 
-   	     = document.getElementsByName('room_type');
-   	  
-   	  
-   	  checkboxes.forEach((checkbox) => {
-   	    checkbox.checked = selectAll.checked
-   	  })
-   	}
+  	function ftypeSelectAll(selectAll)  {
+  		
+  	  const checkboxes 
+  	     = document.getElementsByName('living_floor');
+  	  
+  	  
+  	  checkboxes.forEach((checkbox) => {
+  	    checkbox.checked = selectAll.checked
+  	  })
+  	}
     
     </script>
 

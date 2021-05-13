@@ -3,8 +3,11 @@ package com.itwillbs.controller;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -81,6 +84,39 @@ public class MemberController {
 	public String delete() {
 		// /WEB-INF/views/member/deleteForm.jsp
 		return "member/deleteForm";
+	}
+	
+	@RequestMapping(value = "/memberInfo",method = RequestMethod.GET )
+	public String memberinfo() {
+		return "memberInfo";
+	}
+
+
+	@RequestMapping(value = "/memberDelete",method = RequestMethod.GET )
+	public String memberdelete() {
+		return "memberDelete";
+	}
+	
+	@RequestMapping(value = "/join/id_check", method = RequestMethod.GET )
+	public ResponseEntity<String> id_check(HttpServletRequest request) {
+		
+		ResponseEntity<String> entity = null;
+		String result = "";
+		try {
+			String id = request.getParameter("id");
+			System.out.println(id);
+			MemberBean mb = memberService.getMember(id);
+			if(mb != null) {
+				result = "iddup";
+			} else {
+				result = "idok";
+			}
+			entity = new ResponseEntity<String>(result, HttpStatus.OK);
+		} catch (Exception e) {
+			e.printStackTrace();
+			entity = new ResponseEntity<String>(HttpStatus.BAD_REQUEST);; 
+		}
+		return entity;
 	}
 
 }

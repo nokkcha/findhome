@@ -45,22 +45,12 @@ public class BoardController {
 	}
 
 	@RequestMapping(value = "/writePro", method = RequestMethod.POST)
-	public String writePro(BoardBean bb) {
-		OneRoomBean testBean = new OneRoomBean();
-		testBean.setSeller_id("admin@gmail.com");
-
-//		Map<String, Object> options = new HashMap();
-//		options.put("에어컨", "Y");
-//		options.put("냉장고", "N");
-//		Map<String, Object> include_fees = new HashMap();
-//		include_fees.put("전기세", "Y");
-		String[] include_fees = new String[] {"전기세", "수도세"};
-		String[] options = new String[] {"에어컨", "냉장고", "TV"};
-		
-		testBean.setInclude_fees(include_fees);
-		testBean.setOption(options);
-
-		boardService.insertRoom(testBean);
+	public String writePro(OneRoomBean bb) {		
+		String[] fileList = bb.getFileList();
+		for (String string : fileList) {
+			System.out.println("FileList : " + string);
+		}
+		boardService.insertRoom(bb);
 
 		return "redirect:/";
 	}
@@ -86,7 +76,7 @@ public class BoardController {
 		String id = (String) session.getAttribute("id");
 	
 		if(id != null) {
-			List<MemberBean> wishList=memberService.getWishList(id);	
+			List<MemberBean> wishList=memberService.getMemberWishList(id);	
 			model.addAttribute("wishList", wishList);
 		}
 		return "findRooms";
@@ -103,16 +93,17 @@ public class BoardController {
 			pb.setPageNum("1");
 		}
 		pb.setPageSize(9);
-		
-		List<OneRoomBean> roomList = boardService.getBoardList(pb);
+		pb.setId(id);
 		
 		pb.setCount(boardService.getWishCount(id));
+		List<OneRoomBean> roomList = boardService.getWishList(pb);
+		
 		
 		model.addAttribute("roomList", roomList);
 		model.addAttribute("pb", pb);
 		
 		if(id != null) {
-			List<MemberBean> wishList=memberService.getWishList(id);	
+			List<MemberBean> wishList=memberService.getMemberWishList(id);	
 			model.addAttribute("wishList", wishList);
 		}
 		return "zzimList";
@@ -163,7 +154,7 @@ public class BoardController {
 		model.addAttribute("roomList", roomList);
 		
 		if(id != null) {
-			List<MemberBean> wishList=memberService.getWishList(id);	
+			List<MemberBean> wishList=memberService.getMemberWishList(id);	
 			model.addAttribute("wishList", wishList);
 		}
 		return "findRooms-search";
@@ -280,6 +271,16 @@ public class BoardController {
 			OneRoomBean ob = boardService.getRoom(room_id);
 			// ob를 담아서 detailView.jsp 이동
 			model.addAttribute("ob", ob);
+			
+			if (ob.getInclude_fees() != null) {
+				System.out.println("ob.getInclude_fees() : " + ob.getInclude_fees());
+				String var = ob.getInclude_fees().replace("\"", "");
+				ob.setInclude_fees_array(var.split(","));
+				String[] arr = ob.getInclude_fees_array();
+				for (String string : arr) {
+					System.out.println("fees : " + string);
+				}
+			}
 			
 		} catch (Exception e) {
 			e.printStackTrace();

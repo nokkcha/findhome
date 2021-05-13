@@ -66,8 +66,8 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public List<MemberBean> getWishList(String id) {
-		return memberDAO.getWishList(id);
+	public List<MemberBean> getMemberWishList(String id) {
+		return memberDAO.getMemberWishList(id);
 	}
 
 

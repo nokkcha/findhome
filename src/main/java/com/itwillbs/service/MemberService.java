@@ -7,10 +7,10 @@ import com.itwillbs.domain.MemberBean;
 public interface MemberService {
     // 추상메서드
 	public void insertMember(MemberBean mb);
+	public MemberBean getMember(String id);
 	
 	public MemberBean userCheck(MemberBean mb);
 	
-	public MemberBean getMember(String id);
 	
 	public void updateMember(MemberBean mb);
 	
@@ -24,7 +24,7 @@ public interface MemberService {
 	
 	public void deleteWish(MemberBean mb);
 
-	public List<MemberBean> getWishList(String id);
+	public List<MemberBean> getMemberWishList(String id);
 }
 
 

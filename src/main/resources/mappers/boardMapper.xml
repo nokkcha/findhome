@@ -4,16 +4,58 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.itwillbs.mapper.BoardMapper">
-
+	
 	<select id="getMaxNum" resultType="java.lang.Integer">
-		select max(room_id) from one_room
+		select max(room_id) from
+		one_room
 	</select>
+	
+	<resultMap id="OneRoomBean" type="com.itwillbs.domain.OneRoomBean">		
+		<result property="options" column="options" typeHandler="com.itwillbs.mapper.type.JSONTypeHandler" />
+		<result property="include_fees" column="include_fees" typeHandler="com.itwillbs.mapper.type.JSONTypeHandler" />
+	</resultMap>
 
-	<insert id="insertRoom">
-	INSERT INTO `one_room` (`include_fees`, `options`, `seller_id`) 
-		VALUES (#{include_fees, typeHandler=com.itwillbs.mapper.type.JSONTypeHandler},
-		#{options, typeHandler=com.itwillbs.mapper.type.JSONTypeHandler},
-		#{seller_id})
+	<insert id="insertRoom" useGeneratedKeys="true"
+		keyProperty="room_id">
+		INSERT INTO `one_room`
+		(`address`, `deposit`,
+		`monthly_rent`, `room_type`, `fees`,
+		`include_fees`,
+		`exclusive_area_m`, `exclusive_area_p`, `contract_area_m`,
+		`contract_area_p`,
+		`floor`, `living_floor`, `direction`, `options`,
+		`loan`, `pet`, `parking`,
+		`elevator`, `m_date`, `subject`,
+		`content`,
+		`phone_number`, `seller_id`) VALUES (
+		#{address}, #{deposit},
+		#{monthly_rent}, #{room_type}, #{fees},
+		#{include_fees,typeHandler=com.itwillbs.mapper.type.JSONTypeHandler},
+		#{exclusive_area_m}, #{exclusive_area_p}, #{contract_area_m},
+		#{contract_area_p},
+		#{floor}, #{living_floor}, #{direction},
+		#{options,typeHandler=com.itwillbs.mapper.type.JSONTypeHandler},
+		#{loan},
+		#{pet},
+		#{parking}, #{elevator}, #{m_date}, #{subject},
+		#{content},
+		#{phone_number}, #{seller_id})
+	</insert>
+
+	<insert id="insertRoomImg">
+		INSERT INTO `one_room_pic` (`id`, `room_id`,
+		`file_name`) VALUES (#{id},
+		#{room_id}, #{file_name})
+	</insert>
+
+	<insert id="insertRoomImages" parameterType="java.util.List">
+		INSERT INTO
+		one_room_pic
+		(room_id, file_name)
+		VALUES
+		<foreach collection="list" item="item" separator=",">
+			(#{item.room_id}, #{item.file_name})
+		</foreach>
 	</insert>
 
 	<select id="getBoardList"
@@ -21,10 +63,27 @@
 		select * from one_room order by room_id desc limit
 		#{startRow},#{pageSize}
 	</select>
-	
+
+	<select id="getWishList"
+		resultType="com.itwillbs.domain.OneRoomBean">
+		select address, subject, room_id, monthly_rent, deposit, phone_number, id
+		from wish_list
+		join one_room
+		on wish_list.wish = one_room.room_id
+		where id= #{id}
+		order by room_id desc limit #{startRow},#{pageSize}		
+	</select>
+
+	<select id="getWishCount" resultType="java.lang.Integer">
+		select count(*) from
+		wish_list where id=#{id}
+	</select>
+
+
+
 	<select id="getSearchList"
 		resultType="com.itwillbs.domain.OneRoomBean">
- 		select *
+		select *
 		from one_room
 		<![CDATA[ 
 		where 
@@ -34,27 +93,26 @@
 		 and (deposit >= #{deposit_min} and deposit <= #{deposit_max})
         and (monthly_rent >= #{monthly_rent_min} and monthly_rent <= #{monthly_rent_max})
        ]]>
-        
+
 	</select>
 
 	<select id="getBoardCount" resultType="java.lang.Integer">
 		select count(*) from
 		one_room
 	</select>
-	
-	<select id="getWishCount" resultType="java.lang.Integer">
-	select count(*) from wish_list where id=#{id}
-	</select>
-	
 
-	<select id="getBoard" resultType="com.itwillbs.domain.OneRoomBean">
+
+	<select id="getBoard"
+		resultType="com.itwillbs.domain.OneRoomBean">
 		select * from one_room where
 		room_id=#{room_id}
 	</select>
 
-	<select id="numCheck" resultType="com.itwillbs.domain.OneRoomBean">
+	<select id="numCheck"
+		resultType="com.itwillbs.domain.OneRoomBean">
 		select * from one_room where
-		room_id=#{room_id} and pass=#{pass}
+		room_id=#{room_id} and
+		pass=#{pass}
 	</select>
 
 	<update id="updateBoard">
@@ -66,14 +124,14 @@
 	<delete id="deleteBoard">
 		delete from one_room where room_id=#{room_id}
 	</delete>
-	
-		<select id="getRoom" resultType="com.itwillbs.domain.OneRoomBean">
-		select * from one_room where
+
+	<select id="getRoom" resultMap="OneRoomBean">
+		select * from
+		one_room where
 		room_id=#{room_id}
 	</select>
 
 </mapper>
-
 
 
 
