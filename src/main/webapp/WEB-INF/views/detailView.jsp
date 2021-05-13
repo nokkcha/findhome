@@ -403,12 +403,12 @@ th, td {
 									<th>관리비</th>
 									<td>${ob.fees}만원</td>
 								</tr>
-								<tr>
-									<th>관리비 포함_내역</th>
-									<td><c:forEach items="${ob.include_fees_array }" var="list">
-											<div>${list}</div>
-										</c:forEach></td>
-								</tr>
+<!-- 								<tr> -->
+<!-- 									<th>관리비 포함_내역</th> -->
+<%-- 									<td><c:forEach items="${ob.include_fees_array }" var="list"> --%>
+<%-- 											<div>${list}</div> --%>
+<%-- 										</c:forEach></td> --%>
+<!-- 								</tr> -->
 								<tr>
 									<th>대출 여부</th>
 									<td>${ob.loan}</td>
@@ -477,7 +477,7 @@ th, td {
 
 						<div class="room-detail-option-item-wrapper">
 
-							<c:forEach items="${ob.options }" var="list">
+							<c:forEach items="${ob.include_options }" var="list">
 								<div class="room-detail-content-option-item">
 									<img src="${pageContext.request.contextPath}/resources/images/options/${list.value}.png" width="50" height="50">
 									<div class="room-detail-content-option-item-name">${list.key}</div>

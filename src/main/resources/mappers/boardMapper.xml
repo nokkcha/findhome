@@ -11,7 +11,7 @@
 	</select>
 	
 	<resultMap id="OneRoomBean" type="com.itwillbs.domain.OneRoomBean">		
-		<result property="options" column="options" typeHandler="com.itwillbs.mapper.type.JSONTypeHandler" />
+		<result property="include_options" column="include_options" typeHandler="com.itwillbs.mapper.type.JSONTypeHandler" />
 		<result property="include_fees" column="include_fees" typeHandler="com.itwillbs.mapper.type.JSONTypeHandler" />
 	</resultMap>
 
@@ -23,7 +23,7 @@
 		`include_fees`,
 		`exclusive_area_m`, `exclusive_area_p`, `contract_area_m`,
 		`contract_area_p`,
-		`floor`, `living_floor`, `direction`, `options`,
+		`floor`, `living_floor`, `direction`, `include_options`,
 		`loan`, `pet`, `parking`,
 		`elevator`, `m_date`, `subject`,
 		`content`,
@@ -34,7 +34,7 @@
 		#{exclusive_area_m}, #{exclusive_area_p}, #{contract_area_m},
 		#{contract_area_p},
 		#{floor}, #{living_floor}, #{direction},
-		#{options,typeHandler=com.itwillbs.mapper.type.JSONTypeHandler},
+		#{include_options,typeHandler=com.itwillbs.mapper.type.JSONTypeHandler},
 		#{loan},
 		#{pet},
 		#{parking}, #{elevator}, #{m_date}, #{subject},

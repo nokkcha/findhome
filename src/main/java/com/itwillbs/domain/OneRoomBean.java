@@ -1,11 +1,7 @@
 package com.itwillbs.domain;
 
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
@@ -18,9 +14,8 @@ import lombok.Setter;
 @Getter
 @AllArgsConstructor
 enum OptionType {
-	에어컨("air-conditioner"), 냉장고("fridge"), 세탁기("washer"), 가스레인지("stove"), 인덕션("electric-stove"), 
-	전자레인지("microwave"), 책상("desk"), 책장("bookcase"), 침대("bed"), 옷장("wardrobe"), 
-	신발장("shoes"), 싱크대("kitchen");
+	에어컨("air-conditioner"), 냉장고("fridge"), 세탁기("washer"), 가스레인지("stove"), 인덕션("electric-stove"), 전자레인지("microwave"),
+	책상("desk"), 책장("bookcase"), 침대("bed"), 옷장("wardrobe"), 신발장("shoes"), 싱크대("kitchen");
 
 	private String code;
 
@@ -38,7 +33,29 @@ enum OptionType {
 	public static Object getKeyFromValue(String value) {
 		return OptionType.valueOf(value).code;
 	}
+}
 
+@Getter
+@AllArgsConstructor
+enum FeesType {
+	전기세("electric"), 가스("gas"), 수도("water"), 인터넷("wifi"), TV("television");
+
+	private String code;
+
+	public static final Map<String, FeesType> map = new HashMap<>();
+	static {
+		for (FeesType os : FeesType.values()) {
+			map.put(os.getCode(), os);
+		}
+	}
+
+	public static FeesType getOs3ByCode(String code) {
+		return map.get(code);
+	}
+
+	public static Object getKeyFromValue(String value) {
+		return FeesType.valueOf(value).code;
+	}
 }
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -46,62 +63,48 @@ enum OptionType {
 @Setter
 public class OneRoomBean {
 
-	Map<String, Object> include_fees = new HashMap<>();
+	Map<String, Object> include_fees;// = new HashMap<>();
 
 	public Map<String, Object> getInclude_fees() {
 		return include_fees;
 	}
 
-	public void setInclude_fees(String[] json) {
-
-		Map<String, Object> option = new HashMap<String, Object>();
-
-		String[] s = new String[json.length];
-
-		for (int i = 0; i < s.length; i++) {
-			switch (json[i]) {
-			case "전기세":
-				s[i] = "electric";
-				break;
-			case "가스":
-				s[i] = "gas";
-				break;
-			case "수도":
-				s[i] = "water";
-				break;
-			case "인터넷":
-				s[i] = "wifi";
-				break;
-			case "TV":
-				s[i] = "television";
-				break;
-
-			default:
-				break;
-			}
-			option.put(json[i], s[i]);
-		}
-
-		this.include_fees = option;
+	public void setInclude_fees(Map<String, Object> include_fees) {
+		this.include_fees = include_fees;
 	}
 
-	Map<String, Object> options = new HashMap<>();
+	public void setInclude_fees(String[] json) {
+		Map<String, Object> include_fees = new HashMap<String, Object>();
+		System.out.println(json);
+
+		for (int i = 0; i < json.length; i++) {
+			System.out.println(json[i] + " : " + FeesType.getKeyFromValue(json[i]));
+			include_fees.put(json[i], FeesType.getKeyFromValue(json[i]));
+		}
+
+		this.include_fees = include_fees;
+	}
+
+	Map<String, Object> include_options; // = new HashMap<>();
 
 	public Map<String, Object> getOptions() {
-		return options;
+		return include_options;
+	}
+	
+	public void setOptions(Map<String, Object> options) {
+		this.include_options = options;
 	}
 
 	public void setOptions(String[] json) {
 
-		Map<String, Object> option = new HashMap<String, Object>();
+		Map<String, Object> options = new HashMap<String, Object>();
 
-		String[] s = json;
-		for (int i = 0; i < s.length; i++) {
-			System.out.println(OptionType.getKeyFromValue(json[i]));
-			option.put(s[i], OptionType.getKeyFromValue(json[i]));
+		for (int i = 0; i < json.length; i++) {
+			System.out.println(json[i] + " : " + OptionType.getKeyFromValue(json[i]));
+			options.put(json[i], OptionType.getKeyFromValue(json[i]));
 		}
 
-		this.options = option;
+		this.include_options = options;
 	}
 
 	private int room_id; // 매물 ID
