@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.itwillbs.domain.BoardBean;
+import com.itwillbs.domain.JoinBean;
 import com.itwillbs.domain.OneRoomBean;
 import com.itwillbs.domain.PageBean;
 
@@ -86,5 +87,8 @@ public class BoardDAOImpl implements BoardDAO{
 		// TODO Auto-generated method stub
 		sqlSession.insert(namespace+".insertRoomImages",bean);
 	}
+
+	
+	
 
 }

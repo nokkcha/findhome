@@ -12,9 +12,10 @@ import org.springframework.stereotype.Service;
 
 import com.itwillbs.dao.BoardDAO;
 import com.itwillbs.domain.BoardBean;
+import com.itwillbs.domain.ImageBean;
+import com.itwillbs.domain.JoinBean;
 import com.itwillbs.domain.OneRoomBean;
 import com.itwillbs.domain.PageBean;
-import com.itwillbs.domain.ImageBean;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -135,6 +136,9 @@ public class BoardServiceImpl implements BoardService{
 	@Override
 	public List<OneRoomBean> getSearchList(OneRoomBean ob) {
 		return boardDAO.getSearchList(ob);
-	}	
+	}
+
+
+	
 
 }

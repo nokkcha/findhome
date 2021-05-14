@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import com.itwillbs.domain.BoardBean;
+import com.itwillbs.domain.JoinBean;
 import com.itwillbs.domain.OneRoomBean;
 import com.itwillbs.domain.PageBean;
 
@@ -31,4 +32,6 @@ public interface BoardService {
 	public List<OneRoomBean> getSearchList(OneRoomBean ob);
 	
 	public OneRoomBean getRoom(int room_id);
+	
+
 }

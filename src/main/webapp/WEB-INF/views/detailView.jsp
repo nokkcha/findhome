@@ -337,7 +337,7 @@ h4 {
 							<div class="single-slider owl-carousel">
 								<div class="item">
 									<div class="hotel-img">
-										<img src='<c:url value="/resources/upload/${ib.file_name}" />'>
+										<img src='<c:url value="/resources/upload/${ob.file_name}" />'>
 									</div>
 
 								</div>

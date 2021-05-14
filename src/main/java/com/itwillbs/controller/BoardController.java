@@ -30,6 +30,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.itwillbs.domain.BoardBean;
+import com.itwillbs.domain.ImageBean;
+import com.itwillbs.domain.JoinBean;
 import com.itwillbs.domain.MemberBean;
 import com.itwillbs.domain.OneRoomBean;
 import com.itwillbs.domain.PageBean;
@@ -282,7 +284,7 @@ public class BoardController {
 	public String detailView(HttpServletRequest request, Model model) {
 		try {
 			int room_id = Integer.parseInt(request.getParameter("room_id"));
-			OneRoomBean ob = boardService.getRoom(room_id);
+			 OneRoomBean ob = boardService.getRoom(room_id);
 			// ob를 담아서 detailView.jsp 이동
 			model.addAttribute("ob", ob);
 						
