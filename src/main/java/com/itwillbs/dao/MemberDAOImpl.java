@@ -29,6 +29,11 @@ public class MemberDAOImpl implements MemberDAO{
 	public MemberBean userCheck(MemberBean mb) {
 		return sqlSession.selectOne(namespace+".userCheck", mb);
 	}
+	
+	@Override
+	public MemberBean userCheck2(MemberBean mb) {
+		return sqlSession.selectOne(namespace+".userCheck2", mb);
+	}
 
 	@Override
 	public MemberBean getMember(String id) {
@@ -82,6 +87,8 @@ public class MemberDAOImpl implements MemberDAO{
 		
 		sqlSession.insert(namespace+".insertMember2",mb);
 	}
+
+
 
 
 }

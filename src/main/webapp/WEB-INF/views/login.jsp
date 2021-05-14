@@ -143,6 +143,7 @@
 				
 					</form>
 
+  <input type="button" name="radioTxt" id="radioTxt" value="Banana">Banana
 
 
 				</div>
@@ -152,20 +153,30 @@
 		</div>
 	</section>
 	
-	<script type="text/javascript">
-	$('#member_type_select').change( function(){
-	    var checkValue = $(this).val();
-	    	    
-	    console.log(checkValue);
-	    if (checkValue == "일반") {
-	    	$('#login').attr("action", "/loginPro");
-	    	
-	    } else {
-	    	$('#login').attr("action", "/loginPro2");
-	    } 	    
-	    			    
-	});	
-	</script>
+	
+	 <script type="text/javascript">
+      $(document).ready(function () {
+    	  
+    	  
+    	  $("input[name=member_type_select]").change(function(){
+          var checkValue = $('input[name="member_type_select"]:checked').val();
+          console.log(checkValue);
+												if (checkValue == "일반") {
+														$('#login')
+																.attr("action",
+																		"<c:url value="/loginPro" />");
+
+													} else {									
+														$('#login')
+																.attr("action",
+																		"<c:url value="/loginPro2" />");
+													}
+												});
+							});
+		</script>
+	
+
+<!-- 	</script> -->
 
 
 	    <footer class="ftco-footer ftco-bg-dark ftco-section">
