@@ -57,6 +57,12 @@ public class HomeController {
 		try {
 			String id = (String) session.getAttribute("id");
 			String category = request.getParameter("category");
+			
+			if ( id == null || category == null) {
+				model.addAttribute("msg", "잘못된 요청입니다.");
+				return "msg";
+			}
+			
 			OneRoomBean ob = new OneRoomBean();
 			ob.setCategory(category);
 			ob.setSeller_id(id);

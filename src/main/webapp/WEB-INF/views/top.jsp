@@ -37,7 +37,7 @@
 							<ul class="dropdown-menu">
 								<li><a class="dropdown-item" href="./findRooms"> 방 찾기 </a></li>
 								<li><a class="dropdown-item" href="./findRooms"> 찜한 매물 </a></li>
-								<li><a class="dropdown-item" href="./sellRoom"> 방 내놓기 </a></li>
+								<li><a class="dropdown-item" href="./sellRoom?category=Officetel"> 방 내놓기 </a></li>
 							</ul></li>
 
 					</ul>
@@ -59,7 +59,7 @@
 				} else {
 				%>
 				<li class="nav-item"><a href="./memberInfo" class="nav-link">회원정보</a></li>
-
+				<li class="nav-item"><a href="./logout" class="nav-link">로그아웃</a></li>
 				<%
 				}
 				%>

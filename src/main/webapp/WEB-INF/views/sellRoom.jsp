@@ -96,10 +96,10 @@
 
 		<div class="container" align="left">
 			<br>
-			<c:if test="${ob.category ne 'OneRoom'}"> 
-			<h1>오피스텔 매물 등록</h1>
-			</c:if>
-			<h1>원룸 매물 등록</h1>
+			<c:choose>
+			<c:when test="${ob.category eq 'OneRoom'}"> <h1>원룸 매물 등록</h1>  </c:when>
+			<c:when test="${ob.category eq 'Officetel'}"> <h1>오피스텔 매물 등록</h1> </c:when>			
+			</c:choose>			
 			<pre>
 · 일반적인 형태의 주거용 전월세 매물만 내놓을 수 있습니다.
   1) 한 번의 방등록으로 반경 5km이내 모든 중개사무소에 방 정보가 노출되어 중개가 시작됩니다.
@@ -301,7 +301,8 @@
 					<!-- 			</tbody> -->
 				</table>
 
-				<input type="text" id="seller_id" name="seller_id" value='${ob.seller_id}'>
+				<input type="text" id="seller_id" hidden="" name="seller_id" value='${ob.seller_id}'>
+				<input type="text" id="category" hidden="" name="category" value='${ob.category}'>
 
 				<button class="btn btn-primary btn-lg btn-block" id="sellRoom">방 내놓기</button>
 			</form>

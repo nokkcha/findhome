@@ -41,7 +41,7 @@ import com.itwillbs.service.MemberService;
 public class BoardController {
 	@Inject
 	private BoardService boardService;
-	
+
 	@Inject
 	private MemberService memberService;
 
@@ -61,15 +61,14 @@ public class BoardController {
 		for (String string : fileList) {
 			System.out.println("FileList : " + string);
 		}
-		
+
 		bb.setInclude_fees(bb.getInclude_feesArray());
 		bb.setInclude_options(bb.getInclude_optionsArray());
-		
+
 		boardService.insertRoom(bb);
 
 		return "redirect:/";
 	}
-
 
 	@RequestMapping(value = "/findRooms", method = RequestMethod.GET)
 	public String list(HttpServletRequest request, Model model, HttpSession session) {
@@ -87,20 +86,20 @@ public class BoardController {
 
 		model.addAttribute("roomList", roomList);
 		model.addAttribute("pb", pb);
-		
+
 		String id = (String) session.getAttribute("id");
-	
-		if(id != null) {
-			List<MemberBean> wishList=memberService.getWishList(id);	
+
+		if (id != null) {
+			List<MemberBean> wishList = memberService.getWishList(id);
 			model.addAttribute("wishList", wishList);
 		}
 		return "findRooms";
 	}
-	
+
 	@RequestMapping(value = "/findRooms-zzim", method = RequestMethod.GET)
 	public String zzimList(HttpServletRequest request, Model model, HttpSession session) {
 		String id = (String) session.getAttribute("id");
-		
+
 		PageBean pb = new PageBean();
 		if (request.getParameter("pageNum") != null) {
 			pb.setPageNum(request.getParameter("pageNum"));
@@ -108,27 +107,25 @@ public class BoardController {
 			pb.setPageNum("1");
 		}
 		pb.setPageSize(9);
-		
+
 		List<OneRoomBean> roomList = boardService.getBoardList(pb);
-		
+
 		pb.setCount(boardService.getWishCount(id));
-		
+
 		model.addAttribute("roomList", roomList);
 		model.addAttribute("pb", pb);
-		
-		if(id != null) {
-			List<MemberBean> wishList=memberService.getWishList(id);	
+
+		if (id != null) {
+			List<MemberBean> wishList = memberService.getWishList(id);
 			model.addAttribute("wishList", wishList);
 		}
 		return "zzimList";
 	}
-	
-	
-	
+
 	@RequestMapping(value = "/findRooms-search", method = RequestMethod.GET)
 	public String search(HttpServletRequest request, Model model, HttpSession session, OneRoomBean ob) {
 		String id = (String) session.getAttribute("id");
-		
+
 //		PageBean pb = new PageBean();
 //		if (request.getParameter("pageNum") != null) {
 //			pb.setPageNum(request.getParameter("pageNum"));
@@ -136,47 +133,44 @@ public class BoardController {
 //			pb.setPageNum("1");
 //		}
 //		pb.setPageSize(9);
-		
-		ob.setSearch("%"+ob.getSearch()+"%");
+
+		ob.setSearch("%" + ob.getSearch() + "%");
 		System.out.println("검색어 : " + ob.getSearch());
-		
-		if(ob.getRoom_type() == null) {
+
+		if (ob.getRoom_type() == null) {
 			ob.setRoom_type("^");
-		} else if(ob.getRoom_type().contains(",")) {
+		} else if (ob.getRoom_type().contains(",")) {
 			ob.setRoom_type(ob.getRoom_type().replaceAll(",", "|"));
 		}
-		System.out.println("방구조 : " + ob.getRoom_type() );
-	
-		if(ob.getLiving_floor() == null) {
+		System.out.println("방구조 : " + ob.getRoom_type());
+
+		if (ob.getLiving_floor() == null) {
 			ob.setLiving_floor("^");
-		}else if(ob.getLiving_floor().contains(",")) {
+		} else if (ob.getLiving_floor().contains(",")) {
 			ob.setLiving_floor(ob.getLiving_floor().replaceAll(",", "|"));
 		}
 		System.out.println("층수 : " + ob.getLiving_floor());
-		
-		System.out.println("월세 최소 : " +ob.getMonthly_rent_min());
-		System.out.println("월세 최대 : " +ob.getMonthly_rent_max());
-		
+
+		System.out.println("월세 최소 : " + ob.getMonthly_rent_min());
+		System.out.println("월세 최대 : " + ob.getMonthly_rent_max());
+
 		System.out.println("보증금 최소 : " + ob.getDeposit_min());
 		System.out.println("보증금 최대 : " + ob.getDeposit_max());
-		
+
 		List<OneRoomBean> roomList = boardService.getSearchList(ob);
-		
+
 //		pb.setCount(boardService.getWishCount(id));
 //		model.addAttribute("pb", pb);
-		
+
 		model.addAttribute("roomList", roomList);
-		
-		if(id != null) {
-			List<MemberBean> wishList=memberService.getWishList(id);	
+
+		if (id != null) {
+			List<MemberBean> wishList = memberService.getWishList(id);
 			model.addAttribute("wishList", wishList);
 		}
 		return "findRooms-search";
 	}
-	
 
-
-	
 //	http://localhost:8080/myweb2/board/fwrite
 	@RequestMapping(value = "/board/fwrite", method = RequestMethod.GET)
 	public String fwrite() {
@@ -277,35 +271,42 @@ public class BoardController {
 			return "member/msg";
 		}
 	}
-	
-	@RequestMapping(value = "/detailView",method = RequestMethod.GET )
+
+	@RequestMapping(value = "/detailView", method = RequestMethod.GET)
 	public String detailView(HttpServletRequest request, Model model) {
 		try {
+			if ( (String) request.getParameter("room_id") == null) {
+				model.addAttribute("msg", "잘못된 요청입니다.");
+				// /WEB-INF/views/member/msg.jsp
+				return "msg";
+			}
 			int room_id = Integer.parseInt(request.getParameter("room_id"));
+			System.out.println("매물상세 -> 요청 방 ID : " + room_id);
+
 			OneRoomBean ob = boardService.getRoom(room_id);
 			// ob를 담아서 detailView.jsp 이동
 			model.addAttribute("ob", ob);
-						
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return "detailView";
 	}
-	
+
 	@RequestMapping(value = "/mailpro", method = RequestMethod.POST)
 	public String mailpro(HttpServletRequest request, Model model) {
-		
-		String sender ="hyunjoon42311@gamil.com";
+
+		String sender = "hyunjoon42311@gamil.com";
 		String receiver = "tcandyman@naver.com";
 		String phone = request.getParameter("phone");
 		String content = request.getParameter("content");
 		String name = request.getParameter("name");
 		String date1 = request.getParameter("date1");
-		content=content+name+phone+date1;
-		
-		try{
+		content = content + name + phone + date1;
+
+		try {
 			// 서버정보를 => Properties 객체 저장
-			Properties properties=System.getProperties();
+			Properties properties = System.getProperties();
 			// gmail은 무조건 true 고정
 			properties.put("mail.smtp.starttls.enable", "true");
 			// smtp 서버주소
@@ -316,32 +317,30 @@ public class BoardController {
 			properties.put("mail.smtp.port", "587");
 			// 구글메일인증
 			// 패키지 mailtest 파일이름 GoogleAuthentication
-			Authenticator auth=new GoogleAuthentication();
-			//메일전송하는 역할을 하는 단위 Session객체 생성
-			Session s=Session.getDefaultInstance(properties, auth);
+			Authenticator auth = new GoogleAuthentication();
+			// 메일전송하는 역할을 하는 단위 Session객체 생성
+			Session s = Session.getDefaultInstance(properties, auth);
 			// Session 이용해서 전송할 Message객체생성
-			Message message=new MimeMessage(s);
-			Address sender_address=new InternetAddress(sender);
-			Address receiver_address=new InternetAddress(receiver);
+			Message message = new MimeMessage(s);
+			Address sender_address = new InternetAddress(sender);
+			Address receiver_address = new InternetAddress(receiver);
 			message.setHeader("content-Type", "text/html; charset=UTF-8");
 			message.setFrom(sender_address);
 			message.addRecipient(Message.RecipientType.TO, receiver_address);
 			message.setSubject("문의사항");
-			message.setContent(content,"text/html; charset=UTF-8");
+			message.setContent(content, "text/html; charset=UTF-8");
 			message.setSentDate(new Date());
-			//메시지 전송
+			// 메시지 전송
 			Transport.send(message);
-			
-			
-		}catch(Exception e){
-			
+
+		} catch (Exception e) {
+
 			e.printStackTrace();
 		}
-		
-		model.addAttribute("msg","문의가 정상적으로 접수되었습니다.");
-		
+
+		model.addAttribute("msg", "문의가 정상적으로 접수되었습니다.");
+
 		return "msg";
 	}
-	
 
 }
