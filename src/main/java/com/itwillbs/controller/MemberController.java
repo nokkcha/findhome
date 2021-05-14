@@ -24,7 +24,6 @@ public class MemberController {
 	// 부모인터페이스 멤버변수에 객체생성한 값을 전달 MemberService memberService
 	@Inject
 	private MemberService memberService;
- 
 
 	@RequestMapping(value = "/join_choice", method = RequestMethod.GET)
 	public String join_choice() {
@@ -35,7 +34,7 @@ public class MemberController {
 	public String join() {
 		return "join";
 	}
-	
+
 	@RequestMapping(value = "/join2", method = RequestMethod.GET)
 	public String join2() {
 		return "join2";
@@ -54,7 +53,7 @@ public class MemberController {
 		if (mb2 != null) {
 			// 세션값 생성 "id"
 			session.setAttribute("id", mb.getId());
-						
+
 			return "redirect:/";
 		} else {
 			// 입력하신 정보가 틀립니다.
@@ -64,7 +63,7 @@ public class MemberController {
 		}
 
 	}
-	
+
 	@RequestMapping(value = "/loginPro2", method = RequestMethod.POST)
 	public String loginPro2(MemberBean mb, HttpSession session, Model model) {
 
@@ -75,7 +74,7 @@ public class MemberController {
 
 			// 회원구분 세션값 생성 "member_type"
 			session.setAttribute("member_type", "seller");
-			
+
 			return "redirect:/";
 		} else {
 			// 입력하신 정보가 틀립니다.
@@ -93,7 +92,7 @@ public class MemberController {
 
 		return "redirect:/";
 	}
-	
+
 	@RequestMapping(value = "/joinPro2", method = RequestMethod.POST)
 	public String joinPro2(MemberBean mb) {
 
@@ -121,24 +120,46 @@ public class MemberController {
 		// /WEB-INF/views/member/deleteForm.jsp
 		return "member/deleteForm";
 	}
-	
+
 	@RequestMapping(value = "/memberInfo", method = RequestMethod.GET)
 	public String update(HttpSession session, Model model) {
 		// String id = 세션값 가져오기
-		String id=(String)session.getAttribute("id");
-		// MemberBean mb = 세션에 해당하는 정보 조회 getMember(id)   MemberBean 리턴
-		MemberBean mb=memberService.getMember(id);
+		String id = (String) session.getAttribute("id");
+		// 1.세션값 변수에 저장
+		String member_type = (String) session.getAttribute("member_type");
+
+		// MemberBean mb = 세션에 해당하는 정보 조회 getMember(id) MemberBean 리턴
+		MemberBean mb = memberService.getMember(id);
+		// 2.멤버빈에 저장
+		mb.setMember_type(member_type);
+
 		// model "mb",mb
-		model.addAttribute("mb",mb);
-		
-		//  /WEB-INF/views/member/updateForm.jsp
+		model.addAttribute("mb", mb);
+
+		// /WEB-INF/views/member/updateForm.jsp
 		return "memberInfo";
 	}
-	
+
 	@RequestMapping(value = "/memberInfoPro", method = RequestMethod.GET)
-	public String updatePro(MemberBean mb,  Model model) {
+	public String updatePro(MemberBean mb, Model model) {
+
+		MemberBean mb2 = memberService.userCheck(mb);
+		if (mb2 != null) {
+			// 수정
+			memberService.updateMember(mb);
+			return "redirect:/";
+		} else {
+			// 입력하신 정보가 틀립니다.
+			model.addAttribute("msg", "입력하신 정보가 틀립니다.");
+			// /WEB-INF/views/member/msg.jsp
+			return "msg";
+		}
+	}
+	
+	@RequestMapping(value = "/memberInfoPro2", method = RequestMethod.GET)
+	public String updatePro2(MemberBean mb,  Model model) {
 		
-		MemberBean mb2=memberService.userCheck(mb);
+		MemberBean mb2=memberService.userCheck2(mb);
 		if(mb2!=null) {
 			// 수정
 			memberService.updateMember(mb);
@@ -151,22 +172,21 @@ public class MemberController {
 		}
 	}
 
-
-	@RequestMapping(value = "/memberDelete",method = RequestMethod.GET )
+	@RequestMapping(value = "/memberDelete", method = RequestMethod.GET)
 	public String memberdelete() {
 		return "memberDelete";
 	}
-	
-	@RequestMapping(value = "/join/id_check", method = RequestMethod.GET )
+
+	@RequestMapping(value = "/join/id_check", method = RequestMethod.GET)
 	public ResponseEntity<String> id_check(HttpServletRequest request) {
-		
+
 		ResponseEntity<String> entity = null;
 		String result = "";
 		try {
 			String id = request.getParameter("id");
 			System.out.println(id);
 			MemberBean mb = memberService.getMember(id);
-			if(mb != null) {
+			if (mb != null) {
 				result = "iddup";
 			} else {
 				result = "idok";
@@ -174,21 +194,22 @@ public class MemberController {
 			entity = new ResponseEntity<String>(result, HttpStatus.OK);
 		} catch (Exception e) {
 			e.printStackTrace();
-			entity = new ResponseEntity<String>(HttpStatus.BAD_REQUEST);; 
+			entity = new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
+			;
 		}
 		return entity;
 	}
-	
-	@RequestMapping(value = "/join2/id_check2", method = RequestMethod.GET )
+
+	@RequestMapping(value = "/join2/id_check2", method = RequestMethod.GET)
 	public ResponseEntity<String> id_check2(HttpServletRequest request) {
-		
+
 		ResponseEntity<String> entity = null;
 		String result = "";
 		try {
 			String id = request.getParameter("id");
 			System.out.println(id);
 			MemberBean mb = memberService.getMember2(id);
-			if(mb != null) {
+			if (mb != null) {
 				result = "iddup";
 			} else {
 				result = "idok";
@@ -196,7 +217,8 @@ public class MemberController {
 			entity = new ResponseEntity<String>(result, HttpStatus.OK);
 		} catch (Exception e) {
 			e.printStackTrace();
-			entity = new ResponseEntity<String>(HttpStatus.BAD_REQUEST);; 
+			entity = new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
+			;
 		}
 		return entity;
 	}

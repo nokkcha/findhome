@@ -54,6 +54,7 @@
 
 	<%@ include file="../views/top.jsp"%>
 
+<input type="text" id="member_type" value=${mb.member_type }>
 
 	<div class="hero-wrap js-fullheight"
 		style="background-image: url('${pageContext.request.contextPath}/resources/images/bg_2.jpg');">
@@ -203,11 +204,11 @@
 							return false;
 						}
 						
-						if (!lengthRegex2.exec(pass1)) {
-							$('#password').focus();
-							swal.fire("패스워드 입력확인", "사용할 수 없는 패스워드입니다", "error") //"info,success,warning,error" 중 택1
-							return false;
-						}
+// 						if (!lengthRegex2.exec(pass1)) {
+// 							$('#password').focus();
+// 							swal.fire("패스워드 입력확인", "사용할 수 없는 패스워드입니다", "error") //"info,success,warning,error" 중 택1
+// 							return false;
+// 						}
 						
 						if (phone == "") {
 							$('#phone_number').focus();
@@ -215,11 +216,11 @@
 							return false;
 						}
 						
-						if (!lengthRegex3.exec(phone)) {
-							$('#phone_number').focus();
-							swal.fire("전화번호 입력확인", "전화번호를 다시 입력해주세요", "error") //"info,success,warning,error" 중 택1
-							return false;
-						}
+// 						if (!lengthRegex3.exec(phone)) {
+// 							$('#phone_number').focus();
+// 							swal.fire("전화번호 입력확인", "전화번호를 다시 입력해주세요", "error") //"info,success,warning,error" 중 택1
+// 							return false;
+// 						}
 						
 						
 
@@ -239,7 +240,26 @@
 						checkResult3.innerHTML = "<font color='#000000'>비밀번호 일치</font>";
 					}
 				}
+				
+				
 			</script>
+			
+<script type="text/javascript">
+	$(document).ready(function () { 
+		var checkValue = $('#member_type').val();
+		//alert(checkValue);
+          console.log(checkValue);
+				
+	          if (checkValue == "seller") {
+					$('#login').attr("action","<c:url value="/memberInfoPro2" />");
+	
+				} else {									
+					$('#login').attr("action","<c:url value="/memberInfoPro" />");
+				}
+	});		
+</script>
+
+
 			<h2>회원 정보</h2>
 			<div class="row block-9">
 				<div class="pr-md-5">
@@ -256,7 +276,8 @@
 						<div class="form-group" align="left">
 							<label class="form-control-label">비밀번호</label><input
 								type="password" class="form-control" name="password" id="password"
-								onkeyup="checkPassword()">
+								>
+<!-- 								onkeyup="checkPassword()" -->
 								
 						  <br><span class="check-group" id="checkPasswordResult"></span>
 						</div>
@@ -264,14 +285,16 @@
 						<div class="form-group" align="left">
 							<label class="form-control-label">비밀번호 확인</label><input
 								type="password" class="form-control" name="password2" id="password2"
-								onkeyup="checkPassword2()">
+								>
+<!-- 								onkeyup="checkPassword2()" -->
 								
 						  <br><span class="check-group" id="checkPasswordResult3"></span>
 						</div>
 						<div class="form-group" align="left">
 							<label class="form-control-label">휴대폰 번호</label><input type="tel"
 								class="form-control" name="phone_number" id="phone" value="${mb.phone_number }"
-								onkeyup="checkPhone()">
+								">
+<!-- 								onkeyup="checkPhone() -->
 								
 						  <br><span class="check-group" id="checkPhoneResult"></span>	
 						</div>

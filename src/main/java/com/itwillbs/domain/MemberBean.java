@@ -8,7 +8,14 @@ public class MemberBean {
 	private String password;
 	private String phone_number;
 	private char is_confirm = 'N';
+	private String member_type;
 	
+	public String getMember_type() {
+		return member_type;
+	}
+	public void setMember_type(String member_type) {
+		this.member_type = member_type;
+	}
 	private int no;
 	private int wish;
 	
