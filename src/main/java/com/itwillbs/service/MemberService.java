@@ -29,7 +29,7 @@ public interface MemberService {
 	
 	public void deleteWish(MemberBean mb);
 
-	public List<MemberBean> getWishList(String id);
+	public List<MemberBean> getMemberWishList(String id);
 }
 
 

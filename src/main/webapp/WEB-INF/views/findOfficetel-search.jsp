@@ -48,7 +48,7 @@
             <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">
             <span class="mr-2"><a href="<c:url value="findRooms"/>">원룸</a></span>
              <span><a href="<c:url value="findOfficetel"/>">오피스텔</a></span></p>
-            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"> 원룸 </h1>
+            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"> 오피스텔 </h1>
           </div>
         </div>
       </div>
@@ -62,8 +62,8 @@
         		<div class="sidebar-wrap bg-light ftco-animate">
         			<h3 class="heading mb-4">검색 조건 설정</h3>
         			
-        			<form action='<c:url value="findRooms-search"/>'>
-        			<input type="hidden" value="OneRoom" name="category">
+        			<form action='<c:url value="findOfficetel-search"/>'>
+        			<input type="hidden" value="Officetel" name="category">
         			
         			
         				<div class="fields">
@@ -88,17 +88,29 @@
 					<input type="checkbox" name="room_type" value="오픈형" class="cktag"  id="rtypeOpen" 
 	                 onclick="rtypeCheckSelectAll(this)">
 	                 <label class="label-class" for="rtypeOpen">
-	                 <span class="btn op-css rtypeOther"> 오픈형  </span> </label>
+	                 <span class="btn op-css rtypeOther"> 오픈형 원룸  </span> </label>
 		                 
 	                  <input type="checkbox" name="room_type" value="분리형" class="cktag"  id="rtypeSeparate"
 	                  onclick="rtypeCheckSelectAll(this)">  
 	                 <label class="label-class" for="rtypeSeparate">
-	                 <span class="btn op-css rtypeOther"> 분리형</span></label>
+	                 <span class="btn op-css rtypeOther"> 분리형 원룸</span></label>
 		                  
 		            <input type="checkbox" name="room_type" value="복층형" class="cktag"  id="rtypeStairs"
 	                onclick="rtypeCheckSelectAll(this)">
 	                 <label class="label-class" for="rtypeStairs"> 
-	                 <span class="btn op-css rtypeOther"> 복층형
+	                 <span class="btn op-css rtypeOther"> 복층형 원룸
+	                 </span></label>
+	                 
+	                 <input type="checkbox" name="room_type" value="투룸" class="cktag"  id="rtypeTwo"
+	                onclick="rtypeCheckSelectAll(this)">
+	                 <label class="label-class" for="rtypeTwo"> 
+	                 <span class="btn op-css rtypeOther"> 투룸
+	                 </span></label>
+		                  
+		            <input type="checkbox" name="room_type" value="쓰리룸" class="cktag"  id="rtypeThree"
+	                onclick="rtypeCheckSelectAll(this)">
+	                 <label class="label-class" for="rtypeThree"> 
+	                 <span class="btn op-css rtypeOther"> 쓰리룸+
 	                 </span></label>
 
 

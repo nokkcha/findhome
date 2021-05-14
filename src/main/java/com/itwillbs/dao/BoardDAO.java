@@ -15,7 +15,8 @@ public interface BoardDAO {
 		public Integer getMaxNum();
 		
 		public List<OneRoomBean> getBoardList(PageBean pb);
-		public Integer getBoardCount();
+		public List<OneRoomBean> getWishList(PageBean pb);
+		public Integer getBoardCount(PageBean pb);
 		public Integer getWishCount(String id);
 		public BoardBean getBoard(int num);
 		public BoardBean numCheck(BoardBean bb);

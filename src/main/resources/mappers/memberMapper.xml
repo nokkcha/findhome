@@ -58,7 +58,7 @@
 		delete from wish_list where wish=#{wish} and id=#{id}
 	</delete>
 
-	<select id="getWishList"
+	<select id="getMemberWishList"
 		resultType="com.itwillbs.domain.MemberBean">
 		select * from wish_list where id=#{id}
 	</select>

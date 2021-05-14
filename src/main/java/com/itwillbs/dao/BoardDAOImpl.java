@@ -35,10 +35,20 @@ public class BoardDAOImpl implements BoardDAO{
 	public List<OneRoomBean> getBoardList(PageBean pb) {
 		return sqlSession.selectList(namespace+".getBoardList", pb);
 	}
+	@Override
+	public List<OneRoomBean> getWishList(PageBean pb) {
+		return sqlSession.selectList(namespace+".getWishList", pb);
+	}
+	
+	@Override
+	public List<OneRoomBean> getSearchList(OneRoomBean ob) {
+		return sqlSession.selectList(namespace+".getSearchList", ob);
+	}
+	
 
 	@Override
-	public Integer getBoardCount() {
-		return sqlSession.selectOne(namespace+".getBoardCount");
+	public Integer getBoardCount(PageBean pb) {
+		return sqlSession.selectOne(namespace+".getBoardCount",pb);
 	}
 	
 	@Override
@@ -71,10 +81,7 @@ public class BoardDAOImpl implements BoardDAO{
 		sqlSession.insert(namespace+".insertRoom",bb);
 	}
 	
-	@Override
-	public List<OneRoomBean> getSearchList(OneRoomBean ob) {
-		return sqlSession.selectList(namespace+".getSearchList", ob);
-	}
+
 	
 	@Override
 	public OneRoomBean getRoom(int room_id) {

@@ -68,8 +68,8 @@ public class MemberDAOImpl implements MemberDAO{
 	}
 
 	@Override
-	public List<MemberBean> getWishList(String id) {
-		return sqlSession.selectList(namespace+".getWishList", id);
+	public List<MemberBean> getMemberWishList(String id) {
+		return sqlSession.selectList(namespace+".getMemberWishList", id);
 	}
 
 	@Override

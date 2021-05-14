@@ -79,27 +79,27 @@ public class BoardController {
 			pb.setPageNum("1");
 		}
 		pb.setPageSize(9);
-
+		pb.setCategory("OneRoom");
+		
 		List<OneRoomBean> roomList = boardService.getBoardList(pb);
+		
 
-		pb.setCount(boardService.getBoardCount());
+		pb.setCount(boardService.getBoardCount(pb));
 
 		model.addAttribute("roomList", roomList);
 		model.addAttribute("pb", pb);
 
 		String id = (String) session.getAttribute("id");
-
-		if (id != null) {
-			List<MemberBean> wishList = memberService.getWishList(id);
+	
+		if(id != null) {
+			List<MemberBean> wishList=memberService.getMemberWishList(id);
 			model.addAttribute("wishList", wishList);
 		}
 		return "findRooms";
 	}
 
-	@RequestMapping(value = "/findRooms-zzim", method = RequestMethod.GET)
-	public String zzimList(HttpServletRequest request, Model model, HttpSession session) {
-		String id = (String) session.getAttribute("id");
-
+	@RequestMapping(value = "/findOfficetel", method = RequestMethod.GET)
+	public String officetelList(HttpServletRequest request, Model model, HttpSession session) {
 		PageBean pb = new PageBean();
 		if (request.getParameter("pageNum") != null) {
 			pb.setPageNum(request.getParameter("pageNum"));
@@ -107,70 +107,136 @@ public class BoardController {
 			pb.setPageNum("1");
 		}
 		pb.setPageSize(9);
-
+		pb.setCategory("Officetel");
+		
 		List<OneRoomBean> roomList = boardService.getBoardList(pb);
-
-		pb.setCount(boardService.getWishCount(id));
-
+		
+		
+		pb.setCount(boardService.getBoardCount(pb));
+		
 		model.addAttribute("roomList", roomList);
 		model.addAttribute("pb", pb);
-
-		if (id != null) {
-			List<MemberBean> wishList = memberService.getWishList(id);
+		
+		String id = (String) session.getAttribute("id");
+		
+		if(id != null) {
+			List<MemberBean> wishList=memberService.getMemberWishList(id);	
 			model.addAttribute("wishList", wishList);
 		}
-		return "zzimList";
+		return "findOfficetel";
 	}
 
+	
+	
 	@RequestMapping(value = "/findRooms-search", method = RequestMethod.GET)
 	public String search(HttpServletRequest request, Model model, HttpSession session, OneRoomBean ob) {
 		String id = (String) session.getAttribute("id");
 
-//		PageBean pb = new PageBean();
-//		if (request.getParameter("pageNum") != null) {
-//			pb.setPageNum(request.getParameter("pageNum"));
-//		} else {
-//			pb.setPageNum("1");
-//		}
-//		pb.setPageSize(9);
-
-		ob.setSearch("%" + ob.getSearch() + "%");
+		ob.setSearch("%"+ob.getSearch()+"%");
 		System.out.println("검색어 : " + ob.getSearch());
-
-		if (ob.getRoom_type() == null) {
+		
+		if(ob.getRoom_type() == null) {
 			ob.setRoom_type("^");
-		} else if (ob.getRoom_type().contains(",")) {
+		} else if(ob.getRoom_type().contains(",")) {
 			ob.setRoom_type(ob.getRoom_type().replaceAll(",", "|"));
 		}
-		System.out.println("방구조 : " + ob.getRoom_type());
-
-		if (ob.getLiving_floor() == null) {
+		System.out.println("방구조 : " + ob.getRoom_type() );
+		
+		if(ob.getLiving_floor() == null) {
 			ob.setLiving_floor("^");
-		} else if (ob.getLiving_floor().contains(",")) {
+		}else if(ob.getLiving_floor().contains(",")) {
 			ob.setLiving_floor(ob.getLiving_floor().replaceAll(",", "|"));
 		}
+		
 		System.out.println("층수 : " + ob.getLiving_floor());
-
-		System.out.println("월세 최소 : " + ob.getMonthly_rent_min());
-		System.out.println("월세 최대 : " + ob.getMonthly_rent_max());
-
+		
+		System.out.println("월세 최소 : " +ob.getMonthly_rent_min());
+		System.out.println("월세 최대 : " +ob.getMonthly_rent_max());
+		
 		System.out.println("보증금 최소 : " + ob.getDeposit_min());
 		System.out.println("보증금 최대 : " + ob.getDeposit_max());
+		System.out.println("카테고리 : " + ob.getCategory());
 
+		
 		List<OneRoomBean> roomList = boardService.getSearchList(ob);
-
-//		pb.setCount(boardService.getWishCount(id));
-//		model.addAttribute("pb", pb);
-
+		
 		model.addAttribute("roomList", roomList);
-
-		if (id != null) {
-			List<MemberBean> wishList = memberService.getWishList(id);
+		
+		if(id != null) {
+			List<MemberBean> wishList=memberService.getMemberWishList(id);	
 			model.addAttribute("wishList", wishList);
 		}
 		return "findRooms-search";
 	}
-
+	
+	
+	@RequestMapping(value = "/findOfficetel-search", method = RequestMethod.GET)
+	public String findOfficetelSearch(HttpServletRequest request, Model model, HttpSession session, OneRoomBean ob) {
+		String id = (String) session.getAttribute("id");
+		
+		ob.setSearch("%"+ob.getSearch()+"%");
+		System.out.println("검색어 : " + ob.getSearch());
+		
+		if(ob.getRoom_type() == null) {
+			ob.setRoom_type("^");
+		} else if(ob.getRoom_type().contains(",")) {
+			ob.setRoom_type(ob.getRoom_type().replaceAll(",", "|"));
+		}
+		System.out.println("방구조 : " + ob.getRoom_type() );
+		
+		if(ob.getLiving_floor() == null) {
+			ob.setLiving_floor("^");
+		}else if(ob.getLiving_floor().contains(",")) {
+			ob.setLiving_floor(ob.getLiving_floor().replaceAll(",", "|"));
+		}
+		System.out.println("층수 : " + ob.getLiving_floor());
+		
+		System.out.println("월세 최소 : " +ob.getMonthly_rent_min());
+		System.out.println("월세 최대 : " +ob.getMonthly_rent_max());
+		
+		System.out.println("보증금 최소 : " + ob.getDeposit_min());
+		System.out.println("보증금 최대 : " + ob.getDeposit_max());
+		System.out.println("카테고리 : " + ob.getCategory());
+		
+		List<OneRoomBean> roomList = boardService.getSearchList(ob);
+		
+		model.addAttribute("roomList", roomList);
+		
+		if(id != null) {
+			List<MemberBean> wishList=memberService.getMemberWishList(id);	
+			model.addAttribute("wishList", wishList);
+		}
+		return "findOfficetel-search";
+	}
+	
+	
+	@RequestMapping(value = "/findRooms-zzim", method = RequestMethod.GET)
+	public String zzimList(HttpServletRequest request, Model model, HttpSession session) {
+		String id = (String) session.getAttribute("id");
+		
+		PageBean pb = new PageBean();
+		if (request.getParameter("pageNum") != null) {
+			pb.setPageNum(request.getParameter("pageNum"));
+		} else {
+			pb.setPageNum("1");
+		}
+		pb.setPageSize(9);
+		pb.setId(id);
+		
+		pb.setCount(boardService.getWishCount(id));
+		List<OneRoomBean> roomList = boardService.getWishList(pb);
+		
+		
+		model.addAttribute("roomList", roomList);
+		model.addAttribute("pb", pb);
+		
+		if(id != null) {
+			List<MemberBean> wishList=memberService.getMemberWishList(id);	
+			model.addAttribute("wishList", wishList);
+		}
+		return "zzimList";
+	}
+	
 //	http://localhost:8080/myweb2/board/fwrite
 	@RequestMapping(value = "/board/fwrite", method = RequestMethod.GET)
 	public String fwrite() {
