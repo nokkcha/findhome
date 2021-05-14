@@ -6,6 +6,7 @@ import java.util.Locale;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -51,7 +52,20 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/sellRoom",method = RequestMethod.GET )
-	public String sellRoom() {
+	public String sellRoom(HttpServletRequest request, Model model, HttpSession session) {
+		
+		try {
+			String id = (String) session.getAttribute("id");
+			String category = request.getParameter("category");
+			OneRoomBean ob = new OneRoomBean();
+			ob.setCategory(category);
+			ob.setSeller_id(id);
+			model.addAttribute("ob", ob);
+						
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		return "sellRoom";
 	}
 	

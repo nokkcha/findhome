@@ -96,7 +96,7 @@
 
 		<div class="container" align="left">
 			<br>
-			<h1>매물 등록</h1>
+			<h1>${ob.category }매물 등록</h1>
 			<pre>
 · 일반적인 형태의 주거용 전월세 매물만 내놓을 수 있습니다.
   1) 한 번의 방등록으로 반경 5km이내 모든 중개사무소에 방 정보가 노출되어 중개가 시작됩니다.
@@ -295,7 +295,7 @@
 					<!-- 			</tbody> -->
 				</table>
 
-				<input type="text" id="seller_id" hidden="" name="seller_id" value="admin@gmail.com">
+				<input type="text" id="seller_id" name="seller_id" value='${ob.seller_id}'>
 
 				<button class="btn btn-primary btn-lg btn-block" id="sellRoom">방 내놓기</button>
 			</form>

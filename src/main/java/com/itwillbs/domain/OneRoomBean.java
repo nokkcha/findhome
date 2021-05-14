@@ -174,6 +174,8 @@ public class OneRoomBean {
 	private int deposit_min;
 
 	private int deposit_max;
+	
+	private String category = "OneRoom"; // OneRoom, Offi
 
 	@Override
 	public String toString() {
