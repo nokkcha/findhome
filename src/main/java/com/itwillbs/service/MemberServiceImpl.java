@@ -40,8 +40,8 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public void updateMember(MemberBean mb) {
-		memberDAO.updateMember(mb);
+	public void updateMember2(MemberBean mb) {
+		memberDAO.updateMember2(mb);
 	}
 
 	@Override
@@ -84,6 +84,12 @@ public class MemberServiceImpl implements MemberService{
 	public void insertMember2(MemberBean mb) {
 		
 		memberDAO.insertMember2(mb);
+	}
+
+	@Override
+	public void updateMember(MemberBean mb) {
+		memberDAO.updateMember(mb);
+		
 	}
 
 	

@@ -21,6 +21,8 @@ public interface MemberDAO {
 
 		public void updateMember(MemberBean mb);
 		
+		public void updateMember2(MemberBean mb);
+		
 		public void deleteMember(MemberBean mb);
 		
 		public List<MemberBean> getMemberList();

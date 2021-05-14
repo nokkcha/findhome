@@ -30,16 +30,20 @@
 
 	<select id="getMember"
 		resultType="com.itwillbs.domain.MemberBean">
-		select * from member_seller where id=#{id}
+		select * from member_normal where id=#{id}
 	</select>
 
 	<select id="getMember2"
 		resultType="com.itwillbs.domain.MemberBean">
-		select * from member_normal where id=#{id}
+		select * from member_seller where id=#{id}
 	</select>
 
-	<update id="updateMember">
+	<update id="updateMember2">
 		update member_seller set id=#{id}, password=#{password}, phone_number=#{phone_number} where id=#{id}
+	</update>
+	
+	<update id="updateMember">
+		update member_normal set id=#{id}, password=#{password}, phone_number=#{phone_number} where id=#{id}
 	</update>
 
 	<update id="updateMember_normal">

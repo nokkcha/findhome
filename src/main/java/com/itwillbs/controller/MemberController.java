@@ -54,6 +54,7 @@ public class MemberController {
 			// 세션값 생성 "id"
 			session.setAttribute("id", mb.getId());
 
+			session.setAttribute("member_type", "normal");
 			return "redirect:/";
 		} else {
 			// 입력하신 정보가 틀립니다.
@@ -132,6 +133,7 @@ public class MemberController {
 		MemberBean mb = memberService.getMember(id);
 		// 2.멤버빈에 저장
 		mb.setMember_type(member_type);
+		
 
 		// model "mb",mb
 		model.addAttribute("mb", mb);
@@ -162,7 +164,7 @@ public class MemberController {
 		MemberBean mb2=memberService.userCheck2(mb);
 		if(mb2!=null) {
 			// 수정
-			memberService.updateMember(mb);
+			memberService.updateMember2(mb);
 			return "redirect:/";
 		}else {
 			// 입력하신 정보가 틀립니다. 
