@@ -96,7 +96,10 @@
 
 		<div class="container" align="left">
 			<br>
-			<h1>${ob.category }매물 등록</h1>
+			<c:if test="${ob.category ne 'OneRoom'}"> 
+			<h1>오피스텔 매물 등록</h1>
+			</c:if>
+			<h1>원룸 매물 등록</h1>
 			<pre>
 · 일반적인 형태의 주거용 전월세 매물만 내놓을 수 있습니다.
   1) 한 번의 방등록으로 반경 5km이내 모든 중개사무소에 방 정보가 노출되어 중개가 시작됩니다.
@@ -181,8 +184,11 @@
 									<option value="오픈형 원룸 (방1)">오픈형 원룸 (방1)</option>
 									<option value="분리형 원룸 (방1,거실1)">분리형 원룸 (방1,거실1)</option>
 									<option value="복층형 원룸">복층형 원룸</option>
+<!-- 									오피스텔만 투룸,쓰리룸 보이기 -->
+									<c:if test="${ob.category ne 'OneRoom'}"> 
 									<option value="투룸 (방2,거실1)">투룸 (방2,거실1)</option>
 									<option value="쓰리룸+">쓰리룸+</option>
+									</c:if>									
 							</select></td>
 						</tr>
 						<tr>
