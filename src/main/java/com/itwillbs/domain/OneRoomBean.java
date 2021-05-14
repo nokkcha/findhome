@@ -9,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-
+import lombok.Setter;
 
 @Getter
 @AllArgsConstructor
@@ -19,7 +19,7 @@ enum OptionType {
 
 	private String code;
 
-	public static final Map<String, OptionType> map = new HashMap()<>();
+	public static final Map<String, OptionType> map = new HashMap<String, OptionType>();
 	static {
 		for (OptionType os : OptionType.values()) {
 			map.put(os.getCode(), os);
@@ -42,7 +42,7 @@ enum FeesType {
 
 	private String code;
 
-	public static final Map<String, FeesType> map = new HashMap<>();
+	public static final Map<String, FeesType> map = new HashMap<String, FeesType>();
 	static {
 		for (FeesType os : FeesType.values()) {
 			map.put(os.getCode(), os);
