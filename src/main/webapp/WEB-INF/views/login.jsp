@@ -110,6 +110,9 @@
 				
 			</script>
 			
+			<input type="radio" id="member_type_select" name="member_type_select" value="일반">일반
+			<input type="radio" id="member_type_select" name="member_type_select" value="사업자">사업자<br>
+						
 			<h2>로그인</h2>
 			<div class="row block-9">
 				<div class="pr-md-5">
@@ -148,6 +151,21 @@
 			</div>
 		</div>
 	</section>
+	
+	<script type="text/javascript">
+	$('#member_type_select').change( function(){
+	    var checkValue = $(this).val();
+	    	    
+	    console.log(checkValue);
+	    if (checkValue == "일반") {
+	    	$('#login').attr("action", "/loginPro");
+	    	
+	    } else {
+	    	$('#login').attr("action", "/loginPro2");
+	    } 	    
+	    			    
+	});	
+	</script>
 
 
 	    <footer class="ftco-footer ftco-bg-dark ftco-section">
