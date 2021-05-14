@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 import com.itwillbs.dao.BoardDAO;
 import com.itwillbs.domain.BoardBean;
 import com.itwillbs.domain.ImageBean;
-import com.itwillbs.domain.JoinBean;
+
 import com.itwillbs.domain.OneRoomBean;
 import com.itwillbs.domain.PageBean;
 

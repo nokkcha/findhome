@@ -118,53 +118,51 @@
 	</delete>
 	
 	
-		<resultMap type="com.itwillbs.domain.OneRoomBean" id="OneRoomBean">
-		<id property="room_id" column="room_id"></id>
-		<id property="fileList" column="fileList"></id>
-		<id property="deposit" column="deposit"></id>
-		<id property="monthly_rent" column="monthly_rent"></id>
-		<id property="room_type" column="room_type"></id>
-		<id property="fees" column="fees"></id>
-		<id property="include_fees" column="include_fees"></id>
-		<id property="include_fees_array" column="include_fees_array"></id>
-		<id property="exclusive_area_m" column="exclusive_area_m"></id>
-		<id property="exclusive_area_p" column="exclusive_area_p"></id>
-		<id property="contract_area_m" column="contract_area_m"></id>
-		<id property="contract_area_p" column="contract_area_p"></id>
-		<id property="floor" column="floor"></id>
-		<id property="living_floor" column="living_floor"></id>
-		<id property="direction" column="direction"></id>
-		<id property="options" column="options"></id>
-		<id property="loan" column="loan"></id>
-		<id property="pet" column="pet"></id>
-		<id property="parking" column="parking"></id>
-		<id property="elevator" column="elevator"></id>
-		<id property="m_date" column="m_date"></id>
-		<id property="subject" column="subject"></id>
-		<id property="content" column="content"></id>
-		<id property="phone_number" column="phone_number"></id>
-		<id property="selling_id" column="selling_id"></id>
-		<id property="is_selling" column="is_selling"></id>
-		<id property="monthly_rent_min" column="monthly_rent_min"></id>
-		<id property="monthly_rent_max" column="monthly_rent_max"></id>
-		<id property="deposit_min" column="deposit_min"></id>
-		<id property="deposit_max" column="deposit_max"></id>
+<!-- 		<resultMap type="com.itwillbs.domain.OneRoomBean" id="TwoRoomBean"> -->
+<!-- 		<id property="room_id" column="room_id"></id> -->
+<!-- 		<id property="fileList" column="fileList"></id> -->
+<!-- 		<id property="deposit" column="deposit"></id> -->
+<!-- 		<id property="monthly_rent" column="monthly_rent"></id> -->
+<!-- 		<id property="room_type" column="room_type"></id> -->
+<!-- 		<id property="fees" column="fees"></id> -->
+<!-- 		<id property="include_fees" column="include_fees" typeHandler="com.itwillbs.mapper.type.JSONTypeHandler"></id> -->
+<!-- 		<id property="include_fees_array" column="include_fees_array"></id> -->
+<!-- 		<id property="exclusive_area_m" column="exclusive_area_m"></id> -->
+<!-- 		<id property="exclusive_area_p" column="exclusive_area_p"></id> -->
+<!-- 		<id property="contract_area_m" column="contract_area_m"></id> -->
+<!-- 		<id property="contract_area_p" column="contract_area_p"></id> -->
+<!-- 		<id property="floor" column="floor"></id> -->
+<!-- 		<id property="living_floor" column="living_floor"></id> -->
+<!-- 		<id property="direction" column="direction"></id> -->
+<!-- 		<id property="include_options" column="include_options" typeHandler="com.itwillbs.mapper.type.JSONTypeHandler"></id> -->
+<!-- 		<id property="loan" column="loan"></id> -->
+<!-- 		<id property="pet" column="pet"></id> -->
+<!-- 		<id property="parking" column="parking"></id> -->
+<!-- 		<id property="elevator" column="elevator"></id> -->
+<!-- 		<id property="m_date" column="m_date"></id> -->
+<!-- 		<id property="subject" column="subject"></id> -->
+<!-- 		<id property="content" column="content"></id> -->
+<!-- 		<id property="phone_number" column="phone_number"></id> -->
+<!-- 		<id property="selling_id" column="selling_id"></id> -->
+<!-- 		<id property="is_selling" column="is_selling"></id> -->
+<!-- 		<id property="monthly_rent_min" column="monthly_rent_min"></id> -->
+<!-- 		<id property="monthly_rent_max" column="monthly_rent_max"></id> -->
+<!-- 		<id property="deposit_min" column="deposit_min"></id> -->
+<!-- 		<id property="deposit_max" column="deposit_max"></id> -->
 
-	</resultMap>
+<!-- 	</resultMap> -->
 	
-	<resultMap type="com.itwillbs.domain.ImageBean" id="ImageBean">
-		<id property="id" column="id"></id>
-		<id property="room_id" column="room_id"></id>
-		<id property="file_name" column="file_name"></id>
+<!-- 	<resultMap type="com.itwillbs.domain.ImageBean" id="ImageBean"> -->
+<!-- 		<id property="id" column="id"></id> -->
+<!-- 		<id property="room_id" column="room_id"></id> -->
+<!-- 		<id property="file_name" column="file_name"></id> -->
 	
-	</resultMap>
+<!-- 	</resultMap> -->
 
 
 	<select id="getRoom" resultMap="OneRoomBean">
-		SELECT *
-		FROM one_room JOIN one_room_pic
-		ON one_room.room_id = one_room_pic.room_id
-		WHERE one_room.room_id = #{room_id}
+		select * from one_room
+		where room_id=#{room_id}
 	</select>
 	
 

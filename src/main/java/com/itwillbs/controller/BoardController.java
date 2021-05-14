@@ -31,7 +31,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.itwillbs.domain.BoardBean;
 import com.itwillbs.domain.ImageBean;
-import com.itwillbs.domain.JoinBean;
+
 import com.itwillbs.domain.MemberBean;
 import com.itwillbs.domain.OneRoomBean;
 import com.itwillbs.domain.PageBean;
