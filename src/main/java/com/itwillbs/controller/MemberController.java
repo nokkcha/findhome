@@ -54,6 +54,28 @@ public class MemberController {
 		if (mb2 != null) {
 			// 세션값 생성 "id"
 			session.setAttribute("id", mb.getId());
+						
+			return "redirect:/";
+		} else {
+			// 입력하신 정보가 틀립니다.
+			model.addAttribute("msg", "입력하신 정보가 틀립니다.");
+			// /WEB-INF/views/member/msg.jsp
+			return "msg";
+		}
+
+	}
+	
+	@RequestMapping(value = "/loginPro2", method = RequestMethod.POST)
+	public String loginPro2(MemberBean mb, HttpSession session, Model model) {
+
+		MemberBean mb2 = memberService.userCheck2(mb);
+		if (mb2 != null) {
+			// 세션값 생성 "id"
+			session.setAttribute("id", mb.getId());
+
+			// 회원구분 세션값 생성 "member_type"
+			session.setAttribute("member_type", "seller");
+			
 			return "redirect:/";
 		} else {
 			// 입력하신 정보가 틀립니다.

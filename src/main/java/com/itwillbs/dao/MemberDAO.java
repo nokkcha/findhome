@@ -15,6 +15,8 @@ public interface MemberDAO {
 		
 		public MemberBean userCheck(MemberBean mb);
 		
+		public MemberBean userCheck2(MemberBean mb);
+		
 		public MemberBean getMember2(String id);
 
 		public void updateMember(MemberBean mb);
