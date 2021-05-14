@@ -261,7 +261,9 @@
 						</tr>
 						<tr>
 							<th style="background-color: #dedede;">전세 대출</th>
-							<td><input type="radio" name="loan" id="loan" value="가능">가능 <input type="radio" name="loan" id="loan" value="불가능">불가능 <input type="radio" name="loan" id="loan" value="확인필요">확인필요</td>
+							<td><input type="radio" name="loan" id="loan" value="가능">가능 
+							<input type="radio" name="loan" id="loan" value="불가능">불가능 
+							<input type="radio" name="loan" id="loan" value="확인필요">확인필요</td>
 						</tr>
 						<tr>
 							<th style="background-color: #dedede;">반려 동물</th>

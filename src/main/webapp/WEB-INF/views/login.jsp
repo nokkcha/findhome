@@ -155,13 +155,13 @@
 	<script type="text/javascript">
 	$('#member_type_select').change( function(){
 	    var checkValue = $(this).val();
-	    	    
-	    console.log(checkValue);
-	    if (checkValue == "일반") {
-	    	$('#login').attr("action", "/loginPro");
-	    	
+	    
+	    if (checkValue === "일반") {
+	    	console.log(checkValue);
+	    	//$('#login').attr("action", '<c:url value="/loginPro" />');	    	
 	    } else {
-	    	$('#login').attr("action", "/loginPro2");
+	    	console.log("사업자");
+	    	//$('#login').attr("action", '<c:url value="/loginPro2" />');
 	    } 	    
 	    			    
 	});	

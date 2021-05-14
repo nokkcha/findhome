@@ -34,11 +34,11 @@
 	</select>
 
 	<update id="updateMember">
-		update member_seller set name=#{name} where id=#{id}
+		update member_seller set id=#{id}, password=#{password}, phone_number=#{phone_number} where id=#{id}
 	</update>
 
 	<update id="updateMember_normal">
-		update member_seller set name=#{name} where id=#{id}
+		update member_normal set id=#{id}, password=#{password}, phone_number=#{phone_number} where id=#{id}
 	</update>
 
 	<delete id="deleteMember">
