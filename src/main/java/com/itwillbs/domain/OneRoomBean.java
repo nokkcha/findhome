@@ -9,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.Setter;
+
 
 @Getter
 @AllArgsConstructor
@@ -19,7 +19,7 @@ enum OptionType {
 
 	private String code;
 
-	public static final Map<String, OptionType> map = new HashMap<>();
+	public static final Map<String, OptionType> map = new HashMap()<>();
 	static {
 		for (OptionType os : OptionType.values()) {
 			map.put(os.getCode(), os);
