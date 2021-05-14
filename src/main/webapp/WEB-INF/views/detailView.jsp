@@ -33,6 +33,16 @@
 
 
 <style type="text/css">
+
+#tableoption {
+	width: 100%;
+
+}
+
+#tableoption tr,td {
+	border-style: none;
+}
+
 #table {
 	table-layout: fixed;
 }
@@ -59,26 +69,26 @@
 	margin-top: 10px;
 }
 
-h4 {
-	text-align: center;
-}
 
-table {
+
+
+#roomtable {
 	width: 100%;
-	border-top: 1px solid #dddddddd;
 	border-collapse: collapse;
 }
 
-th, td {
-	border-bottom: 1px solid #dddddddd;
+#roomtable th, td {
 	padding: 10px;
 	text-align: center;
 }
 
+h4 {
+	text-align: center;
+}
 .option-info-container {
 	padding: 50px 100px 50px 100px;
 	border-top: 1px solid #dddddddd;
-	border-bottom: 1px solid #dddddddd;
+
 }
 
 .room-detail-option-item-wrapper {
@@ -383,7 +393,7 @@ th, td {
 					</div>
 
 					<div class="d-md-flex mt-5 mb-5">
-						<table>
+						<table id=roomtable>
 							<thead>
 								<tr>
 									<th>방 형태</th>
@@ -468,21 +478,32 @@ th, td {
 						</div>
 					</div>
 
+<br><br>
 					<div class="option-info-container">
 						<!-- 								<div class="room-detail-option-title">옵션</div> -->
 
 
-
+						
 						<h4 class="mb-5">옵션</h4>
 
 						<div class="room-detail-option-item-wrapper">
-
-							<c:forEach items="${ob.include_options }" var="list">
+							
+							<table id="tableoption">
+							<tr>
+							<c:forEach items="${ob.include_options }" var="list" varStatus="status">
+							<c:if test="${status.index%6==0 }">
+							</tr><tr>
+							</c:if>
 								<div class="room-detail-content-option-item">
-									<img src="${pageContext.request.contextPath}/resources/images/options/${list.value}.png" width="50" height="50">
-									<div class="room-detail-content-option-item-name">${list.key}</div>
+								
+									<td><img src="${pageContext.request.contextPath}/resources/images/options/${list.value}.png" width="50" height="50">
+									<div class="room-detail-content-option-item-name">${list.key}</div></td>
+									
 								</div>
+								
 							</c:forEach>
+							</tr>
+							</table>
 						</div>
 					</div>
 
