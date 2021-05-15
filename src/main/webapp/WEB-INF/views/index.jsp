@@ -240,125 +240,40 @@ body {
 			<div class="row">
 				<div class="col-md-12">
 					<div class="destination-slider owl-carousel ftco-animate">
+					
+<!-- 					최신매물 아이템 출력 시작 -->
+<%-- <c:forEach items="${modelData}" var="list"> --%>
+<%-- <c:forEach items="${list}" var="map"> --%>
+<%-- ${map[key1]} <br/> --%>
+<%-- </c:forEach> --%>
+<%-- </c:forEach> --%>
+
+						<c:forEach items="${obList}" var="list" varStatus="i">
 						<div class="item">
 							<div class="destination">
-								<a href="#" class="img d-flex justify-content-center align-items-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/destination-1.jpg);">
+								<a href="#" class="img d-flex justify-content-center align-items-center" 
+								style="background-image: url(${pageContext.request.contextPath}/resources/upload${list.file_name});"></a>
 									<div class="icon d-flex justify-content-center align-items-center">
 										<span class="icon-search2"></span>
 									</div>
-								</a>
+								
 								<div class="text p-3">
 									<h3>
-										<a href="#">Paris, Italy</a>
+										<a href="#">${list.subject}</a>
 									</h3>
-									<span class="listing">15 Listing</span>
+									<span class="listing">${list.deposit} / ${list.monthly_rent}</span>
 								</div>
 							</div>
 						</div>
-						<div class="item">
-							<div class="destination">
-								<a href="#" class="img d-flex justify-content-center align-items-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/destination-2.jpg);">
-									<div class="icon d-flex justify-content-center align-items-center">
-										<span class="icon-search2"></span>
-									</div>
-								</a>
-								<div class="text p-3">
-									<h3>
-										<a href="#">San Francisco, USA</a>
-									</h3>
-									<span class="listing">20 Listing</span>
-								</div>
-							</div>
-						</div>
-						<div class="item">
-							<div class="destination">
-								<a href="#" class="img d-flex justify-content-center align-items-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/destination-3.jpg);">
-									<div class="icon d-flex justify-content-center align-items-center">
-										<span class="icon-search2"></span>
-									</div>
-								</a>
-								<div class="text p-3">
-									<h3>
-										<a href="#">Lodon, UK</a>
-									</h3>
-									<span class="listing">10 Listing</span>
-								</div>
-							</div>
-						</div>
-						<div class="item">
-							<div class="destination">
-								<a href="#" class="img d-flex justify-content-center align-items-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/destination-4.jpg);">
-									<div class="icon d-flex justify-content-center align-items-center">
-										<span class="icon-search2"></span>
-									</div>
-								</a>
-								<div class="text p-3">
-									<h3>
-										<a href="#">Lion, Singapore</a>
-									</h3>
-									<span class="listing">3 Listing</span>
-								</div>
-							</div>
-						</div>
-						<div class="item">
-							<div class="destination">
-								<a href="#" class="img d-flex justify-content-center align-items-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/destination-5.jpg);">
-									<div class="icon d-flex justify-content-center align-items-center">
-										<span class="icon-search2"></span>
-									</div>
-								</a>
-								<div class="text p-3">
-									<h3>
-										<a href="#">Australia</a>
-									</h3>
-									<span class="listing">3 Listing</span>
-								</div>
-							</div>
-						</div>
-						<div class="item">
-							<div class="destination">
-								<a href="#" class="img d-flex justify-content-center align-items-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/destination-6.jpg);">
-									<div class="icon d-flex justify-content-center align-items-center">
-										<span class="icon-search2"></span>
-									</div>
-								</a>
-								<div class="text p-3">
-									<h3>
-										<a href="#">Paris, Italy</a>
-									</h3>
-									<span class="listing">3 Listing</span>
-								</div>
-							</div>
-						</div>
+						</c:forEach>					
+<!-- 					최신매물 아이템 출력 끝 -->						
+						
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
 
-
-	<!-- 		<section class="ftco-section-parallax"> -->
-	<!--       <div class="parallax-img d-flex align-items-center"> -->
-	<!--         <div class="container"> -->
-	<!--           <div class="row d-flex justify-content-center"> -->
-	<!--             <div class="col-md-7 text-center heading-section heading-section-white ftco-animate"> -->
-	<!--               <h2>Subcribe to our Newsletter</h2> -->
-	<!--               <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in</p> -->
-	<!--               <div class="row d-flex justify-content-center mt-5"> -->
-	<!--                 <div class="col-md-8"> -->
-	<!--                   <form action="#" class="subscribe-form"> -->
-	<!--                     <div class="form-group d-flex"> -->
-	<!--                       <input type="text" class="form-control" placeholder="Enter email address"> -->
-	<!--                       <input type="submit" value="Subscribe" class="submit px-3"> -->
-	<!--                     </div> -->
-	<!--                   </form> -->
-	<!--                 </div> -->
-	<!--               </div> -->
-	<!--             </div> -->
-	<!--           </div> -->
-	<!--         </div> -->
-	<!--       </div> -->
-	<!--     </section> -->
 
 	<footer class="ftco-footer ftco-bg-dark ftco-section">
 		<div class="container">
@@ -381,11 +296,11 @@ body {
 
 
 	<!-- loader -->
-	<div id="ftco-loader" class="show fullscreen">
-		<svg class="circular" width="48px" height="48px">
-			<circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
-			<circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg>
-	</div>
+<!-- 	<div id="ftco-loader" class="show fullscreen"> -->
+<!-- 		<svg class="circular" width="48px" height="48px"> -->
+<!-- 			<circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" /> -->
+<!-- 			<circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg> -->
+<!-- 	</div> -->
 
 
 	<script src="${pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js">
