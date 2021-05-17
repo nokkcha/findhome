@@ -4,7 +4,6 @@ import java.io.File;
 import java.net.URLEncoder;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
@@ -39,7 +38,6 @@ import com.itwillbs.domain.ImageBean;
 import com.itwillbs.domain.MemberBean;
 import com.itwillbs.domain.OneRoomBean;
 import com.itwillbs.domain.PageBean;
-import com.itwillbs.domain.qnaBean;
 import com.itwillbs.mailtest.GoogleAuthentication;
 import com.itwillbs.service.BoardService;
 import com.itwillbs.service.MemberService;
@@ -91,22 +89,12 @@ public class BoardController {
 		
 		List<OneRoomBean> roomList = boardService.getBoardList(pb);
 		
+
 		pb.setCount(boardService.getBoardCount(pb));
 
 		model.addAttribute("roomList", roomList);
 		model.addAttribute("pb", pb);
 
-		
-		// 방 리스트와 썸네일 정보 넘기기 
-		List<LinkedHashMap<String, Object>> obList = boardService.selectOneRoomThumbImg();
-		for (Map<String, Object> map:obList) {
-			System.out.println(map.get("room_id") + " " 
-					+ map.get("subject") + " " + map.get("file_name"));
-		}
-		
-		model.addAttribute("obList", obList);
-		
-		
 		String id = (String) session.getAttribute("id");
 	
 		if(id != null) {
@@ -134,16 +122,6 @@ public class BoardController {
 		
 		model.addAttribute("roomList", roomList);
 		model.addAttribute("pb", pb);
-		
-		// 방 리스트와 썸네일 정보 넘기기 
-		List<LinkedHashMap<String, Object>> obList = boardService.selectOneRoomThumbImg();
-		for (Map<String, Object> map:obList) {
-			System.out.println(map.get("room_id") + " " 
-					+ map.get("subject") + " " + map.get("file_name"));
-		}
-		
-		model.addAttribute("obList", obList);
-		
 		
 		String id = (String) session.getAttribute("id");
 		
@@ -190,15 +168,6 @@ public class BoardController {
 		
 		model.addAttribute("roomList", roomList);
 		
-		// 방 리스트와 썸네일 정보 넘기기 
-		List<LinkedHashMap<String, Object>> obList = boardService.selectOneRoomThumbImg();
-		for (Map<String, Object> map:obList) {
-			System.out.println(map.get("room_id") + " " 
-					+ map.get("subject") + " " + map.get("file_name"));
-		}
-		
-		model.addAttribute("obList", obList);
-		
 		if(id != null) {
 			List<MemberBean> wishList=memberService.getMemberWishList(id);	
 			model.addAttribute("wishList", wishList);
@@ -239,15 +208,6 @@ public class BoardController {
 		
 		model.addAttribute("roomList", roomList);
 		
-		// 방 리스트와 썸네일 정보 넘기기 
-		List<LinkedHashMap<String, Object>> obList = boardService.selectOneRoomThumbImg();
-		for (Map<String, Object> map:obList) {
-			System.out.println(map.get("room_id") + " " 
-					+ map.get("subject") + " " + map.get("file_name"));
-		}
-		
-		model.addAttribute("obList", obList);
-		
 		if(id != null) {
 			List<MemberBean> wishList=memberService.getMemberWishList(id);	
 			model.addAttribute("wishList", wishList);
@@ -275,15 +235,6 @@ public class BoardController {
 		
 		model.addAttribute("roomList", roomList);
 		model.addAttribute("pb", pb);
-		
-		// 방 리스트와 썸네일 정보 넘기기 
-		List<LinkedHashMap<String, Object>> obList = boardService.selectOneRoomThumbImg();
-		for (Map<String, Object> map:obList) {
-			System.out.println(map.get("room_id") + " " 
-					+ map.get("subject") + " " + map.get("file_name"));
-		}
-		
-		model.addAttribute("obList", obList);
 		
 		if(id != null) {
 			List<MemberBean> wishList=memberService.getMemberWishList(id);	
@@ -425,18 +376,7 @@ public class BoardController {
 		String content = request.getParameter("content");
 		String name = request.getParameter("name");
 		String date1 = request.getParameter("date1");
-		String room_id = request.getParameter("room_id");
 		content = content + name + phone + date1;
-		
-		qnaBean qb = new qnaBean();
-		qb.setContent(request.getParameter("content"));
-		qb.setPhone_number(phone);
-		qb.setRoom_id(Integer.parseInt(room_id));
-		
-		
-		
-		boardService.insertqna(qb);
-		
 
 		try {
 			// 서버정보를 => Properties 객체 저장

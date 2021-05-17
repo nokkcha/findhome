@@ -54,7 +54,7 @@
 
 	<%@ include file="../views/top.jsp"%>
 
-<input type="text" id="member_type" value=${mb.member_type }>
+<%-- <input type="text" id="member_type" value=${mb.member_type }> --%>
 
 	<div class="hero-wrap js-fullheight"
 		style="background-image: url('${pageContext.request.contextPath}/resources/images/bg_2.jpg');">
@@ -264,7 +264,7 @@
 			<div class="row block-9">
 				<div class="pr-md-5">
 					<!-- col-md-6 제거함 -->
-					<form action='<c:url value="/memberInfoPro" />' id="login" name="login">
+					<form action='<c:url value="/memberInfoPro" />' id="login" name="login" method="post">
 						<div class="form-group" align="left">
 							<label class="form-control-label">아이디</label> <input type="text"
 								class="form-control" name="id" id="id" value="${mb.id }" readonly
@@ -273,8 +273,9 @@
 							<br><span class="check-group" id="checkIdResult"></span>	
 
 						</div>
+												
 						<div class="form-group" align="left">
-							<label class="form-control-label">비밀번호</label><input
+							<label class="form-control-label">기존 비밀번호</label><input
 								type="password" class="form-control" name="password" id="password"
 								>
 <!-- 								onkeyup="checkPassword()" -->
@@ -283,13 +284,33 @@
 						</div>
 						
 						<div class="form-group" align="left">
-							<label class="form-control-label">비밀번호 확인</label><input
+							<label class="form-control-label">기존 비밀번호 확인</label><input
 								type="password" class="form-control" name="password2" id="password2"
 								>
 <!-- 								onkeyup="checkPassword2()" -->
 								
 						  <br><span class="check-group" id="checkPasswordResult3"></span>
 						</div>
+						
+						<div class="form-group" align="left">
+							<label class="form-control-label">새 비밀번호</label><input
+								type="password" class="form-control" name="newPassword" id="newPassword"
+								>
+<!-- 								onkeyup="checkPassword()" -->
+								
+						  <br><span class="check-group" id="checkPasswordResult"></span>
+						</div>
+						
+						<div class="form-group" align="left">
+							<label class="form-control-label">새 비밀번호 확인</label><input
+								type="password" class="form-control" name="newPassword2" id="newPassword2"
+								>
+<!-- 								onkeyup="checkPassword()" -->
+								
+						  <br><span class="check-group" id="checkPasswordResult"></span>
+						</div>
+						
+						
 						<div class="form-group" align="left">
 							<label class="form-control-label">휴대폰 번호</label><input type="tel"
 								class="form-control" name="phone_number" id="phone" value="${mb.phone_number }"

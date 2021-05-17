@@ -19,8 +19,7 @@
 
 	<select id="userCheck"
 		resultType="com.itwillbs.domain.MemberBean">
-		select * from member_normal where id=#{id} and
-		password=#{password}
+		select * from member_normal where id=#{id} and password=#{password}
 	</select>
 	
 	<select id="userCheck2"
@@ -51,6 +50,10 @@
 	</update>
 
 	<delete id="deleteMember">
+		delete from member_normal where id=#{id}
+	</delete>
+	
+	<delete id="deleteMember2">
 		delete from member_seller where id=#{id}
 	</delete>
 

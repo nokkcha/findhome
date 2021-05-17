@@ -86,7 +86,7 @@
 								});
 			</script>
 
-			<input type="radio" id="member_type_select" name="member_type_select" value="일반">일반 <input type="radio" id="member_type_select" name="member_type_select" value="사업자">사업자<br>
+			<input type="radio" id="member_type_select" name="member_type" value="일반">일반 <input type="radio" id="member_type_select" name="member_type" value="사업자">사업자<br>
 
 			<h2>로그인</h2>
 			<div class="row block-9">
@@ -94,12 +94,12 @@
 					<!-- col-md-6 제거함 -->
 					<form action=<c:url value="/loginPro" /> id="login" name="login" method="post">
 						<div class="form-group" align="left">
-							<label class="form-control-label">아이디</label> <input type="text" class="form-control" name="id" id="id" value="" onkeyup="checkId()"> <br>
+							<label class="form-control-label">아이디</label> <input type="text" class="form-control" name="id" id="id"  onkeyup="checkId()"> <br>
 							<span class="check-group" id="checkIdResult"></span>
 
 						</div>
 						<div class="form-group" align="left">
-							<label class="form-control-label">비밀번호</label><input type="password" class="form-control" name="password" id="password" value="" onkeyup="checkPassword()"> <br>
+							<label class="form-control-label">비밀번호</label><input type="password" class="form-control" name="password" id="password"  onkeyup="checkPassword()"> <br>
 							<span class="check-group" id="checkPasswordResult"></span>
 						</div>
 
@@ -123,29 +123,19 @@
 
 
 	<script type="text/javascript">
-		$(document)
-				.ready(
-						function() {
+		$(document).ready(function() {
+			$("input[name=member_type]").change(function() {
+				var checkValue = $('input[name="member_type"]:checked').val();
+					console.log(checkValue);
+					
+				if (checkValue == "일반") {
+					$('#login').attr("action","<c:url value="/loginPro" />");
 
-							$("input[name=member_type_select]")
-									.change(
-											function() {
-												var checkValue = $(
-														'input[name="member_type_select"]:checked')
-														.val();
-												console.log(checkValue);
-												if (checkValue == "일반") {
-													$('#login')
-															.attr("action",
-																	"<c:url value="/loginPro" />");
-
-												} else {
-													$('#login')
-															.attr("action",
-																	"<c:url value="/loginPro2" />");
-												}
-											});
-						});
+				} else {
+					$('#login').attr("action","<c:url value="/loginPro2" />");
+				}
+			});
+		});
 	</script>
 
 

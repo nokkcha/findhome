@@ -48,6 +48,11 @@ public class MemberServiceImpl implements MemberService{
 	public void deleteMember(MemberBean mb) {
 		memberDAO.deleteMember(mb);
 	}
+	
+	@Override
+	public void deleteMember2(MemberBean mb) {
+		memberDAO.deleteMember2(mb);
+	}
 
 	@Override
 	public List<MemberBean> getMemberList() {
