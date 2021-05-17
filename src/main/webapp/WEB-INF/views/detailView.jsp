@@ -202,8 +202,29 @@ h4 {
 	justify-content: center;
 	align-items: center;
 	border-radius: 10px;
-	width: 400px;
-	height: 200px;
+	width: auto;
+	height: auto;
+}
+
+.modal-header {
+		padding-top: 50px;
+		border-bottom: 1px solid #dddddddd;
+}
+
+.modal-body h4 {
+	color: green;
+}
+
+.modal-body p {
+	color: gray;
+	text-align: center;
+}
+
+.modal-body h6{
+	color: black;
+	text-align: center;
+	
+	
 }
 
 .mb-5 {
@@ -340,7 +361,7 @@ h4 {
 									<div class="hotel-img">
 										<img src='<c:url value="/resources/upload${roomImg.file_name}" />'>
 									</div>
-								</div>			
+								</div>		
 								</c:forEach>
 							</div>
 
@@ -351,6 +372,7 @@ h4 {
 
 						<div class="col-md-12 hotel-single mt-4 mb-5 ftco-animate">
 							<div class="info-container">
+								<span>${ob.is_selling } </span>
 								<span>원룸/월세 </span>
 								<h2>${ob.subject }</h2>
 
@@ -363,19 +385,35 @@ h4 {
 
 								<div>
 
-									<button type="button" id="btn-call" class="btn btn-secondary" style="float: left; margin-right: 0.5em;">전화하기</button>
+									<button type="button" id="btn-call" class="btn btn-secondary" style="float: left; margin-right: 0.5em;">전화 걸기</button>
 
 									<!-- Modal -->
 
 									<div class="modal-background" id="modal-content">
 										<div class="modal-content" id="modal-content">
-											웹에서 전화걸기<br> ${ob.phone_number }<br>
+										<div class="modal-header">
+											<h5 class="modal-title">Contact</h5>
+										</div>
+										<div class="modal-body">
+											 <h6>중개사 : ${ob.seller_id }</h6>
+											 <h6>연락처 : ${ob.phone_number }</h6><br>
+											 
+											 <h4>050-1234-5678</h4>
+											 <p>
+											 중개사무소에 연락하여 방문일을 예약하세요.<br>
+												Findhome에서 보고 연락한다고 말씀하시면<br>
+												더욱 빠른 예약이 가능합니다.<br></p>
+											 
+											 
+										</div>
+											<div class="modal-footer">
 											<button type="button" id="btn-close" class="btn btn-secondary">닫기</button>
+											</div>
 										</div>
 									</div>
 
 
-									<button type="button" class="btn btn-secondary" style="float: left;">채팅하기</button>
+<!-- 									<button type="button" class="btn btn-secondary" style="float: left;">채팅하기</button> -->
 
 								</div>
 
@@ -537,7 +575,7 @@ h4 {
 								// 주소로 좌표를 검색합니다
 								geocoder
 										.addressSearch(
-												'서울특별시 영등포구 여의동로 330 한강사업본부 여의도안내센터',
+												'${ob.address}',
 												function(result, status) {
 
 													// 정상적으로 검색이 완료됐으면 
@@ -623,7 +661,11 @@ h4 {
 										<div class="col-md-12">
 											<div class="form-group">
 												<input type="submit" value="문의 하기" id="contact-btn" class="btn btn-primary py-3">
+												
 											</div>
+												<div>
+												<button type="button" class="btn btn-outline-danger btn-sm">신고하기</button>
+												</div>
 										</div>
 									</div>
 								</div>
