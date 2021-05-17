@@ -95,8 +95,8 @@ public class BoardDAOImpl implements BoardDAO{
 	
 
 	@Override
-	public ImageBean getImage(int room_id) {
-		return sqlSession.selectOne(namespace+".getImage",room_id);
+	public List<ImageBean> getImage(int room_id) {
+		return sqlSession.selectList(namespace+".getImage",room_id);
 	}
 
 	@Override

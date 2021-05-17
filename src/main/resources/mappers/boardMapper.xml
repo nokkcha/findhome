@@ -140,11 +140,12 @@
 
 	<select id="getRoom" resultMap="OneRoomBean">
 		select * from
-		one_room where
+		one_room
+		where
 		room_id=#{room_id}
 	</select>
 	
-	<select id="getImage" resultMap="OneRoomBean">
+	<select id="getImage" resultType="com.itwillbs.domain.ImageBean">
 		select * from
 		one_room_pic
 		where
