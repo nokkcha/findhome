@@ -407,6 +407,25 @@ body {
 						function() {
 							$( "#address" ).change(function() {
 								  var address = $( this ).val();
+								  // ajax로 전달할 폼 객체
+								  var formData = new FormData();
+								  
+								  $.ajax('<c:url value="/zzim" />',{
+										type : "post",
+										data : formData,
+										// processData: true=> get방식, false => post방식
+										dataType : "text",
+										// contentType: true => application/x-www-form-urlencoded, 
+										//                false => multipart/form-data
+										processData : false,
+										success : function(data) {
+											var str = "";
+											// 섬네일 생성하고 이미지 표시
+											str += data;											
+											console.log('data : ' + data);													
+											$("#searchResult").append(str);																				
+										}
+									});
 								  
 								  
 								  
