@@ -8,6 +8,7 @@ import com.itwillbs.domain.BoardBean;
 import com.itwillbs.domain.ImageBean;
 import com.itwillbs.domain.OneRoomBean;
 import com.itwillbs.domain.PageBean;
+import com.itwillbs.domain.qnaBean;
 
 public interface BoardDAO {
 	    // 추상메서드
@@ -32,5 +33,7 @@ public interface BoardDAO {
 		public ImageBean getImage(int room_id);
 		
 		List<LinkedHashMap<String, Object>> selectOneRoomThumbImg();
+		
+		public void insertqna(qnaBean qb);
 
 }
