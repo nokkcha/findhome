@@ -13,6 +13,7 @@ import org.springframework.stereotype.Repository;
 import com.itwillbs.domain.BoardBean;
 import com.itwillbs.domain.OneRoomBean;
 import com.itwillbs.domain.PageBean;
+import com.itwillbs.domain.qnaBean;
 
 @Repository
 public class BoardDAOImpl implements BoardDAO{
@@ -100,6 +101,12 @@ public class BoardDAOImpl implements BoardDAO{
 	public List<LinkedHashMap<String, Object>> selectOneRoomThumbImg() {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList(namespace+".selectOneRoomThumbImg");
+	}
+
+	@Override
+	public void insertqna(qnaBean qb) {
+		sqlSession.insert(namespace+".insertqna",qb);
+		
 	}
 
 }

@@ -162,6 +162,12 @@
 		LIMIT 10
 	</select>
 
+<insert id="insertqna">
+		INSERT INTO `qna` (`content`, `phone_number`, 
+		`room_id`) VALUES (#{content},
+		#{phone_number}, #{room_id})
+	</insert>
+
 </mapper>
 
 

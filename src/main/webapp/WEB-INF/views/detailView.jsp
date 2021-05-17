@@ -587,6 +587,7 @@ h4 {
 
 
 					<form action='<c:url value="/mailpro"/>' method="post">
+					<input type="hidden" name="room_id" value="${ob.room_id}">
 						<div class="room-contact-container">
 							<div class="col-md-12 hotel-single ftco-animate mb-5 mt-4">
 								<h4 class="mb-5">매물 문의하기 &amp; 상담예약</h4>

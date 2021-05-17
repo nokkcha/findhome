@@ -16,6 +16,7 @@ import com.itwillbs.dao.BoardDAO;
 import com.itwillbs.domain.BoardBean;
 import com.itwillbs.domain.OneRoomBean;
 import com.itwillbs.domain.PageBean;
+import com.itwillbs.domain.qnaBean;
 import com.itwillbs.domain.ImageBean;
 
 import lombok.Getter;
@@ -157,6 +158,12 @@ public class BoardServiceImpl implements BoardService{
 	public List<LinkedHashMap<String, Object>> selectOneRoomThumbImg() {
 		// TODO Auto-generated method stub
 		return boardDAO.selectOneRoomThumbImg();
+	}
+
+	@Override
+	public void insertqna(qnaBean qb) {
+		boardDAO.insertqna(qb);
+		
 	}
 	
 
