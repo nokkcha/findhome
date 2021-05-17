@@ -4,6 +4,7 @@ import java.io.File;
 import java.net.URLEncoder;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
@@ -89,12 +90,22 @@ public class BoardController {
 		
 		List<OneRoomBean> roomList = boardService.getBoardList(pb);
 		
-
 		pb.setCount(boardService.getBoardCount(pb));
 
 		model.addAttribute("roomList", roomList);
 		model.addAttribute("pb", pb);
 
+		
+		// 방 리스트와 썸네일 정보 넘기기 
+		List<LinkedHashMap<String, Object>> obList = boardService.selectOneRoomThumbImg();
+		for (Map<String, Object> map:obList) {
+			System.out.println(map.get("room_id") + " " 
+					+ map.get("subject") + " " + map.get("file_name"));
+		}
+		
+		model.addAttribute("obList", obList);
+		
+		
 		String id = (String) session.getAttribute("id");
 	
 		if(id != null) {
@@ -122,6 +133,16 @@ public class BoardController {
 		
 		model.addAttribute("roomList", roomList);
 		model.addAttribute("pb", pb);
+		
+		// 방 리스트와 썸네일 정보 넘기기 
+		List<LinkedHashMap<String, Object>> obList = boardService.selectOneRoomThumbImg();
+		for (Map<String, Object> map:obList) {
+			System.out.println(map.get("room_id") + " " 
+					+ map.get("subject") + " " + map.get("file_name"));
+		}
+		
+		model.addAttribute("obList", obList);
+		
 		
 		String id = (String) session.getAttribute("id");
 		
@@ -168,6 +189,15 @@ public class BoardController {
 		
 		model.addAttribute("roomList", roomList);
 		
+		// 방 리스트와 썸네일 정보 넘기기 
+		List<LinkedHashMap<String, Object>> obList = boardService.selectOneRoomThumbImg();
+		for (Map<String, Object> map:obList) {
+			System.out.println(map.get("room_id") + " " 
+					+ map.get("subject") + " " + map.get("file_name"));
+		}
+		
+		model.addAttribute("obList", obList);
+		
 		if(id != null) {
 			List<MemberBean> wishList=memberService.getMemberWishList(id);	
 			model.addAttribute("wishList", wishList);
@@ -208,6 +238,15 @@ public class BoardController {
 		
 		model.addAttribute("roomList", roomList);
 		
+		// 방 리스트와 썸네일 정보 넘기기 
+		List<LinkedHashMap<String, Object>> obList = boardService.selectOneRoomThumbImg();
+		for (Map<String, Object> map:obList) {
+			System.out.println(map.get("room_id") + " " 
+					+ map.get("subject") + " " + map.get("file_name"));
+		}
+		
+		model.addAttribute("obList", obList);
+		
 		if(id != null) {
 			List<MemberBean> wishList=memberService.getMemberWishList(id);	
 			model.addAttribute("wishList", wishList);
@@ -235,6 +274,15 @@ public class BoardController {
 		
 		model.addAttribute("roomList", roomList);
 		model.addAttribute("pb", pb);
+		
+		// 방 리스트와 썸네일 정보 넘기기 
+		List<LinkedHashMap<String, Object>> obList = boardService.selectOneRoomThumbImg();
+		for (Map<String, Object> map:obList) {
+			System.out.println(map.get("room_id") + " " 
+					+ map.get("subject") + " " + map.get("file_name"));
+		}
+		
+		model.addAttribute("obList", obList);
 		
 		if(id != null) {
 			List<MemberBean> wishList=memberService.getMemberWishList(id);	

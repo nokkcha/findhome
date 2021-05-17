@@ -185,8 +185,18 @@
         	     <c:forEach var="roomList" items="${roomList }">
         	     <div class="roomlist">
 		    				<div class="destination">
-		    					<a href='<c:url value="/detailView?room_id=${roomList.room_id}" />' class="img img-2 d-flex justify-content-center align-items-center" 
-		    					style="background-image: url(${pageContext.request.contextPath}/resources/images/hotel-1.jpg);"></a>
+		    				
+		    				
+		    				<c:forEach items="${obList}" var="obList" varStatus="i">
+		    					<c:if test="${obList.room_id eq  roomList.room_id}">
+			    					<a
+										href='<c:url value="/detailView?room_id=${obList.room_id}" />'
+										class="img img-2 d-flex justify-content-center align-items-center"
+										style="background-image: url(${pageContext.request.contextPath}/resources/upload${obList.file_name});"></a>
+
+								</c:if>
+							</c:forEach>
+
 
 		    					<div class="text p-3">
 		    					

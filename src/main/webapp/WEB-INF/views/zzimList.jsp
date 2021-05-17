@@ -44,8 +44,9 @@
       <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
           <div class="col-md-9 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
-            <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="index.html">메인</a></span> <span>오피스텔</span></p>
-            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"> 원룸 </h1>
+            <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="<c:url value="findRooms"/>">원룸</a>
+            </span> <span><a href="<c:url value="findOfficetel"/>">오피스텔</a></span></p>
+            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"> 찜한 매물 </h1>
           </div>
         </div>
       </div>
@@ -170,30 +171,45 @@
 	            </form>
         		</div>
           </div>
-                   
+               
            <div class="col-lg-roomlist">
           	<button class="btn_room btn notpri-page" onclick="location.href='<c:url value="findRooms"/>'"> 방 찾기 </button>
           	<button class="btn_like btn pri-page"> 찜한 매물 </button>        	
         	<div class="roomlist_moum"> 
         	
+        	
+        	
+        	
+        	<c:if test="${id != null}">		    		
+        	
         	     <c:forEach var="roomList" items="${roomList }">
 
         	     <div class="roomlist">
 		    				<div class="destination">
-		    					<a href='<c:url value="/detailView?room_id=${roomList.room_id}" />' class="img img-2 d-flex justify-content-center align-items-center" 
-		    					style="background-image: url(${pageContext.request.contextPath}/resources/images/hotel-1.jpg);"></a>
+		    				
+		    				
+								<c:forEach items="${obList}" var="obList" varStatus="i">
+			    					<c:if test="${obList.room_id eq  roomList.room_id}">
+				    					<a
+											href='<c:url value="/detailView?room_id=${obList.room_id}" />'
+											class="img img-2 d-flex justify-content-center align-items-center"
+											style="background-image: url(${pageContext.request.contextPath}/resources/upload${obList.file_name});"></a>
+	
+									</c:if>
+								</c:forEach>
 
 		    					<div class="text p-3">
 		    					<div class="text-mi"> 
 		    						<div class="d-flex">
 		    							<div class="one">
-				    						<h3><a href='<c:url value="/detailView?room_id=${roomList.room_id}" />'> ${roomList.address } ${roomList.room_id } </a></h3>
+				    						<h3><a href='<c:url value="/detailView?room_id=${roomList.room_id}" />'> ${roomList.subject} </a></h3>
 			    						</div>
 			    						<div class="two">
 			    							<span class="price per-price"><small>${roomList.deposit} / ${roomList.monthly_rent}</small></span>
 		    							</div>
 		    						</div>
-		    						<p>${roomList.subject}</p>
+		    						<p>
+		    						${roomList.address }</p>
 		    							</div>
 		    						<hr>
 		    						<p class="bottom-area d-flex">
@@ -224,17 +240,26 @@
 
 
 				   		</c:forEach>
-		        		
-				</div>		
-          	</div>
-          	
-		        
-		        
-		        
-          </div><!-- .col-md-8 -->
-        </div>
-
-          	<div class="row mt-5">
+				   		
+				   	</c:if>
+				   	
+				   	<c:if test="${id == null}">		 
+				   	
+				   	<div class="nologin-zzim" style="margin: 10% auto 0 35%"	>
+				   	
+				   		찜 기능은 로그인한 회원님들께 제공되는 기능입니다. <br>
+				   		아주 간단한 회원가입을 통해 찜기능을 이용하세요! <br>
+				   		<br>
+				   		지금 <a href="<c:url value="join_choice"/>"> 바로 가입하기 > </a><br>
+				   		이미 회원이라면? <a href="<c:url value="login"/>"> 바로  로그인하기> </a> 
+				   		
+				   	</div>
+				   	
+				   	</c:if>
+				   	
+				   		
+				   		
+				   <div class="row mt-5">
 		          <div class="col text-center">
 		            <div class="block-27-page">
 		              <ul>
@@ -252,6 +277,17 @@
 		            </div>
 		          </div>
 		        </div>
+		        		
+				</div>		
+          	</div>
+          	
+		        
+		        
+		        
+          </div><!-- .col-md-8 -->
+        </div>
+
+
       
     </section> <!-- .section -->
 
