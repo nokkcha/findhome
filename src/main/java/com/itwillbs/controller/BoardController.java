@@ -38,6 +38,7 @@ import com.itwillbs.domain.ImageBean;
 import com.itwillbs.domain.MemberBean;
 import com.itwillbs.domain.OneRoomBean;
 import com.itwillbs.domain.PageBean;
+import com.itwillbs.domain.qnaBean;
 import com.itwillbs.mailtest.GoogleAuthentication;
 import com.itwillbs.service.BoardService;
 import com.itwillbs.service.MemberService;
@@ -371,12 +372,22 @@ public class BoardController {
 	public String mailpro(HttpServletRequest request, Model model) {
 
 		String sender = "hyunjoon42311@gamil.com";
-		String receiver = "tcandyman@naver.com";
+		String receiver = request.getParameter("receiver"); 
 		String phone = request.getParameter("phone");
 		String content = request.getParameter("content");
 		String name = request.getParameter("name");
 		String date1 = request.getParameter("date1");
+		String room_id = request.getParameter("room_id");
 		content = content + name + phone + date1;
+		
+		qnaBean qb = new qnaBean();
+		qb.setContent(request.getParameter("content"));
+		qb.setPhone_number(phone);
+		qb.setRoom_id(Integer.parseInt(room_id));
+		
+		
+		boardService.insertqna(qb);
+		
 
 		try {
 			// 서버정보를 => Properties 객체 저장
