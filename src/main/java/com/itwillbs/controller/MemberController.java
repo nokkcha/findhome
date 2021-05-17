@@ -48,7 +48,7 @@ public class MemberController {
 	// /member/loginPro
 	@RequestMapping(value = "/loginPro", method = RequestMethod.POST)
 	public String loginPro(MemberBean mb, HttpSession session, Model model) {
-System.out.println(mb.getMember_type());
+
 
 		MemberBean mb2 = memberService.userCheck(mb);
 		if (mb2 != null) {
@@ -117,15 +117,48 @@ System.out.println(mb.getMember_type());
 		return "redirect:/login";
 	}
 
-	@RequestMapping(value = "/member/delete", method = RequestMethod.GET)
+	@RequestMapping(value = "/memberDelete", method = RequestMethod.GET)
 	public String delete() {
 		// /WEB-INF/views/member/deleteForm.jsp
-		return "member/deleteForm";
+		return "memberDelete";
 	}
 	
-	@RequestMapping(value = "/memberDelete", method = RequestMethod.GET)
-	public String memberdelete() {
-		return "memberDelete";
+	@RequestMapping(value = "/memberDeletePro1", method = RequestMethod.POST)
+	public String deletePro(MemberBean mb, HttpSession session, Model model) {
+		
+		session.setAttribute("id", mb.getId());
+	
+		MemberBean mb2=memberService.userCheck(mb);
+			
+		if(mb2!=null) {		
+			// 삭제
+			memberService.deleteMember(mb);
+			return "redirect:/";
+		}else {
+			// 입력하신 정보가 틀립니다. 
+			model.addAttribute("msg","입력하신 정보가 틀립니다.");
+		//  /WEB-INF/views/member/msg.jsp
+			return "member/msg";
+		}
+	}
+	
+	@RequestMapping(value = "/memberDeletePro2", method = RequestMethod.POST)
+	public String deletePro2(MemberBean mb, HttpSession session, Model model) {
+		
+		session.setAttribute("id", mb.getId());
+			
+		MemberBean mb2=memberService.userCheck2(mb);
+		if(mb2!=null) {
+			
+			// 삭제
+			memberService.deleteMember2(mb);
+			return "redirect:/";
+		}else {
+			// 입력하신 정보가 틀립니다. 
+			model.addAttribute("msg","입력하신 정보가 틀립니다.");
+		//  /WEB-INF/views/member/msg.jsp
+			return "member/msg";
+		}
 	}
 
 	@RequestMapping(value = "/memberInfo", method = RequestMethod.GET)

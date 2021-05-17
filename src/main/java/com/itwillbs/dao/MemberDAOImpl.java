@@ -49,6 +49,11 @@ public class MemberDAOImpl implements MemberDAO{
 	public void deleteMember(MemberBean mb) {
 		sqlSession.delete(namespace+".deleteMember", mb);
 	}
+	
+	@Override
+	public void deleteMember2(MemberBean mb) {
+		sqlSession.delete(namespace+".deleteMember2", mb);
+	}
 
 	@Override
 	public List<MemberBean> getMemberList() {
@@ -93,6 +98,8 @@ public class MemberDAOImpl implements MemberDAO{
 		sqlSession.update(namespace+".updateMember", mb);
 		
 	}
+
+	
 
 
 

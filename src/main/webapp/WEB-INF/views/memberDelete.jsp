@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -51,6 +52,21 @@
 </head>
 <body>
 
+<script type="text/javascript">
+	$(document).ready(function () { 
+		var checkValue = $('#member_type').val();
+		//alert(checkValue);
+          console.log(checkValue);
+				
+	          if (checkValue == "seller") {
+					$('#login').attr("action","<c:url value="/memberDeletePro2" />");
+	
+				} else {									
+					$('#login').attr("action","<c:url value="/memberDeletePro1" />");
+				}
+	});		
+</script>
+
 	<%@ include file="../views/top.jsp"%>
 
 
@@ -99,11 +115,13 @@
 					
 					<hr>
 					
-					<form action="#" id="login" name="login">
-
+					<form action='<c:url value="/memberDeletePro" />' id="login" name="login" method="post">
+					
+							<input type="hidden" value="${sessionScope.id }" name="id" id="id" >
+							
 						<div class="form-group" align="left">
 							<label class="form-control-label">비밀번호</label><input
-								type="password" class="form-control" name="pass1" id="pass1">
+								type="password" class="form-control" name="password" id="password">
 								
 						  <br><span class="check-group" id="checkPasswordResult"></span>
 						</div>
