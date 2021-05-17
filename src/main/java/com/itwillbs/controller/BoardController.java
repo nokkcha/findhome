@@ -62,6 +62,7 @@ public class BoardController {
 			System.out.println("FileList : " + string);
 		}
 
+		System.out.println("방등록 카테고리 : " + bb.getCategory());
 		bb.setInclude_fees(bb.getInclude_feesArray());
 		bb.setInclude_options(bb.getInclude_optionsArray());
 

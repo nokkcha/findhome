@@ -141,6 +141,8 @@ body {
 								value="Search">
 						</form>
 					</div>
+					
+					<input type="text" id="searchResult" readonly="readonly" style="" value="검색 결과가 없습니다. 정확한 검색어를 입력해주세요.">
 
 				</div>
 			</div>
@@ -403,6 +405,13 @@ body {
 		$(document)
 				.ready(
 						function() {
+							$( "#address" ).change(function() {
+								  var address = $( this ).val();
+								  
+								  
+								  
+								});
+							
 							$('.button-class1').click(
 									function() {
 										$("#address").val('');
