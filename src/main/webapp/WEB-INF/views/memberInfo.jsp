@@ -54,7 +54,7 @@
 
 	<%@ include file="../views/top.jsp"%>
 
-<input type="text" id="member_type" value=${mb.member_type }>
+<input type="hidden" id="member_type" value=${mb.member_type }>
 
 	<div class="hero-wrap js-fullheight"
 		style="background-image: url('${pageContext.request.contextPath}/resources/images/bg_2.jpg');">

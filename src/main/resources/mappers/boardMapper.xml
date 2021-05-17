@@ -72,6 +72,8 @@
 		#{startRow},#{pageSize}
 	</select>
 
+
+
 	<select id="getWishList"
 		resultType="com.itwillbs.domain.OneRoomBean">
 		select address, subject, room_id, monthly_rent, deposit,

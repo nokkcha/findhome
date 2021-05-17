@@ -32,4 +32,5 @@ public interface BoardDAO {
 		
 		List<LinkedHashMap<String, Object>> selectOneRoomThumbImg();
 
+
 }

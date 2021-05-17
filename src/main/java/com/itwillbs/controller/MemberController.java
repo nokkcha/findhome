@@ -29,6 +29,11 @@ public class MemberController {
 	public String join_choice() {
 		return "join_choice";
 	}
+	
+	@RequestMapping(value = "/login_choice", method = RequestMethod.GET)
+	public String login_choice() {
+		return "login_choice";
+	}
 
 	@RequestMapping(value = "/join", method = RequestMethod.GET)
 	public String join() {
@@ -44,6 +49,13 @@ public class MemberController {
 	public String login() {
 		return "login";
 	}
+	
+	@RequestMapping(value = "/seller_login", method = RequestMethod.GET)
+	public String seller_login() {
+		return "seller_login";
+	}
+	
+
 
 	// /member/loginPro
 	@RequestMapping(value = "/loginPro", method = RequestMethod.POST)
@@ -65,13 +77,14 @@ public class MemberController {
 
 	}
 
-	@RequestMapping(value = "/loginPro2", method = RequestMethod.POST)
+	@RequestMapping(value = "/seller_loginPro", method = RequestMethod.POST)
 	public String loginPro2(MemberBean mb, HttpSession session, Model model) {
 
 		MemberBean mb2 = memberService.userCheck2(mb);
 		if (mb2 != null) {
 			// 세션값 생성 "id"
 			session.setAttribute("id", mb.getId());
+			session.setAttribute("seller_id", mb.getId());
 
 			// 회원구분 세션값 생성 "member_type"
 			session.setAttribute("member_type", "seller");
@@ -113,7 +126,7 @@ public class MemberController {
 
 		session.invalidate();
 
-		return "redirect:/login";
+		return "redirect:/login_choice";
 	}
 
 	@RequestMapping(value = "/member/delete", method = RequestMethod.GET)

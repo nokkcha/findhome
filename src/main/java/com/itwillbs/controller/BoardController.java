@@ -285,6 +285,15 @@ public class BoardController {
 		return "zzimList";
 	}
 	
+	@RequestMapping(value = "/member_seller", method = RequestMethod.GET)
+	public String member_seller(HttpServletRequest request, Model model, HttpSession session) {
+		String seller_id = (String) session.getAttribute("seller_id");
+
+		
+
+		return "member_seller";
+	}
+	
 //	http://localhost:8080/myweb2/board/fwrite
 	@RequestMapping(value = "/board/fwrite", method = RequestMethod.GET)
 	public String fwrite() {
