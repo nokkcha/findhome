@@ -102,6 +102,26 @@ public class BoardDAOImpl implements BoardDAO{
 		return sqlSession.selectList(namespace+".selectOneRoomThumbImg");
 	}
 
+	@Override
+	public List<OneRoomBean> sellerLatestBoard(String seller_id) {
+		return sqlSession.selectList(namespace+".sellerLatestBoard", seller_id);
+	}
+
+	@Override
+	public List<OneRoomBean> getSalesList(PageBean pb) {
+		return sqlSession.selectList(namespace+".getSalesList", pb);
+	}
+
+	@Override
+	public int getSalesCount(PageBean pb) {
+		return sqlSession.selectOne(namespace+".getSalesCount", pb);
+	}
+
+	@Override
+	public int getSalesCategoryCount(OneRoomBean ob) {
+		return sqlSession.selectOne(namespace+".getSalesCategoryCount", ob);
+	}
+
 
 
 }

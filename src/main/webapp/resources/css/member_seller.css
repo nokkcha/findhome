@@ -12,12 +12,9 @@ font-family: 'Noto Sans KR', sans-serif;
 
 .seller-side {
 	font-family: 'Noto Serif KR', serif;
-}
-
-.seller-side {
 	border: 1px solid;
 	float: left;
- 	height: 100vh;
+ 	height: 150vh;
  	width: 300px;
  	background: #f85959;
 }
@@ -38,11 +35,11 @@ font-family: 'Noto Sans KR', sans-serif;
 
 
 .sell-text {
-/* 	font-style: italic; */
+	font-style: italic;
 	font-size:1.2em;
 	font-weight:bold;
 	color: #6D6A6A;
-	margin-right: 20px;
+	margin-right: 30px;
 }
 
 .seller-sell, .seller-mail{
@@ -52,17 +49,35 @@ font-family: 'Noto Sans KR', sans-serif;
 	margin-top: 100px;
 	text-align: center;
  }
+
  
- .sell-bottom {
+ .chart-div {
  	margin-top: 50px;
  	display: flex;
 	justify-content: center;
  }
  
+ .chart-text {
+	margin-left: 50px;
+	margin-top: 150px;
+	font-weight:bold;
+	font-size: 1.1em;
+ }
+ 
+ .chart-text-point{
+ 	border-bottom: 3px solid #F3ABAB;
+ }
+ 
+ 
+.sell-table {
+	background: white;
+	border-radius: 50px;
+}
 
 .sell-ta-th {
 	background: #F3ABAB;
 	color: white;
+	border-radius: 10px;
 }
 
 .sell-ta-no, .sell-ta2-no {
@@ -78,10 +93,72 @@ font-family: 'Noto Sans KR', sans-serif;
 	width: 400px;
 }
 
+.sell-ta-btn{
+	width: 200px;
+}
+
 .sell-ta2-sub {
 	width: 500px;	
 }
 
 .sell-ta2-id {
 	width: 200px;	
+}
+
+
+table.type09 {
+  border-collapse: collapse;
+  text-align: center;
+  line-height: 1.5;
+
+}
+table.type09 thead th {
+  padding: 10px;
+  font-weight: bold;
+  vertical-align: top;
+  color: #F13A3A;
+  border-bottom: 3px solid #F3ABAB;
+}
+table.type09 tbody th {
+  width: 150px;
+  padding: 10px;
+  font-weight: bold;
+  vertical-align: top;
+  border-bottom: 1px solid #ccc;
+  background: #f3f6f7;
+}
+table.type09 td {
+  padding: 10px;
+  vertical-align: top;
+  border-bottom: 1px solid #ccc;
+}
+
+.type09 tbody tr:hover {
+	cursor: pointer;
+	background: #F5DBDB;
+}
+
+.sell-page{
+	border: 1px solid;
+	justify-content: center;
+	display: flex;
+	margin-right: 20px;
+	margin-top: 700px;
+}
+
+
+.sell-page li {
+	list-style: none;
+}
+
+.sell-page a {
+	display: block;
+}
+
+.sell-board {
+	border: 1px solid;
+}
+
+.sell-btn:hover {
+	cursor: pointer;
 }

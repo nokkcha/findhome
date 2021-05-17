@@ -39,76 +39,64 @@
   <body>
 
   
-<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light01" id="ftco-navbar">
-	<div class="container">
-		<a class="navbar-brand" href="./">FindHome</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="oi oi-menu"></span> Menu
-		</button>
-
-
-		<nav class="navbar navbar-expand-lg navbar-dark">
-			<div class="container-fluid">
-
-				<!-- navbar-collapse.// -->
-			</div>
-			<!-- container-fluid.// -->
-		</nav>
-		
-				<div class="collapse navbar-collapse" id="ftco-nav">
-			<ul class="navbar-nav ml-auto">
-
-						<li class="nav-item dropdown"><a class="nav-link" href="#" data-bs-toggle="dropdown"> 관리페이지 </a>
-				<ul class="dropdown-menu">
-								<li><a class="dropdown-item" href="./member_seller"> 대시보드 </a></li>
-								<li><a class="dropdown-item" href="./SalesList"> 매물관리 </a></li>
-								<li><a class="dropdown-item" href="./"> 문의관리 </a></li>
-								<li><a class="dropdown-item" href="./"> 고객센터 </a></li>
-							</ul>
-				</li>
-				<li class="nav-item"><a href='<c:url value="/logout" />' class="nav-link">로그아웃</a></li>
-
-
-			</ul>
-		</div>
-		
-		
-		
-</div>
-</nav>
-
-
-    
-<div class="seller-side"> 
-
-	<nav>
-		<a href="./member_seller" style="color: black;"> 대시보드</a>
-		<a href="./SalesList"> 매물관리 </a>
-		<a href="#"> 문의관리 </a>
-		<a href="#"> 고객센터 </a>
+	<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light01" id="ftco-navbar">
+		<div class="container">
+			<a class="navbar-brand" href="./">FindHome</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="oi oi-menu"></span> Menu
+			</button>
 	
+	
+			<nav class="navbar navbar-expand-lg navbar-dark">
+				<div class="container-fluid">
+	
+					<!-- navbar-collapse.// -->
+				</div>
+				<!-- container-fluid.// -->
+			</nav>
+			
+					<div class="collapse navbar-collapse" id="ftco-nav">
+				<ul class="navbar-nav ml-auto">
+	
+							<li class="nav-item dropdown"><a class="nav-link" href="#" data-bs-toggle="dropdown"> 관리페이지 </a>
+					<ul class="dropdown-menu">
+									<li><a class="dropdown-item" href="./member_seller"> 대시보드 </a></li>
+									<li><a class="dropdown-item" href="./SalesList"> 매물관리 </a></li>
+									<li><a class="dropdown-item" href="./"> 문의관리 </a></li>
+									<li><a class="dropdown-item" href="./"> 고객센터 </a></li>
+								</ul>
+					</li>
+					<li class="nav-item"><a href='<c:url value="/logout" />' class="nav-link">로그아웃</a></li>
+	
+	
+				</ul>
+			</div>
+			
+		</div>
 	</nav>
 
 
-</div>
+    
+	<div class="seller-side"> 
+	
+		<nav>
+			<a href="./member_seller"> 대시보드</a>
+			<a href="./SalesList" style="color: black;"> 매물관리 </a>
+			<a href="#"> 문의관리 </a>
+			<a href="#"> 고객센터 </a>
+		
+		</nav>
+	
+	
+	</div>
 
     <section class="seller-wrap">
     
-    
 
-		 <div class="chart-div">
-		    <canvas id="pieChartCanvas" width="300px" height="300px"></canvas>
-		    <span class="chart-text"> 
-		   	 <span class="chart-text-point"> 매물 현황  </span><br>
-			    OneRoom : ${OneroomCount} 개 <br>
-			    Officetel : ${OfficetelCount } 개 <br>
-		    </span>
-		    
-		  </div>  
 		   
 
 		<div class="seller-sell">
-		<span class="sell-text"> 최신 매물</span> <br>
+		<span class="sell-text"> 전체 매물</span> <br>
 		<table class="type09">
 			<thead>
 				<tr>
@@ -117,6 +105,7 @@
 					<th class="sell-ta-sub"> Subject </th>
 					<th class="sell-ta-de"> Deposit  </th>
 					<th class="sell-ta-re"> Monthly Rent  </th>
+					<th class="sell-ta-btn"> Button  </th>
 				 </tr>
 			</thead>
 			  
@@ -129,65 +118,35 @@
 					<td> ${roomList.subject}</td>
 					<td> ${roomList.deposit} </td>
 					<td> ${roomList.monthly_rent} </td>
+					<td> <button class="sell-btn"> 수정 </button> <button class="sell-btn"> 삭제 </button></td>
 				</tr>
 				
 				</c:forEach>
-				
+
 			  </tbody>
 			  
 		</table>
-
+		
 	
 		</div>
-    
-	<div class="seller-mail">
-    <span class="sell-text"> 최신 문의</span> <br>
-    
-	<table class="type09">
-		<thead>
-			<tr>
-			   <th class="sell-ta2-no">No</th>
-			   <th class="sell-ta2-id">ID</th>
-			   <th class="sell-ta2-sub">Subject</th>
-			 </tr>
-		</thead>
-		  
-		<tbody>
-			<tr>
-			  <td> 1</td>
-			  <td> test@naver.com </td>
-			  <td> 문의합니다. </td>
-			</tr>
-			
-			<tr>
-			  <td> 2</td>
-			  <td> test@naver.com </td>
-			  <td> 문의합니다. </td>
-			</tr>
-			
-			<tr>
-			  <td> 3</td>
-			  <td> test@naver.com </td>
-			  <td> 문의합니다. </td>
-			</tr>
-			
-			<tr>
-			  <td> 4</td>
-			  <td> test@naver.com </td>
-			  <td> 문의합니다. </td>
-			</tr>
-			
-			<tr>
-			  <td> 5</td>
-			  <td> test@naver.com </td>
-			  <td> 문의합니다. </td>
-			</tr>
 
-		  </tbody>
-		  
-		</table>
-
-	</div>
+          	<div class="row mt-5">
+		          <div class="col text-center">
+		            <div class="block-27-page">
+		              <ul>
+		                <c:if test="${pb.startPage > pb.pageBlock }">
+		                <li> <a href='<c:url value="SalesList?pageNum=${pb.startPage-pb.pageBlock}" />'>&lt;</a></li>
+					</c:if>
+					<c:forEach var="i" begin="${pb.startPage }" end="${pb.endPage}" step="1">
+		                <li class="active"><span> <a href='<c:url value="SalesList?pageNum=${i}" />'>${i}</a> </span></li>
+					</c:forEach>
+					<c:if test="${pb.endPage < pb.pageCount }">
+		                <li><a href='<c:url value="SalesList?pageNum=${pb.startPage+pb.pageBlock}" />'>&gt;</a></li>
+					</c:if>
+		              </ul>
+		            </div>
+		          </div>
+		        </div>
 
 	</section>
 	
@@ -220,38 +179,7 @@
   
   
 <script src="../script/jquery-3.6.0.js"></script>
-<script type="text/javascript">
-<%-- 	var BCount = <%=bdao.getCount(id,"책")%>; --%>
-<%-- 	var MCount = <%=bdao.getCount(id, "영화/드라마")%>; --%>
-<%-- 	var SCount = <%=bdao.getCount(id, "공연")%>; --%>
-      
-      window.onload = function () {
-    	    pieChartDraw();
-    	}
 
-    	let pieChartData = {
-    			
-    	    labels: ['OneRoom', 'Officetel'],
-    	    datasets: [{
-    	        backgroundColor: ['#F18181', '#8ADCB0'],
-    	        data: [${OneroomCount}, ${OfficetelCount}]
-    	    }] 
-    	};
-
-    	let pieChartDraw = function () {
-    	    let ctx = document.getElementById('pieChartCanvas').getContext('2d');
-    	    
-    	    window.pieChart = new Chart(ctx, {
-    	        type: 'pie',
-    	        data: pieChartData,
-    	        options: {
-    	            responsive: false
-    	        }
-    	    });
-    	};
-      
-      
-      </script>
 
   
   

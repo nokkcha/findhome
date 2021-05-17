@@ -31,6 +31,10 @@ public interface BoardDAO {
 		public OneRoomBean getRoom(int room_id);
 		
 		List<LinkedHashMap<String, Object>> selectOneRoomThumbImg();
+		public List<OneRoomBean> sellerLatestBoard(String seller_id);
+		public List<OneRoomBean> getSalesList(PageBean pb);
+		public int getSalesCount(PageBean pb);
+		public int getSalesCategoryCount(OneRoomBean ob);
 
 
 }
