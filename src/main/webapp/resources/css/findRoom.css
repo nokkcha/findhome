@@ -187,3 +187,10 @@ input:checked + label span {
  background: #f85959;
  color: white;
 }
+
+.nologin-zzim {
+	margin-left: 35%;
+	margin-top: 10%;
+	border: 1px solid;
+	background: red;
+}

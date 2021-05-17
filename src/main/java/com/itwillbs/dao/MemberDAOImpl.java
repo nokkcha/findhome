@@ -29,6 +29,11 @@ public class MemberDAOImpl implements MemberDAO{
 	public MemberBean userCheck(MemberBean mb) {
 		return sqlSession.selectOne(namespace+".userCheck", mb);
 	}
+	
+	@Override
+	public MemberBean userCheck2(MemberBean mb) {
+		return sqlSession.selectOne(namespace+".userCheck2", mb);
+	}
 
 	@Override
 	public MemberBean getMember(String id) {
@@ -36,8 +41,8 @@ public class MemberDAOImpl implements MemberDAO{
 	}
 
 	@Override
-	public void updateMember(MemberBean mb) {
-		sqlSession.update(namespace+".updateMember", mb);
+	public void updateMember2(MemberBean mb) {
+		sqlSession.update(namespace+".updateMember2", mb);
 	}
 
 	@Override
@@ -71,6 +76,25 @@ public class MemberDAOImpl implements MemberDAO{
 	public List<MemberBean> getMemberWishList(String id) {
 		return sqlSession.selectList(namespace+".getMemberWishList", id);
 	}
+
+	@Override
+	public MemberBean getMember2(String id) {
+		return sqlSession.selectOne(namespace+".getMember2", id);
+	}
+
+	@Override
+	public void insertMember2(MemberBean mb) {
+		
+		sqlSession.insert(namespace+".insertMember2",mb);
+	}
+
+	@Override
+	public void updateMember(MemberBean mb) {
+		sqlSession.update(namespace+".updateMember", mb);
+		
+	}
+
+
 
 
 }

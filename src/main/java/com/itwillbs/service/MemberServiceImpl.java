@@ -29,15 +29,19 @@ public class MemberServiceImpl implements MemberService{
 	public MemberBean userCheck(MemberBean mb) {
 		return memberDAO.userCheck(mb);
 	}
-
+	@Override
+	public MemberBean userCheck2(MemberBean mb) {
+		
+		return memberDAO.userCheck2(mb);
+	}
 	@Override
 	public MemberBean getMember(String id) {
 		return memberDAO.getMember(id);
 	}
 
 	@Override
-	public void updateMember(MemberBean mb) {
-		memberDAO.updateMember(mb);
+	public void updateMember2(MemberBean mb) {
+		memberDAO.updateMember2(mb);
 	}
 
 	@Override
@@ -70,6 +74,24 @@ public class MemberServiceImpl implements MemberService{
 		return memberDAO.getMemberWishList(id);
 	}
 
+	@Override
+	public MemberBean getMember2(String id) {
+		return memberDAO.getMember2(id);
+	}
 
+
+	@Override
+	public void insertMember2(MemberBean mb) {
+		
+		memberDAO.insertMember2(mb);
+	}
+
+	@Override
+	public void updateMember(MemberBean mb) {
+		memberDAO.updateMember(mb);
+		
+	}
+
+	
 
 }

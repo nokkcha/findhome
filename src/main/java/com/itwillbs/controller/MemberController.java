@@ -35,6 +35,11 @@ public class MemberController {
 		return "join";
 	}
 
+	@RequestMapping(value = "/join2", method = RequestMethod.GET)
+	public String join2() {
+		return "join2";
+	}
+
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login() {
 		return "login";
@@ -48,6 +53,29 @@ public class MemberController {
 		if (mb2 != null) {
 			// 세션값 생성 "id"
 			session.setAttribute("id", mb.getId());
+
+			session.setAttribute("member_type", "normal");
+			return "redirect:/";
+		} else {
+			// 입력하신 정보가 틀립니다.
+			model.addAttribute("msg", "입력하신 정보가 틀립니다.");
+			// /WEB-INF/views/member/msg.jsp
+			return "msg";
+		}
+
+	}
+
+	@RequestMapping(value = "/loginPro2", method = RequestMethod.POST)
+	public String loginPro2(MemberBean mb, HttpSession session, Model model) {
+
+		MemberBean mb2 = memberService.userCheck2(mb);
+		if (mb2 != null) {
+			// 세션값 생성 "id"
+			session.setAttribute("id", mb.getId());
+
+			// 회원구분 세션값 생성 "member_type"
+			session.setAttribute("member_type", "seller");
+
 			return "redirect:/";
 		} else {
 			// 입력하신 정보가 틀립니다.
@@ -66,18 +94,26 @@ public class MemberController {
 		return "redirect:/";
 	}
 
+	@RequestMapping(value = "/joinPro2", method = RequestMethod.POST)
+	public String joinPro2(MemberBean mb) {
+
+		memberService.insertMember2(mb);
+
+		return "redirect:/";
+	}
+
 	@RequestMapping(value = "/member/main", method = RequestMethod.GET)
 	public String main() {
 		// /WEB-INF/views/member/main.jsp
 		return "member/main";
 	}
 
-	@RequestMapping(value = "/member/logout", method = RequestMethod.GET)
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(HttpSession session) {
 
 		session.invalidate();
 
-		return "redirect:/member/login";
+		return "redirect:/login";
 	}
 
 	@RequestMapping(value = "/member/delete", method = RequestMethod.GET)
@@ -85,28 +121,79 @@ public class MemberController {
 		// /WEB-INF/views/member/deleteForm.jsp
 		return "member/deleteForm";
 	}
-	
-	@RequestMapping(value = "/memberInfo",method = RequestMethod.GET )
-	public String memberinfo() {
+
+	@RequestMapping(value = "/memberInfo", method = RequestMethod.GET)
+	public String update(HttpSession session, Model model) {
+		// String id = 세션값 가져오기
+		String id = (String) session.getAttribute("id");
+		// 1.세션값 변수에 저장
+		String member_type = (String) session.getAttribute("member_type");
+
+		// MemberBean mb = 세션에 해당하는 정보 조회 getMember(id) MemberBean 리턴
+		MemberBean mb;
+		if (member_type == "normal") {
+			 mb = memberService.getMember(id);
+		}else {
+			mb = memberService.getMember2(id);
+		}
+		// 2.멤버빈에 저장
+		mb.setMember_type(member_type);
+		
+
+		// model "mb",mb
+		model.addAttribute("mb", mb);
+
+		// /WEB-INF/views/member/updateForm.jsp
 		return "memberInfo";
 	}
 
+	@RequestMapping(value = "/memberInfoPro", method = RequestMethod.GET)
+	public String updatePro(MemberBean mb, Model model) {
 
-	@RequestMapping(value = "/memberDelete",method = RequestMethod.GET )
+		MemberBean mb2 = memberService.userCheck(mb);
+		if (mb2 != null) {
+			// 수정
+			memberService.updateMember(mb);
+			return "redirect:/";
+		} else {
+			// 입력하신 정보가 틀립니다.
+			model.addAttribute("msg", "입력하신 정보가 틀립니다.");
+			// /WEB-INF/views/member/msg.jsp
+			return "msg";
+		}
+	}
+	
+	@RequestMapping(value = "/memberInfoPro2", method = RequestMethod.GET)
+	public String updatePro2(MemberBean mb,  Model model) {
+		
+		MemberBean mb2=memberService.userCheck2(mb);
+		if(mb2!=null) {
+			// 수정
+			memberService.updateMember2(mb);
+			return "redirect:/";
+		}else {
+			// 입력하신 정보가 틀립니다. 
+			model.addAttribute("msg","입력하신 정보가 틀립니다.");
+		//  /WEB-INF/views/member/msg.jsp
+			return "msg";
+		}
+	}
+
+	@RequestMapping(value = "/memberDelete", method = RequestMethod.GET)
 	public String memberdelete() {
 		return "memberDelete";
 	}
-	
-	@RequestMapping(value = "/join/id_check", method = RequestMethod.GET )
+
+	@RequestMapping(value = "/join/id_check", method = RequestMethod.GET)
 	public ResponseEntity<String> id_check(HttpServletRequest request) {
-		
+
 		ResponseEntity<String> entity = null;
 		String result = "";
 		try {
 			String id = request.getParameter("id");
 			System.out.println(id);
 			MemberBean mb = memberService.getMember(id);
-			if(mb != null) {
+			if (mb != null) {
 				result = "iddup";
 			} else {
 				result = "idok";
@@ -114,7 +201,31 @@ public class MemberController {
 			entity = new ResponseEntity<String>(result, HttpStatus.OK);
 		} catch (Exception e) {
 			e.printStackTrace();
-			entity = new ResponseEntity<String>(HttpStatus.BAD_REQUEST);; 
+			entity = new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
+			;
+		}
+		return entity;
+	}
+
+	@RequestMapping(value = "/join2/id_check2", method = RequestMethod.GET)
+	public ResponseEntity<String> id_check2(HttpServletRequest request) {
+
+		ResponseEntity<String> entity = null;
+		String result = "";
+		try {
+			String id = request.getParameter("id");
+			System.out.println(id);
+			MemberBean mb = memberService.getMember2(id);
+			if (mb != null) {
+				result = "iddup";
+			} else {
+				result = "idok";
+			}
+			entity = new ResponseEntity<String>(result, HttpStatus.OK);
+		} catch (Exception e) {
+			e.printStackTrace();
+			entity = new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
+			;
 		}
 		return entity;
 	}

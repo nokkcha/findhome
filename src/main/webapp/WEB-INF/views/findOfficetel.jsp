@@ -197,8 +197,19 @@
         	     <c:forEach var="roomList" items="${roomList }">
         	     <div class="roomlist">
 		    				<div class="destination">
-		    					<a href='<c:url value="/detailView?room_id=${roomList.room_id}" />' class="img img-2 d-flex justify-content-center align-items-center" 
-		    					style="background-image: url(${pageContext.request.contextPath}/resources/images/hotel-1.jpg);"></a>
+		    				
+		    				
+		    				<c:forEach items="${obList}" var="obList" varStatus="i">
+		    					<c:if test="${obList.room_id eq  roomList.room_id}">
+			    					<a
+										href='<c:url value="/detailView?room_id=${obList.room_id}" />'
+										class="img img-2 d-flex justify-content-center align-items-center"
+										style="background-image: url(${pageContext.request.contextPath}/resources/upload${obList.file_name});"></a>
+
+								</c:if>
+							</c:forEach>
+
+
 
 		    					<div class="text p-3">
 		    					
@@ -260,13 +271,13 @@
 		              <ul>
 		              
 		                <c:if test="${pb.startPage > pb.pageBlock }">
-		                <li> <a href='<c:url value="findRooms?pageNum=${pb.startPage-pb.pageBlock}" />'>&lt;</a></li>
+		                <li> <a href='<c:url value="findOfficetel?pageNum=${pb.startPage-pb.pageBlock}" />'>&lt;</a></li>
 					</c:if>
 					<c:forEach var="i" begin="${pb.startPage }" end="${pb.endPage}" step="1">
-		                <li class="active"><span> <a href='<c:url value="findRooms?pageNum=${i}" />'>${i}</a> </span></li>
+		                <li class="active"><span> <a href='<c:url value="findOfficetel?pageNum=${i}" />'>${i}</a> </span></li>
 					</c:forEach>
 					<c:if test="${pb.endPage < pb.pageCount }">
-		                <li><a href='<c:url value="findRooms?pageNum=${pb.startPage+pb.pageBlock}" />'>&gt;</a></li>
+		                <li><a href='<c:url value="findOfficetel?pageNum=${pb.startPage+pb.pageBlock}" />'>&gt;</a></li>
 					</c:if>
 		              </ul>
 		            </div>

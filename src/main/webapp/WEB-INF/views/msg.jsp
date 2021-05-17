@@ -4,10 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title></title>
 </head>
 <body>
-<h1>member/msg.jsp</h1>
+<!-- <h1>member/msg.jsp</h1> -->
 <script type="text/javascript">
 	alert('${msg}');
 	history.back();

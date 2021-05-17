@@ -96,7 +96,10 @@
 
 		<div class="container" align="left">
 			<br>
-			<h1>매물 등록</h1>
+			<c:choose>
+			<c:when test="${ob.category eq 'OneRoom'}"> <h1>원룸 매물 등록</h1>  </c:when>
+			<c:when test="${ob.category eq 'Officetel'}"> <h1>오피스텔 매물 등록</h1> </c:when>			
+			</c:choose>			
 			<pre>
 · 일반적인 형태의 주거용 전월세 매물만 내놓을 수 있습니다.
   1) 한 번의 방등록으로 반경 5km이내 모든 중개사무소에 방 정보가 노출되어 중개가 시작됩니다.
@@ -181,20 +184,23 @@
 									<option value="오픈형 원룸 (방1)">오픈형 원룸 (방1)</option>
 									<option value="분리형 원룸 (방1,거실1)">분리형 원룸 (방1,거실1)</option>
 									<option value="복층형 원룸">복층형 원룸</option>
+<!-- 									오피스텔만 투룸,쓰리룸 보이기 -->
+									<c:if test="${ob.category ne 'OneRoom'}"> 
 									<option value="투룸 (방2,거실1)">투룸 (방2,거실1)</option>
 									<option value="쓰리룸+">쓰리룸+</option>
+									</c:if>									
 							</select></td>
 						</tr>
 						<tr>
 							<th style="background-color: #dedede;">관리비</th>
 							<td><input type="number" id="fees" name="fees">만원 &nbsp; 
-							<input type="checkbox" id="is_include_fees" name="is_include_fees">없음<br> 
+							<input type="checkbox" id="is_include_feesArray" name="is_include_feesArray">없음<br> 
 							<b>관리비 포함 항목 </b> 
-							<input type="checkbox" id="include_fees" class="include_fees"  value="전기세" name="include_fees">전기세 
-							<input type="checkbox" id="include_fees" class="include_fees"  value="가스" name="include_fees">가스
-							<input type="checkbox" id="include_fees" class="include_fees"  value="수도"  name="include_fees">수도 
-							<input type="checkbox" id="include_fees" class="include_fees"  value="인터넷"  name="include_fees">인터넷 
-							<input type="checkbox" id="include_fees" class="include_fees"  value="TV"  name="include_fees">TV</td>
+							<input type="checkbox" id="include_feesArray" class="include_feesArray"  value="전기세" name="include_feesArray">전기세 
+							<input type="checkbox" id="include_feesArray" class="include_feesArray"  value="가스" name="include_feesArray">가스
+							<input type="checkbox" id="include_feesArray" class="include_feesArray"  value="수도"  name="include_feesArray">수도 
+							<input type="checkbox" id="include_feesArray" class="include_feesArray"  value="인터넷"  name="include_feesArray">인터넷 
+							<input type="checkbox" id="include_feesArray" class="include_feesArray"  value="TV"  name="include_feesArray">TV</td>
 						</tr>
 						<tr>
 							<th style="background-color: #dedede;">크기</th>
@@ -240,22 +246,24 @@
 
 						<tr>
 							<th style="background-color: #dedede;">옵션</th>
-							<td><input type="checkbox" id="options" name="options" value="에어컨">에어컨 
-							<input type="checkbox" id="options" name="options" value="냉장고">냉장고 
-							<input type="checkbox" id="options" name="options" value="세탁기">세탁기 
-							<input type="checkbox" id="options" name="options" value="가스레인지">가스레인지 
-							<input type="checkbox" id="options" name="options" value="인덕션">인덕션 
-							<input type="checkbox" id="options" name="options" value="전자레인지">전자레인지<br> 
-							<input type="checkbox" id="options" name="options" value="책상">책상 
-							<input type="checkbox" id="options" name="options" value="책장">책장 
-							<input type="checkbox" id="options" name="options" value="침대">침대 
-							<input type="checkbox" id="options" name="options" value="옷장">옷장 
-							<input type="checkbox" id="options" name="options" value="신발장">신발장 
-							<input type="checkbox" id="options" name="options" value="싱크대">싱크대<br></td>
+							<td><input type="checkbox" id="include_optionsArray" name="include_optionsArray" value="에어컨">에어컨 
+							<input type="checkbox" id="include_optionsArray" name="include_optionsArray" value="냉장고">냉장고 
+							<input type="checkbox" id="include_optionsArray" name="include_optionsArray" value="세탁기">세탁기 
+							<input type="checkbox" id="include_optionsArray" name="include_optionsArray" value="가스레인지">가스레인지 
+							<input type="checkbox" id="include_optionsArray" name="include_optionsArray" value="인덕션">인덕션 
+							<input type="checkbox" id="include_optionsArray" name="include_optionsArray" value="전자레인지">전자레인지<br> 
+							<input type="checkbox" id="include_optionsArray" name="include_optionsArray" value="책상">책상 
+							<input type="checkbox" id="include_optionsArray" name="include_optionsArray" value="책장">책장 
+							<input type="checkbox" id="include_optionsArray" name="include_optionsArray" value="침대">침대 
+							<input type="checkbox" id="include_optionsArray" name="include_optionsArray" value="옷장">옷장 
+							<input type="checkbox" id="include_optionsArray" name="include_optionsArray" value="신발장">신발장 
+							<input type="checkbox" id="include_optionsArray" name="include_optionsArray" value="싱크대">싱크대<br></td>
 						</tr>
 						<tr>
 							<th style="background-color: #dedede;">전세 대출</th>
-							<td><input type="radio" name="loan" id="loan" value="가능">가능 <input type="radio" name="loan" id="loan" value="불가능">불가능 <input type="radio" name="loan" id="loan" value="확인필요">확인필요</td>
+							<td><input type="radio" name="loan" id="loan" value="가능">가능 
+							<input type="radio" name="loan" id="loan" value="불가능">불가능 
+							<input type="radio" name="loan" id="loan" value="확인필요">확인필요</td>
 						</tr>
 						<tr>
 							<th style="background-color: #dedede;">반려 동물</th>
@@ -295,7 +303,8 @@
 					<!-- 			</tbody> -->
 				</table>
 
-				<input type="text" id="seller_id" hidden="" name="seller_id" value="admin@gmail.com">
+				<input type="text" id="seller_id" hidden="" name="seller_id" value='${ob.seller_id}'>
+				<input type="text" id="category" hidden="" name="category" value='${ob.category}'>
 
 				<button class="btn btn-primary btn-lg btn-block" id="sellRoom">방 내놓기</button>
 			</form>
@@ -405,10 +414,67 @@
 			alert(obj.value);
 		}
 		
+		HashMap = function(){  
+		    this.map = new Array();
+		};  
+		HashMap.prototype = {  
+		    put : function(key, value){  
+		        this.map[key] = value;
+		    },  
+		    get : function(key){  
+		        return this.map[key];
+		    },  
+		    getAll : function(){  
+		        return this.map;
+		    },  
+		    clear : function(){  
+		        this.map = new Array();
+		    },  
+		    isEmpty : function(){    
+		         return (this.map.size() == 0);
+		    },
+		    remove : function(key){    
+		         delete this.map[key];
+		    },
+		    toString : function(){
+		        var temp = '';
+		        for(i in this.map){  
+		            temp = temp + ',' + i + ':' +  this.map[i];
+		        }
+		        temp = temp.replace(',','');
+		          return temp;
+		    },
+		    keySet : function(){  
+		        var keys = new Array();  
+		        for(i in this.map){  
+		            keys.push(i);
+		        }  
+		        return keys;
+		    }
+		};
+
+		
 		// 매물 내놓기 버튼 클릭 이벤트
 		$(function() {
 			$('#sellForm').submit(function() {
 
+// 				var array = new Array(); // 배열 선언
+// 				$('input:checkbox[name=options]:checked').each(function() { // 체크된 체크박스의 value 값을 가지고 온다.
+// 				    array.push(this.value);
+// 				});
+				
+// 				$("#options").val(array);
+// 				alert(array);
+
+// 				var array2 = new Array(); // 배열 선언
+// 				$('input:checkbox[name=include_feesArray]:checked').each(function() { // 체크된 체크박스의 value 값을 가지고 온다.
+// 				    array2.push(this.value);
+// 				});
+// 				$("#include_feesArray").val(array2);
+// 				alert(array2);
+				
+// 				return false;
+				
 				var is_empty = false;
 				$('#sellForm').find('input[type!="hidden"]').not(".file_list").each(function() {
 					if (!$(this).val()) {
@@ -446,7 +512,7 @@
 				}
 				
 				// 관리비 포함 영역 로그 출력테스트
-// 				$('input:checkbox[id="include_fees"]').each(function(){
+// 				$('input:checkbox[id="include_feesArray"]').each(function(){
 // 				    var thisOptionValue=$(this).val();
 // 				    rr.push(thisOptionValue)
 // 				    console.log('fees : ' + rr);
@@ -496,7 +562,7 @@
 			document.getElementById('monthly_rent').value = "30";
 			$('#room_type option:eq(1)').attr("selected", "selected");
 			document.getElementById('fees').value = "20";
-			$('input:checkbox[id="include_fees"]').attr("checked", true);
+			$('input:checkbox[id="include_feesArray"]').attr("checked", true);
 			
 			// 크기
 			document.getElementById('exclusive_area_p').value = "30.00";
@@ -510,7 +576,7 @@
 			// 방향
 			$("#direction option:eq(2)").prop("selected", true);
 
-			$('#options').prop('checked', true);
+			$('#include_optionsArray').prop('checked', true);
 			$('#loan').prop('checked', true);
 			$('#pet').prop('checked', true);
 			$('#parking').prop('checked', true);
@@ -529,11 +595,11 @@
 		
 		// 관리비 없음 체크 시 동작 함수
 		$(function(){
-			$('#is_include_fees').change( function(){
+			$('#is_include_feesArray').change( function(){
 			    var isChecked = $(this).is(":checked");
 			    console.log('관리비 없음 체크 여부 : '+isChecked);
 			    if (isChecked) {
-			    	$('input:checkbox[id="include_fees"]').prop('checked', false);
+			    	$('input:checkbox[id="include_feesArray"]').prop('checked', false);
 			    	$('#fees').val('0');
 			    }			    
 			});
@@ -542,17 +608,17 @@
 		
 		// 관리비 포함 항목 체크 시 동작 함수
 		$(function(){
-			$(".include_fees").change(function(){
+			$(".include_feesArray").change(function(){
 				var imChecked = $(this).is(":checked");
 				
 		        if(imChecked){
 		        	console.log('관리비 포함항목 체크 여부 : '+imChecked);
-		        	$('input:checkbox[id="is_include_fees"]').prop('checked', false);
+		        	$('input:checkbox[id="is_include_feesArray"]').prop('checked', false);
 		        	
 		        }else{
-		        	if($(".include_fees:checked").length == 0) { 
+		        	if($(".include_feesArray:checked").length == 0) { 
 		        		console.log('관리비 포함항목 전체 체크 해제');
-		        		$('input:checkbox[id="is_include_fees"]').prop('checked', true);
+		        		$('input:checkbox[id="is_include_feesArray"]').prop('checked', true);
 		        	} else {
 		        		console.log('관리비 포함항목 체크 해제');
 		        	}
@@ -643,68 +709,61 @@
 		}
 
 		$(document)
-				.on(
-						"change",
-						".file_list",
-						function(event) {
-							//alert('File is changed');			
-							var idx = $('.file_list').index(this);
-							console.log('File is changed : ' + idx);
+		.on(
+				"change",
+				".file_list",
+				function(event) {
+					//alert('File is changed');			
+					var idx = $('.file_list').index(this);
+					console.log('File is changed : ' + idx);
+					var files = event.target.files;
+					// 첫번째 파일
+					var file = files[0];
+					// 콘솔에서 파일정보 확인
+					console.log('ajaxFileTransmit' + file);
+					// ajax로 전달할 폼 객체
+					var formData = new FormData();
+					// 폼 객체에 파일추가, append("변수명", 값)
+					var target = "file"; //+ idx.toString();
+					formData.append(target, file);
+					$
+							.ajax({
+								type : "post",
+								url : "/findhome/upload/uploadAjax",
+								data : formData,
+								// processData: true=> get방식, false => post방식
+								dataType : "text",
+								// contentType: true => application/x-www-form-urlencoded, 
+								//                false => multipart/form-data
+								processData : false,
+								contentType : false,
+								success : function(data) {
+									var str = "";
+									// 섬네일 생성하고 이미지 표시
+									str += "<img src='${path}/findhome/upload/displayFile?fileName="
+											+ data + "'></a>";
+									// 원래 파일 경로 얻기
+//										var str2 = "<div><a href='${path}/upload/displayFile?fileName="+data+"'>"+getOriginalName(data)+"</a>";
+									var str2 = "" + data;
+									console.log('originalFileName : ' + str2);
+											
+									$("#btn-upload").append(str);
+									$('div').children('span');
+									data = '/findhome/upload/displayFile?fileName='
+											+ data;
+									$(".room_img_list").eq(idx).attr(
+											"src", data);
+									$(".btn-upload_list").eq(idx)
+											.hide();
+									// 실제파일경로 폼 hidden tag내 삽입
+									$(".fileList").eq(idx).attr(
+											"value", str2);											
+								}
+							});
+				});
+</script>
 
-							var files = event.target.files;
 
-							// 첫번째 파일
-							var file = files[0];
-							// 콘솔에서 파일정보 확인
-							console.log('ajaxFileTransmit' + file);
-
-							// ajax로 전달할 폼 객체
-							var formData = new FormData();
-							// 폼 객체에 파일추가, append("변수명", 값)
-							var target = "file"; //+ idx.toString();
-
-							formData.append(target, file);
-
-							$
-									.ajax({
-										type : "post",
-										url : "/findhome/upload/uploadAjax",
-										data : formData,
-										// processData: true=> get방식, false => post방식
-										dataType : "text",
-										// contentType: true => application/x-www-form-urlencoded, 
-										//                false => multipart/form-data
-										processData : false,
-										contentType : false,
-										success : function(data) {
-
-											var str = "";
-											// 섬네일 생성하고 이미지 표시
-											str += "<img src='${path}/findhome/upload/displayFile?fileName="
-													+ data + "'></a>";
-											// 원래 파일 경로 얻기
-// 											var str2 = "<div><a href='${path}/upload/displayFile?fileName="+data+"'>"+getOriginalName(data)+"</a>";
-											var str2 = "" + data;
-											console.log('originalFileName : ' + str2);
-													
-											$("#btn-upload").append(str);
-											$('div').children('span');
-
-											data = '/findhome/upload/displayFile?fileName='
-													+ data;
-
-											$(".room_img_list").eq(idx).attr(
-													"src", data);
-											$(".btn-upload_list").eq(idx)
-													.hide();
-											// 실제파일경로 폼 hidden tag내 삽입
-											$(".fileList").eq(idx).attr(
-													"value", str2);											
-										}
-									});
-
-						});
-	</script>
 
 
 	<script src="${pageContext.request.contextPath}/resources/js/jquery.min.js"></script>

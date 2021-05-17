@@ -1,7 +1,9 @@
 package com.itwillbs.dao;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -92,6 +94,12 @@ public class BoardDAOImpl implements BoardDAO{
 	public void insertRoomImages(HashMap<String, Object> bean) {
 		// TODO Auto-generated method stub
 		sqlSession.insert(namespace+".insertRoomImages",bean);
+	}
+
+	@Override
+	public List<LinkedHashMap<String, Object>> selectOneRoomThumbImg() {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList(namespace+".selectOneRoomThumbImg");
 	}
 
 }

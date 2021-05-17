@@ -1,13 +1,23 @@
 package com.itwillbs.controller;
 
 import java.io.File;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 import java.util.UUID;
 
 import javax.annotation.Resource;
 import javax.inject.Inject;
+import javax.mail.Address;
+import javax.mail.Authenticator;
+import javax.mail.Message;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -16,6 +26,7 @@ import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -23,6 +34,7 @@ import com.itwillbs.domain.BoardBean;
 import com.itwillbs.domain.MemberBean;
 import com.itwillbs.domain.OneRoomBean;
 import com.itwillbs.domain.PageBean;
+import com.itwillbs.mailtest.GoogleAuthentication;
 import com.itwillbs.service.BoardService;
 import com.itwillbs.service.MemberService;
 
@@ -30,7 +42,7 @@ import com.itwillbs.service.MemberService;
 public class BoardController {
 	@Inject
 	private BoardService boardService;
-	
+
 	@Inject
 	private MemberService memberService;
 
@@ -45,16 +57,19 @@ public class BoardController {
 	}
 
 	@RequestMapping(value = "/writePro", method = RequestMethod.POST)
-	public String writePro(OneRoomBean bb) {		
+	public String writePro(OneRoomBean bb) {
 		String[] fileList = bb.getFileList();
 		for (String string : fileList) {
 			System.out.println("FileList : " + string);
 		}
+
+		bb.setInclude_fees(bb.getInclude_feesArray());
+		bb.setInclude_options(bb.getInclude_optionsArray());
+
 		boardService.insertRoom(bb);
 
 		return "redirect:/";
 	}
-
 
 	@RequestMapping(value = "/findRooms", method = RequestMethod.GET)
 	public String list(HttpServletRequest request, Model model, HttpSession session) {
@@ -69,21 +84,31 @@ public class BoardController {
 		
 		List<OneRoomBean> roomList = boardService.getBoardList(pb);
 		
-
 		pb.setCount(boardService.getBoardCount(pb));
 
 		model.addAttribute("roomList", roomList);
 		model.addAttribute("pb", pb);
+
+		
+		// 방 리스트와 썸네일 정보 넘기기 
+		List<LinkedHashMap<String, Object>> obList = boardService.selectOneRoomThumbImg();
+		for (Map<String, Object> map:obList) {
+			System.out.println(map.get("room_id") + " " 
+					+ map.get("subject") + " " + map.get("file_name"));
+		}
+		
+		model.addAttribute("obList", obList);
+		
 		
 		String id = (String) session.getAttribute("id");
 	
 		if(id != null) {
-			List<MemberBean> wishList=memberService.getMemberWishList(id);	
+			List<MemberBean> wishList=memberService.getMemberWishList(id);
 			model.addAttribute("wishList", wishList);
 		}
 		return "findRooms";
 	}
-	
+
 	@RequestMapping(value = "/findOfficetel", method = RequestMethod.GET)
 	public String officetelList(HttpServletRequest request, Model model, HttpSession session) {
 		PageBean pb = new PageBean();
@@ -102,6 +127,16 @@ public class BoardController {
 		
 		model.addAttribute("roomList", roomList);
 		model.addAttribute("pb", pb);
+		
+		// 방 리스트와 썸네일 정보 넘기기 
+		List<LinkedHashMap<String, Object>> obList = boardService.selectOneRoomThumbImg();
+		for (Map<String, Object> map:obList) {
+			System.out.println(map.get("room_id") + " " 
+					+ map.get("subject") + " " + map.get("file_name"));
+		}
+		
+		model.addAttribute("obList", obList);
+		
 		
 		String id = (String) session.getAttribute("id");
 		
@@ -148,6 +183,15 @@ public class BoardController {
 		
 		model.addAttribute("roomList", roomList);
 		
+		// 방 리스트와 썸네일 정보 넘기기 
+		List<LinkedHashMap<String, Object>> obList = boardService.selectOneRoomThumbImg();
+		for (Map<String, Object> map:obList) {
+			System.out.println(map.get("room_id") + " " 
+					+ map.get("subject") + " " + map.get("file_name"));
+		}
+		
+		model.addAttribute("obList", obList);
+		
 		if(id != null) {
 			List<MemberBean> wishList=memberService.getMemberWishList(id);	
 			model.addAttribute("wishList", wishList);
@@ -188,6 +232,15 @@ public class BoardController {
 		
 		model.addAttribute("roomList", roomList);
 		
+		// 방 리스트와 썸네일 정보 넘기기 
+		List<LinkedHashMap<String, Object>> obList = boardService.selectOneRoomThumbImg();
+		for (Map<String, Object> map:obList) {
+			System.out.println(map.get("room_id") + " " 
+					+ map.get("subject") + " " + map.get("file_name"));
+		}
+		
+		model.addAttribute("obList", obList);
+		
 		if(id != null) {
 			List<MemberBean> wishList=memberService.getMemberWishList(id);	
 			model.addAttribute("wishList", wishList);
@@ -216,13 +269,21 @@ public class BoardController {
 		model.addAttribute("roomList", roomList);
 		model.addAttribute("pb", pb);
 		
+		// 방 리스트와 썸네일 정보 넘기기 
+		List<LinkedHashMap<String, Object>> obList = boardService.selectOneRoomThumbImg();
+		for (Map<String, Object> map:obList) {
+			System.out.println(map.get("room_id") + " " 
+					+ map.get("subject") + " " + map.get("file_name"));
+		}
+		
+		model.addAttribute("obList", obList);
+		
 		if(id != null) {
 			List<MemberBean> wishList=memberService.getMemberWishList(id);	
 			model.addAttribute("wishList", wishList);
 		}
 		return "zzimList";
 	}
-
 	
 //	http://localhost:8080/myweb2/board/fwrite
 	@RequestMapping(value = "/board/fwrite", method = RequestMethod.GET)
@@ -324,30 +385,76 @@ public class BoardController {
 			return "member/msg";
 		}
 	}
-	
-	@RequestMapping(value = "/detailView",method = RequestMethod.GET )
+
+	@RequestMapping(value = "/detailView", method = RequestMethod.GET)
 	public String detailView(HttpServletRequest request, Model model) {
 		try {
+			if ( (String) request.getParameter("room_id") == null) {
+				model.addAttribute("msg", "잘못된 요청입니다.");
+				// /WEB-INF/views/member/msg.jsp
+				return "msg";
+			}
 			int room_id = Integer.parseInt(request.getParameter("room_id"));
+			System.out.println("매물상세 -> 요청 방 ID : " + room_id);
+
 			OneRoomBean ob = boardService.getRoom(room_id);
 			// ob를 담아서 detailView.jsp 이동
 			model.addAttribute("ob", ob);
-			
-			if (ob.getInclude_fees() != null) {
-				System.out.println("ob.getInclude_fees() : " + ob.getInclude_fees());
-				String var = ob.getInclude_fees().replace("\"", "");
-				ob.setInclude_fees_array(var.split(","));
-				String[] arr = ob.getInclude_fees_array();
-				for (String string : arr) {
-					System.out.println("fees : " + string);
-				}
-			}
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return "detailView";
 	}
-	
+
+	@RequestMapping(value = "/mailpro", method = RequestMethod.POST)
+	public String mailpro(HttpServletRequest request, Model model) {
+
+		String sender = "hyunjoon42311@gamil.com";
+		String receiver = "tcandyman@naver.com";
+		String phone = request.getParameter("phone");
+		String content = request.getParameter("content");
+		String name = request.getParameter("name");
+		String date1 = request.getParameter("date1");
+		content = content + name + phone + date1;
+
+		try {
+			// 서버정보를 => Properties 객체 저장
+			Properties properties = System.getProperties();
+			// gmail은 무조건 true 고정
+			properties.put("mail.smtp.starttls.enable", "true");
+			// smtp 서버주소
+			properties.put("mail.smtp.host", "smtp.gmail.com");
+			// auth gmail은 무조건 true 고정
+			properties.put("mail.smtp.auth", "true");
+			// gmail 포트
+			properties.put("mail.smtp.port", "587");
+			// 구글메일인증
+			// 패키지 mailtest 파일이름 GoogleAuthentication
+			Authenticator auth = new GoogleAuthentication();
+			// 메일전송하는 역할을 하는 단위 Session객체 생성
+			Session s = Session.getDefaultInstance(properties, auth);
+			// Session 이용해서 전송할 Message객체생성
+			Message message = new MimeMessage(s);
+			Address sender_address = new InternetAddress(sender);
+			Address receiver_address = new InternetAddress(receiver);
+			message.setHeader("content-Type", "text/html; charset=UTF-8");
+			message.setFrom(sender_address);
+			message.addRecipient(Message.RecipientType.TO, receiver_address);
+			message.setSubject("문의사항");
+			message.setContent(content, "text/html; charset=UTF-8");
+			message.setSentDate(new Date());
+			// 메시지 전송
+			Transport.send(message);
+
+		} catch (Exception e) {
+
+			e.printStackTrace();
+		}
+
+		model.addAttribute("msg", "문의가 정상적으로 접수되었습니다.");
+
+		return "msg";
+	}
 
 }

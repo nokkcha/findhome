@@ -1,5 +1,7 @@
 package com.itwillbs.controller;
 
+import java.net.URLEncoder;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 import org.springframework.http.HttpStatus;
@@ -20,7 +22,7 @@ public class AjaxController {
 	public ResponseEntity<String> zzim(MemberBean mb, HttpSession session) {
 		ResponseEntity<String> entity=null;
 		String result="";
-		
+	    
 		try {
 			String id=(String) session.getAttribute("id");
 			mb.setId(id);
@@ -39,8 +41,11 @@ public class AjaxController {
 					result="zzim";
 				}
 			}else {
-				result="로그인하세요";
+				result="찜 기능을 이용하려면 먼저 로그인해주세요";				
 			}
+			// 한글깨짐 방지를 위해 인코딩하기
+			result = URLEncoder.encode(result , "UTF-8");
+			
 			entity=new ResponseEntity<String>(result,HttpStatus.OK);
 		} catch (Exception e) {
 			e.printStackTrace();

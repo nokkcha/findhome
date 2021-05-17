@@ -1,9 +1,12 @@
 package com.itwillbs.service;
 
 import java.sql.Timestamp;
+
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -14,6 +17,9 @@ import com.itwillbs.domain.BoardBean;
 import com.itwillbs.domain.OneRoomBean;
 import com.itwillbs.domain.PageBean;
 import com.itwillbs.domain.ImageBean;
+
+import lombok.Getter;
+import lombok.Setter;
 
 @Service
 public class BoardServiceImpl implements BoardService{
@@ -109,7 +115,7 @@ public class BoardServiceImpl implements BoardService{
 		
 		System.out.println("등록한 방의 ID : " + bb.getRoom_id());
 		
-		ImageBean imageBean = new ImageBean();
+		
 		String[] fileList = bb.getFileList();
 		
 		if (fileList.length > 0) {
@@ -124,7 +130,7 @@ public class BoardServiceImpl implements BoardService{
 			if (string == "") {
 				continue;
 			}
-			
+			ImageBean imageBean = new ImageBean();
 			imageBean.setRoom_id(bb.getRoom_id());
 			imageBean.setFile_name(string);
 
@@ -145,6 +151,12 @@ public class BoardServiceImpl implements BoardService{
 
 	public OneRoomBean getRoom(int room_id) {
 		return boardDAO.getRoom(room_id);
+	}
+
+	@Override
+	public List<LinkedHashMap<String, Object>> selectOneRoomThumbImg() {
+		// TODO Auto-generated method stub
+		return boardDAO.selectOneRoomThumbImg();
 	}
 	
 

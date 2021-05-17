@@ -58,7 +58,7 @@
 		</div>
 
 		<div class="select_area">
-			<a href="http://localhost:8080/findhome/join">
+			<a href="http://localhost:8080/findhome/join2">
 				<div class="box_select">
 					<!-- <input type="radio" name="join_type" value="세입자"> -->
 					<div class="circle">
