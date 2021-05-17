@@ -156,7 +156,7 @@ public class BoardServiceImpl implements BoardService{
 	
 	
 	@Override
-	public ImageBean getImage(int room_id) {
+	public List<ImageBean> getImage(int room_id) {
 		return boardDAO.getImage(room_id);
 	}
 

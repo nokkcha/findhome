@@ -34,6 +34,6 @@ public interface BoardService {
 	public List<OneRoomBean> getSearchList(OneRoomBean ob);
 	
 	public OneRoomBean getRoom(int room_id);
-	public ImageBean getImage(int room_id);
+	public List<ImageBean> getImage(int room_id);
 	List<LinkedHashMap<String, Object>> selectOneRoomThumbImg();
 }
