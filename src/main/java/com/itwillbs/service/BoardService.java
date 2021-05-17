@@ -1,6 +1,7 @@
 package com.itwillbs.service;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 import com.itwillbs.domain.BoardBean;
@@ -32,4 +33,5 @@ public interface BoardService {
 	public List<OneRoomBean> getSearchList(OneRoomBean ob);
 	
 	public OneRoomBean getRoom(int room_id);
+	List<LinkedHashMap<String, Object>> selectOneRoomThumbImg();
 }

@@ -709,68 +709,61 @@
 		}
 
 		$(document)
-				.on(
-						"change",
-						".file_list",
-						function(event) {
-							//alert('File is changed');			
-							var idx = $('.file_list').index(this);
-							console.log('File is changed : ' + idx);
+		.on(
+				"change",
+				".file_list",
+				function(event) {
+					//alert('File is changed');			
+					var idx = $('.file_list').index(this);
+					console.log('File is changed : ' + idx);
+					var files = event.target.files;
+					// 첫번째 파일
+					var file = files[0];
+					// 콘솔에서 파일정보 확인
+					console.log('ajaxFileTransmit' + file);
+					// ajax로 전달할 폼 객체
+					var formData = new FormData();
+					// 폼 객체에 파일추가, append("변수명", 값)
+					var target = "file"; //+ idx.toString();
+					formData.append(target, file);
+					$
+							.ajax({
+								type : "post",
+								url : "/findhome/upload/uploadAjax",
+								data : formData,
+								// processData: true=> get방식, false => post방식
+								dataType : "text",
+								// contentType: true => application/x-www-form-urlencoded, 
+								//                false => multipart/form-data
+								processData : false,
+								contentType : false,
+								success : function(data) {
+									var str = "";
+									// 섬네일 생성하고 이미지 표시
+									str += "<img src='${path}/findhome/upload/displayFile?fileName="
+											+ data + "'></a>";
+									// 원래 파일 경로 얻기
+//										var str2 = "<div><a href='${path}/upload/displayFile?fileName="+data+"'>"+getOriginalName(data)+"</a>";
+									var str2 = "" + data;
+									console.log('originalFileName : ' + str2);
+											
+									$("#btn-upload").append(str);
+									$('div').children('span');
+									data = '/findhome/upload/displayFile?fileName='
+											+ data;
+									$(".room_img_list").eq(idx).attr(
+											"src", data);
+									$(".btn-upload_list").eq(idx)
+											.hide();
+									// 실제파일경로 폼 hidden tag내 삽입
+									$(".fileList").eq(idx).attr(
+											"value", str2);											
+								}
+							});
+				});
+</script>
 
-							var files = event.target.files;
 
-							// 첫번째 파일
-							var file = files[0];
-							// 콘솔에서 파일정보 확인
-							console.log('ajaxFileTransmit' + file);
-
-							// ajax로 전달할 폼 객체
-							var formData = new FormData();
-							// 폼 객체에 파일추가, append("변수명", 값)
-							var target = "file"; //+ idx.toString();
-
-							formData.append(target, file);
-
-							$
-									.ajax({
-										type : "post",
-										url : "/findhome/upload/uploadAjax",
-										data : formData,
-										// processData: true=> get방식, false => post방식
-										dataType : "text",
-										// contentType: true => application/x-www-form-urlencoded, 
-										//                false => multipart/form-data
-										processData : false,
-										contentType : false,
-										success : function(data) {
-
-											var str = "";
-											// 섬네일 생성하고 이미지 표시
-											str += "<img src='${path}/findhome/upload/displayFile?fileName="
-													+ data + "'></a>";
-											// 원래 파일 경로 얻기
-// 											var str2 = "<div><a href='${path}/upload/displayFile?fileName="+data+"'>"+getOriginalName(data)+"</a>";
-											var str2 = "" + data;
-											console.log('originalFileName : ' + str2);
-													
-											$("#btn-upload").append(str);
-											$('div').children('span');
-
-											data = '/findhome/upload/displayFile?fileName='
-													+ data;
-
-											$(".room_img_list").eq(idx).attr(
-													"src", data);
-											$(".btn-upload_list").eq(idx)
-													.hide();
-											// 실제파일경로 폼 hidden tag내 삽입
-											$(".fileList").eq(idx).attr(
-													"value", str2);											
-										}
-									});
-
-						});
-	</script>
 
 
 	<script src="${pageContext.request.contextPath}/resources/js/jquery.min.js"></script>

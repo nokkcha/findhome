@@ -4,15 +4,18 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.itwillbs.mapper.BoardMapper">
-	
+
 	<select id="getMaxNum" resultType="java.lang.Integer">
 		select max(room_id) from
 		one_room
 	</select>
-	
-	<resultMap id="OneRoomBean" type="com.itwillbs.domain.OneRoomBean">
-		<result property="include_options" column="include_options" typeHandler="com.itwillbs.mapper.type.JSONTypeHandler" />
-		<result property="include_fees" column="include_fees" typeHandler="com.itwillbs.mapper.type.JSONTypeHandler" />
+
+	<resultMap id="OneRoomBean"
+		type="com.itwillbs.domain.OneRoomBean">
+		<result property="include_options" column="include_options"
+			typeHandler="com.itwillbs.mapper.type.JSONTypeHandler" />
+		<result property="include_fees" column="include_fees"
+			typeHandler="com.itwillbs.mapper.type.JSONTypeHandler" />
 	</resultMap>
 
 	<insert id="insertRoom" useGeneratedKeys="true"
@@ -23,12 +26,15 @@
 		`include_fees`,
 		`exclusive_area_m`, `exclusive_area_p`, `contract_area_m`,
 		`contract_area_p`,
-		`floor`, `living_floor`, `direction`, `include_options`,
+		`floor`, `living_floor`, `direction`,
+		`include_options`,
 		`loan`, `pet`, `parking`,
-		`elevator`, `m_date`, `subject`,
+		`elevator`, `m_date`,
+		`subject`,
 		`content`,
 		`phone_number`, `seller_id`) VALUES (
-		#{address}, #{deposit},
+		#{address},
+		#{deposit},
 		#{monthly_rent}, #{room_type}, #{fees},
 		#{include_fees,typeHandler=com.itwillbs.mapper.type.JSONTypeHandler},
 		#{exclusive_area_m}, #{exclusive_area_p}, #{contract_area_m},
@@ -60,7 +66,7 @@
 
 	<select id="getBoardList"
 		resultType="com.itwillbs.domain.OneRoomBean">
-		select * from one_room 
+		select * from one_room
 		where category=#{category}
 		order by room_id desc limit
 		#{startRow},#{pageSize}
@@ -68,12 +74,15 @@
 
 	<select id="getWishList"
 		resultType="com.itwillbs.domain.OneRoomBean">
-		select address, subject, room_id, monthly_rent, deposit, phone_number, id, category
+		select address, subject, room_id, monthly_rent, deposit,
+		phone_number, id, category
 		from wish_list
 		join one_room
-		on wish_list.wish = one_room.room_id
+		on wish_list.wish
+		= one_room.room_id
 		where id= #{id} and category=#{category}
-		order by room_id desc limit #{startRow},#{pageSize}		
+		order by
+		room_id desc limit #{startRow},#{pageSize}
 	</select>
 
 	<select id="getWishCount" resultType="java.lang.Integer">
@@ -133,6 +142,24 @@
 		select * from
 		one_room where
 		room_id=#{room_id}
+	</select>
+
+	<select id="getRoomImg" resultMap="OneRoomBean">
+		select * from
+		one_room_pic
+		where
+		room_id=#{room_id}
+	</select>
+
+	<select id="selectOneRoomThumbImg" resultType="java.util.LinkedHashMap">
+		SELECT p.room_id, p.subject, p.address, p.deposit, p.monthly_rent,
+		i.file_name
+		FROM one_room p
+		LEFT JOIN one_room_pic i
+		ON i.id = (SELECT MIN(i1.id) FROM one_room_pic i1 WHERE i1.room_id =
+		p.room_id)
+		ORDER BY i.id DESC
+		LIMIT 10
 	</select>
 
 </mapper>

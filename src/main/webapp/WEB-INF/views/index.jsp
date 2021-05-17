@@ -1,32 +1,52 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <title>DirEngine - Free Bootstrap 4 Template by Colorlib</title>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Alex+Brush" rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700"
+	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Alex+Brush"
+	rel="stylesheet">
 
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/open-iconic-bootstrap.min.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/animate.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/open-iconic-bootstrap.min.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/animate.css">
 
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/owl.carousel.min.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/owl.theme.default.min.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/magnific-popup.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/owl.carousel.min.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/owl.theme.default.min.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/magnific-popup.css">
 
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/aos.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/aos.css">
 
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/ionicons.min.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/ionicons.min.css">
 
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap-datepicker.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/jquery.timepicker.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/bootstrap-datepicker.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/jquery.timepicker.css">
 
 
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/flaticon.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/icomoon.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/flaticon.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/icomoon.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/style.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/findRoom.css">
+
 
 <style type="text/css">
 body {
@@ -88,12 +108,17 @@ body {
 
 	<%@ include file="../views/top.jsp"%>
 
-	<div class="hero-wrap js-fullheight" style="background-image: url('${pageContext.request.contextPath}/resources/images/bg_1.jpg');">
+	<div class="hero-wrap js-fullheight"
+		style="background-image: url('${pageContext.request.contextPath}/resources/images/bg_1.jpg');">
 		<div class="overlay"></div>
 		<div class="container">
-			<div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start" data-scrollax-parent="true">
-				<div class="col-md-9 ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-					<h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">
+			<div
+				class="row no-gutters slider-text js-fullheight align-items-center justify-content-start"
+				data-scrollax-parent="true">
+				<div class="col-md-9 ftco-animate"
+					data-scrollax=" properties: { translateY: '70%' }">
+					<h1 class="mb-4"
+						data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">
 						<strong>좋은 방을 <br></strong> 찾으시나요?
 					</h1>
 
@@ -109,9 +134,11 @@ body {
 					<div class="block-17 my-4">
 						<form action="" method="post" class="d-block d-flex">
 							<div class="fields d-block d-flex">
-								<input type="text" class="form-control" id="address" placeholder="원하시는 지역명, 지하철역을 입력해주세요">
+								<input type="text" class="form-control" id="address"
+									placeholder="원하시는 지역명, 지하철역을 입력해주세요">
 							</div>
-							<input type="submit" class="search-submit btn btn-primary" value="Search">
+							<input type="submit" class="search-submit btn btn-primary"
+								value="Search">
 						</form>
 					</div>
 
@@ -135,8 +162,11 @@ body {
 			<div class="row">
 				<div class="col-md-6 col-lg-3 ftco-animate">
 					<div class="destination">
-						<a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/restaurant-1.jpg);">
-							<div class="icon d-flex justify-content-center align-items-center">
+						<a href="#"
+							class="img img-2 d-flex justify-content-center align-items-center"
+							style="background-image: url(${pageContext.request.contextPath}/resources/images/restaurant-1.jpg);">
+							<div
+								class="icon d-flex justify-content-center align-items-center">
 								<span class="icon-search2"></span>
 							</div>
 						</a>
@@ -145,20 +175,27 @@ body {
 								<a href="#">Luxury Restaurant</a>
 							</h3>
 							<p class="rate">
-								<i class="icon-star"></i> <i class="icon-star"></i> <i class="icon-star"></i> <i class="icon-star"></i> <i class="icon-star-o"></i> <span>8 Rating</span>
+								<i class="icon-star"></i> <i class="icon-star"></i> <i
+									class="icon-star"></i> <i class="icon-star"></i> <i
+									class="icon-star-o"></i> <span>8 Rating</span>
 							</p>
-							<p>Far far away, behind the word mountains, far from the countries</p>
+							<p>Far far away, behind the word mountains, far from the
+								countries</p>
 							<hr>
 							<p class="bottom-area d-flex">
-								<span><i class="icon-map-o"></i> San Franciso, CA</span> <span class="ml-auto"><a href="#">Discover</a></span>
+								<span><i class="icon-map-o"></i> San Franciso, CA</span> <span
+									class="ml-auto"><a href="#">Discover</a></span>
 							</p>
 						</div>
 					</div>
 				</div>
 				<div class="col-md-6 col-lg-3 ftco-animate">
 					<div class="destination">
-						<a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/restaurant-2.jpg);">
-							<div class="icon d-flex justify-content-center align-items-center">
+						<a href="#"
+							class="img img-2 d-flex justify-content-center align-items-center"
+							style="background-image: url(${pageContext.request.contextPath}/resources/images/restaurant-2.jpg);">
+							<div
+								class="icon d-flex justify-content-center align-items-center">
 								<span class="icon-search2"></span>
 							</div>
 						</a>
@@ -167,20 +204,27 @@ body {
 								<a href="#">Luxury Restaurant</a>
 							</h3>
 							<p class="rate">
-								<i class="icon-star"></i> <i class="icon-star"></i> <i class="icon-star"></i> <i class="icon-star"></i> <i class="icon-star-o"></i> <span>8 Rating</span>
+								<i class="icon-star"></i> <i class="icon-star"></i> <i
+									class="icon-star"></i> <i class="icon-star"></i> <i
+									class="icon-star-o"></i> <span>8 Rating</span>
 							</p>
-							<p>Far far away, behind the word mountains, far from the countries</p>
+							<p>Far far away, behind the word mountains, far from the
+								countries</p>
 							<hr>
 							<p class="bottom-area d-flex">
-								<span><i class="icon-map-o"></i> San Franciso, CA</span> <span class="ml-auto"><a href="#">Book Now</a></span>
+								<span><i class="icon-map-o"></i> San Franciso, CA</span> <span
+									class="ml-auto"><a href="#">Book Now</a></span>
 							</p>
 						</div>
 					</div>
 				</div>
 				<div class="col-md-6 col-lg-3 ftco-animate">
 					<div class="destination">
-						<a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/restaurant-3.jpg);">
-							<div class="icon d-flex justify-content-center align-items-center">
+						<a href="#"
+							class="img img-2 d-flex justify-content-center align-items-center"
+							style="background-image: url(${pageContext.request.contextPath}/resources/images/restaurant-3.jpg);">
+							<div
+								class="icon d-flex justify-content-center align-items-center">
 								<span class="icon-search2"></span>
 							</div>
 						</a>
@@ -189,20 +233,27 @@ body {
 								<a href="#">Luxury Restaurant</a>
 							</h3>
 							<p class="rate">
-								<i class="icon-star"></i> <i class="icon-star"></i> <i class="icon-star"></i> <i class="icon-star"></i> <i class="icon-star-o"></i> <span>8 Rating</span>
+								<i class="icon-star"></i> <i class="icon-star"></i> <i
+									class="icon-star"></i> <i class="icon-star"></i> <i
+									class="icon-star-o"></i> <span>8 Rating</span>
 							</p>
-							<p>Far far away, behind the word mountains, far from the countries</p>
+							<p>Far far away, behind the word mountains, far from the
+								countries</p>
 							<hr>
 							<p class="bottom-area d-flex">
-								<span><i class="icon-map-o"></i> San Franciso, CA</span> <span class="ml-auto"><a href="#">Book Now</a></span>
+								<span><i class="icon-map-o"></i> San Franciso, CA</span> <span
+									class="ml-auto"><a href="#">Book Now</a></span>
 							</p>
 						</div>
 					</div>
 				</div>
 				<div class="col-md-6 col-lg-3 ftco-animate">
 					<div class="destination">
-						<a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/restaurant-4.jpg);">
-							<div class="icon d-flex justify-content-center align-items-center">
+						<a href="#"
+							class="img img-2 d-flex justify-content-center align-items-center"
+							style="background-image: url(${pageContext.request.contextPath}/resources/images/restaurant-4.jpg);">
+							<div
+								class="icon d-flex justify-content-center align-items-center">
 								<span class="icon-search2"></span>
 							</div>
 						</a>
@@ -211,12 +262,16 @@ body {
 								<a href="#">Luxury Restaurant</a>
 							</h3>
 							<p class="rate">
-								<i class="icon-star"></i> <i class="icon-star"></i> <i class="icon-star"></i> <i class="icon-star"></i> <i class="icon-star-o"></i> <span>8 Rating</span>
+								<i class="icon-star"></i> <i class="icon-star"></i> <i
+									class="icon-star"></i> <i class="icon-star"></i> <i
+									class="icon-star-o"></i> <span>8 Rating</span>
 							</p>
-							<p>Far far away, behind the word mountains, far from the countries</p>
+							<p>Far far away, behind the word mountains, far from the
+								countries</p>
 							<hr>
 							<p class="bottom-area d-flex">
-								<span><i class="icon-map-o"></i> San Franciso, CA</span> <span class="ml-auto"><a href="#">Book Now</a></span>
+								<span><i class="icon-map-o"></i> San Franciso, CA</span> <span
+									class="ml-auto"><a href="#">Book Now</a></span>
 							</p>
 						</div>
 					</div>
@@ -240,125 +295,79 @@ body {
 			<div class="row">
 				<div class="col-md-12">
 					<div class="destination-slider owl-carousel ftco-animate">
-						<div class="item">
+
+						<!-- 					최신매물 아이템 출력 시작 -->
+						<c:forEach items="${obList}" var="roomList" varStatus="i">
+
 							<div class="destination">
-								<a href="#" class="img d-flex justify-content-center align-items-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/destination-1.jpg);">
-									<div class="icon d-flex justify-content-center align-items-center">
-										<span class="icon-search2"></span>
-									</div>
-								</a>
+								<a
+									href='<c:url value="/detailView?room_id=${roomList.room_id}" />'
+									class="img img-2 d-flex justify-content-center align-items-center"
+									style="background-image: url(${pageContext.request.contextPath}/resources/upload${roomList.file_name});"></a>
+
 								<div class="text p-3">
-									<h3>
-										<a href="#">Paris, Italy</a>
-									</h3>
-									<span class="listing">15 Listing</span>
+
+									<div class="text-mi">
+										<div class="d-flex">
+											<div class="one">
+												<h3>
+													<a
+														href='<c:url value="detailView?room_id=${roomList.room_id}" />'>
+														${roomList.subject} </a>
+												</h3>
+											</div>
+											<div class="two">
+												<span class="price per-price"><small>${roomList.deposit}
+														/ ${roomList.monthly_rent}</small></span>
+											</div>
+										</div>
+										<p>${roomList.address }</p>
+
+									</div>
+
+									<hr>
+									<p class="bottom-area d-flex">
+										<input type="hidden"
+											value="<c:out value='${roomList.room_id}'/>" id="room_id">
+
+										<button id="zzim-id-${roomList.room_id}"
+											class="text-zzim nozzim">
+
+											<c:forEach var="wishList" items="${wishList }">
+
+												<c:if test="${roomList.room_id == wishList.wish}">
+													<span class="zzim-showtext"
+														id="zzim-ok-${roomList.room_id}"></span>
+												</c:if>
+
+											</c:forEach>
+
+										</button>
+
+										<span class="ml-auto call"><a
+											href="javascript:void(0);">call</a></span> <input type="hidden"
+											value="<c:out value='${roomList.phone_number}'/>"
+											id="phone_number">
+
+									</p>
+									<div class="modal">
+										<div class="modal_content" title="클릭하면 창이 닫힙니다."></div>
+									</div>
+
+
+
 								</div>
 							</div>
-						</div>
-						<div class="item">
-							<div class="destination">
-								<a href="#" class="img d-flex justify-content-center align-items-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/destination-2.jpg);">
-									<div class="icon d-flex justify-content-center align-items-center">
-										<span class="icon-search2"></span>
-									</div>
-								</a>
-								<div class="text p-3">
-									<h3>
-										<a href="#">San Francisco, USA</a>
-									</h3>
-									<span class="listing">20 Listing</span>
-								</div>
-							</div>
-						</div>
-						<div class="item">
-							<div class="destination">
-								<a href="#" class="img d-flex justify-content-center align-items-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/destination-3.jpg);">
-									<div class="icon d-flex justify-content-center align-items-center">
-										<span class="icon-search2"></span>
-									</div>
-								</a>
-								<div class="text p-3">
-									<h3>
-										<a href="#">Lodon, UK</a>
-									</h3>
-									<span class="listing">10 Listing</span>
-								</div>
-							</div>
-						</div>
-						<div class="item">
-							<div class="destination">
-								<a href="#" class="img d-flex justify-content-center align-items-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/destination-4.jpg);">
-									<div class="icon d-flex justify-content-center align-items-center">
-										<span class="icon-search2"></span>
-									</div>
-								</a>
-								<div class="text p-3">
-									<h3>
-										<a href="#">Lion, Singapore</a>
-									</h3>
-									<span class="listing">3 Listing</span>
-								</div>
-							</div>
-						</div>
-						<div class="item">
-							<div class="destination">
-								<a href="#" class="img d-flex justify-content-center align-items-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/destination-5.jpg);">
-									<div class="icon d-flex justify-content-center align-items-center">
-										<span class="icon-search2"></span>
-									</div>
-								</a>
-								<div class="text p-3">
-									<h3>
-										<a href="#">Australia</a>
-									</h3>
-									<span class="listing">3 Listing</span>
-								</div>
-							</div>
-						</div>
-						<div class="item">
-							<div class="destination">
-								<a href="#" class="img d-flex justify-content-center align-items-center" style="background-image: url(${pageContext.request.contextPath}/resources/images/destination-6.jpg);">
-									<div class="icon d-flex justify-content-center align-items-center">
-										<span class="icon-search2"></span>
-									</div>
-								</a>
-								<div class="text p-3">
-									<h3>
-										<a href="#">Paris, Italy</a>
-									</h3>
-									<span class="listing">3 Listing</span>
-								</div>
-							</div>
-						</div>
+
+						</c:forEach>
+						<!-- 					최신매물 아이템 출력 끝 -->
+
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
 
-
-	<!-- 		<section class="ftco-section-parallax"> -->
-	<!--       <div class="parallax-img d-flex align-items-center"> -->
-	<!--         <div class="container"> -->
-	<!--           <div class="row d-flex justify-content-center"> -->
-	<!--             <div class="col-md-7 text-center heading-section heading-section-white ftco-animate"> -->
-	<!--               <h2>Subcribe to our Newsletter</h2> -->
-	<!--               <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in</p> -->
-	<!--               <div class="row d-flex justify-content-center mt-5"> -->
-	<!--                 <div class="col-md-8"> -->
-	<!--                   <form action="#" class="subscribe-form"> -->
-	<!--                     <div class="form-group d-flex"> -->
-	<!--                       <input type="text" class="form-control" placeholder="Enter email address"> -->
-	<!--                       <input type="submit" value="Subscribe" class="submit px-3"> -->
-	<!--                     </div> -->
-	<!--                   </form> -->
-	<!--                 </div> -->
-	<!--               </div> -->
-	<!--             </div> -->
-	<!--           </div> -->
-	<!--         </div> -->
-	<!--       </div> -->
-	<!--     </section> -->
 
 	<footer class="ftco-footer ftco-bg-dark ftco-section">
 		<div class="container">
@@ -370,7 +379,9 @@ body {
 						<script>
 							document.write(new Date().getFullYear());
 						</script>
-						All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+						All rights reserved | This template is made with <i
+							class="icon-heart" aria-hidden="true"></i> by <a
+							href="https://colorlib.com" target="_blank">Colorlib</a>
 						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 					</p>
 				</div>
@@ -378,18 +389,14 @@ body {
 		</div>
 	</footer>
 
-
-
 	<!-- loader -->
-	<div id="ftco-loader" class="show fullscreen">
-		<svg class="circular" width="48px" height="48px">
-			<circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
-			<circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg>
-	</div>
+	<!-- 	<div id="ftco-loader" class="show fullscreen"> -->
+	<!-- 		<svg class="circular" width="48px" height="48px"> -->
+	<!-- 			<circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" /> -->
+	<!-- 			<circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg> -->
+	<!-- 	</div> -->
 
-
-	<script src="${pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js">
-		
+	<script src="${pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js">		
 	</script>
 
 	<script>
@@ -416,8 +423,7 @@ body {
 													'btn-default');
 									});
 
-							$('.button-class2')
-									.click(
+							$('.button-class2').click(
 											function() {
 												$("#address").val('');
 												$("#address")
@@ -443,23 +449,62 @@ body {
 															.addClass(
 																	'btn-default');
 											});
+							
+							// 목록 - [찜하기] 클릭
+				        	$('.text-zzim').click(function(){
+				        		var room_id = $(this).parent().children("#room_id")[0].value;
+				        		
+				        	 	$.ajax('<c:url value="/zzim" />',{
+				        	 		data:{wish:room_id},
+				        	 		success:function(rdata){
+				        	 			
+				        	 			if(rdata=="zzim"){
+				        	 				rdata = "찜";
+				        	 				$('#zzim-id-'+room_id).removeClass('nozzim');
+				        	 				$('#zzim-id-'+room_id).addClass('zzim');
+				        	 				$('#zzim-ok-'+room_id).addClass('zzim-showtext');
+
+				        	 			}else if(rdata=="nozzim"){
+				        	 				rdata = "찜안함";
+				                	        $('#zzim-id-'+room_id).removeClass('zzim');
+				        	 				$('#zzim-id-'+room_id).addClass('nozzim');
+				        	 				$('#zzim-ok-'+room_id).removeClass('zzim-showtext');
+				        	 			}
+				        	 			var resultData = decodeURIComponent( rdata );
+				        	 			alert(resultData);	
+				        	 		}
+				        	 	});
+
+				        	});
+							
 						});
 	</script>
 
 
-	<script src="${pageContext.request.contextPath}/resources/js/jquery-migrate-3.0.1.min.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/js/popper.min.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/js/jquery.easing.1.3.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/js/jquery.waypoints.min.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/js/jquery.stellar.min.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/js/owl.carousel.min.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/js/jquery.magnific-popup.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/resources/js/jquery-migrate-3.0.1.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/resources/js/popper.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/resources/js/jquery.easing.1.3.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/resources/js/jquery.waypoints.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/resources/js/jquery.stellar.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/resources/js/owl.carousel.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/resources/js/jquery.magnific-popup.min.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/js/aos.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/js/jquery.animateNumber.min.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/js/bootstrap-datepicker.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/resources/js/jquery.animateNumber.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/resources/js/bootstrap-datepicker.js"></script>
 	<%--   <script src="${pageContext.request.contextPath}/resources/js/jquery.timepicker.min.js"></script> --%>
-	<script src="${pageContext.request.contextPath}/resources/js/scrollax.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/resources/js/scrollax.min.js"></script>
 	<!--   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script> -->
 	<%--   <script src="${pageContext.request.contextPath}/resources/js/google-map.js"></script> --%>
 	<script src="${pageContext.request.contextPath}/resources/js/main.js"></script>

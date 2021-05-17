@@ -2,7 +2,10 @@ package com.itwillbs.findhome;
 
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
@@ -15,8 +18,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.itwillbs.dao.MemberDAO;
+import com.itwillbs.domain.MemberBean;
 import com.itwillbs.domain.OneRoomBean;
 import com.itwillbs.service.BoardService;
+import com.itwillbs.service.MemberService;
 
 /**
  * Handles requests for the application home page.
@@ -25,6 +31,8 @@ import com.itwillbs.service.BoardService;
 public class HomeController {
 	@Inject
 	private BoardService boardService;
+	@Inject
+	private MemberService memberService;
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
@@ -32,7 +40,7 @@ public class HomeController {
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
+	public String home(Locale locale, Model model, HttpSession session) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		
 		Date date = new Date();
@@ -41,6 +49,23 @@ public class HomeController {
 		String formattedDate = dateFormat.format(date);
 		
 		model.addAttribute("serverTime", formattedDate );
+				
+		// 방 리스트와 썸네일 정보 넘기기 
+		List<LinkedHashMap<String, Object>> obList = boardService.selectOneRoomThumbImg();
+		for (Map<String, Object> map:obList) {
+			System.out.println(map.get("room_id") + " " 
+					+ map.get("subject") + " " + map.get("file_name"));
+		}
+		
+		// 찜 리스트 넘기기
+		String id = (String) session.getAttribute("id");
+		
+		if(id != null) {
+			List<MemberBean> wishList=memberService.getMemberWishList(id);
+			model.addAttribute("wishList", wishList);
+		}
+		
+		model.addAttribute("obList", obList);
 		
 		return "index";
 	}
@@ -59,8 +84,8 @@ public class HomeController {
 			String category = request.getParameter("category");
 			
 			if ( id == null || category == null) {
-				model.addAttribute("msg", "잘못된 요청입니다.");
-				return "msg";
+				//model.addAttribute("msg", "잘못된 요청입니다.");
+				//return "msg";
 			}
 			
 			OneRoomBean ob = new OneRoomBean();
