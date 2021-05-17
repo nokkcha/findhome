@@ -54,7 +54,7 @@
 
 	<%@ include file="../views/top.jsp"%>
 
-<input type="text" id="member_type" value=${mb.member_type }>
+<%-- <input type="text" id="member_type" value=${mb.member_type }> --%>
 
 	<div class="hero-wrap js-fullheight"
 		style="background-image: url('${pageContext.request.contextPath}/resources/images/bg_2.jpg');">
@@ -264,7 +264,7 @@
 			<div class="row block-9">
 				<div class="pr-md-5">
 					<!-- col-md-6 제거함 -->
-					<form action='<c:url value="/memberInfoPro" />' id="login" name="login">
+					<form action='<c:url value="/memberInfoPro" />' id="login" name="login" method="post">
 						<div class="form-group" align="left">
 							<label class="form-control-label">아이디</label> <input type="text"
 								class="form-control" name="id" id="id" value="${mb.id }" readonly

@@ -68,6 +68,8 @@
 </script>
 
 	<%@ include file="../views/top.jsp"%>
+	
+<%-- 	<input type="text" id="member_type" value=${mb.member_type }> --%>
 
 
 	<div class="hero-wrap js-fullheight"

@@ -118,7 +118,26 @@ public class MemberController {
 	}
 
 	@RequestMapping(value = "/memberDelete", method = RequestMethod.GET)
-	public String delete() {
+	public String delete(HttpSession session, Model model) {
+		
+				// String id = 세션값 가져오기
+				String id = (String) session.getAttribute("id");
+				// 1.세션값 변수에 저장
+				String member_type = (String) session.getAttribute("member_type");
+
+				// MemberBean mb = 세션에 해당하는 정보 조회 getMember(id) MemberBean 리턴
+				MemberBean mb;
+				if (member_type == "normal") {
+					 mb = memberService.getMember(id);
+				}else {
+					mb = memberService.getMember2(id);
+				}
+				// 2.멤버빈에 저장
+				mb.setMember_type(member_type);
+
+				// model "mb",mb
+				model.addAttribute("mb", mb);
+		
 		// /WEB-INF/views/member/deleteForm.jsp
 		return "memberDelete";
 	}
@@ -133,7 +152,9 @@ public class MemberController {
 		if(mb2!=null) {		
 			// 삭제
 			memberService.deleteMember(mb);
+			session.invalidate();
 			return "redirect:/";
+			
 		}else {
 			// 입력하신 정보가 틀립니다. 
 			model.addAttribute("msg","입력하신 정보가 틀립니다.");
@@ -146,12 +167,14 @@ public class MemberController {
 	public String deletePro2(MemberBean mb, HttpSession session, Model model) {
 		
 		session.setAttribute("id", mb.getId());
-			
+					
 		MemberBean mb2=memberService.userCheck2(mb);
+		
 		if(mb2!=null) {
 			
 			// 삭제
 			memberService.deleteMember2(mb);
+			session.invalidate();
 			return "redirect:/";
 		}else {
 			// 입력하신 정보가 틀립니다. 
@@ -186,7 +209,7 @@ public class MemberController {
 		return "memberInfo";
 	}
 
-	@RequestMapping(value = "/memberInfoPro", method = RequestMethod.GET)
+	@RequestMapping(value = "/memberInfoPro", method = RequestMethod.POST)
 	public String updatePro(MemberBean mb, HttpServletRequest request, Model model) {
 
 		MemberBean mb2 = memberService.userCheck(mb);
@@ -195,6 +218,7 @@ public class MemberController {
 			mb.setPassword(request.getParameter("newPassword"));
 			// 수정
 			memberService.updateMember(mb);
+			
 			return "redirect:/";
 		} else {
 			// 입력하신 정보가 틀립니다.
@@ -204,7 +228,7 @@ public class MemberController {
 		}
 	}
 	
-	@RequestMapping(value = "/memberInfoPro2", method = RequestMethod.GET)
+	@RequestMapping(value = "/memberInfoPro2", method = RequestMethod.POST)
 	public String updatePro2(MemberBean mb, HttpServletRequest request, Model model) {
 		
 		MemberBean mb2=memberService.userCheck2(mb);
