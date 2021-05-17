@@ -273,8 +273,9 @@
 							<br><span class="check-group" id="checkIdResult"></span>	
 
 						</div>
+												
 						<div class="form-group" align="left">
-							<label class="form-control-label">비밀번호</label><input
+							<label class="form-control-label">기존 비밀번호</label><input
 								type="password" class="form-control" name="password" id="password"
 								>
 <!-- 								onkeyup="checkPassword()" -->
@@ -283,13 +284,33 @@
 						</div>
 						
 						<div class="form-group" align="left">
-							<label class="form-control-label">비밀번호 확인</label><input
+							<label class="form-control-label">기존 비밀번호 확인</label><input
 								type="password" class="form-control" name="password2" id="password2"
 								>
 <!-- 								onkeyup="checkPassword2()" -->
 								
 						  <br><span class="check-group" id="checkPasswordResult3"></span>
 						</div>
+						
+						<div class="form-group" align="left">
+							<label class="form-control-label">새 비밀번호</label><input
+								type="password" class="form-control" name="newPassword" id="newPassword"
+								>
+<!-- 								onkeyup="checkPassword()" -->
+								
+						  <br><span class="check-group" id="checkPasswordResult"></span>
+						</div>
+						
+						<div class="form-group" align="left">
+							<label class="form-control-label">새 비밀번호 확인</label><input
+								type="password" class="form-control" name="newPassword2" id="newPassword2"
+								>
+<!-- 								onkeyup="checkPassword()" -->
+								
+						  <br><span class="check-group" id="checkPasswordResult"></span>
+						</div>
+						
+						
 						<div class="form-group" align="left">
 							<label class="form-control-label">휴대폰 번호</label><input type="tel"
 								class="form-control" name="phone_number" id="phone" value="${mb.phone_number }"

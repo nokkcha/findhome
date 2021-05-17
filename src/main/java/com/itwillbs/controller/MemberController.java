@@ -48,6 +48,7 @@ public class MemberController {
 	// /member/loginPro
 	@RequestMapping(value = "/loginPro", method = RequestMethod.POST)
 	public String loginPro(MemberBean mb, HttpSession session, Model model) {
+System.out.println(mb.getMember_type());
 
 		MemberBean mb2 = memberService.userCheck(mb);
 		if (mb2 != null) {
@@ -121,6 +122,11 @@ public class MemberController {
 		// /WEB-INF/views/member/deleteForm.jsp
 		return "member/deleteForm";
 	}
+	
+	@RequestMapping(value = "/memberDelete", method = RequestMethod.GET)
+	public String memberdelete() {
+		return "memberDelete";
+	}
 
 	@RequestMapping(value = "/memberInfo", method = RequestMethod.GET)
 	public String update(HttpSession session, Model model) {
@@ -143,10 +149,12 @@ public class MemberController {
 	}
 
 	@RequestMapping(value = "/memberInfoPro", method = RequestMethod.GET)
-	public String updatePro(MemberBean mb, Model model) {
+	public String updatePro(MemberBean mb, HttpServletRequest request, Model model) {
 
 		MemberBean mb2 = memberService.userCheck(mb);
+		
 		if (mb2 != null) {
+			mb.setPassword(request.getParameter("newPassword"));
 			// 수정
 			memberService.updateMember(mb);
 			return "redirect:/";
@@ -159,10 +167,11 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "/memberInfoPro2", method = RequestMethod.GET)
-	public String updatePro2(MemberBean mb,  Model model) {
+	public String updatePro2(MemberBean mb, HttpServletRequest request, Model model) {
 		
 		MemberBean mb2=memberService.userCheck2(mb);
 		if(mb2!=null) {
+			mb.setPassword(request.getParameter("newPassword"));
 			// 수정
 			memberService.updateMember2(mb);
 			return "redirect:/";
@@ -174,10 +183,7 @@ public class MemberController {
 		}
 	}
 
-	@RequestMapping(value = "/memberDelete", method = RequestMethod.GET)
-	public String memberdelete() {
-		return "memberDelete";
-	}
+
 
 	@RequestMapping(value = "/join/id_check", method = RequestMethod.GET)
 	public ResponseEntity<String> id_check(HttpServletRequest request) {
