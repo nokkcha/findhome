@@ -434,7 +434,7 @@ public class BoardController {
 	}
 	
 	@ResponseBody // view가 아닌 data리턴
-	@RequestMapping(value = "/addressSearch", method = RequestMethod.GET)
+	@RequestMapping(value = "/addressSearch", method = RequestMethod.POST)
 	public ResponseEntity<String> zzim(MemberBean mb, HttpSession session) {
 		ResponseEntity<String> entity=null;
 		String result="";
@@ -442,25 +442,10 @@ public class BoardController {
 		try {
 			String id=(String) session.getAttribute("id");
 			mb.setId(id);
-			
-			 MemberBean mb2=memberService.getWish(mb);			 
-
-			if(id != null) {
-				if(mb2 != null) {
-					memberService.deleteWish(mb);
-					System.out.println("deleteWish(mb) - id : " + mb.getId() + ", room_id :" + mb.getWish());	
-					result="nozzim";
-					
-				} else if(mb2 == null) {
-					memberService.insertWish(mb);
-					System.out.println("insertWish(mb) - id : " + mb.getId() + ", romm_id :" + mb.getWish());
-					result="zzim";
-				}
-			}else {
-				result="찜 기능을 이용하려면 먼저 로그인해주세요";				
-			}
+						 
 			// 한글깨짐 방지를 위해 인코딩하기
-			result = URLEncoder.encode(result , "UTF-8");
+			result = "검색 결과가 없습니다. 정확한 검색어를 입력해주세요.";
+			result = URLEncoder.encode(result , "UTF-8");			
 			
 			entity=new ResponseEntity<String>(result,HttpStatus.OK);
 		} catch (Exception e) {

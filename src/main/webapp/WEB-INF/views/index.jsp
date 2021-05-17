@@ -142,7 +142,7 @@ body {
 						</form>
 					</div>
 					
-					<input type="text" id="searchResult" readonly="readonly" style="" value="검색 결과가 없습니다. 정확한 검색어를 입력해주세요.">
+					<input type="text" id="searchResult" readonly="readonly" style="" value="">
 
 				</div>
 			</div>
@@ -410,7 +410,7 @@ body {
 								  // ajax로 전달할 폼 객체
 								  var formData = new FormData();
 								  
-								  $.ajax('<c:url value="/zzim" />',{
+								  $.ajax('<c:url value="/addressSearch" />',{
 										type : "post",
 										data : formData,
 										// processData: true=> get방식, false => post방식
@@ -420,9 +420,11 @@ body {
 										processData : false,
 										success : function(data) {
 											var str = "";
-											// 섬네일 생성하고 이미지 표시
-											str += data;											
-											console.log('data : ' + data);													
+											// 검색 결과 표시
+											str += data;					
+											var resultData = decodeURIComponent( data );
+											//alert(resultData);
+											console.log('data : ' + resultData);
 											$("#searchResult").append(str);																				
 										}
 									});
