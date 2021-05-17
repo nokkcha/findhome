@@ -378,7 +378,12 @@ public class BoardController {
 		String name = request.getParameter("name");
 		String date1 = request.getParameter("date1");
 		String room_id = request.getParameter("room_id");
-		content = content + name + phone + date1;
+				
+		String mailText = "";
+		mailText += "상담 예약 날짜 : " + date1 + "<br>";
+		mailText += "문의자 성함 : " + name + "<br>";
+		mailText += "문의자 연락처 : " + phone + "<br>";
+		mailText += "상담 내용 : " + content + "<br>";
 		
 		qnaBean qb = new qnaBean();
 		qb.setContent(request.getParameter("content"));
@@ -413,7 +418,7 @@ public class BoardController {
 			message.setFrom(sender_address);
 			message.addRecipient(Message.RecipientType.TO, receiver_address);
 			message.setSubject("문의사항");
-			message.setContent(content, "text/html; charset=UTF-8");
+			message.setContent(mailText, "text/html; charset=UTF-8");
 			message.setSentDate(new Date());
 			// 메시지 전송
 			Transport.send(message);
