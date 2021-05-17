@@ -335,22 +335,24 @@ h4 {
 					<div class="row">
 						<div class="col-md-12 ftco-animate">
 							<div class="single-slider owl-carousel">
+								<c:forEach items="${ib.file_name }" var="roomImg">
 								<div class="item">
 									<div class="hotel-img">
-										<img src='<c:url value="/resources/upload/${ib.file_name}" />'>
-									</div>
-
-								</div>
-								<div class="item">
-									<div class="hotel-img">
-										<img src="${pageContext.request.contextPath}/resources/images/room-5.jpg">
+										<img src='<c:url value="${pageContext.request.contextPath}/resources/upload/${roomImg}" />'>
 									</div>
 								</div>
-								<div class="item">
-									<div class="hotel-img">
-										<img src="${pageContext.request.contextPath}/resources/images/room-6.jpg">
-									</div>
-								</div>
+								
+<!-- 								<div class="item"> -->
+<!-- 									<div class="hotel-img"> -->
+<%-- 										<img src="${pageContext.request.contextPath}/resources/images/room-5.jpg"> --%>
+<!-- 									</div> -->
+<!-- 								</div> -->
+<!-- 								<div class="item"> -->
+<!-- 									<div class="hotel-img"> -->
+<%-- 										<img src="${pageContext.request.contextPath}/resources/images/room-6.jpg"> --%>
+<!-- 									</div> -->
+<!-- 								</div> -->
+								</c:forEach>
 							</div>
 
 						</div>

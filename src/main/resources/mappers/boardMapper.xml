@@ -143,8 +143,8 @@
 		one_room where
 		room_id=#{room_id}
 	</select>
-
-	<select id="getRoomImg" resultMap="OneRoomBean">
+	
+	<select id="getImage" resultMap="OneRoomBean">
 		select * from
 		one_room_pic
 		where
