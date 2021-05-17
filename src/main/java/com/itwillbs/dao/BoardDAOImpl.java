@@ -11,6 +11,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.itwillbs.domain.BoardBean;
+import com.itwillbs.domain.ImageBean;
 import com.itwillbs.domain.OneRoomBean;
 import com.itwillbs.domain.PageBean;
 
@@ -88,6 +89,13 @@ public class BoardDAOImpl implements BoardDAO{
 	@Override
 	public OneRoomBean getRoom(int room_id) {
 		return sqlSession.selectOne(namespace+".getRoom", room_id);
+	}
+	
+	
+
+	@Override
+	public ImageBean getImage(int room_id) {
+		return sqlSession.selectOne(namespace+".getImage",room_id);
 	}
 
 	@Override

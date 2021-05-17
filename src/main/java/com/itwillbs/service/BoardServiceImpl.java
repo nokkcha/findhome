@@ -153,6 +153,13 @@ public class BoardServiceImpl implements BoardService{
 		return boardDAO.getRoom(room_id);
 	}
 
+	
+	
+	@Override
+	public ImageBean getImage(int room_id) {
+		return boardDAO.getImage(room_id);
+	}
+
 	@Override
 	public List<LinkedHashMap<String, Object>> selectOneRoomThumbImg() {
 		// TODO Auto-generated method stub
