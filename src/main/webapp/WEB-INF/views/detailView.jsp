@@ -100,6 +100,7 @@
 #roomtable {
 	width: 100%;
 	border-collapse: collapse;
+	text-align: left;
 }
 
 #roomtable th, td {
@@ -247,7 +248,7 @@ h4 {
 }
 
 .modal-header {
-		padding-top: 10px;
+		padding-top: 20px;
 		border-bottom: 1px solid #dddddddd;
 }
 
