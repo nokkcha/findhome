@@ -72,6 +72,29 @@
 		#{startRow},#{pageSize}
 	</select>
 
+	<select id="getSalesList"
+		resultType="com.itwillbs.domain.OneRoomBean">
+		select * from one_room
+		where seller_id=#{seller_id}
+		order by room_id desc limit
+		#{startRow},#{pageSize}
+	</select>
+
+	<select id="getSalesCount"
+		resultType="java.lang.Integer">
+		select count(*) from one_room
+		where seller_id=#{seller_id}
+	</select>
+
+	<select id="getSalesCategoryCount"
+		resultType="java.lang.Integer">
+		select count(*) from one_room
+		where (seller_id=#{seller_id})
+		and (category=#{category})
+	</select>
+
+
+
 	<select id="getWishList"
 		resultType="com.itwillbs.domain.OneRoomBean">
 		select address, subject, room_id, monthly_rent, deposit,
@@ -161,6 +184,16 @@
 		p.room_id)
 		ORDER BY i.id DESC
 		LIMIT 10
+	</select>
+	
+	 
+	<select id="sellerLatestBoard" resultMap="OneRoomBean">
+		select *
+		from one_room
+		where seller_id=#{seller_id}
+		order by room_id desc
+		limit 5;
+	
 	</select>
 
 <insert id="insertqna">

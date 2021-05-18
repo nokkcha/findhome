@@ -39,4 +39,10 @@ public interface BoardService {
 	List<LinkedHashMap<String, Object>> selectOneRoomThumbImg();
 	
 	public void insertqna(qnaBean qb);
+
+	public List<OneRoomBean> sellerLatestBoard(String seller_id);
+	public List<OneRoomBean> getSalesList(PageBean pb);
+	public int getSalesCount(PageBean pb);
+	public int getSalesCategoryCount(OneRoomBean ob);
+
 }

@@ -49,20 +49,25 @@
 
 		<div class="collapse navbar-collapse" id="ftco-nav">
 			<ul class="navbar-nav ml-auto">
-				<%
-				String id = (String) session.getAttribute("id");
-				if (id == null) {
-				%>
-				<li class="nav-item"><a href="./login" class="nav-link">로그인</a></li>
+
+			<c:if test="${id ==null}">
+				<li class="nav-item"><a href="./login_choice" class="nav-link">로그인</a></li>
 				<li class="nav-item"><a href='<c:url value="/join_choice" />' class="nav-link">회원가입</a></li>
-				<%
-				} else {
-				%>
+			</c:if>
+
+			<c:if test="${id != null}">
 				<li class="nav-item"><a href="./memberInfo" class="nav-link">회원정보</a></li>
+				
+			<c:if test="${seller_id != null}">
+					<li class="nav-item"><a href="./member_seller" class="nav-link">관리페이지</a></li>
+			</c:if>
+				
 				<li class="nav-item"><a href="./logout" class="nav-link">로그아웃</a></li>
-				<%
-				}
-				%>
+			</c:if>
+				
+				
+				
+				
 			</ul>
 		</div>
 

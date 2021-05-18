@@ -53,23 +53,23 @@
 
 		<div class="box_greet">
 			<h3 class="greet">
-				안녕하세요, 환영합니다.<br>가입하시기 전에 골라주세요.
+				안녕하세요, 환영합니다.<br>로그인하시기 전에 골라주세요.
 			</h3>
 		</div>
 
 		<div class="select_area">
-			<a href="http://localhost:8080/findhome/join2">
+			<a href="http://localhost:8080/findhome/login">
 				<div class="box_select">
 					<!-- <input type="radio" name="join_type" value="세입자"> -->
 					<div class="circle">
 						<span class="txt1">세입자</span>
 					</div>
 				</div>
-			</a> <a href="http://localhost:8080/findhome/join">
+			</a> <a href="http://localhost:8080/findhome/seller_login">
 				<div class="box_select">
 					<!-- <input type="radio" name="join_type" value="세입자"> -->
 					<div class="circle">
-						<span class="txt2">중개인 가입<br>호스트 가입<br></span>
+						<span class="txt2">중개인</span>
 					</div>
 				</div>
 			</a>

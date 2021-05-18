@@ -15,9 +15,16 @@ public class PageBean {
 	
 	private String id;
 	private String category;
+	private String seller_id;
 	
 	
 	
+	public String getSeller_id() {
+		return seller_id;
+	}
+	public void setSeller_id(String seller_id) {
+		this.seller_id = seller_id;
+	}
 	public String getCategory() {
 		return category;
 	}

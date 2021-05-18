@@ -173,6 +173,31 @@ public class BoardServiceImpl implements BoardService{
 		
 	}
 	
+	@Override
+	public List<OneRoomBean> sellerLatestBoard(String seller_id) {
+		return boardDAO.sellerLatestBoard(seller_id);
+	}
+
+	@Override
+	public List<OneRoomBean> getSalesList(PageBean pb) {
+		// #{startRow} 계산
+		pb.setCurrentPage(Integer.parseInt(pb.getPageNum()));
+		// int startRow=(currentPage-1)*pageSize+1;
+		// 디비 startRow-1
+		pb.setStartRow((pb.getCurrentPage()-1)*pb.getPageSize());
+		return boardDAO.getSalesList(pb);
+	}
+
+	@Override
+	public int getSalesCount(PageBean pb) {
+		return boardDAO.getSalesCount(pb);
+	}
+
+	@Override
+	public int getSalesCategoryCount(OneRoomBean ob) {
+		return boardDAO.getSalesCategoryCount(ob);
+	}
+
 
 
 }

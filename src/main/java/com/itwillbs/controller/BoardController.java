@@ -244,6 +244,62 @@ public class BoardController {
 		return "zzimList";
 	}
 	
+	@RequestMapping(value = "/member_seller", method = RequestMethod.GET)
+	public String member_seller(HttpServletRequest request, Model model, HttpSession session) {
+		String seller_id = (String) session.getAttribute("seller_id");
+		if (seller_id == null) {
+			return "/login_choice";
+		}
+		
+		OneRoomBean ob = new OneRoomBean();
+		ob.setSeller_id(seller_id);
+		ob.setCategory("OneRoom");
+		int OneroomCount = boardService.getSalesCategoryCount(ob);
+		model.addAttribute("OneroomCount", OneroomCount);
+		
+		ob.setCategory("Officetel");
+		int OfficetelCount = boardService.getSalesCategoryCount(ob);
+		model.addAttribute("OfficetelCount", OfficetelCount);
+		
+		
+		List<OneRoomBean> roomList = boardService.sellerLatestBoard(seller_id);
+		model.addAttribute("roomList", roomList);
+		
+
+		return "member_seller";
+	}
+	
+	
+	@RequestMapping(value = "/SalesList", method = RequestMethod.GET)
+	public String SalesList(HttpServletRequest request, Model model, HttpSession session) {
+		PageBean pb = new PageBean();
+		if (request.getParameter("pageNum") != null) {
+			pb.setPageNum(request.getParameter("pageNum"));
+		} else {
+			pb.setPageNum("1");
+		}
+		pb.setPageSize(15);
+		
+		String seller_id = (String) session.getAttribute("seller_id");
+		pb.setSeller_id(seller_id);
+		
+		if (seller_id == null) {
+			return "/login_choice";
+		}
+		
+		
+		List<OneRoomBean> roomList = boardService.getSalesList(pb);
+		
+		pb.setCount(boardService.getSalesCount(pb));
+
+		model.addAttribute("roomList", roomList);
+		model.addAttribute("pb", pb);
+
+
+		return "SalesList";
+	}
+	
+	
 //	http://localhost:8080/myweb2/board/fwrite
 	@RequestMapping(value = "/board/fwrite", method = RequestMethod.GET)
 	public String fwrite() {
