@@ -92,6 +92,18 @@ public class MemberServiceImpl implements MemberService{
 		
 	}
 
+	@Override
+	public List<MemberBean> getMemberNList() {
+		// TODO Auto-generated method stub
+		return memberDAO.getMemberNList();
+	}
+
+	@Override
+	public void yUpdate(MemberBean mb) {
+		 memberDAO.yUpdate(mb);
+		
+	}
+
 	
 
 }

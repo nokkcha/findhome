@@ -34,5 +34,9 @@ public interface MemberDAO {
 		public void deleteWish(MemberBean bb);
 
 		public List<MemberBean> getMemberWishList(String id);
+		
+		public  List<MemberBean> getMemberNList();
+		
+		public void yUpdate(MemberBean mb);
 
 }

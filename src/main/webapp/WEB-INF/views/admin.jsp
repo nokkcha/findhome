@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="ko">
@@ -17,14 +18,14 @@
       <li><a href=""><strong>대시보드</strong></a></li>
     </ul>
     <ul>
-      <li><a href="">개인회원 관리</a></li>
+      <li><a href=""><strong>개인회원 관리</strong></a></li>
       <li><a href="">사용자 관리</a></li>
       <li><a href="">가입 승인</a></li>
       <li><a href="">문의글 관리</a></li>
       <li><a href="">통계</a></li>
     </ul>
     <ul>
-      <li><a href="">사업자회원 관리</a></li>
+      <li><a href=""><strong>사업자회원 관리</strong></a></li>
       <li><a href="">사용자 관리</a></li>
       <li><a href="">가입 승인</a></li>
       <li><a href="">문의글 관리</a></li>
@@ -44,13 +45,16 @@
       
       <div class="board_left">
         <div class="board_box">
-          <p>회원증감</p>
+          <p>승인대기 회원 목록</p>
+          <c:forEach var="mb"  items="${nList}">
+          <p>${mb.id} <input type="button"  value="승인버튼"  onclick="location.href='<c:url value="/yUpdate?id=${mb.id}" />' "></p>
+          </c:forEach>
           </div>
          </div>
          
        <div class="board_center">  
         <div class="board_box">
-          <p>일별 방문자 수</p>      
+          <p>매몰신고 리스트</p>      
         </div>
       </div>
       
