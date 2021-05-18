@@ -1,19 +1,34 @@
 package com.itwillbs.controller;
 
+import java.io.IOException;
 import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.client.RestTemplate;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.itwillbs.domain.MemberBean;
+//import com.itwillbs.service.KakaoService;
+//import com.itwillbs.findhome.Kakao_restapi;
 import com.itwillbs.service.MemberService;
 
 @Controller
@@ -25,6 +40,9 @@ public class MemberController {
 	@Inject
 	private MemberService memberService;
 
+	private JsonNode accessToken;
+	private Kakao_restapi kakao_restapi=new Kakao_restapi();
+	
 	@RequestMapping(value = "/join_choice", method = RequestMethod.GET)
 	public String join_choice() {
 		return "join_choice";
@@ -55,6 +73,7 @@ public class MemberController {
 		return "seller_login";
 	}
 	
+
 
 
 	// /member/loginPro
@@ -305,5 +324,57 @@ public class MemberController {
 		}
 		return entity;
 	}
+	
+	@RequestMapping(value = "/find_pw", method = RequestMethod.GET)
+	public String find_pw() {
+		return "find_pw";
+	}
+	
+	
+	@RequestMapping(value="/oauth",method= RequestMethod.GET)
+	 public String kakaoConnect() {
 
+	  StringBuffer url = new StringBuffer();
+	  url.append("https://kauth.kakao.com/oauth/authorize?");
+	  url.append("client_id=" + "b0993beef1eb3df1922ad92776e6688b");
+	  url.append("&redirect_uri=http://localhost:8080/findhome/kakaologin");
+	  url.append("&response_type=code");
+
+	  return "redirect:" + url.toString();
+	 
+	 }
+	 
+	 @RequestMapping(value="/kakaologin", produces="application/json", method= {RequestMethod.GET, RequestMethod.POST})
+	 public String kakaoLogin(@RequestParam("code")String code,RedirectAttributes ra,HttpSession session,HttpServletResponse response ,String autorize_code)throws IOException {
+	  
+	  System.out.println("kakao code:"+code);
+	  JsonNode access_token = kakao_restapi.getAccessToken(code);
+	  access_token.get("access_token");
+	  System.out.println("access_token:" + access_token.get("access_token"));
+
+	  JsonNode userInfo = kakao_restapi.getKakaoUserInfo(access_token.get("access_token"));
+
+	         
+	         String id = userInfo.path("id").asText();
+	         String name = null;
+	         String email = null;
+	        
+	     
+	         JsonNode properties = userInfo.path("properties");
+	         JsonNode kakao_account = userInfo.path("kakao_account");
+	         name = properties.path("nickname").asText(); //이름 정보 가져오는 것
+	         email = kakao_account.path("account_email").asText();
+	         
+	         session.setAttribute("isLogOn",true);
+	         session.setAttribute("id",name);  
+	         session.setAttribute("account_email", kakao_account);  
+	        
+	         System.out.println("id : " + id);    //여기에서 값이 잘 나오는 것 확인 가능함.
+	         System.out.println("name : " + name);
+	         System.out.println("email : " + email);
+	  
+	         return "redirect:/";
+	 }
+	
+	
 }

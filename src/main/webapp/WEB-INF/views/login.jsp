@@ -92,26 +92,30 @@
 			<div class="row block-9">
 				<div class="pr-md-5">
 					<!-- col-md-6 제거함 -->
-					<form action=<c:url value="/loginPro" /> id="login" name="login" method="post">
+					<form action=<c:url value="/loginPro" /> id="login" name="login"  method="post" >
 						<div class="form-group" align="left">
-							<label class="form-control-label">아이디</label> <input type="text" class="form-control" name="id" id="id"  onkeyup="checkId()"> <br>
-							<span class="check-group" id="checkIdResult"></span>
+							<label class="form-control-label">아이디</label> <input type="text"
+								class="form-control" name="id" id="id"  value="test" 
+								onkeyup="checkId()">
+								
+							<br><span class="check-group" id="checkIdResult"></span>	
 
 						</div>
 						<div class="form-group" align="left">
-							<label class="form-control-label">비밀번호</label><input type="password" class="form-control" name="password" id="password"  onkeyup="checkPassword()"> <br>
-							<span class="check-group" id="checkPasswordResult"></span>
-						</div>
-
+							<label class="form-control-label">비밀번호</label><input
+								type="password" class="form-control" name="password" id="password" value="1234"
+								onkeyup="checkPassword()">
+								
+						  <br><span class="check-group" id="checkPasswordResult"></span>
+						</div>						
 						<div class="form-group">
-							<input type="submit" value="로그인" class="btn btn-primary py-3 px-5" id="btn">
+							<input type="submit" value="로그인"
+								class="btn btn-primary py-3 px-5" id="btn">
 						</div>
-						<a href="https://kauth.kakao.com/oauth/authorize?client_id=c8b68959528f17086eb38f6bc7df7c75&redirect_uri=http://localhost:8080/auth/kakao/callback&response_type=code"><img src="//k.kakaocdn.net/14/dn/btqCn0WEmI3/nijroPfbpCa4at5EIsjyf0/o.jpg" width="222" /></a>
+				<a href="https://kauth.kakao.com/oauth/authorize?client_id=b0993beef1eb3df1922ad92776e6688b&redirect_uri=http://localhost:8080/findhome/kakaologin&response_type=code"><img src="//k.kakaocdn.net/14/dn/btqCn0WEmI3/nijroPfbpCa4at5EIsjyf0/o.jpg" width="222"/></a>
 
-
+				
 					</form>
-
-					<input type="button" name="radioTxt" id="radioTxt" value="Banana">Banana
 
 
 				</div>
