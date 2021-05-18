@@ -70,7 +70,32 @@
 }
 
 
+#btnReport{
+	border: none;
+	background-color: rgba(0,0,0,0);
+	margin-top: 10px;
+	color: gray;
+}
 
+#btnReport img{
+	width: 15px;
+	height: 15px;
+	color: gray;
+	display: inline;
+}
+
+
+#btn-report-close {
+	border: none;
+	background: none;
+}
+
+#btn-report-close img {
+	width: 15px;
+	height: 15px;
+	margin-left: 240px;
+	margin-top: 20px;
+}
 
 #roomtable {
 	width: 100%;
@@ -80,6 +105,16 @@
 #roomtable th, td {
 	padding: 10px;
 	text-align: center;
+}
+
+#btnDifInfo {
+	margin-top: 5px;
+	width: 200px;
+
+}
+
+#btnSoldout {
+	width: 200px;
 }
 
 h4 {
@@ -125,6 +160,10 @@ h4 {
 	padding-top: 50px;
 	padding-bottom: 50px;
 	border-top: 1px solid #dddddddd;
+}
+
+.contact-container {
+	border-bottom: 1px solid #dddddddd;
 }
 
 .map-container #map { /* border:1px solid red;  */
@@ -190,6 +229,7 @@ h4 {
 	bottom: 0;
 	right: 0;
 	background: rgba(0, 0, 0, 0.8);
+	z-index: 1000;
 }
 
 .modal-content {
@@ -202,9 +242,42 @@ h4 {
 	justify-content: center;
 	align-items: center;
 	border-radius: 10px;
-	width: 400px;
-	height: 200px;
+	width: auto;
+	height: auto;
 }
+
+.modal-header {
+		padding-top: 10px;
+		border-bottom: 1px solid #dddddddd;
+}
+
+.modal-body {
+	text-align: center;
+}
+
+.modal-body h4 {
+	color: green;
+}
+
+.modal-body p {
+	color: gray;
+	text-align: center;
+}
+
+.modal-body h6{
+	color: black;
+	text-align: center;
+	
+	
+}
+
+.report-body {
+	border: none;
+	text-align: center;
+
+}
+
+
 
 .mb-5 {
 	text-align: center !important;
@@ -340,7 +413,7 @@ h4 {
 									<div class="hotel-img">
 										<img src='<c:url value="/resources/upload${roomImg.file_name}" />'>
 									</div>
-								</div>			
+								</div>		
 								</c:forEach>
 							</div>
 
@@ -351,6 +424,7 @@ h4 {
 
 						<div class="col-md-12 hotel-single mt-4 mb-5 ftco-animate">
 							<div class="info-container">
+								<span>${ob.is_selling } </span>
 								<span>원룸/월세 </span>
 								<h2>${ob.subject }</h2>
 
@@ -363,19 +437,35 @@ h4 {
 
 								<div>
 
-									<button type="button" id="btn-call" class="btn btn-secondary" style="float: left; margin-right: 0.5em;">전화하기</button>
+									<button type="button" id="btn-call" class="btn btn-secondary" style="float: left; margin-right: 0.5em;">전화 걸기</button>
 
 									<!-- Modal -->
 
 									<div class="modal-background" id="modal-content">
 										<div class="modal-content" id="modal-content">
-											웹에서 전화걸기<br> ${ob.phone_number }<br>
+										<div class="modal-header">
+											<h5 class="modal-title">Contact</h5>
+										</div>
+										<div class="modal-body">
+											 <h6>중개사 : ${ob.seller_id }</h6>
+											 <h6>연락처 : ${ob.phone_number }</h6><br>
+											 
+											 <h4>050-1234-5678</h4>
+											 <p>
+											 중개사무소에 연락하여 방문일을 예약하세요.<br>
+												Findhome에서 보고 연락한다고 말씀하시면<br>
+												더욱 빠른 예약이 가능합니다.<br></p>
+											 
+											 
+										</div>
+											<div class="modal-footer">
 											<button type="button" id="btn-close" class="btn btn-secondary">닫기</button>
+											</div>
 										</div>
 									</div>
 
 
-									<button type="button" class="btn btn-secondary" style="float: left;">채팅하기</button>
+<!-- 									<button type="button" class="btn btn-secondary" style="float: left;">채팅하기</button> -->
 
 								</div>
 
@@ -537,7 +627,7 @@ h4 {
 								// 주소로 좌표를 검색합니다
 								geocoder
 										.addressSearch(
-												'서울특별시 영등포구 여의동로 330 한강사업본부 여의도안내센터',
+												'${ob.address}',
 												function(result, status) {
 
 													// 정상적으로 검색이 완료됐으면 
@@ -576,7 +666,7 @@ h4 {
 
 
 
-
+<div class="contact-container" id="map-info">
 					<form action='<c:url value="/mailpro"/>' method="post">
 					<input type="hidden" name="room_id" value="${ob.room_id}">
 					<input type="hidden" name="receiver" value="${ob.seller_id }">
@@ -626,7 +716,9 @@ h4 {
 										<div class="col-md-12">
 											<div class="form-group">
 												<input type="submit" value="문의 하기" id="contact-btn" class="btn btn-primary py-3">
+												
 											</div>
+
 										</div>
 									</div>
 								</div>
@@ -636,11 +728,36 @@ h4 {
 				</div>
 
 				<!-- 문의하기 끝 -->
+				<!-- 신고하기 -->
+			 <div>
+			<button type="button" id=btnReport>
+			<img alt="alarm" src="${pageContext.request.contextPath}/resources/images/bell.png" > 신고하기</button>
+			
+			 </div>
+			 
+			 					<div class="modal-background" id="modal-report">
+										<div class="modal-content" id="modal-report">
+											<button type="button" id="btn-report-close" class="btn btn-secondary"><img src="${pageContext.request.contextPath}/resources/images/cancel.png"> </button>
+										<div class="modal-header">
+											<h5 class="modal-title">Report</h5>
+										</div>
+										<div class="modal-body">
+											 중개사로부터 안내받은 내용을 알려주세요.<br>
+											 바로 반영하겠습니다.
+										</div>
+										<div class="report-body">
+											 <input type="submit" class="btn btn-secondary" id="btnSoldout" value="매물이 나갔음"><br>
+											 <input type="submit" class="btn btn-secondary" id="btnDifInfo" value="표시된 정보와 다름"> 
+										</div>	
+											<div class="modal-footer">
+											
+											</div>
+										</div>
+									</div>
 			</div>
 		</div>
 		<!-- .col-md-8 -->
-		</div>
-		</div>
+
 	</section>
 	<!-- .section -->
 
@@ -751,8 +868,21 @@ h4 {
 
 			$('#btn-close').click(function() {
 				$('#modal-content').hide();
-			})
+			});
 		});
+		
+		
+		// 신고하기 - [신고하기] 클릭 후 모달창
+		$(document).ready(function() {
+			$('#btnReport').click(function() {
+				$('#modal-report').show();
+			});
+			
+			$('#btn-report-close').click(function() {
+				$('#modal-report').hide();
+			});
+		});
+		
 
 		$(document).ready(function() {
 
