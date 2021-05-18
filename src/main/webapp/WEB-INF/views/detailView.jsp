@@ -70,7 +70,32 @@
 }
 
 
+#btnReport{
+	border: none;
+	background-color: rgba(0,0,0,0);
+	margin-top: 10px;
+	color: gray;
+}
 
+#btnReport img{
+	width: 15px;
+	height: 15px;
+	color: gray;
+	display: inline;
+}
+
+
+#btn-report-close {
+	border: none;
+	background: none;
+}
+
+#btn-report-close img {
+	width: 15px;
+	height: 15px;
+	margin-left: 240px;
+	margin-top: 20px;
+}
 
 #roomtable {
 	width: 100%;
@@ -80,6 +105,16 @@
 #roomtable th, td {
 	padding: 10px;
 	text-align: center;
+}
+
+#btnDifInfo {
+	margin-top: 5px;
+	width: 200px;
+
+}
+
+#btnSoldout {
+	width: 200px;
 }
 
 h4 {
@@ -125,6 +160,10 @@ h4 {
 	padding-top: 50px;
 	padding-bottom: 50px;
 	border-top: 1px solid #dddddddd;
+}
+
+.contact-container {
+	border-bottom: 1px solid #dddddddd;
 }
 
 .map-container #map { /* border:1px solid red;  */
@@ -190,6 +229,7 @@ h4 {
 	bottom: 0;
 	right: 0;
 	background: rgba(0, 0, 0, 0.8);
+	z-index: 1000;
 }
 
 .modal-content {
@@ -207,8 +247,12 @@ h4 {
 }
 
 .modal-header {
-		padding-top: 50px;
+		padding-top: 10px;
 		border-bottom: 1px solid #dddddddd;
+}
+
+.modal-body {
+	text-align: center;
 }
 
 .modal-body h4 {
@@ -226,6 +270,14 @@ h4 {
 	
 	
 }
+
+.report-body {
+	border: none;
+	text-align: center;
+
+}
+
+
 
 .mb-5 {
 	text-align: center !important;
@@ -614,7 +666,7 @@ h4 {
 
 
 
-
+<div class="contact-container" id="map-info">
 					<form action='<c:url value="/mailpro"/>' method="post">
 						<div class="room-contact-container">
 							<div class="col-md-12 hotel-single ftco-animate mb-5 mt-4">
@@ -663,9 +715,7 @@ h4 {
 												<input type="submit" value="문의 하기" id="contact-btn" class="btn btn-primary py-3">
 												
 											</div>
-												<div>
-												<button type="button" class="btn btn-outline-danger btn-sm">신고하기</button>
-												</div>
+
 										</div>
 									</div>
 								</div>
@@ -675,11 +725,36 @@ h4 {
 				</div>
 
 				<!-- 문의하기 끝 -->
+				<!-- 신고하기 -->
+			 <div>
+			<button type="button" id=btnReport>
+			<img alt="alarm" src="${pageContext.request.contextPath}/resources/images/bell.png" > 신고하기</button>
+			
+			 </div>
+			 
+			 					<div class="modal-background" id="modal-report">
+										<div class="modal-content" id="modal-report">
+											<button type="button" id="btn-report-close" class="btn btn-secondary"><img src="${pageContext.request.contextPath}/resources/images/cancel.png"> </button>
+										<div class="modal-header">
+											<h5 class="modal-title">Report</h5>
+										</div>
+										<div class="modal-body">
+											 중개사로부터 안내받은 내용을 알려주세요.<br>
+											 바로 반영하겠습니다.
+										</div>
+										<div class="report-body">
+											 <input type="submit" class="btn btn-secondary" id="btnSoldout" value="매물이 나갔음"><br>
+											 <input type="submit" class="btn btn-secondary" id="btnDifInfo" value="표시된 정보와 다름"> 
+										</div>	
+											<div class="modal-footer">
+											
+											</div>
+										</div>
+									</div>
 			</div>
 		</div>
 		<!-- .col-md-8 -->
-		</div>
-		</div>
+
 	</section>
 	<!-- .section -->
 
@@ -790,8 +865,21 @@ h4 {
 
 			$('#btn-close').click(function() {
 				$('#modal-content').hide();
-			})
+			});
 		});
+		
+		
+		// 신고하기 - [신고하기] 클릭 후 모달창
+		$(document).ready(function() {
+			$('#btnReport').click(function() {
+				$('#modal-report').show();
+			});
+			
+			$('#btn-report-close').click(function() {
+				$('#modal-report').hide();
+			});
+		});
+		
 
 		$(document).ready(function() {
 
