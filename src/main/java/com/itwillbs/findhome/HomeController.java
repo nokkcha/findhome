@@ -70,6 +70,10 @@ public class HomeController {
 		return "index";
 	}
 	
+	@RequestMapping(value = "/admin",method = RequestMethod.GET )
+	public String admin() {
+		return "admin";
+	}
 		
 	@RequestMapping(value = "/findRoom",method = RequestMethod.GET )
 	public String findRoom() {
