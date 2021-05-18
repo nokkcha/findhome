@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Findhome</title>
-  <link rel="stylesheet" href="admin_style.css">
+  <link rel="stylesheet" href="resources/css/admin_style.css">
 </head>
 <body>
   <section class="left_section">
