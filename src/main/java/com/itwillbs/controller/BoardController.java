@@ -4,6 +4,7 @@ import java.io.File;
 import java.net.URLEncoder;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
@@ -87,19 +88,26 @@ public class BoardController {
 		}
 		pb.setPageSize(9);
 		pb.setCategory("OneRoom");
-		
+
 		List<OneRoomBean> roomList = boardService.getBoardList(pb);
-		
 
 		pb.setCount(boardService.getBoardCount(pb));
 
 		model.addAttribute("roomList", roomList);
 		model.addAttribute("pb", pb);
 
+		// 방 리스트와 썸네일 정보 넘기기
+		List<LinkedHashMap<String, Object>> obList = boardService.selectOneRoomThumbImg();
+		for (Map<String, Object> map : obList) {
+			System.out.println(map.get("room_id") + " " + map.get("subject") + " " + map.get("file_name"));
+		}
+
+		model.addAttribute("obList", obList);
+
 		String id = (String) session.getAttribute("id");
-	
-		if(id != null) {
-			List<MemberBean> wishList=memberService.getMemberWishList(id);
+
+		if (id != null) {
+			List<MemberBean> wishList = memberService.getMemberWishList(id);
 			model.addAttribute("wishList", wishList);
 		}
 		return "findRooms";
@@ -115,112 +123,114 @@ public class BoardController {
 		}
 		pb.setPageSize(9);
 		pb.setCategory("Officetel");
-		
+
 		List<OneRoomBean> roomList = boardService.getBoardList(pb);
-		
-		
+
 		pb.setCount(boardService.getBoardCount(pb));
-		
+
 		model.addAttribute("roomList", roomList);
 		model.addAttribute("pb", pb);
-		
+
+		// 방 리스트와 썸네일 정보 넘기기
+		List<LinkedHashMap<String, Object>> obList = boardService.selectOneRoomThumbImg();
+		for (Map<String, Object> map : obList) {
+			System.out.println(map.get("room_id") + " " + map.get("subject") + " " + map.get("file_name"));
+		}
+
+		model.addAttribute("obList", obList);
+
 		String id = (String) session.getAttribute("id");
-		
-		if(id != null) {
-			List<MemberBean> wishList=memberService.getMemberWishList(id);	
+
+		if (id != null) {
+			List<MemberBean> wishList = memberService.getMemberWishList(id);
 			model.addAttribute("wishList", wishList);
 		}
 		return "findOfficetel";
 	}
 
-	
-	
 	@RequestMapping(value = "/findRooms-search", method = RequestMethod.GET)
 	public String search(HttpServletRequest request, Model model, HttpSession session, OneRoomBean ob) {
 		String id = (String) session.getAttribute("id");
 
-		ob.setSearch("%"+ob.getSearch()+"%");
+		ob.setSearch("%" + ob.getSearch() + "%");
 		System.out.println("검색어 : " + ob.getSearch());
-		
-		if(ob.getRoom_type() == null) {
+
+		if (ob.getRoom_type() == null) {
 			ob.setRoom_type("^");
-		} else if(ob.getRoom_type().contains(",")) {
+		} else if (ob.getRoom_type().contains(",")) {
 			ob.setRoom_type(ob.getRoom_type().replaceAll(",", "|"));
 		}
-		System.out.println("방구조 : " + ob.getRoom_type() );
-		
-		if(ob.getLiving_floor() == null) {
+		System.out.println("방구조 : " + ob.getRoom_type());
+
+		if (ob.getLiving_floor() == null) {
 			ob.setLiving_floor("^");
-		}else if(ob.getLiving_floor().contains(",")) {
+		} else if (ob.getLiving_floor().contains(",")) {
 			ob.setLiving_floor(ob.getLiving_floor().replaceAll(",", "|"));
 		}
-		
+
 		System.out.println("층수 : " + ob.getLiving_floor());
-		
-		System.out.println("월세 최소 : " +ob.getMonthly_rent_min());
-		System.out.println("월세 최대 : " +ob.getMonthly_rent_max());
-		
+
+		System.out.println("월세 최소 : " + ob.getMonthly_rent_min());
+		System.out.println("월세 최대 : " + ob.getMonthly_rent_max());
+
 		System.out.println("보증금 최소 : " + ob.getDeposit_min());
 		System.out.println("보증금 최대 : " + ob.getDeposit_max());
 		System.out.println("카테고리 : " + ob.getCategory());
 
-		
 		List<OneRoomBean> roomList = boardService.getSearchList(ob);
-		
+
 		model.addAttribute("roomList", roomList);
-		
-		if(id != null) {
-			List<MemberBean> wishList=memberService.getMemberWishList(id);	
+
+		if (id != null) {
+			List<MemberBean> wishList = memberService.getMemberWishList(id);
 			model.addAttribute("wishList", wishList);
 		}
 		return "findRooms-search";
 	}
-	
-	
+
 	@RequestMapping(value = "/findOfficetel-search", method = RequestMethod.GET)
 	public String findOfficetelSearch(HttpServletRequest request, Model model, HttpSession session, OneRoomBean ob) {
 		String id = (String) session.getAttribute("id");
-		
-		ob.setSearch("%"+ob.getSearch()+"%");
+
+		ob.setSearch("%" + ob.getSearch() + "%");
 		System.out.println("검색어 : " + ob.getSearch());
-		
-		if(ob.getRoom_type() == null) {
+
+		if (ob.getRoom_type() == null) {
 			ob.setRoom_type("^");
-		} else if(ob.getRoom_type().contains(",")) {
+		} else if (ob.getRoom_type().contains(",")) {
 			ob.setRoom_type(ob.getRoom_type().replaceAll(",", "|"));
 		}
-		System.out.println("방구조 : " + ob.getRoom_type() );
-		
-		if(ob.getLiving_floor() == null) {
+		System.out.println("방구조 : " + ob.getRoom_type());
+
+		if (ob.getLiving_floor() == null) {
 			ob.setLiving_floor("^");
-		}else if(ob.getLiving_floor().contains(",")) {
+		} else if (ob.getLiving_floor().contains(",")) {
 			ob.setLiving_floor(ob.getLiving_floor().replaceAll(",", "|"));
 		}
 		System.out.println("층수 : " + ob.getLiving_floor());
-		
-		System.out.println("월세 최소 : " +ob.getMonthly_rent_min());
-		System.out.println("월세 최대 : " +ob.getMonthly_rent_max());
-		
+
+		System.out.println("월세 최소 : " + ob.getMonthly_rent_min());
+		System.out.println("월세 최대 : " + ob.getMonthly_rent_max());
+
 		System.out.println("보증금 최소 : " + ob.getDeposit_min());
 		System.out.println("보증금 최대 : " + ob.getDeposit_max());
 		System.out.println("카테고리 : " + ob.getCategory());
-		
+
 		List<OneRoomBean> roomList = boardService.getSearchList(ob);
-		
+
 		model.addAttribute("roomList", roomList);
-		
-		if(id != null) {
-			List<MemberBean> wishList=memberService.getMemberWishList(id);	
+
+		if (id != null) {
+			List<MemberBean> wishList = memberService.getMemberWishList(id);
 			model.addAttribute("wishList", wishList);
 		}
 		return "findOfficetel-search";
 	}
-	
-	
+
 	@RequestMapping(value = "/findRooms-zzim", method = RequestMethod.GET)
 	public String zzimList(HttpServletRequest request, Model model, HttpSession session) {
 		String id = (String) session.getAttribute("id");
-		
+
 		PageBean pb = new PageBean();
 		if (request.getParameter("pageNum") != null) {
 			pb.setPageNum(request.getParameter("pageNum"));
@@ -229,47 +239,43 @@ public class BoardController {
 		}
 		pb.setPageSize(9);
 		pb.setId(id);
-		
+
 		pb.setCount(boardService.getWishCount(id));
 		List<OneRoomBean> roomList = boardService.getWishList(pb);
-		
-		
+
 		model.addAttribute("roomList", roomList);
 		model.addAttribute("pb", pb);
-		
-		if(id != null) {
-			List<MemberBean> wishList=memberService.getMemberWishList(id);	
+
+		if (id != null) {
+			List<MemberBean> wishList = memberService.getMemberWishList(id);
 			model.addAttribute("wishList", wishList);
 		}
 		return "zzimList";
 	}
-	
+
 	@RequestMapping(value = "/member_seller", method = RequestMethod.GET)
 	public String member_seller(HttpServletRequest request, Model model, HttpSession session) {
 		String seller_id = (String) session.getAttribute("seller_id");
 		if (seller_id == null) {
 			return "/login_choice";
 		}
-		
+
 		OneRoomBean ob = new OneRoomBean();
 		ob.setSeller_id(seller_id);
 		ob.setCategory("OneRoom");
 		int OneroomCount = boardService.getSalesCategoryCount(ob);
 		model.addAttribute("OneroomCount", OneroomCount);
-		
+
 		ob.setCategory("Officetel");
 		int OfficetelCount = boardService.getSalesCategoryCount(ob);
 		model.addAttribute("OfficetelCount", OfficetelCount);
-		
-		
+
 		List<OneRoomBean> roomList = boardService.sellerLatestBoard(seller_id);
 		model.addAttribute("roomList", roomList);
-		
 
 		return "member_seller";
 	}
-	
-	
+
 	@RequestMapping(value = "/SalesList", method = RequestMethod.GET)
 	public String SalesList(HttpServletRequest request, Model model, HttpSession session) {
 		PageBean pb = new PageBean();
@@ -279,27 +285,24 @@ public class BoardController {
 			pb.setPageNum("1");
 		}
 		pb.setPageSize(15);
-		
+
 		String seller_id = (String) session.getAttribute("seller_id");
 		pb.setSeller_id(seller_id);
-		
+
 		if (seller_id == null) {
 			return "/login_choice";
 		}
-		
-		
+
 		List<OneRoomBean> roomList = boardService.getSalesList(pb);
-		
+
 		pb.setCount(boardService.getSalesCount(pb));
 
 		model.addAttribute("roomList", roomList);
 		model.addAttribute("pb", pb);
 
-
 		return "SalesList";
 	}
-	
-	
+
 //	http://localhost:8080/myweb2/board/fwrite
 	@RequestMapping(value = "/board/fwrite", method = RequestMethod.GET)
 	public String fwrite() {
@@ -404,7 +407,7 @@ public class BoardController {
 	@RequestMapping(value = "/detailView", method = RequestMethod.GET)
 	public String detailView(HttpServletRequest request, Model model) {
 		try {
-			if ( (String) request.getParameter("room_id") == null) {
+			if ((String) request.getParameter("room_id") == null) {
 				model.addAttribute("msg", "잘못된 요청입니다.");
 				// /WEB-INF/views/member/msg.jsp
 				return "msg";
@@ -428,27 +431,25 @@ public class BoardController {
 	public String mailpro(HttpServletRequest request, Model model) {
 
 		String sender = "hyunjoon42311@gamil.com";
-		String receiver = request.getParameter("receiver"); 
+		String receiver = request.getParameter("receiver");
 		String phone = request.getParameter("phone");
 		String content = request.getParameter("content");
 		String name = request.getParameter("name");
 		String date1 = request.getParameter("date1");
 		String room_id = request.getParameter("room_id");
-				
+
 		String mailText = "";
 		mailText += "상담 예약 날짜 : " + date1 + "<br>";
 		mailText += "문의자 성함 : " + name + "<br>";
 		mailText += "문의자 연락처 : " + phone + "<br>";
 		mailText += "상담 내용 : " + content + "<br>";
-		
+
 		qnaBean qb = new qnaBean();
 		qb.setContent(request.getParameter("content"));
 		qb.setPhone_number(phone);
 		qb.setRoom_id(Integer.parseInt(room_id));
-		
-		
+
 		boardService.insertqna(qb);
-		
 
 		try {
 			// 서버정보를 => Properties 객체 저장
@@ -488,25 +489,25 @@ public class BoardController {
 
 		return "msg";
 	}
-	
+
 	@ResponseBody // view가 아닌 data리턴
 	@RequestMapping(value = "/addressSearch", method = RequestMethod.POST)
 	public ResponseEntity<String> zzim(MemberBean mb, HttpSession session) {
-		ResponseEntity<String> entity=null;
-		String result="";
-	    
+		ResponseEntity<String> entity = null;
+		String result = "";
+
 		try {
-			String id=(String) session.getAttribute("id");
+			String id = (String) session.getAttribute("id");
 			mb.setId(id);
-						 
+
 			// 한글깨짐 방지를 위해 인코딩하기
 			result = "검색 결과가 없습니다. 정확한 검색어를 입력해주세요.";
-			result = URLEncoder.encode(result , "UTF-8");			
-			
-			entity=new ResponseEntity<String>(result,HttpStatus.OK);
+			result = URLEncoder.encode(result, "UTF-8");
+
+			entity = new ResponseEntity<String>(result, HttpStatus.OK);
 		} catch (Exception e) {
 			e.printStackTrace();
-			entity=new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
+			entity = new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
 		}
 		return entity;
 	}
