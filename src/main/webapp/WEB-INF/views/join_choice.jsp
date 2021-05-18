@@ -69,7 +69,7 @@
 				<div class="box_select">
 					<!-- <input type="radio" name="join_type" value="세입자"> -->
 					<div class="circle">
-						<span class="txt2">중개인 가입<br>호스트 가입<br></span>
+						<span class="txt2">중개인</span>
 					</div>
 				</div>
 			</a>

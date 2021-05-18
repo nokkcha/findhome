@@ -202,6 +202,7 @@
 		    					<div class="text-mi"> 
 		    						<div class="d-flex">
 		    							<div class="one">
+		    							
 				    						<h3><a href='<c:url value="/detailView?room_id=${roomList.room_id}" />'> ${roomList.subject} </a></h3>
 			    						</div>
 			    						<div class="two">
@@ -210,13 +211,25 @@
 		    						</div>
 		    						<p>
 		    						${roomList.address }</p>
+		    						
 		    							</div>
+		    						  	
+		    						  	
+		    						  	
+		    						  						
 		    						<hr>
 		    						<p class="bottom-area d-flex">
-		    						  						
+		    						  	
+		    						  	
 		    							<button id="zzim-id-${roomList.room_id}" class="text-zzim nozzim">
-		    							<span class="zzim111" id="zzim-ok-${roomList.room_id}"></span>	    							
-		    	
+		    							
+		    							<c:forEach var="wishList" items="${wishList }">
+		    							
+		    							<c:if test="${roomList.room_id == wishList.wish}">		    							
+		    							<span class="zzim-showtext" id="zzim-ok-${roomList.room_id}"></span>	
+		    						</c:if>
+
+		    						</c:forEach>
 		    							
 		    							</button>
 		    							
@@ -238,7 +251,6 @@
 		    					</div>
 							</div>
 
-
 				   		</c:forEach>
 				   		
 				   	</c:if>
@@ -251,7 +263,7 @@
 				   		아주 간단한 회원가입을 통해 찜기능을 이용하세요! <br>
 				   		<br>
 				   		지금 <a href="<c:url value="join_choice"/>"> 바로 가입하기 > </a><br>
-				   		이미 회원이라면? <a href="<c:url value="login"/>"> 바로  로그인하기> </a> 
+				   		이미 회원이라면? <a href="<c:url value="login_choice"/>"> 바로  로그인하기> </a> 
 				   		
 				   	</div>
 				   	

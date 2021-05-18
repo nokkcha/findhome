@@ -80,10 +80,18 @@
 	<div class="seller-side"> 
 	
 		<nav>
-			<a href="./member_seller"> 대시보드</a>
-			<a href="./SalesList" style="color: black;"> 매물관리 </a>
-			<a href="#"> 문의관리 </a>
-			<a href="#"> 고객센터 </a>
+			<a href="./member_seller" class="nav-side"> 대시보드</a>
+
+		<div class="sell-dropdown">
+		  <a class="dropbtn nav-side" style="color: black;">매물관리</a>
+		  <div class="dropdown-content">
+		    <a href="./salesList">판매 중인 매물</a>
+		    <a href="./soldList">판매 완료 매물</a>
+		  </div>
+		</div>
+			
+			<a href="#"  class="nav-side"> 문의관리 </a>
+			<a href="#"  class="nav-side"> 고객센터 </a>
 		
 		</nav>
 	
@@ -92,11 +100,20 @@
 
     <section class="seller-wrap">
     
+    		 <div class="chart-div">
+		    <canvas id="pieChartCanvas" width="300px" height="300px"></canvas>
+		    <span class="chart-text"> 
+		   	 <span class="chart-text-point"> 매물 현황  </span><br>
+			    판매 중 : ${salesCount} 개 <br>
+			    판매 완료 : ${soldCount } 개 <br>
+		    </span>
+		    
+		  </div>  
 
 		   
 
 		<div class="seller-sell">
-		<span class="sell-text"> 전체 매물</span> <br>
+		<span class="sell-text"> 판매 완료 매물</span> <br>
 		<table class="type09">
 			<thead>
 				<tr>
@@ -105,7 +122,6 @@
 					<th class="sell-ta-sub"> Subject </th>
 					<th class="sell-ta-de"> Deposit  </th>
 					<th class="sell-ta-re"> Monthly Rent  </th>
-					<th class="sell-ta-btn"> Button  </th>
 				 </tr>
 			</thead>
 			  
@@ -118,7 +134,8 @@
 					<td> ${roomList.subject}</td>
 					<td> ${roomList.deposit} </td>
 					<td> ${roomList.monthly_rent} </td>
-					<td> <button class="sell-btn"> 수정 </button> <button class="sell-btn"> 삭제 </button></td>
+					<td> 
+					</td>
 				</tr>
 				
 				</c:forEach>
@@ -135,19 +152,19 @@
 		            <div class="block-27-page">
 		              <ul>
 		                <c:if test="${pb.startPage > pb.pageBlock }">
-		                <li> <a href='<c:url value="SalesList?pageNum=${pb.startPage-pb.pageBlock}" />'>&lt;</a></li>
+		                <li> <a href='<c:url value="soldList?pageNum=${pb.startPage-pb.pageBlock}" />'>&lt;</a></li>
 					</c:if>
 					<c:forEach var="i" begin="${pb.startPage }" end="${pb.endPage}" step="1">
-		                <li class="active"><span> <a href='<c:url value="SalesList?pageNum=${i}" />'>${i}</a> </span></li>
+		                <li class="active"><span> <a href='<c:url value="soldList?pageNum=${i}" />'>${i}</a> </span></li>
 					</c:forEach>
 					<c:if test="${pb.endPage < pb.pageCount }">
-		                <li><a href='<c:url value="SalesList?pageNum=${pb.startPage+pb.pageBlock}" />'>&gt;</a></li>
+		                <li><a href='<c:url value="soldList?pageNum=${pb.startPage+pb.pageBlock}" />'>&gt;</a></li>
 					</c:if>
 		              </ul>
 		            </div>
 		          </div>
 		        </div>
-
+		        
 	</section>
 	
 
@@ -179,6 +196,35 @@
   
   
 <script src="../script/jquery-3.6.0.js"></script>
+<script type="text/javascript">
+      
+      window.onload = function () {
+    	    pieChartDraw();
+    	}
+
+    	let pieChartData = {
+    			
+    	    labels: ['판매중', '판매완료'],
+    	    datasets: [{
+    	        backgroundColor: ['#F18181', '#8ADCB0'],
+    	        data: [${salesCount}, ${soldCount}]
+    	    }] 
+    	};
+
+    	let pieChartDraw = function () {
+    	    let ctx = document.getElementById('pieChartCanvas').getContext('2d');
+    	    
+    	    window.pieChart = new Chart(ctx, {
+    	        type: 'pie',
+    	        data: pieChartData,
+    	        options: {
+    	            responsive: false
+    	        }
+    	    });
+    	};
+      
+      
+      </script>
 
 
   

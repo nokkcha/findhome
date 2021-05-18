@@ -191,6 +191,4 @@ input:checked + label span {
 .nologin-zzim {
 	margin-left: 35%;
 	margin-top: 10%;
-	border: 1px solid;
-	background: red;
 }
