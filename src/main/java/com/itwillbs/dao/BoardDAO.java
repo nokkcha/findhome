@@ -40,5 +40,6 @@ public interface BoardDAO {
 		public List<OneRoomBean> getSalesList(PageBean pb);
 		public int getSalesCount(PageBean pb);
 		public int getSalesCategoryCount(OneRoomBean ob);
+		public void updateSalesState(OneRoomBean ob);
 
 }

@@ -70,6 +70,32 @@ public class BoardServiceImpl implements BoardService{
 	
 	@Override
 	public List<OneRoomBean> getSearchList(OneRoomBean ob) {
+		
+		ob.setSearch("%" + ob.getSearch() + "%");
+		System.out.println("검색어 : " + ob.getSearch());
+
+		if (ob.getRoom_type() == null) {
+			ob.setRoom_type("^");
+		} else if (ob.getRoom_type().contains(",")) {
+			ob.setRoom_type(ob.getRoom_type().replaceAll(",", "|"));
+		}
+		System.out.println("방구조 : " + ob.getRoom_type());
+
+		if (ob.getLiving_floor() == null) {
+			ob.setLiving_floor("^");
+		} else if (ob.getLiving_floor().contains(",")) {
+			ob.setLiving_floor(ob.getLiving_floor().replaceAll(",", "|"));
+		}
+
+		System.out.println("층수 : " + ob.getLiving_floor());
+
+		System.out.println("월세 최소 : " + ob.getMonthly_rent_min());
+		System.out.println("월세 최대 : " + ob.getMonthly_rent_max());
+
+		System.out.println("보증금 최소 : " + ob.getDeposit_min());
+		System.out.println("보증금 최대 : " + ob.getDeposit_max());
+		System.out.println("카테고리 : " + ob.getCategory());
+		
 		return boardDAO.getSearchList(ob);
 	}	
 	
@@ -196,6 +222,12 @@ public class BoardServiceImpl implements BoardService{
 	@Override
 	public int getSalesCategoryCount(OneRoomBean ob) {
 		return boardDAO.getSalesCategoryCount(ob);
+	}
+
+	@Override
+	public void updateSalesState(OneRoomBean ob) {
+		boardDAO.updateSalesState(ob);
+		
 	}
 
 

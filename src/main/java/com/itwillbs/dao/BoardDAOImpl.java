@@ -136,5 +136,10 @@ public class BoardDAOImpl implements BoardDAO{
 		return sqlSession.selectOne(namespace+".getSalesCategoryCount", ob);
 	}
 
+	@Override
+	public void updateSalesState(OneRoomBean ob) {
+		sqlSession.update(namespace+".updateSalesState", ob);
+	}
+
 
 }

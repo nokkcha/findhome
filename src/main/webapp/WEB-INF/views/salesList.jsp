@@ -39,53 +39,51 @@
   <body>
 
   
-<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light01" id="ftco-navbar">
-	<div class="container">
-		<a class="navbar-brand" href="./">FindHome</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="oi oi-menu"></span> Menu
-		</button>
-
-
-		<nav class="navbar navbar-expand-lg navbar-dark">
-			<div class="container-fluid">
-
-				<!-- navbar-collapse.// -->
+	<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light01" id="ftco-navbar">
+		<div class="container">
+			<a class="navbar-brand" href="./">FindHome</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="oi oi-menu"></span> Menu
+			</button>
+	
+	
+			<nav class="navbar navbar-expand-lg navbar-dark">
+				<div class="container-fluid">
+	
+					<!-- navbar-collapse.// -->
+				</div>
+				<!-- container-fluid.// -->
+			</nav>
+			
+					<div class="collapse navbar-collapse" id="ftco-nav">
+				<ul class="navbar-nav ml-auto">
+	
+							<li class="nav-item dropdown"><a class="nav-link" href="#" data-bs-toggle="dropdown"> 관리페이지 </a>
+					<ul class="dropdown-menu">
+									<li><a class="dropdown-item" href="./member_seller"> 대시보드 </a></li>
+									<li><a class="dropdown-item" href="./salesList"> 매물관리 </a></li>
+									<li><a class="dropdown-item" href="./"> 문의관리 </a></li>
+									<li><a class="dropdown-item" href="./"> 고객센터 </a></li>
+								</ul>
+					</li>
+					<li class="nav-item"><a href='<c:url value="/logout" />' class="nav-link">로그아웃</a></li>
+	
+	
+				</ul>
 			</div>
-			<!-- container-fluid.// -->
-		</nav>
-		
-				<div class="collapse navbar-collapse" id="ftco-nav">
-			<ul class="navbar-nav ml-auto">
-
-						<li class="nav-item dropdown"><a class="nav-link" href="#" data-bs-toggle="dropdown"> 관리페이지 </a>
-				<ul class="dropdown-menu">
-								<li><a class="dropdown-item" href="./member_seller"> 대시보드 </a></li>
-								<li><a class="dropdown-item" href="./salesList"> 매물관리 </a></li>
-								<li><a class="dropdown-item" href="./"> 문의관리 </a></li>
-								<li><a class="dropdown-item" href="./"> 고객센터 </a></li>
-							</ul>
-				</li>
-				<li class="nav-item"><a href='<c:url value="/logout" />' class="nav-link">로그아웃</a></li>
-
-
-			</ul>
+			
 		</div>
-		
-		
-		
-</div>
-</nav>
+	</nav>
 
 
     
 	<div class="seller-side"> 
 	
 		<nav>
-			<a href="./member_seller" class="nav-side"  style="color: black;"> 대시보드</a>
+			<a href="./member_seller" class="nav-side"> 대시보드</a>
 
 		<div class="sell-dropdown">
-		  <a class="dropbtn nav-side">매물관리</a>
+		  <a class="dropbtn nav-side" style="color: black;">매물관리</a>
 		  <div class="dropdown-content">
 		    <a href="./salesList">판매 중인 매물</a>
 		    <a href="./soldList">판매 완료 매물</a>
@@ -102,9 +100,7 @@
 
     <section class="seller-wrap">
     
-    
-
-		 <div class="chart-div">
+    		 <div class="chart-div">
 		    <canvas id="pieChartCanvas" width="300px" height="300px"></canvas>
 		    <span class="chart-text"> 
 		   	 <span class="chart-text-point"> 판매 중인 매물 현황  </span><br>
@@ -113,10 +109,11 @@
 		    </span>
 		    
 		  </div>  
+
 		   
 
 		<div class="seller-sell">
-		<span class="sell-text"> 최신 매물</span> <br>
+		<span class="sell-text"> 판매 중인 매물</span> <br>
 		<table class="type09">
 			<thead>
 				<tr>
@@ -125,80 +122,54 @@
 					<th class="sell-ta-sub"> Subject </th>
 					<th class="sell-ta-de"> Deposit  </th>
 					<th class="sell-ta-re"> Monthly Rent  </th>
-					<th class="sell-ta-se"> Is Selling  </th>
+					<th class="sell-ta-btn"> Button  </th>
 				 </tr>
 			</thead>
 			  
 			<tbody>
 	       		<c:forEach var="roomList" items="${roomList }">
 					
-				<tr onclick="location.href='<c:url value="detailView?room_id=${roomList.room_id}"/>'"> 
-					<td> ${roomList.room_id} </td>
+					
+				<tr> 
+					<td > ${roomList.room_id} </td>
 					<td> ${roomList.category} </td>
-					<td> ${roomList.subject}</td>
+					<td  onclick="location.href='<c:url value="detailView?room_id=${roomList.room_id}"/>'"> ${roomList.subject}</td>
 					<td> ${roomList.deposit} </td>
 					<td> ${roomList.monthly_rent} </td>
-					<td> ${roomList.is_selling} </td>
+					<td>
+					<button class="sell-btn"  onclick="location.href='<c:url value="updateSalesState?room_id=${roomList.room_id}"/>'"> 판매 완료 </button>
+					<button class="sell-btn"> 수정 </button> 
+					<button class="sell-btn"> 삭제 </button> 
+					</td>
 				</tr>
 				
 				</c:forEach>
-				
+
 			  </tbody>
 			  
 		</table>
-
+		
 	
 		</div>
-    
-	<div class="seller-mail">
-    <span class="sell-text"> 최신 문의</span> <br>
-    
-	<table class="type09">
-		<thead>
-			<tr>
-			   <th class="sell-ta2-no">No</th>
-			   <th class="sell-ta2-id">ID</th>
-			   <th class="sell-ta2-sub">Subject</th>
-			 </tr>
-		</thead>
-		  
-		<tbody>
-			<tr>
-			  <td> 1</td>
-			  <td> test@naver.com </td>
-			  <td> 문의합니다. </td>
-			</tr>
-			
-			<tr>
-			  <td> 2</td>
-			  <td> test@naver.com </td>
-			  <td> 문의합니다. </td>
-			</tr>
-			
-			<tr>
-			  <td> 3</td>
-			  <td> test@naver.com </td>
-			  <td> 문의합니다. </td>
-			</tr>
-			
-			<tr>
-			  <td> 4</td>
-			  <td> test@naver.com </td>
-			  <td> 문의합니다. </td>
-			</tr>
-			
-			<tr>
-			  <td> 5</td>
-			  <td> test@naver.com </td>
-			  <td> 문의합니다. </td>
-			</tr>
 
-		  </tbody>
-		  
-		</table>
-
-	</div>
-
+          	<div class="row mt-5">
+		          <div class="col text-center">
+		            <div class="block-27-page">
+		              <ul>
+		                <c:if test="${pb.startPage > pb.pageBlock }">
+		                <li> <a href='<c:url value="salesList?pageNum=${pb.startPage-pb.pageBlock}" />'>&lt;</a></li>
+					</c:if>
+					<c:forEach var="i" begin="${pb.startPage }" end="${pb.endPage}" step="1">
+		                <li class="active"><span> <a href='<c:url value="salesList?pageNum=${i}" />'>${i}</a> </span></li>
+					</c:forEach>
+					<c:if test="${pb.endPage < pb.pageCount }">
+		                <li><a href='<c:url value="salesList?pageNum=${pb.startPage+pb.pageBlock}" />'>&gt;</a></li>
+					</c:if>
+		              </ul>
+		            </div>
+		          </div>
+		        </div>
+		        
 	</section>
 	
 
@@ -259,6 +230,7 @@
       
       
       </script>
+
 
   
   
