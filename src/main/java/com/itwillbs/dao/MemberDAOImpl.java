@@ -99,9 +99,16 @@ public class MemberDAOImpl implements MemberDAO{
 		
 	}
 
-	
+	@Override
+	public List<MemberBean> getMemberNList() {
+		return sqlSession.selectList(namespace+".getMemberNList");
 
+	}
 
-
+	@Override
+	public void yUpdate(MemberBean mb) {
+		sqlSession.update(namespace+".yUpdate", mb);
+		
+	}
 
 }
