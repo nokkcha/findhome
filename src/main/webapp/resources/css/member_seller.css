@@ -14,7 +14,7 @@ font-family: 'Noto Sans KR', sans-serif;
 	font-family: 'Noto Serif KR', serif;
 	border: 1px solid;
 	float: left;
- 	height: 130vh;
+ 	height: 150vh;
  	width: 300px;
  	background: #f85959;
 }
@@ -66,11 +66,19 @@ a:hover {
 	margin-right: 30px;
 }
 
-.seller-sell, .seller-mail{
+.seller-sell {
 	display: flex;
 	justify-content: center;
 	margin-right: 20px;
 	margin-top: 100px;
+	text-align: center;
+ }
+
+.seller-mail {
+	display: flex;
+	justify-content: center;
+	margin-right: 20px;
+	margin-top: 70px;
 	text-align: center;
  }
 
@@ -109,7 +117,7 @@ a:hover {
 }
 
 
-.sell-ta-ca, .sell-ta-de, .sell-ta-re {
+.sell-ta-ca, .sell-ta-de, .sell-ta-re, .sell-ta2-id  {
 	width: 100px;
 }
 
@@ -122,11 +130,11 @@ a:hover {
 }
 
 .sell-ta2-sub {
-	width: 500px;	
+	width: 550px;	
 }
 
-.sell-ta2-id {
-	width: 200px;	
+.sell-ta2-ph  {
+	width: 150px;	
 }
 
 

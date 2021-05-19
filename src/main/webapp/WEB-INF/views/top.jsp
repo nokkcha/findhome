@@ -51,7 +51,7 @@
 			<ul class="navbar-nav ml-auto">
 
 			<c:if test="${id ==null}">
-				<li class="nav-item"><a href="./login_choice" class="nav-link">로그인</a></li>
+				<li class="nav-item"><a href="./login" class="nav-link">로그인</a></li>
 				<li class="nav-item"><a href='<c:url value="/join_choice" />' class="nav-link">회원가입</a></li>
 			</c:if>
 

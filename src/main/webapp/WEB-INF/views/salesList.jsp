@@ -62,7 +62,7 @@
 					<ul class="dropdown-menu">
 									<li><a class="dropdown-item" href="./member_seller"> 대시보드 </a></li>
 									<li><a class="dropdown-item" href="./salesList"> 매물관리 </a></li>
-									<li><a class="dropdown-item" href="./"> 문의관리 </a></li>
+									<li><a class="dropdown-item" href="./qnaList"> 문의관리 </a></li>
 									<li><a class="dropdown-item" href="./"> 고객센터 </a></li>
 								</ul>
 					</li>
@@ -90,7 +90,7 @@
 		  </div>
 		</div>
 			
-			<a href="#"  class="nav-side"> 문의관리 </a>
+			<a href="./qnaList"  class="nav-side"> 문의관리 </a>
 			<a href="#"  class="nav-side"> 고객센터 </a>
 		
 		</nav>
@@ -137,9 +137,9 @@
 					<td> ${roomList.deposit} </td>
 					<td> ${roomList.monthly_rent} </td>
 					<td>
-					<button class="sell-btn"  onclick="location.href='<c:url value="updateSalesState?room_id=${roomList.room_id}"/>'"> 판매 완료 </button>
-					<button class="sell-btn"> 수정 </button> 
-					<button class="sell-btn"> 삭제 </button> 
+					<button class="sell-btn" onclick="updateSalesState(${roomList.room_id})"> 판매 완료 </button>
+					<button class="sell-btn" onclick="location.href='<c:url value="updateRoom?room_id=${roomList.room_id}"/>'"> 수정 </button> 
+					<button class="sell-btn" onclick="deleteBoard(${roomList.room_id})" > 삭제 </button> 
 					</td>
 				</tr>
 				
@@ -228,6 +228,27 @@
     	    });
     	};
       
+    	
+    	// 판매 완료 버튼 클릭 시
+    	function updateSalesState(room_id) {
+    		if ( confirm("판매 완료 처리하시겠습니까?") ) { 
+    			location.href="updateSalesState?room_id="+room_id;
+    		} else {
+    		    alert("취소되었습니다.");
+    		} 
+    		
+		}
+    	
+    	// 삭제 버튼 클릭 시
+    	function deleteBoard(room_id) {
+    		if ( confirm("삭제하시겠습니까?") ) { 
+    			location.href="deleteBoard?room_id="+room_id;
+    		} else {
+    		    alert("취소되었습니다.");
+    		} 
+    		
+		}
+    	
       
       </script>
 

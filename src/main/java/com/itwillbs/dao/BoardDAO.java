@@ -41,5 +41,11 @@ public interface BoardDAO {
 		public int getSalesCount(PageBean pb);
 		public int getSalesCategoryCount(OneRoomBean ob);
 		public void updateSalesState(OneRoomBean ob);
+		public List<qnaBean> qnaLatestBoard(String seller_id);
+		public List<qnaBean> getQnaBoard(PageBean pb);
+		public int getQnaBoardCount(PageBean pb);
+		public void deleteBoard(OneRoomBean ob);
+		public OneRoomBean boardCheck(OneRoomBean ob);
+		public void updateRoom(OneRoomBean ob);
 
 }
