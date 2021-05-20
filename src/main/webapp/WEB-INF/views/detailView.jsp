@@ -412,7 +412,7 @@ h4 {
 								<c:forEach items="${ibList}" var="roomImg" varStatus="i">
 								<div class="item">
 									<div class="hotel-img">
-										<img src='<c:url value="/resources/upload${roomImg.file_name}" />'>
+										<img src='<c:url value="/resources/upload${roomImg.original_file_name}" />'>
 									</div>
 								</div>		
 								</c:forEach>
@@ -425,8 +425,17 @@ h4 {
 
 						<div class="col-md-12 hotel-single mt-4 mb-5 ftco-animate">
 							<div class="info-container">
-								<span>${ob.is_selling } </span>
+<%-- 								<span>${ob.is_selling } </span> --%>
+<span>
+			<c:choose>
+			<c:when test="${ob.is_selling eq 'Y'}"> 거래 가능한 매물입니다.  </c:when>
+			<c:when test="${ob.is_selling eq 'N'}"> 거래가 완료된 매물입니다. </c:when>			
+			</c:choose>	
+</span>
 								<span>원룸/월세 </span>
+<br>
+
+								
 								<h2>${ob.subject }</h2>
 
 								<p class="rate mb">

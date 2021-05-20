@@ -50,29 +50,31 @@
 
 	<insert id="insertRoomImg">
 		INSERT INTO `one_room_pic` (`id`, `room_id`,
-		`file_name`) VALUES (#{id},
-		#{room_id}, #{file_name})
+		`file_name`, 'original_file_name') VALUES (#{id},
+		#{room_id},
+		#{file_name}, #{original_file_name})
 	</insert>
 
 	<insert id="insertRoomImages" parameterType="java.util.List">
 		INSERT INTO
 		one_room_pic
-		(room_id, file_name)
+		(room_id, file_name, original_file_name)
 		VALUES
 		<foreach collection="list" item="item" separator=",">
-			(#{item.room_id}, #{item.file_name})
+			(#{item.room_id}, #{item.file_name}, #{item.original_file_name})
 		</foreach>
 	</insert>
 
 	<select id="getBoardList"
 		resultType="com.itwillbs.domain.OneRoomBean">
 		select * from one_room
-		where category=#{category} and is_selling=#{is_selling}
+		where category=#{category} and
+		is_selling=#{is_selling}
 		order by room_id desc limit
 		#{startRow},#{pageSize}
 	</select>
-	
-	
+
+
 	<select id="getBoardCount" resultType="java.lang.Integer">
 		select count(*) from
 		one_room
@@ -91,7 +93,8 @@
 		= one_room.room_id
 		where id= #{id}
 		order by
-		room_id desc limit #{startRow},#{pageSize}
+		room_id desc limit
+		#{startRow},#{pageSize}
 	</select>
 
 	<select id="getWishCount" resultType="java.lang.Integer">
@@ -122,14 +125,15 @@
 	<select id="getSalesList"
 		resultType="com.itwillbs.domain.OneRoomBean">
 		select * from one_room
-		where seller_id=#{seller_id} and is_selling=#{is_selling}
+		where seller_id=#{seller_id} and
+		is_selling=#{is_selling}
 		order by room_id desc limit
 		#{startRow},#{pageSize}
 	</select>
 
-	<select id="getSalesCount"
-		resultType="java.lang.Integer">
-		select count(*) from one_room
+	<select id="getSalesCount" resultType="java.lang.Integer">
+		select count(*) from
+		one_room
 		where seller_id=#{seller_id} and is_selling=#{is_selling}
 	</select>
 
@@ -141,55 +145,65 @@
 		and is_selling=#{is_selling}
 	</select>
 
-	 
-	<select id="sellerLatestBoard" resultType="com.itwillbs.domain.OneRoomBean">
+
+	<select id="sellerLatestBoard"
+		resultType="com.itwillbs.domain.OneRoomBean">
 		select *
 		from one_room
 		where seller_id=#{seller_id}
-		order by room_id desc
+		order by
+		room_id desc
 		limit 5
 	</select>
-	
-	<select id="getQnaBoard" resultType="com.itwillbs.domain.qnaBean">
-		select qna_id, qna.content, qna.phone_number, qna.room_id, seller_id
+
+	<select id="getQnaBoard"
+		resultType="com.itwillbs.domain.qnaBean">
+		select qna_id, qna.content, qna.phone_number, qna.room_id,
+		seller_id
 		from qna
 		join one_room
 		on qna.room_id = one_room.room_id
-		where seller_id = #{seller_id}
+		where
+		seller_id = #{seller_id}
 		order by qna_id desc
-		limit #{startRow},#{pageSize}
+		limit
+		#{startRow},#{pageSize}
 	</select>
-	
+
 	<select id="getQnaBoardCount" resultType="java.lang.Integer">
 		select count(*)
 		from qna
 		join one_room
 		on qna.room_id = one_room.room_id
-		where seller_id = #{seller_id}
+		where seller_id =
+		#{seller_id}
 	</select>
-	
-	<select id="qnaLatestBoard" resultType="com.itwillbs.domain.qnaBean">
-		select qna_id, qna.content, qna.phone_number, qna.room_id, seller_id
+
+	<select id="qnaLatestBoard"
+		resultType="com.itwillbs.domain.qnaBean">
+		select qna_id, qna.content, qna.phone_number, qna.room_id,
+		seller_id
 		from qna
 		join one_room
 		on qna.room_id = one_room.room_id
-		where seller_id = #{seller_id}
+		where
+		seller_id = #{seller_id}
 		order by qna_id desc
 		limit 5
 	</select>
-	
+
 	<update id="updateSalesState">
-	update one_room set is_selling=#{is_selling} where room_id=#{room_id}
-	
+		update one_room set is_selling=#{is_selling} where room_id=#{room_id}
+
 	</update>
-	
+
 	<select id="boardCheck"
-	resultType="com.itwillbs.domain.OneRoomBean">
-	select * from one_room where
-	room_id=#{room_id} and seller_id=#{seller_id}
+		resultType="com.itwillbs.domain.OneRoomBean">
+		select * from one_room where
+		room_id=#{room_id} and seller_id=#{seller_id}
 	</select>
-	
-	
+
+
 	<update id="updateRoom">
 		update one_room set
 		address=#{address},
@@ -203,21 +217,21 @@
 		contract_area_m=#{contract_area_m},
 		contract_area_p=#{contract_area_p},
 		floor=#{floor},
-		living_floor=#{living_floor}, 
+		living_floor=#{living_floor},
 		direction=#{direction},
 		include_options=#{include_options,typeHandler=com.itwillbs.mapper.type.JSONTypeHandler},
 		loan=#{loan},
 		pet=#{pet},
-		parking=#{parking},  
-		elevator=#{elevator}, 
+		parking=#{parking},
+		elevator=#{elevator},
 		m_date=#{m_date},
 		subject=#{subject},
 		content=#{content},
 		phone_number=#{phone_number},
 		seller_id=#{seller_id},
 		category= #{category}
-		
-		where room_id=#{room_id} 
+
+		where room_id=#{room_id}
 	</update>
 
 
@@ -251,7 +265,7 @@
 		where
 		room_id=#{room_id}
 	</select>
-	
+
 	<select id="getImage" resultType="com.itwillbs.domain.ImageBean">
 		select * from
 		one_room_pic
@@ -259,26 +273,33 @@
 		room_id=#{room_id}
 	</select>
 
-	<select id="selectOneRoomThumbImg" resultType="java.util.LinkedHashMap">
-		SELECT p.room_id, p.subject, p.address, p.deposit, p.monthly_rent,
+	<select id="selectOneRoomThumbImg"
+		resultType="java.util.LinkedHashMap">
+		SELECT p.room_id, p.subject, p.address, p.deposit,
+		p.monthly_rent,
 		i.file_name
 		FROM one_room p
 		LEFT JOIN one_room_pic i
-		ON i.id = (SELECT MIN(i1.id) FROM one_room_pic i1 WHERE i1.room_id =
+		ON
+		i.id = (SELECT MIN(i1.id) FROM one_room_pic i1 WHERE i1.room_id =
 		p.room_id)
 		ORDER BY i.id DESC
 		LIMIT 10
 	</select>
-	
 
-<insert id="insertqna">
-		INSERT INTO `qna` (`content`, `phone_number`, 
+
+	<insert id="insertqna">
+		INSERT INTO `qna` (`content`, `phone_number`,
 		`room_id`) VALUES (#{content},
 		#{phone_number}, #{room_id})
 	</insert>
-	
-	<delete id="deleteRoomImage">
+
+	<delete id="deleteRoomImagebyRoomID">
 		delete from one_room_pic where room_id=#{room_id}
+	</delete>
+
+	<delete id="deleteRoomImagebyFileID">
+		delete from one_room_pic where id=#{id}
 	</delete>
 
 </mapper>

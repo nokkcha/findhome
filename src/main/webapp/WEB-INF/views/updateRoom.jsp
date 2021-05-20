@@ -615,14 +615,16 @@
 		$(document).ready(function() {
 			setTestData();
 			 var arr = new Array();
+			 var arr2 = new Array();
 			 <c:forEach items="${ibList}" var="item">        
 	            arr.push({file_name: "${item.file_name}"});
+	            arr2.push({file_name: "${item.id}"});
 	         </c:forEach>
 			
 			setRoomImageTable(arr);
 		}); // end of funtion
 
-		function setRoomImageTable(arr) {
+		function setRoomImageTable(arr, arr2) {
 			var str_html = '<tbody align="left"><tr>';
 			//ibList
 // 			alert(arr[0].file_name);
@@ -632,20 +634,26 @@
 
 			for (var i = 1; i <= 15; i++) {
 				var html_td = '<td style="background-color: #dedede;" >';
-
+				var html_btn = '';
 				html_td += '<input type="file" id="file'+i+'" class="file_list" hidden="" style="display: none;" accept="image/jpeg,image/png" />';
 
 				if (arr[i-1] != null) {
 					var imgSrc = "${pageContext.request.contextPath}/resources/upload" + arr[i-1].file_name;
 					html_td += '<img id="room_img'+i+'" src="'+imgSrc+'" class="room_img_list"></div><div class="back">'
 					$(".fileList").eq(i-1).attr("value", arr[i-1].file_name);
+					
+					html_btn += '<span class="btn-delete_list" id="'+arr2[i-1].file_id+'" data-src="'+arr[i-1].file_name+'">[삭제]</span></div>';
+					
+// 					html_btn = '<input type="button" class="btn-delete_list" id="btn-upload'
+// 						+ i + '" value="+삭제" /><br>{}</td>';
 
 				} else {
 					html_td += '<img id="room_img'+i+'" src="" class="room_img_list"></div><div class="back">'
+					html_btn = '<input type="button" onClick="ajaxFileUpload()"  class="btn-upload_list" id="btn-upload'
+						+ i + '" value="+등록" /><br>{}</td>';
 				}
 
-				var html_btn = '<input type="button" onClick="ajaxFileUpload()"  class="btn-upload_list" id="btn-upload'
-						+ i + '" value="+등록" /><br>{}</td>';
+				
 
 				switch (i) {
 				case 1:
@@ -685,6 +693,32 @@
 
 				$('.file_list').eq(idx).click();
 			});
+			
+			
+			var $item = $('.btn-delete_list').on('click', function() {
+			    alert("이미지 삭제")
+			    var that = $(this); // 여기서 this는 클릭한 span태그
+			    $.ajax({
+			        url: "${path}/findhome/upload/deleteFile",
+			        type: "post",
+			        // data: "fileName="+$(this).attr("date-src") = {fileName:$(this).attr("data-src")}
+			        // 태그.attr("속성")
+			        data: {fileName:$(this).attr("data-src"), file_id:$(this).attr("file_id") }, // json방식
+			        dataType: "text",
+			        success: function(result){
+			            if( result == "deleted" ){
+			                // 클릭한 span태그가 속한 div를 제거
+			                that.parent("div").remove();
+			                //alert("deleted!");
+			                
+			            } else {
+			            	alert("이미지 삭제 실패!");
+			            }
+			        }
+			    });
+			});
+			
+			
 		}
 		
 		// 관리비 없음 체크 시 동작 함수

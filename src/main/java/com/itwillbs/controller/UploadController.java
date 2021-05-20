@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 
 import javax.annotation.Resource;
+import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.io.IOUtils;
@@ -22,6 +23,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.itwillbs.dao.BoardDAO;
 import com.itwillbs.upload.MediaUtils;
 import com.itwillbs.upload.UploadFileUtils;
 
@@ -29,6 +31,9 @@ import com.itwillbs.upload.UploadFileUtils;
 public class UploadController {
 
 	Logger logger = LoggerFactory.getLogger(UploadController.class);
+	
+	@Inject
+	BoardDAO boardDAO;
 
 	// xml에 설정된 리소스 참조
 	// bean의 id가 uploadPath인 태그를 참조
@@ -104,26 +109,41 @@ public class UploadController {
 	// 7. 파일 삭제 매핑
 	@ResponseBody // view가 아닌 데이터 리턴
 	@RequestMapping(value = "/upload/deleteFile", method = RequestMethod.POST)
-	public ResponseEntity<String> deleteFile(String fileName) {
+	public ResponseEntity<String> deleteFile(String fileName, int room_id, HttpServletRequest request) {
+		// 상대 경로 설정
+		String root_path = request.getSession().getServletContext().getRealPath("/");
+		String attach_path = "resources/upload/";
+		uploadPath = root_path + attach_path;
+
 		// 파일의 확장자 추출
 		String formatName = fileName.substring(fileName.lastIndexOf(".") + 1);
 		// 이미지 파일 여부 검사
 		MediaType mType = MediaUtils.getMediaType(formatName);
 		// 이미지의 경우(썸네일 + 원본파일 삭제), 이미지가 아니면 원본파일만 삭제
 
+		boolean bIsDeleted = false;
+		
 		// 이미지 파일이면
 		if (mType != null) {
 			// 썸네일 이미지 파일 추출
 			String front = fileName.substring(0, 12);
 			String end = fileName.substring(14);
+			String deletePath = uploadPath + (front + end).replace('/', File.separatorChar);
+			System.out.println("파일삭제 경로 : " + deletePath);
 			// 썸네일 이미지 삭제
-			new File(uploadPath + (front + end).replace('/', File.separatorChar)).delete();
+			bIsDeleted = new File(deletePath).delete();
 		}
 		// 원본 파일 삭제
-		new File(uploadPath + fileName.replace('/', File.separatorChar)).delete();
+		bIsDeleted = new File(uploadPath + fileName.replace('/', File.separatorChar)).delete();
 
 		// 데이터와 http 상태 코드 전송
-		return new ResponseEntity<String>("deleted", HttpStatus.OK);
+		if (bIsDeleted) {
+			boardDAO.deleteRoomImage(room_id);
+			
+			return new ResponseEntity<String>("deleted", HttpStatus.OK);
+		} else {
+			return new ResponseEntity<String>("not_deleted", HttpStatus.BAD_REQUEST);
+		}
 	}
 
 	@RequestMapping(value = "/upload/uploadForm", method = RequestMethod.POST)
