@@ -151,30 +151,37 @@
 	</select>
 	
 	<select id="getQnaBoard" resultType="com.itwillbs.domain.qnaBean">
-		select qna_id, qna.content, qna.phone_number, qna.room_id, seller_id
+		select qna_id, qna.content, member_normal.phone_number, qna.room_id, sender, answer, answerYN, seller_id
 		from qna
+		join member_normal
+		on qna.sender = member_normal.id
 		join one_room
-		on qna.room_id = one_room.room_id
+		on one_room.room_id = qna.room_id
 		where seller_id = #{seller_id}
-		order by qna_id desc
-		limit #{startRow},#{pageSize}
+		order by qna_id desc limit #{startRow},#{pageSize}
+		
+		
+		
 	</select>
 	
 	<select id="getQnaBoardCount" resultType="java.lang.Integer">
 		select count(*)
 		from qna
+		join member_normal
+		on qna.sender = member_normal.id
 		join one_room
-		on qna.room_id = one_room.room_id
+		on one_room.room_id = qna.room_id
 		where seller_id = #{seller_id}
 	</select>
 	
 	<select id="qnaLatestBoard" resultType="com.itwillbs.domain.qnaBean">
-		select qna_id, qna.content, qna.phone_number, qna.room_id, seller_id
+		select qna_id, qna.content, member_normal.phone_number, qna.room_id, sender, answer, answerYN, seller_id
 		from qna
+		join member_normal
+		on qna.sender = member_normal.id
 		join one_room
-		on qna.room_id = one_room.room_id
+		on one_room.room_id = qna.room_id
 		where seller_id = #{seller_id}
-		order by qna_id desc
 		limit 5
 	</select>
 	
@@ -272,10 +279,13 @@
 	
 
 <insert id="insertqna">
-		INSERT INTO `qna` (`content`, `phone_number`, 
-		`room_id`) VALUES (#{content},
-		#{phone_number}, #{room_id})
+		INSERT INTO `qna` (`content`, `phone_number`, `room_id`,`sender`,`answer`,`answerYN`)
+		 VALUES (#{content}, #{phone_number}, #{room_id},#{sender},#{answer},#{answerYN})
 	</insert>
+	
+	<delete id="deleteRoomImage">
+		delete from one_room_pic where room_id=#{room_id}
+	</delete>
 
 </mapper>
 

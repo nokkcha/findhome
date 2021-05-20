@@ -140,42 +140,38 @@
 					 checkIdResult.innerHTML = " ";
 					 return true;
 				 }
-				
         }
         
         $(document).ready(function() {
         	$('#id').keyup(function(){
-          		$.ajax('<c:url value = "/join/id_check" />', {
-            		data : {id : $('#id').val()},
-    			    success: function(result){
-    			         if(result == "iddup"){
-    			        	 $("#checkIdResult").html("<font color='#FF0000'>이미 사용중인 이메일입니다.</font>");
-    			        	 $("#btn").attr("disabled", "disabled");
-    			         }else{
-    			        	 $("#btn").removeAttr("disabled");
-    			         }
+          			$.ajax('<c:url value = "/join/id_check" />', {
+            			data : {id : $('#id').val()},
+    			    	success: function(result){
+    			         	if(result == "iddup"){
+    			        		 $("#checkIdResult").html("<font color='#FF0000'>이미 사용중인 이메일입니다.</font>");
+    			              		
+    			        	 }else{
+    			        		 $('#idHidden').value="idok";
+    			         	}
     			         
-    			    }
-    			     
-    			                      
-    			});
+    			    	}
+
         	});
-  
+        		
         });
+       
+   	});
         
-		   
+    	  
         
 			function checkPassword() {
 				var pass1 = $('#pass1').val();
-
 				var lengthRegex2 = /^[A-Za-z0-9!@#$%]{8,16}$/;
 				var alphabetUpperRegex = /[A-Z]/; // 대문자 판별
 				var alphabetLowerRegex = /[a-z]/; // 소문자 판별
 				var numberRegex = /[0-9]/; // 숫자 판별
 				var specRegex = /[!@#$%]/; // 특수문자(!@#$%) 판별		
 				var checkResult = document.getElementById('checkPasswordResult');
-				
-				
 				
 				if (lengthRegex2.exec(pass1)) {
 					var point = 0;
@@ -203,8 +199,7 @@
 						checkResult.innerHTML = "<font color='#FF0000'>위험</font>";
 						break;
 					}
-					
-					
+	
 				} else {
 					checkResult.innerHTML = "<font color='#FF0000'>8~16자 영문 대 소문자, 숫자, 특수문자를 사용하세요.</font>";
 				} 
@@ -254,6 +249,11 @@
 						checkIdResult.innerHTML = "<font color='#FF0000'>올바르지 않은 이메일 양식입니다.</font>";
 // 						swal.fire("ID 입력확인", "ID를 다시 입력해주세요", "error"); //"info,success,warning,error" 중 택1
 						alert("ID를 다시 입력해주세요");
+						return false;
+					}
+					
+					if($('#idHidden').val() == "iddup") {
+						$('#id').focus();
 						return false;
 					}
 					
@@ -307,7 +307,7 @@
 					
 				});
 			});
-			
+						
 			
 			function checkPassword2() {
 				var pass1 = $('#pass1').val();
@@ -321,9 +321,7 @@
 					checkResult3.innerHTML = "<font color='#000000'>비밀번호 일치</font>";
 				}
 			}
-			
-			
-        
+
 			
 			$(document).ready(function(){
 				
@@ -348,10 +346,6 @@
 					    $("#exampleModalLong").modal({backdrop: "static"});
 					  });
 			});
-			
-			
-			
- 			
 			
 
 			function allCheck(obj) {
@@ -412,15 +406,11 @@
 				          
 				        });
 			      });
-
-
-				
-				
+	
 				
 	</script>
 	
-	
-	
+
        
         <h2>회원가입</h2>
 			<div class="row block-9">
@@ -430,7 +420,8 @@
 						<div class="form-group" align="left">
 							<label class="form-control-label">이메일(ID)</label> <input type="text"
 								class="form-control" name="id" id="id"
-								onkeyup="checkId()">
+								onkeyup="checkId()" >
+								<input type="hidden" name="idHidden" value="iddup" id="idHidden">
 								
 							<br><span class="check-group" id="checkIdResult"></span>
 

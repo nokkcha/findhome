@@ -173,5 +173,10 @@ public class BoardDAOImpl implements BoardDAO{
 		sqlSession.update(namespace+".updateRoom", ob);
 	}
 
+	@Override
+	public void deleteRoomImage(int room_id) {
+		sqlSession.delete(namespace+".deleteRoomImage", room_id);
+	}
+
 
 }

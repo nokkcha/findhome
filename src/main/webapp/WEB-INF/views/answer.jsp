@@ -62,7 +62,7 @@
 					<ul class="dropdown-menu">
 									<li><a class="dropdown-item" href="./member_seller"> 대시보드 </a></li>
 									<li><a class="dropdown-item" href="./salesList"> 매물관리 </a></li>
-									<li><a class="dropdown-item" href="./qnaList"> 문의관리 </a></li>
+									<li><a class="dropdown-item" href="./qnaList/"> 문의관리 </a></li>
 								</ul>
 					</li>
 					<li class="nav-item"><a href='<c:url value="/logout" />' class="nav-link">로그아웃</a></li>
@@ -82,14 +82,14 @@
 			<a href="./member_seller" class="nav-side"> 대시보드</a>
 
 		<div class="sell-dropdown">
-		  <a class="dropbtn nav-side" style="color: black;">매물관리</a>
+		  <a class="dropbtn nav-side">매물관리</a>
 		  <div class="dropdown-content">
 		    <a href="./salesList">판매 중인 매물</a>
 		    <a href="./soldList">판매 완료 매물</a>
 		  </div>
 		</div>
 			
-			<a href="./qnaList"  class="nav-side"> 문의관리 </a>
+			<a href="./qnaList" class="nav-side" style="color: black;"> 문의관리 </a>
 		
 		</nav>
 	
@@ -97,68 +97,56 @@
 	</div>
 
     <section class="seller-wrap">
-    
-    		 <div class="chart-div">
-		    <canvas id="pieChartCanvas" width="300px" height="300px"></canvas>
-		    <span class="chart-text"> 
-		   	 <span class="chart-text-point"> 매물 현황  </span><br>
-			    판매 중 : ${salesCount} 개 <br>
-			    판매 완료 : ${soldCount } 개 <br>
-		    </span>
-		    
-		  </div>  
+
 
 		   
 
-		<div class="seller-sell">
-		<span class="sell-text"> 판매 완료 매물</span> <br>
-		<table class="type09">
-			<thead>
+	<div class="seller-mail">
+    <span class="sell-text"> 전체 문의</span> <br>
+    
+	<table class="type09">
+		<thead>
+			<tr>
+			   <th class="sell-ta2-no">No</th>
+			   <th class="sell-ta2-id">Room ID</th>
+			   <th class="sell-ta2-sub">Content</th>
+			   <th class="sell-ta2-ph">Sender</th>
+			   <th class="sell-ta2-ph">Phone Number</th>
+			   <th class="sell-ta2-an">answer</th>
+			 </tr>
+		</thead>
+		  
+		<tbody>
+			<c:forEach var="qnaList" items="${qnaList }">
 				<tr>
-					<th class="sell-ta-no"> No </th>
-					<th class="sell-ta-ca"> Category </th>
-					<th class="sell-ta-sub"> Subject </th>
-					<th class="sell-ta-de"> Deposit  </th>
-					<th class="sell-ta-re"> Monthly Rent  </th>
-					<th class="sell-ta-btn"> button  </th>
-				 </tr>
-			</thead>
-			  
-			<tbody>
-	       		<c:forEach var="roomList" items="${roomList }">
-					
-				<tr> 
-					<td> ${roomList.room_id} </td>
-					<td> ${roomList.category} </td>
-					<td   onclick="location.href='<c:url value="detailView?room_id=${roomList.room_id}"/>'"> ${roomList.subject}</td>
-					<td> ${roomList.deposit} </td>
-					<td> ${roomList.monthly_rent} </td>
-					<td> 
-					<button class="sell-btn" onclick="deleteBoard(${roomList.room_id})" > 삭제 </button> 
-					</td>
+				  <td> ${qnaList.qna_id}</td>
+				  <td> ${qnaList.room_id}</td>
+				  <td> ${qnaList.content} </td>
+				  <td> ${qnaList.sender} </td>
+				  <td> ${qnaList.phone_number} </td>
+				  <td> ${qnaList.answerYN} </td>
 				</tr>
-				
-				</c:forEach>
+			
+			</c:forEach>
 
-			  </tbody>
-			  
+		  </tbody>
+		  
 		</table>
-		
-	
-		</div>
+
+	</div>
 
           	<div class="row mt-5">
 		          <div class="col text-center">
 		            <div class="block-27-page">
 		              <ul>
 		                <c:if test="${pb.startPage > pb.pageBlock }">
-		                <li> <a href='<c:url value="soldList?pageNum=${pb.startPage-pb.pageBlock}" />'>&lt;</a></li>
+		                <li> <a href='<c:url value="qnaList?pageNum=${pb.startPage-pb.pageBlock}" />'>&lt;</a></li>
 					</c:if>
 					<c:forEach var="i" begin="${pb.startPage }" end="${pb.endPage}" step="1">
-		                <li class="active"><span> <a href='<c:url value="soldList?pageNum=${i}" />'>${i}</a> </span></li>
+		                <li class="active"><span> <a href='<c:url value="qnaList?pageNum=${i}" />'>${i}</a> </span></li>
 					</c:forEach>
 					<c:if test="${pb.endPage < pb.pageCount }">
-		                <li><a href='<c:url value="soldList?pageNum=${pb.startPage+pb.pageBlock}" />'>&gt;</a></li>
+		                <li><a href='<c:url value="qnaList?pageNum=${pb.startPage+pb.pageBlock}" />'>&gt;</a></li>
 					</c:if>
 		              </ul>
 		            </div>
@@ -196,45 +184,7 @@
   
   
 <script src="../script/jquery-3.6.0.js"></script>
-<script type="text/javascript">
-      
-      window.onload = function () {
-    	    pieChartDraw();
-    	}
 
-    	let pieChartData = {
-    			
-    	    labels: ['판매중', '판매완료'],
-    	    datasets: [{
-    	        backgroundColor: ['#F18181', '#8ADCB0'],
-    	        data: [${salesCount}, ${soldCount}]
-    	    }] 
-    	};
-
-    	let pieChartDraw = function () {
-    	    let ctx = document.getElementById('pieChartCanvas').getContext('2d');
-    	    
-    	    window.pieChart = new Chart(ctx, {
-    	        type: 'pie',
-    	        data: pieChartData,
-    	        options: {
-    	            responsive: false
-    	        }
-    	    });
-    	};
-    	
-    	// 삭제 버튼 클릭 시
-    	function deleteBoard(room_id) {
-    		if ( confirm("삭제하시겠습니까?") ) { 
-    			location.href="deleteBoard?room_id="+room_id;
-    		} else {
-    		    alert("취소되었습니다.");
-    		} 
-    		
-		}
-      
-      
-      </script>
 
 
   

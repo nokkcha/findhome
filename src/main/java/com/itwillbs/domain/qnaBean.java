@@ -6,9 +6,30 @@ public class qnaBean {
 	private String content;
 	private String phone_number;
 	private int room_id;
+	private String sender;
+	private String answer;
+	private String answerYN;
 	
 	
 
+	public String getSender() {
+		return sender;
+	}
+	public void setSender(String sender) {
+		this.sender = sender;
+	}
+	public String getAnswer() {
+		return answer;
+	}
+	public void setAnswer(String answer) {
+		this.answer = answer;
+	}
+	public String getAnswerYN() {
+		return answerYN;
+	}
+	public void setAnswerYN(String answerYN) {
+		this.answerYN = answerYN;
+	}
 	public int getQna_id() {
 		return qna_id;
 	}

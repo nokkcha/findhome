@@ -562,9 +562,17 @@ public class BoardController {
 		}
 		return "detailView";
 	}
+	
+	@RequestMapping(value = "/memberQnaList", method = RequestMethod.GET)
+	public String memberQnaList() {
+		
+		
+		return "memberQnaList";
+	}
 
 	@RequestMapping(value = "/mailpro", method = RequestMethod.POST)
-	public String mailpro(HttpServletRequest request, Model model) {
+	public String mailpro(HttpServletRequest request, Model model, HttpSession session) {
+		String id = (String)session.getAttribute("id");
 
 		String sender = "hyunjoon42311@gamil.com";
 		String receiver = request.getParameter("receiver");
@@ -584,6 +592,8 @@ public class BoardController {
 		qb.setContent(request.getParameter("content"));
 		qb.setPhone_number(phone);
 		qb.setRoom_id(Integer.parseInt(room_id));
+		qb.setSender(id);
+		qb.setAnswerYN("N");
 
 		boardService.insertqna(qb);
 

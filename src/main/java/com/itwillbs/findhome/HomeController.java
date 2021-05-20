@@ -70,6 +70,19 @@ public class HomeController {
 		return "index";
 	}
 	
+	@RequestMapping(value = "/admin",method = RequestMethod.GET )
+	public String admin(Model model) {
+		List<MemberBean> nList=memberService.getMemberNList();
+		model.addAttribute("nList",nList);
+		return "admin";
+	}
+	
+	@RequestMapping(value = "/yUpdate",method = RequestMethod.GET )
+	public String yUpdate(MemberBean mb) {
+		memberService.yUpdate(mb);
+		
+		return "redirect:/admin";
+	}
 		
 	@RequestMapping(value = "/findRoom",method = RequestMethod.GET )
 	public String findRoom() {

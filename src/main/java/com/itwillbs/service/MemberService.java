@@ -36,6 +36,10 @@ public interface MemberService {
 	public void deleteWish(MemberBean mb);
 
 	public List<MemberBean> getMemberWishList(String id);
+	
+	public  List<MemberBean> getMemberNList();
+	
+	public void yUpdate(MemberBean mb);
 }
 
 

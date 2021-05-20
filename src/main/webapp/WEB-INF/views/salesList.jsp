@@ -63,7 +63,6 @@
 									<li><a class="dropdown-item" href="./member_seller"> 대시보드 </a></li>
 									<li><a class="dropdown-item" href="./salesList"> 매물관리 </a></li>
 									<li><a class="dropdown-item" href="./qnaList"> 문의관리 </a></li>
-									<li><a class="dropdown-item" href="./"> 고객센터 </a></li>
 								</ul>
 					</li>
 					<li class="nav-item"><a href='<c:url value="/logout" />' class="nav-link">로그아웃</a></li>
@@ -91,7 +90,6 @@
 		</div>
 			
 			<a href="./qnaList"  class="nav-side"> 문의관리 </a>
-			<a href="#"  class="nav-side"> 고객센터 </a>
 		
 		</nav>
 	

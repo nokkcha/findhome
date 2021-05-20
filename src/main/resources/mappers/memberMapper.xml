@@ -79,6 +79,15 @@
 		resultType="com.itwillbs.domain.MemberBean">
 		select * from wish_list where id=#{id}
 	</select>
+	
+	<select id="getMemberNList" resultType="com.itwillbs.domain.MemberBean">
+	 select * from member_seller  where is_confirm != 'Y'
+	 </select>
+
+	<update id="yUpdate">
+		update member_seller set is_confirm='Y' where id=#{id}
+	</update>
+
 
 </mapper>
 

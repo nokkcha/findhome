@@ -1,205 +1,240 @@
 @charset "UTF-8";
+	body {
+		background: #E7DDDD;
+	
+	}
+	
+	.seller-wrap  {
+	font-family: 'Noto Sans KR', sans-serif;
+	}
+	
+	.seller-side {
+		font-family: 'Noto Serif KR', serif;
+		border: 1px solid;
+		float: left;
+	 	height: 130vh;
+	 	width: 300px;
+	 	background: #f85959;
+	}
+	
+	.seller-side nav  .nav-side {
+		color: white;
+		display: block;
+		font-weight:bold;
+		font-size:1.2em;
+		margin-top: 30px;
+		text-align:center;
+	}
+	
+	.seller-side nav  .nav-side:hover {
+		color: black;
+	}
+	
+	
+	.dropdown-content {
+	  display: none;
+	  position: absolute;
+	  background-color: pink;
+	  min-width: 160px;
+	  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	  z-index: 1;
+	}
+	
+	.dropdown-content a {
+	  color: black;
+	  padding: 12px 16px;
+	  text-decoration: none;
+	  display: block;
+	}
+	
+	.dropdown-content a:hover {background-color: snow;}
+	
+	.sell-dropdown:hover .dropdown-content {display: block;}
+	
+	a:hover {
+		cursor: pointer;
+	}
+	
+	
+	.sell-text {
+		font-style: italic;
+		font-size:1.2em;
+		font-weight:bold;
+		color: #6D6A6A;
+		margin-right: 30px;
+	}
+	
+	.seller-sell {
+		display: flex;
+		justify-content: center;
+		margin-right: 20px;
+		margin-top: 100px;
+		text-align: center;
+	 }
+	
+	.seller-mail {
+		display: flex;
+		justify-content: center;
+		margin-right: 20px;
+		margin-top: 70px;
+		text-align: center;
+	 }
+	
+	 
+	 .chart-div {
+	 	margin-top: 50px;
+	 	display: flex;
+		justify-content: center;
+	 }
+	 
+	 .chart-text {
+		margin-left: 50px;
+		margin-top: 150px;
+		font-weight:bold;
+		font-size: 1.1em;
+	 }
+	 
+	 .chart-text-point{
+	 	border-bottom: 3px solid #F3ABAB;
+	 }
+	 
+	 
+	.sell-table {
+		background: white;
+		border-radius: 50px;
+	}
+	
+	.sell-ta-th {
+		background: #F3ABAB;
+		color: white;
+		border-radius: 10px;
+	}
+	
+	.sell-ta-no, .sell-ta2-no {
+			width: 50px;
+	}
+	
+	
+	.sell-ta-ca, .sell-ta-de, .sell-ta-re, .sell-ta2-id  {
+		width: 100px;
+	}
+	
+	.sell-ta-sub {
+		width: 400px;
+	}
+	
+	.sell-ta-btn{
+		width: 200px;
+	}
+	
+	.sell-ta2-sub {
+		width: 550px;	
+	}
+	
+	.sell-ta2-ph  {
+		width: 150px;	
+	}
+	
+	.sell-ta2-an {
+	width: 50px;}
+	
+	
+	table.type09 {
+	  border-collapse: collapse;
+	  text-align: center;
+	  line-height: 1.5;
+	
+	}
+	table.type09 thead th {
+	  padding: 10px;
+	  font-weight: bold;
+	  vertical-align: top;
+	  color: #F13A3A;
+	  border-bottom: 3px solid #F3ABAB;
+	}
+	table.type09 tbody th {
+	  width: 150px;
+	  padding: 10px;
+	  font-weight: bold;
+	  vertical-align: top;
+	  border-bottom: 1px solid #ccc;
+	  background: #f3f6f7;
+	}
+	table.type09 td {
+	  padding: 10px;
+	  vertical-align: top;
+	  border-bottom: 1px solid #ccc;
+	}
+	
+	.type09 tbody tr:hover {
+		cursor: pointer;
+		background: #F5DBDB;
+	}
+	
+	.sell-page{
+		border: 1px solid;
+		justify-content: center;
+		display: flex;
+		margin-right: 20px;
+		margin-top: 700px;
+	}
+	
+	
+	.sell-page li {
+		list-style: none;
+	}
+	
+	.sell-page a {
+		display: block;
+	}
+	
+	.sell-board {
+		border: 1px solid;
+	}
+	
+	.sell-btn {
+		border: none;
+	    background: none;
+	    color: gray;
+	    font-weight: bold;
+	}
+	
+	.sell-btn:hover {
+		border-bottom: 1px solid;
+		color: coral;
+		cursor: pointer;
+		
+	}
 
 
-body {
-	background: #E7DDDD;
+@media screen and (max-width:1480px) {
+
+	.seller-side {
+		display: none;
+	}
+	
+	.seller-sell,.seller-mail, .chart-div    {
+		justify-content: center;
+		margin-bottom: 50px;
+	}
+	
+	.sell-text {
+		display: none;
+	}
 
 }
 
-.seller-wrap  {
-font-family: 'Noto Sans KR', sans-serif;
-}
-
-.seller-side {
-	font-family: 'Noto Serif KR', serif;
-	border: 1px solid;
-	float: left;
- 	height: 150vh;
- 	width: 300px;
- 	background: #f85959;
-}
-
-.seller-side nav  .nav-side {
-	color: white;
-	display: block;
-	font-weight:bold;
-	font-size:1.2em;
-	margin-top: 30px;
-	text-align:center;
-}
-
-.seller-side nav  .nav-side:hover {
-	color: black;
-}
-
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: pink;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-
-.dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
-
-.dropdown-content a:hover {background-color: snow;}
-
-.sell-dropdown:hover .dropdown-content {display: block;}
-
-a:hover {
-	cursor: pointer;
-}
-
-
-.sell-text {
-	font-style: italic;
-	font-size:1.2em;
-	font-weight:bold;
-	color: #6D6A6A;
-	margin-right: 30px;
-}
-
-.seller-sell {
-	display: flex;
-	justify-content: center;
-	margin-right: 20px;
-	margin-top: 100px;
-	text-align: center;
- }
-
-.seller-mail {
-	display: flex;
-	justify-content: center;
-	margin-right: 20px;
-	margin-top: 70px;
-	text-align: center;
- }
-
- 
- .chart-div {
- 	margin-top: 50px;
- 	display: flex;
-	justify-content: center;
- }
- 
- .chart-text {
-	margin-left: 50px;
-	margin-top: 150px;
-	font-weight:bold;
-	font-size: 1.1em;
- }
- 
- .chart-text-point{
- 	border-bottom: 3px solid #F3ABAB;
- }
- 
- 
-.sell-table {
-	background: white;
-	border-radius: 50px;
-}
-
-.sell-ta-th {
-	background: #F3ABAB;
-	color: white;
-	border-radius: 10px;
-}
-
-.sell-ta-no, .sell-ta2-no {
-		width: 50px;
-}
-
-
-.sell-ta-ca, .sell-ta-de, .sell-ta-re, .sell-ta2-id  {
-	width: 100px;
-}
-
-.sell-ta-sub {
-	width: 400px;
-}
-
-.sell-ta-btn{
-	width: 200px;
-}
-
-.sell-ta2-sub {
-	width: 550px;	
-}
-
-.sell-ta2-ph  {
-	width: 150px;	
-}
-
-
-table.type09 {
-  border-collapse: collapse;
-  text-align: center;
-  line-height: 1.5;
+@media screen and (max-width:870px) {
+	
+	.seller-sell,.seller-mail, .chart-div    {
+		justify-content: center;
+		width: 1005px;
+		margin-bottom: 50px;
+	}
+	
+	.sell-text {
+		display: none;
+	}
 
 }
-table.type09 thead th {
-  padding: 10px;
-  font-weight: bold;
-  vertical-align: top;
-  color: #F13A3A;
-  border-bottom: 3px solid #F3ABAB;
-}
-table.type09 tbody th {
-  width: 150px;
-  padding: 10px;
-  font-weight: bold;
-  vertical-align: top;
-  border-bottom: 1px solid #ccc;
-  background: #f3f6f7;
-}
-table.type09 td {
-  padding: 10px;
-  vertical-align: top;
-  border-bottom: 1px solid #ccc;
-}
 
-.type09 tbody tr:hover {
-	cursor: pointer;
-	background: #F5DBDB;
-}
-
-.sell-page{
-	border: 1px solid;
-	justify-content: center;
-	display: flex;
-	margin-right: 20px;
-	margin-top: 700px;
-}
-
-
-.sell-page li {
-	list-style: none;
-}
-
-.sell-page a {
-	display: block;
-}
-
-.sell-board {
-	border: 1px solid;
-}
-
-.sell-btn {
-	border: none;
-    background: none;
-    color: gray;
-    font-weight: bold;
-}
-
-.sell-btn:hover {
-	border-bottom: 1px solid;
-	color: coral;
-	cursor: pointer;
-}

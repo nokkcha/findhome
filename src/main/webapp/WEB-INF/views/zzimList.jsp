@@ -263,7 +263,7 @@
 				   		아주 간단한 회원가입을 통해 찜기능을 이용하세요! <br>
 				   		<br>
 				   		지금 <a href="<c:url value="join_choice"/>"> 바로 가입하기 > </a><br>
-				   		이미 회원이라면? <a href="<c:url value="login_choice"/>"> 바로  로그인하기> </a> 
+				   		이미 회원이라면? <a href="<c:url value="login"/>"> 바로  로그인하기> </a> 
 				   		
 				   	</div>
 				   	

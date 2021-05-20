@@ -5,6 +5,41 @@
 <html lang="en">
 <head>
 <title>DirEngine - Free Bootstrap 4 Template by Colorlib</title>
+<style type="text/css">
+
+.member-info-btn {
+border: none;
+padding: 10px;
+width: 340px;
+background: #DCD4D4;
+}
+.member-info-btn:hover {
+	background: black;
+	color: white;
+	cursor: pointer;
+}
+
+.member-side-menu {
+	border: 1px dashed gray;
+	padding: 100px 10px;
+	text-align: center;
+	margin-right: 250px;
+	margin-top: 30px;
+	float: left;
+}
+
+.member-side-menu>a {
+	display: block;
+	margin: 20px;
+	color: black;
+	border-bottom: 1px solid gray;
+}
+
+.member-side-menu>a:hover {
+	color: #f85959;
+}
+
+</style>
 <script
 	src="${pageContext.request.contextPath}/resources/script/jquery-3.6.0.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
@@ -260,9 +295,23 @@
 </script>
 
 
-			<h2>회원 정보</h2>
+
+
+				<nav class="member-side-menu">
+				
+				<a href="#" style="font-weight: bold;"> 회원 정보 조회 </a>
+				 <a href="./memberQnaList"> 문의 목록 조회 </a>
+				</nav>
+
 			<div class="row block-9">
+			
+			
+			
+			
+			
 				<div class="pr-md-5">
+				
+			<h2>회원 정보</h2>
 					<!-- col-md-6 제거함 -->
 					<form action='<c:url value="/memberInfoPro" />' id="login" name="login" method="post">
 						<div class="form-group" align="left">
