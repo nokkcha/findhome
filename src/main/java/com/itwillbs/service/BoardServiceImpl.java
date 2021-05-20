@@ -264,6 +264,36 @@ public class BoardServiceImpl implements BoardService{
 
 	@Override
 	public void updateRoom(OneRoomBean ob) {
+		
+		System.out.println("넘어온 관리비포함 : " +ob.getInclude_fees());
+		System.out.println("넘어온 옵션 :" + ob.getInclude_options());
+
+		String[] fileList = ob.getFileList();
+		
+		if (fileList.length > 0) {
+			if (fileList[0] == "") {
+				return;
+			}
+		}
+		
+		List<ImageBean> list = new ArrayList<ImageBean>();
+		
+		for (String string : fileList) {
+			if (string == "") {
+				continue;
+			}
+			ImageBean imageBean = new ImageBean();
+			imageBean.setRoom_id(ob.getRoom_id());
+			imageBean.setFile_name(string);
+
+			list.add(imageBean);
+		}				
+		
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("list", list);
+		
+		insertRoomImags(map);
+		
 		boardDAO.updateRoom(ob);
 	}
 

@@ -39,7 +39,7 @@
   <%@ include file="../views/top.jsp" %>
     
     
-    <div class="hero-wrap js-fullheight" style="background-image: url('${pageContext.request.contextPath}/resources/images/bg_5.jpg');">
+    <div class="hero-wrap js-fullheight" style="background-image: url('${pageContext.request.contextPath}/resources/images/bg_7.jpg');">
       <div class="overlay"></div>
       
       <div class="container">
