@@ -310,4 +310,10 @@ public class BoardServiceImpl implements BoardService{
 		boardDAO.deleteRoomImage(room_id);
 	}
 
+	@Override
+	public List<LinkedHashMap<String, Object>> selectPopularRooms(String category) {
+		// TODO Auto-generated method stub		
+		return boardDAO.selectPopularRooms(category);
+	}
+
 }

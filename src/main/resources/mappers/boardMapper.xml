@@ -10,21 +10,18 @@
 		one_room
 	</select>
 
-	<resultMap id="OneRoomBean"
-		type="com.itwillbs.domain.OneRoomBean">
-		<result property="include_options" column="include_options"
-			typeHandler="com.itwillbs.mapper.type.JSONTypeHandler" />
-		<result property="include_fees" column="include_fees"
-			typeHandler="com.itwillbs.mapper.type.JSONTypeHandler" />
+	<resultMap id="OneRoomBean" type="com.itwillbs.domain.OneRoomBean">
+		<result property="include_options" column="include_options" typeHandler="com.itwillbs.mapper.type.JSONTypeHandler" />
+		<result property="include_fees" column="include_fees" typeHandler="com.itwillbs.mapper.type.JSONTypeHandler" />
 	</resultMap>
 
-	<insert id="insertRoom" useGeneratedKeys="true"
-		keyProperty="room_id">
+	<insert id="insertRoom" useGeneratedKeys="true" keyProperty="room_id">
 		INSERT INTO `one_room`
 		(`address`, `deposit`,
 		`monthly_rent`, `room_type`, `fees`,
 		`include_fees`,
-		`exclusive_area_m`, `exclusive_area_p`, `contract_area_m`,
+		`exclusive_area_m`,
+		`exclusive_area_p`, `contract_area_m`,
 		`contract_area_p`,
 		`floor`, `living_floor`, `direction`,
 		`include_options`,
@@ -32,18 +29,21 @@
 		`elevator`, `m_date`,
 		`subject`,
 		`content`,
-		`phone_number`, `seller_id`, `category`) VALUES (
+		`phone_number`,
+		`seller_id`, `category`) VALUES (
 		#{address},
 		#{deposit},
 		#{monthly_rent}, #{room_type}, #{fees},
 		#{include_fees,typeHandler=com.itwillbs.mapper.type.JSONTypeHandler},
-		#{exclusive_area_m}, #{exclusive_area_p}, #{contract_area_m},
+		#{exclusive_area_m},
+		#{exclusive_area_p}, #{contract_area_m},
 		#{contract_area_p},
 		#{floor}, #{living_floor}, #{direction},
 		#{include_options,typeHandler=com.itwillbs.mapper.type.JSONTypeHandler},
 		#{loan},
 		#{pet},
-		#{parking}, #{elevator}, #{m_date}, #{subject},
+		#{parking},
+		#{elevator}, #{m_date}, #{subject},
 		#{content},
 		#{phone_number}, #{seller_id}, #{category})
 	</insert>
@@ -52,8 +52,10 @@
 		INSERT INTO `one_room_pic` (`id`, `room_id`,
 		`file_name`, 'original_file_name') VALUES (#{id},
 		#{room_id},
-		#{file_name}, #{original_file_name})
-		#{room_id}, #{file_name}, #{original_file_name})
+		#{file_name},
+		#{original_file_name})
+		#{room_id}, #{file_name},
+		#{original_file_name})
 	</insert>
 
 	<insert id="insertRoomImages" parameterType="java.util.List">
@@ -66,8 +68,7 @@
 		</foreach>
 	</insert>
 
-	<select id="getBoardList"
-		resultType="com.itwillbs.domain.OneRoomBean">
+	<select id="getBoardList" resultType="com.itwillbs.domain.OneRoomBean">
 		select * from one_room
 		where category=#{category} and
 		is_selling=#{is_selling}
@@ -84,15 +85,16 @@
 
 
 
-	<select id="getWishList"
-		resultType="com.itwillbs.domain.OneRoomBean">
+	<select id="getWishList" resultType="com.itwillbs.domain.OneRoomBean">
 		select address, subject, room_id, monthly_rent, deposit,
 		phone_number, id, category
 		from wish_list
-		join one_room
+		join
+		one_room
 		on wish_list.wish
 		= one_room.room_id
-		where id= #{id}
+		where id=
+		#{id}
 		order by
 		room_id desc limit
 		#{startRow},#{pageSize}
@@ -105,8 +107,7 @@
 
 
 
-	<select id="getSearchList"
-		resultType="com.itwillbs.domain.OneRoomBean">
+	<select id="getSearchList" resultType="com.itwillbs.domain.OneRoomBean">
 		select *
 		from one_room
 		<![CDATA[ 
@@ -123,8 +124,7 @@
 
 
 
-	<select id="getSalesList"
-		resultType="com.itwillbs.domain.OneRoomBean">
+	<select id="getSalesList" resultType="com.itwillbs.domain.OneRoomBean">
 		select * from one_room
 		where seller_id=#{seller_id} and
 		is_selling=#{is_selling}
@@ -138,17 +138,16 @@
 		where seller_id=#{seller_id} and is_selling=#{is_selling}
 	</select>
 
-	<select id="getSalesCategoryCount"
-		resultType="java.lang.Integer">
+	<select id="getSalesCategoryCount" resultType="java.lang.Integer">
 		select count(*) from one_room
 		where (seller_id=#{seller_id})
 		and (category=#{category})
-		and is_selling=#{is_selling}
+		and
+		is_selling=#{is_selling}
 	</select>
 
 
-	<select id="sellerLatestBoard"
-		resultType="com.itwillbs.domain.OneRoomBean">
+	<select id="sellerLatestBoard" resultType="com.itwillbs.domain.OneRoomBean">
 		select *
 		from one_room
 		where seller_id=#{seller_id}
@@ -157,16 +156,17 @@
 		limit 5
 	</select>
 
-	<select id="getQnaBoard"
-		resultType="com.itwillbs.domain.qnaBean">
+	<select id="getQnaBoard" resultType="com.itwillbs.domain.qnaBean">
 		select qna_id, qna.content, qna.phone_number, qna.room_id,
 		seller_id
 		from qna
 		join one_room
-		on qna.room_id = one_room.room_id
+		on qna.room_id =
+		one_room.room_id
 		where
 		seller_id = #{seller_id}
-		order by qna_id desc
+		order
+		by qna_id desc
 		limit
 		#{startRow},#{pageSize}
 	</select>
@@ -180,13 +180,13 @@
 		#{seller_id}
 	</select>
 
-	<select id="qnaLatestBoard"
-		resultType="com.itwillbs.domain.qnaBean">
+	<select id="qnaLatestBoard" resultType="com.itwillbs.domain.qnaBean">
 		select qna_id, qna.content, qna.phone_number, qna.room_id,
 		seller_id
 		from qna
 		join one_room
-		on qna.room_id = one_room.room_id
+		on qna.room_id
+		= one_room.room_id
 		where
 		seller_id = #{seller_id}
 		order by qna_id desc
@@ -194,14 +194,15 @@
 	</select>
 
 	<update id="updateSalesState">
-		update one_room set is_selling=#{is_selling} where room_id=#{room_id}
+		update one_room set is_selling=#{is_selling} where
+		room_id=#{room_id}
 
 	</update>
 
-	<select id="boardCheck"
-		resultType="com.itwillbs.domain.OneRoomBean">
+	<select id="boardCheck" resultType="com.itwillbs.domain.OneRoomBean">
 		select * from one_room where
-		room_id=#{room_id} and seller_id=#{seller_id}
+		room_id=#{room_id} and
+		seller_id=#{seller_id}
 	</select>
 
 
@@ -230,21 +231,21 @@
 		content=#{content},
 		phone_number=#{phone_number},
 		seller_id=#{seller_id},
-		category= #{category}
+		category=
+		#{category}
 
-		where room_id=#{room_id}
+		where
+		room_id=#{room_id}
 	</update>
 
 
 
-	<select id="getBoard"
-		resultType="com.itwillbs.domain.OneRoomBean">
+	<select id="getBoard" resultType="com.itwillbs.domain.OneRoomBean">
 		select * from one_room where
 		room_id=#{room_id}
 	</select>
 
-	<select id="numCheck"
-		resultType="com.itwillbs.domain.OneRoomBean">
+	<select id="numCheck" resultType="com.itwillbs.domain.OneRoomBean">
 		select * from one_room where
 		room_id=#{room_id} and
 		pass=#{pass}
@@ -274,30 +275,27 @@
 		room_id=#{room_id}
 	</select>
 
-	<select id="selectOneRoomThumbImg"
-		resultType="java.util.LinkedHashMap">
-		SELECT p.room_id, p.subject, p.address, p.deposit,
-		p.monthly_rent,
-		i.file_name
+	<select id="selectOneRoomThumbImg" resultType="java.util.LinkedHashMap">
+		SELECT p.room_id, p.subject, p.address, p.deposit, p.monthly_rent, i.file_name, p.category
 		FROM one_room p
 		LEFT JOIN one_room_pic i
-		ON
-		i.id = (SELECT MIN(i1.id) FROM one_room_pic i1 WHERE i1.room_id =
-		p.room_id)
+		ON i.id = (SELECT MIN(i1.id) FROM one_room_pic i1 WHERE i1.room_id = p.room_id)
 		ORDER BY i.id DESC
 		LIMIT 10
 	</select>
 
 	<insert id="insertqna">
-		INSERT INTO `qna` (`content`, `phone_number`,`name`,`room_id`) VALUES (#{content},
+		INSERT INTO `qna` (`content`,
+		`phone_number`,`name`,`room_id`) VALUES (#{content},
 		#{phone_number},#{name},#{room_id})
 	</insert>
-	
-	
+
+
 	<insert id="insertReport">
 		insert into report (content,room_id)
-		values (#{content},#{room_id})
-	</insert> 
+		values
+		(#{content},#{room_id})
+	</insert>
 
 	<delete id="deleteRoomImagebyRoomID">
 		delete from one_room_pic where room_id=#{room_id}
@@ -306,6 +304,26 @@
 	<delete id="deleteRoomImagebyFileID">
 		delete from one_room_pic where id=#{id}
 	</delete>
+
+	<select id="selectPopularRooms" resultType="java.util.LinkedHashMap">
+		SELECT p.room_id, p.subject, p.address, p.deposit,
+		p.monthly_rent,
+		i.file_name, p.category, w.wish,
+		COUNT(w.wish) AS wish_count
+		FROM
+		one_room p
+		LEFT JOIN one_room_pic i
+		ON i.id = (SELECT MIN(i1.id) FROM
+		one_room_pic i1 WHERE i1.room_id =
+		p.room_id )
+		LEFT JOIN wish_list w
+		ON w.wish = p.room_id
+		WHERE p.category=#{category}
+		GROUP BY w.wish
+		ORDER BY
+		count(w.wish) DESC
+		LIMIT 10
+	</select>
 
 </mapper>
 

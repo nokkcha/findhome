@@ -183,4 +183,10 @@ public class BoardDAOImpl implements BoardDAO{
 		sqlSession.insert(namespace+".insertReport",qb);
 		
 	}
+
+	@Override
+	public List<LinkedHashMap<String, Object>> selectPopularRooms(String category) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList(namespace+".selectPopularRooms", category);
+	}
 }

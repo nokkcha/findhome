@@ -54,4 +54,5 @@ public interface BoardService {
 	public void updateRoom(OneRoomBean ob);
 	public void deleteRoomImage(int room_id);
 
+	List<LinkedHashMap<String, Object>> selectPopularRooms(String category);
 }

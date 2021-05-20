@@ -49,5 +49,6 @@ public interface BoardDAO {
 		public OneRoomBean boardCheck(OneRoomBean ob);
 		public void updateRoom(OneRoomBean ob);
 		public void deleteRoomImage(int room_id);
+		public List<LinkedHashMap<String, Object>> selectPopularRooms(String category);
 
 }
