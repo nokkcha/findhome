@@ -34,23 +34,50 @@
 
 <style type="text/css">
 
-#tableoption {
-	width: 100%;
 
-}
-
-#tableoption tr,td {
-	border-style: none;
-}
 
 #table {
 	table-layout: fixed;
+}
+
+#roomtable {
+	width:600px;
+	border-collapse: collapse;
+	margin: auto !important;
+}
+
+#roomtable th {
+	width: 30%;
+	padding: 10px;
+	text-align: left;
+	border-bottom: 1px solid #dddddddd;
+	color: gray;
+}
+
+#roomtable td, tr {
+	border-bottom: 1px solid #dddddddd;
+	padding: 10px;
+	text-align: left;
+	color: black;
+	width: 20%
 }
 
 #map img {
 	max-width: none;
 	height: auto;
 	border: 0
+}
+
+#tableoption {
+	width: 100%;
+	text-align: center;
+
+}
+
+
+#tableoption tr,td {
+	border-style: none;
+	text-align: center;
 }
 
 #btn01 {
@@ -97,27 +124,29 @@
 	margin-top: 20px;
 }
 
-#roomtable {
-	width: 100%;
-	border-collapse: collapse;
-	text-align: left;
-}
 
-#roomtable th, td {
-	padding: 10px;
-	text-align: center;
-}
+
+
 
 #btnDifInfo {
 	margin-top: 5px;
 	width: 200px;
+	font-weight: bold;
+	color: white;
 
 }
 
 #btnSoldout {
 	width: 200px;
+	font-weight: bold;
+	color: white;
 }
 
+
+#is_selling {
+	color: #608CB7;
+
+}
 h4 {
 	text-align: center;
 }
@@ -250,6 +279,10 @@ h4 {
 .modal-header {
 		padding-top: 20px;
 		border-bottom: 1px solid #dddddddd;
+}
+
+.modal-report-header{
+	padding-top: 10px;
 }
 
 .modal-body {
@@ -412,7 +445,7 @@ h4 {
 								<c:forEach items="${ibList}" var="roomImg" varStatus="i">
 								<div class="item">
 									<div class="hotel-img">
-										<img src='<c:url value="/resources/upload${roomImg.original_file_name}" />'>
+										<img src='<c:url value="/resources/upload${roomImg.file_name}" />'>
 									</div>
 								</div>		
 								</c:forEach>
@@ -425,17 +458,14 @@ h4 {
 
 						<div class="col-md-12 hotel-single mt-4 mb-5 ftco-animate">
 							<div class="info-container">
-<%-- 								<span>${ob.is_selling } </span> --%>
-<span>
-			<c:choose>
-			<c:when test="${ob.is_selling eq 'Y'}"> 거래 가능한 매물입니다.  </c:when>
-			<c:when test="${ob.is_selling eq 'N'}"> 거래가 완료된 매물입니다. </c:when>			
-			</c:choose>	
-</span>
 								<span>원룸/월세 </span>
-<br>
-
-								
+								<br>
+								<span id="is_selling">
+									<c:choose>
+									<c:when test="${ob.is_selling eq 'Y'}"> 거래가 가능한 매물입니다. </c:when>
+									<c:when test="${ob.is_selling eq 'N'}"> 거래가 완료된 매물입니다. </c:when>
+									</c:choose>
+								</span>
 								<h2>${ob.subject }</h2>
 
 								<p class="rate mb">
@@ -676,24 +706,26 @@ h4 {
 
 
 
-<div class="contact-container" id="map-info">
-					<form action='<c:url value="/mailpro"/>' method="post">
+				<div class="contact-container" id="map-info">
+					<form action='<c:url value="/mailpro"/>' method="post" id="contact">
 					<input type="hidden" name="room_id" value="${ob.room_id}">
 					<input type="hidden" name="receiver" value="${ob.seller_id }">
+					<input type="hidden" name="" value="" id="fr-contact">
 					
 						<div class="room-contact-container">
 							<div class="col-md-12 hotel-single ftco-animate mb-5 mt-4">
 								<h4 class="mb-5">매물 문의하기 &amp; 상담예약</h4>
 								<div class="fields">
 									<div class="row">
+								
 										<div class="col-md-6">
 											<div class="form-group">
-												<input type="text" class="form-control" placeholder="이름" name="name">
+												<input type="text" id="name" class="form-control" placeholder="이름" name="name">
 											</div>
 										</div>
 										<div class="col-md-6">
 											<div class="form-group">
-												<input type="text" class="form-control" placeholder="휴대폰 번호" name="phone">
+												<input type="text" id="phone_number" class="form-control" placeholder="휴대폰 번호" name="phone">
 											</div>
 										</div>
 										<div class="col-md-12">
@@ -703,6 +735,7 @@ h4 {
 										</div>
 
 
+
 										<div class="col-md-12">
 											<div class="form-group">
 												<a class="btn btn-secondary py-3" id="contact-content" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample"> 문의할 내용 </a>
@@ -710,10 +743,12 @@ h4 {
 
 											<div class="collapse" id="collapseExample">
 												<div class="card card-body">
-													<input type="button" class="btn btn-light" id="btn01" value="이 집 볼 수 있나요?"> <input type="button" class="btn btn-light" id="btn02" value="비슷한 조건의 다른 집이 있나요?"> <input type="button" class="btn btn-light" id="btn03" value="문의 내용을 직접 입력하고 싶어요.">
+													<input type="button" class="btn btn-light" id="btn01" value="이 집 볼 수 있나요?"> 
+													<input type="button" class="btn btn-light" id="btn02" value="비슷한 조건의 다른 집이 있나요?"> 
+													<input type="button" class="btn btn-light" id="btn03" value="문의 내용을 직접 입력하고 싶어요.">
 
 													<div class="input-group">
-														<textarea class="form-control" id="contact-form" aria-label="With textarea" placeholder="문의할 내용을 직접 작성해주세요." name="content"></textarea>
+														<textarea class="form-control" id="contact-form" aria-label="With textarea" placeholder="문의할 내용을 직접 작성해주세요." maxlength="45" name="content"></textarea>
 													</div>
 
 
@@ -726,10 +761,9 @@ h4 {
 										<div class="col-md-12">
 											<div class="form-group">
 												<input type="submit" value="문의 하기" id="contact-btn" class="btn btn-primary py-3">
-												
 											</div>
-
 										</div>
+									
 									</div>
 								</div>
 							</div>
@@ -748,17 +782,21 @@ h4 {
 			 					<div class="modal-background" id="modal-report">
 										<div class="modal-content" id="modal-report">
 											<button type="button" id="btn-report-close" class="btn btn-secondary"><img src="${pageContext.request.contextPath}/resources/images/cancel.png"> </button>
-										<div class="modal-header">
+										<div class="modal-report-header">
 											<h5 class="modal-title">Report</h5>
 										</div>
 										<div class="modal-body">
 											 중개사로부터 안내받은 내용을 알려주세요.<br>
 											 바로 반영하겠습니다.
 										</div>
+										<form action='<c:url value="/reportPro" />' method="get" id="report" name="report">
+										<input type="hidden" name="room_id" value="${ob.room_id}" id="room_id">
+										<input type="hidden" name="content" value="" id="btnContent">
 										<div class="report-body">
-											 <input type="submit" class="btn btn-secondary" id="btnSoldout" value="매물이 나갔음"><br>
-											 <input type="submit" class="btn btn-secondary" id="btnDifInfo" value="표시된 정보와 다름"> 
+											 <input type="button" class="btn btn-warning" id="btnSoldout" name="content1" value="매물이 나갔음"><br>
+											 <input type="button" class="btn btn-warning" id="btnDifInfo" name="content2" value="표시된 정보와 다름"> 
 										</div>	
+										</form>
 											<div class="modal-footer">
 											
 											</div>
@@ -799,6 +837,7 @@ h4 {
 	</div>
 
 
+	<script src="${pageContext.request.contextPath}/resources/script/jquery-3.6.0.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/js/jquery.min.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/js/jquery-migrate-3.0.1.min.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/js/popper.min.js"></script>
@@ -816,7 +855,6 @@ h4 {
 	<!--   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script> -->
 	<script src="${pageContext.request.contextPath}/resources/js/google-map.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/js/main.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/script/jquery-3.6.0.js"></script>
 	<script type="text/javascript">
 		$(function() {
 			//문의하기 - [문의내용] 클릭
@@ -855,6 +893,32 @@ h4 {
 			$('#btn03').show();
 			$('#contact-form').hide();
 		});
+		
+		$('#btn01').click(function() {
+			$(this).addClass('active');
+			$('#btn02').removeClass('active');
+		})
+		
+		$('#btn02').click(function() {
+			$(this).addClass('active');
+			$('#btn01').removeClass('active');
+		})
+		
+		// 문의하기 - 문의 내용 선택시 내용 변경
+		$('#btn01').click(function() {
+		$('#contact-form').html($('#btn01').val());
+		
+		});
+		
+		
+		$('#btn02').click(function() {
+		$('#contact-form').html($('#btn02').val());
+		
+		});
+
+
+		
+		
 
 		// 목록 - [call] 클릭
 		//     	$('#call').click(function () {    	
@@ -869,6 +933,16 @@ h4 {
 		//     		}
 
 		// 		});
+		// 신고하기 - [신고하기] 클릭 후 모달창
+		$(document).ready(function() {
+			$('#btnReport').click(function() {
+				$('#modal-report').show();
+			});
+			
+			$('#btn-report-close').click(function() {
+				$('#modal-report').hide();
+			});
+		});
 
 		// 전화하기 - [call] 클릭 후 모달창
 		$(document).ready(function() {
@@ -882,18 +956,28 @@ h4 {
 		});
 		
 		
-		// 신고하기 - [신고하기] 클릭 후 모달창
+		//신고하기 
+		
 		$(document).ready(function() {
-			$('#btnReport').click(function() {
-				$('#modal-report').show();
+			$('#btnSoldout').click(function() {
+				$('#btnContent').val("매물이 나갔음");
+				$('#room_id').val();
+				$('#report').submit();
 			});
 			
-			$('#btn-report-close').click(function() {
-				$('#modal-report').hide();
+			
+			$('#btnDifInfo').click(function() {
+				$('#btnContent').val("표시된 정보와 다름");
+				$('#room_id').val();
+				$('#report').submit();
+				
 			});
-		});
+		})		
+		
+		
 		
 
+		
 		$(document).ready(function() {
 
 			// 검색 조건 - 구조 [전체] 클릭
@@ -1057,6 +1141,27 @@ h4 {
 		}
 	</script>
 
+	<script type="text/javascript">
+		
+// 		$(document).ready(function() {
+			
+// 			$('#contact-btn').click(function() {
+// 				alert("클릭 성공");
+// 				$.ajax('<c:url value="/mailPro" />',{
+// 					alert("클릭 성공");
+// 					data : {name:$('#name').val(),phone_number:$('#phone_number').val()},
+// 					success : function(data) {
+// 						alert("문의가 접수되었습니다.");
+// 					}
+// 				});
+// 			});
+// 		});
+		
+		
+
+	
+	
+	</script>
 
 
 </body>

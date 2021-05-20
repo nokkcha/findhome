@@ -234,6 +234,12 @@ public class BoardServiceImpl implements BoardService{
 	public List<qnaBean> qnaLatestBoard(String seller_id) {
 		return boardDAO.qnaLatestBoard(seller_id);
 	}
+	
+	@Override
+	public void insertReport(qnaBean qb) {
+		boardDAO.insertReport(qb);
+		
+	}
 
 	@Override
 	public List<qnaBean> getQnaBoard(PageBean pb) {

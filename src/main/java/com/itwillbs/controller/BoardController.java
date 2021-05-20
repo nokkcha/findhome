@@ -356,7 +356,7 @@ public class BoardController {
 	@RequestMapping(value = "/updateSalesState", method = RequestMethod.GET)
 	public String updateSalesState(HttpServletRequest request, OneRoomBean ob) {
 		
-		ob.setIs_selling('N');
+		ob.setIs_selling("N");
 		boardService.updateSalesState(ob);
 
 		return "redirect:salesList";
@@ -583,6 +583,7 @@ public class BoardController {
 		qnaBean qb = new qnaBean();
 		qb.setContent(request.getParameter("content"));
 		qb.setPhone_number(phone);
+		qb.setName(name);
 		qb.setRoom_id(Integer.parseInt(room_id));
 
 		boardService.insertqna(qb);
@@ -647,5 +648,24 @@ public class BoardController {
 		}
 		return entity;
 	}
+	
+	
+	@RequestMapping(value = "/reportPro", method = RequestMethod.GET)
+	public String reportPro(qnaBean qb) {
+		
+
+//		System.out.println(qb.getRoom_id());
+		try {
+			
+			boardService.insertReport(qb);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return "redirect:/detailView";
+	
+	}
 
 }
+

@@ -5,6 +5,7 @@ public class qnaBean {
 	private int qna_id;
 	private String content;
 	private String phone_number;
+	private String name;
 	private int room_id;
 	
 	
@@ -33,6 +34,15 @@ public class qnaBean {
 	public void setRoom_id(int room_id) {
 		this.room_id = room_id;
 	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	
+	
 
 
 

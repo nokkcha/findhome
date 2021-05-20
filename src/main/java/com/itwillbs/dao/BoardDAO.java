@@ -35,6 +35,7 @@ public interface BoardDAO {
 		List<LinkedHashMap<String, Object>> selectOneRoomThumbImg();
 		
 		public void insertqna(qnaBean qb);
+		public void insertReport(qnaBean qb);
 
 		public List<OneRoomBean> sellerLatestBoard(String seller_id);
 		public List<OneRoomBean> getSalesList(PageBean pb);

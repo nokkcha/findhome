@@ -178,5 +178,9 @@ public class BoardDAOImpl implements BoardDAO{
 		sqlSession.delete(namespace+".deleteRoomImage", room_id);
 	}
 
-
+	@Override
+	public void insertReport(qnaBean qb) {
+		sqlSession.insert(namespace+".insertReport",qb);
+		
+	}
 }

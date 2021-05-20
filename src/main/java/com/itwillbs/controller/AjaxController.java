@@ -3,13 +3,17 @@ package com.itwillbs.controller;
 import java.net.URLEncoder;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import com.itwillbs.domain.MemberBean;
+import com.itwillbs.domain.qnaBean;
+import com.itwillbs.service.BoardService;
 import com.itwillbs.service.MemberService;
 
 @RestController
@@ -17,6 +21,8 @@ public class AjaxController {
 	
 	@Inject
 	private MemberService memberService;
+	
+	
 	
 	@RequestMapping(value = "/zzim", method = RequestMethod.GET)
 	public ResponseEntity<String> zzim(MemberBean mb, HttpSession session) {
@@ -53,6 +59,6 @@ public class AjaxController {
 		}
 		return entity;
 	}
-
-
+	
+	
 }
