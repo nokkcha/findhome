@@ -141,5 +141,15 @@ public class BoardDAOImpl implements BoardDAO{
 		sqlSession.update(namespace+".updateSalesState", ob);
 	}
 
+	@Override
+	public void insertReport(qnaBean qb) {
+		sqlSession.insert(namespace+".insertReport",qb);
+		
+	}
+
+
+	
+	
+
 
 }

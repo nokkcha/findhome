@@ -211,6 +211,12 @@
 		`room_id`) VALUES (#{content},
 		#{phone_number}, #{room_id})
 	</insert>
+	
+	
+	<insert id="insertReport">
+		insert into report (content,room_id)
+		values (#{content},#{room_id})
+	</insert> 
 
 </mapper>
 

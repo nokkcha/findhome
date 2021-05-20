@@ -230,6 +230,14 @@ public class BoardServiceImpl implements BoardService{
 		
 	}
 
+	@Override
+	public void insertReport(qnaBean qb) {
+		boardDAO.insertReport(qb);
+		
+	}
+	
+	
+
 
 
 }

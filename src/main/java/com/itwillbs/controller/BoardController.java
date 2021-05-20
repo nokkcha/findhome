@@ -543,5 +543,24 @@ public class BoardController {
 		}
 		return entity;
 	}
+	
+	
+	@RequestMapping(value = "/reportPro", method = RequestMethod.GET)
+	public String reportPro(qnaBean qb) {
+		
+
+//		System.out.println(qb.getRoom_id());
+		try {
+			
+			boardService.insertReport(qb);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return "redirect:/detailView";
+	
+	}
 
 }
+
