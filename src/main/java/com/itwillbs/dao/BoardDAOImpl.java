@@ -141,5 +141,37 @@ public class BoardDAOImpl implements BoardDAO{
 		sqlSession.update(namespace+".updateSalesState", ob);
 	}
 
+	@Override
+	public List<qnaBean> qnaLatestBoard(String seller_id) {
+		return sqlSession.selectList(namespace+".qnaLatestBoard", seller_id);
+	}
+
+	@Override
+	public List<qnaBean> getQnaBoard(PageBean pb) {
+		return sqlSession.selectList(namespace+".getQnaBoard", pb);
+	}
+
+	@Override
+	public int getQnaBoardCount(PageBean pb) {
+		return sqlSession.selectOne(namespace+".getQnaBoardCount", pb);
+	}
+
+	@Override
+	public void deleteBoard(OneRoomBean ob) {
+		sqlSession.delete(namespace+".deleteBoard", ob);
+		
+	}
+
+	@Override
+	public OneRoomBean boardCheck(OneRoomBean ob) {
+		return sqlSession.selectOne(namespace+".boardCheck", ob);
+		
+	}
+
+	@Override
+	public void updateRoom(OneRoomBean ob) {
+		sqlSession.update(namespace+".updateRoom", ob);
+	}
+
 
 }

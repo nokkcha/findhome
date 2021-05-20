@@ -77,6 +77,56 @@ public class BoardController {
 
 		return "redirect:/";
 	}
+	
+	
+	@RequestMapping(value = "/updateRoom",method = RequestMethod.GET )
+	public String sellRoom(HttpServletRequest request, Model model, HttpSession session) {
+		try {
+			String seller_id = (String)session.getAttribute("seller_id");
+				
+			if ((String) request.getParameter("room_id") == null) {
+				model.addAttribute("msg", "잘못된 요청입니다.");
+				return "msg";
+			}
+				if(seller_id ==null) {
+				model.addAttribute("msg", "잘못된 요청입니다.");
+				return "msg";
+					
+			}
+			
+			int room_id = Integer.parseInt(request.getParameter("room_id"));
+
+			OneRoomBean ob = boardService.getRoom(room_id);
+			List<ImageBean> ibList = boardService.getImage(room_id);
+			
+			model.addAttribute("ob", ob);
+			model.addAttribute("ibList", ibList);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return "updateRoom";
+	}
+	
+	@RequestMapping(value = "updateRoomPro", method = RequestMethod.POST)
+	public String updateRoomPro(Model model,HttpServletRequest request, OneRoomBean ob) {
+		
+		OneRoomBean obck = boardService.boardCheck(ob);
+		
+		if (obck != null) {
+			boardService.updateRoom(ob);
+			return "redirect:salesList";
+		} else {
+			model.addAttribute("msg", "입력하신 정보가 틀립니다.");
+			return "updateRoom";
+		}
+	}
+	
+	
+	
+	
+	
 
 	@RequestMapping(value = "/findRooms", method = RequestMethod.GET)
 	public String list(HttpServletRequest request, Model model, HttpSession session) {
@@ -234,7 +284,7 @@ public class BoardController {
 	public String member_seller(HttpServletRequest request, Model model, HttpSession session) {
 		String seller_id = (String) session.getAttribute("seller_id");
 		if (seller_id == null) {
-			return "/login_choice";
+			return "/login";
 		}
 
 		OneRoomBean ob = new OneRoomBean();
@@ -249,6 +299,9 @@ public class BoardController {
 
 		List<OneRoomBean> roomList = boardService.sellerLatestBoard(seller_id);
 		model.addAttribute("roomList", roomList);
+		
+		List<qnaBean> qnaList = boardService.qnaLatestBoard(seller_id);
+		model.addAttribute("qnaList", qnaList);
 
 		return "member_seller";
 	}
@@ -267,7 +320,7 @@ public class BoardController {
 		pb.setSeller_id(seller_id);
 
 		if (seller_id == null) {
-			return "/login_choice";
+			return "/login";
 		}
 		
 		OneRoomBean ob = new OneRoomBean();
@@ -299,6 +352,21 @@ public class BoardController {
 		return "redirect:salesList";
 	}
 	
+	@RequestMapping(value = "/deleteBoard", method = RequestMethod.GET)
+	public String deleteBoard(HttpSession session, Model model, OneRoomBean ob) {
+		String seller_id = (String)session.getAttribute("seller_id");
+		ob.setSeller_id(seller_id);
+		
+		OneRoomBean obck = boardService.boardCheck(ob);
+		
+		if (obck != null) {
+			boardService.deleteBoard(ob);
+		} else {
+			model.addAttribute("msg", "입력하신 정보가 틀립니다.");
+		}
+		return "redirect:salesList";
+
+	}
 	
 	
 	@RequestMapping(value = "/soldList", method = RequestMethod.GET)
@@ -315,7 +383,7 @@ public class BoardController {
 		pb.setSeller_id(seller_id);
 		
 		if (seller_id == null) {
-			return "/login_choice";
+			return "/login";
 		}
 		
 		pb.setIs_selling('Y');
@@ -325,14 +393,39 @@ public class BoardController {
 		pb.setIs_selling('N');
 		int soldCount = boardService.getSalesCount(pb);
 		model.addAttribute("soldCount", soldCount);
+		
 		List<OneRoomBean> roomList = boardService.getSalesList(pb);
-		
 		pb.setCount(boardService.getSalesCount(pb));
-		
 		model.addAttribute("roomList", roomList);
 		model.addAttribute("pb", pb);
 		
 		return "soldList";
+	}
+	
+	@RequestMapping(value = "/qnaList", method = RequestMethod.GET)
+	public String qnaList(HttpServletRequest request, Model model, HttpSession session) {
+		PageBean pb = new PageBean();
+		if (request.getParameter("pageNum") != null) {
+			pb.setPageNum(request.getParameter("pageNum"));
+		} else {
+			pb.setPageNum("1");
+		}
+		pb.setPageSize(15);
+		
+		String seller_id = (String) session.getAttribute("seller_id");
+		pb.setSeller_id(seller_id);
+		
+		if (seller_id == null) {
+			return "/login";
+		}
+		
+		List<qnaBean> qnaList = boardService.getQnaBoard(pb);
+		pb.setCount(boardService.getQnaBoardCount(pb));
+		model.addAttribute("qnaList", qnaList);
+		model.addAttribute("pb", pb);
+		
+		
+		return "qnaList";
 	}
 
 //	http://localhost:8080/myweb2/board/fwrite

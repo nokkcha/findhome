@@ -230,6 +230,43 @@ public class BoardServiceImpl implements BoardService{
 		
 	}
 
+	@Override
+	public List<qnaBean> qnaLatestBoard(String seller_id) {
+		return boardDAO.qnaLatestBoard(seller_id);
+	}
+
+	@Override
+	public List<qnaBean> getQnaBoard(PageBean pb) {
+		// #{startRow} 계산
+		pb.setCurrentPage(Integer.parseInt(pb.getPageNum()));
+		// int startRow=(currentPage-1)*pageSize+1;
+		// 디비 startRow-1
+		pb.setStartRow((pb.getCurrentPage()-1)*pb.getPageSize());
+		
+		return boardDAO.getQnaBoard(pb);
+	}
+
+	@Override
+	public int getQnaBoardCount(PageBean pb) {
+		return boardDAO.getQnaBoardCount(pb);
+	}
+
+	@Override
+	public void deleteBoard(OneRoomBean ob) {
+		boardDAO.deleteBoard(ob);
+		
+	}
+
+	@Override
+	public OneRoomBean boardCheck(OneRoomBean ob) {
+		return boardDAO.boardCheck(ob);
+	}
+
+	@Override
+	public void updateRoom(OneRoomBean ob) {
+		boardDAO.updateRoom(ob);
+	}
+
 
 
 }

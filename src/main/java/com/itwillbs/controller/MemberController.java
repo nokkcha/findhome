@@ -67,12 +67,6 @@ public class MemberController {
 	public String login() {
 		return "login";
 	}
-	
-	@RequestMapping(value = "/seller_login", method = RequestMethod.GET)
-	public String seller_login() {
-		return "seller_login";
-	}
-	
 
 
 
@@ -97,7 +91,7 @@ public class MemberController {
 
 	}
 
-	@RequestMapping(value = "/seller_loginPro", method = RequestMethod.POST)
+	@RequestMapping(value = "/loginPro2", method = RequestMethod.POST)
 	public String loginPro2(MemberBean mb, HttpSession session, Model model) {
 
 		MemberBean mb2 = memberService.userCheck2(mb);
@@ -146,7 +140,7 @@ public class MemberController {
 
 		session.invalidate();
 
-		return "redirect:/login_choice";
+		return "redirect:/login";
 	}
 
 	@RequestMapping(value = "/memberDelete", method = RequestMethod.GET)
