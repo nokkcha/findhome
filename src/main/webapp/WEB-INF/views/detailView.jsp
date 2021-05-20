@@ -142,6 +142,11 @@
 	color: white;
 }
 
+
+#is_selling {
+	color: #608CB7;
+
+}
 h4 {
 	text-align: center;
 }
@@ -453,8 +458,14 @@ h4 {
 
 						<div class="col-md-12 hotel-single mt-4 mb-5 ftco-animate">
 							<div class="info-container">
-								<span>${ob.is_selling } </span>
 								<span>원룸/월세 </span>
+								<br>
+								<span id="is_selling">
+									<c:choose>
+									<c:when test="${ob.is_selling eq 'Y'}"> 거래가 가능한 매물입니다. </c:when>
+									<c:when test="${ob.is_selling eq 'N'}"> 거래가 완료된 매물입니다. </c:when>
+									</c:choose>
+								</span>
 								<h2>${ob.subject }</h2>
 
 								<p class="rate mb">
@@ -695,24 +706,26 @@ h4 {
 
 
 
-<div class="contact-container" id="map-info">
-					<form action='<c:url value="/mailpro"/>' method="post">
+				<div class="contact-container" id="map-info">
+					<form action='<c:url value="/mailpro"/>' method="post" id="contact">
 					<input type="hidden" name="room_id" value="${ob.room_id}">
 					<input type="hidden" name="receiver" value="${ob.seller_id }">
+					<input type="hidden" name="" value="" id="fr-contact">
 					
 						<div class="room-contact-container">
 							<div class="col-md-12 hotel-single ftco-animate mb-5 mt-4">
 								<h4 class="mb-5">매물 문의하기 &amp; 상담예약</h4>
 								<div class="fields">
 									<div class="row">
+								
 										<div class="col-md-6">
 											<div class="form-group">
-												<input type="text" class="form-control" placeholder="이름" name="name">
+												<input type="text" id="name" class="form-control" placeholder="이름" name="name">
 											</div>
 										</div>
 										<div class="col-md-6">
 											<div class="form-group">
-												<input type="text" class="form-control" placeholder="휴대폰 번호" name="phone">
+												<input type="text" id="phone_number" class="form-control" placeholder="휴대폰 번호" name="phone">
 											</div>
 										</div>
 										<div class="col-md-12">
@@ -722,6 +735,7 @@ h4 {
 										</div>
 
 
+
 										<div class="col-md-12">
 											<div class="form-group">
 												<a class="btn btn-secondary py-3" id="contact-content" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample"> 문의할 내용 </a>
@@ -729,10 +743,12 @@ h4 {
 
 											<div class="collapse" id="collapseExample">
 												<div class="card card-body">
-													<input type="button" class="btn btn-light" id="btn01" value="이 집 볼 수 있나요?"> <input type="button" class="btn btn-light" id="btn02" value="비슷한 조건의 다른 집이 있나요?"> <input type="button" class="btn btn-light" id="btn03" value="문의 내용을 직접 입력하고 싶어요.">
+													<input type="button" class="btn btn-light" id="btn01" value="이 집 볼 수 있나요?"> 
+													<input type="button" class="btn btn-light" id="btn02" value="비슷한 조건의 다른 집이 있나요?"> 
+													<input type="button" class="btn btn-light" id="btn03" value="문의 내용을 직접 입력하고 싶어요.">
 
 													<div class="input-group">
-														<textarea class="form-control" id="contact-form" aria-label="With textarea" placeholder="문의할 내용을 직접 작성해주세요." name="content"></textarea>
+														<textarea class="form-control" id="contact-form" aria-label="With textarea" placeholder="문의할 내용을 직접 작성해주세요." maxlength="45" name="content"></textarea>
 													</div>
 
 
@@ -745,10 +761,9 @@ h4 {
 										<div class="col-md-12">
 											<div class="form-group">
 												<input type="submit" value="문의 하기" id="contact-btn" class="btn btn-primary py-3">
-												
 											</div>
-
 										</div>
+									
 									</div>
 								</div>
 							</div>
@@ -888,7 +903,21 @@ h4 {
 			$(this).addClass('active');
 			$('#btn01').removeClass('active');
 		})
-		// 문의하기 - 선택시 클릭 유지
+		
+		// 문의하기 - 문의 내용 선택시 내용 변경
+		$('#btn01').click(function() {
+		$('#contact-form').html($('#btn01').val());
+		
+		});
+		
+		
+		$('#btn02').click(function() {
+		$('#contact-form').html($('#btn02').val());
+		
+		});
+
+
+		
 		
 
 		// 목록 - [call] 클릭
@@ -1112,7 +1141,27 @@ h4 {
 		}
 	</script>
 
+	<script type="text/javascript">
+		
+// 		$(document).ready(function() {
+			
+// 			$('#contact-btn').click(function() {
+// 				alert("클릭 성공");
+// 				$.ajax('<c:url value="/mailPro" />',{
+// 					alert("클릭 성공");
+// 					data : {name:$('#name').val(),phone_number:$('#phone_number').val()},
+// 					success : function(data) {
+// 						alert("문의가 접수되었습니다.");
+// 					}
+// 				});
+// 			});
+// 		});
+		
+		
 
+	
+	
+	</script>
 
 
 </body>

@@ -479,6 +479,7 @@ public class BoardController {
 		qnaBean qb = new qnaBean();
 		qb.setContent(request.getParameter("content"));
 		qb.setPhone_number(phone);
+		qb.setName(name);
 		qb.setRoom_id(Integer.parseInt(room_id));
 
 		boardService.insertqna(qb);
