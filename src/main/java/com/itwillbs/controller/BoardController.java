@@ -102,6 +102,8 @@ public class BoardController {
 			model.addAttribute("ob", ob);
 			model.addAttribute("ibList", ibList);
 
+
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -113,6 +115,14 @@ public class BoardController {
 	public String updateRoomPro(Model model,HttpServletRequest request, OneRoomBean ob) {
 		
 		OneRoomBean obck = boardService.boardCheck(ob);
+		
+		String[] fileList = ob.getFileList();
+		for (String string : fileList) {
+			System.out.println("FileList : " + string);
+		}
+
+		ob.setInclude_fees(ob.getInclude_feesArray());
+		ob.setInclude_options(ob.getInclude_optionsArray());
 		
 		if (obck != null) {
 			boardService.updateRoom(ob);
@@ -545,6 +555,7 @@ public class BoardController {
 			// ob를 담아서 detailView.jsp 이동
 			model.addAttribute("ob", ob);
 			model.addAttribute("ibList", ibList);
+
 
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -190,7 +190,7 @@
 	</select>
 	
 	
-	<update id="updateRoom" useGeneratedKeys="true" keyProperty="room_id">
+	<update id="updateRoom">
 		update one_room set
 		address=#{address},
 		deposit=#{deposit},
