@@ -163,7 +163,7 @@ public class OneRoomBean {
 
 	private String seller_id; // "판매자 ID",
 
-	private String is_selling = "N"; // "판매중 여부(Y,N)
+	private String is_selling = "Y"; // "판매중 여부(Y,N)
 
 	private String search;
 
