@@ -51,8 +51,12 @@
 	<insert id="insertRoomImg">
 		INSERT INTO `one_room_pic` (`id`, `room_id`,
 		`file_name`, 'original_file_name') VALUES (#{id},
+<<<<<<< HEAD
 		#{room_id},
 		#{file_name}, #{original_file_name})
+=======
+		#{room_id}, #{file_name}, #{original_file_name})
+>>>>>>> branch 'master' of https://github.com/imrutel/findhome.git
 	</insert>
 
 	<insert id="insertRoomImages" parameterType="java.util.List">
