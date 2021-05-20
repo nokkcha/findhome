@@ -634,11 +634,12 @@
 				var html_td = '<td style="background-color: #dedede;" >';
 
 				html_td += '<input type="file" id="file'+i+'" class="file_list" hidden="" style="display: none;" accept="image/jpeg,image/png" />';
-				
+
 				if (arr[i-1] != null) {
 					var imgSrc = "${pageContext.request.contextPath}/resources/upload" + arr[i-1].file_name;
 					html_td += '<img id="room_img'+i+'" src="'+imgSrc+'" class="room_img_list"></div><div class="back">'
 					$(".fileList").eq(i-1).attr("value", arr[i-1].file_name);
+
 				} else {
 					html_td += '<img id="room_img'+i+'" src="" class="room_img_list"></div><div class="back">'
 				}
