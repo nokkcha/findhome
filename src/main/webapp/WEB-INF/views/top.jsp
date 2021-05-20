@@ -27,13 +27,13 @@
 				<div class="collapse navbar-collapse" id="main_nav">
 					<ul class="navbar-nav">
 						<!-- 						<li class="nav-item dropdown"><a class="nav-link  dropdown-toggle" href="#" data-bs-toggle="dropdown"> 원룸 </a> -->
-						<li class="nav-item dropdown"><a class="nav-link" href="#" data-bs-toggle="dropdown"> 원룸 </a>
+						<li class="nav-item dropdown"><a class="nav-link" href="./findRooms" data-bs-toggle="dropdown"> 원룸 </a>
 							<ul class="dropdown-menu">
 								<li><a class="dropdown-item" href="./findRooms"> 방 찾기 </a></li>
 								<li><a class="dropdown-item" href="./findRooms-zzim"> 찜한 매물 </a></li>
 								<li><a class="dropdown-item" href="./sellRoom?category=OneRoom"> 방 내놓기 </a></li>
 							</ul></li>
-						<li class="nav-item dropdown"><a class="nav-link" href="#" data-bs-toggle="dropdown"> 오피스텔 </a>
+						<li class="nav-item dropdown"><a class="nav-link" href="./findOfficetel" data-bs-toggle="dropdown"> 오피스텔 </a>
 							<ul class="dropdown-menu">
 								<li><a class="dropdown-item" href="./findOfficetel"> 방 찾기 </a></li>
 								<li><a class="dropdown-item" href="./findRooms-zzim"> 찜한 매물 </a></li>
