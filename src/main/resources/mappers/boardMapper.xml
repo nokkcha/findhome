@@ -276,6 +276,10 @@
 		`room_id`) VALUES (#{content},
 		#{phone_number}, #{room_id})
 	</insert>
+	
+	<delete id="deleteRoomImage">
+		delete from one_room_pic where room_id=#{room_id}
+	</delete>
 
 </mapper>
 

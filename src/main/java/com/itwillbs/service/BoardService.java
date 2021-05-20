@@ -51,5 +51,6 @@ public interface BoardService {
 	public void deleteBoard(OneRoomBean ob);
 	public OneRoomBean boardCheck(OneRoomBean ob);
 	public void updateRoom(OneRoomBean ob);
+	public void deleteRoomImage(int room_id);
 
 }

@@ -292,11 +292,16 @@ public class BoardServiceImpl implements BoardService{
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("list", list);
 		
+		deleteRoomImage(ob.getRoom_id());
 		insertRoomImags(map);
 		
 		boardDAO.updateRoom(ob);
 	}
 
-
+	@Override
+	public void deleteRoomImage(int room_id) {
+		// TODO Auto-generated method stub
+		boardDAO.deleteRoomImage(room_id);
+	}
 
 }
