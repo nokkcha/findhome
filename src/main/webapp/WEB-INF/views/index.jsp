@@ -132,17 +132,48 @@ body {
 					</div>
 
 					<div class="block-17 my-4">
-						<form action="" method="post" class="d-block d-flex">
+<!-- 						<form action="" method="post" class="d-block d-flex"> -->
+<!-- findRooms-search?category=OneRoom -->
+<!-- &search=%EB%B6%80%EC%82%B0 -->
+<!-- &room_all=%EC%A0%84%EC%B2%B4 -->
+<!-- &floor_all=%EC%A0%84%EC%B2%B4 -->
+<!-- &deposit_min=0 -->
+<!-- &deposit_max=50000 -->
+<!-- &monthly_rent_min=0 -->
+<!-- &monthly_rent_max=500 -->
+							<form  class="d-block d-flex" id="searchForm" action='<c:url value="findRooms-search"/>'>
 							<div class="fields d-block d-flex">
-								<input type="text" class="form-control" id="address"
+						
+								<input type="hidden" value="OneRoom" id="category" name="category">
+								<input type="text" class="form-control" id="address" name="search"
 									placeholder="원하시는 지역명, 지하철역을 입력해주세요">
+									
+									<input type="checkbox" name="room_all" value="전체" class="cktag" id="rtypeAll" 
+		              hidden="" checked> 
+		              						<input type="checkbox" name="floor_all" value="전체" class="cktag" id="ftypeAll"
+		             	   hidden="" checked> 
+		             	   
+		             	   <input oninput = 'ShowSliderValue1(this.value)' style = "width:100%;" class="slider_range1" id="rangeTest"
+		             	   hidden=""
+				  			 type="range" step="100" value="0" min="0" max="50000" name="deposit_min" ></input>
+				  			 <input oninput = 'ShowSliderValue2(this.value)' style = "width:100%;" class="slider_range2"
+				  			 hidden="" 
+							type="range" step="100" value="50000" min="0" max="50000" name="deposit_max" ></input>
+							
+							<input oninput = 'ShowSliderValue3(this.value)' style = "width:100%;" class="slider_range3"
+							hidden="" 
+					  			type="range" step="10" value="0" min="0" max="500" name="monthly_rent_min"></input>
+					  			<input oninput = 'ShowSliderValue4(this.value)' style = "width:100%;" class="slider_range4"
+					  			hidden="" 
+								type="range" step="10"value="500" min="0" max="500" name="monthly_rent_max"></input>
+		              
 							</div>
 							<input type="submit" class="search-submit btn btn-primary"
 								value="Search">
 						</form>
 					</div>
 					
-					<input type="text" id="searchResult" readonly="readonly" style="" value="">
+<!-- 					<input type="text" id="searchResult" readonly="readonly" style="" value=""> -->
 
 				</div>
 			</div>
@@ -438,7 +469,10 @@ body {
 										$("#address").val('');
 										$("#address").attr("placeholder",
 												"원하시는 지역명, 지하철역을 입력해주세요");
-
+										
+										$("#category").val('OneRoom');	// 검색 카테고리 원룸으로 설정
+										$('#searchForm').attr("action","<c:url value="findRooms-search" />");
+										
 										if ($(this).hasClass('btn-default'))
 											$(this).removeClass('btn-default');
 										if (!$(this).hasClass('btn-primary'))
@@ -459,7 +493,10 @@ body {
 												$("#address")
 														.attr("placeholder",
 																"원하시는 지역명, 지하철역, 오피스텔명을 입력해주세요");
-
+												
+												$("#category").val('Officetel');	// 검색 카테고리 오피스텔로 설정
+												$('#searchForm').attr("action","<c:url value="findOfficetel-search" />");
+												
 												if ($(this).hasClass(
 														'btn-default'))
 													$(this).removeClass(
