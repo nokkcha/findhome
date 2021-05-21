@@ -621,7 +621,6 @@ h4 {
 									<div class="room-detail-content-option-item-name">${list.key}</div></td>
 									
 								</div>
-								
 							</c:forEach>
 							</tr>
 							</table>
@@ -789,7 +788,7 @@ h4 {
 											 중개사로부터 안내받은 내용을 알려주세요.<br>
 											 바로 반영하겠습니다.
 										</div>
-										<form action='<c:url value="/reportPro" />' method="get" id="report" name="report">
+										<form action='<c:url value="/reportPro" />' id="report" name="report">
 										<input type="hidden" name="room_id" value="${ob.room_id}" id="room_id">
 										<input type="hidden" name="content" value="" id="btnContent">
 										<div class="report-body">
@@ -956,23 +955,7 @@ h4 {
 		});
 		
 		
-		//신고하기 
-		
-		$(document).ready(function() {
-			$('#btnSoldout').click(function() {
-				$('#btnContent').val("매물이 나갔음");
-				$('#room_id').val();
-				$('#report').submit();
-			});
-			
-			
-			$('#btnDifInfo').click(function() {
-				$('#btnContent').val("표시된 정보와 다름");
-				$('#room_id').val();
-				$('#report').submit();
-				
-			});
-		})		
+	
 		
 		
 		
@@ -1141,7 +1124,7 @@ h4 {
 		}
 	</script>
 
-	<script type="text/javascript">
+	<script>
 		
 // 		$(document).ready(function() {
 			
@@ -1149,17 +1132,65 @@ h4 {
 // 				alert("클릭 성공");
 // 				$.ajax('<c:url value="/mailPro" />',{
 // 					alert("클릭 성공");
-// 					data : {name:$('#name').val(),phone_number:$('#phone_number').val()},
+// 					data : {name:$('#name').val(),
+// 							phone_number:$('#phone_number').val(),
+// 							content:$('#fr-contact').val()
+// 							},
 // 					success : function(data) {
 // 						alert("문의가 접수되었습니다.");
-// 					}
+// 						location.href= "/detailView"
+// 					},
+					
+// 					 error:function(request,status,error){
+// 					        alert("code = "+ request.status + " message = " + request.responseText + " error = " + error); // 실패 시 처리
+// 					 }
+					
+					
 // 				});
 // 			});
 // 		});
 		
-		
-
+	</script>	
 	
+	<script>
+
+			$(document).ready(function() {
+				$('#btnSoldout').click(function() {
+					$.ajax('<c:url value="/reportPro"/>',
+							{
+								type : "post",
+								data : {content:$('#btnSoldout').val(),
+										room_id:$('#room_id').val()},
+								success : function (data) {
+									alert("신고가 접수되었습니다.");
+								},
+			 					 error:function(request,status,error){
+	 					        alert("code = "+ request.status + " message = " + request.responseText + " error = " + error); // 실패 시 처리
+	 					 }
+								
+						
+							});
+					
+				});
+				
+				$('#btnDifInfo').click(function() {
+					$.ajax('<c:url value="/reportPro"/>',
+							{
+								type : "post",
+								data : {content:$('#btnDifInfo').val(),
+										room_id:$('#room_id').val()},
+								success : function (data) {
+									alert("신고가 접수되었습니다.");
+								},
+			 					 error:function(request,status,error){
+	 					        alert("code = "+ request.status + " message = " + request.responseText + " error = " + error); // 실패 시 처리
+	 					 }
+								
+						
+							});
+					
+				});
+		});
 	
 	</script>
 

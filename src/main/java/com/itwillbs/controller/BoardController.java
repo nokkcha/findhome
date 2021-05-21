@@ -543,7 +543,7 @@ public class BoardController {
 	public String detailView(HttpServletRequest request, Model model) {
 		try {
 			if ((String) request.getParameter("room_id") == null) {
-				model.addAttribute("msg", "잘못된 요청입니다.");
+				model.addAttribute("msg", "잘못된 요청입니다22.");
 				// /WEB-INF/views/member/msg.jsp
 				return "msg";
 			}
@@ -649,21 +649,27 @@ public class BoardController {
 		return entity;
 	}
 	
-	
-	@RequestMapping(value = "/reportPro", method = RequestMethod.GET)
-	public String reportPro(qnaBean qb) {
+	@ResponseBody
+	@RequestMapping(value = "/reportPro", method = RequestMethod.POST)
+	public ResponseEntity<String> reportPro(qnaBean qb,HttpSession session) {
+		ResponseEntity<String> entity = null;
 		
-
-//		System.out.println(qb.getRoom_id());
 		try {
-			
+			String room_id = (String)session.getAttribute("room_id");
 			boardService.insertReport(qb);
+			System.out.println(room_id);
 			
+			entity = new ResponseEntity<String>(HttpStatus.OK);
 		} catch (Exception e) {
 			e.printStackTrace();
+			entity = new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
 		}
+//		System.out.println(qb.getRoom_id());
+
+
+
 		
-		return "redirect:/detailView";
+		return entity;
 	
 	}
 
