@@ -70,6 +70,7 @@ public class BoardController {
 		}
 
 		System.out.println("방등록 카테고리 : " + bb.getCategory());
+		System.out.println("프리미엄 등록 기간 : " + bb.getPremium_expiry_date());
 		bb.setInclude_fees(bb.getInclude_feesArray());
 		bb.setInclude_options(bb.getInclude_optionsArray());
 
@@ -671,6 +672,16 @@ public class BoardController {
 		
 		return entity;
 	
+	}
+	
+	@RequestMapping(value = "/sellRoom/payPro", method = RequestMethod.GET)
+	public String payPro(OneRoomBean ob) {
+		
+		System.out.println("프리미엄 등록 기간 : " + ob.getPremium_expiry_date());
+		
+		boardService.insertRoom(ob);
+
+		return "redirect:/";
 	}
 
 }

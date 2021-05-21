@@ -1,5 +1,6 @@
 package com.itwillbs.domain;
 
+import java.sql.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -176,6 +177,8 @@ public class OneRoomBean {
 	private int deposit_max;
 	
 	private String category = "OneRoom"; // OneRoom, Offi
+	
+	private String premium_expiry_date;
 
 	@Override
 	public String toString() {

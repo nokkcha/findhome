@@ -193,6 +193,6 @@ public class BoardDAOImpl implements BoardDAO{
 	@Override
 	public List<LinkedHashMap<String, Object>> selectThumbImage(String category) {
 		// TODO Auto-generated method stub
-		return sqlSession.selectList(namespace+".selectThumbImage");
+		return sqlSession.selectList(namespace+".selectThumbImage", category);
 	}
 }

@@ -30,7 +30,7 @@
 		`subject`,
 		`content`,
 		`phone_number`,
-		`seller_id`, `category`) VALUES (
+		`seller_id`, `category`, `premium_expiry_date`) VALUES (
 		#{address},
 		#{deposit},
 		#{monthly_rent}, #{room_type}, #{fees},
@@ -45,7 +45,7 @@
 		#{parking},
 		#{elevator}, #{m_date}, #{subject},
 		#{content},
-		#{phone_number}, #{seller_id}, #{category})
+		#{phone_number}, #{seller_id}, #{category}, #{premium_expiry_date} )
 	</insert>
 
 	<insert id="insertRoomImg">
