@@ -5,6 +5,36 @@
 <html lang="en">
   <head>
     <title>DirEngine - Free Bootstrap 4 Template by Colorlib</title>
+    <style type="text/css">
+    	
+#answerFr {
+	justify-content: center;
+	display: block;
+	margin-left: 50px;
+}
+textarea {
+	background: none;
+	border: 1px solid gray;
+}
+
+#answerBtn {
+ width: 450px;
+   padding: 5px;
+}
+	
+#answerBtn:hover {
+	background: black;
+	color: white;
+	cursor: pointer;
+}
+
+.qna-ta-co {
+	height: 175px;
+	
+}
+
+ 
+    </style>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
@@ -49,10 +79,8 @@
 	
 			<nav class="navbar navbar-expand-lg navbar-dark">
 				<div class="container-fluid">
-	
-					<!-- navbar-collapse.// -->
+
 				</div>
-				<!-- container-fluid.// -->
 			</nav>
 			
 					<div class="collapse navbar-collapse" id="ftco-nav">
@@ -102,59 +130,43 @@
 		   
 
 	<div class="seller-mail">
-    <span class="sell-text"> 전체 문의</span> <br>
-    
-	<table class="type09">
-		<thead>
+
+
+				
+		<table class="type09">
 			<tr>
-			   <th class="sell-ta2-no">No</th>
-			   <th class="sell-ta2-id">Room ID</th>
-			   <th class="sell-ta2-sub">Content</th>
-			   <th class="sell-ta2-ph">Sender</th>
-			   <th class="sell-ta2-ph">Phone Number</th>
-			   <th class="sell-ta2-an">answer</th>
-			 </tr>
-		</thead>
-		  
-		<tbody>
-			<c:forEach var="qnaList" items="${qnaList }">
-				<tr>
-				  <td> ${qnaList.qna_id}</td>
-				  <td> ${qnaList.room_id}</td>
-				  <td> ${qnaList.content} </td>
-				  <td> ${qnaList.sender} </td>
-				  <td> ${qnaList.phone_number} </td>
-				  <td> ${qnaList.answerYN} </td>
-				</tr>
+				<th class="qna-no"> No  </th>
+				<th class="qna-id"> Room No  </th>
+				 <th class="qna-sn"> Sender </th> 
+			</tr>
 			
-			</c:forEach>
-
-		  </tbody>
-		  
+			<tr>
+				<td> ${qb.qna_id}  </td> <td> ${qb.room_id}  </td> <td> ${qb.sender} </td>
+			</tr>
+			
+			<tr>
+				<th colspan="3" class="qna-co"> Content </th>
+			</tr>
+			
+			<tr>
+				<td colspan="3" class="qna-ta-co"> ${qb.content} </td>
+			</tr>
+ 
+ 
 		</table>
+		
 
+		<form action='<c:url value="/answerPro" />' id="answerFr">
+		<input type="hidden" value="${qb.qna_id}" name=qna_id> 
+		 <textarea rows="10" cols="71" name="answer" id="answer" maxlength="100"> </textarea> <br>
+		<input type="submit" value="답변하기" id="answerBtn">
+		</form>
 	</div>
 
-          	<div class="row mt-5">
-		          <div class="col text-center">
-		            <div class="block-27-page">
-		              <ul>
-		                <c:if test="${pb.startPage > pb.pageBlock }">
-		                <li> <a href='<c:url value="qnaList?pageNum=${pb.startPage-pb.pageBlock}" />'>&lt;</a></li>
-					</c:if>
-					<c:forEach var="i" begin="${pb.startPage }" end="${pb.endPage}" step="1">
-		                <li class="active"><span> <a href='<c:url value="qnaList?pageNum=${i}" />'>${i}</a> </span></li>
-					</c:forEach>
-					<c:if test="${pb.endPage < pb.pageCount }">
-		                <li><a href='<c:url value="qnaList?pageNum=${pb.startPage+pb.pageBlock}" />'>&gt;</a></li>
-					</c:if>
-		              </ul>
-		            </div>
-		          </div>
-		        </div>
 		        
 	</section>
 	
+
 
 
 
@@ -184,7 +196,32 @@
   
   
 <script src="../script/jquery-3.6.0.js"></script>
+	<script type="text/javascript">
+	
+	$(document).ready(function() {
+		
+		
+		$('#answer').val('${qb.answer}');
+		
+		$('#answerFr').submit(function() {
 
+			if($('#answer').val()=="") {
+				alert("답변을 입력해주세요.");
+				return false;
+				
+			}
+			if('${qb.answerYN}'=="Y") {
+				alert("이미 답변한 문의입니다.");
+				return false;
+				
+			}
+				
+		});
+
+	});
+	
+	
+	</script>
 
 
   

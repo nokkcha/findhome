@@ -95,7 +95,7 @@
 					<form action=<c:url value="/loginPro" /> id="login" name="login"  method="post" >
 						<div class="form-group" align="left">
 							<label class="form-control-label">아이디</label> <input type="text"
-								class="form-control" name="id" id="id"  value="test" 
+								class="form-control" name="id" id="id"  value="" 
 								onkeyup="checkId()">
 								
 							<br><span class="check-group" id="checkIdResult"></span>	
@@ -103,7 +103,7 @@
 						</div>
 						<div class="form-group" align="left">
 							<label class="form-control-label">비밀번호</label><input
-								type="password" class="form-control" name="password" id="password" value="1234"
+								type="password" class="form-control" name="password" id="password" value=""
 								onkeyup="checkPassword()">
 								
 						  <br><span class="check-group" id="checkPasswordResult"></span>

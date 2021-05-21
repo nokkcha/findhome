@@ -300,7 +300,10 @@ background: #DCD4D4;
 				<nav class="member-side-menu">
 				
 				<a href="#" style="font-weight: bold;"> 회원 정보 조회 </a>
+				
+				<c:if test="${seller_id == null }">
 				 <a href="./memberQnaList"> 문의 목록 조회 </a>
+				 </c:if>
 				</nav>
 
 			<div class="row block-9">

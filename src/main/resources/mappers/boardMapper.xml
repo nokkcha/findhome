@@ -159,10 +159,49 @@
 		on one_room.room_id = qna.room_id
 		where seller_id = #{seller_id}
 		order by qna_id desc limit #{startRow},#{pageSize}
-		
-		
+
+	</select>
+	
+	<select id="getQna" resultType="com.itwillbs.domain.qnaBean">
+		select qna_id, content, member_normal.phone_number, room_id, sender, answer, answerYN
+		from qna
+		join member_normal
+		on qna.sender = member_normal.id
+		where qna_id = #{qna_id}
 		
 	</select>
+	
+	<update id="answerQna">
+		update qna 
+		set answer=#{answer}, answerYN=#{answerYN}
+		where qna_id=#{qna_id}
+	
+	</update>
+	
+	
+	<select id="getMemberQna" resultType="com.itwillbs.domain.qnaBean">
+		select qna_id, qna.content, member_normal.phone_number, qna.room_id, sender, answer, answerYN, seller_id
+		from qna
+		join member_normal
+		on qna.sender = member_normal.id
+		join one_room
+		on one_room.room_id = qna.room_id
+		where sender = #{sender}
+		order by qna_id desc limit #{startRow},#{pageSize}
+	</select>
+	
+	
+	<select id="getMemberQnaCount" resultType="java.lang.Integer">
+		select count(*)
+		from qna
+		join member_normal
+		on qna.sender = member_normal.id
+		join one_room
+		on one_room.room_id = qna.room_id
+		where sender = #{sender}
+	</select>
+	
+	
 	
 	<select id="getQnaBoardCount" resultType="java.lang.Integer">
 		select count(*)
@@ -182,6 +221,7 @@
 		join one_room
 		on one_room.room_id = qna.room_id
 		where seller_id = #{seller_id}
+		order by qna_id desc
 		limit 5
 	</select>
 	

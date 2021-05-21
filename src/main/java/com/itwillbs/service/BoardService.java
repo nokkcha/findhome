@@ -52,5 +52,10 @@ public interface BoardService {
 	public OneRoomBean boardCheck(OneRoomBean ob);
 	public void updateRoom(OneRoomBean ob);
 	public void deleteRoomImage(int room_id);
+	public qnaBean getQna(qnaBean qb);
+	public void answerQna(qnaBean qb);
+	public List<qnaBean> getMemberQna(PageBean pb);
+	public int getMemberQnaCount(PageBean pb);
+
 
 }

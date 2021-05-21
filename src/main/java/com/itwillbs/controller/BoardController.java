@@ -564,10 +564,54 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value = "/memberQnaList", method = RequestMethod.GET)
-	public String memberQnaList() {
+	public String memberQnaList(HttpSession session, qnaBean qb, Model model, HttpServletRequest request) {
+		String id = (String) session.getAttribute("id");
 		
+		PageBean pb = new PageBean();
+		if (request.getParameter("pageNum") != null) {
+			pb.setPageNum(request.getParameter("pageNum"));
+		} else {
+			pb.setPageNum("1");
+		}
+		pb.setPageSize(10);
+
+		pb.setSender(id);
+		List<qnaBean> qbList = boardService.getMemberQna(pb);
+		pb.setCount(boardService.getMemberQnaCount(pb));
 		
+		model.addAttribute("qbList", qbList);
+		model.addAttribute("pb", pb);
+
 		return "memberQnaList";
+	}
+	
+	
+	@RequestMapping(value = "/memberQnaAnswer", method = RequestMethod.GET)
+	public String memberQnaAnswer(Model model, HttpSession session, qnaBean qb) {
+
+		qb =  boardService.getQna(qb);
+		model.addAttribute("qb", qb);
+		
+		return "memberQnaAnswer";
+	}
+	
+	
+	@RequestMapping(value = "/answer", method = RequestMethod.GET)
+	public String answer(Model model, HttpSession session, qnaBean qb) {
+		
+		qb =  boardService.getQna(qb);
+		model.addAttribute("qb", qb);
+		
+		return "answer";
+	}
+	
+	@RequestMapping(value = "/answerPro", method = RequestMethod.GET)
+	public String answerPro(Model model, HttpSession session, qnaBean qb) {
+
+		qb.setAnswerYN("Y");
+		boardService.answerQna(qb);
+		
+		return "redirect:qnaList";
 	}
 
 	@RequestMapping(value = "/mailpro", method = RequestMethod.POST)

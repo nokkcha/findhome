@@ -17,8 +17,15 @@ public class PageBean {
 	private String category;
 	private String seller_id;
 	private char is_selling = 'Y';	
+	private String sender;
 	
 	
+	public String getSender() {
+		return sender;
+	}
+	public void setSender(String sender) {
+		this.sender = sender;
+	}
 	public char getIs_selling() {
 		return is_selling;
 	}

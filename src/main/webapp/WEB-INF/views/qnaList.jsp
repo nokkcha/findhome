@@ -118,7 +118,7 @@
 		  
 		<tbody>
 			<c:forEach var="qnaList" items="${qnaList }">
-				<tr>
+				<tr  onclick="location.href='<c:url value="answer?qna_id=${qnaList.qna_id}"/>'">
 				  <td> ${qnaList.qna_id}</td>
 				  <td> ${qnaList.room_id}</td>
 				  <td> ${qnaList.content} </td>

@@ -128,7 +128,7 @@
 	}
 	
 	.sell-ta2-sub {
-		width: 550px;	
+		width: 500px;	
 	}
 	
 	.sell-ta2-ph  {
@@ -205,6 +205,7 @@
 		cursor: pointer;
 		
 	}
+
 
 
 @media screen and (max-width:1480px) {

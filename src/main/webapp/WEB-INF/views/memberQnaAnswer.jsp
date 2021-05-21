@@ -39,20 +39,11 @@ background: #DCD4D4;
 	color: #f85959;
 }
 
-.ta-no {
-	width: 50px;
-}
-.ta-room {
-	width: 100px;
-}
-.ta-co {
-	width: 550px;
-}
 
 .ftco-section.contact-section.ftco-degree-bg{
-	height: 100vh;
+	height: 80vh;
 }
-
+ 
 
 	table.type09 {
 	  border-collapse: collapse;
@@ -88,6 +79,10 @@ background: #DCD4D4;
 	
 	li.active {
 		list-style: none;
+	}
+	
+	.list-btn{
+		
 	}
 
 
@@ -202,57 +197,39 @@ background: #DCD4D4;
 			
 				<div class="pr-md-5">
 				
-			<h2> 문의 목록</h2>
+			<h2> 문의 내용</h2>
 					<!-- col-md-6 제거함 -->
 					
 		<table class="type09">
-			<thead>
-				<tr>
-					<th class="ta-no"> No </th>
-					<th class="ta-room"> Room No </th>
-					<th class="ta-co"> Content </th>
-					<th class="ta-no"> Answer </th>
-				 </tr>
-			</thead>
-			  
-			<tbody>
-
-					
-					<c:forEach var="qbList" items="${qbList}"> 
-				<tr  onclick="location.href='<c:url value="memberQnaAnswer?qna_id=${qbList.qna_id}"/>'"> 
-					<td> ${qbList.qna_id} </td>
-					<td> ${qbList.room_id}</td>
-					<td> ${qbList.content} </td>
-					<td> ${qbList.answerYN} </td>
-
-				</tr>
-				</c:forEach>
-
-				
-			  </tbody>
-			  
+			<tr>
+				<th class="qna-no"> No  </th>
+				<th class="qna-id"> Room No  </th>
+				 <th class="qna-sn"> Sender </th> 
+			</tr>
+			
+			<tr>
+				<td> ${qb.qna_id}  </td> <td> ${qb.room_id}  </td> <td> ${qb.sender} </td>
+			</tr>
+			
+			<tr>
+				<th colspan="3" class="qna-co"> Content </th>
+			</tr>
+			
+			<tr>
+				<td colspan="3" class="qna-ta-co"> ${qb.content} </td>
+			</tr>
+			
+			<tr>
+				<th colspan="3" class="qna-co"> Answer </th>
+			</tr>
+			
+			<tr>
+				<td colspan="3" class="qna-ta-co"> ${qb.answer} </td>
+			</tr>
+ 
+ 
 		</table>
-		
-		          	<div class="row mt-5">
-		          <div class="col text-center">
-		            <div class="block-27-page">
-		              <ul>
-		              
-		                <c:if test="${pb.startPage > pb.pageBlock }">
-		                <li> <a href='<c:url value="memberQnaList?pageNum=${pb.startPage-pb.pageBlock}" />'>&lt;</a></li>
-					</c:if>
-					<c:forEach var="i" begin="${pb.startPage }" end="${pb.endPage}" step="1">
-		                <li class="active"><span> <a href='<c:url value="memberQnaList?pageNum=${i}" />'>${i}</a> </span></li>
-					</c:forEach>
-					<c:if test="${pb.endPage < pb.pageCount }">
-		                <li><a href='<c:url value="memberQnaList?pageNum=${pb.startPage+pb.pageBlock}" />'>&gt;</a></li>
-					</c:if>
-		              </ul>
-		            </div>
-		          </div>
-		        </div>
-					
-					
+	
 
 				</div>
 
