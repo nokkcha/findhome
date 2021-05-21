@@ -58,14 +58,15 @@
         <div class="board_box">
           <p>매몰신고 리스트</p>   
           <table border="1">
-         <tr><td>문의아이디</td><td>제목</td><td>내용</td><td>멤버아이디</td><td>방아이디</td></tr>
+<!--          <tr><td>문의아이디</td><td>제목</td><td>내용</td><td>멤버아이디</td><td>방아이디</td></tr> -->
+          <tr><td>문의아이디</td><td>내용</td><td>방아이디</td></tr>
           <%
           %>
     <c:forEach var="ReportBean"  items="${reportList }">
     	<tr><td>${ReportBean.qna_id }</td>
-    		<td>${ReportBean. subject }</td>
+<%--     		<td>${ReportBean. subject }</td> --%>
     		<td>${ReportBean.content }</td>
-    		<td>${ReportBean.member_id }</td>
+<%--     		<td>${ReportBean.member_id }</td> --%>
     		<td>${ReportBean.room_id }</td>
     	</tr>
     </c:forEach>
@@ -76,10 +77,10 @@
           </div>
       </div>
       
-      <div class="board_right">
-        <div class="board_box">
-          <p>문의글</p>
-        </div>
+<!--       <div class="board_right"> -->
+<!--         <div class="board_box"> -->
+<!--           <p>문의글</p> -->
+<!--         </div> -->
       </div>
     </div>
   </section>

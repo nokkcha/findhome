@@ -61,6 +61,10 @@ body {
 	text-align: left;
 }
 
+.ftco-section {
+    padding: 0;
+}
+
 .ftco-navbar-light {
 	top: 0px;
 }
@@ -132,48 +136,48 @@ body {
 					</div>
 
 					<div class="block-17 my-4">
-<!-- 						<form action="" method="post" class="d-block d-flex"> -->
-<!-- findRooms-search?category=OneRoom -->
-<!-- &search=%EB%B6%80%EC%82%B0 -->
-<!-- &room_all=%EC%A0%84%EC%B2%B4 -->
-<!-- &floor_all=%EC%A0%84%EC%B2%B4 -->
-<!-- &deposit_min=0 -->
-<!-- &deposit_max=50000 -->
-<!-- &monthly_rent_min=0 -->
-<!-- &monthly_rent_max=500 -->
-							<form  class="d-block d-flex" id="searchForm" action='<c:url value="findRooms-search"/>'>
+						<!-- 						<form action="" method="post" class="d-block d-flex"> -->
+						<!-- findRooms-search?category=OneRoom -->
+						<!-- &search=%EB%B6%80%EC%82%B0 -->
+						<!-- &room_all=%EC%A0%84%EC%B2%B4 -->
+						<!-- &floor_all=%EC%A0%84%EC%B2%B4 -->
+						<!-- &deposit_min=0 -->
+						<!-- &deposit_max=50000 -->
+						<!-- &monthly_rent_min=0 -->
+						<!-- &monthly_rent_max=500 -->
+						<form class="d-block d-flex" id="searchForm"
+							action='<c:url value="findRooms-search"/>'>
 							<div class="fields d-block d-flex">
-						
-								<input type="hidden" value="OneRoom" id="category" name="category">
-								<input type="text" class="form-control" id="address" name="search"
-									placeholder="원하시는 지역명, 지하철역을 입력해주세요">
-									
-									<input type="checkbox" name="room_all" value="전체" class="cktag" id="rtypeAll" 
-		              hidden="" checked> 
-		              						<input type="checkbox" name="floor_all" value="전체" class="cktag" id="ftypeAll"
-		             	   hidden="" checked> 
-		             	   
-		             	   <input oninput = 'ShowSliderValue1(this.value)' style = "width:100%;" class="slider_range1" id="rangeTest"
-		             	   hidden=""
-				  			 type="range" step="100" value="0" min="0" max="50000" name="deposit_min" ></input>
-				  			 <input oninput = 'ShowSliderValue2(this.value)' style = "width:100%;" class="slider_range2"
-				  			 hidden="" 
-							type="range" step="100" value="50000" min="0" max="50000" name="deposit_max" ></input>
-							
-							<input oninput = 'ShowSliderValue3(this.value)' style = "width:100%;" class="slider_range3"
-							hidden="" 
-					  			type="range" step="10" value="0" min="0" max="500" name="monthly_rent_min"></input>
-					  			<input oninput = 'ShowSliderValue4(this.value)' style = "width:100%;" class="slider_range4"
-					  			hidden="" 
-								type="range" step="10"value="500" min="0" max="500" name="monthly_rent_max"></input>
-		              
+
+								<input type="hidden" value="OneRoom" id="category"
+									name="category"> <input type="text"
+									class="form-control" id="address" name="search"
+									placeholder="원하시는 지역명, 지하철역을 입력해주세요"> <input
+									type="checkbox" name="room_all" value="전체" class="cktag"
+									id="rtypeAll" hidden="" checked> <input type="checkbox"
+									name="floor_all" value="전체" class="cktag" id="ftypeAll"
+									hidden="" checked> <input
+									oninput='ShowSliderValue1(this.value)' style="width: 100%;"
+									class="slider_range1" id="rangeTest" hidden="" type="range"
+									step="100" value="0" min="0" max="50000" name="deposit_min"></input>
+								<input oninput='ShowSliderValue2(this.value)'
+									style="width: 100%;" class="slider_range2" hidden=""
+									type="range" step="100" value="50000" min="0" max="50000"
+									name="deposit_max"></input> <input
+									oninput='ShowSliderValue3(this.value)' style="width: 100%;"
+									class="slider_range3" hidden="" type="range" step="10"
+									value="0" min="0" max="500" name="monthly_rent_min"></input> <input
+									oninput='ShowSliderValue4(this.value)' style="width: 100%;"
+									class="slider_range4" hidden="" type="range" step="10"
+									value="500" min="0" max="500" name="monthly_rent_max"></input>
+
 							</div>
 							<input type="submit" class="search-submit btn btn-primary"
 								value="Search">
 						</form>
 					</div>
-					
-<!-- 					<input type="text" id="searchResult" readonly="readonly" style="" value=""> -->
+
+					<!-- 					<input type="text" id="searchResult" readonly="readonly" style="" value=""> -->
 
 				</div>
 			</div>
@@ -188,125 +192,80 @@ body {
 				<div class="col-md-7 heading-section ftco-animate">
 					<span class="subheading">Special Offers</span>
 					<h2 class="mb-4">
-						<strong>인기</strong> 매물
+						<strong>원룸 인기</strong> 매물
 					</h2>
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-md-6 col-lg-3 ftco-animate">
-					<div class="destination">
-						<a href="#"
-							class="img img-2 d-flex justify-content-center align-items-center"
-							style="background-image: url(${pageContext.request.contextPath}/resources/images/restaurant-1.jpg);">
-							<div
-								class="icon d-flex justify-content-center align-items-center">
-								<span class="icon-search2"></span>
+				<div class="col-md-12">
+					<div class="destination-slider owl-carousel ftco-animate">
+
+						<!-- 					최신매물 아이템 출력 시작 -->
+						<c:forEach items="${popOneRoomList}" var="popularList"
+							varStatus="i">
+
+							<div class="destination">
+								<a
+									href='<c:url value="/detailView?room_id=${popularList.room_id}" />'
+									class="img img-2 d-flex justify-content-center align-items-center"
+									style="background-image: url(${pageContext.request.contextPath}/resources/upload${popularList.file_name});"></a>
+
+								<div class="text p-3">
+
+									<div class="text-mi">
+										<div class="d-flex">
+											<div class="one">
+												<h3>
+													<a
+														href='<c:url value="detailView?room_id=${popularList.room_id}" />'>
+														${popularList.subject} </a>
+												</h3>
+											</div>
+											<div class="two">
+												<span class="price per-price"><small>${popularList.deposit}
+														/ ${popularList.monthly_rent}</small></span>
+											</div>
+										</div>
+										<p>${popularList.address }</p>
+
+									</div>
+
+									<hr>
+									<p class="bottom-area d-flex">
+										<input type="hidden"
+											value="<c:out value='${popularList.room_id}'/>" id="room_id">
+
+										<button id="zzim-id-${popularList.room_id}"
+											class="text-zzim nozzim">
+
+											<c:forEach var="wishList" items="${wishList }">
+
+												<c:if test="${popularList.room_id == wishList.wish}">
+													<span class="zzim-showtext"
+														id="zzim-ok-${popularList.room_id}"></span>
+												</c:if>
+
+											</c:forEach>
+
+										</button>
+										찜한 수 : ${popularList.wish_count } <span class="ml-auto call"><a
+											href="javascript:void(0);">call</a></span> <input type="hidden"
+											value="<c:out value='${popularList.phone_number}'/>"
+											id="phone_number">
+
+									</p>
+									<div class="modal">
+										<div class="modal_content" title="클릭하면 창이 닫힙니다."></div>
+									</div>
+
+
+
+								</div>
 							</div>
-						</a>
-						<div class="text p-3">
-							<h3>
-								<a href="#">Luxury Restaurant</a>
-							</h3>
-							<p class="rate">
-								<i class="icon-star"></i> <i class="icon-star"></i> <i
-									class="icon-star"></i> <i class="icon-star"></i> <i
-									class="icon-star-o"></i> <span>8 Rating</span>
-							</p>
-							<p>Far far away, behind the word mountains, far from the
-								countries</p>
-							<hr>
-							<p class="bottom-area d-flex">
-								<span><i class="icon-map-o"></i> San Franciso, CA</span> <span
-									class="ml-auto"><a href="#">Discover</a></span>
-							</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-6 col-lg-3 ftco-animate">
-					<div class="destination">
-						<a href="#"
-							class="img img-2 d-flex justify-content-center align-items-center"
-							style="background-image: url(${pageContext.request.contextPath}/resources/images/restaurant-2.jpg);">
-							<div
-								class="icon d-flex justify-content-center align-items-center">
-								<span class="icon-search2"></span>
-							</div>
-						</a>
-						<div class="text p-3">
-							<h3>
-								<a href="#">Luxury Restaurant</a>
-							</h3>
-							<p class="rate">
-								<i class="icon-star"></i> <i class="icon-star"></i> <i
-									class="icon-star"></i> <i class="icon-star"></i> <i
-									class="icon-star-o"></i> <span>8 Rating</span>
-							</p>
-							<p>Far far away, behind the word mountains, far from the
-								countries</p>
-							<hr>
-							<p class="bottom-area d-flex">
-								<span><i class="icon-map-o"></i> San Franciso, CA</span> <span
-									class="ml-auto"><a href="#">Book Now</a></span>
-							</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-6 col-lg-3 ftco-animate">
-					<div class="destination">
-						<a href="#"
-							class="img img-2 d-flex justify-content-center align-items-center"
-							style="background-image: url(${pageContext.request.contextPath}/resources/images/restaurant-3.jpg);">
-							<div
-								class="icon d-flex justify-content-center align-items-center">
-								<span class="icon-search2"></span>
-							</div>
-						</a>
-						<div class="text p-3">
-							<h3>
-								<a href="#">Luxury Restaurant</a>
-							</h3>
-							<p class="rate">
-								<i class="icon-star"></i> <i class="icon-star"></i> <i
-									class="icon-star"></i> <i class="icon-star"></i> <i
-									class="icon-star-o"></i> <span>8 Rating</span>
-							</p>
-							<p>Far far away, behind the word mountains, far from the
-								countries</p>
-							<hr>
-							<p class="bottom-area d-flex">
-								<span><i class="icon-map-o"></i> San Franciso, CA</span> <span
-									class="ml-auto"><a href="#">Book Now</a></span>
-							</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-6 col-lg-3 ftco-animate">
-					<div class="destination">
-						<a href="#"
-							class="img img-2 d-flex justify-content-center align-items-center"
-							style="background-image: url(${pageContext.request.contextPath}/resources/images/restaurant-4.jpg);">
-							<div
-								class="icon d-flex justify-content-center align-items-center">
-								<span class="icon-search2"></span>
-							</div>
-						</a>
-						<div class="text p-3">
-							<h3>
-								<a href="#">Luxury Restaurant</a>
-							</h3>
-							<p class="rate">
-								<i class="icon-star"></i> <i class="icon-star"></i> <i
-									class="icon-star"></i> <i class="icon-star"></i> <i
-									class="icon-star-o"></i> <span>8 Rating</span>
-							</p>
-							<p>Far far away, behind the word mountains, far from the
-								countries</p>
-							<hr>
-							<p class="bottom-area d-flex">
-								<span><i class="icon-map-o"></i> San Franciso, CA</span> <span
-									class="ml-auto"><a href="#">Book Now</a></span>
-							</p>
-						</div>
+
+						</c:forEach>
+						<!-- 					인기매물 아이템 출력 끝 -->
+
 					</div>
 				</div>
 			</div>
@@ -314,6 +273,94 @@ body {
 	</section>
 	<!--     인기매물 끝 -->
 
+	<!-- 인기 매물 시작-->
+	<!-- 인기 매물 시작-->
+	<section class="ftco-section">
+		<div class="container">
+			<div class="row justify-content-start">
+				<!-- 				mb-5 pb-3 -->
+				<div class="col-md-7 heading-section ftco-animate">
+					<span class="subheading">Special Offers</span>
+					<h2 class="mb-4">
+						<strong>오피스텔 인기</strong> 매물
+					</h2>
+				</div>
+			</div>
+			<div class="row">
+
+				<!-- 					최신매물 아이템 출력 시작 -->
+				<c:forEach items="${popOfficetelList}" var="popularTelList"
+					varStatus="i">
+					<div class="col-md-6 col-lg-3 ftco-animate">
+						<div class="destination">
+							<a
+								href='<c:url value="/detailView?room_id=${popularTelList.room_id}" />'
+								class="img img-2 d-flex justify-content-center align-items-center"
+								style="background-image: url(${pageContext.request.contextPath}/resources/upload${popularTelList.file_name});"></a>
+
+							<div class="text p-3">
+
+								<div class="text-mi">
+									<div class="d-flex">
+										<div class="one">
+											<h3>
+												<a
+													href='<c:url value="detailView?room_id=${popularTelList.room_id}" />'>
+													${popularTelList.subject} </a>
+											</h3>
+										</div>
+										<div class="two">
+											<span class="price per-price"><small>${popularTelList.deposit}
+													/ ${popularTelList.monthly_rent}</small></span>
+										</div>
+									</div>
+									<p>${popularTelList.address }</p>
+
+								</div>
+
+								<hr>
+								<p class="bottom-area d-flex">
+									<input type="hidden"
+										value="<c:out value='${popularTelList.room_id}'/>"
+										id="room_id">
+
+									<button id="zzim-id-${popularTelList.room_id}"
+										class="text-zzim nozzim">
+
+										<c:forEach var="wishList" items="${wishList }">
+
+											<c:if test="${popularTelList.room_id == wishList.wish}">
+												<span class="zzim-showtext"
+													id="zzim-ok-${popularTelList.room_id}"></span>
+											</c:if>
+
+										</c:forEach>
+
+									</button>
+									찜한 수 : ${popularTelList.wish_count } <span class="ml-auto call"><a
+										href="javascript:void(0);">call</a></span> <input type="hidden"
+										value="<c:out value='${popularTelList.phone_number}'/>"
+										id="phone_number">
+
+								</p>
+								<div class="modal">
+									<div class="modal_content" title="클릭하면 창이 닫힙니다."></div>
+								</div>
+
+
+
+							</div>
+						</div>
+					</div>
+				</c:forEach>
+				<!-- 					인기매물 아이템 출력 끝 -->
+
+			</div>
+		</div>
+	</section>
+	<!--     인기매물 끝 -->
+
+	<!-- 	원룸 최신매물 리스트 시작 -->
 	<section class="ftco-section ftco-destination">
 		<div class="container">
 			<div class="row justify-content-start">
@@ -321,7 +368,7 @@ body {
 				<div class="col-md-7 heading-section ftco-animate">
 					<span class="subheading">Featured</span>
 					<h2 class="mb-4">
-						<strong>최신</strong> 매물
+						<strong>원룸 최신</strong> 매물
 					</h2>
 				</div>
 			</div>
@@ -386,12 +433,8 @@ body {
 									<div class="modal">
 										<div class="modal_content" title="클릭하면 창이 닫힙니다."></div>
 									</div>
-
-
-
 								</div>
 							</div>
-
 						</c:forEach>
 						<!-- 					최신매물 아이템 출력 끝 -->
 
@@ -400,6 +443,92 @@ body {
 			</div>
 		</div>
 	</section>
+	<!-- 	원룸 최신 매물 리스트 끝 -->
+	
+	<!-- 	오피스텔 최신매물 리스트 시작 -->
+	<section class="ftco-section ftco-destination">
+		<div class="container">
+			<div class="row justify-content-start">
+				<!--     		 mb-5 pb-3 -->
+				<div class="col-md-7 heading-section ftco-animate">
+					<span class="subheading">Featured</span>
+					<h2 class="mb-4">
+						<strong>오피스텔 최신</strong> 매물
+					</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="destination-slider owl-carousel ftco-animate">
+
+						<!-- 					최신매물 아이템 출력 시작 -->
+						<c:forEach items="${ofList}" var="officetelList" varStatus="i">
+
+							<div class="destination">
+								<a
+									href='<c:url value="/detailView?room_id=${officetelList.room_id}" />'
+									class="img img-2 d-flex justify-content-center align-items-center"
+									style="background-image: url(${pageContext.request.contextPath}/resources/upload${officetelList.file_name});"></a>
+
+								<div class="text p-3">
+
+									<div class="text-mi">
+										<div class="d-flex">
+											<div class="one">
+												<h3>
+													<a
+														href='<c:url value="detailView?room_id=${officetelList.room_id}" />'>
+														${officetelList.subject} </a>
+												</h3>
+											</div>
+											<div class="two">
+												<span class="price per-price"><small>${officetelList.deposit}
+														/ ${officetelList.monthly_rent}</small></span>
+											</div>
+										</div>
+										<p>${officetelList.address }</p>
+
+									</div>
+
+									<hr>
+									<p class="bottom-area d-flex">
+										<input type="hidden"
+											value="<c:out value='${officetelList.room_id}'/>" id="room_id">
+
+										<button id="zzim-id-${officetelList.room_id}"
+											class="text-zzim nozzim">
+
+											<c:forEach var="wishList" items="${wishList }">
+
+												<c:if test="${officetelList.room_id == wishList.wish}">
+													<span class="zzim-showtext"
+														id="zzim-ok-${officetelList.room_id}"></span>
+												</c:if>
+
+											</c:forEach>
+
+										</button>
+
+										<span class="ml-auto call"><a
+											href="javascript:void(0);">call</a></span> <input type="hidden"
+											value="<c:out value='${officetelList.phone_number}'/>"
+											id="phone_number">
+
+									</p>
+									<div class="modal">
+										<div class="modal_content" title="클릭하면 창이 닫힙니다."></div>
+									</div>
+								</div>
+							</div>
+						</c:forEach>
+						<!-- 					최신매물 아이템 출력 끝 -->
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- 	원룸 최신 매물 리스트 끝 -->
 
 
 	<footer class="ftco-footer ftco-bg-dark ftco-section">
@@ -429,74 +558,98 @@ body {
 	<!-- 			<circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg> -->
 	<!-- 	</div> -->
 
-	<script src="${pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js">		
+	<script
+		src="${pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js">
+		
 	</script>
 
 	<script>
 		$(document)
 				.ready(
 						function() {
-							$( "#address" ).change(function() {
-								  var address = $( this ).val();
-								  // ajax로 전달할 폼 객체
-								  var formData = new FormData();
-								  
-								  $.ajax('<c:url value="/addressSearch" />',{
-										type : "post",
-										data : formData,
-										// processData: true=> get방식, false => post방식
-										dataType : "text",
-										// contentType: true => application/x-www-form-urlencoded, 
-										//                false => multipart/form-data
-										processData : false,
-										success : function(data) {
-											var str = "";
-											// 검색 결과 표시
-											str += data;					
-											var resultData = decodeURIComponent( data );
-											//alert(resultData);
-											console.log('data : ' + resultData);
-											$("#searchResult").append(str);																				
-										}
-									});
-								  
-								  
-								  
-								});
-							
-							$('.button-class1').click(
-									function() {
-										$("#address").val('');
-										$("#address").attr("placeholder",
-												"원하시는 지역명, 지하철역을 입력해주세요");
-										
-										$("#category").val('OneRoom');	// 검색 카테고리 원룸으로 설정
-										$('#searchForm').attr("action","<c:url value="findRooms-search" />");
-										
-										if ($(this).hasClass('btn-default'))
-											$(this).removeClass('btn-default');
-										if (!$(this).hasClass('btn-primary'))
-											$(this).addClass('btn-primary');
-										if ($('.button-class2').hasClass(
-												'btn-primary'))
-											$('.button-class2').removeClass(
-													'btn-primary');
-										if (!$('.button-class2').hasClass(
-												'btn-default'))
-											$('.button-class2').addClass(
-													'btn-default');
-									});
+							$("#address")
+									.change(
+											function() {
+												var address = $(this).val();
+												// ajax로 전달할 폼 객체
+												var formData = new FormData();
 
-							$('.button-class2').click(
+												$
+														.ajax(
+																'<c:url value="/addressSearch" />',
+																{
+																	type : "post",
+																	data : formData,
+																	// processData: true=> get방식, false => post방식
+																	dataType : "text",
+																	// contentType: true => application/x-www-form-urlencoded, 
+																	//                false => multipart/form-data
+																	processData : false,
+																	success : function(
+																			data) {
+																		var str = "";
+																		// 검색 결과 표시
+																		str += data;
+																		var resultData = decodeURIComponent(data);
+																		//alert(resultData);
+																		console
+																				.log('data : '
+																						+ resultData);
+																		$(
+																				"#searchResult")
+																				.append(
+																						str);
+																	}
+																});
+
+											});
+
+							$('.button-class1')
+									.click(
+											function() {
+												$("#address").val('');
+												$("#address")
+														.attr("placeholder",
+																"원하시는 지역명, 지하철역을 입력해주세요");
+
+												$("#category").val('OneRoom'); // 검색 카테고리 원룸으로 설정
+												$('#searchForm')
+														.attr("action",
+																"<c:url value="findRooms-search" />");
+
+												if ($(this).hasClass(
+														'btn-default'))
+													$(this).removeClass(
+															'btn-default');
+												if (!$(this).hasClass(
+														'btn-primary'))
+													$(this).addClass(
+															'btn-primary');
+												if ($('.button-class2')
+														.hasClass('btn-primary'))
+													$('.button-class2')
+															.removeClass(
+																	'btn-primary');
+												if (!$('.button-class2')
+														.hasClass('btn-default'))
+													$('.button-class2')
+															.addClass(
+																	'btn-default');
+											});
+
+							$('.button-class2')
+									.click(
 											function() {
 												$("#address").val('');
 												$("#address")
 														.attr("placeholder",
 																"원하시는 지역명, 지하철역, 오피스텔명을 입력해주세요");
-												
-												$("#category").val('Officetel');	// 검색 카테고리 오피스텔로 설정
-												$('#searchForm').attr("action","<c:url value="findOfficetel-search" />");
-												
+
+												$("#category").val('Officetel'); // 검색 카테고리 오피스텔로 설정
+												$('#searchForm')
+														.attr("action",
+																"<c:url value="findOfficetel-search" />");
+
 												if ($(this).hasClass(
 														'btn-default'))
 													$(this).removeClass(
@@ -516,34 +669,67 @@ body {
 															.addClass(
 																	'btn-default');
 											});
-							
+
 							// 목록 - [찜하기] 클릭
-				        	$('.text-zzim').click(function(){
-				        		var room_id = $(this).parent().children("#room_id")[0].value;
-				        		
-				        	 	$.ajax('<c:url value="/zzim" />',{
-				        	 		data:{wish:room_id},
-				        	 		success:function(rdata){
-				        	 			
-				        	 			if(rdata=="zzim"){
-				        	 				rdata = "찜";
-				        	 				$('#zzim-id-'+room_id).removeClass('nozzim');
-				        	 				$('#zzim-id-'+room_id).addClass('zzim');
-				        	 				$('#zzim-ok-'+room_id).addClass('zzim-showtext');
+							$('.text-zzim')
+									.click(
+											function() {
+												var room_id = $(this).parent()
+														.children("#room_id")[0].value;
 
-				        	 			}else if(rdata=="nozzim"){
-				        	 				rdata = "찜안함";
-				                	        $('#zzim-id-'+room_id).removeClass('zzim');
-				        	 				$('#zzim-id-'+room_id).addClass('nozzim');
-				        	 				$('#zzim-ok-'+room_id).removeClass('zzim-showtext');
-				        	 			}
-				        	 			var resultData = decodeURIComponent( rdata );
-				        	 			alert(resultData);	
-				        	 		}
-				        	 	});
+												$
+														.ajax(
+																'<c:url value="/zzim" />',
+																{
+																	data : {
+																		wish : room_id
+																	},
+																	success : function(
+																			rdata) {
 
-				        	});
-							
+																		if (rdata == "zzim") {
+																			rdata = "찜";
+																			$(
+																					'#zzim-id-'
+																							+ room_id)
+																					.removeClass(
+																							'nozzim');
+																			$(
+																					'#zzim-id-'
+																							+ room_id)
+																					.addClass(
+																							'zzim');
+																			$(
+																					'#zzim-ok-'
+																							+ room_id)
+																					.addClass(
+																							'zzim-showtext');
+
+																		} else if (rdata == "nozzim") {
+																			rdata = "찜안함";
+																			$(
+																					'#zzim-id-'
+																							+ room_id)
+																					.removeClass(
+																							'zzim');
+																			$(
+																					'#zzim-id-'
+																							+ room_id)
+																					.addClass(
+																							'nozzim');
+																			$(
+																					'#zzim-ok-'
+																							+ room_id)
+																					.removeClass(
+																							'zzim-showtext');
+																		}
+																		var resultData = decodeURIComponent(rdata);
+																		alert(resultData);
+																	}
+																});
+
+											});
+
 						});
 	</script>
 
