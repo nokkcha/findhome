@@ -7,6 +7,8 @@
     <title>DirEngine - Free Bootstrap 4 Template by Colorlib</title>
     <script
 	src="${pageContext.request.contextPath}/resources/script/jquery-3.6.0.js"></script>
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -239,68 +241,69 @@
 					
 					if (id == "") {
 						$('#id').focus();
-// 						swal.fire("ID 입력", "ID를 입력해주세요", "error"); //"info,success,warning,error" 중 택1	
-						alert("ID를 입력해주세요"); 
+						//swal.fire("ID 입력", "ID를 입력해주세요", "error"); //"info,success,warning,error" 중 택1	
+ 						alert("ID를 입력해주세요"); 
 						return false;
 					} 
 					
 					if (!lengthRegex1.exec(id)) {
 						$('#id').focus();
 						checkIdResult.innerHTML = "<font color='#FF0000'>올바르지 않은 이메일 양식입니다.</font>";
-// 						swal.fire("ID 입력확인", "ID를 다시 입력해주세요", "error"); //"info,success,warning,error" 중 택1
-						alert("ID를 다시 입력해주세요");
+						//swal.fire("ID 입력확인", "ID를 다시 입력해주세요", "error"); //"info,success,warning,error" 중 택1
+ 						alert("ID를 다시 입력해주세요");
 						return false;
 					}
 					
-					if($('#idHidden').val() == "iddup") {
-						$('#id').focus();
-						return false;
-					}
+// 					if($('#idHidden').val() == "iddup") {
+// 						$('#id').focus();
+// 						return false;
+// 					}
 					
 					if (pass1 == "") {
 						$('#pass1').focus();
-// 						swal.fire("패스워드 입력", "패스워드를 입력해주세요", "error"); //"info,success,warning,error" 중 택1
-						alert("패스워드를 입력해주세요");
+						//swal.fire("패스워드 입력", "패스워드를 입력해주세요", "error"); //"info,success,warning,error" 중 택1
+ 						alert("패스워드를 입력해주세요");
 						return false;
 					}
 					
 					if (!lengthRegex2.exec(pass1)) {
 						$('#pass1').focus();
-// 						swal.fire("패스워드 입력확인", "사용할 수 없는 패스워드입니다", "error"); //"info,success,warning,error" 중 택1
-						alert("사용할 수 없는 패스워드입니다");
+						//swal.fire("패스워드 입력확인", "사용할 수 없는 패스워드입니다", "error"); //"info,success,warning,error" 중 택1
+ 						alert("사용할 수 없는 패스워드입니다");
 						return false;
 					}
 					
 					if (pass2 == "") {
 						$('#pass2').focus();
-// 						swal.fire("패스워드 입력확인", "패스워드를 입력 해주세요", "error"); //"info,success,warning,error" 중 택1
-						alert("패스워드를 입력 해주세요");
+						//swal.fire("패스워드 입력확인", "패스워드를 입력 해주세요", "error"); //"info,success,warning,error" 중 택1
+ 						alert("패스워드를 입력 해주세요");
 						return false;
 					}
 					
 					if (pass1 != pass2) {
 						$('#pass2').focus();
-// 						swal.fire("패스워드 불일치", "패스워드를 다시 입력해주세요", "error"); //"info,success,warning,error" 중 택1
-						alert("패스워드를 다시 확인 해주세요");
+						//swal.fire("패스워드 불일치", "패스워드를 다시 입력해주세요", "error"); //"info,success,warning,error" 중 택1
+ 						alert("패스워드를 다시 확인 해주세요");
 						return false;
 					}
 					
 					
 					if (phone == "") {
 						$('#phone').focus();
-// 						swal.fire("전화번호 입력", "전화번호를 입력해주세요", "error"); //"info,success,warning,error" 중 택1
-						alert("전화번호를 입력해주세요");
+						//swal.fire("전화번호 입력", "전화번호를 입력해주세요", "error"); //"info,success,warning,error" 중 택1
+ 						alert("전화번호를 입력해주세요");
 						return false;
 					}
 					
 					if (!lengthRegex3.exec(phone)) {
 						$('#phone').focus();
-// 						swal.fire("전화번호 입력확인", "전화번호를 다시 입력해주세요", "error"); //"info,success,warning,error" 중 택1
-						alert("전화번호를 다시 입력해주세요");
+						//swal.fire("전화번호 입력확인", "전화번호를 다시 입력해주세요", "error"); //"info,success,warning,error" 중 택1
+ 						alert("전화번호를 다시 입력해주세요");
 						return false;
 					}
 					
 					if($('#agree').is(':checked') == false){
+						//swal.fire("이용약관 동의확인", "이용약관 및 개인 정보 수집에 동의 하셔야 가입이 가능합니다", "error"); //"info,success,warning,error" 중 택1
 						alert("이용약관 및 개인 정보 수집에 동의 하셔야 가입이 가능합니다");
 						return false;
 					}
@@ -328,6 +331,7 @@
 				$(".fpmgBt2").click(function(){	
 					if($(".chk1").is(":checked") == false){
 						alert("이용약관에 동의 하셔야 다음 단계로 진행 가능합니다");
+						
 						return false;
 					}else if($(".chk2").is(":checked") == false){
 						alert("개인 정보 수집에 동의 하셔야 다음 단계로 진행 가능합니다");
@@ -700,10 +704,10 @@
   <script src="${pageContext.request.contextPath}/resources/js/aos.js"></script>
   <script src="${pageContext.request.contextPath}/resources/js/jquery.animateNumber.min.js"></script>
   <script src="${pageContext.request.contextPath}/resources/js/bootstrap-datepicker.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/js/jquery.timepicker.min.js"></script>
+<%--   <script src="${pageContext.request.contextPath}/resources/js/jquery.timepicker.min.js"></script> --%>
   <script src="${pageContext.request.contextPath}/resources/js/scrollax.min.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-  <script src="${pageContext.request.contextPath}/resources/js/google-map.js"></script>
+<!--   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script> -->
+<%--   <script src="${pageContext.request.contextPath}/resources/js/google-map.js"></script> --%>
   <script src="${pageContext.request.contextPath}/resources/js/main.js"></script>
     
   </body>
