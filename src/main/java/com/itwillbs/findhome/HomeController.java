@@ -50,9 +50,19 @@ public class HomeController {
 
 		model.addAttribute("serverTime", formattedDate);
 
-		// 원룸 방 리스트와 썸네일 정보 넘기기
-		List<LinkedHashMap<String, Object>> obList = boardService.selectOneRoomThumbImg();
-		for (Map<String, Object> map : obList) {
+		String category = "OneRoom";
+		// 원룸 최신매물 리스트와 썸네일 정보 넘기기
+		List<LinkedHashMap<String, Object>> obList = boardService.selectThumbImage(category);
+		System.out.println("=====원룸 최신매물 정보리스트=====");
+		for (Map<String, Object> map : obList) {			
+			System.out.println(map.get("room_id") + " " + map.get("subject") + " " + map.get("file_name"));
+		}
+		
+		// 오피스텔 최신매물 리스트와 썸네일 정보 넘기기
+		category = "Officetel";
+		List<LinkedHashMap<String, Object>> ofList = boardService.selectThumbImage(category);
+		System.out.println("=====오피스텔 최신매물 정보리스트=====");
+		for (Map<String, Object> map : obList) {			
 			System.out.println(map.get("room_id") + " " + map.get("subject") + " " + map.get("file_name"));
 		}
 
@@ -64,25 +74,26 @@ public class HomeController {
 			model.addAttribute("wishList", wishList);
 		}
 		
-		System.out.println("==================================================");
+		
 
-		// 원룸 인기 매물 리스트와 썸네일 정보 넘기기
-		String category = "OneRoom";
+		// 원룸 인기 매물 리스트와 썸네일 정보 넘기기	
+		category = "OneRoom";
 		List<LinkedHashMap<String, Object>> popOneRoomList = boardService.selectPopularRooms(category);
+		System.out.println("=====원룸 인기 매물 리스트=====");
 		for (Map<String, Object> map : popOneRoomList) {
 			System.out.println(map.get("room_id") + " " + map.get("subject") + " 찜한 개수 : " + map.get("wish_count"));
 		}
-		System.out.println("==================================================");
-		
+		// 오피스텔 인기 매물 리스트와 썸네일 정보 넘기기
 		category = "Officetel";
 		List<LinkedHashMap<String, Object>> popOfficetelList = boardService.selectPopularRooms(category);
 		for (Map<String, Object> map : popOfficetelList) {
 			System.out.println(map.get("room_id") + " " + map.get("subject") + " 찜한 개수 : " + map.get("wish_count"));
 		}
 
-		model.addAttribute("popOneRoomList", popOneRoomList);
-		model.addAttribute("popOfficetelList", popOfficetelList);
-		model.addAttribute("obList", obList);
+		model.addAttribute("popOneRoomList", popOneRoomList);		// 원룸 인기매물 리스트
+		model.addAttribute("popOfficetelList", popOfficetelList);	// 오피스텔 인기매물 리스트
+		model.addAttribute("obList", obList);						// 원룸 최신 매물 리스트
+		model.addAttribute("ofList", ofList);						// 오피스텔 최신 매물 리스트
 
 		return "index";
 	}

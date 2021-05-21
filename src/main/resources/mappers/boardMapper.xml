@@ -324,6 +324,16 @@
 		count(w.wish) DESC
 		LIMIT 10
 	</select>
+	
+	<select id="selectThumbImage" resultType="java.util.LinkedHashMap">
+		SELECT p.room_id, p.subject, p.address, p.deposit, p.monthly_rent, i.file_name, p.category
+		FROM one_room p
+		LEFT JOIN one_room_pic i
+		ON i.id = (SELECT MIN(i1.id) FROM one_room_pic i1 WHERE i1.room_id = p.room_id)
+		WHERE p.category=#{category}
+		ORDER BY i.id DESC
+		LIMIT 10
+	</select>
 
 </mapper>
 

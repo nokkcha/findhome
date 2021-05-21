@@ -316,4 +316,10 @@ public class BoardServiceImpl implements BoardService{
 		return boardDAO.selectPopularRooms(category);
 	}
 
+	@Override
+	public List<LinkedHashMap<String, Object>> selectThumbImage(String category) {
+		// TODO Auto-generated method stub
+		return boardDAO.selectThumbImage(category);
+	}
+
 }

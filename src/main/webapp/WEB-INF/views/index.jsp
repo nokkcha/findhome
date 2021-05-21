@@ -360,6 +360,7 @@ body {
 	</section>
 	<!--     인기매물 끝 -->
 
+	<!-- 	원룸 최신매물 리스트 시작 -->
 	<section class="ftco-section ftco-destination">
 		<div class="container">
 			<div class="row justify-content-start">
@@ -367,7 +368,7 @@ body {
 				<div class="col-md-7 heading-section ftco-animate">
 					<span class="subheading">Featured</span>
 					<h2 class="mb-4">
-						<strong>최신</strong> 매물
+						<strong>원룸 최신</strong> 매물
 					</h2>
 				</div>
 			</div>
@@ -442,6 +443,92 @@ body {
 			</div>
 		</div>
 	</section>
+	<!-- 	원룸 최신 매물 리스트 끝 -->
+	
+	<!-- 	오피스텔 최신매물 리스트 시작 -->
+	<section class="ftco-section ftco-destination">
+		<div class="container">
+			<div class="row justify-content-start">
+				<!--     		 mb-5 pb-3 -->
+				<div class="col-md-7 heading-section ftco-animate">
+					<span class="subheading">Featured</span>
+					<h2 class="mb-4">
+						<strong>오피스텔 최신</strong> 매물
+					</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="destination-slider owl-carousel ftco-animate">
+
+						<!-- 					최신매물 아이템 출력 시작 -->
+						<c:forEach items="${ofList}" var="officetelList" varStatus="i">
+
+							<div class="destination">
+								<a
+									href='<c:url value="/detailView?room_id=${officetelList.room_id}" />'
+									class="img img-2 d-flex justify-content-center align-items-center"
+									style="background-image: url(${pageContext.request.contextPath}/resources/upload${officetelList.file_name});"></a>
+
+								<div class="text p-3">
+
+									<div class="text-mi">
+										<div class="d-flex">
+											<div class="one">
+												<h3>
+													<a
+														href='<c:url value="detailView?room_id=${officetelList.room_id}" />'>
+														${officetelList.subject} </a>
+												</h3>
+											</div>
+											<div class="two">
+												<span class="price per-price"><small>${officetelList.deposit}
+														/ ${officetelList.monthly_rent}</small></span>
+											</div>
+										</div>
+										<p>${officetelList.address }</p>
+
+									</div>
+
+									<hr>
+									<p class="bottom-area d-flex">
+										<input type="hidden"
+											value="<c:out value='${officetelList.room_id}'/>" id="room_id">
+
+										<button id="zzim-id-${officetelList.room_id}"
+											class="text-zzim nozzim">
+
+											<c:forEach var="wishList" items="${wishList }">
+
+												<c:if test="${officetelList.room_id == wishList.wish}">
+													<span class="zzim-showtext"
+														id="zzim-ok-${officetelList.room_id}"></span>
+												</c:if>
+
+											</c:forEach>
+
+										</button>
+
+										<span class="ml-auto call"><a
+											href="javascript:void(0);">call</a></span> <input type="hidden"
+											value="<c:out value='${officetelList.phone_number}'/>"
+											id="phone_number">
+
+									</p>
+									<div class="modal">
+										<div class="modal_content" title="클릭하면 창이 닫힙니다."></div>
+									</div>
+								</div>
+							</div>
+						</c:forEach>
+						<!-- 					최신매물 아이템 출력 끝 -->
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- 	원룸 최신 매물 리스트 끝 -->
 
 
 	<footer class="ftco-footer ftco-bg-dark ftco-section">

@@ -189,4 +189,10 @@ public class BoardDAOImpl implements BoardDAO{
 		// TODO Auto-generated method stub
 		return sqlSession.selectList(namespace+".selectPopularRooms", category);
 	}
+	
+	@Override
+	public List<LinkedHashMap<String, Object>> selectThumbImage(String category) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList(namespace+".selectThumbImage");
+	}
 }
