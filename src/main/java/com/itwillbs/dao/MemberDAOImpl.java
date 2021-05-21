@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.itwillbs.domain.MemberBean;
 
 @Repository
-public class MemberDAOImpl implements MemberDAO{
+public class MemberDAOImpl<ReportrBean> implements MemberDAO{
 
 	//xml에서 마이바티스 객체생성 생성자를 통해서 자동주입
 	@Inject
@@ -109,6 +109,12 @@ public class MemberDAOImpl implements MemberDAO{
 	public void yUpdate(MemberBean mb) {
 		sqlSession.update(namespace+".yUpdate", mb);
 		
+	}
+
+
+	@Override
+	public List <ReportrBean> getReportList() {	
+		return sqlSession.selectList(namespace+".getReportList");
 	}
 
 }

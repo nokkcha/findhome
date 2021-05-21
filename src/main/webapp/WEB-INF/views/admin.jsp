@@ -9,6 +9,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Findhome</title>
   <link rel="stylesheet" href="resources/css/admin_style.css">
+  
+  <script src='<c:url value="/resources/script/jquery-3.6.0.js" />'></script>
 </head>
 <body>
   <section class="left_section">
@@ -54,8 +56,24 @@
          
        <div class="board_center">  
         <div class="board_box">
-          <p>매몰신고 리스트</p>      
-        </div>
+          <p>매몰신고 리스트</p>   
+          <table border="1">
+         <tr><td>문의아이디</td><td>제목</td><td>내용</td><td>멤버아이디</td><td>방아이디</td></tr>
+          <%
+          %>
+    <c:forEach var="ReportBean"  items="${reportList }">
+    	<tr><td>${ReportBean.qna_id }</td>
+    		<td>${ReportBean. subject }</td>
+    		<td>${ReportBean.content }</td>
+    		<td>${ReportBean.member_id }</td>
+    		<td>${ReportBean.room_id }</td>
+    	</tr>
+    </c:forEach>
+    <%
+    %>       
+    
+          </table>
+          </div>
       </div>
       
       <div class="board_right">

@@ -5,7 +5,7 @@ import java.util.List;
 import com.itwillbs.domain.MemberBean;
 
 
-public interface MemberDAO {
+public interface MemberDAO<ReportBean> {
 
 		public void insertMember(MemberBean mb);
 		
@@ -40,5 +40,9 @@ public interface MemberDAO {
 		public  List<MemberBean> getMemberNList();
 		
 		public void yUpdate(MemberBean mb);
+
+		public List<ReportBean> getReportList();
+
+	
 
 }

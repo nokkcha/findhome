@@ -5,7 +5,7 @@ import java.util.List;
 import com.itwillbs.domain.MemberBean;
 
 
-public interface MemberService {
+public interface MemberService<ReportBean> {
     // 추상메서드
 	public void insertMember(MemberBean mb);
 	
@@ -40,6 +40,10 @@ public interface MemberService {
 	public  List<MemberBean> getMemberNList();
 	
 	public void yUpdate(MemberBean mb);
+
+	public List<ReportBean> getReportList();
+
+
 }
 
 

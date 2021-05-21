@@ -11,7 +11,7 @@ import com.itwillbs.dao.MemberDAO;
 import com.itwillbs.domain.MemberBean;
 
 @Service
-public class MemberServiceImpl implements MemberService{
+public class MemberServiceImpl<ReportBean> implements MemberService{
 
 	//xml에서 MemberDAOImpl객체생성=> MemberDAO 부모인터페이스 멤버변수에 전달 
 	@Inject
@@ -107,6 +107,11 @@ public class MemberServiceImpl implements MemberService{
 	public void yUpdate(MemberBean mb) {
 		 memberDAO.yUpdate(mb);
 		
+	}
+
+	@Override
+	public  List <ReportBean> getReportList() {
+		return memberDAO. getReportList();
 	}
 
 	

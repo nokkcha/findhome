@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.itwillbs.dao.MemberDAO;
 import com.itwillbs.domain.MemberBean;
 import com.itwillbs.domain.OneRoomBean;
+import com.itwillbs.domain.ReportBean;
 import com.itwillbs.service.BoardService;
 import com.itwillbs.service.MemberService;
 
@@ -32,7 +33,7 @@ public class HomeController {
 	@Inject
 	private BoardService boardService;
 	@Inject
-	private MemberService memberService;
+	private MemberService<ReportBean> memberService;
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
@@ -73,14 +74,18 @@ public class HomeController {
 	@RequestMapping(value = "/admin",method = RequestMethod.GET )
 	public String admin(Model model) {
 		List<MemberBean> nList=memberService.getMemberNList();
+		List<ReportBean> reportList=memberService.getReportList();
+		
 		model.addAttribute("nList",nList);
+		model.addAttribute("reportList",reportList);
+		
+		
 		return "admin";
 	}
 	
 	@RequestMapping(value = "/yUpdate",method = RequestMethod.GET )
 	public String yUpdate(MemberBean mb) {
-		memberService.yUpdate(mb);
-		
+		memberService.yUpdate(mb);	
 		return "redirect:/admin";
 	}
 		
