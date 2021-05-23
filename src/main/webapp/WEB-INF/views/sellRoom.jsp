@@ -292,7 +292,7 @@
 
 				<input type="text" id="seller_id" hidden="" name="seller_id" value='${ob.seller_id}'> 
 				<input type="text" id="category" hidden="" name="category" value='${ob.category}'> <br>
-				<input type="text" id="premium_expiry_date" hidden="" name="premium_expiry_date"> <br>
+				<input type="hidden" id="premium_expiry_date" hidden="" name="premium_expiry_date"> <br>
 				
 				<button type="button" class="btn btn-primary btn-lg btn-block" id="pay_premium">방 프리미엄 등록</button>
 <!-- 				<button type="button" class="btn btn-lg btn-block  btn-custom" id="pay_premium">방 프리미엄 등록</button> -->

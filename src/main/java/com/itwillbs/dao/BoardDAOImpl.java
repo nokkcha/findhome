@@ -175,7 +175,7 @@ public class BoardDAOImpl implements BoardDAO{
 
 	@Override
 	public void deleteRoomImage(int room_id) {
-		sqlSession.delete(namespace+".deleteRoomImage", room_id);
+		sqlSession.delete(namespace+".deleteRoomImagebyRoomID", room_id);
 	}
 
 	@Override
@@ -194,5 +194,11 @@ public class BoardDAOImpl implements BoardDAO{
 	public List<LinkedHashMap<String, Object>> selectThumbImage(String category) {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList(namespace+".selectThumbImage", category);
+	}
+
+	@Override
+	public void deleteRoomImagebyFileID(int id) {
+		// TODO Auto-generated method stub
+		sqlSession.delete(namespace+".deleteRoomImagebyFileID", id);
 	}
 }

@@ -276,11 +276,11 @@ public class BoardServiceImpl implements BoardService{
 
 		String[] fileList = ob.getFileList();
 		
-		if (fileList.length > 0) {
-			if (fileList[0] == "") {
-				return;
-			}
-		}
+//		if (fileList.length > 0) {
+//			if (fileList[0] == "") {
+//				return;
+//			}
+//		}
 		
 		List<ImageBean> list = new ArrayList<ImageBean>();
 		

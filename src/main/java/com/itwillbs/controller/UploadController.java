@@ -109,7 +109,7 @@ public class UploadController {
 	// 7. 파일 삭제 매핑
 	@ResponseBody // view가 아닌 데이터 리턴
 	@RequestMapping(value = "/upload/deleteFile", method = RequestMethod.POST)
-	public ResponseEntity<String> deleteFile(String fileName, int room_id, HttpServletRequest request) {
+	public ResponseEntity<String> deleteFile(String fileName, int id, HttpServletRequest request) {
 		// 상대 경로 설정
 		String root_path = request.getSession().getServletContext().getRealPath("/");
 		String attach_path = "resources/upload/";
@@ -138,7 +138,9 @@ public class UploadController {
 
 		// 데이터와 http 상태 코드 전송
 		if (bIsDeleted) {
-			boardDAO.deleteRoomImage(room_id);
+			if (id != -1) {
+				boardDAO.deleteRoomImagebyFileID(id);
+			}
 			
 			return new ResponseEntity<String>("deleted", HttpStatus.OK);
 		} else {

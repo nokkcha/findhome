@@ -616,41 +616,42 @@
 			setTestData();
 			 var arr = new Array();
 			 var arr2 = new Array();
+			 
 			 <c:forEach items="${ibList}" var="item">        
 	            arr.push({file_name: "${item.file_name}"});
-	            arr2.push({file_name: "${item.id}"});
+	            arr2.push({id: "${item.id}"});
 	         </c:forEach>
 			
-			setRoomImageTable(arr);
+			setRoomImageTable(arr, arr2);
 		}); // end of funtion
 
 		function setRoomImageTable(arr, arr2) {
 			var str_html = '<tbody align="left"><tr>';
-			//ibList
-// 			alert(arr[0].file_name);
-// 			for(var i= 0 ; y < ibList.length; i ++){    
-// 	            alert("이름 : " + ibList[i].file_name);
-// 	        }
-
+			var html_btn = '';
+			
 			for (var i = 1; i <= 15; i++) {
 				var html_td = '<td style="background-color: #dedede;" >';
-				var html_btn = '';
+				
 				html_td += '<input type="file" id="file'+i+'" class="file_list" hidden="" style="display: none;" accept="image/jpeg,image/png" />';
 
 				if (arr[i-1] != null) {
 					var imgSrc = "${pageContext.request.contextPath}/resources/upload" + arr[i-1].file_name;
 					html_td += '<img id="room_img'+i+'" src="'+imgSrc+'" class="room_img_list"></div><div class="back">'
 					$(".fileList").eq(i-1).attr("value", arr[i-1].file_name);
+						
+					html_btn = '<span class="btn-delete_list" id="'+arr2[i-1].id+'" data-src="'+arr[i-1].file_name+'">[삭제]</span></div>';
 					
-					html_btn += '<span class="btn-delete_list" id="'+arr2[i-1].file_id+'" data-src="'+arr[i-1].file_name+'">[삭제]</span></div>';
-					
-// 					html_btn = '<input type="button" class="btn-delete_list" id="btn-upload'
-// 						+ i + '" value="+삭제" /><br>{}</td>';
-
-				} else {
-					html_td += '<img id="room_img'+i+'" src="" class="room_img_list"></div><div class="back">'
-					html_btn = '<input type="button" onClick="ajaxFileUpload()"  class="btn-upload_list" id="btn-upload'
+					html_btn += '<input type="button" onClick="ajaxFileUpload()" class="btn-upload_list" id="btn-upload'
 						+ i + '" value="+등록" /><br>{}</td>';
+					
+
+				} else {					
+					html_td += '<img id="room_img'+i+'" src="" class="room_img_list"></div><div class="back">'
+
+					html_btn = '<span class="btn-delete_list" id="-1" data-src="" style="visibility: hidden;"  >[삭제]</span></div>';
+					
+					html_btn += '<input type="button" onClick="ajaxFileUpload()"  class="btn-upload_list" id="btn-upload'
+							+ i + '" value="+등록" /><br>{}</td>';
 				}
 
 				
@@ -695,21 +696,34 @@
 			});
 			
 			
-			var $item = $('.btn-delete_list').on('click', function() {
-			    alert("이미지 삭제")
+			var $item2 = $('.btn-delete_list').on('click', function() {
+				var idx = $item2.index(this);
 			    var that = $(this); // 여기서 this는 클릭한 span태그
 			    $.ajax({
 			        url: "${path}/findhome/upload/deleteFile",
 			        type: "post",
 			        // data: "fileName="+$(this).attr("date-src") = {fileName:$(this).attr("data-src")}
 			        // 태그.attr("속성")
-			        data: {fileName:$(this).attr("data-src"), file_id:$(this).attr("file_id") }, // json방식
+			        data: {fileName:$(this).attr("data-src"), id:$(this).attr("id") }, // json방식
 			        dataType: "text",
 			        success: function(result){
 			            if( result == "deleted" ){
+			            	console.log("이미지 삭제완료")
 			                // 클릭한 span태그가 속한 div를 제거
-			                that.parent("div").remove();
-			                //alert("deleted!");
+			                //that.parent("div").remove();
+			                
+			                console.log(idx);
+			            	$(".room_img_list").eq(idx).attr(
+									"src", "");
+			            	
+							$(".btn-upload_list").eq(idx)
+							.css('visibility', 'visible'); 
+
+							$(".btn-delete_list").eq(idx)
+									.css('visibility', 'hidden'); 
+							
+							$(".fileList").eq(idx).attr(
+									"value", "");
 			                
 			            } else {
 			            	alert("이미지 삭제 실패!");
@@ -720,6 +734,75 @@
 			
 			
 		}
+		
+		$(document)
+		.on(
+				"change",
+				".file_list",
+				function(event) {
+					//alert('File is changed');			
+					var idx = $('.file_list').index(this);
+					console.log('File is changed : ' + idx);
+					var files = event.target.files;
+					// 첫번째 파일
+					var file = files[0];
+					// 콘솔에서 파일정보 확인
+					console.log('ajaxFileTransmit' + file);
+					// ajax로 전달할 폼 객체
+					var formData = new FormData();
+					// 폼 객체에 파일추가, append("변수명", 값)
+					var target = "file"; //+ idx.toString();
+					formData.append(target, file);
+					$
+							.ajax({
+								type : "post",
+								url : "/findhome/upload/uploadAjax",
+								data : formData,
+								// processData: true=> get방식, false => post방식
+								dataType : "text",
+								// contentType: true => application/x-www-form-urlencoded, 
+								//                false => multipart/form-data
+								processData : false,
+								contentType : false,
+								success : function(data) {
+									var str = "";
+									// 섬네일 생성하고 이미지 표시
+									str += "<img src='${path}/findhome/upload/displayFile?fileName="
+											+ data + "'></a>";
+									// 원래 파일 경로 얻기
+									//										var str2 = "<div><a href='${path}/upload/displayFile?fileName="+data+"'>"+getOriginalName(data)+"</a>";
+									var str2 = "" + data;
+									console.log('originalFileName : '
+											+ str2);
+
+									$("#btn-upload").append(str);
+									$('div').children('span');
+									data = '/findhome/upload/displayFile?fileName='
+											+ data;
+									$(".room_img_list").eq(idx).attr(
+											"src", data);
+									
+									$(".btn-upload_list").eq(idx)
+									.css('visibility', 'hidden'); 
+
+// 									if($(".btn-delete_list").eq(idx).css("display") == "none"){
+										$(".btn-delete_list").eq(idx).css('visibility', 'visible'); 
+// 									}
+																				
+									$(".btn-delete_list").eq(idx).attr(
+											"id", "-1");
+									$(".btn-delete_list").eq(idx).attr(
+											"data-src", str2);
+									
+									
+									// 실제파일경로 폼 hidden tag내 삽입
+									$(".fileList").eq(idx).attr(
+											"value", str2);
+									
+									//html_btn += '<span class="btn-delete_list" id="'+arr2[i-1].id+'" data-src="'+arr[i-1].file_name+'">[삭제]</span></div>';
+								}
+							});
+				});
 		
 		// 관리비 없음 체크 시 동작 함수
 		$(function() {
@@ -790,60 +873,7 @@
 			return fileName.substr(idx);
 		}
 
-		$(document)
-				.on(
-						"change",
-						".file_list",
-						function(event) {
-							//alert('File is changed');			
-							var idx = $('.file_list').index(this);
-							console.log('File is changed : ' + idx);
-							var files = event.target.files;
-							// 첫번째 파일
-							var file = files[0];
-							// 콘솔에서 파일정보 확인
-							console.log('ajaxFileTransmit' + file);
-							// ajax로 전달할 폼 객체
-							var formData = new FormData();
-							// 폼 객체에 파일추가, append("변수명", 값)
-							var target = "file"; //+ idx.toString();
-							formData.append(target, file);
-							$
-									.ajax({
-										type : "post",
-										url : "/findhome/upload/uploadAjax",
-										data : formData,
-										// processData: true=> get방식, false => post방식
-										dataType : "text",
-										// contentType: true => application/x-www-form-urlencoded, 
-										//                false => multipart/form-data
-										processData : false,
-										contentType : false,
-										success : function(data) {
-											var str = "";
-											// 섬네일 생성하고 이미지 표시
-											str += "<img src='${path}/findhome/upload/displayFile?fileName="
-													+ data + "'></a>";
-											// 원래 파일 경로 얻기
-											//										var str2 = "<div><a href='${path}/upload/displayFile?fileName="+data+"'>"+getOriginalName(data)+"</a>";
-											var str2 = "" + data;
-											console.log('originalFileName : '
-													+ str2);
-
-											$("#btn-upload").append(str);
-											$('div').children('span');
-											data = '/findhome/upload/displayFile?fileName='
-													+ data;
-											$(".room_img_list").eq(idx).attr(
-													"src", data);
-											$(".btn-upload_list").eq(idx)
-													.hide();
-											// 실제파일경로 폼 hidden tag내 삽입
-											$(".fileList").eq(idx).attr(
-													"value", str2);
-										}
-									});
-						});
+		
 	</script>
 
 
