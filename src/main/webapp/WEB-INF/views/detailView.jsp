@@ -445,7 +445,7 @@ h4 {
 								<c:forEach items="${ibList}" var="roomImg" varStatus="i">
 								<div class="item">
 									<div class="hotel-img">
-										<img src='<c:url value="/resources/upload${roomImg.file_name}" />'>
+										<img src='<c:url value="/resources/upload${roomImg.original_file_name}" />'>
 									</div>
 								</div>		
 								</c:forEach>
