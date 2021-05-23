@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>DirEngine - Free Bootstrap 4 Template by Colorlib</title>
+<title>FindHome - 좋은 집을 찾을 수 있는 곳</title>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">

@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>DirEngine - Free Bootstrap 4 Template by Colorlib</title>
+    <title>FindHome - 좋은 집을 찾을 수 있는 곳</title>
     <script
 	src="${pageContext.request.contextPath}/resources/script/jquery-3.6.0.js"></script>
 	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
