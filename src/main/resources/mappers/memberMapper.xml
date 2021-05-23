@@ -87,6 +87,11 @@
 	<update id="yUpdate">
 		update member_seller set is_confirm='Y' where id=#{id}
 	</update>
+	
+	
+	<select id="getReportList" resultType="com.itwillbs.domain.ReportBean">
+	 select * from report
+	 </select>
 
 
 </mapper>
