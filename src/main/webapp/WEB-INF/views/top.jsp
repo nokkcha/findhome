@@ -12,7 +12,7 @@
 			<span class="oi oi-menu"></span> 메뉴
 		</button>
 
-		<div class="collapse navbar-collapse" id="ftco-nav" align="left">
+		<div class="collapse navbar-collapse" id="ftco-nav" >
 			<ul class="navbar-nav ml-auto">
 			
 			<li class="nav-item dropdown"><a class="nav-link" href="./findRooms" data-bs-toggle="dropdown"> 원룸 </a>
@@ -30,12 +30,12 @@
 			</ul>
 		</div>
 
-		<div class="collapse navbar-collapse" id="ftco-nav">
+<!-- 		<div class="collapse navbar-collapse" id="ftco-nav"> -->
 			<ul class="navbar-nav ml-auto">
 
 				<c:if test="${id ==null}">
-					<li class="nav-item"><a href="./login" class="nav-link">로그인</a></li>
-					<li class="nav-item"><a href='<c:url value="/join_choice" />' class="nav-link">회원가입</a></li>
+					<li class="nav-item"><a class="nav-link" href="./login" class="nav-link">로그인</a></li>
+					<li class="nav-item"><a class="nav-link" href='<c:url value="/join_choice" />' class="nav-link">회원가입</a></li>
 				</c:if>
 
 				<c:if test="${id != null}">
@@ -49,7 +49,7 @@
 				</c:if>
 
 			</ul>
-		</div>
+<!-- 		</div> -->
 
 	</div>
 </nav>
