@@ -292,7 +292,7 @@
 
 				<input type="text" id="seller_id" hidden="" name="seller_id" value='${ob.seller_id}'> 
 				<input type="text" id="category" hidden="" name="category" value='${ob.category}'> <br>
-				<input type="text" id="premium_expiry_date" hidden="" name="premium_expiry_date"> <br>
+				<input type="hidden" id="premium_expiry_date" hidden="" name="premium_expiry_date"> <br>
 				
 				<button type="button" class="btn btn-primary btn-lg btn-block" id="pay_premium">방 프리미엄 등록</button>
 <!-- 				<button type="button" class="btn btn-lg btn-block  btn-custom" id="pay_premium">방 프리미엄 등록</button> -->
@@ -683,7 +683,9 @@
 				html_td += '<input type="file" id="file'+i+'" class="file_list" hidden="" style="display: none;" accept="image/jpeg,image/png" />';
 				html_td += '<img id="room_img'+i+'" src="" class="room_img_list"></div><div class="back">'
 
-				var html_btn = '<input type="button" onClick="ajaxFileUpload()"  class="btn-upload_list" id="btn-upload'
+				var html_btn = '<span class="btn-delete_list" id="-1" data-src="" style="visibility: hidden;"  >[삭제]</span></div>';
+								
+				html_btn += '<input type="button" onClick="ajaxFileUpload()"  class="btn-upload_list" id="btn-upload'
 						+ i + '" value="+등록" /><br>{}</td>';
 
 				switch (i) {
@@ -724,6 +726,44 @@
 
 				$('.file_list').eq(idx).click();
 			});
+			
+			var $item2 = $('.btn-delete_list').on('click', function() {
+				var idx = $item2.index(this);
+			    var that = $(this); // 여기서 this는 클릭한 span태그
+			    $.ajax({
+			        url: "${path}/findhome/upload/deleteFile",
+			        type: "post",
+			        // data: "fileName="+$(this).attr("date-src") = {fileName:$(this).attr("data-src")}
+			        // 태그.attr("속성")
+			        data: {fileName:$(this).attr("data-src"), id:$(this).attr("id") }, // json방식
+			        dataType: "text",
+			        success: function(result){
+			            if( result == "deleted" ){
+			            	console.log("이미지 삭제완료")
+			                // 클릭한 span태그가 속한 div를 제거
+			                //that.parent("div").remove();
+			                
+			                console.log(idx);
+			            	$(".room_img_list").eq(idx).attr(
+									"src", "");
+			            	
+							$(".btn-upload_list").eq(idx)
+							.css('visibility', 'visible'); 
+
+							$(".btn-delete_list").eq(idx)
+									.css('visibility', 'hidden'); 
+							
+							$(".fileList").eq(idx).attr(
+									"value", "");
+			                
+			            } else {
+			            	alert("이미지 삭제 실패!");
+			            }
+			        }
+			    });
+			});
+			
+			
 		}
 
 		function getOriginalName(fileName) {
@@ -779,8 +819,20 @@
 													+ data;
 											$(".room_img_list").eq(idx).attr(
 													"src", data);
+											
 											$(".btn-upload_list").eq(idx)
-													.hide();
+											.css('visibility', 'hidden'); 
+
+//		 									if($(".btn-delete_list").eq(idx).css("display") == "none"){
+												$(".btn-delete_list").eq(idx).css('visibility', 'visible'); 
+//		 									}
+																						
+											$(".btn-delete_list").eq(idx).attr(
+													"id", "-1");
+											$(".btn-delete_list").eq(idx).attr(
+													"data-src", str2);
+											
+											
 											// 실제파일경로 폼 hidden tag내 삽입
 											$(".fileList").eq(idx).attr(
 													"value", str2);

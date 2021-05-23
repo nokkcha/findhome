@@ -51,5 +51,6 @@ public interface BoardDAO {
 		public void deleteRoomImage(int room_id);
 		public List<LinkedHashMap<String, Object>> selectPopularRooms(String category);
 		List<LinkedHashMap<String, Object>> selectThumbImage(String category);
+		public void deleteRoomImagebyFileID(int id);
 
 }

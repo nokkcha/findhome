@@ -63,10 +63,15 @@ public class BoardController {
 	}
 
 	@RequestMapping(value = "/writePro", method = RequestMethod.POST)
-	public String writePro(OneRoomBean bb) {
+	public String writePro(OneRoomBean bb, Model model) {
 		String[] fileList = bb.getFileList();
 		for (String string : fileList) {
 			System.out.println("FileList : " + string);
+		}
+		
+		if (fileList == null || fileList.length < 1 || fileList[0] == "") {
+			model.addAttribute("msg", "매물 사진을 하나 이상 등록해주세요.");
+			return "msg";
 		}
 
 		System.out.println("방등록 카테고리 : " + bb.getCategory());
@@ -118,6 +123,12 @@ public class BoardController {
 		OneRoomBean obck = boardService.boardCheck(ob);
 		
 		String[] fileList = ob.getFileList();
+		
+		if (fileList == null || fileList.length < 1 || fileList[0] == "") {
+			model.addAttribute("msg", "매물 사진을 하나 이상 등록해주세요.");
+			return "msg";
+		}
+		
 		for (String string : fileList) {
 			System.out.println("FileList : " + string);
 		}
@@ -675,10 +686,14 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value = "/sellRoom/payPro", method = RequestMethod.GET)
-	public String payPro(OneRoomBean ob) {
+	public String payPro(OneRoomBean ob, Model model) {
 		
 		System.out.println("프리미엄 등록 기간 : " + ob.getPremium_expiry_date());
-		
+		String[] fileList = ob.getFileList();
+		if (fileList == null || fileList.length < 1 || fileList[0] == "") {
+			model.addAttribute("msg", "매물 사진을 하나 이상 등록해주세요.");
+			return "msg";
+		}
 		boardService.insertRoom(ob);
 
 		return "redirect:/";
