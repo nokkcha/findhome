@@ -799,6 +799,10 @@
 									$(".fileList").eq(idx).attr(
 											"value", str2);
 									
+<<<<<<< HEAD
+=======
+									//html_btn += '<span class="btn-delete_list" id="'+arr2[i-1].id+'" data-src="'+arr[i-1].file_name+'">[삭제]</span></div>';
+>>>>>>> branch 'master' of https://github.com/imrutel/findhome
 								}
 							});
 				});
