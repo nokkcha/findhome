@@ -94,8 +94,9 @@
 
 
 			<div class="row cnt">
-			 <h2>로그인</h2> 
-			  <div><input type="radio" id="member_type_select" name="member_type" value="일반">일반 <input type="radio" id="member_type_select" name="member_type" value="사업자">사업자<br></div>
+			 <h2 class="login_member">세입자 로그인</h2> 
+			  <div><input type="radio" id="member_type_select" name="member_type" value="일반" checked="checked">세입자 
+			  <input type="radio" id="member_type_select" name="member_type" value="사업자">사업자<br></div>
 				<div class="pr-md-5">
 					<!-- col-md-6 제거함 -->
 					<form action=<c:url value="/loginPro" /> id="login" name="login"  method="post" >
@@ -142,9 +143,11 @@
 					console.log(checkValue);
 					
 				if (checkValue == "일반") {
+					$('.login_member').text('세입자 로그인');
 					$('#login').attr("action","<c:url value="/loginPro" />");
 
 				} else {
+					$('.login_member').text('사업자 로그인');					
 					$('#login').attr("action","<c:url value="/loginPro2" />");
 				}
 			});
