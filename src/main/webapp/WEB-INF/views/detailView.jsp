@@ -231,10 +231,10 @@
 											<h5 class="modal-title">Contact</h5>
 										</div>
 										<div class="modal-body">
-											 <h6>중개사 : ${ob.seller_id }</h6>
-											 <h6>연락처 : ${ob.phone_number }</h6><br>
+											 <h6>중개사 : ${ob.seller_id }</h6><br>
+											 <h4>연락처 : ${ob.phone_number }</h4><br>
 											 
-											 <h4>050-1234-5678</h4>
+<!-- 											 <h4>050-1234-5678</h4> -->
 											 <p>
 											 중개사무소에 연락하여 방문일을 예약하세요.<br>
 												Findhome에서 보고 연락한다고 말씀하시면<br>

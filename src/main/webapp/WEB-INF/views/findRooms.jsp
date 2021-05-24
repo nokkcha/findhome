@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>FindHome - 좋은 집을 찾을 수 있는 곳</title>
+    <title>DirEngine - Free Bootstrap 4 Template by Colorlib</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
@@ -39,7 +39,7 @@
   <%@ include file="../views/top.jsp" %>
     
     
-    <div class="hero-wrap js-fullheight" style="background-image: url('${pageContext.request.contextPath}/resources/images/bg_7.jpg');">
+    <div class="hero-wrap js-fullheight" style="background-image: url('${pageContext.request.contextPath}/resources/images/bg_5.jpg');">
       <div class="overlay"></div>
       
       <div class="container">
@@ -232,15 +232,37 @@
 
 		    						<span class="ml-auto call"><a href="javascript:void(0);">call</a></span>
 									<input type="hidden" value="<c:out value='${roomList.phone_number}'/>" id="phone_number">
+									<input type="hidden" value="<c:out value='${roomList.seller_id}'/>" id="seller_id">
 
 		    						</p>
 		    						
 		    						
 		    						<div class="modal">
-									  <div class="modal_content" 
-									       title="클릭하면 창이 닫힙니다.">
-									    
-									  </div>
+		    						
+<!-- 									  <div class="modal_content"  -->
+<!-- 									       title="클릭하면 창이 닫힙니다."> -->
+<!-- 									  </div> -->
+										<div class="modal-content" id="modal-content">
+										<div class="modal-header">
+											<h5 class="modal-title">Contact</h5>
+										</div>
+										<div class="modal-body">
+											 <h6 class="id">중개사 : {seller_id}</h6><br>
+											 <h4 class="phone">연락처 : {phone_number}</h4><br>
+											 
+<!-- 											 <h4>050-1234-5678</h4> -->
+											 <p>
+											 중개사무소에 연락하여 방문일을 예약하세요.<br>
+												Findhome에서 보고 연락한다고 말씀하시면<br>
+												더욱 빠른 예약이 가능합니다.<br></p>
+											 
+											 
+										</div>
+											<div class="modal-footer">
+											<button type="button" id="btn-close" class="btn btn-secondary">닫기</button>
+											</div>
+										</div>
+									  
 									</div>
 
 
@@ -326,7 +348,7 @@
   <script src="${pageContext.request.contextPath}/resources/js/main.js"></script>
   
   
-<script src="${pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"></script>
+<script src="../script/jquery-3.6.0.js"></script>
 <script type="text/javascript">
 
     $(document).ready(function(){
@@ -377,31 +399,39 @@
         	 	});
 
         	});
+        	        
+        	$(document).ready(function(){
+        		  $(document).on("click",".modal", function(){
+        		    $(".modal").fadeToggle('fast');
+        		  });  
+        		});
+			
         	
         	// 목록 - [call] 클릭
         	$('.call').click(function () {    	
         		var filter = "win16|win32|win64|mac|macintel"; 
         		var phone_number = $(this).parent().children('#phone_number')[0].value;
+        		var seller_id = $(this).parent().children('#seller_id')[0].value;
         		
         		if ( navigator.platform ) { 
         			if ( filter.indexOf( navigator.platform.toLowerCase() ) < 0 ) {
         				location.href="tel:"+phone_number;
 				
         			} else {
-        				$(".modal_content").html("문의하기 <br> 전화번호 : " +phone_number)
-        				
-        				$(".modal").fadeIn();
-        				
-        				$(".modal_content").click(function(){
-        					$(".modal").fadeOut(); 
-        					});
+        				$(".id").text("중개사 : " + seller_id + "");
+        				$(".phone").text("연락처 : " + phone_number + "");
+        				var html = $(".modal").html();
+//         				console.log(html);
 
+						$(".modal").html(html);	
+        				$(".modal").fadeIn();
         			} 
         		}
     		
     		});
 
     });
+    
 
     
  // 보증금 최저
