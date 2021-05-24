@@ -5,6 +5,9 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 import com.itwillbs.dao.MemberDAO;
@@ -113,6 +116,34 @@ public class MemberServiceImpl<ReportBean> implements MemberService{
 	public  List <ReportBean> getReportList() {
 		return memberDAO. getReportList();
 	}
+
+	public void updateMemberPw(MemberBean mb) {
+		memberDAO.updateMemberPw(mb);
+		
+	}
+
+	@Override
+	public MemberBean userCheck3(MemberBean mb) {
 	
+		return memberDAO.userCheck3(mb);
+	}	
+	
+	@Override
+	public MemberBean userCheck4(MemberBean mb) {
+	
+		return memberDAO.userCheck4(mb);
+	}	
+	
+	@Override
+	public MemberBean userCheck5(MemberBean mb) {
+	
+		return memberDAO.userCheck5(mb);
+	}
+	
+	@Override
+	public void updateMemberPw2(MemberBean mb) {
+		memberDAO.updateMemberPw2(mb);
+		
+	}
 
 }

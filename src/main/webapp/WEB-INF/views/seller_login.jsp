@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>FindHome - 좋은 집을 찾을 수 있는 곳</title>
+<title>DirEngine - Free Bootstrap 4 Template by Colorlib</title>
 <script src="${pageContext.request.contextPath}/resources/script/jquery-3.6.0.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
@@ -33,7 +33,8 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
 
 
-<style type="text/css">
+
+	<style type="text/css">
 	 .cnt {
 	     width: 350px;
 	     margin: auto;
@@ -42,10 +43,7 @@
 	 .ma {margin-bottom: 10px;}
 	 .fp {margin-left: 170px; font-size: 13px; text-decoration: underline;  cursor: pointer}
 	 .ff {color: #4d4d4d;}
-
-
-</style>
-
+	</style>
 </head>
 <body>
 
@@ -58,9 +56,9 @@
 			<div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
 				<div class="col-md-9 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
 					<p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">
-						<span class="mr-2"><a href="index.html">Home</a></span> <span>Contact</span>
+						<span class="mr-2"><a href="index.html">Home</a></span>
 					</p>
-					<h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Contact Us</h1>
+					<h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Seller Login</h1>
 				</div>
 			</div>
 		</div>
@@ -76,55 +74,52 @@
 						var checkIdResult = document.getElementById('checkIdResult');
 						var checkResult = document.getElementById('checkPasswordResult');
 
-						if ($('#id').val() == "") {
-							$('#id').focus();
-							checkIdResult.innerHTML = "<font color='#FF0000'>아이디를 입력하세요.</font>";
-								return false;
-						}
+							if ($('#id').val() == "") {
+								$('#id').focus();
+								checkIdResult.innerHTML = "<font color='#FF0000'>아이디를 입력하세요.</font>";
+									return false;
+							}
 
-						if ($('#password').val() == "") {
-							$('#password').focus();
-							checkResult.innerHTML = "<font color='#FF0000'>비밀번호를 입력하세요.</font>";
-								return false;
-						}
+							if ($('#password').val() == "") {
+								$('#password').focus();
+								checkResult.innerHTML = "<font color='#FF0000'>비밀번호를 입력하세요.</font>";
+									return false;
+							}
 
+						});
 					});
-			});
+				
 			</script>
 
 
 			<div class="row cnt">
-			 <h2>로그인</h2> 
-			  <div><input type="radio" id="member_type_select" name="member_type" value="일반">일반 <input type="radio" id="member_type_select" name="member_type" value="사업자">사업자<br></div>
+			<h2>로그인</h2>
 				<div class="pr-md-5">
 					<!-- col-md-6 제거함 -->
-					<form action=<c:url value="/loginPro" /> id="login" name="login"  method="post" >
+					<form action=<c:url value="/seller_loginPro" /> id="login" name="login" method="post">
 						<div class="form-group" align="left">
-							<label class="form-control-label">아이디</label> 
-							<input type="text" class="form-control" name="id" id="id"  value="" onkeyup="checkId()">
-								
-							<br><span class="check-group" id="checkIdResult"></span>	
+							<label class="form-control-label">아이디</label> <input type="text" class="form-control" name="id" id="id" value="" onkeyup="checkId()"> <br>
+							<span class="check-group" id="checkIdResult"></span>
 
 						</div>
 						<div class="form-group" align="left">
-							<label class="form-control-label">비밀번호</label><input
-								type="password" class="form-control" name="password" id="password" value=""
-								onkeyup="checkPassword()">
-								
-						  <br><span class="check-group" id="checkPasswordResult"></span>
-						</div>			
+							<label class="form-control-label">비밀번호</label><input type="password" class="form-control" name="password" id="password" value="" onkeyup="checkPassword()"> <br>
+							<span class="check-group" id="checkPasswordResult"></span>
+						</div>
+
 						<div class="ma">
-							<label class="fp"><a href='<c:url value="/findPassword" />' class="ff">비밀번호찾기</a></label>
+							<label class="fp"><a href='<c:url value="/findPassword2" />' class="ff">비밀번호찾기</a></label>
 						</div>
-									
 						<div class="form-group">
-							<input type="submit" value="로그인"
-								class="btn btn-primary py-3 px-5" id="btn">
+							<input type="submit" value="로그인" class="btn btn-primary py-3 px-5" id="btn">
 						</div>
-				<a href="https://kauth.kakao.com/oauth/authorize?client_id=b0993beef1eb3df1922ad92776e6688b&redirect_uri=http://localhost:8080/findhome/kakaologin&response_type=code"><img src="//k.kakaocdn.net/14/dn/btqCn0WEmI3/nijroPfbpCa4at5EIsjyf0/o.jpg" width="222"/></a>
+						
+						<a href="https://kauth.kakao.com/oauth/authorize?client_id=c8b68959528f17086eb38f6bc7df7c75&redirect_uri=http://localhost:8080/auth/kakao/callback&response_type=code"><img src="//k.kakaocdn.net/14/dn/btqCn0WEmI3/nijroPfbpCa4at5EIsjyf0/o.jpg" width="222" /></a>
 
-				
+
 					</form>
+
+<!-- 					<input type="button" name="radioTxt" id="radioTxt" value="Banana">Banana -->
 
 
 				</div>
@@ -135,23 +130,6 @@
 	</section>
 
 
-	<script type="text/javascript">
-		$(document).ready(function() {
-			$("input[name=member_type]").change(function() {
-				var checkValue = $('input[name="member_type"]:checked').val();
-					console.log(checkValue);
-					
-				if (checkValue == "일반") {
-					$('#login').attr("action","<c:url value="/loginPro" />");
-
-				} else {
-					$('#login').attr("action","<c:url value="/loginPro2" />");
-				}
-			});
-		});
-		
-	
-	</script>
 
 
 	<footer class="ftco-footer ftco-bg-dark ftco-section">

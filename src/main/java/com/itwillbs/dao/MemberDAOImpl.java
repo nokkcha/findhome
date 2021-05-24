@@ -115,4 +115,32 @@ public class MemberDAOImpl<ReportrBean> implements MemberDAO{
 	public List <ReportrBean> getReportList() {	
 		return sqlSession.selectList(namespace+".getReportList");
 	}
+	public void updateMemberPw(MemberBean mb) {
+		sqlSession.update(namespace + ".updateMemberPw", mb);
+		
+	}
+
+	@Override
+	public MemberBean userCheck3(MemberBean mb) {
+	
+		return sqlSession.selectOne(namespace+".userCheck3", mb);
+	}
+	
+	@Override
+	public MemberBean userCheck4(MemberBean mb) {
+	
+		return sqlSession.selectOne(namespace+".userCheck4", mb);
+	}
+	
+	@Override
+	public MemberBean userCheck5(MemberBean mb) {
+	
+		return sqlSession.selectOne(namespace+".userCheck5", mb);
+	}
+	
+	@Override
+	public void updateMemberPw2(MemberBean mb) {
+		sqlSession.update(namespace + ".updateMemberPw2", mb);
+		
+	}
 }
