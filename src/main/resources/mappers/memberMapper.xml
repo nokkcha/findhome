@@ -17,6 +17,7 @@
 		values(#{id},#{password},#{phone_number},#{is_confirm})
 	</insert>
 
+
 	<select id="userCheck"
 		resultType="com.itwillbs.domain.MemberBean">
 		select * from member_normal where id=#{id} and password=#{password}
@@ -37,11 +38,6 @@
 		select * from member_seller where id=#{id}
 	</select>
 	
-	<select id="userCheck5"
-		resultType="com.itwillbs.domain.MemberBean">
-		select * from member_normal where phone_number=#{phone_number}
-	</select>
-
 	<select id="getMember"
 		resultType="com.itwillbs.domain.MemberBean">
 		select * from member_normal where id=#{id}
@@ -51,7 +47,11 @@
 		resultType="com.itwillbs.domain.MemberBean">
 		select * from member_seller where id=#{id}
 	</select>
-
+	
+	<update id="updateMember3">
+		update member_normal set phone_number=#{phone_number} where id=#{id}
+	</update>
+	
 	<update id="updateMember2">
 		update member_seller set id=#{id}, password=#{password}, phone_number=#{phone_number} where id=#{id}
 	</update>

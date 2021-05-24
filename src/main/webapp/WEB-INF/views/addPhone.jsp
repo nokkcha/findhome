@@ -78,7 +78,7 @@
 		
 	
 	</script>
-  <form class="add" action='<c:url value="/addPhonePro" />' id="add">
+  <form class="add" action='<c:url value="/addPhonePro" />' id="add" method="post">
 
 	<div class="bx">
 	  <div class="fw">
@@ -87,7 +87,7 @@
 			 <div class="em">휴대폰 번호를 입력하시면 <br> 문의 시 더욱 편리하게 연결됩니다.</div>
 			 </div>
 			  <div class="pa">
-			   <div class="em2"><input type="tel" spellcheck="true" data-focusable="true" maxlength="11" class="font" name="phone" id="phone" onkeyup="checkPhone()" >
+			   <div class="em2"><input type="tel" spellcheck="true" data-focusable="true" maxlength="11" class="font" name="phone_number" id="phone" onkeyup="checkPhone()" >
 			   		<br><span class="check-group" id="checkPhoneResult"></span>
 			   </div>
 			  </div> 

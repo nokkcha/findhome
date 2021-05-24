@@ -124,7 +124,7 @@
 						</div>
 				<a href="https://kauth.kakao.com/oauth/authorize?client_id=b0993beef1eb3df1922ad92776e6688b&redirect_uri=http://localhost:8080/findhome/kakaologin&response_type=code"><img src="//k.kakaocdn.net/14/dn/btqCn0WEmI3/nijroPfbpCa4at5EIsjyf0/o.jpg" width="222"/></a>
 
-				
+			
 					</form>
 
 
@@ -150,8 +150,8 @@
 				}
 			});
 		});
-		
-	
+
+    
 	</script>
 
 
