@@ -7,10 +7,29 @@
 	table-layout: fixed;
 }
 
+#semi-info-table{
+	width: 600px; margin: auto;
+	border-collapse: separate;
+}
+
+#semi-info-table tr:nth-of-type(1){
+	font-size: 12px;
+}
+
+#semi-info-table tr:nth-of-type(2){
+	font-weight: bold;
+	color: #3073ba;
+	font-size: 20px;
+	
+}
+
+
+
 #roomtable {
 	width:600px;
 	border-collapse: collapse;
-	margin: auto !important;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 #roomtable th {
@@ -60,7 +79,7 @@
 }
 
 #btn-call{
-	display: inline;
+	float: inherit;
 }
 
 #contact-btn {
@@ -129,15 +148,31 @@ h6{
 	text-align: center;
 }
 
+.subject {
+	font-weight: bold;
+	font-size: 30px;
+	text-align: center;
+}
+
+.seller_id{
+	font-weight: 200;
+	font-size: 16px;
+	text-align: center;
+}
 
 .info-mini-container{
-	text-align: center;;
+	text-align: left;
 	
 }
 .option-info-container {
 	padding: 50px 100px 50px 100px;
 	border-top: 1px solid #dddddddd;
 
+}
+
+.semi-info-container {
+	padding: 50px 100px 50px 100px;
+	border-bottom: 1px solid #dddddddd;
 }
 
 .room-detail-option-item-wrapper {
@@ -328,7 +363,7 @@ button.text-zzim:focus{
 }
 
 .zzim:before {
-	content:"💓";
+	content:url("../images/ss_fillheart.png");
 }
 
 .zzim:hover:before {
@@ -339,11 +374,11 @@ button.text-zzim:focus{
 }
 
 .nozzim:before {
-	content:url("../images/fillHeart_s.png");
+	content:url("../images/sss_heart.png");
 }
 
 .nozzim:hover:before {
-	content:url("../images/heart_s.png");
+	content:url("../images/ss_fillheart.png");
    cursor: pointer;
 }
 

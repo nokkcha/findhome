@@ -29,7 +29,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/flaticon.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/icomoon.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/detailView.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/detailView.css?after">
 
 
 
@@ -183,7 +183,7 @@
 								<c:forEach items="${ibList}" var="roomImg" varStatus="i">
 								<div class="item">
 									<div class="hotel-img">
-										<img src='<c:url value="/resources/upload${roomImg.file_name}" />'>
+										<img src='<c:url value="/resources/upload${roomImg.original_file_name}" />'>
 									</div>
 								</div>		
 								</c:forEach>
@@ -195,6 +195,7 @@
 
 
 						<div class="col-md-12 hotel-single mt-4 mb-5 ftco-animate">
+										
 							<div class="info-container">
 								<div class="info-mini-container">
 								<br>
@@ -204,17 +205,19 @@
 									<c:when test="${ob.is_selling eq 'N'}"> 거래가 완료된 매물입니다. </c:when>
 									</c:choose>
 								</span>
-								<h2>${ob.subject }</h2>
-								<span class="text-zzim icon-like nozzim"></span>
+								<br>
+								
+								<span class="subject">${ob.subject }  </span><span class="text-zzim icon-like nozzim"></span>
+								
 								<p class="rate mb">
 									<span class="loc"><a href="#map-info"><i class="icon-map"></i> ${ob.address }</a></span><br> 
 									<!-- 										<span class="text-zzim icon-like zzim"></span> -->
-								<h6>
-									<i class="fas fa-user" style="width: 20; height: 20"></i> ${ob.seller_id }
-								</h6>
-								<div>
-								<button type="button" id="btn-call" class="btn btn-secondary">call</button>
-								</div>
+
+									<span class="seller_id"><i class="fas fa-user" style="width: 20; height: 20"></i> ${ob.seller_id }</span><br>
+									<br>
+									<button type="button" id="btn-call" class="btn btn-outline-dark"><img src='<c:url value="/resources/images/telephone.png" />' style="width: 15px;height: 15px;"> call</button>
+						
+
 									<!-- Modal -->
 
 									<div class="modal-background" id="modal-content">
@@ -248,14 +251,22 @@
 							</div>
 						</div>
 					</div>
+					
+					<div class="semi-info-container">
+						<table id="semi-info-table">
+							<tr>
+								<td>면적</td><td>관리비</td><td>구조</td>
+							</tr>
+							<tr>
+								<td>${ob.exclusive_area_m }m<sup>2</sup>(${ob.exclusive_area_p }평)</td><td>${ob.fees}만원</td><td>${ob.room_type }</td>
+							</tr>
+						</table>
+					</div>
+
 
 					<div class="d-md-flex mt-5 mb-5">
-						<table id=roomtable>
+						<table id="roomtable">
 							<thead>
-								<tr>
-									<th>방 형태</th>
-									<td>${ob.room_type }</td>
-								</tr>
 							</thead>
 							<tbody>
 								<tr>
@@ -266,10 +277,7 @@
 									<th>월세</th>
 									<td>${ob.monthly_rent}만원</td>
 								</tr>
-								<tr>
-									<th>관리비</th>
-									<td>${ob.fees}만원</td>
-								</tr>
+
 <!-- 								<tr> -->
 <!-- 									<th>관리비 포함_내역</th> -->
 <%-- 									<td><c:forEach items="${ob.include_fees_array }" var="list"> --%>
@@ -279,11 +287,6 @@
 								<tr>
 									<th>대출 여부</th>
 									<td>${ob.loan}</td>
-								</tr>
-								<tr>
-									<th>면적</th>
-									<td>${ob.exclusive_area_m }m<sup>2</sup>(${ob.exclusive_area_p }평)
-									</td>
 								</tr>
 								<tr>
 									<th>건물 층수</th>
@@ -315,7 +318,7 @@
 						</table>
 
 					</div>
-					<div class="map-container" id="map-info">
+					<div class="map-container">
 						<h4 class="mb-5">상세 설명</h4>
 						<div class="mb-5">${ob.content }</div>
 					</div>
