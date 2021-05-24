@@ -9,14 +9,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Findhome</title>
   <link rel="stylesheet" href="resources/css/admin_style.css">
-<<<<<<< HEAD
   
   <script src='<c:url value="/resources/script/jquery-3.6.0.js" />'></script>
-</head>
+
+ </head>
+ 
 <body>
   <section class="left_section">
+  
     <h3>Findhome</h3>
-    
+<img src="/resources/img/user.png" alt="프로필 사진">
+
     <ul>
       <li><a href=""><strong>대시보드</strong></a></li>
     </ul>
@@ -24,23 +27,16 @@
       <li><a href=""><strong>개인회원 관리</strong></a></li>
       <li><a href="">사용자 관리</a></li>
       <li><a href="">가입 승인</a></li>
-      <li><a href="">문의글 관리</a></li>
-      <li><a href="">통계</a></li>
-    </ul>
-    <ul>
-      <li><a href=""><strong>사업자회원 관리</strong></a></li>
-      <li><a href="">사용자 관리</a></li>
-      <li><a href="">가입 승인</a></li>
-      <li><a href="">문의글 관리</a></li>
-      <li><a href="">통계</a></li>
-    </ul>
-  </section>
-  
+      <li><a href="">매물목록 관리</a></li>
+</ul>
+    </section>
+ 
   
   <section class="right_section">
   
     <div class="header clear">
-      <h4>개인회원 관리</h4> 
+      <h4>개인회원 관리</h4>
+      <button class="logout"  onclick="location.href='<c:url value="/adminlogout" />' ">로그아웃</button>
     </div>
     
     <div class="dashboard">
@@ -50,95 +46,63 @@
         <div class="board_box">
           <p>승인대기 회원 목록</p>
           <c:forEach var="mb"  items="${nList}">
-          <p>${mb.id} <input type="button"  value="승인버튼"  onclick="location.href='<c:url value="/yUpdate?id=${mb.id}" />' "></p>
+          <p>${mb.id} <input type="button"  value="승인"  onclick="location.href='<c:url value="/yUpdate?id=${mb.id}" />' "></p>
           </c:forEach>
           </div>
          </div>
          
-       <div class="board_center">  
+        <div class="board_center">  
         <div class="board_box">
-          <p>매몰신고 리스트</p>   
-          <table border="1">
-<!--          <tr><td>문의아이디</td><td>제목</td><td>내용</td><td>멤버아이디</td><td>방아이디</td></tr> -->
-          <tr><td>문의아이디</td><td>내용</td><td>방아이디</td></tr>
-          <%
+          <p>매몰신고 리스트</p>  
+          <table border="1" class="type09">
+            <caption>
+              
+<!--               <div></div> -->
+            </caption>
+            
+            <colgroup>
+              <col>
+              <col>
+              <col>
+            </colgroup>
+            <thead>
+              <tr>
+                <th>문의 아이디</th>
+                <th>내용</th>
+                <th>방 아이디</th>
+              </tr>
+            </thead>
+            <tbody>
+<!--                 <tr> -->
+<!--                 <th>qna_id</th> -->
+<!--                 <th>content</th> -->
+<!--                 <th>room_id</th> -->
+<!--                 </tr> -->
+           
+               <%
           %>
-    <c:forEach var="ReportBean"  items="${reportList }">
-    	<tr><td>${ReportBean.qna_id }</td>
-<%--     		<td>${ReportBean. subject }</td> --%>
-    		<td>${ReportBean.content }</td>
-<%--     		<td>${ReportBean.member_id }</td> --%>
-    		<td>${ReportBean.room_id }</td>
-    	</tr>
-    </c:forEach>
-    <%
-    %>       
+              
+              
+              <tbody>
+               <c:forEach var="ReportBean"  items="${reportList }">  
+              <tr>
+                <td>${ReportBean.qna_id }</td>
+                <td>${ReportBean.content }</td>
+                <td>${ReportBean.room_id }</td>
+              </tr>
+                  </c:forEach>
+           
+            </tbody>
+             <%
+    %>      
     
-          </table>
+            </table>
           </div>
       </div>
-      
-<!--       <div class="board_right"> -->
-<!--         <div class="board_box"> -->
-<!--           <p>문의글</p> -->
-<!--         </div> -->
-=======
-</head>
-<body>
-  <section class="left_section">
-    <h3>Findhome</h3>
-    
-    <ul>
-      <li><a href=""><strong>대시보드</strong></a></li>
-    </ul>
-    <ul>
-      <li><a href=""><strong>개인회원 관리</strong></a></li>
-      <li><a href="">사용자 관리</a></li>
-      <li><a href="">가입 승인</a></li>
-      <li><a href="">문의글 관리</a></li>
-      <li><a href="">통계</a></li>
-    </ul>
-    <ul>
-      <li><a href=""><strong>사업자회원 관리</strong></a></li>
-      <li><a href="">사용자 관리</a></li>
-      <li><a href="">가입 승인</a></li>
-      <li><a href="">문의글 관리</a></li>
-      <li><a href="">통계</a></li>
-    </ul>
-  </section>
-  
-  
-  <section class="right_section">
-  
-    <div class="header clear">
-      <h4>개인회원 관리</h4> 
-    </div>
-    
-    <div class="dashboard">
-      <h5>Dashboard</h5>
-      
-      <div class="board_left">
-        <div class="board_box">
-          <p>승인대기 회원 목록</p>
-          <c:forEach var="mb"  items="${nList}">
-          <p>${mb.id} <input type="button"  value="승인버튼"  onclick="location.href='<c:url value="/yUpdate?id=${mb.id}" />' "></p>
-          </c:forEach>
-          </div>
-         </div>
-         
-       <div class="board_center">  
-        <div class="board_box">
-          <p>매몰신고 리스트</p>      
-        </div>
       </div>
-      
-      <div class="board_right">
-        <div class="board_box">
-          <p>문의글</p>
-        </div>
->>>>>>> refs/remotes/origin/member_seller_backend
-      </div>
-    </div>
+
   </section>
-</body>
-</html>
+       </body>
+</html>      
+             
+  

@@ -14,17 +14,17 @@ import com.itwillbs.dao.MemberDAO;
 import com.itwillbs.domain.MemberBean;
 
 @Service
-public class MemberServiceImpl<ReportBean> implements MemberService{
+public class MemberServiceImpl<ReportBean> implements MemberService {
 
-	//xml에서 MemberDAOImpl객체생성=> MemberDAO 부모인터페이스 멤버변수에 전달 
+	// xml에서 MemberDAOImpl객체생성=> MemberDAO 부모인터페이스 멤버변수에 전달
 	@Inject
 	private MemberDAO memberDAO;
-	
+
 	@Override
 	public void insertMember(MemberBean mb) {
 		// 처리작업
-		//mb.setDate(new Timestamp(System.currentTimeMillis()));
-		//메서드 호출
+		// mb.setDate(new Timestamp(System.currentTimeMillis()));
+		// 메서드 호출
 		memberDAO.insertMember(mb);
 	}
 
@@ -32,12 +32,13 @@ public class MemberServiceImpl<ReportBean> implements MemberService{
 	public MemberBean userCheck(MemberBean mb) {
 		return memberDAO.userCheck(mb);
 	}
-	
+
 	@Override
 	public MemberBean userCheck2(MemberBean mb) {
-		
+
 		return memberDAO.userCheck2(mb);
 	}
+
 	@Override
 	public MemberBean getMember(String id) {
 		return memberDAO.getMember(id);
@@ -47,12 +48,12 @@ public class MemberServiceImpl<ReportBean> implements MemberService{
 	public void updateMember2(MemberBean mb) {
 		memberDAO.updateMember2(mb);
 	}
-	
+
 	@Override
 	public void deleteMember(MemberBean mb) {
 		memberDAO.deleteMember(mb);
 	}
-	
+
 	@Override
 	public void deleteMember2(MemberBean mb) {
 		memberDAO.deleteMember2(mb);
@@ -88,19 +89,17 @@ public class MemberServiceImpl<ReportBean> implements MemberService{
 		return memberDAO.getMember2(id);
 	}
 
-
 	@Override
 	public void insertMember2(MemberBean mb) {
-		
+
 		memberDAO.insertMember2(mb);
 	}
 
 	@Override
 	public void updateMember(MemberBean mb) {
 		memberDAO.updateMember(mb);
-		
+
 	}
-	
 
 	@Override
 	public List<MemberBean> getMemberNList() {
@@ -110,43 +109,47 @@ public class MemberServiceImpl<ReportBean> implements MemberService{
 
 	@Override
 	public void yUpdate(MemberBean mb) {
-		 memberDAO.yUpdate(mb);
-		
+		memberDAO.yUpdate(mb);
+
 	}
 
 	@Override
-	public  List <ReportBean> getReportList() {
-		return memberDAO. getReportList();
+	public List<ReportBean> getReportList() {
+		return memberDAO.getReportList();
 	}
 
 	public void updateMemberPw(MemberBean mb) {
 		memberDAO.updateMemberPw(mb);
-		
+
+	}
+
+	@Override
+	public MemberBean userCheckadmin(MemberBean mb) {
+
+		return memberDAO.userCheckadmin(mb);
 	}
 
 	@Override
 	public MemberBean userCheck3(MemberBean mb) {
-	
 		return memberDAO.userCheck3(mb);
-	}	
-	
+	}
+
 	@Override
 	public MemberBean userCheck4(MemberBean mb) {
-	
+
 		return memberDAO.userCheck4(mb);
-	}	
-	
-	
+	}
+
 	@Override
 	public void updateMemberPw2(MemberBean mb) {
 		memberDAO.updateMemberPw2(mb);
-		
+
 	}
-	
+
 	@Override
 	public void updateMember3(MemberBean mb) {
 		memberDAO.updateMember3(mb);
-		
+
 	}
 
 }

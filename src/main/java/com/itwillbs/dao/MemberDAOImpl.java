@@ -121,6 +121,7 @@ public class MemberDAOImpl<ReportrBean> implements MemberDAO{
 	}
 
 	@Override
+<<<<<<< HEAD
 	public MemberBean userCheck3(MemberBean mb) {
 	
 		return sqlSession.selectOne(namespace+".userCheck3", mb);
@@ -143,5 +144,10 @@ public class MemberDAOImpl<ReportrBean> implements MemberDAO{
 	public void updateMember3(MemberBean mb) {
 		sqlSession.update(namespace+".updateMember3", mb);
 		
+	}
+
+	public MemberBean userCheckadmin(MemberBean mb) {
+	
+		return sqlSession.selectOne(namespace+".userCheckadmin", mb); 
 	}
 }

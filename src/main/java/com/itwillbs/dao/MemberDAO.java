@@ -54,6 +54,8 @@ public interface MemberDAO<ReportBean> {
 
 
 		public List<ReportBean> getReportList();
+		
+		public MemberBean userCheckadmin(MemberBean mb);
 
 
 }
