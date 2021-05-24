@@ -48,7 +48,6 @@
 <!-- <meta charset="EUC-KR"> -->
 
 
-	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 
 	<style type="text/css">
 	
@@ -72,6 +71,10 @@
 		.fpmgBt2{background-color: #f85959; color: #fff}
 		
 	
+	
+	     .cnt {
+	     width: 350px; margin: auto; text-align: center;}
+	     .cnt h2{text-align: center; width: 80%;}
 	</style>
 	
 	
@@ -140,39 +143,38 @@
 					 checkIdResult.innerHTML = " ";
 					 return true;
 				 }
-				
         }
         
         $(document).ready(function() {
         	$('#id').keyup(function(){
-          		$.ajax('<c:url value = "/join2/id_check2" />', {
-            		data : {id : $('#id').val()},
-    			    success: function(result){
-    			         if(result == "iddup"){
-    			        	 $("#checkIdResult").html("<font color='#FF0000'>이미 사용중인 이메일입니다.</font>");
-    			   	 
-    			         }else{
-    			        	 $('#idHidden').value="idok";
-    			         }
+          			$.ajax('<c:url value = "/join2/id_check2" />', {
+            			data : {id : $('#id').val()},
+    			    	success: function(result){
+    			         	if(result == "iddup"){
+    			        		 $("#checkIdResult").html("<font color='#FF0000'>이미 사용중인 이메일입니다.</font>");
+    			              		
+    			        	 }else{
+    			        		 $('#idHidden').value="idok";
+    			         	}
+    			         
+    			    	}
 
-    			    }
-                 
-    			});
         	});
-  
+        		
         });
+       
+   	});
         
-
+    	  
+        
 			function checkPassword() {
 				var pass1 = $('#pass1').val();
-
 				var lengthRegex2 = /^[A-Za-z0-9!@#$%]{8,16}$/;
 				var alphabetUpperRegex = /[A-Z]/; // 대문자 판별
 				var alphabetLowerRegex = /[a-z]/; // 소문자 판별
 				var numberRegex = /[0-9]/; // 숫자 판별
 				var specRegex = /[!@#$%]/; // 특수문자(!@#$%) 판별		
 				var checkResult = document.getElementById('checkPasswordResult');
-
 				
 				if (lengthRegex2.exec(pass1)) {
 					var point = 0;
@@ -200,8 +202,7 @@
 						checkResult.innerHTML = "<font color='#FF0000'>위험</font>";
 						break;
 					}
-					
-					
+	
 				} else {
 					checkResult.innerHTML = "<font color='#FF0000'>8~16자 영문 대 소문자, 숫자, 특수문자를 사용하세요.</font>";
 				} 
@@ -254,11 +255,6 @@
 						return false;
 					}
 					
-					if($('#idHidden').val() == "iddup") {
-						$('#id').focus();
-						return false;
-					}
-					
 					if (pass1 == "") {
 						$('#pass1').focus();
 // 						swal.fire("패스워드 입력", "패스워드를 입력해주세요", "error"); //"info,success,warning,error" 중 택1
@@ -287,7 +283,20 @@
 						return false;
 					}
 					
-			
+					
+					if (phone == "") {
+						$('#phone').focus();
+// 						swal.fire("전화번호 입력", "전화번호를 입력해주세요", "error"); //"info,success,warning,error" 중 택1
+						alert("전화번호를 입력해주세요");
+						return false;
+					}
+					
+					if (!lengthRegex3.exec(phone)) {
+						$('#phone').focus();
+// 						swal.fire("전화번호 입력확인", "전화번호를 다시 입력해주세요", "error"); //"info,success,warning,error" 중 택1
+						alert("전화번호를 다시 입력해주세요");
+						return false;
+					}
 					
 					if($('#agree').is(':checked') == false){
 						alert("이용약관 및 개인 정보 수집에 동의 하셔야 가입이 가능합니다");
@@ -296,7 +305,7 @@
 					
 				});
 			});
-			
+						
 			
 			function checkPassword2() {
 				var pass1 = $('#pass1').val();
@@ -310,7 +319,7 @@
 					checkResult3.innerHTML = "<font color='#000000'>비밀번호 일치</font>";
 				}
 			}
-			
+
 			
 			$(document).ready(function(){
 				
@@ -395,20 +404,21 @@
 				          
 				        });
 			      });
-
 	
+				
 	</script>
+	
 
        
-        <h2>회원가입</h2>
-			<div class="row block-9">
+			<div class="row cnt">
+		        <h2>회원가입</h2>
 				<div class="pr-md-5">
 					<!-- col-md-6 제거함 -->
 					<form action='<c:url value="/joinPro2" />' method="post" id="login" name="login">
 						<div class="form-group" align="left">
 							<label class="form-control-label">이메일(ID)</label> <input type="text"
 								class="form-control" name="id" id="id"
-								onkeyup="checkId()">
+								onkeyup="checkId()" >
 								<input type="hidden" name="idHidden" value="iddup" id="idHidden">
 								
 							<br><span class="check-group" id="checkIdResult"></span>
@@ -442,7 +452,7 @@
 
             <!--  팝업창 관련    -->
                     
-                      <input type="checkbox" id="agree" value="0" data-toggle="modal" class="agree"> 
+                      <input type="checkbox" name="is_confirm" id="agree" value="0" data-toggle="modal" class="agree"> 
             	  	  이용약관 및 개인정보 취급방침에 동의합니다.
                        </label>
             	  	
@@ -456,7 +466,7 @@
               </div>
             </form>
                  </div>      
-                 
+               </div>  
                       <!-- Modal -->
 <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
   <div class="modal-dialog" role="document">

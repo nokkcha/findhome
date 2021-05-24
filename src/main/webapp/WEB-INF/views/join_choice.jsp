@@ -58,14 +58,14 @@
 		</div>
 
 		<div class="select_area">
-			<a href="http://localhost:8080/findhome/join2">
+			<a href="http://localhost:8080/findhome/join">
 				<div class="box_select">
 					<!-- <input type="radio" name="join_type" value="세입자"> -->
 					<div class="circle">
 						<span class="txt1">세입자</span>
 					</div>
 				</div>
-			</a> <a href="http://localhost:8080/findhome/join">
+			</a> <a href="http://localhost:8080/findhome/join2">
 				<div class="box_select">
 					<!-- <input type="radio" name="join_type" value="세입자"> -->
 					<div class="circle">

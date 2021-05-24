@@ -31,6 +31,21 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/flaticon.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/icomoon.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
+
+
+<style type="text/css">
+	 .cnt {
+	     width: 350px;
+	     margin: auto;
+	     text-align: center;}
+	 .cnt h2{display: block; width: 80%; text-align: center;}   
+	 .ma {margin-bottom: 10px;}
+	 .fp {margin-left: 170px; font-size: 13px; text-decoration: underline;  cursor: pointer}
+	 .ff {color: #4d4d4d;}
+
+
+</style>
+
 </head>
 <body>
 
@@ -55,41 +70,32 @@
 		<div class="container login">
 			<div class="row d-flex mb-5 contact-info"></div>
 			<script type="text/javascript">
-				$(document)
-						.ready(
-								function() {
+				$(document).ready(function() {
+					$('#login').submit(function() {
 
-									$('#login')
-											.submit(
-													function() {
+						var checkIdResult = document.getElementById('checkIdResult');
+						var checkResult = document.getElementById('checkPasswordResult');
 
-														var checkIdResult = document
-																.getElementById('checkIdResult');
-														var checkResult = document
-																.getElementById('checkPasswordResult');
+						if ($('#id').val() == "") {
+							$('#id').focus();
+							checkIdResult.innerHTML = "<font color='#FF0000'>아이디를 입력하세요.</font>";
+								return false;
+						}
 
-														if ($('#id').val() == "") {
-															$('#id').focus();
-															checkIdResult.innerHTML = "<font color='#FF0000'>아이디를 입력하세요.</font>";
-															return false;
-														}
+						if ($('#password').val() == "") {
+							$('#password').focus();
+							checkResult.innerHTML = "<font color='#FF0000'>비밀번호를 입력하세요.</font>";
+								return false;
+						}
 
-														if ($('#password')
-																.val() == "") {
-															$('#password')
-																	.focus();
-															checkResult.innerHTML = "<font color='#FF0000'>비밀번호를 입력하세요.</font>";
-															return false;
-														}
-
-													});
-								});
+					});
+			});
 			</script>
 
-			<input type="radio" id="member_type_select" name="member_type" value="일반">일반 <input type="radio" id="member_type_select" name="member_type" value="사업자">사업자<br>
 
-			<h2>로그인</h2>
-			<div class="row block-9">
+			<div class="row cnt">
+			 <h2>로그인</h2> 
+			  <div><input type="radio" id="member_type_select" name="member_type" value="일반">일반 <input type="radio" id="member_type_select" name="member_type" value="사업자">사업자<br></div>
 				<div class="pr-md-5">
 					<!-- col-md-6 제거함 -->
 					<form action=<c:url value="/loginPro" /> id="login" name="login"  method="post" >
@@ -107,7 +113,11 @@
 								onkeyup="checkPassword()">
 								
 						  <br><span class="check-group" id="checkPasswordResult"></span>
-						</div>						
+						</div>			
+						<div class="ma">
+							<label class="fp"><a href='<c:url value="/findPassword" />' class="ff">비밀번호찾기</a></label>
+						</div>
+									
 						<div class="form-group">
 							<input type="submit" value="로그인"
 								class="btn btn-primary py-3 px-5" id="btn">
@@ -140,6 +150,8 @@
 				}
 			});
 		});
+		
+	
 	</script>
 
 

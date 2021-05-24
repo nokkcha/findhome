@@ -17,6 +17,12 @@ public interface MemberDAO {
 		
 		public MemberBean userCheck2(MemberBean mb);
 		
+		public MemberBean userCheck3(MemberBean mb);
+		
+		public MemberBean userCheck4(MemberBean mb);
+		
+		public MemberBean userCheck5(MemberBean mb);
+		
 		public MemberBean getMember2(String id);
 
 		public void updateMember(MemberBean mb);
@@ -40,5 +46,11 @@ public interface MemberDAO {
 		public  List<MemberBean> getMemberNList();
 		
 		public void yUpdate(MemberBean mb);
+		
+		public void updateMemberPw(MemberBean mb);
+		
+		public void updateMemberPw2(MemberBean mb);
+		
+
 
 }

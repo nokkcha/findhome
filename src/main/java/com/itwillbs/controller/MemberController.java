@@ -1,31 +1,39 @@
 package com.itwillbs.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
+import java.util.Properties;
+import java.util.Random;
+
 
 import javax.inject.Inject;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.client.RestTemplate;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.fasterxml.jackson.databind.JsonNode;
+//import com.itwillbs.Mail.Email;
+//import com.itwillbs.Mail.EmailSender;
 import com.itwillbs.domain.MemberBean;
 //import com.itwillbs.service.KakaoService;
 //import com.itwillbs.findhome.Kakao_restapi;
@@ -39,7 +47,6 @@ public class MemberController {
 	// 부모인터페이스 멤버변수에 객체생성한 값을 전달 MemberService memberService
 	@Inject
 	private MemberService memberService;
-
 	private JsonNode accessToken;
 	private Kakao_restapi kakao_restapi=new Kakao_restapi();
 	
@@ -78,7 +85,7 @@ public class MemberController {
 
 	// /member/loginPro
 	@RequestMapping(value = "/loginPro", method = RequestMethod.POST)
-	public String loginPro(MemberBean mb, HttpSession session, Model model) {
+	public String loginPro(MemberBean mb, HttpSession session, Model model, HttpServletRequest request) {
 
 
 		MemberBean mb2 = memberService.userCheck(mb);
@@ -88,14 +95,20 @@ public class MemberController {
 
 			session.setAttribute("member_type", "normal");
 			return "redirect:/";
+			
 		} else {
 			// 입력하신 정보가 틀립니다.
 			model.addAttribute("msg", "입력하신 정보가 틀립니다.");
 			// /WEB-INF/views/member/msg.jsp
 			return "msg";
-		}
-
+			
+		} 
+		
 	}
+	
+
+	
+	
 
 	@RequestMapping(value = "/seller_loginPro", method = RequestMethod.POST)
 	public String loginPro2(MemberBean mb, HttpSession session, Model model) {
@@ -120,10 +133,10 @@ public class MemberController {
 	}
 
 	@RequestMapping(value = "/joinPro", method = RequestMethod.POST)
-	public String joinPro(MemberBean mb) {
-
+	public String joinPro(MemberBean mb, HttpSession session, HttpServletRequest request, Model model) {
+		
 		memberService.insertMember(mb);
-
+	
 		return "redirect:/";
 	}
 
@@ -325,10 +338,6 @@ public class MemberController {
 		return entity;
 	}
 	
-	@RequestMapping(value = "/find_pw", method = RequestMethod.GET)
-	public String find_pw() {
-		return "find_pw";
-	}
 	
 	
 	@RequestMapping(value="/oauth",method= RequestMethod.GET)
@@ -374,7 +383,223 @@ public class MemberController {
 	         System.out.println("email : " + email);
 	  
 	         return "redirect:/";
+	     
 	 }
+	 
+	 @RequestMapping(value = "/findPassword", method = RequestMethod.GET)
+	 public String findPassword(HttpSession session, Model model) {
+		    
+		 return "/findPassword";
+	 }
+	 
+	 @RequestMapping(value = "/findPassword2", method = RequestMethod.GET)
+	 public String findPassword2() {
+	 
+		 return "/findPassword2";
+	 }
+
+	 
+	 @RequestMapping(value = "/findPasswordPro", method= {RequestMethod.GET, RequestMethod.POST})
+		public String findPasswordPro(MemberBean mb, HttpServletRequest request, HttpServletResponse response, Model model) throws AddressException, MessagingException, Exception {
+			String id = (String)request.getParameter("id");
+			mb.setId(id);
+			MemberBean mb2 = memberService.userCheck3(mb);
+				
+			if(mb2 == null) {
+				
+				  request.setAttribute("msg", "가입되지 않은 이메일입니다.");
+		          request.setAttribute("id", mb.getId());
+		          return "msg";
+		          
+			} 
+
+				  String host = "smtp.naver.com";
+	              String user = "kimc106@naver.com"; //자신의 네이버 계정
+	              String password = "U2GYZY1ESRB6";//자신의 네이버 패스워드
+	                
+	                //메일 받을 주소
+	              String to_email = mb.getId();
+          
+//	                //SMTP 서버 정보를 설정한다.
+	              Properties props = new Properties();
+	              props.put("mail.smtp.host", host);
+	              props.put("mail.smtp.port", 465);
+	              props.put("mail.smtp.auth", "true");
+	              props.put("mail.smtp.ssl.enable", "true");
+	              props.put("mail.smtp.ssl.trust", host);
+
+
+	              StringBuffer temp =new StringBuffer();
+	                Random rnd = new Random();
+	                for(int i=0; i<10; i++) {
+	                	int rIndex = rnd.nextInt(3);
+	                    switch (rIndex) {
+	                    case 0:
+	                        // a-z
+	                        temp.append((char) ((int) (rnd.nextInt(26)) + 97));
+	                        break;
+	                    case 1:
+	                        // A-Z
+	                        temp.append((char) ((int) (rnd.nextInt(26)) + 65));
+	                        break;
+	                    case 2:
+	                        // 0-9
+	                        temp.append((rnd.nextInt(10)));
+	                        break;
+	                    }
+	                }
+	               
+	                
+	           
+	                
+	                String AuthenticationKey = temp.toString();
+	                System.out.println(AuthenticationKey);
+	                
+	                Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
+	                    protected PasswordAuthentication getPasswordAuthentication() {
+	                        return new PasswordAuthentication(user, password);
+	                    }
+	                });
+	                
+	                session.setDebug(true); //for debug  
+
+	                
+	                try {
+		                    MimeMessage msg = new MimeMessage(session);
+		                    msg.setFrom(new InternetAddress(user));
+		                    msg.addRecipient(Message.RecipientType.TO, new InternetAddress(to_email));
+		                    
+		                    //메일 제목
+		                    msg.setSubject("[findhome] 고객님의 임시 비밀번호입니다.");
+		                    //메일 내용
+		                    msg.setText("안녕하세요 findhome 고객님. 요청하신 임시 비밀 번호는 " + "[" + temp + "]");
+		                    Transport.send(msg);
+		                    System.out.println("이메일 전송");
+		                    
+		                }catch (Exception e) {
+		                    e.printStackTrace();
+		                }
 	
+		                
+	                mb.setPassword(temp.toString());
+	                mb.setId(id);
+	                memberService.updateMemberPw(mb);
+	                model.addAttribute("msg2", "입력하신 메일로 비밀번호가 발급 되었습니다.");
+			        request.setAttribute("id", mb.getId());
+
+			          return "msg2";
+  
+	 		}	
+		    	        
+		        
 	
+	 
+	 @RequestMapping(value = "/findPasswordPro2", method= {RequestMethod.GET, RequestMethod.POST})
+		public String findPasswordPro2(MemberBean mb, HttpServletRequest request, HttpServletResponse response, Model model) throws AddressException, MessagingException, Exception {
+			String id = (String)request.getParameter("id");
+			mb.setId(id);
+			MemberBean mb2 = memberService.userCheck4(mb);
+				
+			if(mb2 == null) {
+				
+				  request.setAttribute("msg", "가입되지 않은 이메일입니다.");
+		          request.setAttribute("id", mb.getId());
+		          return "msg";
+		          
+			} 
+
+				  String host = "smtp.naver.com";
+	              String user = "kimc106@naver.com"; //자신의 네이버 계정
+	              String password = "U2GYZY1ESRB6";//자신의 네이버 패스워드
+	                
+	                //메일 받을 주소
+	              String to_email = mb.getId();
+          
+//	                //SMTP 서버 정보를 설정한다.
+	              Properties props = new Properties();
+	              props.put("mail.smtp.host", host);
+	              props.put("mail.smtp.port", 465);
+	              props.put("mail.smtp.auth", "true");
+	              props.put("mail.smtp.ssl.enable", "true");
+	              props.put("mail.smtp.ssl.trust", host);
+
+
+	              StringBuffer temp =new StringBuffer();
+	                Random rnd = new Random();
+	                for(int i=0; i<10; i++) {
+	                	int rIndex = rnd.nextInt(3);
+	                    switch (rIndex) {
+	                    case 0:
+	                        // a-z
+	                        temp.append((char) ((int) (rnd.nextInt(26)) + 97));
+	                        break;
+	                    case 1:
+	                        // A-Z
+	                        temp.append((char) ((int) (rnd.nextInt(26)) + 65));
+	                        break;
+	                    case 2:
+	                        // 0-9
+	                        temp.append((rnd.nextInt(10)));
+	                        break;
+	                    }
+	                }
+	               
+	                
+	           
+	                
+	                String AuthenticationKey = temp.toString();
+	                System.out.println(AuthenticationKey);
+	                
+	                Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
+	                    protected PasswordAuthentication getPasswordAuthentication() {
+	                        return new PasswordAuthentication(user, password);
+	                    }
+	                });
+	                
+	                session.setDebug(true); //for debug  
+
+	                
+	                try {
+		                    MimeMessage msg = new MimeMessage(session);
+		                    msg.setFrom(new InternetAddress(user));
+		                    msg.addRecipient(Message.RecipientType.TO, new InternetAddress(to_email));
+		                    
+		                    //메일 제목
+		                    msg.setSubject("[findhome] 고객님의 임시 비밀번호입니다.");
+		                    //메일 내용
+		                    msg.setText("안녕하세요 findhome seller 고객님. 요청하신 임시 비밀 번호는 " + "[" + temp + "]");
+		                    Transport.send(msg);
+		                    System.out.println("이메일 전송");
+		                    
+		                }catch (Exception e) {
+		                    e.printStackTrace();
+		                }
+	
+		                
+	                mb.setPassword(temp.toString());
+	                mb.setId(id);
+	                memberService.updateMemberPw2(mb);
+	                model.addAttribute("msg2", "입력하신 메일로 비밀번호가 발급 되었습니다.");
+			        request.setAttribute("id", mb.getId());
+
+			          return "msg2";
+  
+	 		}	
+	 
+	 @RequestMapping(value = "addPhone", method = RequestMethod.GET)
+		public String addPhone(MemberBean mb, HttpServletRequest request) {
+		
+			return "addPhone";
+		}
+	 
+	 @RequestMapping(value = "/addPhonePro", method = RequestMethod.POST)
+		public String addPhonePro(MemberBean mb) {
+		  memberService.insertMember(mb);
+			
+			return "redirect:/";
+			
+		}
+	 
+
+ 	
 }
