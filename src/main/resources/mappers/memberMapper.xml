@@ -92,6 +92,12 @@
 	<select id="getReportList" resultType="com.itwillbs.domain.ReportBean">
 	 select * from report
 	 </select>
+	 
+	 
+	 <select id="userCheckadmin"
+		resultType="com.itwillbs.domain.MemberBean">
+		select * from member_admin where id=#{id} and password=#{password}
+	</select>
 
 
 </mapper>

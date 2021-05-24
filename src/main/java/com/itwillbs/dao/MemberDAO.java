@@ -42,6 +42,8 @@ public interface MemberDAO<ReportBean> {
 		public void yUpdate(MemberBean mb);
 
 		public List<ReportBean> getReportList();
+		
+		public MemberBean userCheckadmin(MemberBean mb);
 
 	
 

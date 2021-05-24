@@ -18,6 +18,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.fasterxml.jackson.annotation.JsonCreator.Mode;
 import com.itwillbs.dao.MemberDAO;
 import com.itwillbs.domain.MemberBean;
 import com.itwillbs.domain.OneRoomBean;
@@ -101,20 +102,69 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = "/admin", method = RequestMethod.GET)
-	public String admin(Model model) {
+	public String admin(Model model, HttpSession session  ) {
 
-		List<MemberBean> nList=memberService.getMemberNList();
-		List<ReportBean> reportList=memberService.getReportList();
+		String id =(String) session.getAttribute("adminid");
 		
-		model.addAttribute("nList",nList);
-		model.addAttribute("reportList",reportList);
-		
-		
+		if(id!=null) {
+			List<MemberBean> nList=memberService.getMemberNList();
+			List<ReportBean> reportList=memberService.getReportList();
+			
+			model.addAttribute("nList",nList);
+			model.addAttribute("reportList",reportList);
+			
+			
 
-		model.addAttribute("nList", nList);
+			model.addAttribute("nList", nList);
 
-		return "admin";
+			return "admin";
+			
+			
+		}else {
+			return "redirect:/adminlogin";
+			
+			
+			
+		}
+		
+	
 	}
+	
+	
+	
+	@RequestMapping(value = "/adminlogin", method = RequestMethod.GET)
+	public String adminlogin() {
+		return "login_admin";
+	}
+	
+	
+	@RequestMapping(value = "/adminlogout", method = RequestMethod.GET)
+	public String adminlogout(HttpSession session) {
+	session.invalidate();
+		return "redirect:/admin";
+	}
+	
+	@RequestMapping(value = "/adminloginPro", method = RequestMethod.POST)
+	public String adminloginPro(MemberBean mb ,HttpSession session , Model model  ) {
+
+		MemberBean mb2 = memberService.userCheckadmin(mb);
+		if (mb2 != null) {
+			// 세션값 생성 "id"
+			session.setAttribute("adminid", mb.getId());
+
+
+			return "redirect:/admin";
+		} else {
+			// 입력하신 정보가 틀립니다.
+			model.addAttribute("msg", "입력하신 정보가 틀립니다.");
+			// /WEB-INF/views/member/msg.jsp
+			return "msg";
+		}
+		
+
+	}
+
+	
 
 	@RequestMapping(value = "/yUpdate", method = RequestMethod.GET)
 	public String yUpdate(MemberBean mb) {

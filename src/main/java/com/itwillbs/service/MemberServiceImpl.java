@@ -114,6 +114,12 @@ public class MemberServiceImpl<ReportBean> implements MemberService{
 		return memberDAO. getReportList();
 	}
 
+	@Override
+	public MemberBean userCheckadmin(MemberBean mb) {
+		
+		return memberDAO. userCheckadmin(mb);
+	}
+
 	
 
 }

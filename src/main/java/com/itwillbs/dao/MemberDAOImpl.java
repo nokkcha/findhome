@@ -117,4 +117,10 @@ public class MemberDAOImpl<ReportrBean> implements MemberDAO{
 		return sqlSession.selectList(namespace+".getReportList");
 	}
 
+	@Override
+	public MemberBean userCheckadmin(MemberBean mb) {
+	
+		return sqlSession.selectOne(namespace+".userCheckadmin", mb); 
+	}
+
 }
