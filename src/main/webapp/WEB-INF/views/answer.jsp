@@ -4,7 +4,37 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>FindHome - 좋은 집을 찾을 수 있는 곳</title>
+    <title>DirEngine - Free Bootstrap 4 Template by Colorlib</title>
+    <style type="text/css">
+    	
+#answerFr {
+	justify-content: center;
+	display: block;
+	margin-left: 50px;
+}
+textarea {
+	background: none;
+	border: 1px solid gray;
+}
+
+#answerBtn {
+ width: 450px;
+   padding: 5px;
+}
+	
+#answerBtn:hover {
+	background: black;
+	color: white;
+	cursor: pointer;
+}
+
+.qna-ta-co {
+	height: 175px;
+	
+}
+
+ 
+    </style>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
@@ -49,10 +79,8 @@
 	
 			<nav class="navbar navbar-expand-lg navbar-dark">
 				<div class="container-fluid">
-	
-					<!-- navbar-collapse.// -->
+
 				</div>
-				<!-- container-fluid.// -->
 			</nav>
 			
 					<div class="collapse navbar-collapse" id="ftco-nav">
@@ -62,7 +90,7 @@
 					<ul class="dropdown-menu">
 									<li><a class="dropdown-item" href="./member_seller"> 대시보드 </a></li>
 									<li><a class="dropdown-item" href="./salesList"> 매물관리 </a></li>
-									<li><a class="dropdown-item" href="./qnaList"> 문의관리 </a></li>
+									<li><a class="dropdown-item" href="./qnaList/"> 문의관리 </a></li>
 								</ul>
 					</li>
 					<li class="nav-item"><a href='<c:url value="/logout" />' class="nav-link">로그아웃</a></li>
@@ -82,14 +110,14 @@
 			<a href="./member_seller" class="nav-side"> 대시보드</a>
 
 		<div class="sell-dropdown">
-		  <a class="dropbtn nav-side" style="color: black;">매물관리</a>
+		  <a class="dropbtn nav-side">매물관리</a>
 		  <div class="dropdown-content">
 		    <a href="./salesList">판매 중인 매물</a>
 		    <a href="./soldList">판매 완료 매물</a>
 		  </div>
 		</div>
 			
-			<a href="./qnaList"  class="nav-side"> 문의관리 </a>
+			<a href="./qnaList" class="nav-side" style="color: black;"> 문의관리 </a>
 		
 		</nav>
 	
@@ -97,76 +125,48 @@
 	</div>
 
     <section class="seller-wrap">
-    
-    		 <div class="chart-div">
-		    <canvas id="pieChartCanvas" width="300px" height="300px"></canvas>
-		    <span class="chart-text"> 
-		   	 <span class="chart-text-point"> 매물 현황  </span><br>
-			    판매 중 : ${salesCount} 개 <br>
-			    판매 완료 : ${soldCount } 개 <br>
-		    </span>
-		    
-		  </div>  
+
 
 		   
 
-		<div class="seller-sell">
-		<span class="sell-text"> 판매 완료 매물</span> <br>
-		<table class="type09">
-			<thead>
-				<tr>
-					<th class="sell-ta-no"> No </th>
-					<th class="sell-ta-ca"> Category </th>
-					<th class="sell-ta-sub"> Subject </th>
-					<th class="sell-ta-de"> Deposit  </th>
-					<th class="sell-ta-re"> Monthly Rent  </th>
-					<th class="sell-ta-btn"> button  </th>
-				 </tr>
-			</thead>
-			  
-			<tbody>
-	       		<c:forEach var="roomList" items="${roomList }">
-					
-				<tr> 
-					<td> ${roomList.room_id} </td>
-					<td> ${roomList.category} </td>
-					<td   onclick="location.href='<c:url value="detailView?room_id=${roomList.room_id}"/>'"> ${roomList.subject}</td>
-					<td> ${roomList.deposit} </td>
-					<td> ${roomList.monthly_rent} </td>
-					<td> 
-					<button class="sell-btn" onclick="deleteBoard(${roomList.room_id})" > 삭제 </button> 
-					</td>
-				</tr>
-				
-				</c:forEach>
+	<div class="seller-mail">
 
-			  </tbody>
-			  
+
+				
+		<table class="type09">
+			<tr>
+				<th class="qna-no"> No  </th>
+				<th class="qna-id"> Room No  </th>
+				 <th class="qna-sn"> Sender </th> 
+			</tr>
+			
+			<tr>
+				<td> ${qb.qna_id}  </td> <td> ${qb.room_id}  </td> <td> ${qb.sender} </td>
+			</tr>
+			
+			<tr>
+				<th colspan="3" class="qna-co"> Content </th>
+			</tr>
+			
+			<tr>
+				<td colspan="3" class="qna-ta-co"> ${qb.content} </td>
+			</tr>
+ 
+ 
 		</table>
 		
-	
-		</div>
 
-          	<div class="row mt-5">
-		          <div class="col text-center">
-		            <div class="block-27-page">
-		              <ul>
-		                <c:if test="${pb.startPage > pb.pageBlock }">
-		                <li> <a href='<c:url value="soldList?pageNum=${pb.startPage-pb.pageBlock}" />'>&lt;</a></li>
-					</c:if>
-					<c:forEach var="i" begin="${pb.startPage }" end="${pb.endPage}" step="1">
-		                <li class="active"><span> <a href='<c:url value="soldList?pageNum=${i}" />'>${i}</a> </span></li>
-					</c:forEach>
-					<c:if test="${pb.endPage < pb.pageCount }">
-		                <li><a href='<c:url value="soldList?pageNum=${pb.startPage+pb.pageBlock}" />'>&gt;</a></li>
-					</c:if>
-		              </ul>
-		            </div>
-		          </div>
-		        </div>
+		<form action='<c:url value="/answerPro" />' id="answerFr">
+		<input type="hidden" value="${qb.qna_id}" name=qna_id> 
+		 <textarea rows="10" cols="71" name="answer" id="answer" maxlength="100"> </textarea> <br>
+		<input type="submit" value="답변하기" id="answerBtn">
+		</form>
+	</div>
+
 		        
 	</section>
 	
+
 
 
 
@@ -196,45 +196,32 @@
   
   
 <script src="../script/jquery-3.6.0.js"></script>
-<script type="text/javascript">
-      
-      window.onload = function () {
-    	    pieChartDraw();
-    	}
+	<script type="text/javascript">
+	
+	$(document).ready(function() {
+		
+		
+		$('#answer').val('${qb.answer}');
+		
+		$('#answerFr').submit(function() {
 
-    	let pieChartData = {
-    			
-    	    labels: ['판매중', '판매완료'],
-    	    datasets: [{
-    	        backgroundColor: ['#F18181', '#8ADCB0'],
-    	        data: [${salesCount}, ${soldCount}]
-    	    }] 
-    	};
+			if($('#answer').val()=="") {
+				alert("답변을 입력해주세요.");
+				return false;
+				
+			}
+			if('${qb.answerYN}'=="Y") {
+				alert("이미 답변한 문의입니다.");
+				return false;
+				
+			}
+				
+		});
 
-    	let pieChartDraw = function () {
-    	    let ctx = document.getElementById('pieChartCanvas').getContext('2d');
-    	    
-    	    window.pieChart = new Chart(ctx, {
-    	        type: 'pie',
-    	        data: pieChartData,
-    	        options: {
-    	            responsive: false
-    	        }
-    	    });
-    	};
-    	
-    	// 삭제 버튼 클릭 시
-    	function deleteBoard(room_id) {
-    		if ( confirm("삭제하시겠습니까?") ) { 
-    			location.href="deleteBoard?room_id="+room_id;
-    		} else {
-    		    alert("취소되었습니다.");
-    		} 
-    		
-		}
-      
-      
-      </script>
+	});
+	
+	
+	</script>
 
 
   

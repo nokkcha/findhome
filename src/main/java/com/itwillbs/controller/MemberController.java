@@ -47,11 +47,6 @@ public class MemberController {
 	public String join_choice() {
 		return "join_choice";
 	}
-	
-	@RequestMapping(value = "/login_choice", method = RequestMethod.GET)
-	public String login_choice() {
-		return "login_choice";
-	}
 
 	@RequestMapping(value = "/join", method = RequestMethod.GET)
 	public String join() {
@@ -209,6 +204,8 @@ public class MemberController {
 			return "member/msg";
 		}
 	}
+	
+	
 
 	@RequestMapping(value = "/memberInfo", method = RequestMethod.GET)
 	public String update(HttpSession session, Model model) {

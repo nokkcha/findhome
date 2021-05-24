@@ -19,12 +19,14 @@
 
 	<select id="userCheck"
 		resultType="com.itwillbs.domain.MemberBean">
-		select * from member_normal where id=#{id} and password=#{password}
+		select * from member_normal where id=#{id} and
+		password=#{password}
 	</select>
-	
+
 	<select id="userCheck2"
 		resultType="com.itwillbs.domain.MemberBean">
-		select * from member_seller where id=#{id} and password=#{password}
+		select * from member_seller where id=#{id} and
+		password=#{password}
 	</select>
 
 	<select id="getMember"
@@ -38,21 +40,24 @@
 	</select>
 
 	<update id="updateMember2">
-		update member_seller set id=#{id}, password=#{password}, phone_number=#{phone_number} where id=#{id}
+		update member_seller set id=#{id},
+		password=#{password}, phone_number=#{phone_number} where id=#{id}
 	</update>
-	
+
 	<update id="updateMember">
-		update member_normal set id=#{id}, password=#{password}, phone_number=#{phone_number} where id=#{id}
+		update member_normal set id=#{id},
+		password=#{password}, phone_number=#{phone_number} where id=#{id}
 	</update>
 
 	<update id="updateMember_normal">
-		update member_normal set id=#{id}, password=#{password}, phone_number=#{phone_number} where id=#{id}
+		update member_normal set id=#{id},
+		password=#{password}, phone_number=#{phone_number} where id=#{id}
 	</update>
 
 	<delete id="deleteMember">
 		delete from member_normal where id=#{id}
 	</delete>
-	
+
 	<delete id="deleteMember2">
 		delete from member_seller where id=#{id}
 	</delete>
@@ -79,20 +84,21 @@
 		resultType="com.itwillbs.domain.MemberBean">
 		select * from wish_list where id=#{id}
 	</select>
-	
-	<select id="getMemberNList" resultType="com.itwillbs.domain.MemberBean">
-	 select * from member_seller  where is_confirm != 'Y'
-	 </select>
+
+	<select id="getMemberNList"
+		resultType="com.itwillbs.domain.MemberBean">
+		select * from member_seller where is_confirm != 'Y'
+	</select>
 
 	<update id="yUpdate">
-		update member_seller set is_confirm='Y' where id=#{id}
+		update member_seller set is_confirm='Y' where
+		id=#{id}
 	</update>
-	
-	
-	<select id="getReportList" resultType="com.itwillbs.domain.ReportBean">
-	 select * from report
-	 </select>
 
+	<select id="getReportList"
+		resultType="com.itwillbs.domain.ReportBean">
+		select * from report
+	</select>
 
 </mapper>
 

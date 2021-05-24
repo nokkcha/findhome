@@ -49,8 +49,15 @@ public interface BoardDAO {
 		public OneRoomBean boardCheck(OneRoomBean ob);
 		public void updateRoom(OneRoomBean ob);
 		public void deleteRoomImage(int room_id);
+
 		public List<LinkedHashMap<String, Object>> selectPopularRooms(String category);
 		List<LinkedHashMap<String, Object>> selectThumbImage(String category);
 		public void deleteRoomImagebyFileID(int id);
+
+		public qnaBean getQnaBoard(qnaBean qb);
+		public void answerQna(qnaBean qb);
+		public List<qnaBean> getMemberQna(PageBean pb);
+		public int getMemberQnaCount(PageBean pb);
+
 
 }

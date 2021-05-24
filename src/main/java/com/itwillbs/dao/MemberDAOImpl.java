@@ -111,10 +111,8 @@ public class MemberDAOImpl<ReportrBean> implements MemberDAO{
 		
 	}
 
-
 	@Override
 	public List <ReportrBean> getReportList() {	
 		return sqlSession.selectList(namespace+".getReportList");
 	}
-
 }

@@ -41,9 +41,8 @@ public interface MemberService<ReportBean> {
 	
 	public void yUpdate(MemberBean mb);
 
+
 	public List<ReportBean> getReportList();
-
-
 }
 
 

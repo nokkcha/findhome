@@ -311,6 +311,29 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
+	public qnaBean getQna(qnaBean qb) {
+		return boardDAO.getQnaBoard(qb);
+	}
+
+	@Override
+	public void answerQna(qnaBean qb) {
+		boardDAO.answerQna(qb);
+		
+	}
+
+	@Override
+	public List<qnaBean> getMemberQna(PageBean pb) {
+		return boardDAO.getMemberQna(pb);
+	}
+
+	@Override
+	public int getMemberQnaCount(PageBean pb) {
+		pb.setCurrentPage(Integer.parseInt(pb.getPageNum()));
+		pb.setStartRow((pb.getCurrentPage()-1)*pb.getPageSize());
+		return boardDAO.getMemberQnaCount(pb);
+	}
+
+	@Override
 	public List<LinkedHashMap<String, Object>> selectPopularRooms(String category) {
 		// TODO Auto-generated method stub		
 		return boardDAO.selectPopularRooms(category);

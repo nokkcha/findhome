@@ -263,24 +263,7 @@
 		        </c:forEach>	
 		        		
 		        
-          	<div class="row mt-5">
-		          <div class="col text-center">
-		            <div class="block-27-page">
-		              <ul>
-		              
-		                <c:if test="${pb.startPage > pb.pageBlock }">
-		                <li> <a href='<c:url value="findRooms?pageNum=${pb.startPage-pb.pageBlock}" />'>&lt;</a></li>
-					</c:if>
-					<c:forEach var="i" begin="${pb.startPage }" end="${pb.endPage}" step="1">
-		                <li class="active"><span> <a href='<c:url value="findRooms?pageNum=${i}" />'>${i}</a> </span></li>
-					</c:forEach>
-					<c:if test="${pb.endPage < pb.pageCount }">
-		                <li><a href='<c:url value="findRooms?pageNum=${pb.startPage+pb.pageBlock}" />'>&gt;</a></li>
-					</c:if>
-		              </ul>
-		            </div>
-		          </div>
-		        </div>
+
 
 		        		
 		    	</div>		

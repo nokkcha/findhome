@@ -43,6 +43,5 @@ public interface MemberDAO<ReportBean> {
 
 		public List<ReportBean> getReportList();
 
-	
 
 }

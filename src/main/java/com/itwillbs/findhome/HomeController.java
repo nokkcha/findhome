@@ -99,29 +99,18 @@ public class HomeController {
 
 		return "index";
 	}
-
-	@RequestMapping(value = "/admin", method = RequestMethod.GET)
+	
+	@RequestMapping(value = "/admin",method = RequestMethod.GET )
 	public String admin(Model model) {
-
 		List<MemberBean> nList=memberService.getMemberNList();
-		List<ReportBean> reportList=memberService.getReportList();
-		
 		model.addAttribute("nList",nList);
-		model.addAttribute("reportList",reportList);
-		
-		
-
-		model.addAttribute("nList", nList);
-
 		return "admin";
 	}
-
-	@RequestMapping(value = "/yUpdate", method = RequestMethod.GET)
+	
+	@RequestMapping(value = "/yUpdate",method = RequestMethod.GET )
 	public String yUpdate(MemberBean mb) {
-
-		memberService.yUpdate(mb);	
-
-
+		memberService.yUpdate(mb);
+		
 		return "redirect:/admin";
 	}
 

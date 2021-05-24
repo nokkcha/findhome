@@ -54,6 +54,11 @@ public interface BoardService {
 	public void updateRoom(OneRoomBean ob);
 	public void deleteRoomImage(int room_id);
 
-	List<LinkedHashMap<String, Object>> selectPopularRooms(String category);
+	public qnaBean getQna(qnaBean qb);
+	public void answerQna(qnaBean qb);
+	public List<qnaBean> getMemberQna(PageBean pb);
+	public int getMemberQnaCount(PageBean pb);
+
+	public List<LinkedHashMap<String, Object>> selectPopularRooms(String category);
 	public List<LinkedHashMap<String, Object>> selectThumbImage(String category);
 }

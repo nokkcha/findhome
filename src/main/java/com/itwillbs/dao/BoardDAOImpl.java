@@ -179,6 +179,26 @@ public class BoardDAOImpl implements BoardDAO{
 	}
 
 	@Override
+	public qnaBean getQnaBoard(qnaBean qb) {
+		return sqlSession.selectOne(namespace+".getQna", qb);
+	}
+
+	@Override
+	public void answerQna(qnaBean qb) {
+		sqlSession.update(namespace+".answerQna", qb);		
+	}
+
+	@Override
+	public List<qnaBean> getMemberQna(PageBean pb) {
+		return sqlSession.selectList(namespace+".getMemberQna",pb);
+	}
+
+	@Override
+	public int getMemberQnaCount(PageBean pb) {
+		return sqlSession.selectOne(namespace+".getMemberQnaCount", pb);
+	}
+
+	@Override
 	public void insertReport(qnaBean qb) {
 		sqlSession.insert(namespace+".insertReport",qb);
 		

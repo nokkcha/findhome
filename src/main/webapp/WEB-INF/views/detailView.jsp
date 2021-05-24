@@ -124,6 +124,14 @@
 	margin-top: 20px;
 }
 
+<<<<<<< HEAD
+=======
+#roomtable {
+	width: 100%;
+	border-collapse: collapse;
+	text-align: left;
+}
+>>>>>>> refs/remotes/origin/member_seller_backend
 
 
 

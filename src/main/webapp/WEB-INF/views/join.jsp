@@ -254,10 +254,17 @@
 						return false;
 					}
 					
+<<<<<<< HEAD
 // 					if($('#idHidden').val() == "iddup") {
 // 						$('#id').focus();
 // 						return false;
 // 					}
+=======
+					if($('#idHidden').val() == "iddup") {
+						$('#id').focus();
+						return false;
+					}
+>>>>>>> refs/remotes/origin/member_seller_backend
 					
 					if (pass1 == "") {
 						$('#pass1').focus();

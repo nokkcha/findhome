@@ -61,9 +61,8 @@
 							<li class="nav-item dropdown"><a class="nav-link" href="#" data-bs-toggle="dropdown"> 관리페이지 </a>
 					<ul class="dropdown-menu">
 									<li><a class="dropdown-item" href="./member_seller"> 대시보드 </a></li>
-									<li><a class="dropdown-item" href="./SalesList"> 매물관리 </a></li>
-									<li><a class="dropdown-item" href=".qnaList/"> 문의관리 </a></li>
-									<li><a class="dropdown-item" href="./"> 고객센터 </a></li>
+									<li><a class="dropdown-item" href="./salesList"> 매물관리 </a></li>
+									<li><a class="dropdown-item" href="./qnaList/"> 문의관리 </a></li>
 								</ul>
 					</li>
 					<li class="nav-item"><a href='<c:url value="/logout" />' class="nav-link">로그아웃</a></li>
@@ -91,7 +90,6 @@
 		</div>
 			
 			<a href="./qnaList" class="nav-side" style="color: black;"> 문의관리 </a>
-			<a href="#"  class="nav-side"> 고객센터 </a>
 		
 		</nav>
 	
@@ -104,7 +102,7 @@
 		   
 
 	<div class="seller-mail">
-    <span class="sell-text"> 최신 문의</span> <br>
+    <span class="sell-text"> 전체 문의 </span> <br>
     
 	<table class="type09">
 		<thead>
@@ -112,17 +110,21 @@
 			   <th class="sell-ta2-no">No</th>
 			   <th class="sell-ta2-id">Room ID</th>
 			   <th class="sell-ta2-sub">Content</th>
+			   <th class="sell-ta2-ph">Sender</th>
 			   <th class="sell-ta2-ph">Phone Number</th>
+			   <th class="sell-ta2-an">answer</th>
 			 </tr>
 		</thead>
 		  
 		<tbody>
 			<c:forEach var="qnaList" items="${qnaList }">
-				<tr>
+				<tr  onclick="location.href='<c:url value="answer?qna_id=${qnaList.qna_id}"/>'">
 				  <td> ${qnaList.qna_id}</td>
 				  <td> ${qnaList.room_id}</td>
 				  <td> ${qnaList.content} </td>
+				  <td> ${qnaList.sender} </td>
 				  <td> ${qnaList.phone_number} </td>
+				  <td> ${qnaList.answerYN} </td>
 				</tr>
 			
 			</c:forEach>

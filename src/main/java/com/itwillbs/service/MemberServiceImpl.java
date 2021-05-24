@@ -113,7 +113,6 @@ public class MemberServiceImpl<ReportBean> implements MemberService{
 	public  List <ReportBean> getReportList() {
 		return memberDAO. getReportList();
 	}
-
 	
 
 }
