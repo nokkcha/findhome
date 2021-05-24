@@ -32,6 +32,7 @@ public class MemberServiceImpl<ReportBean> implements MemberService{
 	public MemberBean userCheck(MemberBean mb) {
 		return memberDAO.userCheck(mb);
 	}
+	
 	@Override
 	public MemberBean userCheck2(MemberBean mb) {
 		
@@ -46,7 +47,7 @@ public class MemberServiceImpl<ReportBean> implements MemberService{
 	public void updateMember2(MemberBean mb) {
 		memberDAO.updateMember2(mb);
 	}
-
+	
 	@Override
 	public void deleteMember(MemberBean mb) {
 		memberDAO.deleteMember(mb);
@@ -99,6 +100,7 @@ public class MemberServiceImpl<ReportBean> implements MemberService{
 		memberDAO.updateMember(mb);
 		
 	}
+	
 
 	@Override
 	public List<MemberBean> getMemberNList() {
@@ -134,15 +136,16 @@ public class MemberServiceImpl<ReportBean> implements MemberService{
 		return memberDAO.userCheck4(mb);
 	}	
 	
-	@Override
-	public MemberBean userCheck5(MemberBean mb) {
-	
-		return memberDAO.userCheck5(mb);
-	}
 	
 	@Override
 	public void updateMemberPw2(MemberBean mb) {
 		memberDAO.updateMemberPw2(mb);
+		
+	}
+	
+	@Override
+	public void updateMember3(MemberBean mb) {
+		memberDAO.updateMember3(mb);
 		
 	}
 

@@ -21,13 +21,13 @@ public interface MemberDAO<ReportBean> {
 		
 		public MemberBean userCheck4(MemberBean mb);
 		
-		public MemberBean userCheck5(MemberBean mb);
-		
 		public MemberBean getMember2(String id);
 
 		public void updateMember(MemberBean mb);
 		
 		public void updateMember2(MemberBean mb);
+		
+		public void updateMember3(MemberBean mb);
 		
 		public void deleteMember(MemberBean mb);
 		

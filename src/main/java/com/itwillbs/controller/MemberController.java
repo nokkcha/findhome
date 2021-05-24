@@ -83,7 +83,15 @@ public class MemberController {
 			session.setAttribute("id", mb.getId());
 
 			session.setAttribute("member_type", "normal");
-			return "redirect:/";
+			
+			MemberBean mb3=memberService.userCheck(mb);
+			if(!mb3.getPhone_number().equals("")) {
+				session.setAttribute("phone", mb.getPhone_number());
+				return "redirect:/";
+			} else {
+				return "redirect:/addPhone";
+			}
+		
 			
 		} else {
 			// 입력하신 정보가 틀립니다.
@@ -584,10 +592,14 @@ public class MemberController {
 		}
 	 
 	 @RequestMapping(value = "/addPhonePro", method = RequestMethod.POST)
-		public String addPhonePro(MemberBean mb) {
-		  memberService.insertMember(mb);
+		public String addPhonePro(MemberBean mb, HttpServletRequest request, Model model, HttpSession session) {
 			
+		 		String id = (String)session.getAttribute("id");
+		 		mb.setId(id);
+				memberService.updateMember3(mb);
+	
 			return "redirect:/";
+			
 			
 		}
 	 
