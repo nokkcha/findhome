@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
 
-<title>FindHome - 좋은 집을 찾을 수 있는 곳</title>
+<title>DirEngine - Free Bootstrap 4 Template by Colorlib</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -29,302 +29,10 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/flaticon.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/icomoon.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/detailView.css?after">
 
 
 
-<style type="text/css">
-
-
-
-#table {
-	table-layout: fixed;
-}
-
-#roomtable {
-	width:600px;
-	border-collapse: collapse;
-	margin: auto !important;
-}
-
-#roomtable th {
-	width: 30%;
-	padding: 10px;
-	text-align: left;
-	border-bottom: 1px solid #dddddddd;
-	color: gray;
-}
-
-#roomtable td, tr {
-	border-bottom: 1px solid #dddddddd;
-	padding: 10px;
-	text-align: left;
-	color: black;
-	width: 20%
-}
-
-#map img {
-	max-width: none;
-	height: auto;
-	border: 0
-}
-
-#tableoption {
-	width: 100%;
-	text-align: center;
-
-}
-
-
-#tableoption tr,td {
-	border-style: none;
-	text-align: center;
-}
-
-#btn01 {
-	margin-bottom: 10px;
-}
-
-#btn02 {
-	margin-bottom: 10px;
-}
-
-#btn03 {
-	margin-bottom: 10px;
-}
-
-#contact-btn {
-	margin-top: 10px;
-}
-
-
-#btnReport{
-	border: none;
-	background-color: rgba(0,0,0,0);
-	margin-top: 10px;
-	color: gray;
-}
-
-#btnReport img{
-	width: 15px;
-	height: 15px;
-	color: gray;
-	display: inline;
-}
-
-
-#btn-report-close {
-	border: none;
-	background: none;
-}
-
-#btn-report-close img {
-	width: 15px;
-	height: 15px;
-	margin-left: 240px;
-	margin-top: 20px;
-}
-
-<<<<<<< HEAD
-=======
-#roomtable {
-	width: 100%;
-	border-collapse: collapse;
-	text-align: left;
-}
->>>>>>> refs/remotes/origin/member_seller_backend
-
-
-
-
-#btnDifInfo {
-	margin-top: 5px;
-	width: 200px;
-	font-weight: bold;
-	color: white;
-
-}
-
-#btnSoldout {
-	width: 200px;
-	font-weight: bold;
-	color: white;
-}
-
-
-#is_selling {
-	color: #608CB7;
-
-}
-h4 {
-	text-align: center;
-}
-.option-info-container {
-	padding: 50px 100px 50px 100px;
-	border-top: 1px solid #dddddddd;
-
-}
-
-.room-detail-option-item-wrapper {
-	margin-top: 40px;
-	display: flex;
-}
-
-.room-detail-content-option-item {
-	text-align: center;
-	flex: 1;
-}
-
-.room-detail-content-option-item>img {
-	width: 60px;
-}
-
-.room-detail-content-option-item-name {
-	margin-top: 15px;
-	text-align: center;
-	font-size: 15px;
-}
-
-.room-detail-option-title {
-	font-size: 27px;
-	text-align: center;
-}
-
-.room-contact-container {
-	margin-top: 25px;
-	border-top: 1px solid #dddddddd;
-}
-
-.map-container {
-	padding-top: 50px;
-	padding-bottom: 50px;
-	border-top: 1px solid #dddddddd;
-}
-
-.contact-container {
-	border-bottom: 1px solid #dddddddd;
-}
-
-.map-container #map { /* border:1px solid red;  */
-	margin-left: auto !important;
-	margin-right: auto !important;
-}
-
-.info-container {
-	text-align: left;
-}
-
-.btn btn-secondary>a:visited {
-	color: white;
-}
-
-.btn btn-secondary>a:link {
-	color: white;
-}
-
-.zzim:before {
-	content: "💓 찜한 매물";
-	color: #f85959;
-	font-weight: bold;
-}
-
-.zzim:hover:before {
-	content: "🤍 찜하기 취소";
-	cursor: pointer;
-	color: black;
-	font-weight: normal;
-}
-
-.nozzim:before {
-	content: "🤍 찜하기";
-}
-
-.nozzim:hover:before {
-	content: "💓 찜하기";
-	cursor: pointer;
-	color: #f85959;
-	font-weight: bold;
-}
-
-.te {
-	background-color: white;
-	display: inline-block;
-}
-
-.te:hover {
-	color: #f85959;
-}
-
-.sidebar-wrap .fields .select-wrap2 {
-	position: relative;
-	margin-right: 10px;
-}
-
-.modal-background {
-	display: none;
-	position: fixed;
-	top: 0;
-	left: 0;
-	bottom: 0;
-	right: 0;
-	background: rgba(0, 0, 0, 0.8);
-	z-index: 1000;
-}
-
-.modal-content {
-	display: none;
-	position: absolute;
-	top: calc(50vh - 100px);
-	left: calc(50vw - 200px);
-	background-color: white;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	border-radius: 10px;
-	width: auto;
-	height: auto;
-}
-
-.modal-header {
-		padding-top: 20px;
-		border-bottom: 1px solid #dddddddd;
-}
-
-.modal-report-header{
-	padding-top: 10px;
-}
-
-.modal-body {
-	text-align: center;
-}
-
-.modal-body h4 {
-	color: green;
-}
-
-.modal-body p {
-	color: gray;
-	text-align: center;
-}
-
-.modal-body h6{
-	color: black;
-	text-align: center;
-	
-	
-}
-
-.report-body {
-	border: none;
-	text-align: center;
-
-}
-
-
-
-.mb-5 {
-	text-align: center !important;
-}
-</style>
 
 <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 
@@ -333,13 +41,18 @@ h4 {
 
 	<%@ include file="../views/top.jsp"%>
 
-	<div class="hero-wrap js-fullheight" style="background-image: url('${pageContext.request.contextPath}/resources/images/bg_5.jpg');">
+	<div class="hero-wrap js-fullheight" style="background-image: url('${pageContext.request.contextPath}/resources/images/pexels-daria-shevtsova-892618.jpg');">
 		<div class="overlay"></div>
 		<div class="container">
 			<div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
 				<div class="col-md-9 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
 					<p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">
-						<span class="mr-2"><a href="index.html">원룸</a></span>
+						<span class="mr-2"><a href="index.html">
+									<c:choose>
+									<c:when test="${ob.category eq 'OneRoom'}"> 원룸 </c:when>
+									<c:when test="${ob.category eq 'Officetel'}"> 오피스텔 </c:when>
+									</c:choose>
+						</a></span>
 					</p>
 					<h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">매물 상세</h1>
 				</div>
@@ -351,93 +64,115 @@ h4 {
 
 	<section class="ftco-section ftco-degree-bg">
 		<div class="container">
-			<div class="row">
+			<div class="row-list">
 				<div class="col-lg-3 sidebar">
 					<div class="sidebar-wrap bg-light ftco-animate">
 						<h3 class="heading mb-4">검색 조건 설정</h3>
-						<form action="#">
+		        			<form action='<c:url value="findRooms-search"/>'>
+		        			<input type="hidden" value="OneRoom" name="category">
+							
 							<div class="fields">
 								<div class="form-group">
-									<input type="text" class="form-control" placeholder="지역, 지하철역 검색">
+		              			<input type="reset" value="재설정" class="filter-reset">
+		              		 	<input type="text" class="form-control" placeholder="지역, 지하철역 검색" name="search" id="filter-search">
+								<input type="submit" value="검색" class="btn filter-search-submit" id="filter-search-submit">
 								</div>
 								<div class="form-group">
 									<div class="select-wrap one-third">
 
-										계약 구분
-										<div class="form-group">
-											<input type="button" class="btn te btn-primary rentAll" value="전체"> <input type="button" class="btn te btn-default rentMonthly" value="월세"> <input type="button" class="btn te btn-default rentJeonse" value="전세">
-										</div>
-
 										구조
-										<div class="form-group">
-											<input type="button" class="btn te btn-primary rtypeAll" value="전체"> <input type="button" class="btn te btn-default rtypeOpen rtype" value="오픈형"> <input type="button" class="btn te btn-default rtypeSeparate rtype" value="분리형"> <input type="button" class="btn te btn-default rtypeStairs rtype" value="복층형">
-										</div>
+	                 <div class="form-group">
+	
+					<input type="checkbox" name="room_all" value="전체" class="cktag" id="rtypeAll" 
+		              onclick="rtypeSelectAll(this)" checked> 
+		              <label class="label-class" for="rtypeAll">
+		              <span class="btn op-css" id=" span-rtypeAll"> 전체  </span></label>
+	
+					<input type="checkbox" name="room_type" value="오픈형" class="cktag"  id="rtypeOpen" 
+	                 onclick="rtypeCheckSelectAll(this)">
+	                 <label class="label-class" for="rtypeOpen">
+	                 <span class="btn op-css rtypeOther"> 오픈형  </span> </label>
+		                 
+	                  <input type="checkbox" name="room_type" value="분리형" class="cktag"  id="rtypeSeparate"
+	                  onclick="rtypeCheckSelectAll(this)">  
+	                 <label class="label-class" for="rtypeSeparate">
+	                 <span class="btn op-css rtypeOther"> 분리형</span></label>
+		                  
+		            <input type="checkbox" name="room_type" value="복층형" class="cktag"  id="rtypeStairs"
+	                onclick="rtypeCheckSelectAll(this)">
+	                 <label class="label-class" for="rtypeStairs"> 
+	                 <span class="btn op-css rtypeOther"> 복층형
+	                 </span></label>
 
-										층 수 옵션
-										<div class="form-group">
-											<input type="button" class="btn te btn-primary ftypeAll" value="전체"> <input type="button" class="btn te btn-default floor" value="지상층"> <input type="button" class="btn te btn-default ftypeOther" value="반지하,옥탑">
-										</div>
+
+		              </div>
+
+	                      층 수 옵션
+	                      <div class="form-group">
+
+						<input type="checkbox" name="floor_all" value="전체" class="cktag" id="ftypeAll"
+		             	   onclick="ftypeSelectAll(this)" checked> 
+		             	  <label class="label-class" for="ftypeAll">
+		             	  <span class="btn op-css" id="span-ftypeAll"> 전체 </span></label>
+		             	  
+		             	  <input type="checkbox" name="living_floor" value="층" class="cktag" id="ftypeFloor"
+		             	  onclick="ftypeCheckSelectAll(this)">
+		             	  <label class="label-class" for="ftypeFloor">
+		             	  <span class="btn op-css"> 지상층 </span></label>
+		             	  
+		             	  <input type="checkbox" name="living_floor" value="반지하" class="cktag" id="ftypeBottom"
+		             	 onclick="ftypeCheckSelectAll(this)">
+		             	 <label class="label-class" for="ftypeBottom">
+		             	 <span class="btn op-css">	반지하 </span></label>
+		             	  
+		             	 <input type="checkbox" name="living_floor" value="옥탑방" class="cktag" id="ftypeTop"
+		             	 onclick="ftypeCheckSelectAll(this)">
+		             	 <label class="label-class" for="ftypeTop">
+		             	 <span class="btn op-css"> 옥탑방 </span></label>
+		             </div>
 
 
 									</div>
 								</div>
 
-								<div class="form-group">
-									보증금
-									<div class="range-slider">
-
-										<div class="Container">
-											<font size=2 id="slider_value_view1">0</font> <input oninput='ShowSliderValue1(this.value)' style="width: 100%;" class="slider_range1" type="range" step="100" value="0" min="0" max="50000"></input> <font size=2 id="slider_value_view2">0</font> <input oninput='ShowSliderValue2(this.value)' style="width: 100%;" class="slider_range2" type="range" step="100" value="0" min="0" max="50000"></input>
-										</div>
-
-										</svg>
-									</div>
-
+						<div class="form-group">
+					              보증금
+					        <div class="range-slider">
+								<div class="Container" style="text-align: center;" >
+							  		<font size = 3 id = "slider_value_view1" style="color: gray;">0</font>	
+							  							  
+							  			<input oninput = 'ShowSliderValue1(this.value)' style = "width:100%;" class="slider_range1" id="rangeTest"
+							  			 type="range" step="100" value="0" min="0" max="50000" name="deposit_min" ></input>
+							  			 
+							  			 <span style="margin: 0 15%"> - </span>
+							  			 
+							   		<font size = 3 id = "slider_value_view2" style="color: gray;">5억</font>							  
+										<input oninput = 'ShowSliderValue2(this.value)' style = "width:100%;" class="slider_range2" 
+										type="range" step="100" value="50000" min="0" max="50000" name="deposit_max" ></input>
+								</div>
+							</div>
+				
 									월세
-									<div class="range-slider">
-
-										<div class="Container2">
-											<font size=2 id="slider_value_view3">0</font> <input oninput='ShowSliderValue3(this.value)' style="width: 100%;" class="slider_range3" type="range" step="10" value="0" min="0" max="500"></input> <font size=2 id="slider_value_view4">0</font> <input oninput='ShowSliderValue4(this.value)' style="width: 100%;" class="slider_range4" type="range" step="10" value="0" min="0" max="500"></input>
+					              	<div class="range-slider">
+									<div class="Container2" style="text-align: center;" >
+								  		<font size = 3 id = "slider_value_view3" style="color: gray;">0</font>		
+								  						  
+								  			<input oninput = 'ShowSliderValue3(this.value)' style = "width:100%;" class="slider_range3" 
+								  			type="range" step="10" value="0" min="0" max="500" name="monthly_rent_min"></input>
+								  			
+							  			 <span style="margin: 0 15%"> - </span>
+								  			
+								   		<font size = 3 id = "slider_value_view4" style="color: gray;">500만원</font>							  
+											<input oninput = 'ShowSliderValue4(this.value)' style = "width:100%;" class="slider_range4" 
+											type="range" step="10"value="500" min="0" max="500" name="monthly_rent_max"></input>
 										</div>
-										</svg>
 									</div>
-									<script language="javascript">
-										function ShowSliderValue(sVal) {
-											var obValueView = document
-													.getElementById("slider_value_view");
-											obValueView.innerHTML = sVal
-										}
+									
+									<div class="form-group">
+										
+									</div>
+								 </div>
 
-										function ShowSliderValue(sVal) {
-											var obValueView = document
-													.getElementById("slider_value_view2");
-											obValueView.innerHTML = sVal
-										}
-
-										var RangeSlider = function() {
-											var range = $('.slider_range');
-
-											range.on('input', function() {
-												ShowSliderValue(this.value);
-											});
-										};
-
-										RangeSlider();
-									</script>
-
-
-
-
-
-
-								</div>
-
-
-
-
-								<div class="form-group">
-									<input type="submit" value="Search" class="btn btn-primary py-3 px-5">
-								</div>
 							</div>
 						</form>
 					</div>
@@ -465,8 +200,9 @@ h4 {
 
 
 						<div class="col-md-12 hotel-single mt-4 mb-5 ftco-animate">
+										
 							<div class="info-container">
-								<span>원룸/월세 </span>
+								<div class="info-mini-container">
 								<br>
 								<span id="is_selling">
 									<c:choose>
@@ -474,18 +210,18 @@ h4 {
 									<c:when test="${ob.is_selling eq 'N'}"> 거래가 완료된 매물입니다. </c:when>
 									</c:choose>
 								</span>
-								<h2>${ob.subject }</h2>
-
+								<br>
+								
+								<span class="subject">${ob.subject }  </span><span class="text-zzim icon-like nozzim"></span>
+								
 								<p class="rate mb">
-									<span class="loc"><a href="#map-info"><i class="icon-map"></i> ${ob.address }</a></span><br> <span class="text-zzim icon-like nozzim"></span>
+									<span class="loc"><a href="#map-info"><i class="icon-map"></i> ${ob.address }</a></span><br> 
 									<!-- 										<span class="text-zzim icon-like zzim"></span> -->
-								<h6 style="text-align: left;">
-									<i class="fas fa-user" style="width: 20; height: 20"></i> ${ob.seller_id }
-								</h6>
 
-								<div>
-
-									<button type="button" id="btn-call" class="btn btn-secondary" style="float: left; margin-right: 0.5em;">전화 걸기</button>
+									<span class="seller_id"><i class="fas fa-user" style="width: 20; height: 20"></i> ${ob.seller_id }</span><br>
+									<br>
+									<button type="button" id="btn-call" class="btn btn-outline-dark"><img src='<c:url value="/resources/images/telephone.png" />' style="width: 15px;height: 15px;"> call</button>
+						
 
 									<!-- Modal -->
 
@@ -520,14 +256,22 @@ h4 {
 							</div>
 						</div>
 					</div>
+					
+					<div class="semi-info-container">
+						<table id="semi-info-table">
+							<tr>
+								<td>면적</td><td>관리비</td><td>구조</td>
+							</tr>
+							<tr>
+								<td>${ob.exclusive_area_m }m<sup>2</sup>(${ob.exclusive_area_p }평)</td><td>${ob.fees}만원</td><td>${ob.room_type }</td>
+							</tr>
+						</table>
+					</div>
+
 
 					<div class="d-md-flex mt-5 mb-5">
-						<table id=roomtable>
+						<table id="roomtable">
 							<thead>
-								<tr>
-									<th>방 형태</th>
-									<td>${ob.room_type }</td>
-								</tr>
 							</thead>
 							<tbody>
 								<tr>
@@ -538,10 +282,7 @@ h4 {
 									<th>월세</th>
 									<td>${ob.monthly_rent}만원</td>
 								</tr>
-								<tr>
-									<th>관리비</th>
-									<td>${ob.fees}만원</td>
-								</tr>
+
 <!-- 								<tr> -->
 <!-- 									<th>관리비 포함_내역</th> -->
 <%-- 									<td><c:forEach items="${ob.include_fees_array }" var="list"> --%>
@@ -551,11 +292,6 @@ h4 {
 								<tr>
 									<th>대출 여부</th>
 									<td>${ob.loan}</td>
-								</tr>
-								<tr>
-									<th>면적</th>
-									<td>${ob.exclusive_area_m }m<sup>2</sup>(${ob.exclusive_area_p }평)
-									</td>
 								</tr>
 								<tr>
 									<th>건물 층수</th>
@@ -587,7 +323,7 @@ h4 {
 						</table>
 
 					</div>
-					<div class="map-container" id="map-info">
+					<div class="map-container">
 						<h4 class="mb-5">상세 설명</h4>
 						<div class="mb-5">${ob.content }</div>
 					</div>
@@ -924,23 +660,6 @@ h4 {
 		});
 
 
-		
-		
-
-		// 목록 - [call] 클릭
-		//     	$('#call').click(function () {    	
-		//     		var filter = "win16|win32|win64|mac|macintel"; 
-		//     		if ( navigator.platform ) { 
-		//     			if ( filter.indexOf( navigator.platform.toLowerCase() ) < 0 ) {
-		//     				location.href="tel:010-1234-5678";
-
-		//     			} else { 
-		//     					alert('웹에서 전화걸기 ex. 010-1234-5678');	
-		//     			} 
-		//     		}
-
-		// 		});
-		// 신고하기 - [신고하기] 클릭 후 모달창
 		$(document).ready(function() {
 			$('#btnReport').click(function() {
 				$('#modal-report').show();
@@ -1132,36 +851,9 @@ h4 {
 		}
 	</script>
 
-	<script>
-		
-// 		$(document).ready(function() {
-			
-// 			$('#contact-btn').click(function() {
-// 				alert("클릭 성공");
-// 				$.ajax('<c:url value="/mailPro" />',{
-// 					alert("클릭 성공");
-// 					data : {name:$('#name').val(),
-// 							phone_number:$('#phone_number').val(),
-// 							content:$('#fr-contact').val()
-// 							},
-// 					success : function(data) {
-// 						alert("문의가 접수되었습니다.");
-// 						location.href= "/detailView"
-// 					},
-					
-// 					 error:function(request,status,error){
-// 					        alert("code = "+ request.status + " message = " + request.responseText + " error = " + error); // 실패 시 처리
-// 					 }
-					
-					
-// 				});
-// 			});
-// 		});
-		
-	</script>	
-	
-	<script>
 
+	<script>
+	//신고하기
 			$(document).ready(function() {
 				$('#btnSoldout').click(function() {
 					$.ajax('<c:url value="/reportPro"/>',
