@@ -124,7 +124,7 @@
 
 		<div class="container">
 
-			<form action='<c:url value="/writePro"/>' method="post" id="sellForm">
+			<form action='<c:url value="/writePro"/>' method="post" id="sellForm" >
 
 				<c:forEach var="i" begin="1" end="15">
 					<input type="hidden" class="fileList" name="fileList" />
@@ -139,7 +139,7 @@
 					<tbody align="left">
 						<tr>
 							<th style="background-color: #dedede;">주소</th>
-							<td><input type="text" id="address" name="address">
+							<td><input type="text" id="address" name="address" onkeyup="checkAddress()" >
 								<button type="button" onclick="checkAddress()">위치확인하기</button> <br> · 주소와 단지명 모두 검색이 가능합니다.<br> · 주소 입력 시에는 동/읍/면 으로 검색해 주세요. 예) 자곡동, 동읍면, 신월읍<br> · 오피스텔을 검색할 때에는 동/읍/면 이름과 단지 명을 함께 입력하면 좀 더 편하게 주소를 검색할 수 있습니다. 예) 계산동 하이베라스</td>
 						</tr>
 
@@ -523,7 +523,9 @@
 							alert('값을 전부 입력하시오');
 							return false;
 						}
-
+						
+						//$("#sellForm").submit();
+						
 						// 관리비 포함 영역 로그 출력테스트
 						// 				$('input:checkbox[id="include_feesArray"]').each(function(){
 						// 				    var thisOptionValue=$(this).val();
