@@ -278,7 +278,7 @@
 						</tr>
 						<tr>
 							<th style="background-color: #dedede;">연락처</th>
-							<td><input type="text" readonly="readonly" name="phone_number" id="phone_number" value="010-8888-9999"></td>
+							<td><input type="text" readonly="readonly" name="phone_number" id="phone_number" value='${ob.phone_number}'></td>
 						</tr>
 
 					</tbody>

@@ -182,6 +182,7 @@ public class HomeController {
 		try {
 			String id = (String) session.getAttribute("id");
 			String category = request.getParameter("category");
+			String phone_number = (String) session.getAttribute("phone_number");
 
 			if (id == null) {
 				 model.addAttribute("msg", "먼저 로그인을 해주세요.");
@@ -196,6 +197,7 @@ public class HomeController {
 			OneRoomBean ob = new OneRoomBean();
 			ob.setCategory(category);
 			ob.setSeller_id(id);
+			ob.setPhone_number(phone_number);
 			model.addAttribute("ob", ob);
 
 		} catch (Exception e) {

@@ -47,7 +47,7 @@ button.text-zzim:focus{
 }
 
 .zzim:before {
-	content:url("../images/fillHeart.png");
+	content:"💓";
 }
 
 .zzim:hover:before {
@@ -58,11 +58,11 @@ button.text-zzim:focus{
 }
 
 .nozzim:before {
-	content:url("../images/heart.png");
+	content:"🤍 ";
 }
 
 .nozzim:hover:before {
-	content:url("../images/fillHeart.png");
+	content:"💓 ";
    cursor: pointer;
 }
 
@@ -152,7 +152,7 @@ left: 0;
 bottom: 0;
 right: 0;
 background: rgba(0,0,0,0.8);
-opacity: 35%;
+opacity: 75%;
 }
 
 .modal_content{
@@ -191,4 +191,6 @@ input:checked + label span {
 .nologin-zzim {
 	margin-left: 35%;
 	margin-top: 10%;
+	border: 1px solid;
+	background: red;
 }
