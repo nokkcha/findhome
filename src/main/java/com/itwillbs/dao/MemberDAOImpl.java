@@ -144,4 +144,9 @@ public class MemberDAOImpl<ReportrBean> implements MemberDAO{
 		sqlSession.update(namespace+".updateMember3", mb);
 		
 	}
+
+	public MemberBean userCheckadmin(MemberBean mb) {
+	
+		return sqlSession.selectOne(namespace+".userCheckadmin", mb); 
+	}
 }

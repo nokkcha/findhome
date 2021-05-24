@@ -50,6 +50,8 @@ public interface MemberService<ReportBean> {
 
 
 	public List<ReportBean> getReportList();
+	
+	public MemberBean userCheckadmin(MemberBean mb);
 
 	
 	public void updateMemberPw(MemberBean mb);
