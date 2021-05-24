@@ -47,7 +47,7 @@ button.text-zzim:focus{
 }
 
 .zzim:before {
-	content:"💓";
+	content:url("../images/fillHeart.png");
 }
 
 .zzim:hover:before {
@@ -58,11 +58,11 @@ button.text-zzim:focus{
 }
 
 .nozzim:before {
-	content:"🤍 ";
+	content:url("../images/heart.png");
 }
 
 .nozzim:hover:before {
-	content:"💓 ";
+	content:url("../images/fillHeart.png");
    cursor: pointer;
 }
 

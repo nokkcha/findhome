@@ -376,7 +376,7 @@
     		
         	// 목록 - [찜하기] 클릭
         	$('.text-zzim').click(function(){
-        		var room_id = $(this).parent().children("#room_id")[0].value;
+        		var room_id = $(this).parent().parent().children("#room_id")[0].value;
         		
         	 	$.ajax('<c:url value="/zzim" />',{
         	 		data:{wish:room_id},
