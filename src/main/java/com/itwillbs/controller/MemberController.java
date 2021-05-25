@@ -580,7 +580,11 @@ public class MemberController {
 		                    //메일 제목
 		                    msg.setSubject("[findhome] 고객님의 임시 비밀번호입니다.");
 		                    //메일 내용
-		                    msg.setText("안녕하세요 findhome seller 고객님. 요청하신 임시 비밀 번호는 " + "[" + temp + "]");
+		                    msg.setText(new StringBuffer().append("안녕하세요 findhome seller 고객님. \n")
+	                    		    .append("요청하신 임시 비밀 번호는 " + "[" + temp + "]" + "입니다. \n")
+	                    		    .append("고객님의 개인정보 보호를 위해서 \n")
+	                    		    .append("findhome 웹사이트에 로그인을 하신 후 회원정보 페이지에서 \n")
+	                    		    .append("발급받은 임시비밀번호를 새로운 비밀번호로 재설정한 후에 이용해주세요.").toString());
 		                    Transport.send(msg);
 		                    System.out.println("이메일 전송");
 		                    
