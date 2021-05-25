@@ -89,15 +89,19 @@ public class BoardController {
 	public String sellRoom(HttpServletRequest request, Model model, HttpSession session) {
 		try {
 			String seller_id = (String)session.getAttribute("seller_id");
+			String is_confirm = (String)session.getAttribute("is_confirm");
 				
 			if ((String) request.getParameter("room_id") == null) {
 				model.addAttribute("msg", "잘못된 요청입니다.");
 				return "msg";
 			}
-				if(seller_id ==null) {
+			if(seller_id ==null) {
 				model.addAttribute("msg", "잘못된 요청입니다.");
 				return "msg";
-					
+			}
+			if(is_confirm ==null || !is_confirm.equals("Y") ) {
+				model.addAttribute("msg", "가입 승인 대기중입니다.");
+				return "msg";
 			}
 			
 			int room_id = Integer.parseInt(request.getParameter("room_id"));
@@ -305,8 +309,13 @@ public class BoardController {
 	@RequestMapping(value = "/member_seller", method = RequestMethod.GET)
 	public String member_seller(HttpServletRequest request, Model model, HttpSession session) {
 		String seller_id = (String) session.getAttribute("seller_id");
+		String is_confirm = (String)session.getAttribute("is_confirm");
 		if (seller_id == null) {
 			return "/login";
+		}
+		if(is_confirm ==null || !is_confirm.equals("Y") ) {
+			model.addAttribute("msg", "가입 승인 대기중입니다.");
+			return "msg";
 		}
 
 		OneRoomBean ob = new OneRoomBean();

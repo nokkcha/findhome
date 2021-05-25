@@ -10,7 +10,7 @@ public class MemberBean {
 	private String id;
 	private String password;
 	private String phone_number;
-	private char is_confirm = 'N';
+	private String is_confirm = "N";
 	private String member_type;
 	
 	private int no;

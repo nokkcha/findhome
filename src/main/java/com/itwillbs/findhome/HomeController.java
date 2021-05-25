@@ -183,7 +183,8 @@ public class HomeController {
 			String id = (String) session.getAttribute("id");
 			String category = request.getParameter("category");
 			String phone_number = (String) session.getAttribute("phone_number");
-
+			String is_confirm = (String)session.getAttribute("is_confirm");
+			
 			if (id == null) {
 				 model.addAttribute("msg", "먼저 로그인을 해주세요.");
 				 return "msg";
@@ -192,6 +193,11 @@ public class HomeController {
 			if (category == null) {
 				 model.addAttribute("msg", "잘못된 요청입니다.");
 				 return "msg";
+			}
+			
+			if(is_confirm ==null || !is_confirm.equals("Y") ) {
+				model.addAttribute("msg", "가입 승인 대기중입니다.");
+				return "msg";
 			}
 
 			OneRoomBean ob = new OneRoomBean();

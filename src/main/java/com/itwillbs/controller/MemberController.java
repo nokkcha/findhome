@@ -169,6 +169,7 @@ public class MemberController {
 			// 세션값 생성 "id"
 			session.setAttribute("id", mb.getId());
 			session.setAttribute("seller_id", mb.getId());
+			session.setAttribute("is_confirm", mb.getIs_confirm());
 
 			// 회원구분 세션값 생성 "member_type"
 			session.setAttribute("member_type", "seller");
