@@ -257,10 +257,10 @@ body {
 											</c:forEach>
 
 										</button>
-										<span class="ml-auto call"><a
-											href="javascript:void(0);">call</a></span> <input type="hidden"
-											value="<c:out value='${prList.phone_number}'/>"
-											id="phone_number">
+<!-- 										<span class="ml-auto call"><a -->
+<!-- 											href="javascript:void(0);">call</a></span> <input type="hidden" -->
+<%-- 											value="<c:out value='${prList.phone_number}'/>" --%>
+<!-- 											id="phone_number"> -->
 
 									</p>
 									<div class="modal">
@@ -346,10 +346,10 @@ body {
 											</c:forEach>
 
 										</button>
-										 <span class="ml-auto call"><a
-											href="javascript:void(0);">call</a></span> <input type="hidden"
-											value="<c:out value='${popularList.phone_number}'/>"
-											id="phone_number">
+<!-- 										 <span class="ml-auto call"><a -->
+<!-- 											href="javascript:void(0);">call</a></span> <input type="hidden" -->
+<%-- 											value="<c:out value='${popularList.phone_number}'/>" --%>
+<!-- 											id="phone_number"> -->
 
 									</p>
 									<div class="modal">
@@ -436,10 +436,10 @@ body {
 										</c:forEach>
 
 									</button>
-									<span class="ml-auto call"><a
-										href="javascript:void(0);">call</a></span> <input type="hidden"
-										value="<c:out value='${popularTelList.phone_number}'/>"
-										id="phone_number">
+<!-- 									<span class="ml-auto call"><a -->
+<!-- 										href="javascript:void(0);">call</a></span> <input type="hidden" -->
+<%-- 										value="<c:out value='${popularTelList.phone_number}'/>" --%>
+<!-- 										id="phone_number"> -->
 
 								</p>
 								<div class="modal">
@@ -523,10 +523,10 @@ body {
 
 										</button>
 
-										<span class="ml-auto call"><a
-											href="javascript:void(0);">call</a></span> <input type="hidden"
-											value="<c:out value='${roomList.phone_number}'/>"
-											id="phone_number">
+<!-- 										<span class="ml-auto call"><a -->
+<!-- 											href="javascript:void(0);">call</a></span> <input type="hidden" -->
+<%-- 											value="<c:out value='${roomList.phone_number}'/>" --%>
+<!-- 											id="phone_number"> -->
 
 									</p>
 									<div class="modal">
@@ -608,10 +608,10 @@ body {
 
 										</button>
 
-										<span class="ml-auto call"><a
-											href="javascript:void(0);">call</a></span> <input type="hidden"
-											value="<c:out value='${officetelList.phone_number}'/>"
-											id="phone_number">
+<!-- 										<span class="ml-auto call"><a -->
+<!-- 											href="javascript:void(0);">call</a></span> <input type="hidden" -->
+<%-- 											value="<c:out value='${officetelList.phone_number}'/>" --%>
+<!-- 											id="phone_number"> -->
 
 									</p>
 									<div class="modal">
