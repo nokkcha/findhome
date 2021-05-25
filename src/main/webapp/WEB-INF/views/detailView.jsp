@@ -333,7 +333,7 @@
 					</div>
 					<div class="map-container">
 						<h4 class="mb-5">상세 설명</h4>
-						<div class="mb-5">${ob.content }</div>
+						<div class="mb-5" id="content-text">${ob.content }</div>
 					</div>
 					<br>
 
