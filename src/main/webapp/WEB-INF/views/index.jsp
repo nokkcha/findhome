@@ -121,7 +121,7 @@ body {
 	<%@ include file="../views/top.jsp"%>
 
 	<div class="hero-wrap js-fullheight"
-		style="background-image: url('${pageContext.request.contextPath}/resources/images/bg_1.jpg');">
+		style="background-image: url('${pageContext.request.contextPath}/resources/images/kueche-esszimmer-sonne-altbau__9544f8b7-afc2-4f3e-847d-7ba54c14e7d9.jpeg');">
 		<div class="overlay"></div>
 		<div class="container">
 			<div
