@@ -242,7 +242,7 @@
 <!-- 									  <div class="modal_content"  -->
 <!-- 									       title="클릭하면 창이 닫힙니다."> -->
 <!-- 									  </div> -->
-										<div class="modal-content" id="modal-content">
+										<div class="modal-content" id="modal-content" style="text-align: center;">
 										<div class="modal-header">
 											<h5 class="modal-title">Contact</h5>
 										</div>
