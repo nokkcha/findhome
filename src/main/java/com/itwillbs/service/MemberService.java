@@ -11,7 +11,7 @@ public interface MemberService<ReportBean> {
 	
 	public void insertMember2(MemberBean mb);
 	
-	public MemberBean getMember(String id);
+	public MemberBean getMember(String id);		// 세입자 회원 정보
 	
 	public MemberBean userCheck(MemberBean mb);
 	
@@ -21,7 +21,7 @@ public interface MemberService<ReportBean> {
 	
 	public MemberBean userCheck4(MemberBean mb);
 	
-	public MemberBean getMember2(String id);
+	public MemberBean getMember2(String id);	// 사업자 회원 정보
 
 	public void updateMember(MemberBean mb);
 	

@@ -228,11 +228,18 @@ public class MemberController {
 
 		// MemberBean mb = 세션에 해당하는 정보 조회 getMember(id) MemberBean 리턴
 		MemberBean mb;
-		if (member_type == "normal") {
+		if (member_type.equals("normal") ) {
 			mb = memberService.getMember(id);
 		} else {
 			mb = memberService.getMember2(id);
 		}
+		
+		if (mb == null) {
+			model.addAttribute("msg", "해당 회원정보가 없습니다");
+			// /WEB-INF/views/member/msg.jsp
+			return "msg";
+		}
+		
 		// 2.멤버빈에 저장
 		mb.setMember_type(member_type);
 
