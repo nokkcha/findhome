@@ -21,6 +21,9 @@ u,ins,a{text-decoration:none;}
   font-size: 24px;
   color: #fff; 
 }
+.left_section h3 a {
+	color: #fff;
+}
 
 .left_section img.profile {
   margin: 20px 0;
@@ -35,9 +38,11 @@ u,ins,a{text-decoration:none;}
 .left_section li {
   font-size: 15px;
   padding-bottom: 3px;
+  color: #fff;
 }
 .left_section li strong {
   /* font-size: 17px; */
+  color: #fff;
 }
 .left_section li a {
   color: #fff;
@@ -88,19 +93,20 @@ u,ins,a{text-decoration:none;}
   width:30%;
   background-color:  #fff; 
   box-sizing: border-box;
-}o
-
+}
 .right_section .board_box {
   width: 100%;
   min-height: 450px;
   padding: 20px;
   box-sizing: border-box;
-
 }
 .right_section .board_box p {
   padding-bottom: 13px;
   font-size: 18px;
   font-weight: bold;
+}
+.right_section .board_box .user-list #btn-2 {
+	display: inline-block;
 }
 .right_section .board_box table caption {
   display: none;

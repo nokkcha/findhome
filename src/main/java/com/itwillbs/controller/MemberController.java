@@ -33,6 +33,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 //import com.itwillbs.Mail.Email;
 //import com.itwillbs.Mail.EmailSender;
 import com.itwillbs.domain.MemberBean;
+import com.itwillbs.domain.ReportBean;
 //import com.itwillbs.service.KakaoService;
 //import com.itwillbs.findhome.Kakao_restapi;
 import com.itwillbs.service.MemberService;
@@ -52,6 +53,69 @@ public class MemberController {
 	public String join_choice() {
 		return "join_choice";
 	}
+
+	
+	@RequestMapping(value = "/admin_meberjoinPro", method = RequestMethod.GET)
+	public String admin_meberjoinPro(Model model) {
+		
+		return "admin_meberjoin";
+	}
+	
+	@RequestMapping(value = "/admin_listPro", method = RequestMethod.GET)
+	public String admin_listPro(Model model, HttpSession session  ) {
+		
+		String id = (String) session.getAttribute("adminid");
+
+		if (id != null) {
+			
+			// 매물신고리스트 넘기기
+			List<MemberBean> nList = memberService.getMemberNList();
+			List<ReportBean> reportList = memberService.getReportList();
+
+			model.addAttribute("nList", nList);
+			model.addAttribute("reportList", reportList);
+
+			model.addAttribute("nList", nList);
+
+			return "admin_list";
+
+		} else {
+			return "redirect:/adminlogin";
+		}
+		
+	}
+	
+	@RequestMapping(value = "/admin_meberjoin", method = RequestMethod.GET)
+	public String admin_meberjoin(Model model, HttpSession session  ) {
+		
+		String id = (String) session.getAttribute("adminid");
+
+		if (id != null) {
+			
+			// 매물신고리스트 넘기기
+			List<MemberBean> nList = memberService.getMemberNList();
+			List<ReportBean> reportList = memberService.getReportList();
+
+			model.addAttribute("nList", nList);
+			model.addAttribute("reportList", reportList);
+
+			model.addAttribute("nList", nList);
+
+			return "admin_meberjoin";
+
+		} else {
+			return "redirect:/adminlogin";
+		}
+		
+	}
+	
+	
+	
+	@RequestMapping(value = "/login_choice", method = RequestMethod.GET)
+	public String login_choice() {
+		return "login_choice";
+	}
+
 
 	@RequestMapping(value = "/join", method = RequestMethod.GET)
 	public String join() {

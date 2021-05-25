@@ -118,10 +118,6 @@ public class HomeController {
 			model.addAttribute("nList",nList);
 			model.addAttribute("reportList",reportList);
 			
-			
-
-			model.addAttribute("nList", nList);
-
 			return "admin";
 			
 			

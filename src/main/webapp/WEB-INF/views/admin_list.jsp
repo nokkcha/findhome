@@ -8,7 +8,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Findhome</title>
-  <link rel="stylesheet" href="resources/css/admin_style.css">
+  <link rel="stylesheet" href="resources/css/admin_list.css">
   
   <script src='<c:url value="/resources/script/jquery-3.6.0.js" />'></script>
 
@@ -30,26 +30,15 @@
       <li><a href="./admin_listPro">매물목록 관리</a></li>
 </ul>
     </section>
- 
   
   <section class="right_section">
-  
-    <div class="header clear">
+     <div class="header clear">
       <h4>개인회원 관리</h4>
       <button class="logout"  onclick="location.href='<c:url value="/adminlogout" />' ">로그아웃</button>
     </div>
-    
-    <div class="dashboard">
-      <h5>Dashboard</h5>
-      
-      <div class="board_left">
-        <div class="board_box">
-          <p>승인대기 회원 목록</p>
-          <c:forEach var="mb"  items="${nList}">
-          <p class="user-list">${mb.id} <input type="button"   value="가입승인"  id="btn-2"  onclick="location.href='<c:url value="/yUpdate?id=${mb.id}" />' "></p>
-          </c:forEach>
-          </div>
-         </div>
+  
+  
+ 
          
         <div class="board_center">  
         <div class="board_box">
@@ -57,7 +46,7 @@
           <table border="1" class="type09">
             <caption>
               
-<!--               <div></div> -->
+              <div></div>
             </caption>
             
             <colgroup>

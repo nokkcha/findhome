@@ -8,9 +8,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Findhome</title>
-  <link rel="stylesheet" href="resources/css/admin_style.css">
+  <link rel="stylesheet" href="resources/css/admin_meberjoin.css">
   
   <script src='<c:url value="/resources/script/jquery-3.6.0.js" />'></script>
+  
+
+
 
  </head>
  
@@ -31,7 +34,6 @@
 </ul>
     </section>
  
-  
   <section class="right_section">
   
     <div class="header clear">
@@ -40,65 +42,18 @@
     </div>
     
     <div class="dashboard">
-      <h5>Dashboard</h5>
+     
       
       <div class="board_left">
         <div class="board_box">
-          <p>승인대기 회원 목록</p>
+          <p class="user-list-title">승인대기 회원 목록</p>
           <c:forEach var="mb"  items="${nList}">
           <p class="user-list">${mb.id} <input type="button"   value="가입승인"  id="btn-2"  onclick="location.href='<c:url value="/yUpdate?id=${mb.id}" />' "></p>
           </c:forEach>
           </div>
          </div>
          
-        <div class="board_center">  
-        <div class="board_box">
-          <p>매몰신고 리스트</p>  
-          <table border="1" class="type09">
-            <caption>
-              
-<!--               <div></div> -->
-            </caption>
-            
-            <colgroup>
-              <col>
-              <col>
-              <col>
-            </colgroup>
-            <thead>
-              <tr>
-                <th>문의 아이디</th>
-                <th>내용</th>
-                <th>방 아이디</th>
-              </tr>
-            </thead>
-            <tbody>
-<!--                 <tr> -->
-<!--                 <th>qna_id</th> -->
-<!--                 <th>content</th> -->
-<!--                 <th>room_id</th> -->
-<!--                 </tr> -->
-           
-               <%
-          %>
-              
-              
-              <tbody>
-               <c:forEach var="ReportBean"  items="${reportList }">  
-              <tr>
-                <td>${ReportBean.qna_id }</td>
-                <td>${ReportBean.content }</td>
-                <td>${ReportBean.room_id }</td>
-              </tr>
-                  </c:forEach>
-           
-            </tbody>
-             <%
-    %>      
-    
-            </table>
-          </div>
-      </div>
+ 
       </div>
 
   </section>
