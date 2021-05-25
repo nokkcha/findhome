@@ -115,7 +115,7 @@
 						  <br><span class="check-group" id="checkPasswordResult"></span>
 						</div>			
 						<div class="ma">
-							<label class="fp"><a href='<c:url value="/findPassword" />' class="ff">비밀번호찾기</a></label>
+							<label class="fp"><a href='<c:url value="/findPassword"/>' class="ff">세입자 비밀번호찾기</a></label>
 						</div>
 									
 						<div class="form-group">
@@ -145,10 +145,14 @@
 				if (checkValue == "일반") {
 					$('.login_member').text('세입자 로그인');
 					$('#login').attr("action","<c:url value="/loginPro" />");
+					$('.ff').attr("href", "<c:url value="/findPassword" />")
+					$('.ff').text("세입자 비밀번호 찾기")
 
 				} else {
 					$('.login_member').text('사업자 로그인');					
 					$('#login').attr("action","<c:url value="/loginPro2" />");
+					$('.ff').attr("href", "<c:url value="/findPassword2" />")
+					$('.ff').text("사업자 비밀번호 찾기")
 				}
 			});
 		});
