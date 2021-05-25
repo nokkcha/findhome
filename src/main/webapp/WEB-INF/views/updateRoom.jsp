@@ -276,7 +276,7 @@
 						</tr>
 						<tr>
 							<th style="background-color: #dedede;">제목</th>
-							<td><input type="text" name="subject" id="subject"></td>
+							<td><input type="text" name="subject" id="subject"  maxlength="25"></td>
 						</tr>
 						<tr>
 							<th style="background-color: #dedede;">상세설명</th>

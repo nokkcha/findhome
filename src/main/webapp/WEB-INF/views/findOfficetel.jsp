@@ -222,7 +222,7 @@
 			    							<span class="price per-price"><small>${roomList.deposit} / ${roomList.monthly_rent}</small></span>
 		    							</div>
 		    						</div>
-		    						<p>
+		    						<p class="p-text">
 		    						${roomList.address }
 		    						</p>
 		    						
@@ -375,13 +375,13 @@
         	 		success:function(rdata){
         	 			
         	 			if(rdata=="zzim"){
-        	 				rdata = "찜";
+        	 				rdata = "찜 했습니다";
         	 				$('#zzim-id-'+room_id).removeClass('nozzim');
         	 				$('#zzim-id-'+room_id).addClass('zzim');
         	 				$('#zzim-ok-'+room_id).addClass('zzim-showtext');
 
         	 			}else if(rdata=="nozzim"){
-        	 				rdata = "찜안함";
+        	 				rdata = "찜 취소 했습니다";
                 	        $('#zzim-id-'+room_id).removeClass('zzim');
         	 				$('#zzim-id-'+room_id).addClass('nozzim');
         	 				$('#zzim-ok-'+room_id).removeClass('zzim-showtext');

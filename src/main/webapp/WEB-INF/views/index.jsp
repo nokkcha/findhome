@@ -105,6 +105,14 @@ body {
 	margin-left: -16px;
 	margin-bottom: -32px;
 }
+
+.p-text{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 200px;
+}
+
 </style>
 
 </head>
@@ -205,6 +213,7 @@ body {
 							varStatus="i">
 
 							<div class="destination">
+							<span class="zzimCount" ></span>${prList.wish_count }
 								<a
 									href='<c:url value="/detailView?room_id=${prList.room_id}" />'
 									class="img img-2 d-flex justify-content-center align-items-center"
@@ -226,7 +235,7 @@ body {
 														/ ${prList.monthly_rent}</small></span>
 											</div>
 										</div>
-										<p>${prList.address }</p>
+										<p class="p-text">${prList.address }</p>
 
 									</div>
 
@@ -248,7 +257,7 @@ body {
 											</c:forEach>
 
 										</button>
-										찜한 수 : ${prList.wish_count } <span class="ml-auto call"><a
+										<span class="ml-auto call"><a
 											href="javascript:void(0);">call</a></span> <input type="hidden"
 											value="<c:out value='${prList.phone_number}'/>"
 											id="phone_number">
@@ -293,6 +302,7 @@ body {
 							varStatus="i">
 
 							<div class="destination">
+							<span class="zzimCount" ></span> ${popularList.wish_count }
 								<a
 									href='<c:url value="/detailView?room_id=${popularList.room_id}" />'
 									class="img img-2 d-flex justify-content-center align-items-center"
@@ -314,7 +324,7 @@ body {
 														/ ${popularList.monthly_rent}</small></span>
 											</div>
 										</div>
-										<p>${popularList.address }</p>
+										<p class="p-text">${popularList.address }</p>
 
 									</div>
 
@@ -336,7 +346,7 @@ body {
 											</c:forEach>
 
 										</button>
-										찜한 수 : ${popularList.wish_count } <span class="ml-auto call"><a
+										 <span class="ml-auto call"><a
 											href="javascript:void(0);">call</a></span> <input type="hidden"
 											value="<c:out value='${popularList.phone_number}'/>"
 											id="phone_number">
@@ -381,6 +391,7 @@ body {
 					varStatus="i">
 					<div class="col-md-6 col-lg-3 ftco-animate">
 						<div class="destination">
+						<span class="zzimCount" ></span> ${popularTelList.wish_count }
 							<a
 								href='<c:url value="/detailView?room_id=${popularTelList.room_id}" />'
 								class="img img-2 d-flex justify-content-center align-items-center"
@@ -402,7 +413,7 @@ body {
 													/ ${popularTelList.monthly_rent}</small></span>
 										</div>
 									</div>
-									<p>${popularTelList.address }</p>
+									<p class="p-text">${popularTelList.address }</p>
 
 								</div>
 
@@ -425,7 +436,7 @@ body {
 										</c:forEach>
 
 									</button>
-									찜한 수 : ${popularTelList.wish_count } <span class="ml-auto call"><a
+									<span class="ml-auto call"><a
 										href="javascript:void(0);">call</a></span> <input type="hidden"
 										value="<c:out value='${popularTelList.phone_number}'/>"
 										id="phone_number">
@@ -489,7 +500,7 @@ body {
 														/ ${roomList.monthly_rent}</small></span>
 											</div>
 										</div>
-										<p>${roomList.address }</p>
+										<p class="p-text">${roomList.address }</p>
 
 									</div>
 
@@ -574,7 +585,7 @@ body {
 														/ ${officetelList.monthly_rent}</small></span>
 											</div>
 										</div>
-										<p>${officetelList.address }</p>
+										<p class="p-text">${officetelList.address }</p>
 
 									</div>
 
@@ -776,7 +787,7 @@ body {
 																			rdata) {
 
 																		if (rdata == "zzim") {
-																			rdata = "찜";
+																			rdata = "찜 했습니다";
 																			$(
 																					'#zzim-id-'
 																							+ room_id)
@@ -794,7 +805,7 @@ body {
 																							'zzim-showtext');
 
 																		} else if (rdata == "nozzim") {
-																			rdata = "찜안함";
+																			rdata = "찜 취소했습니다";
 																			$(
 																					'#zzim-id-'
 																							+ room_id)

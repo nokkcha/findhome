@@ -220,7 +220,7 @@
 			    							<span class="price per-price"><small>${roomList.deposit} / ${roomList.monthly_rent}</small></span>
 		    							</div>
 		    						</div>
-		    						<p>
+		    						<p class="p-text">
 		    						${roomList.address }
 		    						</p>
 		    						
