@@ -332,252 +332,279 @@ public class MemberController {
 		return entity;
 	}
 
-	@RequestMapping(value = "/oauth", method = RequestMethod.GET)
-	public String kakaoConnect() {
+	@RequestMapping(value="/oauth",method= RequestMethod.GET)
+	 public String kakaoConnect() {
 
-		StringBuffer url = new StringBuffer();
-		url.append("https://kauth.kakao.com/oauth/authorize?");
-		url.append("client_id=" + "b0993beef1eb3df1922ad92776e6688b");
-		url.append("&redirect_uri=http://localhost:8080/findhome/kakaologin");
-		url.append("&response_type=code");
+	  StringBuffer url = new StringBuffer();
+	  url.append("https://kauth.kakao.com/oauth/authorize?");
+	  url.append("client_id=" + "b0993beef1eb3df1922ad92776e6688b");
+	  url.append("&redirect_uri=http://localhost:8080/findhome/kakaologin");
+	  url.append("&response_type=code");
 
-		return "redirect:" + url.toString();
+	  return "redirect:" + url.toString();
+	 
+	 }
+	 
+	 @RequestMapping(value="/kakaologin", produces="application/json", method= {RequestMethod.GET, RequestMethod.POST})
+	 public String kakaoLogin(@RequestParam("code")String code,RedirectAttributes ra,HttpSession session,HttpServletResponse response ,String autorize_code)throws IOException {
+	  
+	  System.out.println("kakao code:"+code);
+	  JsonNode access_token = kakao_restapi.getAccessToken(code);
+	  access_token.get("access_token");
+	  System.out.println("access_token:" + access_token.get("access_token"));
 
-	}
+	  JsonNode userInfo = kakao_restapi.getKakaoUserInfo(access_token.get("access_token"));
 
-	@RequestMapping(value = "/kakaologin", produces = "application/json", method = { RequestMethod.GET, RequestMethod.POST })
-	public String kakaoLogin(@RequestParam("code") String code, RedirectAttributes ra, HttpSession session, HttpServletResponse response,
-			String autorize_code) throws IOException {
+	         
+	         String id = userInfo.path("id").asText();
+	         String name = null;
+	         String email = null;
+	        
+	     
+	         JsonNode properties = userInfo.path("properties");
+	         JsonNode kakao_account = userInfo.path("kakao_account");
+	         name = properties.path("nickname").asText(); //이름 정보 가져오는 것
+	         email = kakao_account.path("account_email").asText();
+	         
+	         session.setAttribute("isLogOn",true);
+	         session.setAttribute("id",name);  
+	         session.setAttribute("account_email", kakao_account);  
+	        
+	         System.out.println("id : " + id);    //여기에서 값이 잘 나오는 것 확인 가능함.
+	         System.out.println("name : " + name);
+	         System.out.println("email : " + email);
+	  
+	         return "redirect:/";
+	     
+	 }
+	 
+	 @RequestMapping(value = "/findPassword", method = RequestMethod.GET)
+	 public String findPassword(HttpSession session, Model model) {
+		    
+		 return "/findPassword";
+	 }
+	 
+	 @RequestMapping(value = "/findPassword2", method = RequestMethod.GET)
+	 public String findPassword2() {
+	 
+		 return "/findPassword2";
+	 }
 
-		System.out.println("kakao code:" + code);
-		JsonNode access_token = kakao_restapi.getAccessToken(code);
-		access_token.get("access_token");
-		System.out.println("access_token:" + access_token.get("access_token"));
+	 
+	 @RequestMapping(value = "/findPasswordPro", method= {RequestMethod.GET, RequestMethod.POST})
+		public String findPasswordPro(MemberBean mb, HttpServletRequest request, HttpServletResponse response, Model model) throws AddressException, MessagingException, Exception {
+			String id = (String)request.getParameter("id");
+			mb.setId(id);
+			MemberBean mb2 = memberService.userCheck3(mb);
+				
+			if(mb2 == null) {
+				
+				  request.setAttribute("msg", "가입되지 않은 이메일입니다.");
+		          request.setAttribute("id", mb.getId());
+		          return "msg";
+		          
+			} 
 
-		JsonNode userInfo = kakao_restapi.getKakaoUserInfo(access_token.get("access_token"));
-
-		String id = userInfo.path("id").asText();
-		String name = null;
-		String email = null;
-
-		JsonNode properties = userInfo.path("properties");
-		JsonNode kakao_account = userInfo.path("kakao_account");
-		name = properties.path("nickname").asText(); // 이름 정보 가져오는 것
-		email = kakao_account.path("account_email").asText();
-
-		session.setAttribute("isLogOn", true);
-		session.setAttribute("id", name);
-		session.setAttribute("account_email", kakao_account);
-
-		System.out.println("id : " + id); // 여기에서 값이 잘 나오는 것 확인 가능함.
-		System.out.println("name : " + name);
-		System.out.println("email : " + email);
-
-		return "redirect:/";
-
-	}
-
-	@RequestMapping(value = "/findPassword", method = RequestMethod.GET)
-	public String findPassword(HttpSession session, Model model) {
-
-		return "/findPassword";
-	}
-
-	@RequestMapping(value = "/findPassword2", method = RequestMethod.GET)
-	public String findPassword2() {
-
-		return "/findPassword2";
-	}
-
-	@RequestMapping(value = "/findPasswordPro", method = { RequestMethod.GET, RequestMethod.POST })
-	public String findPasswordPro(MemberBean mb, HttpServletRequest request, HttpServletResponse response, Model model)
-			throws AddressException, MessagingException, Exception {
-		String id = (String) request.getParameter("id");
-		mb.setId(id);
-		MemberBean mb2 = memberService.userCheck3(mb);
-
-		if (mb2 == null) {
-
-			request.setAttribute("msg", "가입되지 않은 이메일입니다.");
-			request.setAttribute("id", mb.getId());
-			return "msg";
-
-		}
-
-		String host = "smtp.naver.com";
-		String user = "kimc106@naver.com"; // 자신의 네이버 계정
-		String password = "U2GYZY1ESRB6";// 자신의 네이버 패스워드
-
-		// 메일 받을 주소
-		String to_email = mb.getId();
-
+				  String host = "smtp.naver.com";
+	              String user = "kimc106@naver.com"; //자신의 네이버 계정
+	              String password = "U2GYZY1ESRB6";//자신의 네이버 패스워드
+	                
+	                //메일 받을 주소
+	              String to_email = mb.getId();
+         
 //	                //SMTP 서버 정보를 설정한다.
-		Properties props = new Properties();
-		props.put("mail.smtp.host", host);
-		props.put("mail.smtp.port", 465);
-		props.put("mail.smtp.auth", "true");
-		props.put("mail.smtp.ssl.enable", "true");
-		props.put("mail.smtp.ssl.trust", host);
+	              Properties props = new Properties();
+	              props.put("mail.smtp.host", host);
+	              props.put("mail.smtp.port", 465);
+	              props.put("mail.smtp.auth", "true");
+	              props.put("mail.smtp.ssl.enable", "true");
+	              props.put("mail.smtp.ssl.trust", host);
 
-		StringBuffer temp = new StringBuffer();
-		Random rnd = new Random();
-		for (int i = 0; i < 10; i++) {
-			int rIndex = rnd.nextInt(3);
-			switch (rIndex) {
-			case 0:
-				// a-z
-				temp.append((char) ((int) (rnd.nextInt(26)) + 97));
-				break;
-			case 1:
-				// A-Z
-				temp.append((char) ((int) (rnd.nextInt(26)) + 65));
-				break;
-			case 2:
-				// 0-9
-				temp.append((rnd.nextInt(10)));
-				break;
-			}
-		}
 
-		String AuthenticationKey = temp.toString();
-		System.out.println(AuthenticationKey);
+	              StringBuffer temp =new StringBuffer();
+	                Random rnd = new Random();
+	                for(int i=0; i<10; i++) {
+	                	int rIndex = rnd.nextInt(3);
+	                    switch (rIndex) {
+	                    case 0:
+	                        // a-z
+	                        temp.append((char) ((int) (rnd.nextInt(26)) + 97));
+	                        break;
+	                    case 1:
+	                        // A-Z
+	                        temp.append((char) ((int) (rnd.nextInt(26)) + 65));
+	                        break;
+	                    case 2:
+	                        // 0-9
+	                        temp.append((rnd.nextInt(10)));
+	                        break;
+	                    }
+	                }
+	               
+	                
+	           
+	                
+	                String AuthenticationKey = temp.toString();
+	                System.out.println(AuthenticationKey);
+	                
+	                Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
+	                    protected PasswordAuthentication getPasswordAuthentication() {
+	                        return new PasswordAuthentication(user, password);
+	                    }
+	                });
+	                
+	                session.setDebug(true); //for debug  
 
-		Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
-			protected PasswordAuthentication getPasswordAuthentication() {
-				return new PasswordAuthentication(user, password);
-			}
-		});
+	                
+	                try {
+		                    MimeMessage msg = new MimeMessage(session);
+		                    msg.setFrom(new InternetAddress(user));
+		                    msg.addRecipient(Message.RecipientType.TO, new InternetAddress(to_email));
+		                    
+		                    //메일 제목
+		                    msg.setSubject("[findhome] 고객님의 임시 비밀번호입니다.");
+		                    //메일 내용
+		                    msg.setText(new StringBuffer().append("안녕하세요 findhome 고객님. \n")
+	                    		    .append("요청하신 임시 비밀 번호는 " + "[" + temp + "]" + "입니다. \n")
+	                    		    .append("고객님의 개인정보 보호를 위해서 \n")
+	                    		    .append("findhome 웹사이트에 로그인을 하신 후 회원정보 페이지에서 \n")
+	                    		    .append("발급받은 임시비밀번호를 새로운 비밀번호로 재설정한 후에 이용해주세요.").toString());
+		                    
+		                    Transport.send(msg);
+		                    System.out.println("이메일 전송");
+		                    
+		                }catch (Exception e) {
+		                    e.printStackTrace();
+		                }
+	
+		                
+	                mb.setPassword(temp.toString());
+	                mb.setId(id);
+	                memberService.updateMemberPw(mb);
+	                model.addAttribute("msg2", "입력하신 메일로 비밀번호가 발급 되었습니다.");
+			        request.setAttribute("id", mb.getId());
 
-		session.setDebug(true); // for debug
+			          return "msg2";
+ 
+	 		}	
+		    	        
+		        
+	
+	 
+	 @RequestMapping(value = "/findPasswordPro2", method= {RequestMethod.GET, RequestMethod.POST})
+		public String findPasswordPro2(MemberBean mb, HttpServletRequest request, HttpServletResponse response, Model model) throws AddressException, MessagingException, Exception {
+			String id = (String)request.getParameter("id");
+			mb.setId(id);
+			MemberBean mb2 = memberService.userCheck4(mb);
+				
+			if(mb2 == null) {
+				
+				  request.setAttribute("msg", "가입되지 않은 이메일입니다.");
+		          request.setAttribute("id", mb.getId());
+		          return "msg";
+		          
+			} 
 
-		try {
-			MimeMessage msg = new MimeMessage(session);
-			msg.setFrom(new InternetAddress(user));
-			msg.addRecipient(Message.RecipientType.TO, new InternetAddress(to_email));
-
-			// 메일 제목
-			msg.setSubject("[findhome] 고객님의 임시 비밀번호입니다.");
-			// 메일 내용
-			msg.setText("안녕하세요 findhome 고객님. 요청하신 임시 비밀 번호는 " + "[" + temp + "]");
-			Transport.send(msg);
-			System.out.println("이메일 전송");
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-		mb.setPassword(temp.toString());
-		mb.setId(id);
-		memberService.updateMemberPw(mb);
-		model.addAttribute("msg2", "입력하신 메일로 비밀번호가 발급 되었습니다.");
-		request.setAttribute("id", mb.getId());
-
-		return "msg2";
-
-	}
-
-	@RequestMapping(value = "/findPasswordPro2", method = { RequestMethod.GET, RequestMethod.POST })
-	public String findPasswordPro2(MemberBean mb, HttpServletRequest request, HttpServletResponse response, Model model)
-			throws AddressException, MessagingException, Exception {
-		String id = (String) request.getParameter("id");
-		mb.setId(id);
-		MemberBean mb2 = memberService.userCheck4(mb);
-
-		if (mb2 == null) {
-
-			request.setAttribute("msg", "가입되지 않은 이메일입니다.");
-			request.setAttribute("id", mb.getId());
-			return "msg";
-
-		}
-
-		String host = "smtp.naver.com";
-		String user = "kimc106@naver.com"; // 자신의 네이버 계정
-		String password = "U2GYZY1ESRB6";// 자신의 네이버 패스워드
-
-		// 메일 받을 주소
-		String to_email = mb.getId();
-
+				  String host = "smtp.naver.com";
+	              String user = "kimc106@naver.com"; //자신의 네이버 계정
+	              String password = "U2GYZY1ESRB6";//자신의 네이버 패스워드
+	                
+	                //메일 받을 주소
+	              String to_email = mb.getId();
+         
 //	                //SMTP 서버 정보를 설정한다.
-		Properties props = new Properties();
-		props.put("mail.smtp.host", host);
-		props.put("mail.smtp.port", 465);
-		props.put("mail.smtp.auth", "true");
-		props.put("mail.smtp.ssl.enable", "true");
-		props.put("mail.smtp.ssl.trust", host);
+	              Properties props = new Properties();
+	              props.put("mail.smtp.host", host);
+	              props.put("mail.smtp.port", 465);
+	              props.put("mail.smtp.auth", "true");
+	              props.put("mail.smtp.ssl.enable", "true");
+	              props.put("mail.smtp.ssl.trust", host);
 
-		StringBuffer temp = new StringBuffer();
-		Random rnd = new Random();
-		for (int i = 0; i < 10; i++) {
-			int rIndex = rnd.nextInt(3);
-			switch (rIndex) {
-			case 0:
-				// a-z
-				temp.append((char) ((int) (rnd.nextInt(26)) + 97));
-				break;
-			case 1:
-				// A-Z
-				temp.append((char) ((int) (rnd.nextInt(26)) + 65));
-				break;
-			case 2:
-				// 0-9
-				temp.append((rnd.nextInt(10)));
-				break;
-			}
+
+	              StringBuffer temp =new StringBuffer();
+	                Random rnd = new Random();
+	                for(int i=0; i<10; i++) {
+	                	int rIndex = rnd.nextInt(3);
+	                    switch (rIndex) {
+	                    case 0:
+	                        // a-z
+	                        temp.append((char) ((int) (rnd.nextInt(26)) + 97));
+	                        break;
+	                    case 1:
+	                        // A-Z
+	                        temp.append((char) ((int) (rnd.nextInt(26)) + 65));
+	                        break;
+	                    case 2:
+	                        // 0-9
+	                        temp.append((rnd.nextInt(10)));
+	                        break;
+	                    }
+	                }
+	               
+	                
+	           
+	                
+	                String AuthenticationKey = temp.toString();
+	                System.out.println(AuthenticationKey);
+	                
+	                Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
+	                    protected PasswordAuthentication getPasswordAuthentication() {
+	                        return new PasswordAuthentication(user, password);
+	                    }
+	                });
+	                
+	                session.setDebug(true); //for debug  
+
+	                
+	                try {
+		                    MimeMessage msg = new MimeMessage(session);
+		                    msg.setFrom(new InternetAddress(user));
+		                    msg.addRecipient(Message.RecipientType.TO, new InternetAddress(to_email));
+		                    
+		                    //메일 제목
+		                    msg.setSubject("[findhome] 고객님의 임시 비밀번호입니다.");
+		                    //메일 내용
+		                    msg.setText(new StringBuffer().append("안녕하세요 findhome seller 고객님. \n")
+	                    		    .append("요청하신 임시 비밀 번호는 " + "[" + temp + "]" + "입니다. \n")
+	                    		    .append("고객님의 개인정보 보호를 위해서 \n")
+	                    		    .append("findhome 웹사이트에 로그인을 하신 후 회원정보 페이지에서 \n")
+	                    		    .append("발급받은 임시비밀번호를 새로운 비밀번호로 재설정한 후에 이용해주세요.").toString());
+		                    Transport.send(msg);
+		                    System.out.println("이메일 전송");
+		                    
+		                }catch (Exception e) {
+		                    e.printStackTrace();
+		                }
+	
+		                
+	                mb.setPassword(temp.toString());
+	                mb.setId(id);
+	                memberService.updateMemberPw2(mb);
+	                model.addAttribute("msg2", "입력하신 메일로 비밀번호가 발급 되었습니다.");
+			        request.setAttribute("id", mb.getId());
+
+			          return "msg2";
+ 
+	 		}	
+	 
+	 @RequestMapping(value = "addPhone", method = RequestMethod.GET)
+		public String addPhone(MemberBean mb, HttpServletRequest request) {
+		
+			return "addPhone";
 		}
-
-		String AuthenticationKey = temp.toString();
-		System.out.println(AuthenticationKey);
-
-		Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
-			protected PasswordAuthentication getPasswordAuthentication() {
-				return new PasswordAuthentication(user, password);
-			}
-		});
-
-		session.setDebug(true); // for debug
-
-		try {
-			MimeMessage msg = new MimeMessage(session);
-			msg.setFrom(new InternetAddress(user));
-			msg.addRecipient(Message.RecipientType.TO, new InternetAddress(to_email));
-
-			// 메일 제목
-			msg.setSubject("[findhome] 고객님의 임시 비밀번호입니다.");
-			// 메일 내용
-			msg.setText("안녕하세요 findhome seller 고객님. 요청하신 임시 비밀 번호는 " + "[" + temp + "]");
-			Transport.send(msg);
-			System.out.println("이메일 전송");
-
-		} catch (Exception e) {
-			e.printStackTrace();
+	 
+	 @RequestMapping(value = "/addPhonePro", method = RequestMethod.POST)
+		public String addPhonePro(MemberBean mb, HttpServletRequest request, Model model, HttpSession session) {
+			
+		 		String id = (String)session.getAttribute("id");
+		 		mb.setId(id);
+				memberService.updateMember3(mb);
+	
+			return "redirect:/";
+			
+			
 		}
+	 
 
-		mb.setPassword(temp.toString());
-		mb.setId(id);
-		memberService.updateMemberPw2(mb);
-		model.addAttribute("msg2", "입력하신 메일로 비밀번호가 발급 되었습니다.");
-		request.setAttribute("id", mb.getId());
-
-		return "msg2";
-
-	}
-
-	@RequestMapping(value = "addPhone", method = RequestMethod.GET)
-	public String addPhone(MemberBean mb, HttpServletRequest request) {
-
-		return "addPhone";
-	}
-
-	@RequestMapping(value = "/addPhonePro", method = RequestMethod.POST)
-	public String addPhonePro(MemberBean mb, HttpServletRequest request, Model model, HttpSession session) {
-
-		String id = (String) session.getAttribute("id");
-		mb.setId(id);
-		memberService.updateMember3(mb);
-
-		return "redirect:/";
-
-	}
-
+	
 }
