@@ -441,7 +441,7 @@
 						</div>
 						<div class="form-group" align="left">
 							<label class="form-control-label">휴대폰 번호</label><input type="tel"
-								class="form-control" name="phone_number" id="phone"
+								class="form-control" name="phone_number" id="phone" maxlength="13"
 								onkeyup="checkPhone()">
 								
 						  <br><span class="check-group" id="checkPhoneResult"></span>	
