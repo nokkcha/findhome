@@ -540,7 +540,7 @@ public class BoardController {
 	}
 
 	@RequestMapping(value = "/detailView", method = RequestMethod.GET)
-	public String detailView(HttpServletRequest request, Model model) {
+	public String detailView(HttpServletRequest request, Model model, HttpSession session) {
 		try {
 			if ((String) request.getParameter("room_id") == null) {
 				model.addAttribute("msg", "잘못된 요청입니다22.");
@@ -555,6 +555,13 @@ public class BoardController {
 			// ob를 담아서 detailView.jsp 이동
 			model.addAttribute("ob", ob);
 			model.addAttribute("ibList", ibList);
+			
+			String id = (String) session.getAttribute("id");
+			
+			if (id != null) {
+				List<MemberBean> wishList = memberService.getMemberWishList(id);
+				model.addAttribute("wishList", wishList);
+			}
 
 
 		} catch (Exception e) {
