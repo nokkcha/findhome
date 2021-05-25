@@ -221,4 +221,10 @@ public class BoardDAOImpl implements BoardDAO{
 		// TODO Auto-generated method stub
 		sqlSession.delete(namespace+".deleteRoomImagebyFileID", id);
 	}
+
+	@Override
+	public List<LinkedHashMap<String, Object>> selectPremiumRoom() {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList(namespace+".selectPremiumRoom");
+	}
 }

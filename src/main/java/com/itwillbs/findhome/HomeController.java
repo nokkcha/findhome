@@ -53,6 +53,9 @@ public class HomeController {
 
 		model.addAttribute("serverTime", formattedDate);
 
+		// 인기 매물 리스트와 썸네일 정보 넘기기
+		List<LinkedHashMap<String, Object>> premiumList = boardService.selectPremiumRoom();
+		
 		String category = "OneRoom";
 		// 원룸 최신매물 리스트와 썸네일 정보 넘기기
 		List<LinkedHashMap<String, Object>> obList = boardService.selectThumbImage(category);
@@ -97,6 +100,7 @@ public class HomeController {
 		model.addAttribute("popOfficetelList", popOfficetelList);	// 오피스텔 인기매물 리스트
 		model.addAttribute("obList", obList);						// 원룸 최신 매물 리스트
 		model.addAttribute("ofList", ofList);						// 오피스텔 최신 매물 리스트
+		model.addAttribute("premiumList", premiumList);
 
 		return "index";
 	}

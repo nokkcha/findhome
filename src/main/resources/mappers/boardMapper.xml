@@ -425,6 +425,19 @@
 		ORDER BY i.id DESC
 		LIMIT 10
 	</select>
+	
+	<select id="selectPremiumRoom"
+		resultType="java.util.LinkedHashMap">
+		SELECT p.room_id, p.subject, p.address, p.deposit,
+		p.monthly_rent, i.file_name, p.category, p.premium_expiry_date
+		FROM one_room p
+		LEFT JOIN
+		one_room_pic i
+		ON i.id = (SELECT MIN(i1.id) FROM one_room_pic i1 WHERE
+		i1.room_id = p.room_id)
+		WHERE premium_expiry_date >= date_format(now(),'%Y-%m-%d')
+		ORDER BY DATE_FORMAT(STR_TO_DATE(premium_expiry_date, '%Y%m%d'),'%Y-%m-%d') DESC
+	</select>
 
 </mapper>
 

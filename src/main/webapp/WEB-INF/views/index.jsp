@@ -183,6 +183,94 @@ body {
 			</div>
 		</div>
 	</div>
+	
+	<!-- 프리미엄 매물 시작-->
+	<section class="ftco-section">
+		<div class="container">
+			<div class="row justify-content-start">
+				<!-- 				mb-5 pb-3 -->
+				<div class="col-md-7 heading-section ftco-animate">
+					<span class="subheading">Special Offers</span>
+					<h2 class="mb-4">
+						<strong>프리미엄</strong> 매물
+					</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="destination-slider owl-carousel ftco-animate">
+
+						<!-- 					최신매물 아이템 출력 시작 -->
+						<c:forEach items="${premiumList}" var="prList"
+							varStatus="i">
+
+							<div class="destination">
+								<a
+									href='<c:url value="/detailView?room_id=${prList.room_id}" />'
+									class="img img-2 d-flex justify-content-center align-items-center"
+									style="background-image: url(${pageContext.request.contextPath}/resources/upload${prList.file_name});"></a>
+
+								<div class="text p-3">
+
+									<div class="text-mi">
+										<div class="d-flex">
+											<div class="one">
+												<h3>
+													<a
+														href='<c:url value="detailView?room_id=${prList.room_id}" />'>
+														${prList.subject} </a>
+												</h3>
+											</div>
+											<div class="two">
+												<span class="price per-price"><small>${prList.deposit}
+														/ ${prList.monthly_rent}</small></span>
+											</div>
+										</div>
+										<p>${prList.address }</p>
+
+									</div>
+
+									<hr>
+									<p class="bottom-area d-flex">
+										<input type="hidden"
+											value="<c:out value='${prList.room_id}'/>" id="room_id">
+
+										<button id="zzim-id-${prList.room_id}"
+											class="text-zzim nozzim">
+
+											<c:forEach var="wishList" items="${wishList }">
+
+												<c:if test="${prList.room_id == wishList.wish}">
+													<span class="zzim-showtext"
+														id="zzim-ok-${prList.room_id}"></span>
+												</c:if>
+
+											</c:forEach>
+
+										</button>
+										찜한 수 : ${prList.wish_count } <span class="ml-auto call"><a
+											href="javascript:void(0);">call</a></span> <input type="hidden"
+											value="<c:out value='${prList.phone_number}'/>"
+											id="phone_number">
+
+									</p>
+									<div class="modal">
+										<div class="modal_content" title="클릭하면 창이 닫힙니다."></div>
+									</div>
+
+
+
+								</div>
+							</div>
+
+						</c:forEach>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--     프리미엄 매물 끝 -->
 
 	<!-- 인기 매물 시작-->
 	<section class="ftco-section">

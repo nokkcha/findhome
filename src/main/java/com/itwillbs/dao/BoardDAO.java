@@ -51,7 +51,7 @@ public interface BoardDAO {
 		public void deleteRoomImage(int room_id);
 
 		public List<LinkedHashMap<String, Object>> selectPopularRooms(String category);
-		List<LinkedHashMap<String, Object>> selectThumbImage(String category);
+		public List<LinkedHashMap<String, Object>> selectThumbImage(String category);
 		public void deleteRoomImagebyFileID(int id);
 
 		public qnaBean getQnaBoard(qnaBean qb);
@@ -59,5 +59,5 @@ public interface BoardDAO {
 		public List<qnaBean> getMemberQna(PageBean pb);
 		public int getMemberQnaCount(PageBean pb);
 
-
+		public List<LinkedHashMap<String, Object>> selectPremiumRoom();
 }

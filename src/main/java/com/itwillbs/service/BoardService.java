@@ -61,4 +61,5 @@ public interface BoardService {
 
 	public List<LinkedHashMap<String, Object>> selectPopularRooms(String category);
 	public List<LinkedHashMap<String, Object>> selectThumbImage(String category);
+	public List<LinkedHashMap<String, Object>> selectPremiumRoom();
 }

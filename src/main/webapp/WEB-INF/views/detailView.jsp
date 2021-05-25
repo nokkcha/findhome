@@ -862,7 +862,9 @@
 								data : {content:$('#btnSoldout').val(),
 										room_id:$('#room_id').val()},
 								success : function (data) {
+									$('#modal-report').hide();
 									alert("신고가 접수되었습니다.");
+									
 								},
 			 					 error:function(request,status,error){
 	 					        alert("code = "+ request.status + " message = " + request.responseText + " error = " + error); // 실패 시 처리
@@ -880,6 +882,7 @@
 								data : {content:$('#btnDifInfo').val(),
 										room_id:$('#room_id').val()},
 								success : function (data) {
+									$('#modal-report').hide();
 									alert("신고가 접수되었습니다.");
 								},
 			 					 error:function(request,status,error){
