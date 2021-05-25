@@ -200,7 +200,7 @@
 		    				
 		    				
 		    				<c:forEach items="${obList}" var="obList" varStatus="i">
-		    					<c:if test="${obList.room_id eq  roomList.room_id}">
+		    					<c:if test="${obList.room_id eq roomList.room_id}">
 			    					<a
 										href='<c:url value="/detailView?room_id=${obList.room_id}" />'
 										class="img img-2 d-flex justify-content-center align-items-center"

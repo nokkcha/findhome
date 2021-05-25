@@ -206,7 +206,7 @@ public class BoardController {
 		model.addAttribute("pb", pb);
 
 		// 방 리스트와 썸네일 정보 넘기기
-		List<LinkedHashMap<String, Object>> obList = boardService.selectOneRoomThumbImg();
+		List<LinkedHashMap<String, Object>> obList = boardService.selectThumbImage("Officetel");//boardService.selectOneRoomThumbImg();
 		for (Map<String, Object> map : obList) {
 			System.out.println(map.get("room_id") + " " + map.get("subject") + " " + map.get("file_name"));
 		}
