@@ -3,6 +3,7 @@ html,body,h1,h2,h3,h4,h5,h6,div,p,blockquote,pre,code,address,ul,ol,li,menu,nav,
 ul,ol,li{list-style:none;}
 u,ins,a{text-decoration:none;}
 
+
 .clear {clear:both;}
 .clear:after { content:""; display:block; clear:both;}
 
@@ -24,7 +25,6 @@ u,ins,a{text-decoration:none;}
 .left_section h3 a {
 	color: #fff;
 }
-
 .left_section img.profile {
   margin: 20px 0;
   background: grey;
@@ -75,7 +75,7 @@ u,ins,a{text-decoration:none;}
 }
 .right_section .board_left {
   display: inline-block;
-  width:30%;
+  width:10%;
   background-color:  #fff;
   box-sizing: border-box;
   box-shadow:-3px -3px -3px rgb(175, 175, 175);
@@ -83,14 +83,14 @@ u,ins,a{text-decoration:none;}
 }
 .right_section .board_center {
   display: inline-block;
-  width:69%;
-  margin-left: 1%;
-  background-color:  #fff;
+  width:90%;
+  padding: 20px;
+  background-color: lightgray;
   box-sizing: border-box;
 }
 .right_section .board_right {
   float: left;
-  width:30%;
+  width:0%;
   background-color:  #fff; 
   box-sizing: border-box;
 }
@@ -99,14 +99,12 @@ u,ins,a{text-decoration:none;}
   min-height: 450px;
   padding: 20px;
   box-sizing: border-box;
+  background-color: #fff;
 }
 .right_section .board_box p {
   padding-bottom: 13px;
   font-size: 18px;
   font-weight: bold;
-}
-.right_section .board_box .user-list #btn-2 {
-	display: inline-block;
 }
 .right_section .board_box table caption {
   display: none;
@@ -211,11 +209,12 @@ col:last-child {
   width: 20%;
 }
 table.type09 {
+  margin-top:2%;
   border-collapse: collapse;
-  text-align: left;
+  text-align: center;
   line-height: 1.5;
-  font-size: 15px;
-  width: 100%;
+  font-size: 17px;
+  width: 70%;
 }
 table.type09 thead th {
   padding: 10px;

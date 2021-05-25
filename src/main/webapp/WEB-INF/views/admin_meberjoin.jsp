@@ -8,9 +8,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Findhome</title>
-  <link rel="stylesheet" href="resources/css/admin_style.css">
+  <link rel="stylesheet" href="resources/css/admin_meberjoin.css">
   
   <script src='<c:url value="/resources/script/jquery-3.6.0.js" />'></script>
+  
+
+
 
  </head>
  
@@ -39,13 +42,13 @@
     </div>
     
     <div class="dashboard">
-      <h5>Dashboard</h5>
+     
       
       <div class="board_left">
         <div class="board_box">
-          <p>승인대기 회원 목록</p>
+          <p class="user-list-title">승인대기 회원 목록</p>
           <c:forEach var="mb"  items="${nList}">
-          <p>${mb.id} <input type="button"   value="가입승인"  id="btn-2"  onclick="location.href='<c:url value="/yUpdate?id=${mb.id}" />' "></p>
+          <p class="user-list">${mb.id} <input type="button"   value="가입승인"  id="btn-2"  onclick="location.href='<c:url value="/yUpdate?id=${mb.id}" />' "></p>
           </c:forEach>
           </div>
          </div>

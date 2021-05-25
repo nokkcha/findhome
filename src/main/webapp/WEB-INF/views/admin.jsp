@@ -46,7 +46,7 @@
         <div class="board_box">
           <p>승인대기 회원 목록</p>
           <c:forEach var="mb"  items="${nList}">
-          <p>${mb.id} <input type="button"   value="가입승인"  id="btn-2"  onclick="location.href='<c:url value="/yUpdate?id=${mb.id}" />' "></p>
+          <p class="user-list">${mb.id} <input type="button"   value="가입승인"  id="btn-2"  onclick="location.href='<c:url value="/yUpdate?id=${mb.id}" />' "></p>
           </c:forEach>
           </div>
          </div>

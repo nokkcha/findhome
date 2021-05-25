@@ -8,7 +8,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Findhome</title>
-  <link rel="stylesheet" href="resources/css/admin_style.css">
+  <link rel="stylesheet" href="resources/css/admin_list.css">
   
   <script src='<c:url value="/resources/script/jquery-3.6.0.js" />'></script>
 
@@ -32,6 +32,12 @@
     </section>
   
   <section class="right_section">
+     <div class="header clear">
+      <h4>개인회원 관리</h4>
+      <button class="logout"  onclick="location.href='<c:url value="/adminlogout" />' ">로그아웃</button>
+    </div>
+  
+  
  
          
         <div class="board_center">  
