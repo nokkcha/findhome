@@ -212,7 +212,15 @@
 								</span>
 								<br>
 								
-								<span class="subject">${ob.subject }  </span><span class="text-zzim icon-like nozzim"></span>
+								<span class="subject">${ob.subject }  </span>
+								<button id="detail-zzim" class="text-zzim nozzim">
+								<c:forEach var="wishList" items="${wishList }">
+		    						<c:if test="${ob.room_id == wishList.wish}">		    							
+		    							<span class="zzim-showtext" id="detail-zzim-text"></span>	
+		    						</c:if>		    						
+								</c:forEach>
+								
+		    					</button>
 								
 								<p class="rate mb">
 									<span class="loc"><a href="#map-info"><i class="icon-map"></i> ${ob.address }</a></span><br> 
@@ -325,7 +333,7 @@
 					</div>
 					<div class="map-container">
 						<h4 class="mb-5">상세 설명</h4>
-						<div class="mb-5">${ob.content }</div>
+						<div class="mb-5" id="content-text">${ob.content }</div>
 					</div>
 					<br>
 
@@ -607,19 +615,41 @@
 			});
 		});
 
-		// 목록 - [찜하기] 클릭
-		$('.text-zzim').click(function() {
-			if ($(this).hasClass('nozzim')) {
-				$(this).removeClass('nozzim');
-				$(this).addClass('zzim');
-				$(this).addClass('icon-like');
+		
+		
+		$(document).ready(function() {
 
-			} else if ($(this).hasClass('zzim')) {
-				$(this).removeClass('zzim');
-				$(this).removeClass('icon-like');
-				$(this).addClass('nozzim');
-			}
-		});
+
+        	// 목록 - [찜하기] 클릭
+        	$('.text-zzim').click(function(){
+        		
+	    		var room_id = '${ob.room_id}'
+        		
+        	 	$.ajax('<c:url value="/zzim" />',{
+        	 		data:{wish:room_id},
+        	 		success:function(rdata){
+        	 			
+        	 			if(rdata=="zzim"){
+        	 				rdata = "찜";
+	    	 				$('#detail-zzim').removeClass('nozzim');
+	    	 				$('#detail-zzim').addClass('zzim');
+	    	 				$('#detail-zzim-text').addClass('zzim-showtext');
+
+        	 			}else if(rdata=="nozzim"){
+        	 				rdata = "찜안함";
+	            	        $('#detail-zzim').removeClass('zzim');
+	    	 				$('#detail-zzim').addClass('nozzim');
+	    	 				$('#detail-zzim-text').removeClass('zzim-showtext');
+        	 			}
+        	 			
+        	 		}
+        	 	});
+        	});
+
+        	});
+
+
+ 
 
 		// 문의하기 - 토글
 		$('#contact-form').hide();
@@ -812,43 +842,99 @@
 
 		});
 
-		// 보증금 최저
-		function ShowSliderValue1(sVal) {
-			var obValueView = document.getElementById("slider_value_view1");
-			if (sVal >= 10000) {
-				obValueView.innerHTML = (sVal * 0.0001).toFixed(1) + "억 ~ ";
-			} else {
-				obValueView.innerHTML = sVal + "만 ~ ";
-			}
+   	 // 보증금 최저
+	    function ShowSliderValue1(sVal) {
+	    	var obValueView = document.getElementById("slider_value_view1");
+	    	if(sVal>=10000){
+	    	obValueView.innerHTML = (sVal*0.0001).toFixed(1)+"억";
+	    	}else{		
+	    	obValueView.innerHTML = sVal+"만";
+	    	}
+	 	
+	    }
 
-		}
+	    // 보증금 최대
+	    function ShowSliderValue2(sVal) {
+	    	var obValueView = document.getElementById("slider_value_view2");
+	    	if(sVal>=10000){
+	    	obValueView.innerHTML = (sVal*0.0001).toFixed(1)+"억";
+	    	}else{		
+	    	obValueView.innerHTML = sVal+"만";
+	    	}
+	    }
 
-		// 보증금 최대
-		function ShowSliderValue2(sVal) {
-			var obValueView = document.getElementById("slider_value_view2");
-			if (sVal >= 10000) {
-				obValueView.innerHTML = (sVal * 0.0001).toFixed(1) + "억";
-			} else {
-				obValueView.innerHTML = sVal + "만";
-			}
-		}
+	    // 월세 최소
+	    function ShowSliderValue3(sVal) {
+	    	var obValueView = document.getElementById("slider_value_view3");
+	    	obValueView.innerHTML = sVal+"만";
+	    }
 
-		// 월세 최소
-		function ShowSliderValue3(sVal) {
-			var obValueView = document.getElementById("slider_value_view3");
-			obValueView.innerHTML = sVal + "만 ~ ";
-		}
+	    // 월세 최대
+	    function ShowSliderValue4(sVal) {
+	    	var obValueView = document.getElementById("slider_value_view4");
+	    	obValueView.innerHTML = sVal+"만";
+	    }
+	    
+	    
+	 // 목록 [구조] 선택
+	    function rtypeCheckSelectAll()  {
+	  	  // 전체 체크박스
+	  	  const checkboxes 
+	  	    = document.querySelectorAll('input[name="room_type"]');
+	  	  // 선택된 체크박스
+	  	  const checked 
+	  	    = document.querySelectorAll('input[name="room_type"]:checked');
+	  	  // select all 체크박스
+	  	  const selectAll 
+	  	    = document.querySelector('input[name="room_all"]');
+	  	  
+	  	  if(checkboxes.length === checked.length)  {
+	  	    selectAll.checked = true;
+	  	  }else {
+	  	    selectAll.checked = false;
+	  	  }
+	  	}
 
-		// 월세 최대
-		function ShowSliderValue4(sVal) {
-			var obValueView = document.getElementById("slider_value_view4");
-			obValueView.innerHTML = sVal + "만";
-		}
+	  	function rtypeSelectAll(selectAll)  {
+	  		
+	  	  const checkboxes 
+	  	     = document.getElementsByName('room_type');
+	  	  
+	  	  
+	  	  checkboxes.forEach((checkbox) => {
+	  	    checkbox.checked = selectAll.checked
+	  	  })
+	  	}
+	    
+	 // 목록 [층 수 옵션]] 선택
+	    function ftypeCheckSelectAll()  {
+	  	  // 전체 체크박스
+	  	  const checkboxes 
+	  	    = document.querySelectorAll('input[name="living_floor"]');
+	  	  // 선택된 체크박스
+	  	  const checked 
+	  	    = document.querySelectorAll('input[name="living_floor"]:checked');
+	  	  // select all 체크박스
+	  	  const selectAll 
+	  	    = document.querySelector('input[name="floor_all"]');
+	  	  
+	  	  if(checkboxes.length === checked.length)  {
+	  	    selectAll.checked = true;
+	  	  }else {
+	  	    selectAll.checked = false;
+	  	  }
+	  	}
 
-		function CloseModal() {
-			var CloseModal = document.querySelector(".modal-container");
-			CloseModal.classList.add("CloseModal");
-		}
+	  	function ftypeSelectAll(selectAll)  {
+	  		
+	  	  const checkboxes 
+	  	     = document.getElementsByName('living_floor');
+	  	  
+	  	  
+	  	  checkboxes.forEach((checkbox) => {
+	  	    checkbox.checked = selectAll.checked
+	  	  })
+	  	}
 	</script>
 
 

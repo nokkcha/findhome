@@ -23,7 +23,9 @@
 	
 }
 
-
+#content-text {
+	white-space: pre-wrap;
+}
 
 #roomtable {
 	width:600px;
