@@ -89,8 +89,12 @@ public class BoardController {
 	public String sellRoom(HttpServletRequest request, Model model, HttpSession session) {
 		try {
 			String seller_id = (String)session.getAttribute("seller_id");
-			String is_confirm = (String)session.getAttribute("is_confirm");
-				
+			MemberBean mb = memberService.getMember2(seller_id);
+			String is_confirm = "N";
+			if (mb != null) {
+				is_confirm = mb.getIs_confirm();//(String)session.getAttribute("is_confirm");
+			}
+			
 			if ((String) request.getParameter("room_id") == null) {
 				model.addAttribute("msg", "잘못된 요청입니다.");
 				return "msg";
@@ -309,7 +313,11 @@ public class BoardController {
 	@RequestMapping(value = "/member_seller", method = RequestMethod.GET)
 	public String member_seller(HttpServletRequest request, Model model, HttpSession session) {
 		String seller_id = (String) session.getAttribute("seller_id");
-		String is_confirm = (String)session.getAttribute("is_confirm");
+		MemberBean mb = memberService.getMember2(seller_id);
+		String is_confirm = "N";
+		if (mb != null) {
+			is_confirm = mb.getIs_confirm();//(String)session.getAttribute("is_confirm");
+		}
 		if (seller_id == null) {
 			return "/login";
 		}

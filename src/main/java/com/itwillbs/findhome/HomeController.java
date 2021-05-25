@@ -183,7 +183,11 @@ public class HomeController {
 			String id = (String) session.getAttribute("id");
 			String category = request.getParameter("category");
 			String phone_number = (String) session.getAttribute("phone_number");
-			String is_confirm = (String)session.getAttribute("is_confirm");
+			MemberBean mb = memberService.getMember2(id);
+			String is_confirm = "N";
+			if (mb != null) {
+				is_confirm = mb.getIs_confirm();//(String)session.getAttribute("is_confirm");
+			}
 			
 			if (id == null) {
 				 model.addAttribute("msg", "먼저 로그인을 해주세요.");

@@ -391,7 +391,7 @@
 		resultType="java.util.LinkedHashMap">
 		SELECT p.room_id, p.subject, p.address, p.deposit,
 		p.monthly_rent,
-		i.file_name, p.category, w.wish,
+		i.file_name, p.category, w.wish, p.phone_number, p.seller_id, 
 		COUNT(w.wish) AS
 		wish_count
 		FROM
@@ -415,7 +415,7 @@
 	<select id="selectThumbImage"
 		resultType="java.util.LinkedHashMap">
 		SELECT p.room_id, p.subject, p.address, p.deposit,
-		p.monthly_rent, i.file_name, p.category
+		p.monthly_rent, i.file_name, p.category, p.phone_number, p.seller_id
 		FROM one_room p
 		LEFT JOIN
 		one_room_pic i
@@ -429,7 +429,7 @@
 	<select id="selectPremiumRoom"
 		resultType="java.util.LinkedHashMap">
 		SELECT p.room_id, p.subject, p.address, p.deposit,
-		p.monthly_rent, i.file_name, p.category, p.premium_expiry_date
+		p.monthly_rent, i.file_name, p.category, p.premium_expiry_date, p.phone_number, p.seller_id
 		FROM one_room p
 		LEFT JOIN
 		one_room_pic i

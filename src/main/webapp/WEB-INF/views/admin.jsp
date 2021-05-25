@@ -84,11 +84,11 @@
               
               
               <tbody>
-               <c:forEach var="ReportBean"  items="${reportList }">  
-              <tr>
+               <c:forEach var="ReportBean"  items="${reportList }">                
+              <tr onclick="location.href='<c:url value="detailView?room_id=${ReportBean.room_id}"/>'">              
                 <td>${ReportBean.qna_id }</td>
                 <td>${ReportBean.content }</td>
-                <td>${ReportBean.room_id }</td>
+                <td>${ReportBean.room_id }</td>  
               </tr>
                   </c:forEach>
            

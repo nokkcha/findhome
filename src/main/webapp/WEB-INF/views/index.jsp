@@ -62,7 +62,7 @@ body {
 }
 
 .ftco-section {
-    padding: 0;
+	padding: 0;
 }
 
 .ftco-navbar-light {
@@ -106,11 +106,32 @@ body {
 	margin-bottom: -32px;
 }
 
-.p-text{
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-    width: 200px;
+.p-text {
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+	width: 200px;
+}
+
+.modal{
+position: fixed;
+top: 0;
+left: 0;
+bottom: 0;
+right: 0;
+background: rgba(0,0,0,0.8);
+opacity: 95%;
+}
+
+.modal_content{
+  width:400px; height:200px;
+  background:snow; border-radius:10px;
+  border: 1px solid gray;
+  position:relative; top:50%; left:50%;
+  margin-top:-100px; margin-left:-200px;
+  text-align:center;
+  box-sizing:border-box; padding:74px 0;
+  line-height:23px; cursor:pointer;
 }
 
 </style>
@@ -143,16 +164,7 @@ body {
 						</div>
 					</div>
 
-					<div class="block-17 my-4">
-						<!-- 						<form action="" method="post" class="d-block d-flex"> -->
-						<!-- findRooms-search?category=OneRoom -->
-						<!-- &search=%EB%B6%80%EC%82%B0 -->
-						<!-- &room_all=%EC%A0%84%EC%B2%B4 -->
-						<!-- &floor_all=%EC%A0%84%EC%B2%B4 -->
-						<!-- &deposit_min=0 -->
-						<!-- &deposit_max=50000 -->
-						<!-- &monthly_rent_min=0 -->
-						<!-- &monthly_rent_max=500 -->
+					<div class="block-17 my-4">						
 						<form class="d-block d-flex" id="searchForm"
 							action='<c:url value="findRooms-search"/>'>
 							<div class="fields d-block d-flex">
@@ -191,7 +203,7 @@ body {
 			</div>
 		</div>
 	</div>
-	
+
 	<!-- 프리미엄 매물 시작-->
 	<section class="ftco-section">
 		<div class="container">
@@ -209,12 +221,10 @@ body {
 					<div class="destination-slider owl-carousel ftco-animate">
 
 						<!-- 					최신매물 아이템 출력 시작 -->
-						<c:forEach items="${premiumList}" var="prList"
-							varStatus="i">
+						<c:forEach items="${premiumList}" var="prList" varStatus="i">
 
 							<div class="destination">
-							<span class="zzimCount" ></span>${prList.wish_count }
-								<a
+								<span class="zzimCount"></span>${prList.wish_count } <a
 									href='<c:url value="/detailView?room_id=${prList.room_id}" />'
 									class="img img-2 d-flex justify-content-center align-items-center"
 									style="background-image: url(${pageContext.request.contextPath}/resources/upload${prList.file_name});"></a>
@@ -250,21 +260,43 @@ body {
 											<c:forEach var="wishList" items="${wishList }">
 
 												<c:if test="${prList.room_id == wishList.wish}">
-													<span class="zzim-showtext"
-														id="zzim-ok-${prList.room_id}"></span>
+													<span class="zzim-showtext" id="zzim-ok-${prList.room_id}"></span>
 												</c:if>
 
 											</c:forEach>
 
 										</button>
-<!-- 										<span class="ml-auto call"><a -->
-<!-- 											href="javascript:void(0);">call</a></span> <input type="hidden" -->
-<%-- 											value="<c:out value='${prList.phone_number}'/>" --%>
-<!-- 											id="phone_number"> -->
+										<span class="ml-auto call"><a
+											href="javascript:void(0);">call</a></span> <input type="hidden"
+											value="<c:out value='${prList.phone_number}'/>"
+											id="phone_number"><input type="hidden"
+											value="<c:out value='${prList.seller_id}'/>"
+											id="seller_id">
 
 									</p>
 									<div class="modal">
-										<div class="modal_content" title="클릭하면 창이 닫힙니다."></div>
+										<div class="modal-content" id="modal-content">
+											<div class="modal-header">
+												<h5 class="modal-title">Contact</h5>
+											</div>
+											<div class="modal-body">
+												<h6 class="id">중개사 : ${prList.seller_id}</h6>
+												<h4 class="phone">연락처 : ${prList.phone_number}</h4>
+												<br>
+
+												<!-- 											 <h4>050-1234-5678</h4> -->
+												<p>
+													중개사무소에 연락하여 방문일을 예약하세요.<br> Findhome에서 보고 연락한다고 말씀하시면<br>
+													더욱 빠른 예약이 가능합니다.<br>
+												</p>
+
+
+											</div>
+											<div class="modal-footer">
+												<button type="button" id="btn-close"
+													class="btn btn-secondary">닫기</button>
+											</div>
+										</div>
 									</div>
 
 
@@ -302,8 +334,7 @@ body {
 							varStatus="i">
 
 							<div class="destination">
-							<span class="zzimCount" ></span> ${popularList.wish_count }
-								<a
+								<span class="zzimCount"></span> ${popularList.wish_count } <a
 									href='<c:url value="/detailView?room_id=${popularList.room_id}" />'
 									class="img img-2 d-flex justify-content-center align-items-center"
 									style="background-image: url(${pageContext.request.contextPath}/resources/upload${popularList.file_name});"></a>
@@ -346,14 +377,37 @@ body {
 											</c:forEach>
 
 										</button>
-<!-- 										 <span class="ml-auto call"><a -->
-<!-- 											href="javascript:void(0);">call</a></span> <input type="hidden" -->
-<%-- 											value="<c:out value='${popularList.phone_number}'/>" --%>
-<!-- 											id="phone_number"> -->
+										<span class="ml-auto call"><a
+											href="javascript:void(0);">call</a></span> <input type="hidden"
+											value="<c:out value='${popularList.phone_number}'/>"
+											id="phone_number"><input type="hidden"
+											value="<c:out value='${popularList.seller_id}'/>"
+											id="seller_id">
 
 									</p>
 									<div class="modal">
-										<div class="modal_content" title="클릭하면 창이 닫힙니다."></div>
+										<div class="modal-content" id="modal-content">
+											<div class="modal-header">
+												<h5 class="modal-title">Contact</h5>
+											</div>
+											<div class="modal-body">
+												<h6 class="id">중개사 : ${popularList.seller_id}</h6>
+												<h4 class="phone">연락처 : ${popularList.phone_number}</h4>
+												<br>
+
+												<!-- 											 <h4>050-1234-5678</h4> -->
+												<p>
+													중개사무소에 연락하여 방문일을 예약하세요.<br> Findhome에서 보고 연락한다고 말씀하시면<br>
+													더욱 빠른 예약이 가능합니다.<br>
+												</p>
+
+
+											</div>
+											<div class="modal-footer">
+												<button type="button" id="btn-close"
+													class="btn btn-secondary">닫기</button>
+											</div>
+										</div>
 									</div>
 
 
@@ -371,8 +425,7 @@ body {
 	</section>
 	<!--     인기매물 끝 -->
 
-	<!-- 인기 매물 시작-->
-	<!-- 인기 매물 시작-->
+	<!-- 오피스텔 인기 매물 시작-->
 	<section class="ftco-section">
 		<div class="container">
 			<div class="row justify-content-start">
@@ -385,75 +438,100 @@ body {
 				</div>
 			</div>
 			<div class="row">
+				<div class="col-md-12">
+					<div class="destination-slider owl-carousel ftco-animate">
 
-				<!-- 					최신매물 아이템 출력 시작 -->
-				<c:forEach items="${popOfficetelList}" var="popularTelList"
-					varStatus="i">
-					<div class="col-md-6 col-lg-3 ftco-animate">
-						<div class="destination">
-						<span class="zzimCount" ></span> ${popularTelList.wish_count }
-							<a
-								href='<c:url value="/detailView?room_id=${popularTelList.room_id}" />'
-								class="img img-2 d-flex justify-content-center align-items-center"
-								style="background-image: url(${pageContext.request.contextPath}/resources/upload${popularTelList.file_name});"></a>
+						<!-- 					최신매물 아이템 출력 시작 -->
+						<c:forEach items="${popOfficetelList}" var="popularTelList"
+							varStatus="i">
 
-							<div class="text p-3">
+							<div class="destination">
+								<span class="zzimCount"></span> ${popularTelList.wish_count } <a
+									href='<c:url value="/detailView?room_id=${popularTelList.room_id}" />'
+									class="img img-2 d-flex justify-content-center align-items-center"
+									style="background-image: url(${pageContext.request.contextPath}/resources/upload${popularTelList.file_name});"></a>
 
-								<div class="text-mi">
-									<div class="d-flex">
-										<div class="one">
-											<h3>
-												<a
-													href='<c:url value="detailView?room_id=${popularTelList.room_id}" />'>
-													${popularTelList.subject} </a>
-											</h3>
+								<div class="text p-3">
+
+									<div class="text-mi">
+										<div class="d-flex">
+											<div class="one">
+												<h3>
+													<a
+														href='<c:url value="detailView?room_id=${popularTelList.room_id}" />'>
+														${popularTelList.subject} </a>
+												</h3>
+											</div>
+											<div class="two">
+												<span class="price per-price"><small>${popularTelList.deposit}
+														/ ${popularTelList.monthly_rent}</small></span>
+											</div>
 										</div>
-										<div class="two">
-											<span class="price per-price"><small>${popularTelList.deposit}
-													/ ${popularTelList.monthly_rent}</small></span>
+										<p class="p-text">${popularTelList.address }</p>
+
+									</div>
+
+									<hr>
+									<p class="bottom-area d-flex">
+										<input type="hidden"
+											value="<c:out value='${popularTelList.room_id}'/>" id="room_id">
+
+										<button id="zzim-id-${popularTelList.room_id}"
+											class="text-zzim nozzim">
+
+											<c:forEach var="wishList" items="${wishList }">
+
+												<c:if test="${popularTelList.room_id == wishList.wish}">
+													<span class="zzim-showtext"
+														id="zzim-ok-${popularTelList.room_id}"></span>
+												</c:if>
+
+											</c:forEach>
+
+										</button>
+										<span class="ml-auto call"><a
+											href="javascript:void(0);">call</a></span> <input type="hidden"
+											value="<c:out value='${popularTelList.phone_number}'/>"
+											id="phone_number"><input type="hidden"
+											value="<c:out value='${popularTelList.seller_id}'/>"
+											id="seller_id">
+
+									</p>
+									<div class="modal">
+										<div class="modal-content" id="modal-content">
+											<div class="modal-header">
+												<h5 class="modal-title">Contact</h5>
+											</div>
+											<div class="modal-body">
+												<h6 class="id">중개사 : ${popularTelList.seller_id}</h6>
+												<h4 class="phone">연락처 : ${popularTelList.phone_number}</h4>
+												<br>
+
+												<!-- 											 <h4>050-1234-5678</h4> -->
+												<p>
+													중개사무소에 연락하여 방문일을 예약하세요.<br> Findhome에서 보고 연락한다고 말씀하시면<br>
+													더욱 빠른 예약이 가능합니다.<br>
+												</p>
+
+
+											</div>
+											<div class="modal-footer">
+												<button type="button" id="btn-close"
+													class="btn btn-secondary">닫기</button>
+											</div>
 										</div>
 									</div>
-									<p class="p-text">${popularTelList.address }</p>
+
+
 
 								</div>
-
-								<hr>
-								<p class="bottom-area d-flex">
-									<input type="hidden"
-										value="<c:out value='${popularTelList.room_id}'/>"
-										id="room_id">
-
-									<button id="zzim-id-${popularTelList.room_id}"
-										class="text-zzim nozzim">
-
-										<c:forEach var="wishList" items="${wishList }">
-
-											<c:if test="${popularTelList.room_id == wishList.wish}">
-												<span class="zzim-showtext"
-													id="zzim-ok-${popularTelList.room_id}"></span>
-											</c:if>
-
-										</c:forEach>
-
-									</button>
-<!-- 									<span class="ml-auto call"><a -->
-<!-- 										href="javascript:void(0);">call</a></span> <input type="hidden" -->
-<%-- 										value="<c:out value='${popularTelList.phone_number}'/>" --%>
-<!-- 										id="phone_number"> -->
-
-								</p>
-								<div class="modal">
-									<div class="modal_content" title="클릭하면 창이 닫힙니다."></div>
-								</div>
-
-
-
 							</div>
-						</div>
-					</div>
-				</c:forEach>
-				<!-- 					인기매물 아이템 출력 끝 -->
 
+						</c:forEach>
+						<!-- 					인기매물 아이템 출력 끝 -->
+
+					</div>
+				</div>
 			</div>
 		</div>
 	</section>
@@ -523,14 +601,37 @@ body {
 
 										</button>
 
-<!-- 										<span class="ml-auto call"><a -->
-<!-- 											href="javascript:void(0);">call</a></span> <input type="hidden" -->
-<%-- 											value="<c:out value='${roomList.phone_number}'/>" --%>
-<!-- 											id="phone_number"> -->
+										<span class="ml-auto call"><a
+											href="javascript:void(0);">call</a></span> <input type="hidden"
+											value="<c:out value='${roomList.phone_number}'/>"
+											id="phone_number"><input type="hidden"
+											value="<c:out value='${roomList.seller_id}'/>"
+											id="seller_id">
 
 									</p>
 									<div class="modal">
-										<div class="modal_content" title="클릭하면 창이 닫힙니다."></div>
+										<div class="modal-content" id="modal-content">
+											<div class="modal-header">
+												<h5 class="modal-title">Contact</h5>
+											</div>
+											<div class="modal-body">
+												<h6 class="id">중개사 : ${roomList.seller_id}</h6>
+												<h4 class="phone">연락처 : ${roomList.phone_number}</h4>
+												<br>
+
+												<!-- 											 <h4>050-1234-5678</h4> -->
+												<p>
+													중개사무소에 연락하여 방문일을 예약하세요.<br> Findhome에서 보고 연락한다고 말씀하시면<br>
+													더욱 빠른 예약이 가능합니다.
+												</p>
+
+
+											</div>
+											<div class="modal-footer">
+												<button type="button" id="btn-close"
+													class="btn btn-secondary">닫기</button>
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -543,7 +644,7 @@ body {
 		</div>
 	</section>
 	<!-- 	원룸 최신 매물 리스트 끝 -->
-	
+
 	<!-- 	오피스텔 최신매물 리스트 시작 -->
 	<section class="ftco-section ftco-destination">
 		<div class="container">
@@ -592,7 +693,8 @@ body {
 									<hr>
 									<p class="bottom-area d-flex">
 										<input type="hidden"
-											value="<c:out value='${officetelList.room_id}'/>" id="room_id">
+											value="<c:out value='${officetelList.room_id}'/>"
+											id="room_id">
 
 										<button id="zzim-id-${officetelList.room_id}"
 											class="text-zzim nozzim">
@@ -608,14 +710,37 @@ body {
 
 										</button>
 
-<!-- 										<span class="ml-auto call"><a -->
-<!-- 											href="javascript:void(0);">call</a></span> <input type="hidden" -->
-<%-- 											value="<c:out value='${officetelList.phone_number}'/>" --%>
-<!-- 											id="phone_number"> -->
+										<span class="ml-auto call"><a
+											href="javascript:void(0);">call</a></span> <input type="hidden"
+											value="<c:out value='${officetelList.phone_number}'/>"
+											id="phone_number"><input type="hidden"
+											value="<c:out value='${officetelList.seller_id}'/>"
+											id="seller_id">
 
 									</p>
 									<div class="modal">
-										<div class="modal_content" title="클릭하면 창이 닫힙니다."></div>
+										<div class="modal-content" id="modal-content">
+											<div class="modal-header">
+												<h5 class="modal-title">Contact</h5>
+											</div>
+											<div class="modal-body">
+												<h6 class="id">중개사 : ${officetelList.seller_id}</h6>
+												<h4 class="phone">연락처 : ${officetelList.phone_number}</h4>
+												<br>
+
+												<!-- 											 <h4>050-1234-5678</h4> -->
+												<p>
+													중개사무소에 연락하여 방문일을 예약하세요.<br> Findhome에서 보고 연락한다고 말씀하시면<br>
+													더욱 빠른 예약이 가능합니다.
+												</p>
+
+
+											</div>
+											<div class="modal-footer">
+												<button type="button" id="btn-close"
+													class="btn btn-secondary">닫기</button>
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -663,6 +788,34 @@ body {
 	</script>
 
 	<script>
+		$(document).ready(function() {
+			$(document).on("click", ".modal", function() {
+				$(".modal").fadeToggle('fast');
+			});
+		});
+
+		// 목록 - [call] 클릭
+		$('.call')
+				.click(
+						function() {
+							var filter = "win16|win32|win64|mac|macintel";
+							var phone_number = $(this).parent().children(
+									'#phone_number')[0].value;
+							var seller_id = $(this).parent().children(
+									'#seller_id')[0].value;
+
+							if (navigator.platform) {
+								if (filter.indexOf(navigator.platform
+										.toLowerCase()) < 0) {
+									location.href = "tel:" + phone_number;
+
+								} else {	
+									$(".modal").fadeIn();
+								}
+							}
+
+						});
+
 		$(document)
 				.ready(
 						function() {
