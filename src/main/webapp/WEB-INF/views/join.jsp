@@ -288,15 +288,13 @@
  						alert("패스워드를 다시 확인 해주세요");
 						return false;
 					}
-<<<<<<< HEAD
 					
-					
-					if (phone == "") {
-						$('#phone').focus();
-						//swal.fire("전화번호 입력", "전화번호를 입력해주세요", "error"); //"info,success,warning,error" 중 택1
- 						alert("전화번호를 입력해주세요");
-						return false;
-					}
+// 					if (phone == "") {
+// 						$('#phone').focus();
+// 						//swal.fire("전화번호 입력", "전화번호를 입력해주세요", "error"); //"info,success,warning,error" 중 택1
+//  						alert("전화번호를 입력해주세요");
+// 						return false;
+// 					}
 					
 					if (!lengthRegex3.exec(phone)) {
 						$('#phone').focus();
