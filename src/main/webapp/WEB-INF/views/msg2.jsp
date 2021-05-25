@@ -9,7 +9,7 @@
 <body>
 <!-- <h1>member/msg.jsp</h1> -->
 <script type="text/javascript">
-	alert('${msg}');
+	alert('${msg2}');
 	location.href="login";
 </script>
 </body>
