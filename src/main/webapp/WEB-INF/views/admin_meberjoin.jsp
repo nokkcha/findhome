@@ -31,7 +31,6 @@
 </ul>
     </section>
  
-  
   <section class="right_section">
   
     <div class="header clear">
@@ -51,54 +50,7 @@
           </div>
          </div>
          
-        <div class="board_center">  
-        <div class="board_box">
-          <p>매몰신고 리스트</p>  
-          <table border="1" class="type09">
-            <caption>
-              
-              <div></div>
-            </caption>
-            
-            <colgroup>
-              <col>
-              <col>
-              <col>
-            </colgroup>
-            <thead>
-              <tr>
-                <th>문의 아이디</th>
-                <th>내용</th>
-                <th>방 아이디</th>
-              </tr>
-            </thead>
-            <tbody>
-<!--                 <tr> -->
-<!--                 <th>qna_id</th> -->
-<!--                 <th>content</th> -->
-<!--                 <th>room_id</th> -->
-<!--                 </tr> -->
-           
-               <%
-          %>
-              
-              
-              <tbody>
-               <c:forEach var="ReportBean"  items="${reportList }">  
-              <tr>
-                <td>${ReportBean.qna_id }</td>
-                <td>${ReportBean.content }</td>
-                <td>${ReportBean.room_id }</td>
-              </tr>
-                  </c:forEach>
-           
-            </tbody>
-             <%
-    %>      
-    
-            </table>
-          </div>
-      </div>
+ 
       </div>
 
   </section>
