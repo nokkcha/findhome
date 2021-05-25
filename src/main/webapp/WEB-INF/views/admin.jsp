@@ -18,7 +18,7 @@
   <section class="left_section">
   
     <h3>Findhome</h3>
-<img src="/resources/img/user.png" alt="프로필 사진">
+      <img src="resources/images/user.png"  alt="profile" >
 
     <ul>
       <li><a href=""><strong>대시보드</strong></a></li>
@@ -46,7 +46,7 @@
         <div class="board_box">
           <p>승인대기 회원 목록</p>
           <c:forEach var="mb"  items="${nList}">
-          <p>${mb.id} <input type="button"  value="승인"  onclick="location.href='<c:url value="/yUpdate?id=${mb.id}" />' "></p>
+          <p>${mb.id} <input type="button"   value="가입승인"  id="btn-2"  onclick="location.href='<c:url value="/yUpdate?id=${mb.id}" />' "></p>
           </c:forEach>
           </div>
          </div>

@@ -32,10 +32,10 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/icomoon.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
  
+  <link rel="stylesheet" href="resources/css/admin_style.css">
  
  
- 
- <link rel="stylesheet" href="resources/css/admin_style.css">
+
 
 </head>
 
