@@ -44,10 +44,11 @@ button.text-zzim:focus{
 	content:"찜한 매물";
 	color: #f85959;
 	font-weight: bold;
+	    margin-right: 50px;
 }
 
 .zzim:before {
-	content:"💓";
+	content:url("../images/fillHeart.png");
 }
 
 .zzim:hover:before {
@@ -58,12 +59,16 @@ button.text-zzim:focus{
 }
 
 .nozzim:before {
-	content:"🤍 ";
+	content:url("../images/heart.png");
 }
 
 .nozzim:hover:before {
-	content:"💓 ";
+content:url("../images/fillHeart.png");
    cursor: pointer;
+}
+
+.zzimCount{
+	content:url("../images/fillHeart.png");
 }
 
 .sidebar-wrap .fields .select-wrap2 {
@@ -193,4 +198,10 @@ input:checked + label span {
 	margin-top: 10%;
 	border: 1px solid;
 	background: red;
+}
+
+span.call {
+    padding: 2px 10px;
+    border-radius: 80px;
+    border: 1px solid #eee;
 }
